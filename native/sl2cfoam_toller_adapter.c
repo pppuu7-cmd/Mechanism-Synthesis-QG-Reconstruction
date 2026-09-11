@@ -18,7 +18,7 @@ void msqgr_toller_dsmall_sum(__complex128 ds[], __float128 xs[], size_t N,
             (int)two_j, (int)two_l, (int)two_p, (int)two_k,
             (long double)rho, beta);
         long double complex s = tp + tm;
-        __complex128 q = 0.0Q + 0.0Qi;
+        __complex128 q;
         __real__ q = (__float128)creall(s);
         __imag__ q = (__float128)cimagl(s);
         ds[i] = q;
