@@ -71,7 +71,6 @@ cp results_vertex.log "$ROOT/results/sl2cfoam_vertex.log" 2>/dev/null || true
 STAGE=dsmall_probe
 # libsl2cfoam.so references quad-precision Wigner symbols (e.g. wig6jj_float128)
 # that live in libwigxjpf_quadmath.a rather than the ordinary libwigxjpf archive.
-# Link that archive explicitly after libsl2cfoam to resolve the probe executable.
 if ! gcc -std=gnu11 -O2 -I"$PWD/inc" -I"$PWD/src" -I"$PWD/ext/wigxjpf/inc" -I"$PWD/ext/fastwigxj/inc" -I"$PWD/ext" \
   "$ROOT/scripts/sl2cfoam_dsmall_probe.c" -L"$PWD/lib" -L"$PWD/ext/wigxjpf/lib" -L"$PWD/ext/fastwigxj/lib" \
   -Wl,-rpath,"$PWD/lib" -Wl,-rpath,"$PWD/ext/wigxjpf/lib" -Wl,-rpath,"$PWD/ext/fastwigxj/lib" \
@@ -82,8 +81,8 @@ if ! /tmp/sl2cfoam_dsmall_probe > "$ROOT/results/sl2cfoam_dsmall_probe.tsv"; the
 STAGE=phase_audit
 cd "$ROOT"
 python3 -m pip install -q mpmath
-if python3 code/sl2cfoam_phase_convention_audit.py --probe results/sl2cfoam_dsmall_probe.tsv --output results/sl2cfoam_phase_convention_audit.json; then
-  PHASE=true; DETAIL="Lorentzian vertex and pointwise dsmall phase map completed"
+if python3 convention/sl2cfoam_phase_convention_audit.py --probe results/sl2cfoam_dsmall_probe.tsv --output results/sl2cfoam_phase_convention_audit.json; then
+  PHASE=true; DETAIL="Lorentzian vertex and pointwise dsmall/Ruhl convention map completed"
 else
-  DETAIL="dsmall values obtained but Ruhl/spinfoam phase map not resolved at target tolerance"
+  DETAIL="dsmall values obtained but Ruhl/spinfoam convention map not resolved at target tolerance"
 fi
