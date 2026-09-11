@@ -1,6 +1,6 @@
 /* Pointwise probe of the upstream sl2cfoam reduced Wigner d-matrix.
  * Built only inside the physical-backend workflow against an unmodified
- * sl2cfoam-next checkout.  Outputs TSV rows for phase-convention comparison.
+ * sl2cfoam-next checkout. Outputs a broad TSV grid for convention comparison.
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -39,14 +39,22 @@ static void one(const probe_case *c) {
 }
 
 int main(void){
-    probe_case cs[]={
-      {1,1, 1,1.2,0.3},{1,1,-1,1.2,0.8},
-      {1,3, 1,1.2,0.3},{1,3,-1,1.2,0.8},
-      {1,5, 1,1.2,0.8},{1,5,-1,0.4,1.7},
-      {2,2, 0,1.2,0.3},{2,4, 0,1.2,0.8},
-      {2,4, 2,0.4,1.7},{2,6,-2,1.2,0.8}
-    };
+    const double gammas[]={0.4,1.2};
+    const double betas[]={0.3,0.8,1.7};
     printf("two_j\ttwo_l\ttwo_m\tgamma\tbeta\tre\tim\n");
-    for(size_t i=0;i<sizeof(cs)/sizeof(cs[0]);i++) one(&cs[i]);
+    /* EPRL booster kinematics: k=j, auxiliary l=j,j+1,j+2; scan every m. */
+    for(int tj=1;tj<=2;tj++){
+      for(int dl=0;dl<=2;dl++){
+        int tl=tj+2*dl;
+        for(int tm=-tj;tm<=tj;tm+=2){
+          for(size_t ig=0;ig<sizeof(gammas)/sizeof(gammas[0]);ig++){
+            for(size_t ib=0;ib<sizeof(betas)/sizeof(betas[0]);ib++){
+              probe_case c={tj,tl,tm,gammas[ig],betas[ib]};
+              one(&c);
+            }
+          }
+        }
+      }
+    }
     return 0;
 }
