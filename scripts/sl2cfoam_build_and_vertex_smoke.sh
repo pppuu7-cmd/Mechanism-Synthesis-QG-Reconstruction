@@ -46,9 +46,13 @@ mv fastwigxj-1.4.1 fastwigxj
 if ! make -C fastwigxj -j2; then DETAIL="fastwigxj build failed on current GitHub runner compiler; inspect log before patching upstream source"; exit 0; fi
 
 cd ..
+# Upstream `make -jN` can link tests while libsl2cfoam.so is still being written.
+# Build the shared library first, then tools, sequentially. This changes no physics code.
 STAGE=library
-if ! make -j2 BLAS=system OMP=0; then DETAIL="sl2cfoam-next build failed"; exit 0; fi
+if ! make lib BLAS=system OMP=0; then DETAIL="sl2cfoam-next shared-library build failed"; exit 0; fi
 BUILT=true
+STAGE=tools
+if ! make tools BLAS=system OMP=0; then DETAIL="sl2cfoam-next tools build failed after library success"; exit 0; fi
 
 STAGE=tables
 mkdir -p data_sl2cfoam
@@ -61,7 +65,7 @@ export LD_LIBRARY_PATH="$PWD/lib:${LD_LIBRARY_PATH:-}"
 if timeout 8m ./bin/vertex-fulltensor -V -h -m 2000 "$PWD/data_sl2cfoam" 1.2 1,1,1,1,1,1,1,1,1,1 0 > results_vertex.log 2>&1; then
   VERTEX=true; DETAIL="clean hosted-runner source build and shell-0 vertex completed"
 else
-  DETAIL="library built but minimal vertex command failed or exceeded 8m; inspect results_vertex.log"
+  DETAIL="library/tools built but minimal vertex command failed or exceeded 8m; inspect results_vertex.log"
 fi
 cp results_vertex.log "$ROOT/results/sl2cfoam_vertex.log" 2>/dev/null || true
 cd "$ROOT"
