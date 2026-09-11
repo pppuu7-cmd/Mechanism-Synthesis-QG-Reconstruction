@@ -5,11 +5,11 @@ Implements Eqs. (43), (44), and Ruhl-phase Wigner d Eq. (71) of
 Bianchi, Chen & Gamonal, arXiv:2604.24945 / Phys. Rev. D 114, 046014.
 
 The ordinary EPRL booster code calls d^(rho,k)_{j l m} with k=j_external,
-j=j_external and auxiliary l>=j.  Therefore the diagonal gamma-simple Eq. (46)
-is insufficient once Dl>0; this oracle tests exactly the needed j->l sector.
+j=j_external and auxiliary l>=j. Therefore diagonal Eq. (46) is insufficient
+once Dl>0; this oracle tests exactly the needed j->l sector.
 """
 from __future__ import annotations
-import argparse, json, math
+import argparse,json,math
 from pathlib import Path
 import mpmath as mp
 mp.mp.dps=80
@@ -21,59 +21,68 @@ def _i(x):
 
 def fac(x):
     n=_i(x)
-    if n<0: return mp.mpf('0')
+    if n<0:return mp.mpf('0')
     return mp.factorial(n)
 
 def C(n,r):
-    n=_i(n); r=_i(r)
+    n=_i(n);r=_i(r)
     if r<0 or r>n:return mp.mpf('0')
     return mp.mpf(math.comb(n,r))
 
-def sgnpow(x): return mp.mpf(-1 if _i(x)%2 else 1)
+def sgnpow(x):return mp.mpf(-1 if _i(x)%2 else 1)
+
+def h2f1_unitdisk(a,b,c,z,tol=None,maxterms=200000):
+    """Direct Gauss series for real 0<=z<1; avoids mpmath branch-selector bugs.
+
+    The Toller formulas use z=exp(-2 beta), so this series is the natural stable
+    definition for the low-beta scan.  We stop relative to the accumulated sum.
+    """
+    if tol is None: tol=mp.mpf(10)**(-(mp.mp.dps-15))
+    term=mp.mpc(1);total=mp.mpc(1)
+    for n in range(1,maxterms+1):
+        term*=((a+n-1)*(b+n-1)/((c+n-1)*n))*z
+        total_new=total+term
+        if abs(term)<tol*max(mp.mpf(1),abs(total_new)):
+            return total_new
+        total=total_new
+    raise RuntimeError(f'2F1 series did not converge: z={z}, a={a}, b={b}, c={c}')
 
 def pref(j,l,m,k):
-    return mp.sqrt((1+2*j)*(1+2*l))*mp.sqrt(
-      fac(j-k)*fac(j+k)*fac(l-k)*fac(l+k)/
-      (fac(j-m)*fac(j+m)*fac(l-m)*fac(l+m)))
+    return mp.sqrt((1+2*j)*(1+2*l))*mp.sqrt(fac(j-k)*fac(j+k)*fac(l-k)*fac(l+k)/(fac(j-m)*fac(j+m)*fac(l-m)*fac(l+m)))
 
 def tplus(j,l,m,k,rho,beta):
-    z=mp.e**(-2*beta); s=mp.mpc(0); P=pref(j,l,m,k)
-    a1=max(0,_i(m+k)); b1=min(_i(j+m),_i(j+k))
-    a2=max(0,_i(m+k)); b2=min(_i(l+m),_i(l+k))
+    z=mp.e**(-2*beta);s=mp.mpc(0);P=pref(j,l,m,k)
+    a1=max(0,_i(m+k));b1=min(_i(j+m),_i(j+k));a2=max(0,_i(m+k));b2=min(_i(l+m),_i(l+k))
     for n1 in range(a1,b1+1):
       for n2 in range(a2,b2+1):
-        q=mp.gamma(j+k+m-n1-n2+1j*rho)/mp.gamma(1+j+1j*rho)
-        q*=fac(-k-m+n1+n2)
-        q*=C(j-m,-k-m+n1)*C(l-m,-k-m+n2)*C(j+m,n1)*C(l+m,n2)
-        q*=sgnpow(j-l+n1+n2)*mp.e**(beta*(-1+k+m-2*n2+1j*rho))
-        q*=mp.hyp2f1(1-k-m+n1+n2,1+l-1j*rho,1-j-k-m+n1+n2-1j*rho,z)
+        q=mp.gamma(j+k+m-n1-n2+mp.j*rho)/mp.gamma(1+j+mp.j*rho)
+        q*=fac(-k-m+n1+n2)*C(j-m,-k-m+n1)*C(l-m,-k-m+n2)*C(j+m,n1)*C(l+m,n2)
+        q*=sgnpow(j-l+n1+n2)*mp.e**(beta*(-1+k+m-2*n2+mp.j*rho))
+        q*=h2f1_unitdisk(1-k-m+n1+n2,1+l-mp.j*rho,1-j-k-m+n1+n2-mp.j*rho,z)
         s+=q
     return P*s
 
 def tminus(j,l,m,k,rho,beta):
-    z=mp.e**(-2*beta); s=mp.mpc(0); P=pref(j,l,m,k)
-    a1=max(0,_i(m-k)); b1=min(_i(l+m),_i(l-k))
-    a2=max(0,_i(m-k)); b2=min(_i(j+m),_i(j-k))
+    z=mp.e**(-2*beta);s=mp.mpc(0);P=pref(j,l,m,k)
+    a1=max(0,_i(m-k));b1=min(_i(l+m),_i(l-k));a2=max(0,_i(m-k));b2=min(_i(j+m),_i(j-k))
     for n1 in range(a1,b1+1):
       for n2 in range(a2,b2+1):
-        q=mp.gamma(l-k+m-n1-n2-1j*rho)/mp.gamma(1+l-1j*rho)
-        q*=fac(k-m+n1+n2)
-        q*=C(l-m,k-m+n1)*C(j-m,k-m+n2)*C(l+m,n1)*C(j+m,n2)
-        q*=sgnpow(n1+n2)*mp.e**(beta*(-1-k+m-2*n2-1j*rho))
-        q*=mp.hyp2f1(1+k-m+n1+n2,1+j+1j*rho,1-l+k-m+n1+n2+1j*rho,z)
+        q=mp.gamma(l-k+m-n1-n2-mp.j*rho)/mp.gamma(1+l-mp.j*rho)
+        q*=fac(k-m+n1+n2)*C(l-m,k-m+n1)*C(j-m,k-m+n2)*C(l+m,n1)*C(j+m,n2)
+        q*=sgnpow(n1+n2)*mp.e**(beta*(-1-k+m-2*n2-mp.j*rho))
+        q*=h2f1_unitdisk(1+k-m+n1+n2,1+j+mp.j*rho,1-l+k-m+n1+n2+mp.j*rho,z)
         s+=q
     return P*s
 
 def d_ruhl(j,l,m,k,rho,beta):
-    z=1-mp.e**(-2*beta); s=mp.mpc(0); P=pref(j,l,m,k)/fac(1+j+l)
-    a1=max(0,_i(m-k)); b1=min(_i(j+m),_i(j-k))
-    a2=max(0,_i(m-k)); b2=min(_i(l+m),_i(l-k))
+    z=1-mp.e**(-2*beta);s=mp.mpc(0);P=pref(j,l,m,k)/fac(1+j+l)
+    a1=max(0,_i(m-k));b1=min(_i(j+m),_i(j-k));a2=max(0,_i(m-k));b2=min(_i(l+m),_i(l-k))
     for n1 in range(a1,b1+1):
       for n2 in range(a2,b2+1):
         q=sgnpow(n1+n2)*C(j-m,k-m+n1)*C(l-m,k-m+n2)*C(j+m,n1)*C(l+m,n2)
         q*=fac(j-k+l+m-n1-n2)*fac(k-m+n1+n2)
-        q*=mp.e**(beta*(-1-k+m-2*n1-1j*rho))
-        q*=mp.hyp2f1(1+k-m+n1+n2,1+j+1j*rho,2+j+l,z)
+        q*=mp.e**(beta*(-1-k+m-2*n1-mp.j*rho))
+        q*=mp.hyp2f1(1+k-m+n1+n2,1+j+mp.j*rho,2+j+l,z)
         s+=q
     return P*s
 
