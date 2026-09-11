@@ -49,6 +49,15 @@ jobs:
           - name: carc-codimension
             command: "python code/carc_codimension.py"
             artifact: carc-codimension
+          - name: gamma-simple-toller-pole-closure
+            command: "python code/gamma_simple_toller_pole_closure.py --max-j2 14 --max-n 8"
+            artifact: gamma-simple-pole-closure
+          - name: toller-embedding-taxonomy
+            command: "python code/toller_embedding_taxonomy.py"
+            artifact: toller-embedding-taxonomy
+          - name: gamma-flow-causal-sector
+            command: "python code/gamma_flow_causal_sector.py --steps 4001"
+            artifact: gamma-flow-causal-sector
           - name: f9-fail-closed-gate
             command: "python code/f9_gate.py"
             artifact: f9-gate
