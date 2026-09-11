@@ -17,7 +17,7 @@ jobs:
   stream:
     name: ${{ matrix.name }}
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     strategy:
       fail-fast: false
       matrix:
@@ -35,11 +35,23 @@ jobs:
             command: "python code/transfer_semigroup_test.py"
             artifact: transfer-control
           - name: causal-analytic-rg-pole-control
-            command: "python code/toller_rg_closure_toy.py --trials 128"
+            command: "python code/toller_rg_closure_toy.py --trials 256"
             artifact: toller-rg-control
           - name: causal-rg-commutator
             command: "python code/causal_rg_commutator.py"
             artifact: causal-rg-commutator
+          - name: causal-cylindrical-intertwining
+            command: "python code/causal_embedding_consistency.py"
+            artifact: causal-cylindrical-intertwining
+          - name: carc-multiscale-scan
+            command: "python code/carc_multiscale_scan.py --trials 400 --steps 16"
+            artifact: carc-multiscale
+          - name: carc-codimension
+            command: "python code/carc_codimension.py"
+            artifact: carc-codimension
+          - name: f9-fail-closed-gate
+            command: "python code/f9_gate.py"
+            artifact: f9-gate
           - name: novelty-overlap
             command: "python code/novelty_overlap.py"
             artifact: novelty
