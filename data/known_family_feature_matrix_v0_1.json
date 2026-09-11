@@ -1,0 +1,45 @@
+{
+  "feature_definitions": {
+    "F1_CAUSAL_ORIENTED_2COMPLEX": "Causal/orientation data on a 2-complex or dual skeleton",
+    "F2_QUANTUM_GEOMETRIC_LABELS": "Representation/intertwiner-like quantum geometry labels",
+    "F3_CAUSAL_VERTEX_BRANCH": "A causal local transition/vertex construction",
+    "F4_SINGLE_REGGE_EXPONENTIAL": "Large-spin causal sector selects a single exp(+i S_Regge)",
+    "F5_FEYNMAN_ANALYTIC_SPLIT": "Feynman i-epsilon / Toller positive-negative branch split",
+    "F6_RG_COARSE_GRAINING": "Explicit spin-foam/GFT renormalization or coarse-graining program",
+    "F7_CONTINUUM_PHASE_TRANSITION": "Continuum emergence via critical/condensate phase behavior",
+    "F8_SYMMETRY_RECOVERY_TARGET": "Restoration/recovery of diffeomorphism/refoliation-type symmetry is an RG target",
+    "F9_CAUSAL_ANALYTICITY_RG_INVARIANT": "Same-realization RG map proven to preserve the causal analytic/Toller class without new free pole data",
+    "F10_SAME_REALIZATION_OBSERVABLE": "Normalized observable derived from the same microscopic realization that distinguishes the candidate"
+  },
+  "candidate_current_features": [
+    "F1_CAUSAL_ORIENTED_2COMPLEX",
+    "F2_QUANTUM_GEOMETRIC_LABELS",
+    "F3_CAUSAL_VERTEX_BRANCH",
+    "F4_SINGLE_REGGE_EXPONENTIAL",
+    "F5_FEYNMAN_ANALYTIC_SPLIT",
+    "F6_RG_COARSE_GRAINING",
+    "F7_CONTINUUM_PHASE_TRANSITION",
+    "F8_SYMMETRY_RECOVERY_TARGET"
+  ],
+  "required_for_g8_novelty": [
+    "F9_CAUSAL_ANALYTICITY_RG_INVARIANT",
+    "F10_SAME_REALIZATION_OBSERVABLE"
+  ],
+  "families": [
+    {
+      "name": "Causal EPRL / causal spinfoam 2024-2026",
+      "features": ["F1_CAUSAL_ORIENTED_2COMPLEX", "F2_QUANTUM_GEOMETRIC_LABELS", "F3_CAUSAL_VERTEX_BRANCH", "F4_SINGLE_REGGE_EXPONENTIAL", "F5_FEYNMAN_ANALYTIC_SPLIT"],
+      "refs": ["doi:10.3390/universe10040181", "doi:10.1103/fwql-t4yr", "doi:10.1103/v3kc-4n3n"]
+    },
+    {
+      "name": "Spin-foam coarse graining / RG",
+      "features": ["F2_QUANTUM_GEOMETRIC_LABELS", "F6_RG_COARSE_GRAINING", "F8_SYMMETRY_RECOVERY_TARGET"],
+      "refs": ["arXiv:2007.01315", "doi:10.1103/PhysRevD.98.106026"]
+    },
+    {
+      "name": "Lorentzian Barrett-Crane TGFT phase-transition program",
+      "features": ["F2_QUANTUM_GEOMETRIC_LABELS", "F6_RG_COARSE_GRAINING", "F7_CONTINUUM_PHASE_TRANSITION"],
+      "refs": ["doi:10.1103/PhysRevD.111.026014"]
+    }
+  ]
+}
