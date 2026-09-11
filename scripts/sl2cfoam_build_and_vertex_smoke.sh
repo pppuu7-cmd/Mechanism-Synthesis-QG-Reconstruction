@@ -4,18 +4,20 @@
 # Every failure is recorded as evidence rather than hidden; the script exits 0 so the
 # diagnostic artifact survives for inspection.
 set -u
-mkdir -p results
+ROOT="${GITHUB_WORKSPACE:-$PWD}"
+mkdir -p "$ROOT/results"
 WORK="${RUNNER_TEMP:-/tmp}/msqgr-sl2cfoam-smoke"
 rm -rf "$WORK"; mkdir -p "$WORK"
 STAGE=init; DETAIL=""; BUILT=false; VERTEX=false
 finish(){
-  python3 - "$STAGE" "$DETAIL" "$BUILT" "$VERTEX" <<'PY'
+  MSQGR_ROOT="$ROOT" python3 - "$STAGE" "$DETAIL" "$BUILT" "$VERTEX" <<'PY'
 import json,sys,os
 stage,detail,built,vertex=sys.argv[1:]
 out={"stage_reached":stage,"detail":detail,"library_built":built.lower()=="true","minimal_vertex_completed":vertex.lower()=="true","backend":"qg-cpt-marseille/sl2cfoam-next","blas":"system/openblas","omp":False,"vertex_target":{"gamma":1.2,"twice_spins":[1]*10,"Dl":0},"scope":"build/compute smoke only; no Toller projector and no F9 credit"}
 out["verdict"]="MINIMAL_LORENTZIAN_EPRL_VERTEX_COMPUTED" if out["minimal_vertex_completed"] else ("SL2CFOAM_LIBRARY_BUILT_VERTEX_PENDING" if out["library_built"] else "SL2CFOAM_BUILD_SMOKE_BLOCKED")
-os.makedirs('results',exist_ok=True)
-open('results/sl2cfoam_build_smoke.json','w').write(json.dumps(out,indent=2))
+root=os.environ.get('MSQGR_ROOT','.')
+os.makedirs(os.path.join(root,'results'),exist_ok=True)
+open(os.path.join(root,'results','sl2cfoam_build_smoke.json'),'w').write(json.dumps(out,indent=2))
 print(json.dumps(out,indent=2))
 PY
 }
@@ -61,5 +63,5 @@ if timeout 8m ./bin/vertex-fulltensor -V -h -m 2000 "$PWD/data_sl2cfoam" 1.2 1,1
 else
   DETAIL="library built but minimal vertex command failed or exceeded 8m; inspect results_vertex.log"
 fi
-cp results_vertex.log "$GITHUB_WORKSPACE/results/sl2cfoam_vertex.log" 2>/dev/null || true
-cd "$GITHUB_WORKSPACE"
+cp results_vertex.log "$ROOT/results/sl2cfoam_vertex.log" 2>/dev/null || true
+cd "$ROOT"
