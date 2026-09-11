@@ -11,7 +11,7 @@
 - G8 novelty: `BLOCKED_CONVERGENCE_ONLY` until physical F9/F10 evidence exists
 - GitHub campaign run #1: `34652665678` — success
 - GitHub campaign run #2: `34653104048` — success
-- GitHub campaign run #3: `34653540503` — launched for explicit gamma-simple Toller structure
+- GitHub campaign run #3: `34653540503` — queued/running campaign for explicit gamma-simple Toller structure
 
 ## Current decisive target
 
