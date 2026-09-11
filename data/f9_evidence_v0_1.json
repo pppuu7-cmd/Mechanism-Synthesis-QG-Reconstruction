@@ -1,0 +1,25 @@
+{
+  "gate": "F9_CAUSAL_ANALYTICITY_RG_INVARIANT",
+  "candidate": "CRQN_v0.2",
+  "same_realization": false,
+  "physical_boundary_projectors_defined": false,
+  "dynamical_embedding_maps_defined": false,
+  "cylindrical_consistency_demonstrated": false,
+  "cci_carc_residual": null,
+  "cci_carc_tolerance": 1e-08,
+  "toller_pole_class_closed_after_internal_sums": false,
+  "no_new_independent_cross_branch_data": false,
+  "controlled_refinement_steps": 0,
+  "minimum_refinement_steps": 2,
+  "external_support": {
+    "causal_projector_side": [
+      "doi:10.1103/fwql-t4yr",
+      "doi:10.1103/v3kc-4n3n"
+    ],
+    "spin_foam_rg_embedding_side": [
+      "doi:10.3389/fphy.2020.00295",
+      "arXiv:2007.01315"
+    ]
+  },
+  "note": "External literature supports the two ingredients separately. No same-realization CRQN/Toller coarse-graining implementation has yet been supplied. Keep the gate BLOCKED."
+}
