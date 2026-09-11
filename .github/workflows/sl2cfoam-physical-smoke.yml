@@ -5,6 +5,11 @@ on:
     branches: [main]
     paths:
       - "scripts/sl2cfoam_build_and_vertex_smoke.sh"
+      - "scripts/sl2cfoam_dsmall_probe.c"
+      - "convention/**"
+      - "native/toller_kernel.c"
+      - "native/toller_kernel.h"
+      - "native/toller_kernel_probe.c"
       - ".github/workflows/sl2cfoam-physical-smoke.yml"
   workflow_dispatch:
 
@@ -17,7 +22,7 @@ jobs:
     timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
-      - name: Build sl2cfoam-next and attempt shell-0 Lorentzian vertex
+      - name: Build sl2cfoam-next and run physical convention/cross-backend gates
         shell: bash
         run: bash scripts/sl2cfoam_build_and_vertex_smoke.sh
       - name: Upload backend smoke evidence
