@@ -53,7 +53,7 @@ compile_probe(){
     "$ROOT/scripts/sl2cfoam_b4_accurate_probe.c" \
     -L"$PWD/lib" -L"$PWD/ext/wigxjpf/lib" -L"$PWD/ext/fastwigxj/lib" \
     -Wl,-rpath,"$PWD/lib" -Wl,-rpath,"$PWD/ext/wigxjpf/lib" -Wl,-rpath,"$PWD/ext/fastwigxj/lib" \
-    -lsl2cfoam -lopenblas -lblas -lpthread -lmpc -lmpfr -lgmp -lquadmath -lfastwigxj -lwigxjpf -lwigxjpf_quadmath -lm \
+    -lsl2cfoam -lopenblas -lblas -lpthread -lmpc -lmpfr -lgmp -lfastwigxj -lwigxjpf -lwigxjpf_quadmath -lquadmath -lm \
     -o /tmp/msqgr_b4_probe
 }
 
