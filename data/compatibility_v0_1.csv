@@ -5,7 +5,7 @@ M01,M05,2,dynamics,"Spin-foam/GFT histories provide covariant sums on background
 M01,M07,1,RG,"Background-independent/discrete theories can be coarse-grained; implementation is model-dependent",OPEN_BLOCKED
 M01,M12,1,continuum,"Discrete relational carriers admit coarse-graining/continuum programmes in GFT/CDT/tensor settings",OPEN_BLOCKED
 M01,M13,1,symmetry,"Background independence motivates gravitational gauge closure but does not guarantee anomaly freedom",OPEN_BLOCKED
-M02,M04,0,ontology,"Causal order plus representation-labelled quantum geometry is the central unclosed CRQN bridge",OPEN_BLOCKED
+M02,M04,2,ontology,"Causal spin-foam constructions explicitly combine orientation/causal data with representation-labelled Lorentzian quantum geometry; 2024 causal EPRL and 2026 causal spinfoam vertex provide direct coexistence evidence",ESTABLISHED_EXTERNAL
 M02,M05,1,causality,"Lorentzian/causal restrictions can coexist with history sums, but composition/unitarity require explicit proof",OPEN_BLOCKED
 M02,M07,0,RG,"Causal structure must survive coarse graining and fixed-point flow; not yet shown for CRQN",OPEN_BLOCKED
 M02,M12,1,continuum,"CDT and causal-set continuum studies show the tasks can coexist in principle, not in the CRQN realization",OPEN_BLOCKED
