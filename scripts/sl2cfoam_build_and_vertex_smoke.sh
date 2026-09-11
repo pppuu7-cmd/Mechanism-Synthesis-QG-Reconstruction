@@ -1,19 +1,20 @@
 #!/usr/bin/env bash
-# Build public sl2cfoam-next, compute a minimal Lorentzian vertex, then probe the
-# actual upstream reduced Wigner dsmall for an empirical Ruhl/spinfoam phase audit.
-# Failures are recorded as artifacts rather than hidden.
+# Build public sl2cfoam-next, compute a minimal Lorentzian vertex, probe raw
+# dsmall convention, then directly cross-check compiled Toller t+ + t- against
+# the same upstream dsmall grid. Failures are recorded as artifacts.
 set -u
 ROOT="${GITHUB_WORKSPACE:-$PWD}"
 mkdir -p "$ROOT/results"
 WORK="${RUNNER_TEMP:-/tmp}/msqgr-sl2cfoam-smoke"
 rm -rf "$WORK"; mkdir -p "$WORK"
-STAGE=init; DETAIL=""; BUILT=false; VERTEX=false; PHASE=false
+STAGE=init; DETAIL=""; BUILT=false; VERTEX=false; PHASE=false; CROSS=false
 finish(){
-  MSQGR_ROOT="$ROOT" python3 - "$STAGE" "$DETAIL" "$BUILT" "$VERTEX" "$PHASE" <<'PY'
+  MSQGR_ROOT="$ROOT" python3 - "$STAGE" "$DETAIL" "$BUILT" "$VERTEX" "$PHASE" "$CROSS" <<'PY'
 import json,sys,os
-stage,detail,built,vertex,phase=sys.argv[1:]
-out={"stage_reached":stage,"detail":detail,"library_built":built.lower()=="true","minimal_vertex_completed":vertex.lower()=="true","phase_audit_passed":phase.lower()=="true","backend":"qg-cpt-marseille/sl2cfoam-next","blas":"system/openblas","omp":False,"vertex_target":{"gamma":1.2,"twice_spins":[1]*10,"Dl":0},"scope":"backend + convention smoke only; no causal booster and no F9 credit"}
-if out['minimal_vertex_completed'] and out['phase_audit_passed']: out['verdict']='LORENTZIAN_VERTEX_AND_DSMALL_PHASE_AUDIT_COMPLETE'
+stage,detail,built,vertex,phase,cross=sys.argv[1:]
+out={"stage_reached":stage,"detail":detail,"library_built":built.lower()=="true","minimal_vertex_completed":vertex.lower()=="true","phase_audit_passed":phase.lower()=="true","native_toller_cross_backend_passed":cross.lower()=="true","backend":"qg-cpt-marseille/sl2cfoam-next","blas":"system/openblas","omp":False,"vertex_target":{"gamma":1.2,"twice_spins":[1]*10,"Dl":0},"scope":"backend + convention + pointwise compiled causal-split cross-check; no integrated causal booster and no F9 credit"}
+if out['minimal_vertex_completed'] and out['phase_audit_passed'] and out['native_toller_cross_backend_passed']: out['verdict']='LORENTZIAN_VERTEX_RUHL_IDENTITY_AND_NATIVE_TOLLER_CROSS_BACKEND_COMPLETE'
+elif out['minimal_vertex_completed'] and out['phase_audit_passed']: out['verdict']='LORENTZIAN_VERTEX_AND_DSMALL_PHASE_AUDIT_COMPLETE__CROSS_BACKEND_OPEN'
 elif out['minimal_vertex_completed']: out['verdict']='MINIMAL_LORENTZIAN_EPRL_VERTEX_COMPUTED__PHASE_AUDIT_OPEN'
 elif out['library_built']: out['verdict']='SL2CFOAM_LIBRARY_BUILT_VERTEX_PENDING'
 else: out['verdict']='SL2CFOAM_BUILD_SMOKE_BLOCKED'
@@ -69,8 +70,6 @@ fi
 cp results_vertex.log "$ROOT/results/sl2cfoam_vertex.log" 2>/dev/null || true
 
 STAGE=dsmall_probe
-# libsl2cfoam.so references quad-precision Wigner symbols (e.g. wig6jj_float128)
-# that live in libwigxjpf_quadmath.a rather than the ordinary libwigxjpf archive.
 if ! gcc -std=gnu11 -O2 -I"$PWD/inc" -I"$PWD/src" -I"$PWD/ext/wigxjpf/inc" -I"$PWD/ext/fastwigxj/inc" -I"$PWD/ext" \
   "$ROOT/scripts/sl2cfoam_dsmall_probe.c" -L"$PWD/lib" -L"$PWD/ext/wigxjpf/lib" -L"$PWD/ext/fastwigxj/lib" \
   -Wl,-rpath,"$PWD/lib" -Wl,-rpath,"$PWD/ext/wigxjpf/lib" -Wl,-rpath,"$PWD/ext/fastwigxj/lib" \
@@ -85,4 +84,21 @@ if python3 convention/sl2cfoam_phase_convention_audit.py --probe results/sl2cfoa
   PHASE=true; DETAIL="Lorentzian vertex and pointwise dsmall/Ruhl convention map completed"
 else
   DETAIL="dsmall values obtained but Ruhl/spinfoam convention map not resolved at target tolerance"
+fi
+
+STAGE=native_toller_cross_backend
+if ! gcc -std=gnu11 -O2 -Wall -Wextra -Inative native/toller_kernel.c native/toller_kernel_probe.c -lm -o /tmp/toller_kernel_probe; then
+  DETAIL="native Toller probe compilation failed"; exit 0
+fi
+if ! /tmp/toller_kernel_probe > results/native_toller_probe.tsv; then
+  DETAIL="native Toller probe runtime failed"; exit 0
+fi
+if python3 convention/cross_backend_toller_vs_sl2cfoam.py \
+    --sl2c results/sl2cfoam_dsmall_probe.tsv \
+    --native results/native_toller_probe.tsv \
+    --output results/cross_backend_toller_vs_sl2cfoam.json \
+    --threshold 5e-12; then
+  CROSS=true; DETAIL="raw sl2cfoam dsmall and compiled native Toller t+ + t- agree on identical 90-point grid"
+else
+  DETAIL="compiled native Toller sum does not meet cross-backend tolerance; inspect artifact before booster integration"
 fi
