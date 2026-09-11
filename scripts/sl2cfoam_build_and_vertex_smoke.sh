@@ -69,10 +69,13 @@ fi
 cp results_vertex.log "$ROOT/results/sl2cfoam_vertex.log" 2>/dev/null || true
 
 STAGE=dsmall_probe
+# libsl2cfoam.so references quad-precision Wigner symbols (e.g. wig6jj_float128)
+# that live in libwigxjpf_quadmath.a rather than the ordinary libwigxjpf archive.
+# Link that archive explicitly after libsl2cfoam to resolve the probe executable.
 if ! gcc -std=gnu11 -O2 -I"$PWD/inc" -I"$PWD/src" -I"$PWD/ext/wigxjpf/inc" -I"$PWD/ext/fastwigxj/inc" -I"$PWD/ext" \
   "$ROOT/scripts/sl2cfoam_dsmall_probe.c" -L"$PWD/lib" -L"$PWD/ext/wigxjpf/lib" -L"$PWD/ext/fastwigxj/lib" \
   -Wl,-rpath,"$PWD/lib" -Wl,-rpath,"$PWD/ext/wigxjpf/lib" -Wl,-rpath,"$PWD/ext/fastwigxj/lib" \
-  -lsl2cfoam -lopenblas -lblas -lpthread -lmpc -lmpfr -lgmp -lquadmath -lfastwigxj -lwigxjpf -lm \
+  -lsl2cfoam -lopenblas -lblas -lpthread -lmpc -lmpfr -lgmp -lquadmath -lfastwigxj -lwigxjpf -lwigxjpf_quadmath -lm \
   -o /tmp/sl2cfoam_dsmall_probe; then DETAIL="vertex backend works but dsmall probe compilation failed"; cd "$ROOT"; exit 0; fi
 if ! /tmp/sl2cfoam_dsmall_probe > "$ROOT/results/sl2cfoam_dsmall_probe.tsv"; then DETAIL="dsmall probe runtime failed"; cd "$ROOT"; exit 0; fi
 
