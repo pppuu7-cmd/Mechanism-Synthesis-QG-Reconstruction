@@ -1,0 +1,36 @@
+name: Additive Toller B4 Gate
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "native/toller_kernel.c"
+      - "native/toller_kernel.h"
+      - "native/sl2cfoam_toller_adapter.c"
+      - "native/sl2cfoam_toller_adapter.h"
+      - "scripts/sl2cfoam_b4_accurate_probe.c"
+      - "scripts/sl2cfoam_additive_b4_gate.sh"
+      - "convention/compare_additive_b4.py"
+      - ".github/workflows/additive-b4-gate.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  full-accurate-b4-additive-reconstruction:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compute upstream and Toller-sum accurate B4 matrices
+        shell: bash
+        run: bash scripts/sl2cfoam_additive_b4_gate.sh
+      - name: Upload additive B4 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: msqgr-additive-b4-gate
+          path: results/
+          if-no-files-found: error
+          retention-days: 30
