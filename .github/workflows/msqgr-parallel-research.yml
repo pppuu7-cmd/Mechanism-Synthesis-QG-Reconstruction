@@ -58,6 +58,9 @@ jobs:
           - name: gamma-flow-causal-sector
             command: "python code/gamma_flow_causal_sector.py --steps 4001"
             artifact: gamma-flow-causal-sector
+          - name: published-eprl-delta4-convergence
+            command: "python code/published_eprl_delta4_convergence.py"
+            artifact: published-eprl-delta4-convergence
           - name: f9-fail-closed-gate
             command: "python code/f9_gate.py"
             artifact: f9-gate
