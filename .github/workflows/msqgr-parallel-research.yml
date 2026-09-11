@@ -58,6 +58,9 @@ jobs:
           - name: gamma-flow-causal-sector
             command: "python code/gamma_flow_causal_sector.py --steps 4001"
             artifact: gamma-flow-causal-sector
+          - name: toller-gamma-simple-reference
+            command: "python -m pip install -q mpmath && python code/toller_gamma_simple_reference.py"
+            artifact: toller-gamma-simple-reference
           - name: published-eprl-delta4-convergence
             command: "python code/published_eprl_delta4_convergence.py"
             artifact: published-eprl-delta4-convergence
@@ -70,9 +73,15 @@ jobs:
           - name: eprl-tail-model-selection
             command: "python code/eprl_tail_model_selection.py --tail 8"
             artifact: eprl-tail-model-selection
+          - name: eprl-power-tail-extrapolation
+            command: "python code/eprl_power_tail_extrapolation.py"
+            artifact: eprl-power-tail-extrapolation
           - name: eprl-backend-readiness-gate
             command: "python code/eprl_backend_readiness_gate.py"
             artifact: eprl-backend-readiness-gate
+          - name: eprl-precision-readiness-gate
+            command: "python code/eprl_precision_readiness_gate.py"
+            artifact: eprl-precision-readiness-gate
           - name: f9-fail-closed-gate
             command: "python code/f9_gate.py"
             artifact: f9-gate
