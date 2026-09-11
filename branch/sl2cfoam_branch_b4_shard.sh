@@ -63,7 +63,7 @@ logger=r'''
                 fclose(msqgr_fp);
             }
         }
-'''
+'''.replace('\\"','"')
 if anchor not in s: raise SystemExit('complex integral anchor not found')
 s=s.replace(anchor,anchor+logger,1)
 if mode != 'baseline':
@@ -75,7 +75,6 @@ if mode != 'baseline':
         new=f'''msqgr_toller_dsmall_branch(d{n}, xs, N, p{n}->rho,\n                                p{n}->two_j, p{n}->two_j, p{n}->two_l, p{n}->two_p,\n                                msqgr_toller_branch_for_leg({n-1}));'''
         if old not in s: raise SystemExit(f'dsmall call {n} not found')
         s=s.replace(old,new,1)
-    Path('src/toller_kernel.c').write_text(Path(sys.path[0] or '.').read_text() if False else '')
 p.write_text(s)
 PY
 
