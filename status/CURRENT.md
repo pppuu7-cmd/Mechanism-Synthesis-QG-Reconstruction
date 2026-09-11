@@ -21,7 +21,7 @@ Construct or extract a dynamically justified Lorentzian boundary embedding/coars
 
 after the actual internal sums/integrals and boundary recoupling.
 
-A nonzero cross-sector block is a direct CCI/F9 failure for that realization/truncation. A zero/suppressed block is not sufficient by itself: the Toller analytic/pole class, ordinary cylindrical consistency, and multi-step refinement closure must also be checked.
+A nonzero cross-sector block is a failure of **exact CCI for that tested realization/truncation**. It is not by itself a universal no-go theorem: a broader theory could require an enlarged causal sector or a different projector transport. A zero/suppressed block is also not sufficient by itself: the Toller analytic/pole class, ordinary cylindrical consistency, and multi-step refinement closure must be checked.
 
 ## Iteration 005 exact negative control
 
