@@ -1,0 +1,30 @@
+name: SL2Cfoam Physical Backend Smoke
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/sl2cfoam_build_and_vertex_smoke.sh"
+      - ".github/workflows/sl2cfoam-physical-smoke.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-minimal-vertex:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build sl2cfoam-next and attempt shell-0 Lorentzian vertex
+        shell: bash
+        run: bash scripts/sl2cfoam_build_and_vertex_smoke.sh
+      - name: Upload backend smoke evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: msqgr-sl2cfoam-physical-smoke
+          path: results/
+          if-no-files-found: error
+          retention-days: 30
