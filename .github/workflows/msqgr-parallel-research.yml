@@ -1,0 +1,85 @@
+name: MSQGR Parallel Research
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "code/**"
+      - "data/**"
+      - "bridges/**"
+      - ".github/workflows/msqgr-parallel-research.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  stream:
+    name: ${{ matrix.name }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: architecture-synthesis
+            command: "mkdir -p results && python code/synthesize_candidates.py | tee results/synthesis.txt"
+            artifact: architecture
+          - name: naive-causal-character-scan
+            command: "python code/causal_character_scan.py"
+            artifact: causal-character
+          - name: exact-constraint-rank
+            command: "python code/constraint_rank.py"
+            artifact: constraint-rank
+          - name: transfer-negative-control
+            command: "python code/transfer_semigroup_test.py"
+            artifact: transfer-control
+          - name: causal-analytic-rg-pole-control
+            command: "python code/toller_rg_closure_toy.py --trials 128"
+            artifact: toller-rg-control
+          - name: causal-rg-commutator
+            command: "python code/causal_rg_commutator.py"
+            artifact: causal-rg-commutator
+          - name: novelty-overlap
+            command: "python code/novelty_overlap.py"
+            artifact: novelty
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run research stream
+        shell: bash
+        run: ${{ matrix.command }}
+      - name: Upload stream result
+        uses: actions/upload-artifact@v4
+        with:
+          name: msqgr-${{ matrix.artifact }}
+          path: results/
+          if-no-files-found: error
+          retention-days: 30
+
+  aggregate:
+    name: Aggregate campaign verdict
+    needs: stream
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Download successful stream artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: msqgr-*
+          path: parallel-results
+          merge-multiple: true
+      - name: Aggregate
+        run: python code/aggregate_parallel_results.py --input parallel-results
+      - name: Publish combined verdict artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: msqgr-combined-verdict
+          path: combined-results/
+          retention-days: 30
