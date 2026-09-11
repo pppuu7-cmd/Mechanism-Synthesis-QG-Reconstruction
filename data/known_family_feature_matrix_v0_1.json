@@ -8,7 +8,7 @@
     "F6_RG_COARSE_GRAINING": "Explicit spin-foam/GFT renormalization or coarse-graining program",
     "F7_CONTINUUM_PHASE_TRANSITION": "Continuum emergence via critical/condensate phase behavior",
     "F8_SYMMETRY_RECOVERY_TARGET": "Restoration/recovery of diffeomorphism/refoliation-type symmetry is an RG target",
-    "F9_CAUSAL_ANALYTICITY_RG_INVARIANT": "Same-realization RG map proven to preserve the causal analytic/Toller class without new free pole data",
+    "F9_CAUSAL_ANALYTICITY_RG_INVARIANT": "Same-realization dynamically justified embedding/RG map satisfies causal cylindrical intertwining and preserves the Toller analytic/pole class without new free cross-branch data over multiple controlled steps",
     "F10_SAME_REALIZATION_OBSERVABLE": "Normalized observable derived from the same microscopic realization that distinguishes the candidate"
   },
   "candidate_current_features": [
@@ -20,6 +20,10 @@
     "F6_RG_COARSE_GRAINING",
     "F7_CONTINUUM_PHASE_TRANSITION",
     "F8_SYMMETRY_RECOVERY_TARGET"
+  ],
+  "candidate_prospective_relations_not_yet_established": [
+    "CCI: P_bprime^± iota_bprime,b = iota_bprime,b P_b^±",
+    "CARC: C_± = P_± R - R P_± = 0 in a common/linearized identification"
   ],
   "required_for_g8_novelty": [
     "F9_CAUSAL_ANALYTICITY_RG_INVARIANT",
