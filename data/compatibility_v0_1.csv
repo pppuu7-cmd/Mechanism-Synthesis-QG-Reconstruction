@@ -1,0 +1,27 @@
+mechanism_a,mechanism_b,score,channel,evidence_basis,status_note
+M01,M02,1,ontology,"Background-independent relational carriers can host causal relations, but no unique merged carrier selected",OPEN_BLOCKED
+M01,M04,2,ontology,"Loop/spinfoam/GFT constructions explicitly combine relational combinatorics with quantum-geometric labels",ESTABLISHED_EXTERNAL
+M01,M05,2,dynamics,"Spin-foam/GFT histories provide covariant sums on background-independent combinatorial carriers",ESTABLISHED_EXTERNAL
+M01,M07,1,RG,"Background-independent/discrete theories can be coarse-grained; implementation is model-dependent",OPEN_BLOCKED
+M01,M12,1,continuum,"Discrete relational carriers admit coarse-graining/continuum programmes in GFT/CDT/tensor settings",OPEN_BLOCKED
+M01,M13,1,symmetry,"Background independence motivates gravitational gauge closure but does not guarantee anomaly freedom",OPEN_BLOCKED
+M02,M04,0,ontology,"Causal order plus representation-labelled quantum geometry is the central unclosed CRQN bridge",OPEN_BLOCKED
+M02,M05,1,causality,"Lorentzian/causal restrictions can coexist with history sums, but composition/unitarity require explicit proof",OPEN_BLOCKED
+M02,M07,0,RG,"Causal structure must survive coarse graining and fixed-point flow; not yet shown for CRQN",OPEN_BLOCKED
+M02,M12,1,continuum,"CDT and causal-set continuum studies show the tasks can coexist in principle, not in the CRQN realization",OPEN_BLOCKED
+M02,M13,0,symmetry,"Potential tension between microscopic order/foliation structures and continuum refoliation invariance",OPEN_BLOCKED
+M04,M05,2,dynamics,"Spin-foam/GFT frameworks explicitly sum histories of labelled quantum-geometric data",ESTABLISHED_EXTERNAL
+M04,M07,1,RG,"GFT/spinfoam renormalization programmes provide partial bridges from labelled quantum geometry to RG",OPEN_BLOCKED
+M04,M12,2,continuum,"GFT condensate/coarse-graining and spin-foam continuum programmes explicitly target this bridge",ESTABLISHED_EXTERNAL
+M04,M13,1,symmetry,"Quantum-geometric labels can encode gauge covariance, while full anomaly/refoliation closure remains nontrivial",OPEN_BLOCKED
+M05,M07,1,RG,"History-sum couplings can run under coarse graining in GFT/tensor/lattice settings",OPEN_BLOCKED
+M05,M12,2,continuum,"CDT/GFT/tensor programmes explicitly use ensembles/history sums to study continuum phases",ESTABLISHED_EXTERNAL
+M05,M13,1,symmetry,"Covariant amplitudes may encode gauge symmetries but gauge-fixing/constraint equivalence is model-dependent",OPEN_BLOCKED
+M07,M12,2,RG,"Continuum formation through critical behavior/renormalization is a standard statistical/QFT mechanism",ESTABLISHED_EXTERNAL
+M07,M13,1,symmetry,"RG flow must preserve/restore symmetry; compatible in principle but a hard truncation problem",OPEN_BLOCKED
+M12,M13,1,continuum,"Emergent gravitational symmetry may appear at a continuum critical point, but requires explicit demonstration",OPEN_BLOCKED
+M09,M17,1,IR,"Entanglement-equilibrium constructions can reproduce Einstein-type semiclassical equations after constitutive input",ESTABLISHED_EXTERNAL
+M09,M05,0,dynamics,"No general result makes entanglement constraints determine the CRQN microscopic history amplitude",OPEN_BLOCKED
+M08,M07,1,signature,"Dimensional flow can emerge along RG trajectories but is not universal or uniquely diagnostic",OPEN_BLOCKED
+M11,M02,-1,causality,"Generic noncommutative/deformed kinematics can modify locality/causal interpretation; retain only if derived consistently",OPEN_BLOCKED
+M10,M03,-1,ontology,"Extended UV objects and strictly atomic local-substrate interpretations may require a nontrivial dictionary rather than naive coexistence",OPEN_BLOCKED
