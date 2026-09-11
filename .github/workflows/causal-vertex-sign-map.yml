@@ -1,0 +1,28 @@
+name: Causal Vertex Sign Map
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "causal/**"
+      - ".github/workflows/causal-vertex-sign-map.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  sigma-to-sl2cfoam-map:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Enumerate factorized causal classes and booster masks
+        run: python causal/vertex_sigma_to_booster_masks.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: causal-vertex-sign-map
+          path: results/causal_vertex_sigma_booster_map.json
+          retention-days: 30
