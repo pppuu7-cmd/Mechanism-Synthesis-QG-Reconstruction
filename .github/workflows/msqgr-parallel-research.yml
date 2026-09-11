@@ -61,6 +61,12 @@ jobs:
           - name: toller-gamma-simple-reference
             command: "python -m pip install -q mpmath && python code/toller_gamma_simple_reference.py"
             artifact: toller-gamma-simple-reference
+          - name: toller-general-eprl-reference
+            command: "python -m pip install -q mpmath && python code/toller_general_eprl_reference.py --max-dl 3"
+            artifact: toller-general-eprl-reference
+          - name: toller-cancellation-conditioning
+            command: "python -m pip install -q mpmath && python code/toller_cancellation_conditioning.py --max-dl 4"
+            artifact: toller-cancellation-conditioning
           - name: published-eprl-delta4-convergence
             command: "python code/published_eprl_delta4_convergence.py"
             artifact: published-eprl-delta4-convergence
