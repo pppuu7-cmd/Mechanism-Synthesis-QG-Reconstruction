@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """Direct cross-backend validation of native Toller sum against sl2cfoam dsmall.
 
-Both inputs use the same EPRL booster grid and the raw Ruhl convention.  This is
-stronger than validating each implementation only against a shared Python oracle:
-it directly compares the compiled native causal kernel to the real upstream
-sl2cfoam reduced-Wigner backend.
+Both inputs use the same EPRL booster grid and raw Ruhl convention. Native branch
+values can be many orders of magnitude larger than their sum, so NEVER downcast
+them to binary64 before adding t+ + t-. The comparison uses high-precision mpmath
+parsing to preserve the long-double text emitted by the C probe.
 """
 from __future__ import annotations
 
@@ -12,6 +12,10 @@ import argparse
 import csv
 import json
 from pathlib import Path
+
+import mpmath as mp
+
+mp.mp.dps = 60
 
 
 def key(r):
@@ -22,7 +26,11 @@ def key(r):
 
 
 def z(re, im):
-    return complex(float(re), float(im))
+    return mp.mpc(mp.mpf(re), mp.mpf(im))
+
+
+def pair(v):
+    return [float(mp.re(v)), float(mp.im(v))]
 
 
 def main():
@@ -42,7 +50,7 @@ def main():
     missing_sl2c = sorted(set(nrows) - set(srows))
     common = sorted(set(srows) & set(nrows))
     cases = []
-    worst = -1.0
+    worst = mp.mpf("-1")
     worst_case = None
 
     for k in common:
@@ -51,33 +59,35 @@ def main():
         tp = z(nr["tp_re"], nr["tp_im"])
         tm = z(nr["tm_re"], nr["tm_im"])
         tsum = tp + tm
-        err = abs(tsum - ds) / max(abs(ds), 1e-300)
-        cond_native = (abs(tp) + abs(tm)) / max(abs(tsum), 1e-300)
+        err = abs(tsum - ds) / max(abs(ds), mp.mpf("1e-300"))
+        cond_native = (abs(tp) + abs(tm)) / max(abs(tsum), mp.mpf("1e-300"))
         rec = {
             "two_j": k[0], "two_l": k[1], "two_m": k[2],
             "gamma": k[3], "beta": k[4],
-            "sl2cfoam_d": [ds.real, ds.imag],
-            "native_t_plus": [tp.real, tp.imag],
-            "native_t_minus": [tm.real, tm.imag],
-            "native_sum": [tsum.real, tsum.imag],
-            "relative_error": err,
-            "native_cancellation_condition": cond_native,
+            "sl2cfoam_d": pair(ds),
+            "native_t_plus": pair(tp),
+            "native_t_minus": pair(tm),
+            "native_sum": pair(tsum),
+            "relative_error": float(err),
+            "native_cancellation_condition": float(cond_native),
         }
         cases.append(rec)
         if err > worst:
             worst, worst_case = err, rec
 
+    threshold = mp.mpf(str(args.threshold))
     passed = (
         not missing_native and not missing_sl2c and len(common) > 0
-        and worst < args.threshold
+        and worst < threshold
     )
     out = {
         "cases": len(common),
         "grid_exactly_matched": not missing_native and not missing_sl2c,
+        "comparison_arithmetic": "mpmath 60 decimal digits; native long-double text is summed before any binary64 conversion",
         "missing_native": [list(k) for k in missing_native],
         "missing_sl2cfoam": [list(k) for k in missing_sl2c],
         "threshold": args.threshold,
-        "worst_relative_error": worst,
+        "worst_relative_error": float(worst),
         "worst_case": worst_case,
         "passed": passed,
         "verdict": "NATIVE_TOLLER_SUM_MATCHES_REAL_SL2CFOAM_DSMALL" if passed else "CROSS_BACKEND_TOLLER_MISMATCH",
