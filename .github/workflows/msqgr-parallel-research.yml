@@ -61,6 +61,18 @@ jobs:
           - name: published-eprl-delta4-convergence
             command: "python code/published_eprl_delta4_convergence.py"
             artifact: published-eprl-delta4-convergence
+          - name: eprl-cutoff-selector
+            command: "python code/eprl_cutoff_selector.py --window 3"
+            artifact: eprl-cutoff-selector
+          - name: eprl-tail-estimator-validation
+            command: "python code/eprl_tail_estimator_validation.py"
+            artifact: eprl-tail-estimator-validation
+          - name: eprl-tail-model-selection
+            command: "python code/eprl_tail_model_selection.py --tail 8"
+            artifact: eprl-tail-model-selection
+          - name: eprl-backend-readiness-gate
+            command: "python code/eprl_backend_readiness_gate.py"
+            artifact: eprl-backend-readiness-gate
           - name: f9-fail-closed-gate
             command: "python code/f9_gate.py"
             artifact: f9-gate
