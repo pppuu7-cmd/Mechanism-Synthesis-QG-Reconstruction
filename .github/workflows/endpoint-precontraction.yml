@@ -1,0 +1,41 @@
+name: Toller Endpoint and Precontraction Diagnostics
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "regulated/endpoint_precontraction_scan.py"
+      - ".github/workflows/endpoint-precontraction.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  endpoint-diagnostics:
+    strategy:
+      fail-fast: false
+      matrix:
+        mode: [single-leg, uncontracted, precontracted, cutoff]
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install high-precision diagnostic dependencies
+        run: python -m pip install -q mpmath sympy
+      - name: Run ${{ matrix.mode }} diagnostic
+        run: |
+          mkdir -p results
+          python regulated/endpoint_precontraction_scan.py \
+            --mode "${{ matrix.mode }}" \
+            --output "results/endpoint_${{ matrix.mode }}.json"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: endpoint-${{ matrix.mode }}
+          path: results/
+          if-no-files-found: error
+          retention-days: 30
