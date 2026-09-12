@@ -9,17 +9,17 @@ Iter031 asks a sharper question: after minimally removing eta^-q from an
 ambient correlated regulator, is the remaining finite normalization unique?
 
 For an m-edge complete graph with rank r and q=m-r, choose orthonormal bases
-U_cut and U_cycle.  Define
+U_cut and U_cycle. Define
 
     Sigma_eta = U_cut A U_cut^T + eta^2 U_cycle K U_cycle^T,
 
-with A,K positive definite.  Then exactly
+with A,K positive definite. Then exactly
 
     rho_ambient(0) = rho_cut(0) * (2 pi)^(-q/2)
                      * eta^(-q) * det(K)^(-1/2).
 
 Thus eta^q rho_ambient/rho_cut is universal only if the cycle-volume
-normalization det(K) is fixed.  A determinant-normalized cycle metric K0 with
+normalization det(K) is fixed. A determinant-normalized cycle metric K0 with
 det(K0)=1 should restore the universal factor (2 pi)^(-q/2).
 
 This is a structural linearized audit, not a derivation of the physical
@@ -144,12 +144,18 @@ def main() -> None:
     rel_err_pred = float(np.max(np.abs(rr / predicted_factor - 1.0)))
     rel_err_unit = float(np.max(np.abs(rru / universal_unit_det_factor - 1.0)))
 
+    # Direct 10x10 slogdet becomes mildly ill-conditioned at eta=1e-4 because
+    # six eigenvalues scale as eta^2.  A 1e-6 relative gate is still far tighter
+    # than needed to distinguish the O(1) finite-part changes induced by det(K),
+    # while avoiding false numerical failures at condition numbers ~1e9-1e10.
+    finite_part_rtol = 1e-6
+
     gates = {
         "rank_is_n_minus_1": bool(r == n - 1),
         "cycle_nullity_is_6_for_k5": bool(q == 6 if n == 5 else q == m - (n - 1)),
         "ambient_slope_matches_minus_q": bool(abs(slope + q) < 2e-5),
-        "analytic_finite_factor_matches": bool(rel_err_pred < 2e-8),
-        "unit_det_cycle_metric_restores_universal_factor": bool(rel_err_unit < 2e-8),
+        "analytic_finite_factor_matches": bool(rel_err_pred < finite_part_rtol),
+        "unit_det_cycle_metric_restores_universal_factor": bool(rel_err_unit < finite_part_rtol),
         "unit_det_is_one": bool(abs(detK0 - 1.0) < 2e-10),
     }
     all_pass = bool(all(gates.values()))
@@ -170,6 +176,7 @@ def main() -> None:
         "support_density_at_origin": support_density,
         "predicted_renormalized_factor": predicted_factor,
         "universal_unit_det_factor": universal_unit_det_factor,
+        "finite_part_relative_tolerance": finite_part_rtol,
         "eta": etas.tolist(),
         "ambient_density": ambient,
         "renormalized_ambient_over_support": renorm_ratio,
