@@ -1,0 +1,42 @@
+name: Iter045C K3 Finite-Part Epsilon Scaling
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'distributional/k3_cycle_finite_part_covariance.py'
+      - 'status/ITERATION_045.md'
+      - '.github/workflows/iter045c-cycle-finite-part-epsilon.yml'
+  workflow_dispatch:
+
+jobs:
+  epsilon-scaling:
+    strategy:
+      fail-fast: false
+      max-parallel: 12
+      matrix:
+        gamma: ['0.35','0.9','1.7']
+        signs: ['+++','++-','+-+','-++']
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q 'sympy==1.14.0'
+      - name: Frozen epsilon scaling diagnostic
+        env:
+          GAMMA: ${{ matrix.gamma }}
+          SIGNS: ${{ matrix.signs }}
+        run: |
+          mkdir -p results
+          safe_signs=$(printf '%s' "$SIGNS" | tr '+' 'p' | tr '-' 'm')
+          python distributional/k3_cycle_finite_part_covariance.py \
+            --mode epsilon-scaling --gamma "$GAMMA" --signs="$SIGNS" \
+            --k1 '0.23' --k2='-0.47' --epsilon-list '0.2,0.05,0.01,0.002' \
+            --output "results/iter045C_g${GAMMA}_s${safe_signs}.json"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter045C-g${{ matrix.gamma }}-s${{ matrix.signs }}
+          path: results/
+          if-no-files-found: error
