@@ -4,60 +4,61 @@
 
 - Candidate: `CRQN v0.2` (`CARRIER_SELECTED`)
 - Established/source-backed mechanism union: `F1-F8`
-- First MSQGR-derived prospective selector: Causal Cylindrical Intertwining (CCI)
 - Physical F9 (`CAUSAL_ANALYTICITY_RG_INVARIANT`): `BLOCKED`
 - G3 quantum dynamics: `OPEN`
 - G8 novelty: `BLOCKED_CONVERGENCE_ONLY`
-- Active programme front: `ITERATION_047 / K4_EXACT_FP_COMMUTATOR_LOCALIZATION`
+- K5 distributional/vertex extension: `BLOCKED`
+- Active programme front: `ITERATION_050 / K4_RR_PARAMETER_SENSITIVITY_AND_POLE_TOPOLOGY`
 
 ## Closed results controlling the current front
 
-1. A source-backed Lorentzian EPRL/Toller carrier exists with explicit causal/co-causal branches and exact `T+ + T- = D` control. Native Toller kernels, direct ten-wedge topology and real Lorentzian backend have been independently validated.
-2. Ordinary-function collision power counting gives approximately `q=-2,-6,-12,-20` for k=2,3,4,5 causal clusters. Tested causal-sector sums and full j=1/2 boundary-intertwiner contractions do not remove the k=4,5 powers. This is not a physical divergence theorem.
-3. Appendix-D Feynman boundary primitives are reproduced. For j=1/2, `delta^(rho,1/2)=-i*c1*delta-(c2/2)*delta_prime`; the general-j derivative order terminates at `2j`; `Theta_+ + Theta_- = 1` holds on smooth tests.
-4. Iter026: simple antipodal/PV cancellation is not generic for the dangerous high-collision strata.
-5. Iter027: the Christensen positive absolute K5 spanning-tree proof cannot close for the Toller beta^-2 carrier. This is a no-go for that proof strategy only.
-6. Iter028/029: naive complete-graph products of wedge boundary distributions fail the standard transversality/Hormander criterion; K5 cycle/conormal nullity is 6. A correlated/source-backed Feynman extension is required.
-7. Iter034-038: the tested regular pointwise j=1/2 boundary-contracted carrier is genuinely S5 covariant, including odd permutations/orientation reversal.
-8. Iter039-042: S5/source-support analyses show higher extension ambiguity survives symmetry and superficial source constraints. No coefficient selection authority was obtained.
-9. Iter043/044: source-faithful finite-epsilon spectral analysis reaches a joint K3 common-cycle obstruction; the pre-contact K3 integrand has a nonzero polynomial quotient. This is not a physical divergence theorem.
-10. Iter045: exact polynomial-subtraction + residue/PV finite part is coordinate-covariant on all 40 held-out K3 production points; exact `FP_q1=FP_q2=FP_q3`. This establishes a viable K3 structural extension candidate only.
-11. **Iter046 terminal negative result:** the unchanged Iter045 one-dimensional finite-part rule is not a covariant sequential K4 extension. Production run `34703268212` plus Case-B infrastructure repair run `34703606792` give valid 24/24 lanes for both held-out cases. Case A source relative spread is `0.09946564554779194`; Case B is `0.5903762046739115`. The ordinary EPRL/no-contact control is exactly invariant with spread `0.0` in both cases. Terminal class: `K4_FINITE_PART_ORDER_OR_FOREST_DEPENDENT`.
+1. Source-backed Lorentzian EPRL/Toller carrier, exact `T+ + T- = D` control, native general Toller kernel, residue-series pure-boost kernel and direct ten-wedge topology have been independently validated.
+2. Ordinary-function causal collision layers show strong Toller poles; magnetic sums, 16 causal-sector wiring and full j=1/2 boundary-intertwiner contraction do not remove the dangerous higher multi-collision powers. This is not a physical divergence theorem.
+3. Appendix-D distributional primitives are reproduced; j=1/2 contains `delta` and `delta_prime`, with an epsilon-independent `delta_prime` contact coefficient.
+4. Standard Christensen positive absolute spanning-tree proof does not close for the `beta^-2` Toller carrier. Naive complete-graph products also fail the standard transversality/Hormander criterion. A correlated/source-backed extension is required.
+5. The regular pointwise j=1/2 boundary-contracted carrier is genuinely S5 covariant, but S5/source-support audits leave higher extension ambiguity.
+6. Iter044: joint K3 pre-contact spectral integrand has a nonzero polynomial quotient; symmetric cutoff has an `R^3` obstruction. This is not a physical divergence theorem.
+7. Iter045: exact quotient subtraction plus residue/PV finite part is coordinate-covariant on 40 held-out K3 points: `FP_q1=FP_q2=FP_q3` exactly. This is a viable structural K3 extension candidate only.
+8. Iter046 terminal `K4_FINITE_PART_ORDER_OR_FOREST_DEPENDENT`: the same sequential 1D FP is not a covariant K4 extension; EPRL/no-contact control is invariant. K5 blocked.
+9. Iter047 terminal `K4_PAIRWISE_FP_COMMUTATOR_OBSTRUCTION_LOCALIZED`: run `34708051922`; 24/24 source pairwise FP commutators nonzero, 24/24 controls exactly zero.
+10. Iter048 terminal `K4_FP_OBSTRUCTION_MIXED_CHANNELS`: run `34708541480`; 24/24 valid; controls exactly zero; source channel counts `RR=8/24`, `RA=24/24`, `AR=24/24`, `AA=24/24`; 16 `INFINITY_ONLY`, 8 `MIXED`.
+11. Iter049 terminal `K4_RR_SELECTOR_NONCOVARIANT`: authoritative repaired run `34709710387`, aggregate job `103597057749`, artifact `10302939028`, digest `sha256:e1c9a052c469abf49b3ebf7ff908bc4850ef81b9303a715fce04759b30f119ff`. All 48/48 lanes valid, all controls exactly zero. Within each fixed case/tree the RR status is orientation-covariant for the same mapped pair, but the selected pair pattern changes between held-out source cases. Therefore no universal graph/tree/pair-only RR selector exists on the frozen grid.
 
-Durable Iter046 result: `results/ITER046_K4_FOREST_ORDER_RESULT.md`.
+Durable Iter048/049 results:
+- `status/ITERATION_048_RESULT.md`
+- `status/ITERATION_049_RESULT.md`
 
-## Active Iter047 — exact K4 finite-part commutator localization
+## Active Iter050 — source-factor sensitivity and coarse pole-topology audit
 
-Preregistered in `status/ITERATION_047.md` before production output.
+Preregistered in `status/ITERATION_050.md` before implementation/output.
 
-Frozen matrix: the same two Iter046 cases x four cycle bases (`S0,S1,P0,P1`) x three pairwise commutators (`01,02,12`) = 24 independent lanes. Each lane evaluates exact symbolic
+Use a new held-out K4 baseline and one-factor-at-a-time changes of:
+- `gamma`;
+- finite spectral `epsilon`;
+- factorized causal sign pattern;
+- external K4 flow `k`.
 
-`C_ij = FP_j(FP_i(K)) - FP_i(FP_j(K))`
+Frozen matrix: 9 conditions × 4 trees × 3 pairs = **108 lanes**. The unchanged `FP=R+A` algebra is used. Each lane records exact RR/RA/AR/AA status and the ordered upper-half-plane pole-count signatures for the two residue paths.
 
-before the third cycle integration, with the ordinary EPRL/no-contact control evaluated identically.
+Frozen outcomes:
+- `ITER050_CONTROL_OR_RECONSTRUCTION_INVALID`
+- `K4_RR_PARAMETER_STABLE_ON_FROZEN_GRID`
+- `K4_RR_FACTOR_DEPENDENT_WITH_POLE_COUNT_SELECTOR`
+- `K4_RR_FACTOR_DEPENDENT_BEYOND_POLE_COUNT`
 
-Frozen aggregate classes:
-
-- `K4_FP_COMMUTATOR_CONTROL_INVALID`
-- `K4_PAIRWISE_FP_COMMUTATORS_ZERO`
-- `K4_PAIRWISE_FP_COMMUTATOR_OBSTRUCTION_LOCALIZED`
-
-A nonzero source commutator with exact-zero control localizes failure of the sequential 1D extension algebra. It does not define a physical amplitude and does not authorize a counterterm or preferred order.
+No post-hoc selector fitting is allowed.
 
 ## Next allowed gate
 
-If Iter047 localizes nonzero pairwise commutators with valid controls, decompose the discrepancy into overlapping polynomial/contact subtraction pieces and derive/preregister a genuinely multivariate K4 forest/inclusion-exclusion (Hadamard/Epstein-Glaser/BPHZ-style) candidate selected by source/analyticity, then require permutation/forest/cycle-basis independence plus EPRL control. If all pairwise commutators vanish despite Iter046, isolate cycle-basis/coordinate-change covariance instead.
-
-K5 is not authorized while the K4 multivariate extension problem is open.
+If Iter050 finds factor dependence beyond coarse pole counts, the next gate must prospectively inspect exact pole locations/residues or exact algebraic cancellation conditions. If the count selector is exact, test it on independently held-out source points before giving it structural weight. In either case, a genuinely multivariate source/analyticity-selected K4 extension must still pass tree/cycle-basis/permutation/order independence and EPRL control before K5 can be authorized.
 
 ## Claim locks
 
 - no `NEW_PHYSICS_FOUND`;
-- no claim that the causal EPRL vertex is nonperturbatively divergent or finite;
+- no physical causal-vertex finiteness/divergence theorem;
 - no universal no-go theorem for causal EPRL;
-- no physical F9 promotion from symmetry/source-support/distributional surrogates;
-- no G3 PASS from a finite-part construction;
-- no G8 novelty promotion before physical F9/F10 evidence;
-- no arbitrary counterterm/finite part may be promoted to physical evidence;
-- fixed causal-sector conclusions may not borrow `T+ + T- = D` cancellation without proof;
-- distinguish ordinary pointwise absolute integrability, conditional/PV finite part, and a source-defined distributional amplitude.
+- no G3 PASS from a finite-part diagnostic;
+- no F9/G8 promotion from symmetry/distributional surrogates;
+- no arbitrary counterterm or preferred integration order;
+- fixed causal-sector claims may not borrow `T+ + T- = D` cancellation without proof;
+- distinguish ordinary absolute integrability, conditional/PV finite part and a source-defined distributional amplitude.
