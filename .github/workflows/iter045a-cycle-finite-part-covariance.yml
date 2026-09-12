@@ -1,12 +1,6 @@
 name: Iter045A K3 Finite-Part Coordinate Covariance
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'distributional/k3_cycle_finite_part_covariance.py'
-      - 'status/ITERATION_045.md'
-      - '.github/workflows/iter045a-cycle-finite-part-covariance.yml'
   workflow_dispatch:
 
 jobs:
