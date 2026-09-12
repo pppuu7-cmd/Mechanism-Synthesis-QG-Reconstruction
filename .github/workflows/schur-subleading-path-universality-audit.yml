@@ -1,0 +1,38 @@
+name: Iter033 Schur Subleading Path Universality Audit
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "regulated/schur_subleading_path_universality_audit.py"
+      - ".github/workflows/schur-subleading-path-universality-audit.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  subleading-path-audit:
+    strategy:
+      fail-fast: false
+      max-parallel: 32
+      matrix:
+        profile: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q 'numpy==2.1.3'
+      - name: Audit subleading regulator path universality
+        run: |
+          mkdir -p results
+          python regulated/schur_subleading_path_universality_audit.py --profile "${{ matrix.profile }}" --output "results/iter033_profile_${{ matrix.profile }}.json"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter033-profile-${{ matrix.profile }}
+          path: results/
+          if-no-files-found: error
+          retention-days: 30
