@@ -1,0 +1,79 @@
+name: Iter049 K4 RR Selector Covariance
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'distributional/k4_rr_selector_covariance.py'
+      - 'status/ITERATION_049.md'
+      - '.github/workflows/iter049-k4-rr-selector-covariance.yml'
+  workflow_dispatch:
+
+jobs:
+  lanes:
+    strategy:
+      fail-fast: false
+      max-parallel: 24
+      matrix:
+        case: ['A','B']
+        tree: ['S0','S1','P0','P1']
+        permutation: ['012','021','102','120','201','210']
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q 'sympy==1.14.0'
+      - name: Exact RR selector permutation lane
+        env:
+          CASE: ${{ matrix.case }}
+          TREE: ${{ matrix.tree }}
+          PERM: ${{ matrix.permutation }}
+        run: |
+          mkdir -p results
+          if [ "$CASE" = "A" ]; then
+            GAMMA='0.83'; EPSILON='0.06'; SIGNS='++++++'; K='0.19,-0.31,0.27,-0.15'
+          else
+            GAMMA='1.43'; EPSILON='0.12'; SIGNS='-++-++'; K='-0.22,0.37,-0.28,0.13'
+          fi
+          python distributional/k4_rr_selector_covariance.py \
+            --mode compute --case "$CASE" --gamma "$GAMMA" --epsilon "$EPSILON" \
+            --signs="$SIGNS" --k="$K" --tree "$TREE" --permutation "$PERM" \
+            --output "results/iter049_${CASE}_${TREE}_${PERM}.json"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter049-lane-${{ matrix.case }}-${{ matrix.tree }}-${{ matrix.permutation }}
+          path: results/
+          if-no-files-found: warn
+
+  aggregate:
+    if: always()
+    needs: lanes
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q 'sympy==1.14.0'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: iter049-lane-*
+          path: collected
+          merge-multiple: true
+      - name: Aggregate frozen selector gate
+        run: |
+          mkdir -p results
+          python distributional/k4_rr_selector_covariance.py \
+            --mode aggregate --input-dir collected \
+            --output results/iter049_aggregate.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter049-aggregate
+          path: results/
+          if-no-files-found: warn
