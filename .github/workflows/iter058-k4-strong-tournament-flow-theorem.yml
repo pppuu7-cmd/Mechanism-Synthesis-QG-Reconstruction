@@ -1,0 +1,32 @@
+name: Iter058 K4 Strong Tournament Flow Theorem
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'distributional/k4_strong_tournament_flow_theorem.py'
+      - 'status/ITERATION_058.md'
+      - '.github/workflows/iter058-k4-strong-tournament-flow-theorem.yml'
+  workflow_dispatch:
+
+jobs:
+  exact-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q 'sympy==1.14.0'
+      - name: Exact tournament and positive-circulation audit
+        run: |
+          mkdir -p results
+          python distributional/k4_strong_tournament_flow_theorem.py \
+            --output results/iter058_strong_tournament_flow_theorem.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter058-strong-tournament-flow-theorem
+          path: results/
+          if-no-files-found: warn
