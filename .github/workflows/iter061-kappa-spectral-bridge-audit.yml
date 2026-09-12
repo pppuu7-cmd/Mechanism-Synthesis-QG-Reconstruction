@@ -1,0 +1,38 @@
+name: Iter061 Kappa Spectral Bridge Audit
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/iter061_kappa_spectral_bridge_audit.py'
+      - '.github/workflows/iter061-kappa-spectral-bridge-audit.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-bridge-audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run frozen Iter061 audit
+        run: python scripts/iter061_kappa_spectral_bridge_audit.py | tee iter061_stdout.txt
+      - name: Record provenance
+        run: |
+          printf 'head_sha=%s\n' "$GITHUB_SHA" > iter061_provenance.txt
+          printf 'run_id=%s\n' "$GITHUB_RUN_ID" >> iter061_provenance.txt
+          printf 'prereg_commit=%s\n' '7549bb44a3e4d58225df67f5f1becbe8be46c066' >> iter061_provenance.txt
+          printf 'implementation_commit=%s\n' '0b23cc4eb7b14e9a2e711162fba4b0cf695483cd' >> iter061_provenance.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter061-kappa-spectral-bridge-audit
+          path: |
+            iter061_kappa_spectral_bridge_audit.json
+            iter061_stdout.txt
+            iter061_provenance.txt
