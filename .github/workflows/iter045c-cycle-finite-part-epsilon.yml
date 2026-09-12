@@ -1,12 +1,6 @@
 name: Iter045C K3 Finite-Part Epsilon Scaling
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'distributional/k3_cycle_finite_part_covariance.py'
-      - 'status/ITERATION_045.md'
-      - '.github/workflows/iter045c-cycle-finite-part-epsilon.yml'
   workflow_dispatch:
 
 jobs:
