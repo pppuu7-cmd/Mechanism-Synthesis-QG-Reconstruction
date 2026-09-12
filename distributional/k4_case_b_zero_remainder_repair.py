@@ -14,7 +14,18 @@ from __future__ import annotations
 import argparse
 import json
 from pathlib import Path
+import sys
+
 import sympy as sp
+
+# Infrastructure-only entrypoint fix: executing this file by path places the
+# distributional/ directory, not the repository root, on sys.path. Add the
+# repository root so the frozen Iter046 implementation is importable as the
+# package/module path used below. No scientific code or parameter is changed.
+REPO_ROOT = Path(__file__).resolve().parents[1]
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
+
 import distributional.k4_forest_order_finite_part as base
 
 
@@ -91,6 +102,7 @@ def main():
         "scope": "infrastructure_only",
         "defect": "SymPy zero-polynomial degree -oo could not be converted to int for metadata",
         "change": "serialize zero remainder numerator degree as -1",
+        "entrypoint_fix": "repository root added to sys.path so frozen Iter046 module imports when wrapper is executed by file path",
         "frozen_science_changed": False,
     }
     p = Path(a.output)
