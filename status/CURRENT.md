@@ -8,7 +8,7 @@
 - G3 quantum dynamics: `OPEN`
 - G8 novelty: `BLOCKED_CONVERGENCE_ONLY`
 - K5 distributional/vertex extension: `BLOCKED`
-- Active front: `ITERATION_059 / SOURCE_BACKED_EQUAL_SPIN_TOLLER_WEDGE_REVERSAL_LAW`
+- Active front: `ITERATION_060 / SOURCE_REVERSAL_ANALYTICITY_GEOMETRY_COVARIANCE`
 
 ## Controlling closed K4 chain
 
@@ -24,30 +24,27 @@
 - Iter054 `K4_CAUSAL_SIGN_CHAMBER_CLASS_DEPENDENT`.
 - Iter055 `K4_SIGNED_NORMAL_CIRCUIT_ATLAS_S4_NONCOVARIANT` under naive class-only relabeling.
 - Iter056 `K4_ORIENTATION_COCYCLE_RESTORES_COVARIANCE_FACTOR_CLASS_NOT_CLOSED`.
-- Iter057 `K4_ORIENTED_SIGN_SPACE_EXACT_BASIS_AND_S4_COVARIANT`: complete 64-vector domain, four S4 tournament orbits, one feasible 24-orbit.
-- **Iter058 terminal `K4_STRICT_CHAMBER_IFF_STRONGLY_CONNECTED_TOURNAMENT`**. Authoritative run `34719879504`, job `103623650207`, head `dff2803ca240760861233c766b447e026fea16ae`, artifact `10305894028`, digest `sha256:24d06807b51f87d4751d3df3e4804c4e839e5e6cfce75ffb8d202492790bd84f`. All 64 sign vectors satisfy the frozen equivalence; 24 strong tournaments have deterministic strictly-positive circulation certificates and 40 non-strong tournaments have exact one-way-cut obstructions. Durable result: `status/ITERATION_058_RESULT.md`.
+- Iter057 `K4_ORIENTED_SIGN_SPACE_EXACT_BASIS_AND_S4_COVARIANT`.
+- Iter058 `K4_STRICT_CHAMBER_IFF_STRONGLY_CONNECTED_TOURNAMENT`: run `34719879504`, job `103623650207`, artifact `10305894028`, digest `sha256:24d06807b51f87d4751d3df3e4804c4e839e5e6cfce75ffb8d202492790bd84f`.
+- **Iter059 terminal `K4_TOLLER_EQUAL_SPIN_WEDGE_REVERSAL_BRANCH_SWAP_SOURCE_DERIVED`**: run `34721276444`, job `103627484707`, head `3832616ffb80ba9fedc0b293c94b2f9f3ddb3708`, artifact `10306671166`, digest `sha256:7e35f534cd9dac42d53107ff8536c2be9c68cf0e59546f3864c88c8a3cf4884e`. Equal-spin `2j=0..12` exact branch-swap/kernel-reality controls pass; 312 numeric controls pass with max error `6.1354647881160596e-100 < 1e-40`; unequal-spin same-form self-conjugacy is `0/32`. Durable result: `status/ITERATION_059_RESULT.md`.
 
-## Exact scoped interpretation after Iter058
+## Exact scoped interpretation after Iter059
 
-For the K4 signed-normal / affine contour surrogate,
-
-`exists x in ker(B) with s_e x_e > 0 on every edge`
-
-iff the oriented K4 sign vector defines a strongly connected tournament. This upgrades the finite enumeration to a graph-flow characterization. It is **not** a physical Toller causal-sector selector and carries no causal-vertex finiteness/divergence claim.
-
-## Active Iter059 — source-backed equal-spin Toller wedge-reversal law
-
-Prospectively preregistered before implementation at commit `d8e1ed549f1810cbf61da78f4cf881d83c745ade`; implementation commit `0b13c1e0efd1b6256204c465ac4738c8ba2dcd1b`; workflow commit/head `3832616ffb80ba9fedc0b293c94b2f9f3ddb3708`.
-
-Frozen proposed equal-spin causal-wedge law:
+For the source-backed equal-spin causal EPRL wedge,
 
 `T^(+)_{jm,jn}(g^-1) = conjugate(T^(-)_{jn,jm}(g))`
 
-and the branch-swapped companion relation, derived/tested from the published Feynman spectral formula plus the ordinary Wigner-D unitary inverse identity. No Toller representation composition rule is assumed. Exact obligations include `P_jj` kernel reality, the Feynman-kernel branch swap including conjugation of `1/(2 pi i)`, additive-control compatibility, and an explicit unequal-spin negative-control report. No `beta+i epsilon` modification is allowed.
+with the branch-swapped companion. This is a source-backed inversion/order-reversal law, not a Toller representation-composition law. It does not select a physical causal sector and does not establish contour existence or vertex finiteness.
 
-Frozen classifiers: `ITER059_SOURCE_OR_IMPLEMENTATION_INVALID`, `K4_TOLLER_EQUAL_SPIN_WEDGE_REVERSAL_LAW_FAIL`, or `K4_TOLLER_EQUAL_SPIN_WEDGE_REVERSAL_BRANCH_SWAP_SOURCE_DERIVED`.
+## Active Iter060 — source-reversal analyticity-geometry covariance
 
-If Iter059 passes, only then may the strong-tournament / positive-circulation geometry be tested as a candidate analyticity input for the direct causal vertex. K5 remains blocked until a source/analyticity-selected K4 prescription passes tree/cycle-basis/permutation/order independence plus exact EPRL control.
+Prospectively preregistered before implementation at commit `d52f79289f9004b346a0de59e79e099389fdcd56`; implementation commit `8eace2c3f4897e19f5ffec84b14df36eed4c45d0`; workflow/head `30d1ebea02d7ddb09cbd38fb71ab0029b439a413`; authoritative run `34724006585`.
+
+Frozen domain: all 64 K4 oriented sign vectors × all 24 S4 relabelings × ordinary/source-reversed operation = 3072 exact lanes. The gate checks that the Iter056 orientation cocycle plus Iter059 global branch swap agrees with direct tournament relabeling/reversal, preserves strong connectivity and Iter058 feasibility status, transports exact positive-circulation / one-way-cut certificates, preserves the `8,8,24,24` orbit structure, and keeps the unordered additive branch control invariant.
+
+Frozen classifiers: `ITER060_SOURCE_OR_IMPLEMENTATION_INVALID`, `K4_SOURCE_REVERSAL_ANALYTICITY_GEOMETRY_COVARIANCE_FAIL`, or `K4_SOURCE_REVERSAL_ANALYTICITY_GEOMETRY_COVARIANT`.
+
+Even a PASS only authorizes a subsequent prospective source-selected K4 branch-assignment gate with tree/cycle-basis/permutation/order independence plus exact EPRL control. K5 remains blocked until that is established.
 
 ## Claim locks
 
