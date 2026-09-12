@@ -78,3 +78,34 @@ A negative source result is a scientific result and must not be repaired by chan
 
 ## Claim lock
 Even a full K4 PASS would establish only consistency of this particular sequential correlated finite-part prescription on the frozen K4 source representation. It would not yet prove K5 consistency, equality to the physical causal spinfoam vertex, RG closure, G3, F9, G8, continuum recovery, or a new quantum-gravity theory. A K4 PASS authorizes K5; a K4 source FAIL with valid control localizes the obstruction to multi-cycle extension consistency.
+
+## Terminal result — 2026-09-12
+
+**Scientific classification:** `K4_FINITE_PART_ORDER_OR_FOREST_DEPENDENT`.
+
+The frozen sequential K3 finite-part rule does not extend consistently to the frozen K4 multi-cycle problem. The source result depends on integration order / fundamental-cycle basis while the ordinary EPRL/no-contact control remains invariant.
+
+Authoritative repaired Case-B production:
+
+- launch/repaired commit: `d9f1b29489dfe7a72e44e950da3374c1e956aee5`
+- workflow run: `34703606792`
+- aggregate job: `103579919585`
+- Case-B lanes: `24/24`
+- `source_exact_equal = false`
+- `source_relative_spread = 0.5903762046739115`
+- `control_exact_equal = true`
+- `control_relative_spread = 0.0`
+- maximum source discrepancy: `231.10329057111215`
+
+Maximum-discrepancy witness:
+
+- `P0 / order 210`: `148.3411417653609952967291 + 178.1028830014885424045242 i`
+- `S0 / order 120`: `372.2794601126873799933901 + 121.0033165533324625781631 i`
+
+Case A independently showed the same source order/basis dependence with exact control invariance before the Case-B metadata repair. The repair changed only serialization/metadata handling and did not alter the frozen finite-part algebra.
+
+### Terminal interpretation
+
+This is a controlled negative result for the **sequential one-dimensional extension prescription** on a multi-cycle K4 source. It is not a theorem that the physical causal vertex diverges or is undefined. It forbids promoting the K3 prescription by choosing a preferred order/tree after inspection.
+
+`K5` is therefore **BLOCKED**. The next permitted gate is exact localization of the K4 obstruction through pairwise commutators of the unchanged finite-part operators (Iter047), followed—if noncommutativity is confirmed—by a preregistered genuinely multivariate correlated extension rather than order selection or post-hoc counterterms.
