@@ -1,0 +1,71 @@
+name: Iter054 K4 Sign-Compatible Contour Chambers
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'distributional/k4_sign_compatible_contour_chamber.py'
+      - 'status/ITERATION_054.md'
+      - '.github/workflows/iter054-k4-sign-compatible-contour-chambers.yml'
+  workflow_dispatch:
+
+jobs:
+  lanes:
+    strategy:
+      fail-fast: false
+      max-parallel: 32
+      matrix:
+        sign_class: ['+++','++-','+-+','+--','-++','-+-','--+','---']
+        tree: ['S0','S1','P0','P1']
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q 'sympy==1.14.0'
+      - name: Exact affine sign-chamber lane
+        env:
+          SIGN_CLASS: ${{ matrix.sign_class }}
+          TREE: ${{ matrix.tree }}
+        run: |
+          mkdir -p results
+          python distributional/k4_sign_compatible_contour_chamber.py \
+            --mode compute --sign-class="$SIGN_CLASS" --tree "$TREE" \
+            --output "results/iter054_${SIGN_CLASS}_${TREE}.json"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter054-${{ matrix.sign_class }}-${{ matrix.tree }}
+          path: results/
+          if-no-files-found: warn
+
+  aggregate:
+    if: always()
+    needs: lanes
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q 'sympy==1.14.0'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: iter054-*
+          path: collected
+          merge-multiple: true
+      - name: Aggregate frozen Iter054 gate
+        run: |
+          mkdir -p results
+          python distributional/k4_sign_compatible_contour_chamber.py \
+            --mode aggregate --input-dir collected \
+            --output results/iter054_aggregate.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter054-aggregate
+          path: results/
+          if-no-files-found: warn
