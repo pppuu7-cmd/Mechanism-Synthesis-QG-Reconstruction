@@ -1,0 +1,44 @@
+name: Angular Leading Residue Scan
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'vertex/angular_leading_residue_scan.py'
+      - 'vertex/boundary_intertwiner_collision_power.py'
+      - 'vertex/multicollision_power_counting.py'
+      - '.github/workflows/angular-leading-residue.yml'
+  workflow_dispatch:
+
+jobs:
+  angular-residue:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        gamma: ['0.2','1.2','2.0']
+        seed: [59,101]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install numerical dependencies
+        run: python -m pip install -q 'mpmath==1.3.0' sympy numpy
+      - name: Scan antipodal leading residues
+        env:
+          PYTHONPATH: .
+        run: |
+          mkdir -p results
+          python regulated/run_with_stable_hyp2f1.py vertex/angular_leading_residue_scan.py \
+            --gamma "${{ matrix.gamma }}" \
+            --seed "${{ matrix.seed }}" \
+            --output "results/angular_residue_g${{ matrix.gamma }}_s${{ matrix.seed }}.json"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: angular-residue-g${{ matrix.gamma }}-s${{ matrix.seed }}
+          path: results/
+          if-no-files-found: warn
+          retention-days: 30
