@@ -61,7 +61,7 @@ def main():
         support.append(support_density)
         normalization_ratio.append(dens/support_density)
     slope,r2=fit_power(etas,ambient)
-    expected=-q
+    expected=float(-q)
     out={
       'iteration':'Iter030', 'n':n, 'sector':args.sector,
       'vertex_signs':s.tolist(),'edge_signs':k.astype(int).tolist(),
