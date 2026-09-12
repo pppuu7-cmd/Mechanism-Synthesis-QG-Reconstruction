@@ -4,7 +4,16 @@ from __future__ import annotations
 
 import argparse
 import json
+import sys
 from pathlib import Path
+
+# When executed as `python distributional/...py`, Python places the script
+# directory rather than the repository root on sys.path.  Add only the repo
+# root; this is an infrastructure fix and changes no frozen science.
+ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
 import sympy as sp
 
 from distributional.k4_forest_order_finite_part import (
