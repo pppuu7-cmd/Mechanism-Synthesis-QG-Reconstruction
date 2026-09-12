@@ -1,0 +1,83 @@
+name: Iter062 Ordered Orientation Bridge Audit
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/iter062_ordered_orientation_bridge_lane.py'
+      - 'scripts/iter062_ordered_orientation_bridge_aggregate.py'
+      - '.github/workflows/iter062-ordered-orientation-bridge.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  bridge-lane:
+    strategy:
+      fail-fast: false
+      max-parallel: 8
+      matrix:
+        sigma_mask: [0,1,2,3,4,5,6,7]
+        global_c: [-1,1]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      SIGMA_MASK: ${{ matrix.sigma_mask }}
+      GLOBAL_C: ${{ matrix.global_c }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run frozen Iter062 lane
+        run: python scripts/iter062_ordered_orientation_bridge_lane.py | tee iter062_stdout.txt
+      - name: Record provenance
+        if: always()
+        run: |
+          printf 'head_sha=%s\n' "$GITHUB_SHA" > iter062_provenance.txt
+          printf 'run_id=%s\n' "$GITHUB_RUN_ID" >> iter062_provenance.txt
+          printf 'sigma_mask=%s\n' "$SIGMA_MASK" >> iter062_provenance.txt
+          printf 'global_c=%s\n' "$GLOBAL_C" >> iter062_provenance.txt
+          printf 'prereg_commit=%s\n' '8b31b9b1f3d852301e2a20ea76cc59c3da861a35' >> iter062_provenance.txt
+          printf 'implementation_head=%s\n' 'b7d8acc8fdeade0091a87cae06002752dc96e079' >> iter062_provenance.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter062-lane-m${{ matrix.sigma_mask }}-c${{ matrix.global_c }}
+          path: |
+            iter062_lane_*.json
+            iter062_stdout.txt
+            iter062_provenance.txt
+
+  aggregate:
+    needs: bridge-lane
+    if: always()
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: iter062-lane-*
+          path: iter062_lanes
+      - name: Run frozen Iter062 aggregate
+        run: python scripts/iter062_ordered_orientation_bridge_aggregate.py | tee iter062_aggregate_stdout.txt
+      - name: Record aggregate provenance
+        if: always()
+        run: |
+          printf 'head_sha=%s\n' "$GITHUB_SHA" > iter062_aggregate_provenance.txt
+          printf 'run_id=%s\n' "$GITHUB_RUN_ID" >> iter062_aggregate_provenance.txt
+          printf 'prereg_commit=%s\n' '8b31b9b1f3d852301e2a20ea76cc59c3da861a35' >> iter062_aggregate_provenance.txt
+          printf 'implementation_head=%s\n' 'b7d8acc8fdeade0091a87cae06002752dc96e079' >> iter062_aggregate_provenance.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter062-ordered-orientation-bridge-aggregate
+          path: |
+            iter062_ordered_orientation_bridge_aggregate.json
+            iter062_aggregate_stdout.txt
+            iter062_aggregate_provenance.txt
