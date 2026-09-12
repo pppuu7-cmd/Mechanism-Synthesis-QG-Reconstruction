@@ -1,12 +1,6 @@
 name: Iter046 K4 Forest Order Consistency
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'distributional/k4_forest_order_finite_part.py'
-      - 'status/ITERATION_046.md'
-      - '.github/workflows/iter046-k4-forest-order.yml'
   workflow_dispatch:
 
 jobs:
