@@ -51,3 +51,32 @@ The aggregate must report the nonzero lane set separately for Cases A and B, plu
 A source nonzero with exact-zero controls localizes failure of the **sequential 1D extension algebra**. It does not imply physical divergence. It does not authorize a preferred integration order, a counterterm, K5, G3, F9 or G8.
 
 If pairwise commutators are nonzero, the next gate must localize them into overlapping polynomial/contact subtraction pieces and derive/preregister a genuinely multivariate forest/inclusion-exclusion candidate before testing covariance. If all pairwise commutators vanish despite Iter046 order dependence, the next gate must instead isolate cycle-basis/coordinate-change covariance as the obstruction.
+
+## Terminal result — 2026-09-12
+
+**Classification:** `K4_PAIRWISE_FP_COMMUTATOR_OBSTRUCTION_LOCALIZED`.
+
+Authoritative clean rerun:
+
+- workflow run: `34708051922`
+- head commit: `a7946c3059c42d2f775071f33e915540ef7a2d95`
+- aggregate job: `103592187992`
+- aggregate artifact: `iter047-aggregate`, artifact ID `10301813731`
+- total lanes: `24/24`
+- `all_control_commutators_zero = true`
+- `all_source_commutators_zero = false`
+
+The obstruction is universal over the frozen grid rather than confined to a special tree or pair:
+
+- Case A: `12/12` source commutators exactly nonzero; all 12 controls exactly zero.
+- Case B: `12/12` source commutators exactly nonzero; all 12 controls exactly zero.
+- all four trees `S0,S1,P0,P1` and all three coordinate pairs `01,02,12` carry a nonzero source commutator.
+- remaining-variable source commutators have denominator degree `1`; numerator degree is `3–4` in Case A and `4–5` in Case B.
+
+The run required two infrastructure-only repairs before the authoritative clean rerun: an import-path correction and a zero-polynomial degree metadata guard. Neither changed the finite-part formula, residue selection, contour, source cases, controls or frozen classifier.
+
+### Terminal interpretation
+
+The K4 failure from Iter046 is already visible at the **pairwise operator algebra** level: the unchanged one-dimensional finite-part operators do not commute on the source kernel, whereas they commute exactly on the ordinary EPRL/no-contact control. Therefore no preferred sequential order can be promoted as a physical definition.
+
+This still does **not** prove divergence or ill-definition of the physical causal vertex. It localizes the obstruction to the sequential extension algebra and authorizes Iter048: an exact decomposition of the commutator into the residue and `a_-1`/infinity channels of the unchanged FP operator, followed by a genuinely multivariate forest/inclusion-exclusion construction if the obstruction can be structurally localized. `K5` remains BLOCKED.
