@@ -8,7 +8,7 @@
 - G3 quantum dynamics: `OPEN`
 - G8 novelty: `BLOCKED_CONVERGENCE_ONLY`
 - K5 distributional/vertex extension: `BLOCKED`
-- Active programme front: `ITERATION_052 / K4_RRR_CANONICAL_ANTISYMMETRY`
+- Active programme front: parallel `ITERATION_052 / K4_RRR_CANONICAL_ANTISYMMETRY` + `ITERATION_051C / SIGN_CLASS_RANGE_VALIDATION`
 
 ## Closed results controlling the current front
 
@@ -23,9 +23,11 @@
 9. Iter047 terminal `K4_PAIRWISE_FP_COMMUTATOR_OBSTRUCTION_LOCALIZED`: run `34708051922`; 24/24 source pairwise FP commutators nonzero, 24/24 controls exactly zero.
 10. Iter048 terminal `K4_FP_OBSTRUCTION_MIXED_CHANNELS`: run `34708541480`; 24/24 valid; controls exactly zero; source channel counts `RR=8/24`, `RA=24/24`, `AR=24/24`, `AA=24/24`; 16 `INFINITY_ONLY`, 8 `MIXED`.
 11. Iter049 terminal `K4_RR_SELECTOR_NONCOVARIANT`: repaired run `34709710387`, artifact `10302939028`; 48/48 valid and all controls exact zero. No universal graph/tree/pair-only RR selector exists on the frozen held-out cases.
-12. Iter050 terminal `K4_RR_FACTOR_DEPENDENT_BEYOND_POLE_COUNT`: run `34710540567`, head `410ab8e2c1f2bb1f3f13f3129ee9eeaec730a0eb`, aggregate artifact `10303507511`. All 108/108 lanes valid; gamma, epsilon and external-flow changes caused no RR transitions; causal-sign changes caused 10. Coarse upper-pole-count asymmetry is not an exact selector.
-13. Independent Iter050 denominator control terminal `DENOMINATOR_POLE_TOPOLOGY_SIGN_GEOMETRY_STABLE`: run `34710672477`, head `ddd002785482be959190f160482fbc235ce575b4`, aggregate artifact `10302654486`; 32/32 jobs valid and stable under frozen epsilon/k nuisance variants.
-14. Iter051 terminal `K4_RR_EXACT_RESIDUE_GEOMETRY_SEPARATION` with structural flag `K4_RR_CANCELLATION_DOMINATED_SUBSET`: run `34712814029`, implementation head `e668862616cf898ad269d49a55b0c40a83efe720`, aggregate artifact `10304298594`, digest `sha256:68a2c96e7150950138f199219ea44fda17d7fca12f264961143586469316bcc1`. All 108/108 lanes valid. Exact classes: 37 `ORDERED_RESIDUE_DATA_IDENTICAL`, 31 `GEOMETRY_DIFFERS_BUT_SUM_CANCELS`, 40 `GEOMETRY_DIFFERS_AND_SUM_DIFFERS`, 0 inconsistencies. RR is nonzero in exactly those 40 sum-mismatch lanes. Thus exact ordered residue-sum mismatch localizes the sequential RR obstruction on the frozen grid more sharply than pole counts do.
+12. Iter050 terminal `K4_RR_FACTOR_DEPENDENT_BEYOND_POLE_COUNT`: run `34710540567`, aggregate artifact `10303507511`. All 108/108 lanes valid; gamma, epsilon and external-flow OAT changes caused no RR transitions; causal-sign changes caused 10. Coarse upper-pole-count asymmetry is not an exact selector.
+13. Independent Iter050 denominator control terminal `DENOMINATOR_POLE_TOPOLOGY_SIGN_GEOMETRY_STABLE`: run `34710672477`, artifact `10302654486`; 32/32 jobs valid and stable under frozen epsilon/k nuisance variants.
+14. Iter051 terminal `K4_RR_EXACT_RESIDUE_GEOMETRY_SEPARATION` + `K4_RR_CANCELLATION_DOMINATED_SUBSET`: run `34712814029`, artifact `10304298594`, digest `sha256:68a2c96e7150950138f199219ea44fda17d7fca12f264961143586469316bcc1`. 108/108 valid; exact classes 37 identical, 31 geometry-different-but-sum-cancelling, 40 geometry-and-sum-different, 0 inconsistencies. RR is nonzero in exactly those 40 residue-sum-mismatch lanes.
+15. Iter051A terminal `K4_RR_SIGN_CLASS_NUISANCE_STABLE`: run `34713025288`, artifact `10303884916`, digest `sha256:56270b122eee124d02388d246d687f4b85337c5ba5aa6307bb5d68b0f5265a0c`. All 192/192 lanes valid, all controls exactly zero, all factorized-sign checks pass, and total H1↔H2 Hamming distance across all eight 12-bit sign-class masks is exactly 0. This is scoped nuisance stability, not global sign universality.
+16. Iter051B terminal `K4_RR_BEYOND_PREREG_RESIDUE_STRUCTURE`: run `34713037668`, artifact `10304474485`, digest `sha256:3c0483a01b283178193965a5dc54fe92ab19b85f7998041834336967cc27af43`. All 96/96 lanes valid; source RR is active in 48/96; none of eight prospectively frozen coarse discrete residue/cancellation booleans exactly matches RR (`exact_matching_diagnostics=[]`). No post-hoc selector fitting is authorized.
 
 Durable results:
 - `status/ITERATION_048_RESULT.md`
@@ -33,56 +35,58 @@ Durable results:
 - `status/ITERATION_050_RESULT.md`
 - `status/ITERATION_050_DENOMINATOR_CONTROL_RESULT.md`
 - `status/ITERATION_051_RESULT.md`
-
-## Running independent held-out validation streams
-
-### Iter051A — exhaustive factorized causal-sign census
-
-- run: `34713025288`
-- merged implementation: PR #51 / main commit `910db9ea333f88db55c47bcbca297ac98e7fa964`
-- prereg commit before implementation: `fd0086e0fe75663834ebc0fe665cf3bde7521896`
-- frozen matrix: 2 new nuisance points × 8 factorized causal-sign classes × 4 trees × 3 pairs = **192 lanes**
-- target: whether each sign class has an identical 12-bit RR mask at H1 and H2.
-- current status: not terminal; do not classify yet.
-
-### Iter051B — held-out discrete residue/cancellation audit
-
-- run: `34713037668`
-- merged implementation: PR #52 / main commit `1483a71dc2eaf3cc72e915453c6891d3f1daa595`
-- prereg commit before implementation: `596b431d5d4173f6d8674a774f4ffec03d0ab1f0`
-- frozen matrix: 8 factorized causal-sign classes × 4 trees × 3 pairs = **96 lanes** at independent H3.
-- tests eight prospectively frozen discrete residue/cancellation booleans; exact match requires equality with RR on all 96 lanes.
-- current status: `in_progress`; do not classify yet.
+- `status/ITERATION_051A_RESULT.md`
+- `status/ITERATION_051B_RESULT.md`
 
 ## Active Iter052 — canonical triple-residue antisymmetry / inclusion-exclusion gate
 
 Preregistered in `status/ITERATION_052.md` at commit `2ae9e81572363f4a9bc9e02637056a43a7d5a8e9`, before implementation/output.
 
-For each of the nine frozen Iter050/051 conditions and four K4 tree bases, compute all six pure triple-residue orders `T_pi = R_pi3 R_pi2 R_pi1 F` and the canonical parity-weighted antisymmetrizer
+For each of nine frozen Iter050/051 conditions and four K4 tree bases, compute all six pure triple-residue orders `T_pi = R_pi3 R_pi2 R_pi1 F` and the canonical parity-weighted antisymmetrizer
 
 `A_RRR = sum_{pi in S3} sgn(pi) T_pi`.
 
 Frozen matrix: **36 source lanes**, each with identical F=1 control. Primary outcomes:
 - `ITER052_CONTROL_OR_RECONSTRUCTION_INVALID`;
-- `K4_RRR_CANONICAL_ANTISYMMETRY_IDENTITY_EXACT` if all 36 source antisymmetrizers and all controls are exactly zero with a nontrivial order-dependence guard;
+- `K4_RRR_CANONICAL_ANTISYMMETRY_IDENTITY_EXACT` if all 36 source antisymmetrizers and controls are exactly zero with nontrivial order dependence;
 - `K4_RRR_CANONICAL_ANTISYMMETRY_OBSTRUCTION_NONZERO` if any valid source lane has exact nonzero antisymmetrizer.
 
-Implementation commits: `4cd7a059211475bfbd107b55782765cbb10a4d52`, workflow `34ee42573f8355c169aea56090a35e3d88c6c79e`; PR #53 merged as main commit `6a212175e5e2f091c841b51e05c029c9c1df4613`.
+Implementation commits `4cd7a059211475bfbd107b55782765cbb10a4d52`, workflow `34ee42573f8355c169aea56090a35e3d88c6c79e`, PR #53 merged as `6a212175e5e2f091c841b51e05c029c9c1df4613`.
 
-Authoritative active run: `34716166419`.
+Authoritative active run: `34716166419`. Job-level production is ongoing; consume only the terminal aggregate before scientific classification.
+
+## Active Iter051C — wider held-out sign-class range validation
+
+Preregistered in `status/ITERATION_051C.md` at commit `1d3cd2b28d4f33cb18b89408962628254a2ed920` **before** implementation `e40189337d29efdda04c530f43242c21b8f54d3a` and workflow `9a68ab092b68cb2897d54006eab770fc7ebcf572`.
+
+Frozen held-out points:
+- H4: `gamma=31/100`, `epsilon=31/1000`, `k=(41,-37,12,-16)/100`;
+- H5: `gamma=245/100`, `epsilon=163/1000`, `k=(-22,47,-31,6)/100`.
+
+The eight complete Iter051A H1/H2 reference masks are frozen in the preregistration and implementation before production. Matrix: **192 exact lanes** = 2 points × 8 sign classes × 4 trees × 3 pairs, each with identical F=1 control.
+
+Primary outcomes:
+- `ITER051C_CONTROL_OR_RECONSTRUCTION_INVALID`;
+- `K4_RR_SIGN_CLASS_RANGE_STABLE` iff every H4/H5 mask exactly equals its frozen Iter051A reference mask;
+- `K4_RR_SIGN_CLASS_RANGE_DEPENDENT` otherwise.
+
+PR #54 merged as main commit `676760962d5177b7a045f4ebfac30c0ad4ca0da8`.
+
+Authoritative active run: `34717183041`.
 
 ## Next allowed decisions
 
-1. Consume Iter051A and Iter051B only when their aggregate artifacts are terminal; do not infer their classifiers from partial jobs.
-2. Consume Iter052 against its frozen gate. If the canonical antisymmetrizer identity is exact, validate it on a new independent held-out grid before structural promotion.
-3. If Iter052 is nonzero, do not fit coefficients: move toward a source/analyticity-selected simultaneous multivariate K4 extension audit.
-4. A genuinely multivariate K4 prescription must still pass tree/cycle-basis/permutation/order independence and exact EPRL control before K5 can be authorized.
+1. Consume Iter052 only at terminal aggregate. If canonical S3 antisymmetry is exact, preregister a genuinely independent held-out validation before structural promotion. If nonzero, do not fit coefficients; move toward a source/analyticity-selected simultaneous multivariate K4 extension audit.
+2. Consume Iter051C only at terminal aggregate. A PASS is only wider scoped sign-mask stability, not a global theorem. A FAIL must be retained as range dependence rather than retuned.
+3. Iter051B already rules out the eight preregistered coarse discrete residue/cancellation selectors on H3; do not invent a post-hoc replacement selector.
+4. A genuinely multivariate K4 prescription must still pass tree/cycle-basis/permutation/order independence plus exact EPRL control before K5 is authorized.
 
 ## Claim locks
 
 - no `NEW_PHYSICS_FOUND`;
 - no physical causal-vertex finiteness/divergence theorem;
 - no universal no-go theorem for causal EPRL;
+- no global causal-sign universality theorem from finite held-out scans;
 - no G3 PASS from a finite-part diagnostic;
 - no F9/G8 promotion from symmetry/distributional surrogates;
 - no arbitrary counterterm or preferred integration order;
