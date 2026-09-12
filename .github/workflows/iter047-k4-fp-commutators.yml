@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'distributional/k4_fp_commutator_localization.py'
+      - 'distributional/k4_forest_order_finite_part.py'
       - 'status/ITERATION_047.md'
       - '.github/workflows/iter047-k4-fp-commutators.yml'
   workflow_dispatch:
