@@ -1,0 +1,75 @@
+name: Distributional Overlap Audit
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'distributional/collision_incidence_scaling_audit.py'
+      - 'distributional/gaussian_conormal_mollifier.py'
+      - 'distributional/jhalf_same_support_overlap.py'
+      - '.github/workflows/distributional-overlap-audit.yml'
+  workflow_dispatch:
+
+jobs:
+  incidence-scaling:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Exact collision incidence and scaling audit
+        run: |
+          mkdir -p results
+          python distributional/collision_incidence_scaling_audit.py --output results/collision_incidence_scaling.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: collision-incidence-scaling
+          path: results/
+          retention-days: 30
+
+  gaussian-conormal:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install numerical dependency
+        run: python -m pip install -q numpy
+      - name: Gaussian conormal/transversality audit
+        run: |
+          mkdir -p results
+          python distributional/gaussian_conormal_mollifier.py --output results/gaussian_conormal.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: gaussian-conormal-transversality
+          path: results/
+          retention-days: 30
+
+  jhalf-same-support:
+    strategy:
+      fail-fast: false
+      matrix:
+        rho: ['0.1','0.6','1.0']
+        ratio: ['1.0','2.0']
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install numerical dependency
+        run: python -m pip install -q numpy
+      - name: Test j=1/2 same-support boundary overlap
+        run: |
+          mkdir -p results
+          python distributional/jhalf_same_support_overlap.py \
+            --rho "${{ matrix.rho }}" \
+            --ratio "${{ matrix.ratio }}" \
+            --output "results/jhalf_overlap_rho${{ matrix.rho }}_ratio${{ matrix.ratio }}.json"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: jhalf-overlap-rho${{ matrix.rho }}-ratio${{ matrix.ratio }}
+          path: results/
+          retention-days: 30
