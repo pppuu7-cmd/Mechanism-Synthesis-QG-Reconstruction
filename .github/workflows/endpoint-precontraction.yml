@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - "regulated/endpoint_precontraction_scan.py"
+      - "regulated/run_with_stable_hyp2f1.py"
       - ".github/workflows/endpoint-precontraction.yml"
   workflow_dispatch:
 
@@ -29,7 +30,8 @@ jobs:
       - name: Run ${{ matrix.mode }} diagnostic
         run: |
           mkdir -p results
-          python regulated/endpoint_precontraction_scan.py \
+          python regulated/run_with_stable_hyp2f1.py \
+            regulated/endpoint_precontraction_scan.py \
             --mode "${{ matrix.mode }}" \
             --output "results/endpoint_${{ matrix.mode }}.json"
       - uses: actions/upload-artifact@v4
