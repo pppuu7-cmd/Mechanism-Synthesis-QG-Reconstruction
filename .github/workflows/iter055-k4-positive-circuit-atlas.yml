@@ -1,0 +1,32 @@
+name: Iter055 K4 Positive Circuit Atlas
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'distributional/k4_signed_normal_positive_circuit_atlas.py'
+      - 'status/ITERATION_055.md'
+      - '.github/workflows/iter055-k4-positive-circuit-atlas.yml'
+  workflow_dispatch:
+
+jobs:
+  exact-atlas:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q 'sympy==1.14.0'
+      - name: Exhaustive exact circuit and S4 covariance audit
+        run: |
+          mkdir -p results
+          python distributional/k4_signed_normal_positive_circuit_atlas.py \
+            --output results/iter055_positive_circuit_atlas.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter055-positive-circuit-atlas
+          path: results/
+          if-no-files-found: warn
