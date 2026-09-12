@@ -1,0 +1,73 @@
+name: Iter052 K4 RRR Canonical Antisymmetry
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'distributional/k4_rrr_antisymmetry.py'
+      - 'status/ITERATION_052.md'
+      - '.github/workflows/iter052-k4-rrr-antisymmetry.yml'
+  workflow_dispatch:
+
+jobs:
+  lanes:
+    strategy:
+      fail-fast: false
+      max-parallel: 36
+      matrix:
+        condition: ['BASE','G_LO','G_HI','E_LO','E_HI','S_ALT1','S_ALT2','K_ALT1','K_ALT2']
+        tree: ['S0','S1','P0','P1']
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q 'sympy==1.14.0'
+      - name: Exact six-order triple-residue lane
+        env:
+          CONDITION: ${{ matrix.condition }}
+          TREE: ${{ matrix.tree }}
+        run: |
+          set -euo pipefail
+          mkdir -p results
+          python distributional/k4_rrr_antisymmetry.py \
+            --mode compute --condition "$CONDITION" --tree "$TREE" \
+            --output "results/iter052_${CONDITION}_${TREE}.json"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter052-${{ matrix.condition }}-${{ matrix.tree }}
+          path: results/
+          if-no-files-found: warn
+
+  aggregate:
+    if: always()
+    needs: lanes
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q 'sympy==1.14.0'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: iter052-*
+          path: collected
+          merge-multiple: true
+      - name: Aggregate frozen Iter052 gate
+        run: |
+          set -euo pipefail
+          mkdir -p results
+          python distributional/k4_rrr_antisymmetry.py \
+            --mode aggregate --input-dir collected \
+            --output results/iter052_aggregate.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter052-aggregate
+          path: results/
+          if-no-files-found: warn
