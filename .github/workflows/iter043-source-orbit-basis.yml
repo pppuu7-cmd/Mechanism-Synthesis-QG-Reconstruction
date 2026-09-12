@@ -1,0 +1,42 @@
+name: Iter043B Source Orbit Basis
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'distributional/k5_source_orbit_basis.py'
+      - '.github/workflows/iter043-source-orbit-basis.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-orbit-basis:
+    strategy:
+      fail-fast: false
+      matrix:
+        degree: [4,6]
+        seed: [41,83]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q 'numpy==2.1.3'
+      - name: Resolve S5 source orbit basis
+        env:
+          PYTHONPATH: .
+        run: |
+          mkdir -p results
+          python distributional/k5_source_orbit_basis.py \
+            --degree '${{ matrix.degree }}' --seed '${{ matrix.seed }}' --samples 192 \
+            --output 'results/iter043B_d${{ matrix.degree }}_s${{ matrix.seed }}.json'
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter043B-d${{ matrix.degree }}-s${{ matrix.seed }}
+          path: results/
+          if-no-files-found: error
+          retention-days: 30
