@@ -1,0 +1,67 @@
+name: Iter046B Case-B Zero-Remainder Repair
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'distributional/k4_case_b_zero_remainder_repair.py'
+      - '.github/workflows/iter046b-case-b-zero-remainder-repair.yml'
+  workflow_dispatch:
+
+jobs:
+  case-b:
+    strategy:
+      fail-fast: false
+      max-parallel: 24
+      matrix:
+        tree: ['S0','S1','P0','P1']
+        order: ['012','021','102','120','201','210']
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q 'sympy==1.14.0'
+      - name: Frozen Case-B lane with metadata-only repair
+        env:
+          TREE: ${{ matrix.tree }}
+          ORDER: ${{ matrix.order }}
+        run: |
+          mkdir -p results
+          python distributional/k4_case_b_zero_remainder_repair.py \
+            --tree "$TREE" --order "$ORDER" \
+            --output "results/iter046_B_${TREE}_${ORDER}.json"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter046B-repair-${{ matrix.tree }}-${{ matrix.order }}
+          path: results/
+          if-no-files-found: error
+
+  aggregate-b:
+    needs: case-b
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q 'sympy==1.14.0'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: iter046B-repair-*
+          path: collected
+          merge-multiple: true
+      - name: Aggregate frozen Case-B gate
+        run: |
+          mkdir -p results
+          python distributional/k4_forest_order_finite_part.py \
+            --mode aggregate --input-dir collected \
+            --output results/iter046B_repair_aggregate.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter046B-repair-aggregate
+          path: results/
+          if-no-files-found: error
