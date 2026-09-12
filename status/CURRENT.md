@@ -9,7 +9,7 @@
   - common-space/linearized form: `P_± R - R P_± = 0`
 - Physical F9 (`CAUSAL_ANALYTICITY_RG_INVARIANT`): `BLOCKED`
 - G8 novelty: `BLOCKED_CONVERGENCE_ONLY` until physical F9/F10 evidence exists
-- Active programme front: `ITERATION_028 / MULTIWEDGE_DISTRIBUTIONAL_COMPOSITION`
+- Active programme front: `ITERATION_029 / MICROLOCAL_CYCLE_WAVEFRONT_OBSTRUCTION`
 
 ## What is established
 
@@ -21,18 +21,38 @@
 6. Iter026 excludes generic antipodal cancellation as a universal mechanism: a consumed raw lane has k=4 and k=5 antipodal ratios exactly 1, although k=3 shows strong parity cancellation.
 7. Iter027A excludes universal full-sphere cancellation in a consumed raw lane: angular mean/RMS ratios remain nonzero and O(10^-2..10^-1) across tested rows.
 8. A Christensen-type positive absolute-value spanning-tree proof cannot close for a beta^-2 Toller kernel on K5: exact graph geometry requires M>=5/2 while single-edge local integrability requires m<3/2. The full-matrix numerical norm scan independently reproduces p≈2. This is a no-go for that proof strategy, not a divergence theorem for the physical vertex.
-9. Iter028 gives a new structural warning for naive products of Appendix-D boundary singular terms. The reduced complete-graph incidence constraints have cycle nullity 1,3,6 for K3,K4,K5. Exact Gaussian-mollifier products diverge as eta^-1.00075, eta^-3.00085, eta^-6.00091 respectively, matching the redundancy exponents while the lowest Appendix-D delta coefficient is nonzero in all three lanes. Therefore a regulator-independent naive pointwise product of those lowest boundary delta terms is excluded in this linearized common-spectral realization.
+9. Iter028 gives a structural warning for naive products of Appendix-D boundary singular terms. The reduced complete-graph incidence constraints have cycle nullity 1,3,6 for K3,K4,K5. Exact Gaussian-mollifier products diverge as eta^-1.00075, eta^-3.00085, eta^-6.00091 respectively, matching the redundancy exponents while the lowest Appendix-D delta coefficient is nonzero in all three lanes.
+10. Iter029 upgrades that warning to an exact microlocal statement in the tested linearized common-spectral geometry. The reduced incidence conormals have left-nullity exactly 1,3,6 on K3,K4,K5, so the standard transverse/Hormander criterion for the naive product fails on every complete-graph collision tested. Spanning-tree controls have nullity 0. On K5 all 16 source-induced causal sign sectors preserve rank 4 and left-nullity 6. Exact forest enumeration shows that at least 6 of the 10 K5 constraints must be removed to recover a transverse subset; the 125 maximal transverse connected subsets are exactly the 125 spanning trees, matching Cayley.
 
-## Iter028 run
+## Iter029 runs
 
-`Multiwedge Incidence Distribution Product Audit`, run `34668954203`: 3/3 lanes SUCCESS and raw artifacts consumed.
+### Iter029A — exact microlocal cycle wavefront audit
 
-- K3, j=1/2, rho=0.2: cycle nullity 1; fitted divergence exponent 1.000754.
-- K4, j=1, rho=0.6: cycle nullity 3; fitted divergence exponent 3.000849.
-- K5, j=3/2, rho=1.0: cycle nullity 6; fitted divergence exponent 6.000905.
+Run `34671531875`, commit `8a10e81de137350d55d92f6fddc37d0724a6a92e`: 7/7 lanes SUCCESS and logs/artifacts consumed.
+
+- K3 complete: rank 2, conormal left-nullity 1.
+- K4 complete: rank 3, conormal left-nullity 3.
+- K5 complete: rank 4, conormal left-nullity 6.
+- K3/K4/K5 spanning-tree controls: left-nullity 0.
+- K5 source-induced causal sectors: all 16 have left-nullity 6; all are non-transverse under the same naive delta-product criterion.
+
+### Iter029B — exact forest-basis redundancy audit
+
+Run `34671550029`, commit `314b594543e1e068fccbbaf558e7e058f4950f38`: 3/3 lanes SUCCESS and logs consumed.
+
+For K5:
+
+- 10 complete-graph wedge constraints;
+- maximum transverse subset size 4;
+- minimum removals for transversality 6;
+- 125 spanning-tree subsets, exactly Cayley `5^(5-2)`;
+- no transverse subsets of size >=5;
+- redundancy count 6 exactly matches the Iter028 `eta^-6.000905` scaling exponent within the numerical fit accuracy.
 
 Classification:
-`NAIVE_POINTWISE_MULTIWEDGE_BOUNDARY_DELTA_PRODUCT_EXCLUDED_IN_LINEARIZED_INCIDENCE_REALIZATION__SOURCE_BACKED_CORRELATED_IEPSILON_OR_RENORMALIZED_DISTRIBUTIONAL_EXTENSION_STILL_OPEN`.
+`EXACT_CYCLE_CONORMAL_DEPENDENCE_BLOCKS_STANDARD_NAIVE_MULTIWEDGE_DELTA_PRODUCT_ON_COMPLETE_GRAPH_COLLISIONS__OBSTRUCTION_DIMENSION_EQUALS_GRAPH_CYCLE_NULLITY_AND_SURVIVES_ALL_SOURCE_INDUCED_K5_CAUSAL_SIGN_SECTORS__SPANNING_TREE_CONTROLS_ARE_TRANSVERSE__CORRELATED_SOURCE_BACKED_IEPSILON_OR_RENORMALIZED_EXTENSION_STILL_OPEN`.
+
+Record: `results/ITER029_MICROLOCAL_CYCLE_WAVEFRONT_AUDIT.md`.
 
 ## Current decisive target
 
@@ -40,7 +60,9 @@ The immediate blocker is now sharper:
 
 `SOURCE_BACKED_CORRELATED_MULTI_WEDGE_DISTRIBUTIONAL_EXTENSION_NOT_YET_ESTABLISHED`
 
-The next legitimate step is a microlocal/correlated-i-epsilon analysis of the complete multi-wedge boundary object. Further random angular scans are lower priority because simple parity, global angular averaging, positive spanning-tree absolute bounds, and naive pointwise boundary-distribution products have all been independently constrained.
+The standard naive product route is now blocked twice independently in the tested linearized common-spectral realization: numerically by the Iter028 regulator scaling and exactly by the Iter029 conormal-cycle dependence. Further random angular scans or independent pointwise regularizations are lower priority.
+
+The next legitimate step is to construct or extract the **full source-backed correlated spectral i-epsilon boundary value before termwise wedge multiplication**, and then determine whether that correlated object admits a unique finite distributional extension. If the source only defines individual wedge boundary values, the next task is an explicit extension/renormalization analysis whose ambiguity dimension is tied to the cycle sector and whose finite parts must be fixed by physical consistency rather than by arbitrary subtraction.
 
 Only after a well-defined finite same-realization causal carrier is established should the programme promote the physical CCI/F9 refinement test.
 
@@ -51,4 +73,4 @@ Only after a well-defined finite same-realization causal carrier is established 
 - no universal no-go theorem for causal EPRL;
 - no F9 promotion from convergence-only evidence;
 - no G8 novelty promotion before physical F9/F10 evidence;
-- the Iter028 incidence result is linearized and does not exclude correlated source-backed i-epsilon/distributional extensions, wavefront-compatible products, matrix/intertwiner cancellations, or renormalized extensions.
+- Iter029 is an exact statement for the tested linearized common-spectral boundary geometry, not a theorem excluding correlated source-backed i-epsilon constructions, renormalized extensions, full matrix/intertwiner cancellations, or alternative wavefront-compatible representations of the physical amplitude.
