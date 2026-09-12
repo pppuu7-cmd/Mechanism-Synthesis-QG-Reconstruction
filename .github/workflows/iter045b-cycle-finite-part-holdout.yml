@@ -1,12 +1,6 @@
 name: Iter045B K3 Finite-Part Kinematic Holdout
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'distributional/k3_cycle_finite_part_covariance.py'
-      - 'status/ITERATION_045.md'
-      - '.github/workflows/iter045b-cycle-finite-part-holdout.yml'
   workflow_dispatch:
 
 jobs:
