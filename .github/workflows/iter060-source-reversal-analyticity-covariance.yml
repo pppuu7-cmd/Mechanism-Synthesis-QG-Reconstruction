@@ -1,0 +1,38 @@
+name: Iter060 Source Reversal Analyticity Covariance
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/iter060_source_reversal_analyticity_covariance.py'
+      - '.github/workflows/iter060-source-reversal-analyticity-covariance.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-covariance-audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run frozen Iter060 audit
+        run: python scripts/iter060_source_reversal_analyticity_covariance.py | tee iter060_stdout.txt
+      - name: Record provenance
+        run: |
+          printf 'head_sha=%s\n' "$GITHUB_SHA" > iter060_provenance.txt
+          printf 'run_id=%s\n' "$GITHUB_RUN_ID" >> iter060_provenance.txt
+          printf 'prereg_commit=%s\n' 'd52f79289f9004b346a0de59e79e099389fdcd56' >> iter060_provenance.txt
+          printf 'implementation_commit=%s\n' '8eace2c3f4897e19f5ffec84b14df36eed4c45d0' >> iter060_provenance.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter060-source-reversal-analyticity-covariance
+          path: |
+            iter060_source_reversal_analyticity_covariance.json
+            iter060_stdout.txt
+            iter060_provenance.txt
