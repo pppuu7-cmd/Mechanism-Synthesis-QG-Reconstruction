@@ -8,7 +8,7 @@
 - G3 quantum dynamics: `OPEN`
 - G8 novelty: `BLOCKED_CONVERGENCE_ONLY`
 - K5 distributional/vertex extension: `BLOCKED`
-- Active programme front: parallel `ITERATION_052 / K4_RRR_CANONICAL_ANTISYMMETRY` + `ITERATION_051C / SIGN_CLASS_RANGE_VALIDATION`
+- Active programme front: parallel `ITERATION_051C / SIGN_CLASS_RANGE_VALIDATION` + `ITERATION_053 / GLOBAL_CONTOUR_COMPATIBILITY`
 
 ## Closed results controlling the current front
 
@@ -28,6 +28,7 @@
 14. Iter051 terminal `K4_RR_EXACT_RESIDUE_GEOMETRY_SEPARATION` + `K4_RR_CANCELLATION_DOMINATED_SUBSET`: run `34712814029`, artifact `10304298594`, digest `sha256:68a2c96e7150950138f199219ea44fda17d7fca12f264961143586469316bcc1`. 108/108 valid; exact classes 37 identical, 31 geometry-different-but-sum-cancelling, 40 geometry-and-sum-different, 0 inconsistencies. RR is nonzero in exactly those 40 residue-sum-mismatch lanes.
 15. Iter051A terminal `K4_RR_SIGN_CLASS_NUISANCE_STABLE`: run `34713025288`, artifact `10303884916`, digest `sha256:56270b122eee124d02388d246d687f4b85337c5ba5aa6307bb5d68b0f5265a0c`. All 192/192 lanes valid, all controls exactly zero, all factorized-sign checks pass, and total H1↔H2 Hamming distance across all eight 12-bit sign-class masks is exactly 0. This is scoped nuisance stability, not global sign universality.
 16. Iter051B terminal `K4_RR_BEYOND_PREREG_RESIDUE_STRUCTURE`: run `34713037668`, artifact `10304474485`, digest `sha256:3c0483a01b283178193965a5dc54fe92ab19b85f7998041834336967cc27af43`. All 96/96 lanes valid; source RR is active in 48/96; none of eight prospectively frozen coarse discrete residue/cancellation booleans exactly matches RR (`exact_matching_diagnostics=[]`). No post-hoc selector fitting is authorized.
+17. Iter052 terminal `K4_RRR_CANONICAL_ANTISYMMETRY_OBSTRUCTION_NONZERO`: run `34716166419`, aggregate artifact `10305101542`, digest `sha256:7ac12a5666cd337062ae143da864372eb011223563b47f36b733261b102ccc8f`. All 36/36 lanes valid and all F=1 control antisymmetrizers are exactly zero, but the fixed canonical full-S3 source antisymmetrizer is nonzero in 9/36 lanes. The universal canonical-antisymmetry identity branch is therefore closed without coefficient refitting.
 
 Durable results:
 - `status/ITERATION_048_RESULT.md`
@@ -37,23 +38,7 @@ Durable results:
 - `status/ITERATION_051_RESULT.md`
 - `status/ITERATION_051A_RESULT.md`
 - `status/ITERATION_051B_RESULT.md`
-
-## Active Iter052 — canonical triple-residue antisymmetry / inclusion-exclusion gate
-
-Preregistered in `status/ITERATION_052.md` at commit `2ae9e81572363f4a9bc9e02637056a43a7d5a8e9`, before implementation/output.
-
-For each of nine frozen Iter050/051 conditions and four K4 tree bases, compute all six pure triple-residue orders `T_pi = R_pi3 R_pi2 R_pi1 F` and the canonical parity-weighted antisymmetrizer
-
-`A_RRR = sum_{pi in S3} sgn(pi) T_pi`.
-
-Frozen matrix: **36 source lanes**, each with identical F=1 control. Primary outcomes:
-- `ITER052_CONTROL_OR_RECONSTRUCTION_INVALID`;
-- `K4_RRR_CANONICAL_ANTISYMMETRY_IDENTITY_EXACT` if all 36 source antisymmetrizers and controls are exactly zero with nontrivial order dependence;
-- `K4_RRR_CANONICAL_ANTISYMMETRY_OBSTRUCTION_NONZERO` if any valid source lane has exact nonzero antisymmetrizer.
-
-Implementation commits `4cd7a059211475bfbd107b55782765cbb10a4d52`, workflow `34ee42573f8355c169aea56090a35e3d88c6c79e`, PR #53 merged as `6a212175e5e2f091c841b51e05c029c9c1df4613`.
-
-Authoritative active run: `34716166419`. Job-level production is ongoing; consume only the terminal aggregate before scientific classification.
+- `status/ITERATION_052_RESULT.md`
 
 ## Active Iter051C — wider held-out sign-class range validation
 
@@ -63,7 +48,7 @@ Frozen held-out points:
 - H4: `gamma=31/100`, `epsilon=31/1000`, `k=(41,-37,12,-16)/100`;
 - H5: `gamma=245/100`, `epsilon=163/1000`, `k=(-22,47,-31,6)/100`.
 
-The eight complete Iter051A H1/H2 reference masks are frozen in the preregistration and implementation before production. Matrix: **192 exact lanes** = 2 points × 8 sign classes × 4 trees × 3 pairs, each with identical F=1 control.
+The eight complete Iter051A H1/H2 reference masks are frozen before production. Matrix: **192 exact lanes** = 2 points × 8 sign classes × 4 trees × 3 pairs, each with identical F=1 control.
 
 Primary outcomes:
 - `ITER051C_CONTROL_OR_RECONSTRUCTION_INVALID`;
@@ -72,14 +57,35 @@ Primary outcomes:
 
 PR #54 merged as main commit `676760962d5177b7a045f4ebfac30c0ad4ca0da8`.
 
-Authoritative active run: `34717183041`.
+Authoritative active run: `34717183041`. H4 production is largely complete and H5 production has begun; consume only the terminal aggregate.
+
+## Active Iter053 — exact global uniform contour-translation compatibility
+
+Iter052's nonzero result permits a source/analyticity-selected simultaneous multivariate audit, not fitted cancellation coefficients. Iter053 is preregistered in `status/ITERATION_053.md` at commit `69e7786391b9f7e40b94acdbe73a9e7fc6828834` **before** implementation `8d88b179490c98e3670446f11dc28ca96914e4e2` and workflow `0bbf161eac2923af57e727e6d9b173a044f18077`.
+
+For each K4 tree/cycle basis write the six affine edge flows as `x_e=b_e+a_e·y`, collect the exact 6×3 cycle matrix `A`, and test whether the six causal denominators `x_e-i s_e epsilon` can be generated by one common contour translation `y -> y-i epsilon v`. This is equivalent to exact solvability of
+
+`A v = s`.
+
+The independent graph criterion is membership of `s` in the K4 cycle space, tested by exact `B s = 0`. Frozen matrix: **32 lanes** = 8 factorized causal sign classes × 4 unimodular tree/cycle bases.
+
+Frozen aggregate outcomes:
+- `ITER053_RECONSTRUCTION_OR_BASIS_INVALID`;
+- `K4_CAUSAL_SHIFTS_GLOBAL_UNIFORM_CONTOUR_COMPATIBLE`;
+- `K4_CAUSAL_SHIFTS_GLOBAL_UNIFORM_CONTOUR_CLASS_DEPENDENT`;
+- `K4_CAUSAL_SHIFTS_NO_GLOBAL_UNIFORM_CONTOUR_TRANSLATION`.
+
+PR #55 merged as main commit `6f06f99ea9fb6a261059757a9f7f80708558d9c5`.
+
+Authoritative active run: `34718231048`. It is queued behind the already active Iter051C runner load.
 
 ## Next allowed decisions
 
-1. Consume Iter052 only at terminal aggregate. If canonical S3 antisymmetry is exact, preregister a genuinely independent held-out validation before structural promotion. If nonzero, do not fit coefficients; move toward a source/analyticity-selected simultaneous multivariate K4 extension audit.
-2. Consume Iter051C only at terminal aggregate. A PASS is only wider scoped sign-mask stability, not a global theorem. A FAIL must be retained as range dependence rather than retuned.
-3. Iter051B already rules out the eight preregistered coarse discrete residue/cancellation selectors on H3; do not invent a post-hoc replacement selector.
-4. A genuinely multivariate K4 prescription must still pass tree/cycle-basis/permutation/order independence plus exact EPRL control before K5 is authorized.
+1. Consume Iter051C only at terminal aggregate. A PASS is wider scoped sign-mask stability only, not a global theorem. A FAIL must be retained as range dependence rather than retuned.
+2. Consume Iter053 only at terminal aggregate. If common translation fails, the failure is scoped to one uniform affine cycle-contour deformation; it is not a no-go for correlated/nonlinear contours or multivariate residue prescriptions.
+3. Iter051B rules out the eight preregistered coarse residue/cancellation selectors, and Iter052 rules out the fixed canonical S3 antisymmetry identity. Do not fit replacement selectors or cancellation coefficients post hoc.
+4. If Iter053 blocks the uniform common contour, the next high-value gate should test a prospectively fixed sign-compatible **nonuniform/correlated contour chamber** or mathematically canonical multivariate residue construction, with graph/permutation/tree-basis invariance built into the preregistration.
+5. A genuinely multivariate K4 prescription must still pass tree/cycle-basis/permutation/order independence plus exact EPRL control before K5 is authorized.
 
 ## Claim locks
 
@@ -89,6 +95,6 @@ Authoritative active run: `34717183041`.
 - no global causal-sign universality theorem from finite held-out scans;
 - no G3 PASS from a finite-part diagnostic;
 - no F9/G8 promotion from symmetry/distributional surrogates;
-- no arbitrary counterterm or preferred integration order;
+- no arbitrary counterterm, fitted cancellation coefficient or preferred integration order;
 - fixed causal-sector claims may not borrow `T+ + T- = D` cancellation without proof;
 - distinguish ordinary absolute integrability, conditional/PV finite part and a source-defined distributional amplitude.
