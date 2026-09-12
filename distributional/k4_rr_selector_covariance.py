@@ -32,7 +32,9 @@ def permuted_decomposition(gamma, epsilon, signs, k, tree, perm_text, control=Fa
         raise ValueError(f"invalid permutation {perm_text}")
 
     y, expr, kernel_meta = build_kernel(gamma, epsilon, signs, k, tree, control=control)
-    z = sp.symbols("z0 z1 z2")
+    # Infrastructure-only repair: cycle variables are real integration coordinates,
+    # matching the assumptions carried by the original build_kernel symbols.
+    z = sp.symbols("z0 z1 z2", real=True)
     forward = {y[p[a]]: z[a] for a in range(3)}
     backward = {z[a]: y[p[a]] for a in range(3)}
     expr_p = sp.cancel(expr.xreplace(forward))
