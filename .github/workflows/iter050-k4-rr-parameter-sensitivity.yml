@@ -1,0 +1,89 @@
+name: Iter050 K4 RR Parameter Sensitivity
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'distributional/k4_rr_parameter_sensitivity.py'
+      - 'status/ITERATION_050.md'
+      - '.github/workflows/iter050-k4-rr-parameter-sensitivity.yml'
+  workflow_dispatch:
+
+jobs:
+  lanes:
+    strategy:
+      fail-fast: false
+      max-parallel: 72
+      matrix:
+        condition: ['BASE','G_LO','G_HI','E_LO','E_HI','S_ALT1','S_ALT2','K_ALT1','K_ALT2']
+        tree: ['S0','S1','P0','P1']
+        pair: ['01','02','12']
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q 'sympy==1.14.0'
+      - name: Exact RR parameter/pole-topology lane
+        env:
+          CONDITION: ${{ matrix.condition }}
+          TREE: ${{ matrix.tree }}
+          PAIR: ${{ matrix.pair }}
+        run: |
+          set -euo pipefail
+          mkdir -p results
+          GAMMA='1.07'; EPSILON='0.085'; SIGNS='++++++'; K='0.23,-0.34,0.18,-0.07'
+          case "$CONDITION" in
+            BASE)   ;;
+            G_LO)   GAMMA='0.61' ;;
+            G_HI)   GAMMA='1.61' ;;
+            E_LO)   EPSILON='0.035' ;;
+            E_HI)   EPSILON='0.16' ;;
+            S_ALT1) SIGNS='+-+-+-' ;;
+            S_ALT2) SIGNS='--++--' ;;
+            K_ALT1) K='-0.17,0.29,-0.33,0.21' ;;
+            K_ALT2) K='0.31,0.14,-0.26,-0.19' ;;
+            *) echo "unknown condition $CONDITION" >&2; exit 2 ;;
+          esac
+          python distributional/k4_rr_parameter_sensitivity.py \
+            --mode compute --condition "$CONDITION" \
+            --gamma "$GAMMA" --epsilon "$EPSILON" --signs="$SIGNS" --k="$K" \
+            --tree "$TREE" --pair "$PAIR" \
+            --output "results/iter050_${CONDITION}_${TREE}_${PAIR}.json"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter050-lane-${{ matrix.condition }}-${{ matrix.tree }}-${{ matrix.pair }}
+          path: results/
+          if-no-files-found: warn
+
+  aggregate:
+    if: always()
+    needs: lanes
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q 'sympy==1.14.0'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: iter050-lane-*
+          path: collected
+          merge-multiple: true
+      - name: Aggregate frozen Iter050 gate
+        run: |
+          mkdir -p results
+          python distributional/k4_rr_parameter_sensitivity.py \
+            --mode aggregate --input-dir collected \
+            --output results/iter050_aggregate.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter050-aggregate
+          path: results/
+          if-no-files-found: warn
