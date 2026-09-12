@@ -7,6 +7,7 @@ on:
       - 'regulated/general_toller_residue_series.py'
       - 'regulated/j_equal_l_residue_series.py'
       - 'regulated/endpoint_precontraction_scan.py'
+      - 'regulated/run_with_stable_hyp2f1.py'
       - '.github/workflows/general-residue-kernel.yml'
   workflow_dispatch:
 
@@ -29,12 +30,13 @@ jobs:
           PYTHONPATH: .
         run: |
           mkdir -p results
-          python regulated/general_toller_residue_series.py \
+          python regulated/run_with_stable_hyp2f1.py regulated/general_toller_residue_series.py \
             --gamma "${{ matrix.gamma }}" \
             --output "results/general_residue_gamma_${{ matrix.gamma }}.json"
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: general-residue-gamma-${{ matrix.gamma }}
           path: results/
-          if-no-files-found: error
+          if-no-files-found: warn
           retention-days: 30
