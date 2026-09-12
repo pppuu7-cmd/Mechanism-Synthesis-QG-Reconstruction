@@ -1,0 +1,63 @@
+name: Iter041 Source Delta DeltaPrime Collision Forest Census
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'distributional/source_collision_forest_census.py'
+      - '.github/workflows/iter041-source-collision-forest-census.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-collision-census:
+    strategy:
+      fail-fast: false
+      max-parallel: 24
+      matrix:
+        include:
+          - {k: 2, m: 0}
+          - {k: 2, m: 1}
+          - {k: 3, m: 0}
+          - {k: 3, m: 1}
+          - {k: 3, m: 2}
+          - {k: 3, m: 3}
+          - {k: 4, m: 0}
+          - {k: 4, m: 1}
+          - {k: 4, m: 2}
+          - {k: 4, m: 3}
+          - {k: 4, m: 4}
+          - {k: 4, m: 5}
+          - {k: 4, m: 6}
+          - {k: 5, m: 0}
+          - {k: 5, m: 1}
+          - {k: 5, m: 2}
+          - {k: 5, m: 3}
+          - {k: 5, m: 4}
+          - {k: 5, m: 5}
+          - {k: 5, m: 6}
+          - {k: 5, m: 7}
+          - {k: 5, m: 8}
+          - {k: 5, m: 9}
+          - {k: 5, m: 10}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Census source singularity patterns and superficial extension budget
+        run: |
+          mkdir -p results
+          python distributional/source_collision_forest_census.py \
+            --k "${{ matrix.k }}" --m "${{ matrix.m }}" \
+            --output "results/iter041_k${{ matrix.k }}_m${{ matrix.m }}.json"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter041-k${{ matrix.k }}-m${{ matrix.m }}
+          path: results/
+          if-no-files-found: error
+          retention-days: 30
