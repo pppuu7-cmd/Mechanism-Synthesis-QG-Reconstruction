@@ -156,10 +156,14 @@ def finite_part_1d(expr, var):
 
     out=sp.cancel(2*sp.pi*sp.I*residue_sum - sp.pi*sp.I*a_minus1)
     qdeg=-1 if Q.is_zero else int(Q.degree())
+    # SymPy represents the degree of the exact zero polynomial as -oo.
+    # Map that value to the metadata sentinel -1 only; the FP algebra above is unchanged.
+    numdeg=-1 if Prn.is_zero else int(dn)
+    dendeg=-1 if Prd.is_zero else int(dd)
     return out, {
         "quotient_degree":qdeg,
-        "remainder_num_degree":int(dn),
-        "remainder_den_degree":int(dd),
+        "remainder_num_degree":numdeg,
+        "remainder_den_degree":dendeg,
         "upper_pole_count":upper_count,
         "pole_count":len(roots),
     }
