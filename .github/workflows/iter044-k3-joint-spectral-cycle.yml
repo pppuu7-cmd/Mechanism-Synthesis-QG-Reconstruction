@@ -1,0 +1,45 @@
+name: Iter044 K3 Joint Spectral Cycle Audit
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'distributional/k3_joint_spectral_cycle_audit.py'
+      - 'status/ITERATION_044.md'
+      - '.github/workflows/iter044-k3-joint-spectral-cycle.yml'
+  workflow_dispatch:
+
+jobs:
+  k3-joint-spectral:
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      max-parallel: 24
+      matrix:
+        gamma: ['0.2','1.2','2.0']
+        epsilon: ['0.05','0.2']
+        signs: ['+++','++-','+-+','-++']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q 'sympy==1.14.0'
+      - name: Audit joint K3 common spectral cycle
+        env:
+          GAMMA: ${{ matrix.gamma }}
+          EPSILON: ${{ matrix.epsilon }}
+          SIGNS: ${{ matrix.signs }}
+        run: |
+          mkdir -p results
+          safe_signs=$(echo "$SIGNS" | sed 's/+ /p/g' | tr '+' 'p' | tr '-' 'm')
+          python distributional/k3_joint_spectral_cycle_audit.py \
+            --gamma "$GAMMA" --epsilon "$EPSILON" --signs "$SIGNS" \
+            --output "results/iter044_g${GAMMA}_e${EPSILON}_s${safe_signs}.json"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter044-g${{ matrix.gamma }}-e${{ matrix.epsilon }}-s${{ matrix.signs }}
+          path: results/
+          if-no-files-found: error
+          retention-days: 30
