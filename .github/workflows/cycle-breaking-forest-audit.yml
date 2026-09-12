@@ -1,0 +1,37 @@
+name: Iter029B Cycle-Breaking Forest Audit
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "regulated/cycle_breaking_forest_audit.py"
+      - ".github/workflows/cycle-breaking-forest-audit.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  forest-audit:
+    strategy:
+      fail-fast: false
+      matrix:
+        n: [3,4,5]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q 'sympy==1.13.3'
+      - name: Enumerate transverse subsets
+        run: |
+          mkdir -p results
+          python regulated/cycle_breaking_forest_audit.py --n "${{ matrix.n }}" --output "results/iter029b_k${{ matrix.n }}.json"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter029b-k${{ matrix.n }}
+          path: results/
+          if-no-files-found: error
+          retention-days: 30
