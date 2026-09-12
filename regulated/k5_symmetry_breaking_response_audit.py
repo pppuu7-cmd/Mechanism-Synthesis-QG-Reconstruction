@@ -2,7 +2,7 @@
 """Iter035: K5 symmetry-breaking response audit.
 
 Iter034 established that an exactly uniform S5 average isotropizes the six-
-dimensional K5 cycle metric.  Iter035 asks whether that mechanism is robust and
+dimensional K5 cycle metric. Iter035 asks whether that mechanism is robust and
 quantifies how shape ambiguity re-enters when the averaging measure weakly
 selects one microscopic vertex.
 
@@ -11,8 +11,8 @@ For a generic determinant-normalized SPD cycle metric S, define
     S(eps) = sum_g w_eps(g) R_g^T S R_g / sum_g w_eps(g),
     w_eps(g) = exp(eps * 1[g(0)=0]).
 
-At eps=0 the measure is uniform on S5 and S(eps) is isotropic.  For eps>0 the
-measure preserves only the stabilizer H = {g in S5 : g(0)=0} ~= S4.  We test:
+At eps=0 the measure is uniform on S5 and S(eps) is isotropic. For eps>0 the
+measure preserves only the stabilizer H = {g in S5 : g(0)=0} ~= S4. We test:
 (1) exact recovery of isotropy at eps=0; (2) H-invariance for all eps; (3) a
 linear small-eps response of determinant-normalized anisotropy; and (4) visible
 return of shape freedom at finite eps.
@@ -164,6 +164,10 @@ def main() -> None:
         "finite_breaking_restores_shape": finite["anisotropy"] > 1e-4,
         "strong_breaking_not_less_than_finite": strong["anisotropy"] >= 0.95 * finite["anisotropy"],
     }
+    # NumPy comparisons can return np.bool_, which the stdlib JSON encoder does
+    # not serialize. Normalize gate values without changing any preregistered
+    # criterion or threshold.
+    gates = {name: bool(value) for name, value in gates.items()}
     passed = all(gates.values())
     result = {
         "iteration": "Iter035",
