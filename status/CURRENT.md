@@ -5,51 +5,49 @@
 - Candidate: `CRQN v0.2` (`CARRIER_SELECTED`)
 - Established/source-backed mechanism union: `F1-F8`
 - First MSQGR-derived prospective selector: Causal Cylindrical Intertwining (CCI)
-  - `P_b'^± iota_b'b = iota_b'b P_b^±`
-  - common-space/linearized form: `P_± R - R P_± = 0`
 - Physical F9 (`CAUSAL_ANALYTICITY_RG_INVARIANT`): `BLOCKED`
 - G8 novelty: `BLOCKED_CONVERGENCE_ONLY` until physical F9/F10 evidence exists
-- Active programme front: `ITERATION_039 / S5_INVARIANT_DISTRIBUTIONAL_EXTENSION_JETS`
+- Active programme front: `ITERATION_040 / PRIMITIVE_S5_INVARIANT_EXTENSION_SHAPES`
 
-## Closed structural results relevant to the current front
+## Closed results controlling the current front
 
-1. The repository has a source-backed Lorentzian EPRL/Toller computational carrier with explicit causal/co-causal branches and exact additive control `T+ + T- = D`.
-2. Generic ordinary-function collision power counting gives `q≈-2,-6,-12,-20` for k=2,3,4,5 causal collision clusters; EPRL controls remain regular. Causal-sector sums and tested j=1/2 boundary-intertwiner contractions do not remove the k=4,5 powers.
-3. The published Appendix-D Feynman boundary primitive is reproduced. For j=1/2, `delta^(rho,1/2)=-i*c1*delta-(c2/2)*delta_prime`, and `Theta_+ + Theta_- = 1` is validated on smooth tests.
-4. Iter026: the logarithmic k=3 leading term is nearly antipodally odd on tested generic angular sectors, but k=4 and k=5 have antipodal ratio 1.0 across all tested boundary/gamma/seed rows; simple principal-value parity cancellation is therefore not a generic k=4,5 mechanism.
-5. Iter027: a Christensen positive absolute-value K5 spanning-tree proof cannot close for the Toller carrier. Exact graph geometry requires max edge exponent `M>=5/2`, while full 2x2 Toller operator norms give local power `p≈2`, hence single-edge weighted radial integrability only for `m<~3/2`. This is a no-go for that proof strategy, not a physical divergence theorem.
-6. Iter028/029: naive products of wedge boundary singular terms are structurally obstructed in the tested linearized common-spectral geometry. K3,K4,K5 complete collision graphs have cycle/conormal left-nullities `1,3,6`; spanning-tree controls are transverse. All 16 K5 source causal sectors retain rank 4 / nullity 6. A source-backed correlated i-epsilon boundary value or a physically fixed distributional extension remains required.
-7. Iter030–035 explored finite-part ambiguity on the six-dimensional K5 cycle sector. Full S5 averaging isotropizes a generic quadratic cycle metric; explicit microscopic symmetry breaking restores shape. Iter035 authoritative run `34692215902` completed 32/32 SUCCESS after an infrastructure-only JSON serialization fix.
-8. Iter036 authoritative run `34694254523`, merge `3bdda03eb0087d20f6c4601b7d69320bbd94ec8f`: source causal sectors form S5 orbits `5+0`, `4+1`, `3+2`; complete S5 orbit averaging removes quadratic cycle-metric shape, while within-orbit bias restores it.
-9. Iter037 authoritative run `34694558711`, merge `bcbae58c751b436819480792d0ab35acf84c51bc`: `dim Sym^2(Cycle_K5)^A5=2` versus S5 dimension 1. Actual j=1/2 Toller blocks satisfy `T_s(g^{-1}) = eps T_s(g)^T eps^{-1}` and equivalently `T_s(g^{-1}) = T_{-s}(g)^dagger` to ~1e-15 on training/holdout edges.
+1. Source-backed Lorentzian EPRL/Toller carrier exists with explicit causal/co-causal branches and exact `T+ + T- = D` control.
+2. Ordinary-function collision power counting gives `q≈-2,-6,-12,-20` for k=2,3,4,5 causal clusters; tested causal-sector sums and j=1/2 boundary contractions do not remove k=4,5 powers. This is not a physical divergence theorem.
+3. Published Appendix-D Feynman boundary primitive is reproduced. For j=1/2, `delta^(rho,1/2)=-i*c1*delta-(c2/2)*delta_prime`; `Theta_+ + Theta_- = 1` holds on smooth tests.
+4. Iter026: simple antipodal/PV cancellation is not generic for k=4,5.
+5. Iter027: Christensen positive absolute K5 spanning-tree proof cannot close for the Toller carrier; this is a no-go for that proof strategy only.
+6. Iter028/029: naive complete-graph products of wedge boundary singular terms fail the standard transverse/Hormander criterion; K5 cycle/conormal nullity is 6 in all source causal sectors. A source-backed correlated i-epsilon boundary value or physically fixed extension remains required.
+7. Iter034/035: full S5 averaging isotropizes the quadratic K5 cycle metric; explicit microscopic symmetry breaking restores shape.
+8. Iter036 run `34694254523`: source causal sectors form S5 orbits `5+0`, `4+1`, `3+2`; complete orbit averaging removes quadratic cycle-metric shape.
+9. Iter037 run `34694558711`: `dim Sym^2(Cycle_K5)^A5=2` versus S5 dimension 1. Actual j=1/2 Toller blocks satisfy the required reversal/epsilon-duality identities to ~1e-15.
 
-## Iter038 — full small-spin boundary-contracted S5 covariance
+## Iter038 — regular carrier S5 covariance
 
-Authoritative run `34694739107`, commit `fff6514000d0620b1617af8711e28172795ce216`: **6/6 lanes terminal SUCCESS**.
+Authoritative run `34694739107`, commit `fff6514000d0620b1617af8711e28172795ce216`: **6/6 lanes terminal SUCCESS**. Raw artifacts satisfy all frozen gates; representative artifact `10298322565` has even/odd causal and EPRL relative errors ~`2e-14` and KAK error ~`2e-15`.
 
-The run tested gamma `0.2,1.2,2.0` x seeds `83,149`, with six even and six odd permutations per lane, three causal representatives and four boundary states. Raw artifacts satisfy all preregistered numerical gates. Example artifact `10298322565` (`gamma=0.2`, `seed=83`) reports:
+Scientific classification: `FULL_SMALL_SPIN_CAUSAL_CARRIER_S5_COVARIANT` for the tested regular pointwise j=1/2 boundary-contracted carrier. This does not establish the singular extension.
 
-- max even causal relative error `2.014e-14`;
-- max odd causal relative error with epsilon duality `2.212e-14`;
-- max EPRL permutation-control error `1.957e-14`;
-- max KAK reconstruction error `2.226e-15`;
-- verdict `FULL_SMALL_SPIN_CAUSAL_CARRIER_S5_COVARIANT`.
+## Iter039 — S5-invariant distributional-extension jets
 
-Scientific classification: **PASS for the tested regular pointwise j=1/2 boundary-contracted carrier**. This closes the objection that odd-permutation covariance is merely an edge-level convention artifact.
+Preregister commit `805eb2f2ae69ddc27a62859d61bef12772240238`; computation `df02a2a49cc3912256cc99fb71a4e80b88037847`; workflow `bea6e15fdc9a4204deadb1435fae8d0e37f4a13d`; result-note commit `93a5c44f6d863e397dc71e48f88e136d5a073177`.
 
-It does **not** establish covariance, existence, uniqueness, or finiteness of the singular multiwedge distributional extension.
+Authoritative run `34695173734`: **17/17 degree lanes terminal SUCCESS numerically**; all raw JSON artifacts consumed. Maximum character-integrality residual `1.59e-12`.
 
-## Active Iter039 — S5-invariant distributional-extension jet audit
+S5 invariant dimensions for `d=0..16`:
 
-Preregister commit `805eb2f2ae69ddc27a62859d61bef12772240238`; computation commit `df02a2a49cc3912256cc99fb71a4e80b88037847`; workflow commit `bea6e15fdc9a4204deadb1435fae8d0e37f4a13d`.
+`[1,0,1,0,4,0,9,2,20,9,38,23,74,51,125,101,211]`.
 
-Authoritative run: `34695173734`.
+Frozen discriminator `S5_SYMMETRY_ONLY_EXTENSION_UNIQUE_THROUGH_16` is **FALSE**. The first failure is d=4 with four S5-invariant jets. Scientific classification: **negative result for symmetry-only uniqueness**, while Iter038 carrier covariance remains valid. Additional source-backed Feynman/analytic information is required.
 
-Seventeen independent degrees `d=0..16` are computed in parallel for the exact K5 cycle representation. Each lane evaluates `dim Sym^d(Cycle_K5)^G` for S5, A5 and the three fixed causal-sector stabilizers. Numerical integrality/orthogonality is separated from the scientific discriminator.
+## Active Iter040 — primitive S5 invariant shapes
 
-The degree range is frozen from the j=1/2 Appendix-D source singular content: ten wedge factors contain delta and delta-prime terms; nominal common-scaling degree ranges up to 20 in four independent relative directions, giving a power-counting local derivative budget through degree 16. This does not assume the naive product exists.
+Preregister commit `3f8884b27585b77a903c0a09e310359b1108c367`; computation `1d1a0b2bc33090e02caf97ff8d73234832dac896`; workflow commit `30a695adde4b42d039caac624883c2deefe2d6f4`.
 
-Frozen discriminator: `S5_SYMMETRY_ONLY_EXTENSION_UNIQUE_THROUGH_16` iff the S5 invariant multiplicity is <=1 at every degree `0..16`. Failure is a scientific negative result for **symmetry-only uniqueness**, not a physical divergence statement.
+Authoritative run `34695321410` is launched with 15 independent degree lanes `d=2..16`.
+
+For `a_d = dim Sym^d(Cycle_K5)^S5`, the exact quotient by descendants generated by the unique quadratic invariant has dimension `p_d=a_d-a_{d-2}`. Frozen discriminator: `QUADRATIC_ISOTROPIZATION_GENERATES_ALL_S5_INVARIANTS_THROUGH_16` iff `p_d=0` for every `d>=4`.
+
+A nonzero `p_d` identifies genuinely new symmetry-allowed local jet shapes that must be selected or excluded by source-backed analytic/Feynman structure; it is not a physical counterterm prescription.
 
 ## Claim locks
 
@@ -58,5 +56,4 @@ Frozen discriminator: `S5_SYMMETRY_ONLY_EXTENSION_UNIQUE_THROUGH_16` iff the S5 
 - no universal no-go theorem for causal EPRL;
 - no physical F9 promotion from surrogate/symmetry evidence alone;
 - no G8 novelty promotion before physical F9/F10 evidence;
-- regular carrier S5 covariance does not imply a unique singular distributional extension;
 - no arbitrary counterterm may be promoted to physical evidence.
