@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - "regulated/pole_cancellation_map.py"
+      - "regulated/run_with_stable_hyp2f1.py"
       - ".github/workflows/pole-cancellation-map.yml"
   workflow_dispatch:
 
@@ -28,7 +29,8 @@ jobs:
       - name: Map endpoint poles and additive cancellation
         run: |
           mkdir -p results
-          python regulated/pole_cancellation_map.py \
+          python regulated/run_with_stable_hyp2f1.py \
+            regulated/pole_cancellation_map.py \
             --gamma "${{ matrix.gamma }}" \
             --output "results/pole_cancellation_gamma_${{ matrix.gamma }}.json"
       - uses: actions/upload-artifact@v4
