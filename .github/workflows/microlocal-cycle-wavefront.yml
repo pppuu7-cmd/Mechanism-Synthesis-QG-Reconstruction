@@ -1,0 +1,47 @@
+name: Iter029 Microlocal Cycle Wavefront Audit
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "regulated/microlocal_cycle_wavefront_audit.py"
+      - ".github/workflows/microlocal-cycle-wavefront.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  wavefront-audit:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { n: 3, mode: complete }
+          - { n: 4, mode: complete }
+          - { n: 5, mode: complete }
+          - { n: 3, mode: tree }
+          - { n: 4, mode: tree }
+          - { n: 5, mode: tree }
+          - { n: 5, mode: source-sectors }
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q 'sympy==1.13.3'
+      - name: Exact conormal dependence audit
+        run: |
+          mkdir -p results
+          python regulated/microlocal_cycle_wavefront_audit.py \
+            --n "${{ matrix.n }}" \
+            --mode "${{ matrix.mode }}" \
+            --output "results/iter029_n${{ matrix.n }}_${{ matrix.mode }}.json"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter029-n${{ matrix.n }}-${{ matrix.mode }}
+          path: results/
+          if-no-files-found: error
+          retention-days: 30
