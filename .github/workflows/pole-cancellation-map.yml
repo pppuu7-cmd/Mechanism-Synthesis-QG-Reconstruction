@@ -1,0 +1,40 @@
+name: Toller Pole Cancellation Map
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "regulated/pole_cancellation_map.py"
+      - ".github/workflows/pole-cancellation-map.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  pole-map:
+    strategy:
+      fail-fast: false
+      matrix:
+        gamma: ['0.2','0.5','1.2','2.0']
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q mpmath sympy
+      - name: Map endpoint poles and additive cancellation
+        run: |
+          mkdir -p results
+          python regulated/pole_cancellation_map.py \
+            --gamma "${{ matrix.gamma }}" \
+            --output "results/pole_cancellation_gamma_${{ matrix.gamma }}.json"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pole-map-gamma-${{ matrix.gamma }}
+          path: results/
+          if-no-files-found: error
+          retention-days: 30
