@@ -1,0 +1,40 @@
+name: Iter044 K3 Joint Spectral Cycle Minus-Sign Repair
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/iter044-k3-joint-spectral-cycle-minus-repair.yml'
+  workflow_dispatch:
+
+jobs:
+  k3-joint-spectral-minus:
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      max-parallel: 6
+      matrix:
+        gamma: ['0.2','1.2','2.0']
+        epsilon: ['0.05','0.2']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q 'sympy==1.14.0'
+      - name: Audit repaired -++ K3 common spectral cycle
+        env:
+          GAMMA: ${{ matrix.gamma }}
+          EPSILON: ${{ matrix.epsilon }}
+        run: |
+          mkdir -p results
+          python distributional/k3_joint_spectral_cycle_audit.py \
+            --gamma "$GAMMA" --epsilon "$EPSILON" --signs=-++ \
+            --output "results/iter044_repair_g${GAMMA}_e${EPSILON}_smpp.json"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter044-repair-g${{ matrix.gamma }}-e${{ matrix.epsilon }}-s-pp
+          path: results/
+          if-no-files-found: error
+          retention-days: 30
