@@ -1,0 +1,44 @@
+name: Iter045A K3 Finite-Part Coordinate Covariance
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'distributional/k3_cycle_finite_part_covariance.py'
+      - 'status/ITERATION_045.md'
+      - '.github/workflows/iter045a-cycle-finite-part-covariance.yml'
+  workflow_dispatch:
+
+jobs:
+  covariance:
+    strategy:
+      fail-fast: false
+      max-parallel: 12
+      matrix:
+        gamma: ['0.35','0.9','1.7']
+        epsilon: ['0.03','0.11']
+        signs: ['+++','++-','+-+','-++']
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q 'sympy==1.14.0'
+      - name: Exact cycle-coordinate covariance gate
+        env:
+          GAMMA: ${{ matrix.gamma }}
+          EPSILON: ${{ matrix.epsilon }}
+          SIGNS: ${{ matrix.signs }}
+        run: |
+          mkdir -p results
+          safe_signs=$(printf '%s' "$SIGNS" | tr '+' 'p' | tr '-' 'm')
+          python distributional/k3_cycle_finite_part_covariance.py \
+            --mode covariance --gamma "$GAMMA" --epsilon "$EPSILON" \
+            --signs="$SIGNS" --k1 '0.23' --k2='-0.47' \
+            --output "results/iter045A_g${GAMMA}_e${EPSILON}_s${safe_signs}.json"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter045A-g${{ matrix.gamma }}-e${{ matrix.epsilon }}-s${{ matrix.signs }}
+          path: results/
+          if-no-files-found: error

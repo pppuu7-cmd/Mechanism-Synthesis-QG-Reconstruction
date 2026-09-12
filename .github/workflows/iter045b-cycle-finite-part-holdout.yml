@@ -1,0 +1,44 @@
+name: Iter045B K3 Finite-Part Kinematic Holdout
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'distributional/k3_cycle_finite_part_covariance.py'
+      - 'status/ITERATION_045.md'
+      - '.github/workflows/iter045b-cycle-finite-part-holdout.yml'
+  workflow_dispatch:
+
+jobs:
+  holdout:
+    strategy:
+      fail-fast: false
+      max-parallel: 8
+      matrix:
+        gamma: ['0.55','1.35']
+        signs: ['+++','++-','+-+','-++']
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q 'sympy==1.14.0'
+      - name: Independent kinematic holdout at two frozen epsilons
+        env:
+          GAMMA: ${{ matrix.gamma }}
+          SIGNS: ${{ matrix.signs }}
+        run: |
+          mkdir -p results
+          safe_signs=$(printf '%s' "$SIGNS" | tr '+' 'p' | tr '-' 'm')
+          for EPSILON in 0.04 0.13; do
+            python distributional/k3_cycle_finite_part_covariance.py \
+              --mode covariance --gamma "$GAMMA" --epsilon "$EPSILON" \
+              --signs="$SIGNS" --k1='-0.41' --k2 '0.58' \
+              --output "results/iter045B_g${GAMMA}_e${EPSILON}_s${safe_signs}.json"
+          done
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter045B-g${{ matrix.gamma }}-s${{ matrix.signs }}
+          path: results/
+          if-no-files-found: error

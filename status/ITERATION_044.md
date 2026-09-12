@@ -33,4 +33,26 @@ For gamma in {0.2,1.2,2.0}, epsilon in {0.05,0.2}, representative sign sectors {
 4. EPRL/no-contact control `F=1` must have no polynomial quotient and asymptotic degree -3.
 5. No conclusion about physical vertex divergence, finiteness, G3, F9 or G8 is allowed. A positive obstruction means only that the naive joint K3 spectral integral still requires a correlated Feynman/extension prescription along the cycle direction.
 
-Thresholds and interpretation are frozen before viewing Iter044 results.
+Thresholds and interpretation were frozen before viewing Iter044 results.
+
+## Terminal authority
+- production commit: `7eba66613dc67a5fde15806caea022c07c72a609`
+- production run: `34697936208`
+- repair commit: `70d33090defea6701423ebdbcb5cf1f8e0a3a8be`
+- repaired `-++` run: `34700764999`
+
+The production run contained 24 frozen physics lanes. Eighteen completed scientifically. The six `-++` lanes failed only because the leading minus sign was parsed by the command line as an option. The dedicated repair workflow changed only argument transport (`--signs=-++`) and re-ran exactly those six frozen lanes; all six completed successfully. This is an infrastructure repair, not a changed scientific criterion.
+
+## Terminal result
+All 24 frozen lanes satisfy the exact scientific gates. The source numerator has degree 6, the denominator degree 3, and the polynomial quotient degree 3. In every frozen lane the highest nonzero even quotient power is 2, hence a symmetric real cutoff has predicted `R^3` growth. The EPRL/no-contact control has zero polynomial quotient and asymptotic degree -3.
+
+Representative repaired lane `(gamma,epsilon,signs)=(1.2,0.05,-++)`:
+- `t^3`: `-4.40565509888492869`
+- `t^2`: `-14.8030011322533604 - 0.220282754944246435 i`
+- exact reconstruction relative error: `0`
+- classification: `JOINT_K3_COMMON_CYCLE_SPECTRAL_OBSTRUCTION`
+
+## Scientific classification
+**NEGATIVE RESULT / OPEN EXTENSION PROBLEM.** Jointly retaining the published finite spectral `i epsilon` antecedent does not by itself remove the redundant K3 common-cycle polynomial sector. This is stronger than the separate-wedge contact-product diagnosis because it is obtained before multiplying boundary-supported distributions.
+
+It is not a physical causal-vertex divergence theorem, does not select a finite part/counterterm, and does not promote G3, F9, or G8. The next admissible gate is to test whether a correlated finite-part/Feynman extension is invariant under equivalent choices of redundant cycle coordinate and has a controlled epsilon->0 limit.
