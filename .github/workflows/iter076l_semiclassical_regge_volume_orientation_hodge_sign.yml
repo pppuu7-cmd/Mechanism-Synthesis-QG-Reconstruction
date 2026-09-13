@@ -1,0 +1,51 @@
+name: Iter076L semiclassical Regge volume orientation Hodge sign
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/iter076l_semiclassical_regge_volume_orientation_hodge_sign.yml'
+      - 'distributional/iter076l_semiclassical_regge_volume_orientation_hodge_sign.py'
+      - 'prereg/ITER076L_SEMICLASSICAL_REGGE_VOLUME_ORIENTATION_HODGE_SIGN.md'
+      - 'sources/CAUSAL_SPINFOAM_VERTEX_2026_REGGE_ORIENTATION_SUPPLEMENT.md'
+
+jobs:
+  lane:
+    strategy:
+      fail-fast: false
+      matrix:
+        lane: [A, B, C, D]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - run: |
+          mkdir -p out
+          python distributional/iter076l_semiclassical_regge_volume_orientation_hodge_sign.py --lane ${{ matrix.lane }} --output out/iter076l_${{ matrix.lane }}.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter076l-${{ matrix.lane }}
+          path: out/iter076l_${{ matrix.lane }}.json
+          if-no-files-found: error
+  aggregate:
+    needs: lane
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: iter076l-*
+          path: downloaded
+      - run: |
+          mkdir -p out
+          python distributional/iter076l_semiclassical_regge_volume_orientation_hodge_sign.py --aggregate-dir downloaded --output out/iter076l_aggregate.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter076l-aggregate
+          path: out/iter076l_aggregate.json
+          if-no-files-found: error
