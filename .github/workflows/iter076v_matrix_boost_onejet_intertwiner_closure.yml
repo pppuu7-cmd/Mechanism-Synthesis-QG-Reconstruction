@@ -1,0 +1,66 @@
+name: Iter076V matrix boost one-jet intertwiner closure
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/iter076v_matrix_boost_onejet_intertwiner_closure.yml'
+      - 'distributional/iter076v_matrix_boost_onejet_intertwiner_closure.py'
+      - 'prereg/ITER076V_MATRIX_BOOST_ONEJET_INTERTWINER_CLOSURE.md'
+      - 'sources/GAMMA_SIMPLE_TOLLER_MATRIX_ONEJET_INTERTWINER_SUPPLEMENT.md'
+
+jobs:
+  audit:
+    strategy:
+      fail-fast: false
+      matrix:
+        lane: [A, B, C, D]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install exact algebra dependency
+        run: python -m pip install 'sympy==1.13.3'
+      - name: Run frozen lane ${{ matrix.lane }}
+        env:
+          PYTHONPATH: .
+        run: |
+          mkdir -p out
+          python distributional/iter076v_matrix_boost_onejet_intertwiner_closure.py --lane '${{ matrix.lane }}' --output 'out/iter076v_${{ matrix.lane }}.json'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter076v-${{ matrix.lane }}
+          path: out/iter076v_${{ matrix.lane }}.json
+          if-no-files-found: error
+
+  aggregate:
+    needs: audit
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install exact algebra dependency
+        run: python -m pip install 'sympy==1.13.3'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: iter076v-*
+          path: downloaded
+          merge-multiple: false
+      - name: Frozen aggregate
+        env:
+          PYTHONPATH: .
+        run: |
+          mkdir -p out
+          python distributional/iter076v_matrix_boost_onejet_intertwiner_closure.py --aggregate-dir downloaded --output out/iter076v_aggregate.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter076v-aggregate
+          path: out/iter076v_aggregate.json
+          if-no-files-found: error
