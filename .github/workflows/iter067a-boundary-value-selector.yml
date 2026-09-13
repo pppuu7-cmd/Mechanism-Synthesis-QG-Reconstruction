@@ -1,0 +1,58 @@
+name: Iter067A Boundary Value Selector Qualification
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/iter067a-boundary-value-selector.yml'
+  workflow_dispatch:
+
+jobs:
+  audit:
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        candidate:
+          - BCG2026_PHYSICAL_PRESCRIPTION
+          - HORMANDER_ANALYTIC_BOUNDARY_VALUE
+          - HORMANDER_WAVEFRONT_PRODUCT
+          - BRUNETTI_FREDENHAGEN_EXTENSION
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Audit frozen theorem route
+        run: |
+          mkdir -p out
+          python analysis/iter067a_boundary_value_selector_audit.py \
+            --matrix data/iter067a_boundary_value_selector_matrix.json \
+            --candidate '${{ matrix.candidate }}' \
+            --out 'out/${{ matrix.candidate }}.json'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter067a-${{ matrix.candidate }}
+          path: out/${{ matrix.candidate }}.json
+          if-no-files-found: error
+
+  aggregate:
+    needs: audit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: iter067a-*
+          path: raw
+          merge-multiple: true
+      - name: Frozen aggregate classification
+        run: |
+          mkdir -p out
+          python analysis/iter067a_boundary_value_selector_audit.py \
+            --matrix data/iter067a_boundary_value_selector_matrix.json \
+            --input-dir raw \
+            --out out/iter067a-aggregate.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter067a-aggregate
+          path: out/iter067a-aggregate.json
+          if-no-files-found: error
