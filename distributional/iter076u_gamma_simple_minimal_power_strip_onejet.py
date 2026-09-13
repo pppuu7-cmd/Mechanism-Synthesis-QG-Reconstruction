@@ -66,7 +66,8 @@ def lane_a():
         "a_minus": "a_- = j - m + 1" in text,
         "scope_j_positive": "`j` is a positive half-integer" in text,
         "scope_gamma_nonzero": "real `gamma != 0`" in text,
-        "physical_factorization_firewall": "not asserted to be the unique physical singular/contact factorization" in text,
+        # Control-only provenance check: allow Markdown emphasis around "not".
+        "physical_factorization_firewall": "asserted to be the unique physical singular/contact factorization" in text and "It is **not**" in text,
         "kak_tangent_firewall": "KAK coordinates are singular at the identity" in text,
     }
     valid = all(locks.values())
