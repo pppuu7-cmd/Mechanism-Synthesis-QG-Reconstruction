@@ -1,0 +1,51 @@
+name: Iter076O exact Toller off-saddle Omega support
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/iter076o_exact_toller_off_saddle_omega_support.yml'
+      - 'distributional/iter076o_exact_toller_off_saddle_omega_support.py'
+      - 'prereg/ITER076O_EXACT_TOLLER_OFF_SADDLE_OMEGA_SUPPORT.md'
+      - 'sources/CAUSAL_SPINFOAM_VERTEX_2026_OFF_SADDLE_TOLLER_SUPPORT_SNAPSHOT.md'
+
+jobs:
+  lane:
+    strategy:
+      fail-fast: false
+      matrix:
+        lane: [A, B, C, D]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - run: |
+          mkdir -p out
+          python distributional/iter076o_exact_toller_off_saddle_omega_support.py --lane ${{ matrix.lane }} --output out/iter076o_${{ matrix.lane }}.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter076o-${{ matrix.lane }}
+          path: out/iter076o_${{ matrix.lane }}.json
+          if-no-files-found: error
+  aggregate:
+    needs: lane
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: iter076o-*
+          path: downloaded
+      - run: |
+          mkdir -p out
+          python distributional/iter076o_exact_toller_off_saddle_omega_support.py --aggregate-dir downloaded --output out/iter076o_aggregate.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter076o-aggregate
+          path: out/iter076o_aggregate.json
+          if-no-files-found: error
