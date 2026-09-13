@@ -1,0 +1,53 @@
+name: Iter064A Direct Pointwise EPRL Control
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/iter064a-direct-pointwise-eprl-control.yml'
+  workflow_dispatch:
+
+jobs:
+  lane:
+    strategy:
+      fail-fast: false
+      max-parallel: 6
+      matrix:
+        gamma: ['0.4','1.2']
+        seed: [1701,1702,1703]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install numerical dependencies
+        run: python -m pip install --disable-pip-version-check numpy mpmath
+      - name: Run frozen direct pointwise carrier lane
+        run: python vertex/direct_causal_integrand_smoke.py --gamma '${{ matrix.gamma }}' --seed '${{ matrix.seed }}' --output 'iter064a_g${{ matrix.gamma }}_s${{ matrix.seed }}.json'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter064a-g${{ matrix.gamma }}-s${{ matrix.seed }}
+          path: iter064a_g${{ matrix.gamma }}_s${{ matrix.seed }}.json
+
+  aggregate:
+    needs: lane
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: iter064a-*
+          path: lanes
+      - name: Frozen aggregate classification
+        run: python scripts/iter064a_direct_pointwise_aggregate.py
+      - name: Record provenance
+        run: |
+          printf 'head_sha=%s\nrun_id=%s\nprereg_commit=%s\nsource_snapshot_commit=%s\n' "$GITHUB_SHA" "$GITHUB_RUN_ID" '3f3c8fa03ab5d35e2a70784924502eb653894bf5' '7df82d28dd6426aa7aaac353a1e0abf795e6fdee' > iter064a_provenance.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter064a-aggregate
+          path: |
+            iter064a_aggregate.json
+            iter064a_provenance.txt
