@@ -1,0 +1,54 @@
+{
+  "gate": "ITER067A_JOINT_BOUNDARY_VALUE_MICROLOCAL_SELECTOR_QUALIFICATION",
+  "frozen_prereg_commit": "dd3c05d334271d986c427d26a632db01d804efea",
+  "candidates": [
+    {
+      "candidate": "BCG2026_PHYSICAL_PRESCRIPTION",
+      "source": "https://arxiv.org/abs/2601.23162",
+      "source_version": "v1 / 2026-01-30",
+      "checks": {
+        "Q1_JOINT_PHYSICAL_FAMILY": false,
+        "Q2_CHECKABLE_EXISTENCE_HYPOTHESES": false,
+        "Q3_UNIQUE_SOURCE_SELECTOR": false,
+        "Q4_DISTRIBUTIONAL_EPRL_BRIDGE": false
+      },
+      "evidence": "BCG2026 defines the physical finite spectral i-epsilon Toller functions, direct fixed-causal vertex, and pointwise T+ + T- = D / independent-wedge EPRL relation. It does not establish a correlated K5 distributional epsilon-to-zero boundary-value theorem, the needed joint holomorphy/growth or wavefront hypotheses, or uniqueness at the singular K5 extension locus."
+    },
+    {
+      "candidate": "HORMANDER_ANALYTIC_BOUNDARY_VALUE",
+      "source": "Hörmander, Analysis of Linear Partial Differential Operators I, Sec. 8.4 / Thm. 8.4.15; modern restatement in Strohmaier-Witten 2024 Appendix B",
+      "source_version": "boundary values of holomorphic functions / analytic wavefront characterization",
+      "checks": {
+        "Q1_JOINT_PHYSICAL_FAMILY": false,
+        "Q2_CHECKABLE_EXISTENCE_HYPOTHESES": true,
+        "Q3_UNIQUE_SOURCE_SELECTOR": true,
+        "Q4_DISTRIBUTIONAL_EPRL_BRIDGE": false
+      },
+      "evidence": "The theorem route supplies checkable tube/holomorphy and growth-style hypotheses under which a distributional boundary value is well defined and controls analytic wavefront directions. Conditional uniqueness is useful, but MSQGR has not proved that the physical ten-wedge Toller finite-i-epsilon K5 family is one jointly holomorphic function in an admissible common tube with the required growth, nor that Eq.(5)/(6) passes through that joint boundary value."
+    },
+    {
+      "candidate": "HORMANDER_WAVEFRONT_PRODUCT",
+      "source": "Hörmander wavefront product criterion; standard microlocal distribution theory",
+      "source_version": "WF(u) intersection WF(v)^opposite empty implies unique product/pullback",
+      "checks": {
+        "Q1_JOINT_PHYSICAL_FAMILY": false,
+        "Q2_CHECKABLE_EXISTENCE_HYPOTHESES": true,
+        "Q3_UNIQUE_SOURCE_SELECTOR": true,
+        "Q4_DISTRIBUTIONAL_EPRL_BRIDGE": false
+      },
+      "evidence": "The wavefront criterion gives a canonical product when opposing covectors do not collide, hence a genuine uniqueness route without fitted counterterms on its domain. MSQGR does not yet possess the wavefront sets of the physical Toller branch distributions on the correlated K5 collision arrangement, so the criterion cannot presently be verified; distributional Eq.(5)/(6) inheritance is likewise unproved."
+    },
+    {
+      "candidate": "BRUNETTI_FREDENHAGEN_EXTENSION",
+      "source": "https://arxiv.org/abs/math-ph/9903028",
+      "source_version": "Commun. Math. Phys. 208 (2000) 623-661",
+      "checks": {
+        "Q1_JOINT_PHYSICAL_FAMILY": false,
+        "Q2_CHECKABLE_EXISTENCE_HYPOTHESES": true,
+        "Q3_UNIQUE_SOURCE_SELECTOR": false,
+        "Q4_DISTRIBUTIONAL_EPRL_BRIDGE": false
+      },
+      "evidence": "Microlocal/scaling-degree extension theory supplies checkable extension hypotheses and localizes renormalization freedom. In the divergent-extension regime relevant to the existing K5 collision budget, it does not by itself select a unique physical extension; local extension freedom remains unless extra physical conditions fix it. No Toller/EPRL-specific bridge is supplied."
+    }
+  ]
+}
