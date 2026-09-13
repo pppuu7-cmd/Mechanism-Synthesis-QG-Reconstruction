@@ -28,7 +28,7 @@ jobs:
           mkdir -p results
           safe_sigma=$(echo '${{ matrix.sigma }}' | tr '+' 'p' | tr '-' 'm')
           safe_c=$(echo '${{ matrix.convention }}' | tr '+' 'p' | tr '-' 'm')
-          python distributional/iter068d_s4_skeleton_covariance.py \
+          PYTHONPATH=. python distributional/iter068d_s4_skeleton_covariance.py \
             --sigma '${{ matrix.sigma }}' --convention '${{ matrix.convention }}' \
             --output "results/iter068d_${safe_sigma}_${safe_c}.json"
       - uses: actions/upload-artifact@v4
