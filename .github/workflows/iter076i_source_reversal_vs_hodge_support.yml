@@ -1,0 +1,50 @@
+name: Iter076I source reversal vs Hodge support
+
+on:
+  workflow_dispatch:
+
+jobs:
+  lane:
+    strategy:
+      fail-fast: false
+      matrix:
+        lane: [A, B, C, D]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run frozen lane
+        run: |
+          mkdir -p out
+          python distributional/iter076i_source_reversal_vs_hodge_support.py --lane ${{ matrix.lane }} --output out/iter076i_${{ matrix.lane }}.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter076i-${{ matrix.lane }}
+          path: out/iter076i_${{ matrix.lane }}.json
+          if-no-files-found: error
+
+  aggregate:
+    needs: lane
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: iter076i-*
+          path: downloaded
+          merge-multiple: false
+      - name: Frozen aggregate
+        run: |
+          mkdir -p out
+          python distributional/iter076i_source_reversal_vs_hodge_support.py --aggregate-dir downloaded --output out/iter076i_aggregate.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter076i-aggregate
+          path: out/iter076i_aggregate.json
+          if-no-files-found: error
