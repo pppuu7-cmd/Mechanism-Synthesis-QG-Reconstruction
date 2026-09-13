@@ -1,0 +1,42 @@
+name: Iter078M critic internal-edge gauge symmetry
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'prereg/ITER078M_CRITIC_INTERNAL_EDGE_GAUGE_SYMMETRY.md'
+      - 'distributional/iter078m_critic_internal_edge_gauge.py'
+      - '.github/workflows/iter078m_critic_internal_edge_gauge.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    name: Iter078M critic lane ${{ matrix.lane }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        lane: [A, B, C, L, W, U]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run exact gauge-null control
+        env:
+          PYTHONPATH: .
+        run: |
+          mkdir -p out
+          python distributional/iter078m_critic_internal_edge_gauge.py \
+            --lane '${{ matrix.lane }}' \
+            --output 'out/iter078m_critic_${{ matrix.lane }}.json'
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter078m-critic-${{ matrix.lane }}
+          path: out/iter078m_critic_${{ matrix.lane }}.json
+          if-no-files-found: error
