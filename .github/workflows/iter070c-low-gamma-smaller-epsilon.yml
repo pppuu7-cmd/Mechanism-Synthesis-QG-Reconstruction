@@ -1,0 +1,67 @@
+name: Iter070C Low-Gamma Smaller-Epsilon Extension
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'distributional/iter070c_low_gamma_smaller_epsilon.py'
+      - 'status/ITERATION_070C_PREREG.md'
+      - '.github/workflows/iter070c-low-gamma-smaller-epsilon.yml'
+  workflow_dispatch:
+
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --upgrade pip mpmath
+      - name: Run frozen smaller-epsilon low-gamma lane
+        run: |
+          PYTHONPATH=. python distributional/iter070c_low_gamma_smaller_epsilon.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter070c-raw
+          path: results/iter070c.json
+          if-no-files-found: error
+          retention-days: 90
+
+  aggregate:
+    runs-on: ubuntu-24.04
+    needs: [audit]
+    if: always()
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: iter070c-raw
+          path: gathered
+      - name: Frozen aggregate
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('gathered/iter070c.json')
+          row=json.loads(p.read_text(encoding='utf-8')) if p.exists() else {}
+          target='ITER070C_LOW_GAMMA_PREPULLBACK_SMALLER_EPS_CONVERGENCE_SUPPORTED'
+          valid=bool(row.get('valid')) and row.get('classification')==target
+          out={'gate':'ITER070C_LOW_GAMMA_PREPULLBACK_SMALLER_EPSILON',
+               'frozen_prereg_commit':'5d8f184f4c8b52a936bdf88b188b0f070e8e0c6f',
+               'raw_valid':bool(row.get('valid')),'predicates':row.get('predicates',{}),
+               'classification':target if valid else row.get('classification','ITER070C_LOW_GAMMA_PREPULLBACK_CONVERGENCE_REVIEW'),
+               'scope_lock':'Additional pre-pullback evidence only; Iter068C remains terminal and no correlated K4/K5 boundary-value identity is proved.'}
+          Path('aggregate').mkdir(exist_ok=True)
+          Path('aggregate/iter070c-aggregate.json').write_text(json.dumps(out,indent=2,sort_keys=True),encoding='utf-8')
+          print(json.dumps(out,indent=2,sort_keys=True))
+          if not row.get('valid'): raise SystemExit(9)
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter070c-aggregate
+          path: aggregate/iter070c-aggregate.json
+          if-no-files-found: error
+          retention-days: 90
