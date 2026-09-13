@@ -1,0 +1,26 @@
+name: Iter075E exact Appendix-D branchflip identity
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - '.github/workflows/iter075e-appendixd-branchflip-exact.yml'
+  workflow_dispatch:
+
+jobs:
+  exact-certificate:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --disable-pip-version-check sympy
+      - name: Run frozen exact certificate
+        run: python distributional/iter075e_appendixd_branchflip_exact.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter075e-exact-branchflip
+          path: iter075e_appendixd_branchflip_exact.json
+          if-no-files-found: error
+          retention-days: 90
