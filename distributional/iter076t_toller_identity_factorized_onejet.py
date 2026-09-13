@@ -34,7 +34,9 @@ def d_expr():
 
 
 def exact_zero(expr) -> bool:
-    return sp.simplify(sp.trigsimp(expr)) == 0
+    # Canonicalize trigonometric identities through exponentials before simplify.
+    # This is an implementation-only normalization; no frozen predicate changes.
+    return sp.simplify(expr.rewrite(sp.exp)) == 0
 
 
 def lane_a():
