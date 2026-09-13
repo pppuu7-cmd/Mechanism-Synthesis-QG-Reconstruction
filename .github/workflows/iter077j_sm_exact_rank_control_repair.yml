@@ -1,0 +1,102 @@
+name: Iter077J-SM exact rank control repair
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'prereg/ITER077J_SM_EXACT_RANK_CONTROL_ONLY_REPAIR.md'
+      - 'distributional/iter077j_sm_exact_rank_control_repair.py'
+      - '.github/workflows/iter077j_sm_exact_rank_control_repair.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  exact:
+    name: Exact repair ${{ matrix.lane }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        lane: [Bx, Cx]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run exact Gaussian-field lane
+        env:
+          PYTHONPATH: .
+        run: |
+          mkdir -p out
+          python distributional/iter077j_sm_exact_rank_control_repair.py \
+            --lane '${{ matrix.lane }}' \
+            --output 'out/iter077j_repair_${{ matrix.lane }}.json'
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter077j-repair-${{ matrix.lane }}
+          path: out/iter077j_repair_${{ matrix.lane }}.json
+          if-no-files-found: error
+
+  dprime:
+    name: Relabel prime ${{ matrix.prime }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        prime: [1000000007, 1000000087, 1000000103, 1000000123]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run frozen relabel modular certificate
+        env:
+          PYTHONPATH: .
+        run: |
+          mkdir -p out
+          python distributional/iter077j_sm_exact_rank_control_repair.py \
+            --lane Dx \
+            --prime '${{ matrix.prime }}' \
+            --output 'out/iter077j_repair_Dx_${{ matrix.prime }}.json'
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter077j-repair-Dx-${{ matrix.prime }}
+          path: out/iter077j_repair_Dx_${{ matrix.prime }}.json
+          if-no-files-found: error
+
+  aggregate:
+    name: Aggregate Iter077J exact repair
+    needs: [exact, dprime]
+    if: always()
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: iter077j-repair-*
+          path: downloaded
+          merge-multiple: false
+      - name: Aggregate frozen repair
+        env:
+          PYTHONPATH: .
+        run: |
+          mkdir -p out
+          python distributional/iter077j_sm_exact_rank_control_repair.py \
+            --aggregate-dir downloaded \
+            --output out/iter077j_repair_aggregate.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter077j-repair-aggregate
+          path: out/iter077j_repair_aggregate.json
+          if-no-files-found: error
