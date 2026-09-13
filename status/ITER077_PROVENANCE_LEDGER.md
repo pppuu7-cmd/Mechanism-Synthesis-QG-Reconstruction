@@ -72,7 +72,7 @@ Stable frozen label: `Iter077C-SM`.
 - verdict: PASS
 - classification: `ITER077C_SM_SOURCE_COLLISION_RANK9_EXCEPTIONAL_STRATUM_TRANSVERSE_CODIM3_EXACT_SCOPED`
 
-Scientific scope: exact first rank-deficient source geometry at the common collision. Rank deficiency is a vector self-stress/equilibrium condition. The frozen first full-span rank-9 witness `xxxxxyyyzz` has a one-dimensional self-stress, three-dimensional right kernel, and a `3 x 20` structured normal-variation map of exact rank 3 with a nonzero minor `-1`; locally this tested rank-9 stratum is transverse codimension 3 in the 20-dimensional normal manifold. This does not establish that every exceptional stratum is codimension 3 or that the source contact pullback is harmless.
+Scientific scope: exact first rank-deficient source geometry at the common collision. The frozen first full-span rank-9 witness `xxxxxyyyzz` has a one-dimensional self-stress, three-dimensional right kernel and a `3 x 20` structured normal-variation map of exact rank 3. Locally this tested rank-9 stratum is transverse codimension 3 in the 20-dimensional normal manifold.
 
 ### `Iter077D-SM` — rank-9 true-source mixed second jet
 
@@ -91,7 +91,46 @@ Stable frozen label: `Iter077D-SM`.
 - verdict: PASS
 - classification: `ITER077D_SM_RANK9_TRUE_B_MAP_MIXED_SECOND_JET_NONDEGENERATE_6D_EXACT_SCOPED`
 
-Scientific scope: exact source Eq. (32) second jet at the frozen rank-9 witness. The group-only Hessian on `ker dB` has rank 2 and inertia `(+,-,0)`, but the frozen normal/group mixed block has rank 3 and determinant 1. The full six-dimensional Hessian is nondegenerate with determinant `-1` and inertia `(3+,3-)`. This closes the local nonlinear normal-form question for this witness only; exceptional-stratum distribution pullback remains a separate gate.
+Scientific scope: exact source Eq. (32) second jet at the frozen rank-9 witness. The full six-dimensional mixed Hessian is nondegenerate with determinant `-1` and inertia `(3+,3-)`.
+
+### `Iter077E-SM` — generic/exceptional source contact pullback split
+
+Stable frozen label: `Iter077E-SM`.
+
+- source/microlocal supplement: `sources/CAUSAL_SPINFOAM_VERTEX_2026_CONTACT_PULLBACK_MICROLOCAL_SUPPLEMENT.md`
+- source supplement commit: `c4e199a0fe6fda5341bdcc7e26478782bf384abd`
+- preregistration: `prereg/ITER077E_SM_CONTACT_WAVEFRONT_PULLBACK_CRITERION.md`
+- prereg commit: `60d3b0daaa013100dc864cf2a23b6582b54810fc`
+- implementation: `distributional/iter077e_sm_contact_wavefront_pullback_criterion.py`
+- implementation commit: `d4abfebb09ffb8fd64413c369f25287778b5ccd5`
+- workflow head: `91e38effa5008a831f99a9b6c96c2a01bbb66609`
+- authoritative run: `34785411389`
+- durable result: `results/ITER077E_SM_CONTACT_WAVEFRONT_PULLBACK_CRITERION_RESULT.md`
+- result commit: `86846b388745eb323ebf8bc4e1cc9c5614b9d3e5`
+- verdict: PASS
+- classification: `ITER077E_SM_GENERIC_SUBMERSION_PULLBACK_ALLOWED_RANK9_CONTACT_HORMANDER_CRITERION_COLLIDES_CORRELATED_BOUNDARY_VALUE_REQUIRED_EXACT_SCOPED`
+
+Scientific scope: the generic rank-10 true-source region is locally a submersion, so standard distribution pullback is authorized there. At the frozen rank-9 point, the exact nonzero self-stress covector lies simultaneously in the normal set and the wavefront fibre of the pure ten-contact point summand, so the standard termwise Hörmander criterion fails. This does not prove nonexistence of the full source-selected boundary value; it requires a correlated source-selected extension.
+
+### `Iter077F-SM` — rank-9 all-spin-half contact scaling/extension threshold
+
+Stable frozen label: `Iter077F-SM`.
+
+- source/derived scaling supplement: `sources/CAUSAL_SPINFOAM_VERTEX_2026_RANK9_CONTACT_SCALING_SUPPLEMENT.md`
+- source supplement commit: `7606b7697c80859ff300199bac21c3ea3705fd76`
+- preregistration: `prereg/ITER077F_SM_RANK9_CONTACT_SCALING_EXTENSION.md`
+- prereg commit: `5d8a7d51f0c87a50c6f94de3a8bb1ec2c7689259`
+- implementation: `distributional/iter077f_sm_rank9_contact_scaling_extension.py`
+- implementation commit: `cd95d2fba1e884e6f110a370e63381829d0981b0`
+- workflow head: `8b67eb90cf38d81ff6c63bb8e9145b6d66cb4ccf`
+- authoritative run: `34785560537`
+- aggregate artifact: `10326721126`, `sha256:b955e2ad1701cb672560b31dfda8c19c2fa3667350f46a4d17e1cf3318f7d341`
+- durable result: `results/ITER077F_SM_RANK9_CONTACT_SCALING_EXTENSION_RESULT.md`
+- result commit: `855d34e269c69261dd66410cddef6f2d9fa959f3`
+- verdict: PASS
+- classification: `ITER077F_SM_ALL_SPIN_HALF_RANK9_CONTACT_REACHES_N3_SCALING_NONUNIQUENESS_SOURCE_I_EPSILON_EXTENSION_REQUIRED_EXACT_SCOPED`
+
+Scientific scope: on the exact six-dimensional rank-9 quadratic normal form, `delta^(n)(q)` has scaling degree `2(n+1)`. The ordinary `n=0` and `n=1` channels admit unique scaling extensions; ambiguity begins at `n=2`. In the all-`j=1/2`, gamma-simple target contact product, the frozen self-stress support produces a unique highest `n_eff=3` excess derivative with coefficient proportional to `-8 gamma^3/(1+gamma^2)^3`, nonzero for finite real `gamma != 0`. Scaling alone therefore does not select its extension; the missing object is the correlated source-selected spectral-`i epsilon` extension plus full boundary contraction.
 
 ## Forward naming rule
 
@@ -101,8 +140,8 @@ From this ledger onward:
 - use suffix `-FF` for the Toller front-face algebra line;
 - use suffix `-BCH` for the source-relative BCH/K4 line;
 - do not reuse an existing bare `Iter077A` or `Iter077B` label for a new object;
-- the next source-map gate after `Iter077D-SM` is `Iter077E-SM` unless that exact stable alias is already present.
+- the next source-map gate after `Iter077F-SM` is `Iter077G-SM` unless that exact stable alias is already present.
 
 ## Claim firewall
 
-Parallel execution does not merge scientific scopes. A PASS in `-FF` or `-BCH` cannot be imported as a source-amplitude existence theorem. A PASS in `-SM` does not establish physical K4/Hodge transport unless an explicit source pushforward is constructed. No source-map transversality or second-jet result by itself establishes contact-distribution pullback, full-vertex finiteness, regulator independence, or the nominal `epsilon^-1` coefficient.
+Parallel execution does not merge scientific scopes. A PASS in `-FF` or `-BCH` cannot be imported as a source-amplitude existence theorem. A PASS in `-SM` does not establish physical K4/Hodge transport unless an explicit source pushforward is constructed. None of the source-map results A-SM through F-SM establishes the full correlated K5 boundary value, full-vertex finiteness/divergence, regulator independence, the nominal `epsilon^-1` coefficient, or G3/F9/G8/K5 promotion.
