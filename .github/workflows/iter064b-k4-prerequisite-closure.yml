@@ -1,0 +1,53 @@
+name: Iter064B K4 Prerequisite Closure
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/iter064b-k4-prerequisite-closure.yml'
+  workflow_dispatch:
+
+jobs:
+  lane:
+    strategy:
+      fail-fast: false
+      matrix:
+        lane: [source_order, basis_permutation, eprl_control, scope_lock]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run frozen prerequisite lane
+        run: python scripts/iter064b_k4_prerequisite_audit.py --lane '${{ matrix.lane }}' --output 'iter064b_${{ matrix.lane }}.json'
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter064b-${{ matrix.lane }}
+          path: iter064b_${{ matrix.lane }}.json
+          if-no-files-found: warn
+
+  aggregate:
+    needs: lane
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: iter064b-*
+          path: lanes
+      - name: Frozen aggregate classification
+        run: python scripts/iter064b_k4_prerequisite_aggregate.py
+      - name: Record provenance
+        if: always()
+        run: printf 'head_sha=%s\nrun_id=%s\nprereg_commit=%s\n' "$GITHUB_SHA" "$GITHUB_RUN_ID" '90e835e5c77290f768c6db2984441f8d30334882' > iter064b_provenance.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter064b-aggregate
+          path: |
+            iter064b_aggregate.json
+            iter064b_provenance.txt
+          if-no-files-found: warn
