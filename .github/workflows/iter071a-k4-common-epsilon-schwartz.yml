@@ -1,0 +1,100 @@
+name: Iter071A K4 Common-Epsilon Schwartz Pilot
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'distributional/iter071a_k4_common_epsilon_schwartz_qmc.py'
+      - 'status/ITERATION_071A_PREREG.md'
+      - '.github/workflows/iter071a-k4-common-epsilon-schwartz.yml'
+  workflow_dispatch:
+
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      max-parallel: 8
+      matrix:
+        tree: ['S0','S1','P0','P1']
+        sigma: ['++++','+++-','++-+','++--','+-++','+-+-','+--+','+---']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --upgrade pip numpy scipy sympy
+      - name: Run frozen common-epsilon Schwartz lane
+        run: |
+          mkdir -p results
+          safe=$(printf '%s' '${{ matrix.sigma }}' | tr '+' 'p' | tr '-' 'm')
+          PYTHONPATH=. python distributional/iter071a_k4_common_epsilon_schwartz_qmc.py \
+            --tree '${{ matrix.tree }}' --sigma '${{ matrix.sigma }}' \
+            --output "results/iter071a_${{ matrix.tree }}_${safe}.json"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter071a-${{ matrix.tree }}-${{ strategy.job-index }}
+          path: results/*.json
+          if-no-files-found: error
+          retention-days: 90
+
+  aggregate:
+    runs-on: ubuntu-24.04
+    needs: [audit]
+    if: always()
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: iter071a-*
+          path: gathered
+          merge-multiple: true
+      - name: Frozen aggregate
+        run: |
+          python - <<'PY'
+          import glob,json
+          from pathlib import Path
+          lanes=[json.load(open(f,encoding='utf-8')) for f in sorted(glob.glob('gathered/*.json'))]
+          valid=(len(lanes)==32 and all(l.get('valid') for l in lanes))
+          lane_pass=valid and all(l.get('lane_pass') for l in lanes)
+          cov=True; worst=0.0; worst_key=None
+          sigmas=sorted({l.get('sigma') for l in lanes})
+          epses=['0.2','0.1','0.05','0.025','0.0125']
+          tests=['G0','G1','G2']
+          if valid:
+            for s in sigmas:
+              block=[l for l in lanes if l['sigma']==s]
+              if len(block)!=4: cov=False; continue
+              for e in epses:
+                for t in tests:
+                  vals=[]
+                  for l in block:
+                    re,im=l['estimates'][e][t]['mean']; vals.append(complex(re,im))
+                  m=sum(vals)/len(vals)
+                  spread=max(abs(v-m) for v in vals)/max(1.0,abs(m))
+                  if spread>worst: worst=spread; worst_key=(s,e,t)
+                  cov=cov and spread<=0.08
+          else:
+            cov=False
+          if not valid: cls='ITER071A_NUMERICAL_VALIDITY_FAIL'
+          elif lane_pass and cov: cls='ITER071A_K4_COMMON_EPSILON_SCHWARTZ_ACTION_CONVERGENCE_PILOT_SUPPORTED'
+          else: cls='ITER071A_K4_COMMON_EPSILON_SCHWARTZ_ACTION_REVIEW'
+          out={'gate':'ITER071A_K4_COMMON_EPSILON_SCHWARTZ_ACTION_PILOT',
+               'frozen_prereg_commit':'dd13d17c729447d01fd262bce3d2ae5bcc06396b',
+               'job_lanes':len(lanes),'all_numerically_valid':valid,'all_lane_convergence_predicates':lane_pass,
+               'basis_covariance_pass':cov,'worst_basis_normalized_spread':worst,'worst_basis_key':worst_key,
+               'classification':cls,
+               'scope_lock':'Finite-panel reduced K4 common-epsilon Schwartz-action pilot only; no S-prime theorem, arbitrary-path independence, K5 vertex theorem, or promotion.'}
+          Path('aggregate').mkdir(exist_ok=True)
+          Path('aggregate/iter071a-aggregate.json').write_text(json.dumps(out,indent=2,sort_keys=True),encoding='utf-8')
+          print(json.dumps(out,indent=2,sort_keys=True))
+          if not valid: raise SystemExit(9)
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter071a-aggregate
+          path: aggregate/iter071a-aggregate.json
+          if-no-files-found: error
+          retention-days: 90
