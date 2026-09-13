@@ -1,0 +1,76 @@
+name: Iter077J-SM full32 leading angular span
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'prereg/ITER077J_SM_FULL32_LEADING_ANGULAR_SPAN.md'
+      - 'distributional/iter077j_sm_full32_leading_angular_span.py'
+      - 'distributional/iter077i_sm_source_ordered_jhalf_k5_l1.py'
+      - 'sources/ITER077I_SM_SOURCE_ORDERED_TOLLER_FUNCTION_K5_L1_DERIVATION.md'
+      - 'results/ITER077I_SM_SOURCE_ORDERED_JHALF_K5_L1_RESULT.md'
+      - '.github/workflows/iter077j_sm_full32_leading_angular_span.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    name: Iter077J-SM lane ${{ matrix.lane }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        lane: [A, B, C, D]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run frozen exact lane
+        env:
+          PYTHONPATH: .
+        run: |
+          mkdir -p out
+          python distributional/iter077j_sm_full32_leading_angular_span.py \
+            --lane '${{ matrix.lane }}' \
+            --output 'out/iter077j_sm_${{ matrix.lane }}.json'
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter077j-sm-${{ matrix.lane }}
+          path: out/iter077j_sm_${{ matrix.lane }}.json
+          if-no-files-found: error
+
+  aggregate:
+    name: Aggregate Iter077J-SM
+    needs: audit
+    if: always()
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: iter077j-sm-*
+          path: downloaded
+          merge-multiple: false
+      - name: Aggregate frozen exact contract
+        env:
+          PYTHONPATH: .
+        run: |
+          mkdir -p out
+          python distributional/iter077j_sm_full32_leading_angular_span.py \
+            --aggregate-dir downloaded \
+            --output out/iter077j_sm_aggregate.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter077j-sm-aggregate
+          path: out/iter077j_sm_aggregate.json
+          if-no-files-found: error
