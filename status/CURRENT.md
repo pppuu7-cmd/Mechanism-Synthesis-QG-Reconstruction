@@ -8,86 +8,110 @@
 - G3 quantum dynamics: `OPEN`
 - G8 novelty: `BLOCKED_CONVERGENCE_ONLY`
 - K5 distributional/vertex extension: `BLOCKED_CORRELATED_EXTENSION_OBJECT_MISSING`
-- DSIR handoff-contract completeness V1: `100%` (interface completeness only, not physical-gate completion)
-- **Authoritative active front:** `FULL_SOURCE_CAUSAL_VERTEX_LOCAL_LIMIT / TRUE_SOURCE_B_MAP_EXCEPTIONAL_CONTACT_PULLBACK / FULL_BOUNDARY_CONTRACTION / REGULATOR_INDEPENDENCE`
+- **Authoritative active front:** `FULL_SOURCE_CAUSAL_VERTEX_LOCAL_LIMIT / SOURCE_ORDERING_OF_TOLLER_WEDGE_INTEGRATION_VS_K5_PRODUCT / FULL_BOUNDARY_CONTRACTION / REGULATOR_INDEPENDENCE`
 - Conditional companion fronts: `TOLLER_FRONT_FACE_ALGEBRA (-FF) / SOURCE_BCH_K4_COORDINATE_CONTROL (-BCH)`.
 
-Durable result notes remain authoritative for all closed earlier iterations. Naming/provenance collisions in the parallel Iter077 campaign are governed by `status/ITER077_PROVENANCE_LEDGER.md` and `status/ITER077_NUMBERING_AND_SCOPE_CORRECTION.md`.
+Durable results are authoritative only in their recorded scopes. Naming collisions and quarantined source locks are governed by `status/ITER077_PROVENANCE_LEDGER.md` and `status/ITER077_CONTACT_FORMULA_ERRATUM.md`.
 
-## Controlling source-map results
+## Controlling true-source chain
 
-The exact coherent-spinor source map is
+### Iter077A-SM CLOSED — generic true-source transversality
 
-`B : SL(2,C)^4 x (CP^1)^10 -> R^10`,
+Run `34784565177`.
 
-with `B(z,g)=log(<g^dagger z|g^dagger z>/<z|z>)`. It is not generically the scalar rooted K5 incidence surrogate.
+At the common group collision the exact coherent-spinor Jacobian has a rank-10 witness. Rooted scalar K5 incidence has rank 4; none of its six cycle-nullspace basis relations survives as an identity of the true witness Jacobian. Scalar K5/K4 cycle algebra is therefore conditional until a source pushforward is derived.
 
-### Iter077A-SM CLOSED — true source-map transversality
+### Iter077C-SM CLOSED — first rank-9 exceptional stratum
 
-Authoritative run `34784565177`; durable result `results/ITER077A_TRUE_SOURCE_B_MAP_TRANSVERSALITY_RESULT.md`.
+Run `34784868939`.
 
-A frozen exact wedge-spinor witness gives `rank_Q(J)=10` for the true boost Jacobian, while rooted scalar K5 incidence has rank `4`. The scalar cycle/Hodge picture is therefore only a special collinear slice and does not transfer to the source amplitude without an explicit pushforward theorem.
+Frozen witness `xxxxxyyyzz` has exact rank 9 and self-stress
 
-### Iter077C-SM CLOSED — first exceptional source stratum
+`lambda=(1,-1,0,0,1,0,0,0,0,0)`.
 
-Authoritative retry run `34784868939`; durable result `results/ITER077C_SM_SOURCE_COLLISION_EXCEPTIONAL_STRATA_RESULT.md`; result commit `5cdafc091295526f49323f38be13e01dcd553926`.
+The first tested full-span exceptional stratum is locally transverse codimension 3 in the 20-dimensional wedge-normal manifold.
 
-The frozen full-span rank-9 witness `xxxxxyyyzz` has a one-dimensional vector self-stress `lambda=(1,-1,0,0,1,0,0,0,0,0)`, a three-dimensional right kernel, and a rank-3 structured normal-variation map. This first tested rank-9 exceptional source stratum is locally codimension `3` in the wedge-normal manifold.
+### Iter077D-SM CLOSED — canonical mixed nonlinear normal form
 
-### Iter077D-SM CLOSED — nonlinear excess normal form
+Run `34785200044`; result `results/ITER077D_SM_RANK9_TRUE_B_MAP_SECOND_JET_RESULT.md`.
 
-Authoritative retry run `34785181275`; durable result `results/ITER077D_SM_NONLINEAR_EXCESS_B_JET_RESULT.md`; result commit `c9174445f22e6df74a2c41c9cb812900f8fce5de`; aggregate job `103799287885`; aggregate artifact `10326213053`; digest `sha256:5d74fbbe1fd149bf82780510161d65d435cf9f5f4afdaf547bf4ea79b995dd9c`.
+The full mixed six-dimensional second jet is nondegenerate with determinant `-1` and inertia `(3+,3-)`. The older fixed-normal/group-only D sibling is provenance-labelled `Iter077D-FN` and is not the full normal form.
 
-The initial run `34785141237` is infrastructure-only/non-authoritative for terminal classification: all four scientific lanes completed successfully, but the aggregate lacked SymPy. Control-only repair commit `79fd7ccabd41adc0b039994855da919645881a40` changed no frozen science.
+### Contact-formula correction
 
-For `Phi=B_01-B_02+B_12` on the frozen right kernel:
+Historical source-dependent `Iter077E-SM` microlocal and `Iter077F-SM` scaling runs are `NON_AUTHORITATIVE_SOURCE_LOCK_INVALID`: they transcribed Appendix-D Eq. (37) incorrectly. The controlling erratum is `status/ITER077_CONTACT_FORMULA_ERRATUM.md`.
 
-- quadratic Hessian rank `2`;
-- inertia `(1 positive, 1 negative, 1 zero)`;
-- `a=c` is an exact flat plane, `Phi=0` identically;
-- the distinct quadratic-isotropic branch `a=0` is generically lifted first at quartic order with coefficient `b^2 c^2/3`.
+The corrected primary-source `j=1/2` contact is
 
-Frozen classification:
+`delta^(rho,1/2)(x)=-(2 i rho/D) delta(x)-(1/D) delta'(x)`,
 
-`ITER077D_SM_RANK9_EXCESS_CONSTRAINT_HAS_INDEFINITE_RANK2_QUADRATIC_JET_EXACT_DIAGONAL_FLAT_PLANE_AND_QUARTIC_LIFTED_SECOND_ISOTROPIC_BRANCH_EXACT_SCOPED`.
+`D=rho^2+1/4`.
 
-### Iter077E-SM CLOSED — source contact pullback blocker
+### Iter077G-SM CLOSED — corrected contact microlocal/scaling gate
 
-Authoritative run `34785349590`; production head `b8813c11db038f76cee2dac06dba9d2f5879e75b`; durable result `results/ITER077E_SM_SOURCE_CONTACT_PULLBACK_SCALING_RESULT.md`; result commit `4b7e5769bbbfb155f8fd9babac912a62d8925183`.
+Run `34785754577`; result commit `5c3af58f116d508a20ab7138d46862d954399ad4`.
 
-Jobs: A `103799700694`, B `103799700807`, C `103799700655`, D `103799700692`, aggregate `103799735958`.
+Classification:
+`ITER077G_SM_CORRECTED_JHALF_CONTACT_HAS_NONZERO_RANK9_N3_SELFSTRESS_CHANNEL_SD8_SOURCE_SELECTED_CORRELATED_EXTENSION_REQUIRED_EXACT_SCOPED`.
 
-Aggregate artifact `10326700973`, digest `sha256:3df533b54542563b4234f6415fbb7abbc6747f815edb652e250095b62b14a2db`.
+For the corrected ten-contact tensor,
 
-Frozen classification:
+`P_10(t lambda)=K_gamma gamma^7 (gamma+t)^2 (gamma-t)`
 
-`ITER077E_SM_SOURCE_CONTACT_PULLBACK_BLOCKED_EXPLICIT_LOCAL_DISTRIBUTION_FORM_REQUIRED_NONMORSE_SCOPED`.
+is a nonzero cubic for finite real `gamma != 0`. The generic rank-10 region admits the standard distributional pullback; at the frozen rank-9 source point the standard termwise Hörmander criterion collides. The exact self-stress contact order is `n_eff=3`. On the canonical six-dimensional quadratic normal form its scaling degree is `8`, so scaling degree alone does not select a unique extension.
 
-Execution is valid; this is a substantive scientific `BLOCKED_OBJECT_DEFINITION`, not infrastructure failure.
+This does **not** prove nonexistence of the source-selected correlated boundary value.
 
-The frozen source snapshots establish the exact restrictor `theta(kappa B)+kappa delta^(rho,j)(B)`, the source function `B`, the spectral Feynman `i epsilon` provenance, and support at `B=0`. They do not yet freeze an explicit local scalar identity such as `delta^(rho,j)(x)=C delta(x)` or a unique scalar mollifier prescription.
+### Iter077H-SM CLOSED — finite spectral epsilon is not a termwise smoothing cure
 
-On the known non-Morse germ, the ordinary scalar Dirac pullback submersion criterion fails on the exact flat family. Auxiliary even-mollifier controls give localization exponents `epsilon^(1/2)` on a quadratic branch and `epsilon^(1/4)` on the quartically lifted branch, while the exact flat family generates no shrinking localization scale; these exponents are `REGULATOR_MODEL_CONTROL_ONLY`, not a physical causal-vertex regularization.
+Run `34785966710`; aggregate artifact `10326811897`, digest `sha256:e8dd522e9b5af081032bb6a4ee14ad6b1116c7fabf43a5f491e3909afdae4175`; result `results/ITER077H_SM_FINITE_EPSILON_CONTACT_PERSISTENCE_RESULT.md`, commit `004af0e570b4999ec849d0b75ca44d2faf9b47c2`.
 
-## Conditional parallel branches
+Classification:
+`ITER077H_SM_FINITE_SPECTRAL_EPSILON_LEAVES_NONZERO_RANK9_N3_PURE_CONTACT_SUBTERM_CORRELATED_SOURCE_ORDERING_STILL_REQUIRED_EXACT_SCOPED`.
 
-`Iter077A-FF` remains a conditional front-face algebra branch. `Iter077B-BCH` remains a coordinate-scoped BCH/K4 control. Neither can replace the source-amplitude line without an explicit pushforward theorem.
+For finite `epsilon>0`, exact `j=1/2` spectral division gives
+
+`Theta_(sigma,rho,1/2;epsilon)`
+
+`= [1+(2 i sigma rho epsilon-epsilon^2)/D] theta(sigma x)e^(-epsilon|x|)`
+
+`  + [(epsilon-2 i sigma rho)/D] delta(x) - [sigma/D] delta'(x)`.
+
+The delta-prime coefficient is epsilon-independent and nonzero. At frozen `gamma=6/5`, `epsilon=1/7`, all `1024/1024` wedge-sign assignments retain a nonzero degree-3 pure-contact self-stress coefficient. Therefore simply keeping spectral epsilon finite does not legalize the termwise spinor-contact K5 pullback.
+
+## Important source-ordering fact
+
+The primary causal-vertex construction defines each Toller matrix by the spectral Feynman prescription and uses the product of ten Toller matrices in the vertex. The primary papers also describe Toller matrices as polynomially bounded **functions** on `SL(2,C)` and give closed reduced hypergeometric forms after the wedge/spinor integration.
+
+Therefore the next decisive question is whether the source order
+
+`one-wedge spectral/spinor integration -> Toller function -> K5 product/group integration`
+
+has a well-defined local distributional/improper-integral meaning at the common collision even though
+
+`expand each wedge into theta/contact distributions -> multiply all ten termwise`
+
+fails the standard rank-9 pullback criterion.
+
+The two orderings may not be interchanged without a theorem.
 
 ## Exact blocker
 
-A **fully contracted source causal K5 vertex as a unique local distributional functional has not been established**.
+A fully contracted causal K5 vertex as a unique local distributional functional is still unestablished. The active missing object is no longer an arbitrary local contact coefficient or a finite-epsilon mollifier. It is:
 
-The exceptional geometry is now sharply characterized for the first frozen rank-9 source stratum, but the local source contact distribution needed for a physical pullback/scaling statement has not yet been frozen in an explicit form sufficient to make that pullback unique.
+`SOURCE_ORDERED_TOLLER_FUNCTION_K5_COLLISION_BOUNDARY_VALUE_WITH_FULL_BOUNDARY_CONTRACTION`.
 
-The physical nonlinear source-to-K4 curvature remains unselected. The nominal `epsilon^-1` coefficient remains `BLOCKED_OBJECT_DEFINITION`: neither zero, nonzero nor divergent is authorized.
+Earlier boundary-intertwiner power-counting already found severe ordinary Toller-function collision powers in the all-`j=1/2` sector, but correctly stopped short of a distributional nonexistence theorem because source boundary terms/orderings were not included.
+
+The physical nonlinear source-to-K4 curvature remains unselected. The nominal `epsilon^-1` coefficient remains `BLOCKED_OBJECT_DEFINITION`.
 
 ## Next admissible steps
 
-1. **Primary source gate:** acquire and freeze the exact primary-paper definition of `delta^(rho,j)(x)` from the 2026 causal-vertex source/appendices, including whether it has an explicit local distribution formula or is defined only as a spectral boundary-value distribution. Do not replace it by an arbitrary Dirac delta or fitted mollifier.
-2. If an explicit source-local form is available, prospectively preregister a dedicated pullback/scaling gate using that exact object and the Iter077D-SM non-Morse normal form.
-3. Only after source-defined local contact pullback control build the frozen all-`j=1/2` complete boundary sector through all ten auxiliary-spinor integrations and four group variables and test the first potentially divergent fully contracted coefficient/regulator dependence.
-4. Continue `-FF` and `-BCH` only as independent conditional lanes and never merge their classifications into the source-amplitude line without an explicit theorem.
+1. **Primary:** `Iter077I-SM` — prospectively freeze the source ordering actually encoded by Eq. (3)/(4) and the closed Toller-function formulas. Determine whether one-wedge spectral/spinor integration yields an ordinary locally integrable Toller matrix near `beta=0` or a singular function requiring a boundary value, and classify its exact small-boost leading powers for the complete `j=1/2` matrix.
+2. Combine that source-ordered one-wedge object with the already existing full K5 boundary-intertwiner collision-power infrastructure, keeping all 32 all-spin-half boundary intertwiner components rather than representative states.
+3. Test local K5 integrability/distributional extension and then regulator independence. A source-defined divergence/nonuniqueness is a valid negative result.
+4. Continue `-FF` and `-BCH` only as conditional parallel controls; never promote them into the source-amplitude line without an explicit theorem.
 
 ## Claim locks
 
-No `NEW_PHYSICS_FOUND`; no complete-QG claim; no generic finite-spin signed P3; no exact full-amplitude cancellation/non-cancellation theorem; no physical causal-vertex finiteness/divergence theorem; no regulator-independence theorem; no physical source-to-K4 pushforward; no nominal `epsilon^-1` coefficient; no G3 PASS or F9/G8/K5 promotion; no arbitrary scalar flattening of the Toller front face; retain the published spectral `i epsilon`.
+No `NEW_PHYSICS_FOUND`; no complete-QG claim; no generic finite-spin signed P3; no exact full-amplitude cancellation/non-cancellation theorem; no physical causal-vertex finiteness/divergence theorem; no regulator-independence theorem; no physical source-to-K4 pushforward; no nominal `epsilon^-1` coefficient; no G3 PASS or F9/G8/K5 promotion; retain the published spectral `i epsilon`.
