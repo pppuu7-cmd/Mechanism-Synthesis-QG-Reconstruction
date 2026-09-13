@@ -2,146 +2,121 @@
 
 **Date:** 2026-09-14
 
-This ledger resolves historical naming collisions created by parallel research lanes. Existing preregistration filenames, workflow names, JSON labels, run IDs and result files are immutable provenance and are **not renamed**. Stable prose aliases below should be used in future `status/`, recovery and result notes.
+This ledger resolves naming collisions and source-formula corrections created by parallel research lanes. Historical filenames, workflow names, JSON labels and run IDs are immutable provenance; stable aliases and authority flags below control future recovery.
 
-## Stable aliases
+## Stable source-map line
 
-### `Iter077A-SM` — true source `B`-map transversality sibling
+### `Iter077A-SM` — true source `B`-map transversality — AUTHORITATIVE PASS
 
-Historical frozen label: `Iter077A`.
-
-- source/derived supplement: `sources/CAUSAL_SPINFOAM_VERTEX_2026_TRUE_B_MAP_TRANSVERSALITY_SUPPLEMENT.md`
-- source commit: `08499d9cb1bd786adfdd842364606b4517d1962d`
-- preregistration: `prereg/ITER077A_TRUE_SOURCE_B_MAP_TRANSVERSALITY.md`
-- prereg commit: `f8dbe2d008b46369fb45ef6fc7c5ff887967f299`
-- implementation: `distributional/iter077a_true_source_b_map_transversality.py`
-- implementation commit: `e8ddeb1acc6830e6620db02630088eae3b23b2d9`
-- workflow head: `83eb3da869f3ad324471db61ec47f02dad36091e`
-- authoritative run: `34784565177`
-- durable result: `results/ITER077A_TRUE_SOURCE_B_MAP_TRANSVERSALITY_RESULT.md`
-- result commit: `fda83125747f530faff264eb6eea3fe4cb4b2f55`
-- verdict: PASS
+- prereg: `prereg/ITER077A_TRUE_SOURCE_B_MAP_TRANSVERSALITY.md`, commit `f8dbe2d008b46369fb45ef6fc7c5ff887967f299`
+- implementation: `distributional/iter077a_true_source_b_map_transversality.py`, commit `e8ddeb1acc6830e6620db02630088eae3b23b2d9`
+- run `34784565177`
+- result: `results/ITER077A_TRUE_SOURCE_B_MAP_TRANSVERSALITY_RESULT.md`, commit `fda83125747f530faff264eb6eea3fe4cb4b2f55`
 - classification: `ITER077A_TRUE_SOURCE_B_MAP_HAS_GENERIC_FULL_RANK_COLLISION_WITNESS_SCALAR_K5_CYCLE_RELATIONS_DO_NOT_TRANSFER_EXACT_SCOPED`
 
-Scientific scope: true coherent-spinor source map at the common group collision. Exact witness `rank_Q(dB)=10`; scalar K5 incidence rank is 4 and its six cycle relations do not transfer to the true source differential.
+True coherent-spinor source Jacobian has an exact rank-10 witness; scalar rooted K5 incidence has rank 4 and its six cycle relations do not transfer.
 
-### `Iter077A-FF` — K5 Toller front-face data-model sibling
+### `Iter077C-SM` — first exceptional source stratum — AUTHORITATIVE PASS
 
-Historical frozen label: `Iter077A`.
-
-- source/derived input: `sources/ITER077_PARALLEL_FRONTIER_SOURCE_DERIVATION.md`
-- preregistration: `prereg/ITER077A_K5_TOLLER_FRONT_FACE_DATA_MODEL.md`
-- prereg commit: `0aa40cc290ec4c2d71e687d95c915f6f473a37cd`
-- implementation commit: `7b75b548ddebdb3c2e15d8cfe2f8f7cff5d4b3bc`
-- workflow launch lineage includes commit `339c71b2b5e211cbfa61d7613eeccdffe0c7d184`
-
-Scientific scope: algebraic/covariant closure of the matrix/bundle-valued Toller front-face data type. This branch is logically independent of the true-source-map transversality sibling and does not replace a full source-amplitude pushforward theorem.
-
-### `Iter077B-BCH` — source BCH K4 cycle-curvature sibling
-
-Historical frozen label: `Iter077B`.
-
-- preregistration: `prereg/ITER077B_SOURCE_BCH_K4_CYCLE_CURVATURE.md`
-- prereg commit: `ee7338fc314847a2524544445baf01ea78e87994`
-- implementation lineage: `8c43363781fdd450de8396ec2ede0a1602e680a1`
-- pre-production predicate repair: `cdba02a770db55b4ff2c1bba5df0cdf49e257951`
-- dedicated workflow launch: `f5ac9f4c45c1460fe75329de244df5c65d406e6b`
-- control-only aggregate dependency repair: `88fae05ac2656ece6c3c1529f0e94ce6bd7d296e`
-- authoritative retry run: `34785018388`
-- durable result: `results/ITER077B_BCH_SOURCE_K4_CYCLE_CURVATURE_RESULT.md`
-- result commit: `a37f21397e41399eddc238e89154aaa5c9b7c094`
-- verdict: PASS
-- classification: `ITER077B_SOURCE_BCH_SECOND_ORDER_SELECTS_NONZERO_K4_CYCLE_CURVATURE_EXACT_COORDINATE_SCOPED`
-
-Scientific scope: source BCH second-order relative-coordinate curvature projected into the reduced K4 cycle channel. The exact coefficient is `1/2`; all frozen generic controls have nonzero cycle projection for every root, while the commuting control is zero. This does **not** establish the physical Toller/front-face pushforward or the nominal `epsilon^-1` coefficient.
-
-### `Iter077C-SM` — first true-source exceptional-strata sibling
-
-Stable frozen label: `Iter077C-SM`.
-
-- preregistration: `prereg/ITER077C_SM_SOURCE_COLLISION_EXCEPTIONAL_STRATA.md`
-- prereg commit: `d2414780967cc36c4b2f31ba4fbcb8453e13f978`
-- implementation: `distributional/iter077c_sm_source_collision_exceptional_strata.py`
-- implementation commit: `9c11041e3ce1bce8148452c14e05103e1bed02e0`
-- initial workflow head: `9cd251318135274b4fd7824f22d95b1bd84869ac`
-- control-only source-notation repair: `54fe49f1041ef28ac324e2a503196c9b6a6d7ed3`
-- authoritative retry/workflow head: `287c22078d275085888c173adfe395fec32bfc98`
-- authoritative run: `34784868939`
-- durable result: `results/ITER077C_SM_SOURCE_COLLISION_EXCEPTIONAL_STRATA_RESULT.md`
-- result commit: `5cdafc091295526f49323f38be13e01dcd553926`
-- verdict: PASS
+- prereg commit `d2414780967cc36c4b2f31ba4fbcb8453e13f978`
+- implementation commit `9c11041e3ce1bce8148452c14e05103e1bed02e0`
+- authoritative retry run `34784868939`
+- result: `results/ITER077C_SM_SOURCE_COLLISION_EXCEPTIONAL_STRATA_RESULT.md`, commit `5cdafc091295526f49323f38be13e01dcd553926`
 - classification: `ITER077C_SM_SOURCE_COLLISION_RANK9_EXCEPTIONAL_STRATUM_TRANSVERSE_CODIM3_EXACT_SCOPED`
 
-Scientific scope: exact first rank-deficient source geometry at the common collision. The frozen first full-span rank-9 witness `xxxxxyyyzz` has a one-dimensional self-stress, three-dimensional right kernel and a `3 x 20` structured normal-variation map of exact rank 3. Locally this tested rank-9 stratum is transverse codimension 3 in the 20-dimensional normal manifold.
+Frozen witness `xxxxxyyyzz` has rank 9, self-stress `lambda=(1,-1,0,0,1,0,0,0,0,0)`, and transverse local codimension 3.
 
-### `Iter077D-SM` — rank-9 true-source mixed second jet
+### Historical fixed-normal `Iter077D` sibling — AUTHORITATIVE ONLY IN FIXED-NORMAL SCOPE
 
-Stable frozen label: `Iter077D-SM`.
+- result: `results/ITER077D_SM_NONLINEAR_EXCESS_B_JET_RESULT.md`, commit `c9174445f22e6df74a2c41c9cb812900f8fce5de`
+- run `34785181275`
 
-- source/derived second-jet supplement: `sources/CAUSAL_SPINFOAM_VERTEX_2026_B_MAP_SECOND_JET_SUPPLEMENT.md`
-- source supplement commit: `95da32f764381c26cd5c465c502cb1dbb9895d75`
-- preregistration: `prereg/ITER077D_SM_RANK9_TRUE_B_MAP_SECOND_JET.md`
-- prereg commit: `3dbc24dd5c3dff17c832fe5cbc98d7b456157a27`
-- implementation: `distributional/iter077d_sm_rank9_true_b_map_second_jet.py`
-- implementation commit: `29e3f7a6fe843779061e4431985f4960f7d7a9e2`
-- workflow head: `16a06049e6c1010e204d50eea597392a332651f3`
-- authoritative run: `34785200044`
-- durable result: `results/ITER077D_SM_RANK9_TRUE_B_MAP_SECOND_JET_RESULT.md`
-- result commit: `5e12303a074312078db22962dd6eadd288780d9e`
-- verdict: PASS
+This older sibling studies the group-only/fixed-normal right-kernel germ. Its quadratic Hessian has rank 2 with one zero direction; it is not the full mixed normal form. Refer to it as `Iter077D-FN` in prose.
+
+### `Iter077D-SM` — canonical mixed second jet — AUTHORITATIVE PASS
+
+- prereg commit `3dbc24dd5c3dff17c832fe5cbc98d7b456157a27`
+- implementation commit `29e3f7a6fe843779061e4431985f4960f7d7a9e2`
+- run `34785200044`
+- result: `results/ITER077D_SM_RANK9_TRUE_B_MAP_SECOND_JET_RESULT.md`, commit `5e12303a074312078db22962dd6eadd288780d9e`
 - classification: `ITER077D_SM_RANK9_TRUE_B_MAP_MIXED_SECOND_JET_NONDEGENERATE_6D_EXACT_SCOPED`
 
-Scientific scope: exact source Eq. (32) second jet at the frozen rank-9 witness. The full six-dimensional mixed Hessian is nondegenerate with determinant `-1` and inertia `(3+,3-)`.
+The full mixed six-dimensional Hessian is nondegenerate, determinant `-1`, inertia `(3+,3-)`.
 
-### `Iter077E-SM` — generic/exceptional source contact pullback split
+## Contact-formula source correction
 
-Stable frozen label: `Iter077E-SM`.
+`status/ITER077_CONTACT_FORMULA_ERRATUM.md`, commit `eba9976fb7cdc1f7f64852325a35f7c6829a6b0b`, is controlling.
 
-- source/microlocal supplement: `sources/CAUSAL_SPINFOAM_VERTEX_2026_CONTACT_PULLBACK_MICROLOCAL_SUPPLEMENT.md`
-- source supplement commit: `c4e199a0fe6fda5341bdcc7e26478782bf384abd`
-- preregistration: `prereg/ITER077E_SM_CONTACT_WAVEFRONT_PULLBACK_CRITERION.md`
-- prereg commit: `60d3b0daaa013100dc864cf2a23b6582b54810fc`
-- implementation: `distributional/iter077e_sm_contact_wavefront_pullback_criterion.py`
-- implementation commit: `d4abfebb09ffb8fd64413c369f25287778b5ccd5`
-- workflow head: `91e38effa5008a831f99a9b6c96c2a01bbb66609`
-- authoritative run: `34785411389`
-- durable result: `results/ITER077E_SM_CONTACT_WAVEFRONT_PULLBACK_CRITERION_RESULT.md`
-- result commit: `86846b388745eb323ebf8bc4e1cc9c5614b9d3e5`
-- verdict: PASS
-- classification: `ITER077E_SM_GENERIC_SUBMERSION_PULLBACK_ALLOWED_RANK9_CONTACT_HORMANDER_CRITERION_COLLIDES_CORRELATED_BOUNDARY_VALUE_REQUIRED_EXACT_SCOPED`
+Primary Appendix-D Eq. (37) uses
 
-Scientific scope: the generic rank-10 true-source region is locally a submersion, so standard distribution pullback is authorized there. At the frozen rank-9 point, the exact nonzero self-stress covector lies simultaneously in the normal set and the wavefront fibre of the pure ten-contact point summand, so the standard termwise Hörmander criterion fails. This does not prove nonexistence of the full source-selected boundary value; it requires a correlated source-selected extension.
+`c_(n+1) (-i)^(n+1) delta^(n)/(n+1)!`,
 
-### `Iter077F-SM` — rank-9 all-spin-half contact scaling/extension threshold
+not the historical transcription `c_n (-1)^(n+1)`.
 
-Stable frozen label: `Iter077F-SM`.
+Therefore the historical source-dependent E/F gates below are retained for provenance but are **NON_AUTHORITATIVE_SOURCE_LOCK_INVALID**:
 
-- source/derived scaling supplement: `sources/CAUSAL_SPINFOAM_VERTEX_2026_RANK9_CONTACT_SCALING_SUPPLEMENT.md`
-- source supplement commit: `7606b7697c80859ff300199bac21c3ea3705fd76`
-- preregistration: `prereg/ITER077F_SM_RANK9_CONTACT_SCALING_EXTENSION.md`
-- prereg commit: `5d8a7d51f0c87a50c6f94de3a8bb1ec2c7689259`
-- implementation: `distributional/iter077f_sm_rank9_contact_scaling_extension.py`
-- implementation commit: `cd95d2fba1e884e6f110a370e63381829d0981b0`
-- workflow head: `8b67eb90cf38d81ff6c63bb8e9145b6d66cb4ccf`
-- authoritative run: `34785560537`
-- aggregate artifact: `10326721126`, `sha256:b955e2ad1701cb672560b31dfda8c19c2fa3667350f46a4d17e1cf3318f7d341`
-- durable result: `results/ITER077F_SM_RANK9_CONTACT_SCALING_EXTENSION_RESULT.md`
-- result commit: `855d34e269c69261dd66410cddef6f2d9fa959f3`
-- verdict: PASS
-- classification: `ITER077F_SM_ALL_SPIN_HALF_RANK9_CONTACT_REACHES_N3_SCALING_NONUNIQUENESS_SOURCE_I_EPSILON_EXTENSION_REQUIRED_EXACT_SCOPED`
+### Historical `Iter077E-SM` microlocal run — QUARANTINED
 
-Scientific scope: on the exact six-dimensional rank-9 quadratic normal form, `delta^(n)(q)` has scaling degree `2(n+1)`. The ordinary `n=0` and `n=1` channels admit unique scaling extensions; ambiguity begins at `n=2`. In the all-`j=1/2`, gamma-simple target contact product, the frozen self-stress support produces a unique highest `n_eff=3` excess derivative with coefficient proportional to `-8 gamma^3/(1+gamma^2)^3`, nonzero for finite real `gamma != 0`. Scaling alone therefore does not select its extension; the missing object is the correlated source-selected spectral-`i epsilon` extension plus full boundary contraction.
+- run `34785411389`
+- historical result `results/ITER077E_SM_CONTACT_WAVEFRONT_PULLBACK_CRITERION_RESULT.md`
+
+Its qualitative wavefront conclusion is re-tested correctly by `Iter077G-SM`; do not cite the historical E source lock as authority.
+
+### Historical `Iter077F-SM` scaling run — QUARANTINED
+
+- run `34785560537`
+- historical result `results/ITER077F_SM_RANK9_CONTACT_SCALING_EXTENSION_RESULT.md`
+
+Its source-dependent contact coefficients are invalid. Scaling-degree mathematics is re-tested correctly by `Iter077G-SM`.
+
+### Historical separate E scaling BLOCKED sibling — valid only as frozen-snapshot acquisition history
+
+The earlier `Iter077E_SM_SOURCE_CONTACT_PULLBACK_SCALING_RESULT.md` correctly reported that its then-frozen repository snapshots lacked an explicit local formula. Primary-source reinspection later acquired Eq. (37)-(39), so this is not the active blocker.
+
+### `Iter077G-SM` — corrected contact/microlocal/scaling gate — AUTHORITATIVE PASS
+
+- corrected source snapshot: `sources/CAUSAL_SPINFOAM_VERTEX_2026_CONTACT_EQ37_39_CORRECTED_SNAPSHOT.md`, commit `edc8bd718c5ac381e26b57636963cfb180f3ecd7`
+- prereg commit `e2d3d99be0c2377690494a86556b51a85f106e9f`
+- implementation commit `0091d3d730c2ac06fcdd2f82de69cbb212913b63`
+- production head `7cdadc77c589fff56650d7bcbc8a6e7ebf9a04dd`
+- run `34785754577`
+- result: `results/ITER077G_SM_CORRECTED_JHALF_CONTACT_MICROLOCAL_SCALING_RESULT.md`, commit `5c3af58f116d508a20ab7138d46862d954399ad4`
+- classification: `ITER077G_SM_CORRECTED_JHALF_CONTACT_HAS_NONZERO_RANK9_N3_SELFSTRESS_CHANNEL_SD8_SOURCE_SELECTED_CORRELATED_EXTENSION_REQUIRED_EXACT_SCOPED`
+
+Correct all-spin-half contact:
+`delta^(rho,1/2)=-(2 i rho/D)delta-(1/D)delta'`, `D=rho^2+1/4`.
+At rank 9 the corrected ten-contact Fourier polynomial has a nonzero degree-3 self-stress restriction. Standard Hörmander termwise pullback fails there; with the canonical six-dimensional quadratic normal form the `n_eff=3` channel has scaling degree 8. This requires a source-selected correlated extension, not an arbitrary finite part.
+
+### `Iter077H-SM` — finite spectral epsilon persistence — AUTHORITATIVE PASS
+
+- source/derived supplement commit `b7abbd430313b0624e1b0dfeb12025f5e8753539`
+- prereg commit `cf6620e91ae9ef24091594eed0c1fa81e8829fc8`
+- implementation commit `b42272217c22001cbe6c486767e5f2ad5c21a812`
+- workflow/production head `24cb5abef3bf0f425b9dcba6eca841cbc8182549`
+- run `34785966710`
+- aggregate artifact `10326811897`, digest `sha256:e8dd522e9b5af081032bb6a4ee14ad6b1116c7fabf43a5f491e3909afdae4175`
+- result: `results/ITER077H_SM_FINITE_EPSILON_CONTACT_PERSISTENCE_RESULT.md`, commit `004af0e570b4999ec849d0b75ca44d2faf9b47c2`
+- classification: `ITER077H_SM_FINITE_SPECTRAL_EPSILON_LEAVES_NONZERO_RANK9_N3_PURE_CONTACT_SUBTERM_CORRELATED_SOURCE_ORDERING_STILL_REQUIRED_EXACT_SCOPED`
+
+For finite spectral `epsilon>0`, the `j=1/2` kernel still contains an epsilon-independent `delta'` coefficient. Exact census over all `2^10=1024` wedge-sign assignments at the frozen control has a nonzero degree-3 rank-9 pure-contact self-stress term in every case. Thus finite epsilon is not a termwise coordinate-space smoothing cure.
+
+## Conditional companion lines
+
+### `Iter077A-FF`
+Front-face algebra only; no source-amplitude existence theorem.
+
+### `Iter077B-BCH`
+Coordinate-scoped BCH/K4 control; authoritative PASS in its own scope, result commit `a37f21397e41399eddc238e89154aaa5c9b7c094`. No physical source-to-K4 pushforward follows.
 
 ## Forward naming rule
 
-From this ledger onward:
-
-- use suffix `-SM` for the source-map/full-source-amplitude line;
-- use suffix `-FF` for the Toller front-face algebra line;
-- use suffix `-BCH` for the source-relative BCH/K4 line;
-- do not reuse an existing bare `Iter077A` or `Iter077B` label for a new object;
-- the next source-map gate after `Iter077F-SM` is `Iter077G-SM` unless that exact stable alias is already present.
+- suffix `-SM`: source-map/full-source-amplitude line;
+- suffix `-FF`: Toller front-face algebra;
+- suffix `-BCH`: source-relative BCH/K4 control;
+- historical fixed-normal D sibling is `Iter077D-FN` in prose;
+- historical E/F source-dependent gates are quarantined and never regain authority;
+- next source-map gate after authoritative `Iter077H-SM` is `Iter077I-SM` unless already occupied.
 
 ## Claim firewall
 
-Parallel execution does not merge scientific scopes. A PASS in `-FF` or `-BCH` cannot be imported as a source-amplitude existence theorem. A PASS in `-SM` does not establish physical K4/Hodge transport unless an explicit source pushforward is constructed. None of the source-map results A-SM through F-SM establishes the full correlated K5 boundary value, full-vertex finiteness/divergence, regulator independence, the nominal `epsilon^-1` coefficient, or G3/F9/G8/K5 promotion.
+Parallel execution does not merge scopes. No current Iter077 result establishes full source-vertex existence/nonexistence, physical causal-vertex finiteness/divergence, regulator independence, physical source-to-K4 pushforward, nominal `epsilon^-1`, generic finite-spin signed P3, G3/F9/G8/K5 promotion, new physics, or complete QG.
