@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - '.github/workflows/iter063c-primary-source-qualification.yml'
+      - 'scripts/iter063c_primary_source_lane.py'
   workflow_dispatch:
 
 jobs:
