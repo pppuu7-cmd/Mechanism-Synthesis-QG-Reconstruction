@@ -6,6 +6,7 @@ on:
     paths:
       - 'distributional/iter077c_sm_source_collision_exceptional_strata.py'
       - 'prereg/ITER077C_SM_SOURCE_COLLISION_EXCEPTIONAL_STRATA.md'
+      - 'sources/CAUSAL_SPINFOAM_VERTEX_2026_TRUE_B_MAP_TRANSVERSALITY_SUPPLEMENT.md'
       - 'status/ITER077_PROVENANCE_LEDGER.md'
       - 'results/ITER077A_TRUE_SOURCE_B_MAP_TRANSVERSALITY_RESULT.md'
       - '.github/workflows/iter077c_sm_source_collision_exceptional_strata.yml'
