@@ -1,0 +1,74 @@
+name: Iter077N-SM supported ambiguity survival and gluing
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'prereg/ITER077N_SM_SUPPORTED_AMBIGUITY_SURVIVAL_AND_GLUING.md'
+      - 'sources/ITER077N_SM_GLUING_SOURCE_LOCK.md'
+      - 'distributional/iter077n_sm_supported_ambiguity_gluing.py'
+      - '.github/workflows/iter077n_sm_supported_ambiguity_gluing.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    name: Iter077N-SM lane ${{ matrix.lane }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        lane: [A, B, C]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run frozen lane
+        env:
+          PYTHONPATH: .
+        run: |
+          mkdir -p out
+          python distributional/iter077n_sm_supported_ambiguity_gluing.py \
+            --lane '${{ matrix.lane }}' \
+            --output 'out/iter077n_sm_${{ matrix.lane }}.json'
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter077n-sm-${{ matrix.lane }}
+          path: out/iter077n_sm_${{ matrix.lane }}.json
+          if-no-files-found: error
+
+  aggregate:
+    name: Aggregate Iter077N-SM
+    needs: audit
+    if: always()
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: iter077n-sm-*
+          path: downloaded
+          merge-multiple: false
+      - name: Aggregate frozen lanes
+        env:
+          PYTHONPATH: .
+        run: |
+          mkdir -p out
+          python distributional/iter077n_sm_supported_ambiguity_gluing.py \
+            --aggregate-dir downloaded \
+            --output out/iter077n_sm_aggregate.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter077n-sm-aggregate
+          path: out/iter077n_sm_aggregate.json
+          if-no-files-found: error
