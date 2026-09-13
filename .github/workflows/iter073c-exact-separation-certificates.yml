@@ -1,0 +1,28 @@
+name: Iter073C exact nontransitive separation certificates
+on:
+  push:
+    paths:
+      - '.github/workflows/iter073c-exact-separation-certificates.yml'
+      - 'distributional/iter073c_exact_separation_certificates.py'
+      - 'status/ITERATION_073C_PREREG.md'
+  workflow_dispatch:
+jobs:
+  exact-certificates:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --disable-pip-version-check sympy numpy scipy
+      - name: Run frozen exact Stiemke certificate audit
+        run: |
+          mkdir -p out
+          python -m distributional.iter073c_exact_separation_certificates --output out/iter073c-aggregate.json
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: iter073c-aggregate
+          path: out/iter073c-aggregate.json
+          if-no-files-found: error
+          retention-days: 90
