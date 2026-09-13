@@ -1,0 +1,76 @@
+name: Iter077E-SM contact wavefront pullback criterion
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'sources/CAUSAL_SPINFOAM_VERTEX_2026_CONTACT_PULLBACK_MICROLOCAL_SUPPLEMENT.md'
+      - 'prereg/ITER077E_SM_CONTACT_WAVEFRONT_PULLBACK_CRITERION.md'
+      - 'distributional/iter077e_sm_contact_wavefront_pullback_criterion.py'
+      - 'results/ITER077A_TRUE_SOURCE_B_MAP_TRANSVERSALITY_RESULT.md'
+      - 'results/ITER077C_SM_SOURCE_COLLISION_EXCEPTIONAL_STRATA_RESULT.md'
+      - 'results/ITER077D_SM_RANK9_TRUE_B_MAP_SECOND_JET_RESULT.md'
+      - '.github/workflows/iter077e_sm_contact_wavefront_pullback_criterion.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    name: Iter077E-SM lane ${{ matrix.lane }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        lane: [A, B, C, D]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run frozen lane
+        env:
+          PYTHONPATH: .
+        run: |
+          mkdir -p out
+          python distributional/iter077e_sm_contact_wavefront_pullback_criterion.py \
+            --lane '${{ matrix.lane }}' \
+            --output 'out/iter077e_sm_${{ matrix.lane }}.json'
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter077e-sm-${{ matrix.lane }}
+          path: out/iter077e_sm_${{ matrix.lane }}.json
+          if-no-files-found: error
+
+  aggregate:
+    name: Aggregate Iter077E-SM
+    needs: audit
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: iter077e-sm-*
+          path: downloaded
+          merge-multiple: false
+      - name: Aggregate frozen contract
+        env:
+          PYTHONPATH: .
+        run: |
+          mkdir -p out
+          python distributional/iter077e_sm_contact_wavefront_pullback_criterion.py \
+            --aggregate-dir downloaded \
+            --output out/iter077e_sm_aggregate.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter077e-sm-aggregate
+          path: out/iter077e_sm_aggregate.json
+          if-no-files-found: error
