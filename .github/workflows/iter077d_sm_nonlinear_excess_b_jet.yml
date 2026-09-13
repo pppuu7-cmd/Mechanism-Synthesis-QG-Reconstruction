@@ -1,0 +1,67 @@
+name: Iter077D-SM nonlinear excess B jet
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'sources/ITER077D_SM_NONLINEAR_EXCESS_B_JET_DERIVATION.md'
+      - 'prereg/ITER077D_SM_NONLINEAR_EXCESS_B_JET.md'
+      - 'distributional/iter077d_sm_nonlinear_excess_b_jet.py'
+      - 'results/ITER077C_SM_SOURCE_COLLISION_EXCEPTIONAL_STRATA_RESULT.md'
+      - 'status/CURRENT.md'
+      - '.github/workflows/iter077d_sm_nonlinear_excess_b_jet.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    strategy:
+      fail-fast: false
+      matrix:
+        lane: [A, B, C, D]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install exact algebra dependency
+        run: python -m pip install 'sympy==1.13.3'
+      - name: Run frozen lane ${{ matrix.lane }}
+        run: |
+          mkdir -p out
+          python distributional/iter077d_sm_nonlinear_excess_b_jet.py \
+            --lane '${{ matrix.lane }}' \
+            --output 'out/iter077d_sm_${{ matrix.lane }}.json'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter077d-sm-${{ matrix.lane }}
+          path: out/iter077d_sm_${{ matrix.lane }}.json
+          if-no-files-found: error
+
+  aggregate:
+    needs: audit
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: iter077d-sm-*
+          path: downloaded
+          merge-multiple: false
+      - name: Frozen aggregate
+        run: |
+          mkdir -p out
+          python distributional/iter077d_sm_nonlinear_excess_b_jet.py \
+            --aggregate-dir downloaded \
+            --output out/iter077d_sm_aggregate.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter077d-sm-aggregate
+          path: out/iter077d_sm_aggregate.json
+          if-no-files-found: error
