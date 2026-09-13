@@ -1,0 +1,71 @@
+name: DSIR terminal handoff V3 corrected
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'prereg/DSIR_TERMINAL_HANDOFF_V3_CONTACT_ERRATUM_CORRECTED.md'
+      - 'docs/DSIR_TO_POLYGON_FUNNEL_V0_3.md'
+      - 'status/ITER077_CONTACT_FORMULA_ERRATUM.md'
+      - 'status/DSIR_V2_CONTACT_FORMULA_SUPERSESSION.md'
+      - 'status/ITER077_PROVENANCE_LEDGER_V2.md'
+      - 'results/ITER077A_TRUE_SOURCE_B_MAP_TRANSVERSALITY_RESULT.md'
+      - 'results/ITER077C_SM_SOURCE_COLLISION_EXCEPTIONAL_STRATA_RESULT.md'
+      - 'results/ITER077G_SM_CORRECTED_JHALF_CONTACT_MICROLOCAL_SCALING_RESULT.md'
+      - 'analysis/dsir_terminal_handoff_v3_corrected_audit.py'
+      - '.github/workflows/dsir_terminal_handoff_v3_corrected.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    name: DSIR V3 lane ${{ matrix.lane }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        lane: [R3, S3, T3, U3]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run frozen V3 lane
+        run: |
+          mkdir -p out
+          python analysis/dsir_terminal_handoff_v3_corrected_audit.py --lane '${{ matrix.lane }}' --output 'out/dsir_v3_${{ matrix.lane }}.json'
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: dsir-v3-${{ matrix.lane }}
+          path: out/dsir_v3_${{ matrix.lane }}.json
+          if-no-files-found: error
+
+  aggregate:
+    name: Aggregate DSIR V3 handoff
+    needs: audit
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: dsir-v3-*
+          path: downloaded
+          merge-multiple: false
+      - name: Aggregate frozen V3 contract
+        run: |
+          mkdir -p out
+          python analysis/dsir_terminal_handoff_v3_corrected_audit.py --aggregate-dir downloaded --output out/dsir_v3_aggregate.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: dsir-v3-aggregate
+          path: out/dsir_v3_aggregate.json
+          if-no-files-found: error
