@@ -1,0 +1,90 @@
+name: Iter076U jhalf contracted one-jet authoritative retry v4
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/iter076u_jhalf_intertwiner_contracted_onejet_v4.yml'
+      - 'vertex/iter076u_jhalf_intertwiner_contracted_onejet_v2.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  PYTHONPATH: .
+
+jobs:
+  fixed:
+    strategy:
+      fail-fast: false
+      matrix:
+        lane: [A, C, D]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: python -m pip install 'numpy==2.1.3' 'sympy==1.13.3' 'mpmath==1.3.0'
+      - name: Run fixed lane with exact jhalf source backend
+        run: |
+          mkdir -p out
+          python vertex/iter076u_jhalf_intertwiner_contracted_onejet_v2.py --mode '${{ matrix.lane }}' --output 'out/iter076u_${{ matrix.lane }}.json'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter076u-v4-fixed-${{ matrix.lane }}
+          path: out/iter076u_${{ matrix.lane }}.json
+          if-no-files-found: error
+
+  census:
+    strategy:
+      fail-fast: false
+      matrix:
+        gamma: ['0.4', '1.2']
+        path_id: [0, 1, 2, 3]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: python -m pip install 'numpy==2.1.3' 'sympy==1.13.3' 'mpmath==1.3.0'
+      - name: Run census shard with exact jhalf source backend
+        run: |
+          mkdir -p out
+          python vertex/iter076u_jhalf_intertwiner_contracted_onejet_v2.py --mode census --gamma '${{ matrix.gamma }}' --path-id '${{ matrix.path_id }}' --output 'out/iter076u_B_g${{ matrix.gamma }}_p${{ matrix.path_id }}.json'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter076u-v4-census-g${{ matrix.gamma }}-p${{ matrix.path_id }}
+          path: out/iter076u_B_g${{ matrix.gamma }}_p${{ matrix.path_id }}.json
+          if-no-files-found: error
+
+  aggregate:
+    needs: [fixed, census]
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: python -m pip install 'numpy==2.1.3' 'sympy==1.13.3' 'mpmath==1.3.0'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: iter076u-v4-*
+          path: downloaded
+          merge-multiple: false
+      - name: Aggregate frozen census
+        run: |
+          mkdir -p out
+          python vertex/iter076u_jhalf_intertwiner_contracted_onejet_v2.py --aggregate-dir downloaded --output out/iter076u_aggregate.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter076u-v4-aggregate
+          path: out/iter076u_aggregate.json
+          if-no-files-found: error
