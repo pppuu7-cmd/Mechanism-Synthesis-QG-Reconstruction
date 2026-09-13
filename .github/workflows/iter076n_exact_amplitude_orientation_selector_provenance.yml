@@ -1,0 +1,60 @@
+name: Iter076N exact amplitude orientation provenance
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "distributional/iter076n_exact_amplitude_orientation_selector_provenance.py"
+      - "prereg/ITER076N_EXACT_AMPLITUDE_ORIENTATION_SELECTOR_PROVENANCE.md"
+      - "sources/CAUSAL_VERTEX_EXACT_ORIENTATION_PROVENANCE_SUPPLEMENT.md"
+      - ".github/workflows/iter076n_exact_amplitude_orientation_selector_provenance.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  lane:
+    name: Lane ${{ matrix.lane }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        lane: [A, B, C, D]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run lane
+        run: python distributional/iter076n_exact_amplitude_orientation_selector_provenance.py --lane ${{ matrix.lane }}
+      - name: Upload lane artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: iter076n-lane-${{ matrix.lane }}
+          path: results/iter076n_lane_${{ matrix.lane }}.json
+          retention-days: 30
+
+  aggregate:
+    name: Aggregate Iter076N verdict
+    needs: lane
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Download lane artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: iter076n-lane-*
+          path: iter076n-artifacts
+      - name: Aggregate
+        run: python distributional/iter076n_exact_amplitude_orientation_selector_provenance.py --aggregate-dir iter076n-artifacts
+      - name: Upload aggregate artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: iter076n-aggregate
+          path: results/iter076n_aggregate.json
+          retention-days: 30
