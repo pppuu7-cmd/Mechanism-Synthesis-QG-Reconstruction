@@ -1,0 +1,66 @@
+name: Iter076U gamma-simple minimal power-strip one-jet
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/iter076u_gamma_simple_minimal_power_strip_onejet.yml'
+      - 'distributional/iter076u_gamma_simple_minimal_power_strip_onejet.py'
+      - 'prereg/ITER076U_GAMMA_SIMPLE_MINIMAL_POWER_STRIP_ONEJET.md'
+      - 'sources/GAMMA_SIMPLE_TOLLER_IDENTITY_ASYMPTOTIC_SUPPLEMENT.md'
+
+jobs:
+  audit:
+    strategy:
+      fail-fast: false
+      matrix:
+        lane: [A, B, C, D]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install exact algebra dependency
+        run: python -m pip install 'sympy==1.13.3'
+      - name: Run frozen lane ${{ matrix.lane }}
+        env:
+          PYTHONPATH: .
+        run: |
+          mkdir -p out
+          python distributional/iter076u_gamma_simple_minimal_power_strip_onejet.py --lane '${{ matrix.lane }}' --output 'out/iter076u_${{ matrix.lane }}.json'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter076u-${{ matrix.lane }}
+          path: out/iter076u_${{ matrix.lane }}.json
+          if-no-files-found: error
+
+  aggregate:
+    needs: audit
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install exact algebra dependency
+        run: python -m pip install 'sympy==1.13.3'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: iter076u-*
+          path: downloaded
+          merge-multiple: false
+      - name: Frozen aggregate
+        env:
+          PYTHONPATH: .
+        run: |
+          mkdir -p out
+          python distributional/iter076u_gamma_simple_minimal_power_strip_onejet.py --aggregate-dir downloaded --output out/iter076u_aggregate.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter076u-aggregate
+          path: out/iter076u_aggregate.json
+          if-no-files-found: error
