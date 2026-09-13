@@ -1,0 +1,80 @@
+name: DSIR terminal handoff V2 refresh
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/DSIR_TO_POLYGON_FUNNEL_V0_2.md'
+      - 'prereg/DSIR_TERMINAL_HANDOFF_V2_REFRESH.md'
+      - 'analysis/dsir_terminal_handoff_v2_refresh_audit.py'
+      - 'status/ITER077_PROVENANCE_LEDGER.md'
+      - 'results/DSIR_TERMINAL_HANDOFF_RST_RESULT.md'
+      - 'results/ITER076X_TOLLER_NORMAL_BLOWUP_CONNECTION_RESULT.md'
+      - 'results/ITER076Y_MIXED_POLAR_KAK_CONNECTION_ENTRY_RESULT.md'
+      - 'results/ITER076Z_TOLLER_FRONT_FACE_NONSCALAR_OBSTRUCTION_RESULT.md'
+      - 'results/ITER077A_TRUE_SOURCE_B_MAP_TRANSVERSALITY_RESULT.md'
+      - 'results/ITER077B_BCH_SOURCE_K4_CYCLE_CURVATURE_RESULT.md'
+      - 'results/ITER077C_SM_SOURCE_COLLISION_EXCEPTIONAL_STRATA_RESULT.md'
+      - 'results/ITER077D_SM_RANK9_TRUE_B_MAP_SECOND_JET_RESULT.md'
+      - 'results/ITER077E_SM_CONTACT_WAVEFRONT_PULLBACK_CRITERION_RESULT.md'
+      - 'results/ITER077F_SM_RANK9_CONTACT_SCALING_EXTENSION_RESULT.md'
+      - '.github/workflows/dsir_terminal_handoff_v2_refresh.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    name: DSIR V2 lane ${{ matrix.lane }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        lane: [R2, S2, T2, U2]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run frozen V2 lane
+        run: |
+          mkdir -p out
+          python analysis/dsir_terminal_handoff_v2_refresh_audit.py \
+            --lane '${{ matrix.lane }}' \
+            --output 'out/dsir_v2_${{ matrix.lane }}.json'
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: dsir-v2-${{ matrix.lane }}
+          path: out/dsir_v2_${{ matrix.lane }}.json
+          if-no-files-found: error
+
+  aggregate:
+    name: Aggregate DSIR V2 handoff
+    needs: audit
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: dsir-v2-*
+          path: downloaded
+          merge-multiple: false
+      - name: Aggregate frozen V2 contract
+        run: |
+          mkdir -p out
+          python analysis/dsir_terminal_handoff_v2_refresh_audit.py \
+            --aggregate-dir downloaded \
+            --output out/dsir_v2_aggregate.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: dsir-v2-aggregate
+          path: out/dsir_v2_aggregate.json
+          if-no-files-found: error
