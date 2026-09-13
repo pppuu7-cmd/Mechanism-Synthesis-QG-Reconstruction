@@ -1,0 +1,50 @@
+name: Iter076J gauge-fixed K5 complement support
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/iter076j_gauge_fixed_k5_complement_support.yml'
+      - 'distributional/iter076j_gauge_fixed_k5_complement_support.py'
+      - 'prereg/ITER076J_GAUGE_FIXED_K5_COMPLEMENT_SUPPORT.md'
+
+jobs:
+  lane:
+    strategy:
+      fail-fast: false
+      matrix:
+        lane: [A, B, C, D]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - run: |
+          mkdir -p out
+          python distributional/iter076j_gauge_fixed_k5_complement_support.py --lane ${{ matrix.lane }} --output out/iter076j_${{ matrix.lane }}.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter076j-${{ matrix.lane }}
+          path: out/iter076j_${{ matrix.lane }}.json
+          if-no-files-found: error
+  aggregate:
+    needs: lane
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: iter076j-*
+          path: downloaded
+      - run: |
+          mkdir -p out
+          python distributional/iter076j_gauge_fixed_k5_complement_support.py --aggregate-dir downloaded --output out/iter076j_aggregate.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter076j-aggregate
+          path: out/iter076j_aggregate.json
+          if-no-files-found: error
