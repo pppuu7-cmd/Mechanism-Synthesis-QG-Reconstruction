@@ -1,0 +1,73 @@
+name: Iter078M-RG generic selector Jacobian rank
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'prereg/ITER078M_RG_GENERIC_SELECTOR_JACOBIAN_RANK.md'
+      - 'distributional/iter078m_rg_generic_selector_rank.py'
+      - '.github/workflows/iter078m_rg_generic_selector_rank.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  witness:
+    name: Iter078M lane ${{ matrix.lane }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        lane: [A, B, C, L]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run exact Jacobian witness
+        env:
+          PYTHONPATH: .
+        run: |
+          mkdir -p out
+          python distributional/iter078m_rg_generic_selector_rank.py \
+            --lane '${{ matrix.lane }}' \
+            --output 'out/iter078m_${{ matrix.lane }}.json'
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter078m-${{ matrix.lane }}
+          path: out/iter078m_${{ matrix.lane }}.json
+          if-no-files-found: error
+
+  aggregate:
+    name: Aggregate Iter078M-RG
+    needs: witness
+    if: always()
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: iter078m-*
+          path: downloaded
+          merge-multiple: false
+      - name: Aggregate exact rank witnesses
+        env:
+          PYTHONPATH: .
+        run: |
+          mkdir -p out
+          python distributional/iter078m_rg_generic_selector_rank.py \
+            --aggregate-dir downloaded \
+            --output out/iter078m_aggregate.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter078m-aggregate
+          path: out/iter078m_aggregate.json
+          if-no-files-found: error
