@@ -22,6 +22,12 @@ Therefore this gate uses the source ordering
 
 not the termwise product of ten spinor-contact distributions that failed the rank-9 pullback criterion in Iter077G/H.
 
+Machine-readable equivalent source-order lock used by the audit:
+
+`one-wedge source construction -> Toller function -> K5 product -> group integration`.
+
+The two displayed orderings are identical scientifically; `ordinary` only emphasizes that the already constructed one-wedge Toller object is treated as a function before K5 multiplication.
+
 ## Exact j=1/2 small-boost leading term from source Eq. (9)
 
 For the gamma-simple diagonal reduced branch
