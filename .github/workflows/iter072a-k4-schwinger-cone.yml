@@ -1,0 +1,62 @@
+name: Iter072A K4 common-epsilon Schwinger cone theorem
+
+on:
+  push:
+    paths:
+      - '.github/workflows/iter072a-k4-schwinger-cone.yml'
+      - 'distributional/iter072a_k4_schwinger_cone_theorem.py'
+      - 'distributional/iter072a_aggregate.py'
+      - 'status/ITERATION_072A_PREREG.md'
+  workflow_dispatch:
+
+jobs:
+  exact-lane:
+    strategy:
+      fail-fast: false
+      max-parallel: 8
+      matrix:
+        sigma: ['++++','+++-','++-+','++--','+-++','+-+-','+--+','+---']
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install exact dependencies
+        run: python -m pip install --disable-pip-version-check sympy numpy scipy
+      - name: Run frozen exact lane
+        run: |
+          mkdir -p out
+          python -m distributional.iter072a_k4_schwinger_cone_theorem --sigma '${{ matrix.sigma }}' --output 'out/iter072a-${{ matrix.sigma }}.json'
+      - name: Upload lane artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: iter072a-${{ matrix.sigma }}
+          path: out/iter072a-${{ matrix.sigma }}.json
+          if-no-files-found: error
+
+  aggregate:
+    if: always()
+    needs: [exact-lane]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Download all exact lane artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: iter072a-*
+          path: artifacts
+      - name: Frozen aggregate classifier
+        run: |
+          python distributional/iter072a_aggregate.py --input-dir artifacts --output iter072a-aggregate.json
+      - name: Upload aggregate artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: iter072a-aggregate
+          path: iter072a-aggregate.json
+          if-no-files-found: error
