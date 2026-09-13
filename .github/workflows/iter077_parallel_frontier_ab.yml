@@ -1,0 +1,168 @@
+name: Iter077 parallel frontier A-B
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/iter077_parallel_frontier_ab.yml'
+      - 'sources/ITER077_PARALLEL_FRONTIER_SOURCE_DERIVATION.md'
+      - 'prereg/ITER077A_K5_TOLLER_FRONT_FACE_DATA_MODEL.md'
+      - 'prereg/ITER077B_SOURCE_BCH_K4_CYCLE_CURVATURE.md'
+      - 'distributional/iter077a_k5_toller_front_face_data_model.py'
+      - 'distributional/iter077b_source_bch_k4_cycle_curvature.py'
+      - 'results/ITER076W_COMPACT_NODE_GAUGE_PURE_DIRECTION_CLOSURE_RESULT.md'
+      - 'results/ITER076X_TOLLER_NORMAL_BLOWUP_CONNECTION_RESULT.md'
+      - 'results/ITER076Y_MIXED_POLAR_KAK_CONNECTION_ENTRY_RESULT.md'
+      - 'results/ITER076Z_TOLLER_FRONT_FACE_NONSCALAR_OBSTRUCTION_RESULT.md'
+
+permissions:
+  contents: read
+
+jobs:
+  iter077a:
+    name: Iter077A lane ${{ matrix.lane }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        lane: [A, B, C, D]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install exact algebra dependency
+        run: python -m pip install 'sympy==1.13.3'
+      - name: Run frozen Iter077A lane
+        env:
+          PYTHONPATH: .
+        run: |
+          mkdir -p out
+          python distributional/iter077a_k5_toller_front_face_data_model.py --lane '${{ matrix.lane }}' --output 'out/iter077a_${{ matrix.lane }}.json'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter077a-${{ matrix.lane }}
+          path: out/iter077a_${{ matrix.lane }}.json
+          if-no-files-found: error
+
+  iter077b:
+    name: Iter077B lane ${{ matrix.lane }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        lane: [A, B, C, D]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install exact algebra dependency
+        run: python -m pip install 'sympy==1.13.3'
+      - name: Run frozen Iter077B lane
+        env:
+          PYTHONPATH: .
+        run: |
+          mkdir -p out
+          python distributional/iter077b_source_bch_k4_cycle_curvature.py --lane '${{ matrix.lane }}' --output 'out/iter077b_${{ matrix.lane }}.json'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter077b-${{ matrix.lane }}
+          path: out/iter077b_${{ matrix.lane }}.json
+          if-no-files-found: error
+
+  iter077a_aggregate:
+    name: Aggregate Iter077A
+    needs: iter077a
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: iter077a-*
+          path: downloaded-a
+          merge-multiple: false
+      - name: Aggregate frozen Iter077A contract
+        env:
+          PYTHONPATH: .
+        run: |
+          mkdir -p out
+          python distributional/iter077a_k5_toller_front_face_data_model.py --aggregate-dir downloaded-a --output out/iter077a_aggregate.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter077a-aggregate
+          path: out/iter077a_aggregate.json
+          if-no-files-found: error
+
+  iter077b_aggregate:
+    name: Aggregate Iter077B
+    needs: iter077b
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: iter077b-*
+          path: downloaded-b
+          merge-multiple: false
+      - name: Aggregate frozen Iter077B contract
+        env:
+          PYTHONPATH: .
+        run: |
+          mkdir -p out
+          python distributional/iter077b_source_bch_k4_cycle_curvature.py --aggregate-dir downloaded-b --output out/iter077b_aggregate.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter077b-aggregate
+          path: out/iter077b_aggregate.json
+          if-no-files-found: error
+
+  frontier_aggregate:
+    name: Aggregate parallel frontier
+    needs: [iter077a_aggregate, iter077b_aggregate]
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: 'iter077*-aggregate'
+          path: frontier
+          merge-multiple: true
+      - name: Build combined frontier ledger
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          rows = []
+          for p in sorted(Path('frontier').glob('*.json')):
+              rows.append(json.loads(p.read_text()))
+          out = {
+              'campaign': 'ITER077_PARALLEL_FRONTIER_AB',
+              'results': rows,
+              'all_valid': len(rows) == 2 and all(r.get('valid') for r in rows),
+              'claim_lock': 'Combined success is scoped source/object progress only; it does not promote physical K5, G3/F9/G8, a physical source-to-K4 numerator, or epsilon^-1.'
+          }
+          Path('frontier_aggregate.json').write_text(json.dumps(out, indent=2, sort_keys=True))
+          print(json.dumps(out, indent=2, sort_keys=True))
+          if not out['all_valid']:
+              raise SystemExit(1)
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter077-parallel-frontier-aggregate
+          path: frontier_aggregate.json
+          if-no-files-found: error
