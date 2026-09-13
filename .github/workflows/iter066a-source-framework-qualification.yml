@@ -1,0 +1,84 @@
+name: Iter066A Multivariate Source Framework Qualification
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'research/iter066a_source_frameworks.json'
+      - 'scripts/iter066a_source_framework_audit.py'
+      - '.github/workflows/iter066a-source-framework-qualification.yml'
+
+jobs:
+  audit:
+    strategy:
+      fail-fast: false
+      matrix:
+        candidate:
+          - BCG2026_PRIMARY
+          - BBK2009_WONDERFUL_EG
+          - FELDER_KAZHDAN2018_FINITE_PART
+          - SELLIER1997_MULTIDIM_HFP
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Audit frozen source framework
+        run: |
+          mkdir -p out
+          python scripts/iter066a_source_framework_audit.py \
+            --candidate '${{ matrix.candidate }}' \
+            --out 'out/${{ matrix.candidate }}.json'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter066a-${{ matrix.candidate }}
+          path: out/${{ matrix.candidate }}.json
+          if-no-files-found: error
+
+  aggregate:
+    needs: audit
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: iter066a-*
+          path: gathered
+          merge-multiple: true
+      - name: Frozen aggregate classification
+        run: |
+          python - <<'PY'
+          import json, pathlib, hashlib
+          files = sorted(pathlib.Path('gathered').glob('*.json'))
+          if len(files) != 4:
+              raise SystemExit(f'expected 4 lane artifacts, got {len(files)}')
+          rows = [json.loads(p.read_text()) for p in files]
+          preregs = {r['frozen_prereg_commit'] for r in rows}
+          matrix_hashes = {r['matrix_sha256'] for r in rows}
+          if preregs != {'b6846ee0515853cd9981dc0d6688c021174922be'}:
+              raise SystemExit(f'prereg mismatch: {preregs}')
+          if len(matrix_hashes) != 1:
+              raise SystemExit('matrix digest mismatch across lanes')
+          bridges = [r['candidate'] for r in rows if r['complete_bridge']]
+          multivariate = [r['candidate'] for r in rows if r['has_multivariate_framework']]
+          if bridges:
+              cls = 'ITER066A_SOURCE_FRAMEWORK_BRIDGE_FOUND'
+          elif multivariate:
+              cls = 'ITER066A_GENERIC_MULTIVARIATE_FRAMEWORK_AVAILABLE_SOURCE_SELECTOR_STILL_MISSING'
+          else:
+              cls = 'ITER066A_NO_RELEVANT_MULTIVARIATE_FRAMEWORK_IDENTIFIED'
+          out = {
+              'classification': cls,
+              'lanes': len(rows),
+              'complete_bridges': bridges,
+              'multivariate_frameworks': multivariate,
+              'frozen_prereg_commit': next(iter(preregs)),
+              'matrix_sha256': next(iter(matrix_hashes)),
+              'rows': rows,
+          }
+          pathlib.Path('iter066a-aggregate.json').write_text(json.dumps(out, indent=2, sort_keys=True)+'\n')
+          print(json.dumps(out, indent=2, sort_keys=True))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter066a-aggregate
+          path: iter066a-aggregate.json
+          if-no-files-found: error
