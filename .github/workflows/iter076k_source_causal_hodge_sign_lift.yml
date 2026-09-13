@@ -1,0 +1,50 @@
+name: Iter076K source causal-data Hodge sign lift
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/iter076k_source_causal_hodge_sign_lift.yml'
+      - 'distributional/iter076k_source_causal_hodge_sign_lift.py'
+      - 'prereg/ITER076K_SOURCE_CAUSAL_DATA_HODGE_SIGN_LIFT.md'
+
+jobs:
+  lane:
+    strategy:
+      fail-fast: false
+      matrix:
+        lane: [A, B, C, D]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - run: |
+          mkdir -p out
+          python distributional/iter076k_source_causal_hodge_sign_lift.py --lane ${{ matrix.lane }} --output out/iter076k_${{ matrix.lane }}.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter076k-${{ matrix.lane }}
+          path: out/iter076k_${{ matrix.lane }}.json
+          if-no-files-found: error
+  aggregate:
+    needs: lane
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: iter076k-*
+          path: downloaded
+      - run: |
+          mkdir -p out
+          python distributional/iter076k_source_causal_hodge_sign_lift.py --aggregate-dir downloaded --output out/iter076k_aggregate.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter076k-aggregate
+          path: out/iter076k_aggregate.json
+          if-no-files-found: error
