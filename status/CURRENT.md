@@ -8,13 +8,14 @@
 - Established/source-backed mechanism union: `F1-F8`
 - Physical F9: `BLOCKED`
 - K5 local amplitude: `BLOCKED_NONUNIQUE_EXTENSION_SELECTOR_MISSING`
+- Causal multi-vertex/refinement map: `BLOCKED_MAP_DEFINITION`
 - G3 quantum dynamics: `OPEN_BUT_NOT_ADMISSIBLE_UNTIL_LOCAL_AMPLITUDE_DEFINED`
 - G8 novelty: `BLOCKED_CONVERGENCE_ONLY`
-- **Authoritative active front:** `REFINEMENT_CYLINDRICAL_OR_RG_SELECTOR / UNIQUE_K5_EXTENSION / REGULATOR_INDEPENDENCE`
-- Active prospective gate: `Iter078A-RG`, prereg `prereg/ITER078A_RG_CAUSAL_REFINEMENT_MAP_DEFINITION.md`, commit `97257d6830f1a386f9df3a854391e4e86e340884`.
+- **Authoritative active front:** `SOURCE_FAITHFUL_CAUSAL_1TO5_REFINEMENT_MAP / MIXED_A0_L_CLOSURE / UNIQUE_K5_EXTENSION / REGULATOR_INDEPENDENCE`
+- Conditional pure-supported control: `SU2_BF_15J_CHANNEL / BF_GAUGE_VOLUME_REGULARIZATION`.
 - Conditional companions `TOLLER_FRONT_FACE_ALGEBRA (-FF)` and `SOURCE_BCH_K4_COORDINATE_CONTROL (-BCH)` remain non-authoritative for the physical source amplitude without a bridge theorem.
 
-At the latest recovery read there are no queued or in-progress GitHub Actions. Durable results are authoritative only in their recorded scopes. Historical naming collisions and source-lock quarantines remain governed by `status/ITER077_PROVENANCE_LEDGER.md` and `status/ITER077_CONTACT_FORMULA_ERRATUM.md`.
+At the latest recovery read there are no queued or in-progress GitHub Actions. Durable results are authoritative only in their recorded scopes. Historical naming collisions and source-lock quarantines remain governed by `status/ITER077_PROVENANCE_LEDGER.md` and `status/ITER077_CONTACT_FORMULA_ERRATUM.md`. The latest independent critic handoff is `status/MSQGR_ADVERSARIAL_CRITIC_HANDOFF.md`.
 
 ## Controlling source-map chain
 
@@ -64,7 +65,7 @@ Control-only repair prereg final commit `c94c8b77a0877d2bf56bbb89c309ae7a6ae4c9d
 
 Repaired classification: `ITER077J_SM_FROZEN_MAIN_FULL32_ANGULAR_SPAN_EXACTLY_FAILS_CONTROL_REPAIR_SCOPED`.
 
-Exact main and main+held-out ranks are both `9` over `Q(i)`, nullity `23`, with a verified exact right-null witness. This FAIL applies only to the frozen one-parameter angular family, whose polynomial-degree structure already implies rank `<=11`. Relabelled modular controls have rank 30 at four inert primes, but no exact Lane-D deficiency is claimed. This does not establish universal boundary-state cancellation and does not affect the Iter077I local-L1 witness.
+Exact main and main+held-out ranks are both `9` over `Q(i)`, nullity `23`, with a verified exact right-null witness. This FAIL applies only to the frozen one-parameter angular family, whose polynomial-degree structure implies rank `<=11`. It does not establish universal boundary-state cancellation and does not affect the Iter077I local-L1 witness.
 
 ### Iter077K-SM CLOSED — published source does not define the joint K5 boundary value
 
@@ -92,41 +93,88 @@ A concrete family `A_ext,c=A_ext+c F_SU2 delta_N` preserves the off-collision so
 
 Independent critic control `results/ITER077M_ADVERSARIAL_COMPACT_BOUNDARY_CONTROL.json`, commit `ba2d013d5c0d3889e94b3f120cba031e2f8b4ce9`, verifies the compact coefficient is a nonzero functional on the complete frozen 32-dimensional boundary basis (`16/32` nonzero at the identity compact connection).
 
-### Iter077N-SM CLOSED — ambiguity survives the integrated vertex; ordinary gluing does not select it
+### Iter077N-SM CLOSED — ambiguity survives integrated vertex; ordinary gluing does not select it
 
 Authoritative run `34789869127`, production head `7b12b0f8207d129ffd9b79bda158db77e265f8f6`, aggregate artifact `10328420436`, digest `sha256:04fecbabcdf0db984665da0220bf2e1499b9ccaf911e721e721471a4284bddd3`; result commit `03407a010f96e5d81af9813756d21fca6ffcda32`.
 
 Classification: `ITER077N_SM_K5_SUPPORTED_AMBIGUITY_SURVIVES_VERTEX_INTEGRATION_STANDARD_STATE_SUM_GLUING_DOES_NOT_FIX_COEFFICIENT_EXACT_SOURCE_SCOPED`.
 
-Exact all-32 compact K5 census gives `16/32` nonzero integrated boundary functionals; checksum `8923ae7f43fa83b9da1e9095d3ef195e6d208031ff6824a6a1a15a2d9912b936`. For `A_c=A_0+cL`, ordinary two-vertex state-sum contraction is `G_c=G_00+c(G_L0+G_0L)+c^2G_LL`; absent an independent c-independent target this is an operation, not an equation selecting `c`.
+Exact all-32 compact K5 census gives `16/32` nonzero integrated boundary functionals. Ordinary two-vertex state-sum contraction propagates `A_c=A_0+cL` but supplies no independent equation selecting `c`.
 
-Adversarial review in `status/MSQGR_ADVERSARIAL_CRITIC_HANDOFF.md`, commit `604ececa716c057e62ee325b7e80b7cf7bb9f591`, verdict `CONFIRMED_SCOPED`. Qualification: this excludes **ordinary state-sum contraction alone** as selector; it is not a theorem that every future causal refinement/composition/RG law fails.
+Critic review commit `604ececa716c057e62ee325b7e80b7cf7bb9f591` confirmed this only in standard-gluing scope. Exact critic branch-cube control `64e364df099f879b876d10a2d4653c21ddf12d4d` shows `T^+ + T^- = D` and the full independent-sign EPRL sum can remain unchanged while every factorizable causal K5 sector retains the supported coefficient.
 
-Exact critic branch-cube control `results/ITER077N_ADVERSARIAL_BRANCH_CUBE_CONTROL.md`, commit `64e364df099f879b876d10a2d4653c21ddf12d4d`, further shows the source identities `T^+ + T^- = D` and the full independent-sign EPRL sum can remain exactly unchanged while all 16 factorizable causal K5 sectors retain the same supported ambiguity coefficient. Thus the known additive branch identities do not select `c=0`.
+## Refinement / RG front
+
+### Iter078A-RG CLOSED — general RG framework exists, causal-Toller map missing
+
+Prereg `97257d6830f1a386f9df3a854391e4e86e340884`; source audit `377e78d6b954003354f2a73ecf95b34f70e97109`; result `728d6e3f40a1797247c2b32a652a2c2d67cb5310`.
+
+Classification: `ITER078A_RG_CAUSAL_TOLLER_REFINEMENT_MAP_NOT_YET_DEFINED_FRAMEWORK_EXISTS_BUT_SELECTOR_NOT_COMPUTABLE`.
+
+Verdict: `BLOCKED_MAP_DEFINITION`. Background-independent spin-foam consistent-boundary/RG frameworks exist, but CRQN v0.2 / the causal-Toller source defines only a single causal vertex. The source does not supply the same-boundary coarse/fine complex pair, causal fine face/edge measure, boundary embedding/projection, fixed-point equation, or transport law for the Iter077 extension freedom.
+
+This means no BF, EPRL, hypercuboidal, tensor-network or other external refinement measure may be silently treated as the already-defined CRQN RG map.
+
+### Iter078B-RG CLOSED — causal 1-to-5 orientation combinatorics are not the blocker
+
+Prereg `6f4360ca249c1b5ad9c6b1bd78c9be747be24acd`; implementation `a5d14bf75920c38a0c46106731c76ca65e2ebe07`; production head `047b19fe75630a88aac3f0b783e34198756e6f05`; terminal run `34790158373`; aggregate artifact `10328585276`, digest `sha256:db941e5cbf45e8f89012a8a7b0cef9568d3c289544c4b98a8027bb36f7d9a566`; result `4d4ae20ca3ace6ec37d176ebf1afbf97804513cb`.
+
+Classification: `ITER078B_RG_1TO5_CAUSAL_BOUNDARY_ORIENTATIONS_EXTEND_TO_FINE_ACYCLIC_K5_ALL32_EXACT_COMBINATORIAL_SCOPED`.
+
+All `32/32` coarse causal boundary sign patterns admit compatible acyclic internal K5 orientations. Counts are exactly `p!(5-p)!`. Therefore the minimal 1-to-5 refinement is not blocked by causal partial-order combinatorics. This does not define the refined amplitude/measure or RG map.
+
+### Iter078C-RG CLOSED — local supported tensor is BF 15j; RG interpretation QUALIFIED
+
+Prereg `bef22c39989905373c95bf49c666584dc898176e`; source/theorem derivation `b531e3d9a2f5e0c9422b170cc220ae9890c0f71e`; result `1eb593fdc97b46e3a2cc41e4ac568274e1c3b1c8`.
+
+Research classification: `ITER078C_RG_SUPPORTED_K5_AMBIGUITY_IS_SU2_BF_15J_CHANNEL_REFINEMENT_STABLE_UP_TO_BF_GAUGE_NORMALIZATION_EXACT_THEOREM_SCOPED`.
+
+Adversarial qualification: `results/ITER078C_ADVERSARIAL_QUALIFICATION.md`, commit `6206080d12a629bf9cca9b7084d8e8e03a843ecb`; critic handoff commit `d427f1777b0c90b2bc43e37b1796d81ee14b1604`; verdict `QUALIFIED`.
+
+Accepted exact/scoped core: the compact supported K5 boundary tensor `F_SU2` is the SU(2) Ooguri/BF 15j vertex tensor up to nonzero basis normalization/sign conventions. Under **standard BF internal sums/weights**, the pure-`L` multi-vertex sector is the Ooguri BF state sum up to `c^V`, basis normalization and BF gauge-volume factors.
+
+Critical scope lock: the BF weights are not the source-defined causal-Toller refinement map. Iter078A established that that map/measure is absent. Therefore `Fine[L^5]=K_BF L` and `c=K_BF c^5` are conditional pure-BF control equations, not yet CRQN RG equations. A non-BF causal face/edge measure need not preserve the BF Pachner identity. Mixed `A_0/L` sectors remain unresolved. The full Iter077L normal-jet ambiguity space is larger than one scalar `c`.
+
+### Iter078D-RG PREREGISTERED — pure-BF c^5 gauge-volume control only
+
+Prereg `prereg/ITER078D_RG_BF_CHANNEL_1TO5_GAUGE_VOLUME.md`, commit `71a8c52bbc2b46a83ebb3f57908e1a4e028261a8`.
+
+This gate may be used as a **conditional BF regulator/control theorem**: under standard BF internal weights, isolate the formal `c^5` coefficient and audit the known 1-to-5 gauge-volume divergence. It is not authorized to relabel that BF-weighted coefficient as the actual causal-Toller refinement map, because the latter remains `BLOCKED_MAP_DEFINITION`.
+
+A PASS can establish only that the BF-weighted pure-supported coefficient requires gauge fixing/regulation before a finite `K_BF` is assigned. It cannot select `c`, close mixed sectors, establish an RG fixed point, or repair the missing causal multi-vertex measure.
 
 ## Exact blocker
 
-The fixed-causal K5 vertex is locally extendible and at least one supported ambiguity direction survives the integrated boundary functional. The published source, its stated single-vertex constraints, known additive Toller/EPRL identities, and ordinary state-sum gluing do not uniquely select that direction.
+The fixed-causal K5 vertex is locally extendible but nonunique. At least one supported ambiguity direction survives the integrated boundary functional and is locally identifiable with an SU(2) BF 15j tensor. Ordinary gluing and the published single-vertex constraints do not select its coefficient.
 
-Controlling missing object:
+The controlling missing object has moved to:
 
-`REFINEMENT_CYLINDRICAL_OR_RG_CONSISTENCY_SELECTOR_FOR_K5_EXTENSION_FREEDOM`.
+`SOURCE_FAITHFUL_CAUSAL_1TO5_AMPLITUDE_MEASURE_EMBEDDING_PROJECTION_AND_MIXED_EXTENSION_CLOSURE_MAP`.
 
-Status: `BLOCKED_NONUNIQUE_EXTENSION_SELECTOR_MISSING`.
+Status remains `BLOCKED_MAP_DEFINITION / BLOCKED_NONUNIQUE_EXTENSION_SELECTOR_MISSING`.
 
-The order-8 result denotes maximal **normal-jet order**, not eight scalar couplings; coefficient data can remain functions/distributions along the 12-dimensional compact collision submanifold. Any future selector must not silently replace the full ambiguity space by one scalar unless a reduction theorem is supplied.
+The order-8 Iter077L result denotes maximal normal-jet order, not eight scalar couplings. Any future RG truncation must justify how the full allowed supported jet/function freedom is projected into a finite coupling space.
 
 ## Exact next admissible gate
 
-`Iter078A-RG` is prospectively open. First determine whether an already established source-backed framework gives a **concrete causal-Toller refinement/coarse-graining map**, not merely generic spin-foam RG language. Required data include boundary Hilbert spaces, embedding/coarse-graining map, coarse/fine amplitudes on the same data, fine face/edge/vertex measure and gauge fixing, causal-label propagation, internal sums, projection/truncation if needed, a c-independent consistency/fixed-point equation, and explicit transport of the Iter077 extension freedom.
+Highest-information physical gate: prospectively define one explicit causal 1-to-5 multi-vertex prescription, with:
 
-- If those data already exist for the causal-Toller model, open a separate selector calculation.
-- If general consistent-boundary/RG frameworks exist but the causal map is missing, classify `BLOCKED_MAP_DEFINITION`.
-- Restricted Euclidean/hypercuboidal/tensor-network RG examples may be controls only; substituting them for the Lorentzian causal-Toller object is invalid.
-- A new refinement/RG prescription is admissible only as independently motivated, prospectively falsifiable new CRQN structure required for continuum/regulator consistency, not as post-hoc rescue.
+1. fine face/edge weights and internal spin/intertwiner sums;
+2. per-vertex gauge fixing and treatment of BF/redundant gauge volume where relevant;
+3. causal orientation sum/selection using the Iter078B-compatible fine patterns;
+4. same-boundary embedding map;
+5. coarse projection/matching functional;
+6. regulator path;
+7. explicit transport/projection of the Iter077 extension ambiguity space.
 
-Only after a unique local amplitude is selected may regulator independence and G3 be promoted.
+If no source-backed prescription exists, any Lorentzian EPRL-like choice must be versioned as new independently motivated CRQN structure rather than attributed to the original causal source.
+
+Once frozen, expand `A_c=A_0+cL` over the five fine vertices. A finite-spin mixed sector producing a coarse boundary tensor outside the proposed `{A_0,L}` span is a decisive FAIL of one-parameter closure and requires an enlarged coupling space before any fixed-point search.
+
+Pure-BF gauge-volume calculations such as Iter078D are useful conditional controls but are not a substitute for this mixed source-faithful map/closure test.
+
+Only after a unique local amplitude and a mathematically defined refinement map are established may regulator independence, G3 and continuum RG be promoted.
 
 ## Claim locks
 
-No `NEW_PHYSICS_FOUND`; no complete-QG claim; no generic finite-spin signed P3; no full-amplitude causal divergence/nonexistence theorem; no unique K5 extension theorem; no regulator-independence theorem; no physical source-to-K4 pushforward; no nominal `epsilon^-1`; no G3 PASS or F9/G8/K5 promotion. Retain the published one-wedge spectral `i epsilon`; do not reinterpret it as a joint K5 regulator.
+No `NEW_PHYSICS_FOUND`; no complete-QG claim; no generic finite-spin signed P3; no full-amplitude causal divergence/nonexistence theorem; no unique K5 extension theorem; no regulator-independence theorem; no physical source-to-K4 pushforward; no nominal `epsilon^-1`; no CRQN RG fixed point; no `K_BF=1`; no G3 PASS or F9/G8/K5 promotion. Retain the published one-wedge spectral `i epsilon`; do not reinterpret it as a joint K5 regulator.
