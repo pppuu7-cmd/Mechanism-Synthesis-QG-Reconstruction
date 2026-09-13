@@ -1,0 +1,53 @@
+name: Iter065A K5 Distributional Qualification
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/iter065a-k5-distributional-qualification.yml'
+  workflow_dispatch:
+
+jobs:
+  lane:
+    strategy:
+      fail-fast: false
+      matrix:
+        lane: [source_prescription, extension_selection, order_regulator, eprl_distributional_control]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run frozen K5 qualification lane
+        run: python scripts/iter065a_k5_distributional_qualification.py --lane '${{ matrix.lane }}' --output 'iter065a_${{ matrix.lane }}.json'
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter065a-${{ matrix.lane }}
+          path: iter065a_${{ matrix.lane }}.json
+          if-no-files-found: warn
+
+  aggregate:
+    needs: lane
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: iter065a-*
+          path: lanes
+      - name: Frozen aggregate classification
+        run: python scripts/iter065a_k5_distributional_aggregate.py
+      - name: Record provenance
+        if: always()
+        run: printf 'head_sha=%s\nrun_id=%s\nprereg_commit=%s\n' "$GITHUB_SHA" "$GITHUB_RUN_ID" '987b0b27aaccc9e75ceed5fe209e9944a17f5e94' > iter065a_provenance.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter065a-aggregate
+          path: |
+            iter065a_aggregate.json
+            iter065a_provenance.txt
+          if-no-files-found: warn
