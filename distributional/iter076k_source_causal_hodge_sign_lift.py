@@ -11,16 +11,17 @@ def eps4(a,b,c,d): return -1 if invcount((a,b,c,d))%2 else 1
 def R(p):
     M=[[0]*6 for _ in range(6)]
     for e in EDGES:
-        pe=canon(p[e[0]],p[e[1]])
-        M[EIDX[pe]][EIDX[e]]=1
+        a,b=p[e[0]],p[e[1]]
+        pe=canon(a,b)
+        orient=1 if a<b else -1
+        M[EIDX[pe]][EIDX[e]]=orient
     return M
 def matmul(A,B): return [[sum(A[i][k]*B[k][j] for k in range(len(B))) for j in range(len(B[0]))] for i in range(len(A))]
 def scale(c,A): return [[c*x for x in r] for r in A]
 def eq(A,B): return A==B
 def signed_H(pair_signs):
     H=[[0]*6 for _ in range(6)]
-    seen=[]; ps_iter=iter(pair_signs)
-    assigned={}
+    ps_iter=iter(pair_signs); assigned={}
     for e in EDGES:
         c=comp(e); key=tuple(sorted((EIDX[e],EIDX[c])))
         if key not in assigned: assigned[key]=next(ps_iter)
