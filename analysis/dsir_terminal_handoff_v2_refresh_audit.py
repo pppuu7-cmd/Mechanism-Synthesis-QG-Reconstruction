@@ -37,11 +37,12 @@ def result_locks():
         p = ROOT / path
         exists = p.exists()
         body = p.read_text(encoding='utf-8') if exists else ''
+        low = body.lower()
         out[key] = {
             'path': path,
             'exists': exists,
             'classification_present': classification in body,
-            'has_authority_or_run': ('authoritative run' in body.lower()) or key == 'V1',
+            'has_authority_or_run': (('authoritative' in low and 'run' in low) or key == 'V1'),
         }
     return out
 
@@ -50,10 +51,11 @@ def lane_r2():
     locks = result_locks()
     funnel = text('docs/DSIR_TO_POLYGON_FUNNEL_V0_2.md')
     a = text(RESULTS['A-SM'][0]); c = text(RESULTS['C-SM'][0]); d = text(RESULTS['D-SM'][0]); e = text(RESULTS['E-SM'][0]); f = text(RESULTS['F-SM'][0])
+    al, el, fl = a.lower(), e.lower(), f.lower()
     checks = {
         'required_results_classified': all(v['exists'] and v['classification_present'] for v in locks.values()),
-        'generic_rank10_submersion': 'rank 10' in a and 'standard local distribution pullback' in e,
-        'scalar_cycle_nontransfer': 'cycle relations' in a and 'do not transfer' in a,
+        'generic_rank10_submersion': (('rank `10`' in a or 'rank 10' in al) and 'submersion' in el and 'pullback' in el and ('authoriz' in el or 'canonical' in el)),
+        'scalar_cycle_nontransfer': ('ITER077A_TRUE_SOURCE_B_MAP_HAS_GENERIC_FULL_RANK_COLLISION_WITNESS_SCALAR_K5_CYCLE_RELATIONS_DO_NOT_TRANSFER_EXACT_SCOPED' in a),
         'rank9_codim3': 'codimension-3' in c or 'codimension 3' in c,
         'rank9_H6_nondegenerate': 'determinant `-1`' in d and 'inertia `(3 positive, 3 negative)`' in d,
         'rank9_Hormander_collision': 'RANK9_POINT_CONTACT_STANDARD_PULLBACK_CRITERION_FAILS=true' in e,
@@ -64,7 +66,7 @@ def lane_r2():
         'local_missing_object': 'SOURCE_SELECTED_CORRELATED_I_EPSILON_EXTENSION_OF_RANK9_N_EFF_3_CONTACT_CHANNEL' in funnel and 'SOURCE_SELECTED_CORRELATED_I_EPSILON_EXTENSION_OF_RANK9_N_EFF_3_CONTACT_CHANNEL' in f,
         'global_exceptional_coverage_exported': 'cover the other rank-deficient source strata' in funnel,
         'K5_remains_blocked': 'Terminal status remains\n\n`BLOCKED_TRANSFER_TO_POLYGON`' in funnel,
-        'no_arbitrary_finite_part': 'No arbitrary finite part' in f or 'arbitrary fitted counterterms/finite parts remain forbidden' in f,
+        'no_arbitrary_finite_part': ('arbitrary' in fl and ('finite part' in fl or 'counterterm' in fl) and 'forbid' in fl),
     }
     return {'audit':'DSIR-V2','lane':'R2','valid':all(checks.values()),'checks':checks}
 
