@@ -1,0 +1,81 @@
+name: Iter068B K4 Contact Wavefront Audit
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'distributional/iter068b_contact_wavefront.py'
+      - 'status/ITERATION_068B_PREREG.md'
+      - '.github/workflows/iter068b-contact-wavefront.yml'
+  workflow_dispatch:
+
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      max-parallel: 24
+      matrix:
+        sigma: ['++++','+++-','++-+','++--','+-++','+-+-','+--+','+---']
+        gamma: ['1/5','6/5','2']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run exact contact-wavefront lane
+        run: |
+          mkdir -p results
+          safe_sigma=$(echo '${{ matrix.sigma }}' | tr '+' 'p' | tr '-' 'm')
+          safe_gamma=$(echo '${{ matrix.gamma }}' | tr '/' '_')
+          python distributional/iter068b_contact_wavefront.py \
+            --sigma '${{ matrix.sigma }}' --gamma '${{ matrix.gamma }}' \
+            --output "results/iter068b_${safe_sigma}_${safe_gamma}.json"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter068b-${{ matrix.sigma }}-${{ matrix.gamma }}
+          path: results/*.json
+          if-no-files-found: error
+          retention-days: 90
+
+  aggregate:
+    runs-on: ubuntu-24.04
+    needs: [audit]
+    if: always()
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: iter068b-*
+          path: gathered
+          merge-multiple: true
+      - name: Frozen aggregate
+        run: |
+          python - <<'PY'
+          import glob,json
+          from pathlib import Path
+          rows=[json.load(open(f,encoding='utf-8')) for f in sorted(glob.glob('gathered/*.json'))]
+          target='K4_SEPARATE_CONTACT_PRODUCT_HORMANDER_OBSTRUCTED_JHALF'
+          valid=(len(rows)==24 and all(r.get('valid') and r.get('classification')==target for r in rows))
+          out={
+            'gate':'ITER068B_APPENDIXD_CONTACT_WAVEFRONT',
+            'frozen_prereg_commit':'7ef76367e465f833efa21623446a24720ea673ab',
+            'lanes':len(rows),'all_lanes_valid':valid,
+            'sigma_classes':sorted({r['sigma'] for r in rows}),
+            'gamma_values':sorted({r['gamma'] for r in rows}),
+            'classification':('ITER068B_CONTACT_LAYER_OBSTRUCTS_SEPARATE_K4_PRODUCT_ALL_FROZEN_CLASSES' if valid else 'ITER068B_INVALID_OR_INCONSISTENT'),
+            'scope_lock':'Separate contact-expanded product only; joint spectral boundary value remains open.'
+          }
+          Path('aggregate').mkdir(exist_ok=True)
+          Path('aggregate/iter068b-aggregate.json').write_text(json.dumps(out,indent=2,sort_keys=True),encoding='utf-8')
+          print(json.dumps(out,indent=2,sort_keys=True))
+          if not valid: raise SystemExit(9)
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter068b-aggregate
+          path: aggregate/iter068b-aggregate.json
+          if-no-files-found: error
+          retention-days: 90
