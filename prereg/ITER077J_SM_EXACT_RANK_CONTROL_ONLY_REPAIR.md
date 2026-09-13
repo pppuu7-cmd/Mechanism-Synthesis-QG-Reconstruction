@@ -67,7 +67,9 @@ Re-evaluate the 960 relabelled vectors using several fixed inert primes only as 
 
 Frozen primes:
 
-`1000000007, 1000000039, 1000000087, 1000000123`.
+`1000000007, 1000000087, 1000000103, 1000000123`.
+
+All four are prime and `3 mod 4`, so `x^2+1` is irreducible and the Gaussian-pair arithmetic is over the field `F_p(i)`.
 
 For any prime at which rank is 32, exact characteristic-zero rank 32 is certified and Lane D is PASS. If all modular ranks remain below 32, record only the lower bounds obtained; do **not** infer an exact rank deficiency from modular rank alone. Lane D then remains `UNRESOLVED_EXACT_RANK`, but this cannot rescue aggregate PASS if Bx/Cx have an exact FAIL.
 
