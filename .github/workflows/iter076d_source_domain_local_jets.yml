@@ -1,0 +1,56 @@
+name: Iter076D source-domain local jets
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'distributional/iter076d_source_domain_local_jets.py'
+      - 'distributional/iter076d_aggregate.py'
+      - '.github/workflows/iter076d_source_domain_local_jets.yml'
+  workflow_dispatch:
+
+jobs:
+  local-jets:
+    strategy:
+      fail-fast: false
+      matrix:
+        lane: [A, B, C, D]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install --upgrade pip sympy mpmath
+      - name: Run frozen lane ${{ matrix.lane }}
+        run: |
+          mkdir -p out
+          python distributional/iter076d_source_domain_local_jets.py --lane '${{ matrix.lane }}' --output 'out/iter076d_${{ matrix.lane }}.json'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter076d-${{ matrix.lane }}
+          path: out/iter076d_${{ matrix.lane }}.json
+          if-no-files-found: error
+
+  aggregate:
+    needs: local-jets
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: iter076d-*
+          path: downloaded
+      - name: Frozen aggregate
+        run: |
+          mkdir -p out
+          python distributional/iter076d_aggregate.py --input-root downloaded --output out/iter076d_aggregate.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter076d-aggregate
+          path: out/iter076d_aggregate.json
+          if-no-files-found: error
