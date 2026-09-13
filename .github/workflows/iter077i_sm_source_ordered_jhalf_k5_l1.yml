@@ -1,0 +1,74 @@
+name: Iter077I-SM source ordered jhalf K5 local L1
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'sources/ITER077I_SM_SOURCE_ORDERED_TOLLER_FUNCTION_K5_L1_DERIVATION.md'
+      - 'prereg/ITER077I_SM_SOURCE_ORDERED_JHALF_K5_L1.md'
+      - 'distributional/iter077i_sm_source_ordered_jhalf_k5_l1.py'
+      - 'results/ITER077H_SM_FINITE_EPSILON_CONTACT_PERSISTENCE_RESULT.md'
+      - '.github/workflows/iter077i_sm_source_ordered_jhalf_k5_l1.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    name: Iter077I-SM lane ${{ matrix.lane }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        lane: [A, B, C, D]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run frozen exact lane
+        env:
+          PYTHONPATH: .
+        run: |
+          mkdir -p out
+          python distributional/iter077i_sm_source_ordered_jhalf_k5_l1.py \
+            --lane '${{ matrix.lane }}' \
+            --output 'out/iter077i_sm_${{ matrix.lane }}.json'
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter077i-sm-${{ matrix.lane }}
+          path: out/iter077i_sm_${{ matrix.lane }}.json
+          if-no-files-found: error
+
+  aggregate:
+    name: Aggregate Iter077I-SM
+    needs: audit
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: iter077i-sm-*
+          path: downloaded
+          merge-multiple: false
+      - name: Aggregate frozen exact contract
+        env:
+          PYTHONPATH: .
+        run: |
+          mkdir -p out
+          python distributional/iter077i_sm_source_ordered_jhalf_k5_l1.py \
+            --aggregate-dir downloaded \
+            --output out/iter077i_sm_aggregate.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter077i-sm-aggregate
+          path: out/iter077i_sm_aggregate.json
+          if-no-files-found: error
