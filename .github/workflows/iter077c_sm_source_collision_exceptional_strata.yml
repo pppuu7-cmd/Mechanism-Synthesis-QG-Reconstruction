@@ -1,0 +1,64 @@
+name: Iter077C-SM source collision exceptional strata
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'distributional/iter077c_sm_source_collision_exceptional_strata.py'
+      - 'prereg/ITER077C_SM_SOURCE_COLLISION_EXCEPTIONAL_STRATA.md'
+      - 'status/ITER077_PROVENANCE_LEDGER.md'
+      - 'results/ITER077A_TRUE_SOURCE_B_MAP_TRANSVERSALITY_RESULT.md'
+      - '.github/workflows/iter077c_sm_source_collision_exceptional_strata.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    strategy:
+      fail-fast: false
+      matrix:
+        lane: [A, B, C, D]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run frozen lane ${{ matrix.lane }}
+        run: |
+          mkdir -p out
+          python distributional/iter077c_sm_source_collision_exceptional_strata.py \
+            --lane '${{ matrix.lane }}' \
+            --output 'out/iter077c_sm_${{ matrix.lane }}.json'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter077c-sm-${{ matrix.lane }}
+          path: out/iter077c_sm_${{ matrix.lane }}.json
+          if-no-files-found: error
+
+  aggregate:
+    needs: audit
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: iter077c-sm-*
+          path: downloaded
+          merge-multiple: false
+      - name: Frozen aggregate
+        run: |
+          mkdir -p out
+          python distributional/iter077c_sm_source_collision_exceptional_strata.py \
+            --aggregate-dir downloaded \
+            --output out/iter077c_sm_aggregate.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter077c-sm-aggregate
+          path: out/iter077c_sm_aggregate.json
+          if-no-files-found: error
