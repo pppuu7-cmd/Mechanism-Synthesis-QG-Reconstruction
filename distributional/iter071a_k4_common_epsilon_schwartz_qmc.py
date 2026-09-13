@@ -32,7 +32,6 @@ def linear_matrix(tree):
     return L,int(det)
 
 def pair(z): return [float(np.real(z)),float(np.imag(z))]
-def cabs(z): return float(abs(z))
 
 def main():
     ap=argparse.ArgumentParser(); ap.add_argument('--tree',required=True,choices=sorted(TREES)); ap.add_argument('--sigma',required=True,choices=SIGMAS); ap.add_argument('--output',required=True); a=ap.parse_args()
@@ -41,25 +40,23 @@ def main():
     eig=np.linalg.eigvalsh(Q)
     p1=bool(np.all(eig>1e-12))
     C=np.linalg.cholesky(Q)
-    jac=1.0/abs(np.linalg.det(C))
-    p1=p1 and np.isfinite(jac) and jac>0
+    jac=float(1.0/abs(np.linalg.det(C)))
+    p1=bool(p1 and bool(np.isfinite(jac)) and jac>0)
     signs=causal_signs(a.sigma)
     rho=GAMMA/2.0; den0=rho*rho+0.25; c1=2*rho/den0; c2=2/den0
     all_est={}; finite=True; stable=True
-    # test index: 0=G0,1=G1,2=G2. Gaussian factor is supplied by sampling measure.
     for eps in EPS:
-        all_est[str(eps)]={}
+        all_est[str(float(eps))]={}
         scramble_vals={0:[],1:[],2:[]}
         for seed in SEEDS:
             sampler=qmc.Sobol(d=3,scramble=True,seed=seed)
             u=sampler.random_base2(M)
             u=np.clip(u,1e-15,1-1e-15)
             z=norm.ppf(u)/math.sqrt(2.0)
-            # Q=C C^T and z=C^T y
             y=np.linalg.solve(C.T,z.T).T
             x=y@L.T
             numer=np.prod(1.0+c1*x+(c2/2.0)*x*x,axis=1)
-            denom=np.prod(x-1j*eps*signs[None,:],axis=1)
+            denom=np.prod(x-1j*float(eps)*signs[None,:],axis=1)
             ker=numer/denom
             polys=[np.ones(len(x)),1.0+x[:,0]-2.0*x[:,4]+x[:,5],1.0+x[:,0]*x[:,5]-x[:,1]*x[:,4]]
             pref=(math.pi**1.5)*jac
@@ -69,30 +66,30 @@ def main():
         for ti in range(3):
             vals=np.asarray(scramble_vals[ti],dtype=np.complex128)
             mean=np.mean(vals)
-            spread=np.max(np.abs(vals-mean))/max(1.0,abs(mean))
-            ok=np.all(np.isfinite(vals.real)) and np.all(np.isfinite(vals.imag))
-            finite=finite and bool(ok)
-            stable=stable and bool(spread<=0.05)
-            all_est[str(eps)][f'G{ti}']={'scrambles':[pair(v) for v in vals],'mean':pair(mean),'normalized_scramble_spread':float(spread)}
+            spread=float(np.max(np.abs(vals-mean))/max(1.0,abs(mean)))
+            ok=bool(np.all(np.isfinite(vals.real)) and np.all(np.isfinite(vals.imag)))
+            finite=bool(finite and ok)
+            stable=bool(stable and spread<=0.05)
+            all_est[str(float(eps))][f'G{ti}']={'scrambles':[pair(v) for v in vals],'mean':pair(mean),'normalized_scramble_spread':spread}
     cauchy=True; trend=True; convergence={}
     for ti in range(3):
         means=[]
         for eps in EPS:
-            re,im=all_est[str(eps)][f'G{ti}']['mean']; means.append(complex(re,im))
-        df=abs(means[-1]-means[-2]); dp=abs(means[-2]-means[-3])
-        relf=df/max(1.0,abs(means[-1]))
-        ok4=relf<=0.20; ok5=df<=1.10*dp
-        cauchy=cauchy and ok4; trend=trend and ok5
-        convergence[f'G{ti}']={'final_difference':float(df),'previous_difference':float(dp),'final_normalized_difference':float(relf),'P4':bool(ok4),'P5':bool(ok5)}
-    valid=p1 and finite
-    passed=valid and stable and cauchy and trend
+            re,im=all_est[str(float(eps))][f'G{ti}']['mean']; means.append(complex(re,im))
+        df=float(abs(means[-1]-means[-2])); dp=float(abs(means[-2]-means[-3]))
+        relf=float(df/max(1.0,abs(means[-1])))
+        ok4=bool(relf<=0.20); ok5=bool(df<=1.10*dp)
+        cauchy=bool(cauchy and ok4); trend=bool(trend and ok5)
+        convergence[f'G{ti}']={'final_difference':df,'previous_difference':dp,'final_normalized_difference':relf,'P4':ok4,'P5':ok5}
+    valid=bool(p1 and finite)
+    passed=bool(valid and stable and cauchy and trend)
     if not valid: cls='ITER071A_NUMERICAL_VALIDITY_FAIL'
     elif passed: cls='ITER071A_LANE_COMMON_EPSILON_SCHWARTZ_CONVERGENCE_SUPPORTED'
     else: cls='ITER071A_LANE_COMMON_EPSILON_SCHWARTZ_REVIEW'
-    out={'iteration':'Iter071A','tree':a.tree,'sigma':a.sigma,'gamma':GAMMA,'epsilon_sequence':EPS.tolist(),
-         'sobol_seeds':SEEDS,'points_per_scramble':2**M,'Q':Q.tolist(),'Q_eigenvalues':eig.tolist(),'whitening_jacobian':jac,'tree_incidence_det':tree_det,
+    out={'iteration':'Iter071A','tree':a.tree,'sigma':a.sigma,'gamma':float(GAMMA),'epsilon_sequence':[float(v) for v in EPS],
+         'sobol_seeds':list(SEEDS),'points_per_scramble':int(2**M),'Q':Q.tolist(),'Q_eigenvalues':[float(v) for v in eig],'whitening_jacobian':jac,'tree_incidence_det':int(tree_det),
          'estimates':all_est,'convergence':convergence,
-         'predicates':{'P1_Q_POSITIVE_AND_JACOBIAN_VALID':p1,'P2_ALL_ESTIMATES_FINITE':finite,'P3_SCRAMBLE_STABILITY':stable,'P4_FINAL_CAUCHY_BOUND':cauchy,'P5_FINAL_STEP_NOT_WORSENING':trend},
+         'predicates':{'P1_Q_POSITIVE_AND_JACOBIAN_VALID':bool(p1),'P2_ALL_ESTIMATES_FINITE':bool(finite),'P3_SCRAMBLE_STABILITY':bool(stable),'P4_FINAL_CAUCHY_BOUND':bool(cauchy),'P5_FINAL_STEP_NOT_WORSENING':bool(trend)},
          'valid':valid,'lane_pass':passed,'classification':cls,
          'claim_lock':'Reduced K4 common-epsilon Schwartz-action numerical pilot only; no S-prime theorem, arbitrary-path independence, K5 vertex theorem, or promotion.'}
     p=Path(a.output); p.parent.mkdir(parents=True,exist_ok=True); p.write_text(json.dumps(out,indent=2,sort_keys=True),encoding='utf-8')
