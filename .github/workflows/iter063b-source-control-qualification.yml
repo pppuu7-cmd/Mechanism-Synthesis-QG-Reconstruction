@@ -1,0 +1,29 @@
+name: Iter063B Source Control Qualification
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/iter063b-source-control-qualification.yml'
+  workflow_dispatch:
+
+jobs:
+  qualify:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run frozen source qualification
+        run: python scripts/iter063b_source_control_qualification.py | tee iter063b_stdout.txt
+      - name: Record provenance
+        run: |
+          printf 'head_sha=%s\nrun_id=%s\nprereg_commit=%s\n' "$GITHUB_SHA" "$GITHUB_RUN_ID" '75fb19ed4644ca422a3954ef8e231d8e35c92fc4' > iter063b_provenance.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter063b-source-control-qualification
+          path: |
+            iter063b_source_control_qualification.json
+            iter063b_stdout.txt
+            iter063b_provenance.txt
