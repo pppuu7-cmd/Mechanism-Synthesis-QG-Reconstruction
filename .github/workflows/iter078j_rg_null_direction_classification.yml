@@ -1,0 +1,73 @@
+name: Iter078J-RG null direction classification
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'prereg/ITER078J_RG_LINEARIZED_NULL_DIRECTION_CLASSIFICATION.md'
+      - 'distributional/iter078j_rg_null_direction_classification.py'
+      - '.github/workflows/iter078j_rg_null_direction_classification.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    name: Iter078J lane ${{ matrix.lane }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        lane: [A, B, C, D]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run exact frozen lane
+        env:
+          PYTHONPATH: .
+        run: |
+          mkdir -p out
+          python distributional/iter078j_rg_null_direction_classification.py \
+            --lane '${{ matrix.lane }}' \
+            --output 'out/iter078j_${{ matrix.lane }}.json'
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter078j-${{ matrix.lane }}
+          path: out/iter078j_${{ matrix.lane }}.json
+          if-no-files-found: error
+
+  aggregate:
+    name: Aggregate Iter078J-RG
+    needs: audit
+    if: always()
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: iter078j-*
+          path: downloaded
+          merge-multiple: false
+      - name: Aggregate exact null-direction lanes
+        env:
+          PYTHONPATH: .
+        run: |
+          mkdir -p out
+          python distributional/iter078j_rg_null_direction_classification.py \
+            --aggregate-dir downloaded \
+            --output out/iter078j_aggregate.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter078j-aggregate
+          path: out/iter078j_aggregate.json
+          if-no-files-found: error
