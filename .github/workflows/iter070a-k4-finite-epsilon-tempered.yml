@@ -1,0 +1,82 @@
+name: Iter070A K4 Finite-Epsilon Tempered Family
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'distributional/iter070a_k4_finite_epsilon_tempered.py'
+      - 'status/ITERATION_070A_PREREG.md'
+      - '.github/workflows/iter070a-k4-finite-epsilon-tempered.yml'
+  workflow_dispatch:
+
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      max-parallel: 8
+      matrix:
+        tree: ['S0','S1','P0','P1']
+        sigma: ['++++','+++-','++-+','++--','+-++','+-+-','+--+','+---']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --upgrade pip sympy
+      - name: Run frozen finite-epsilon temperedness lane
+        run: |
+          mkdir -p results
+          safe=$(printf '%s' '${{ matrix.sigma }}' | tr '+' 'p' | tr '-' 'm')
+          PYTHONPATH=. python distributional/iter070a_k4_finite_epsilon_tempered.py \
+            --tree '${{ matrix.tree }}' --sigma '${{ matrix.sigma }}' \
+            --output "results/iter070a_${{ matrix.tree }}_${safe}.json"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter070a-${{ matrix.tree }}-${{ strategy.job-index }}
+          path: results/*.json
+          if-no-files-found: error
+          retention-days: 90
+
+  aggregate:
+    runs-on: ubuntu-24.04
+    needs: [audit]
+    if: always()
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: iter070a-*
+          path: gathered
+          merge-multiple: true
+      - name: Frozen aggregate
+        run: |
+          python - <<'PY'
+          import glob,json
+          from pathlib import Path
+          lanes=[json.load(open(f,encoding='utf-8')) for f in sorted(glob.glob('gathered/*.json'))]
+          target='ITER070A_K4_FINITE_EPSILON_JOINT_SPECTRAL_TEMPERED_FAMILY_QUALIFIED'
+          rows=[r for lane in lanes for r in lane.get('rows',[])]
+          valid=(len(lanes)==32 and len(rows)==64 and
+                 all(l.get('valid') and l.get('classification')==target for l in lanes) and
+                 all(r.get('valid') for r in rows))
+          out={'gate':'ITER070A_K4_FINITE_EPSILON_JOINT_SPECTRAL_TEMPERED_FAMILY',
+               'frozen_prereg_commit':'026f1ee074a0961b464226bfdb305f14fbc1bde0',
+               'job_lanes':len(lanes),'exact_cases':len(rows),'all_valid':valid,
+               'radial_degrees':sorted({r.get('radial_degree_V1') for r in rows}),
+               'global_bound_degrees':sorted({r.get('global_polynomial_bound_degree') for r in rows}),
+               'classification':target if valid else 'ITER070A_FINITE_EPSILON_TEMPEREDNESS_REVIEW',
+               'scope_lock':'Each fixed epsilon>0 reduced family member only; no epsilon->0 boundary-value or causal-vertex theorem.'}
+          Path('aggregate').mkdir(exist_ok=True)
+          Path('aggregate/iter070a-aggregate.json').write_text(json.dumps(out,indent=2,sort_keys=True),encoding='utf-8')
+          print(json.dumps(out,indent=2,sort_keys=True))
+          if not valid: raise SystemExit(9)
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter070a-aggregate
+          path: aggregate/iter070a-aggregate.json
+          if-no-files-found: error
+          retention-days: 90
