@@ -1,0 +1,37 @@
+name: Iter075D Toller branch-flip recurrence certificate
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - '.github/workflows/iter075d-toller-branchflip-recurrence.yml'
+  workflow_dispatch:
+
+jobs:
+  recurrence:
+    strategy:
+      fail-fast: false
+      max-parallel: 6
+      matrix:
+        include:
+          - {tag: h_h, j: '0.5', l: '0.5'}
+          - {tag: one_two, j: '1', l: '2'}
+          - {tag: threehalf_fivehalf, j: '1.5', l: '2.5'}
+          - {tag: two_one, j: '2', l: '1'}
+          - {tag: fivehalf_half, j: '2.5', l: '0.5'}
+          - {tag: three_four, j: '3', l: '4'}
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --disable-pip-version-check mpmath
+      - name: Run frozen Iter075D lane
+        run: python distributional/iter075d_toller_branchflip_recurrence.py --j '${{ matrix.j }}' --l '${{ matrix.l }}' --tag '${{ matrix.tag }}'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter075d-${{ matrix.tag }}
+          path: out/iter075d-${{ matrix.tag }}.json
+          if-no-files-found: error
+          retention-days: 90
