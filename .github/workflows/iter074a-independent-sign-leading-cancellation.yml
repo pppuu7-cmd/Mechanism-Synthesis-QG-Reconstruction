@@ -1,0 +1,28 @@
+name: Iter074A 64-sign leading cancellation
+on:
+  push:
+    paths:
+      - '.github/workflows/iter074a-independent-sign-leading-cancellation.yml'
+      - 'distributional/iter074a_independent_sign_leading_cancellation.py'
+      - 'status/ITERATION_074A_PREREG.md'
+  workflow_dispatch:
+jobs:
+  exact-cancellation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --disable-pip-version-check sympy numpy scipy
+      - name: Run frozen exact 64-sign cancellation gate
+        run: |
+          mkdir -p out
+          python -m distributional.iter074a_independent_sign_leading_cancellation --output out/iter074a-aggregate.json
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: iter074a-aggregate
+          path: out/iter074a-aggregate.json
+          if-no-files-found: error
+          retention-days: 90
