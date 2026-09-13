@@ -2,6 +2,12 @@ name: Iter076I source reversal vs Hodge support
 
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/iter076i_source_reversal_vs_hodge_support.yml'
+      - 'distributional/iter076i_source_reversal_vs_hodge_support.py'
+      - 'prereg/ITER076I_SOURCE_REVERSAL_VS_HODGE_SUPPORT.md'
 
 jobs:
   lane:
