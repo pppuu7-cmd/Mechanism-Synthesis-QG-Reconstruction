@@ -1,0 +1,57 @@
+name: Iter076B Degree2 overlap jet complex
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'distributional/iter076b_degree2_overlap_jet_complex.py'
+      - 'distributional/iter076b_degree2_overlap_jet_lane.py'
+      - 'distributional/iter076b_degree2_overlap_jet_aggregate.py'
+      - '.github/workflows/iter076b-degree2-overlap-jet.yml'
+  workflow_dispatch:
+
+jobs:
+  lane:
+    strategy:
+      fail-fast: false
+      matrix:
+        label: ['++++','+++-','++--','+---']
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install sympy
+      - name: Run frozen source-class lane
+        env:
+          LABEL: ${{ matrix.label }}
+        run: |
+          mkdir -p out
+          PYTHONPATH=. python distributional/iter076b_degree2_overlap_jet_lane.py --label "$LABEL" --output "out/lane.json"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter076b-lane-${{ strategy.job-index }}
+          path: out/lane.json
+
+  aggregate:
+    needs: lane
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: iter076b-lane-*
+          path: lanes
+      - name: Frozen aggregate classification
+        run: |
+          mkdir -p out
+          python distributional/iter076b_degree2_overlap_jet_aggregate.py --input-glob 'lanes/*/lane.json' --output out/aggregate.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter076b-degree2-overlap-jet-aggregate
+          path: out/aggregate.json
