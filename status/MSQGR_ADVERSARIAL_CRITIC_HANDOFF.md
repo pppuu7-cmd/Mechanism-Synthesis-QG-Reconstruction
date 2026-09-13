@@ -4,127 +4,150 @@
 
 ## RESULT_REVIEWED
 
-Latest substantive Researcher result reviewed: `Iter077N-SM`, durable result `results/ITER077N_SM_SUPPORTED_AMBIGUITY_SURVIVAL_AND_GLUING_RESULT.md`, commit `03407a010f96e5d81af9813756d21fca6ffcda32`, authoritative run `34789869127`.
+Latest substantive Researcher result reviewed: `Iter078C-RG`, durable result `results/ITER078C_RG_SUPPORTED_AMBIGUITY_BF15J_CHANNEL_RESULT.md`, commit `1eb593fdc97b46e3a2cc41e4ac568274e1c3b1c8`.
 
 Frozen classification reviewed:
 
-`ITER077N_SM_K5_SUPPORTED_AMBIGUITY_SURVIVES_VERTEX_INTEGRATION_STANDARD_STATE_SUM_GLUING_DOES_NOT_FIX_COEFFICIENT_EXACT_SOURCE_SCOPED`.
+`ITER078C_RG_SUPPORTED_K5_AMBIGUITY_IS_SU2_BF_15J_CHANNEL_REFINEMENT_STABLE_UP_TO_BF_GAUGE_NORMALIZATION_EXACT_THEOREM_SCOPED`.
 
-The run is terminal. All three required lanes and the aggregate completed. Aggregate artifact `10328420436`, digest `sha256:04fecbabcdf0db984665da0220bf2e1499b9ccaf911e721e721471a4284bddd3`.
+Prospective chronology is valid: preregistration `bef22c39989905373c95bf49c666584dc898176e` preceded source/theorem derivation `b531e3d9a2f5e0c9422b170cc220ae9890c0f71e`, which preceded the result. This is an analytic/source theorem gate, not an Actions/numerical gate.
 
-During recovery, the previously nonterminal Iter077J control-only repair also became terminal. It is separately materialized as `results/ITER077J_SM_EXACT_RANK_CONTROL_REPAIR_RESULT.md`, commit `034f14277e4df5589e3f8fa2995283ea4afe8cb9`: exact main/combined `Q(i)` rank `9`, nullity `23`, exact right-null witness verified. This is only a frozen one-parameter-family FAIL and does not alter the Iter077L-N blocker.
+The repository had already closed two immediately upstream RG questions before Iter078C: Iter078A returned `BLOCKED_MAP_DEFINITION` for the actual causal-Toller refinement map, and Iter078B proved only that all 32 coarse causal boundary sign patterns admit compatible acyclic 1-to-5 fine orientations. Those upstream scopes are controlling when interpreting Iter078C.
 
 ## SOURCE_OBJECT_CHECK
 
-Iter077N Lane A uses the same true all-`j=1/2` five-node boundary intertwiner tensors frozen in Iter077I, not a scalar K4/K5 surrogate. The supported term is the Iter077M/L distributional ambiguity `F_SU2(y;Psi) delta_N(x)` on the true common-collision submanifold `N=SU(2)^4` after root gauge fixing.
+The local object used by Iter078C is the actual supported ambiguity direction descended from Iter077L-M-N,
 
-The compact coefficient is a closed K5 SU(2) spin-network functional. Because the edge holonomies on `N` are pure gauge `u_b^-1 u_a` and the node tensors are invariant, its value is gauge-independent along `N`; setting all compact edge matrices to the identity is therefore a valid exact zero/nonzero evaluation of the supported functional.
+`L(Psi)=integral_N F_SU2(y;Psi) delta_N`,
 
-Independent critic reproduction was committed as `results/ITER077M_ADVERSARIAL_COMPACT_BOUNDARY_CONTROL.json`, commit `ba2d013d5c0d3889e94b3f120cba031e2f8b4ce9`: all 32 boundary basis states were checked and exactly `16/32` are nonzero, agreeing with Iter077N Lane A. Nonzero common tensor/Haar normalizations cannot change this survival verdict.
+with `N=SU(2)^4` after root gauge fixing. `F_SU2` uses the same K5 graph, ten SU(2) spins and five four-valent invariant intertwiners as the causal boundary data; it is not a scalar K4/K5 surrogate.
+
+On `N`, compact relative holonomies have pure-gauge form `u_b^-1 u_a`. Node gauge invariance removes those pure-gauge node elements from the closed K5 evaluation. In a four-valent recoupling basis the resulting closed K5 invariant is the SU(2) 4-simplex `15j` tensor by the standard spin-network definition.
+
+Independent critic control `results/ITER077M_ADVERSARIAL_COMPACT_BOUNDARY_CONTROL.json`, commit `ba2d013d5c0d3889e94b3f120cba031e2f8b4ce9`, exhausts all 32 all-`j=1/2` boundary basis states and reproduces the exact compact K5 tensor zero/nonzero pattern (`16/32` nonzero) using the frozen node tensors. Thus the **local tensor identification with a 15j tensor, up to nonzero node-basis normalization/sign conventions, is accepted**.
+
+The multi-vertex object is a different question. Iter078C obtains an Ooguri BF state sum only after additionally choosing the standard BF internal representation/intertwiner resolution weights. Those weights are not established as the source-defined multi-vertex measure of CRQN v0.2.
 
 ## SOURCE_ORDERING_CHECK
 
-Iter077N does not multiply the ten contact distributions termwise and does not commute the one-wedge spectral limit with K5 multiplication/integration. It starts from the already source-ordered Iter077I/L/M object and tests only the supported extension freedom after that object has been defined off the collision set.
+Iter078C does not return to the invalid termwise contact-distribution ordering. Its local `L` direction is an allowed supported extension of the already source-ordered Toller K5 object established through Iter077I-L.
 
-The published ordering remains:
+The controlling local ordering remains:
 
-`one-wedge spectral/spinor construction -> Toller function -> ten-wedge product -> boundary contraction -> group integration`.
+`one-wedge spectral/spinor construction -> Toller function -> ten-wedge K5 product -> boundary contraction -> group integration / extension`.
 
-No termwise Hörmander failure is promoted into a source-ordered full-vertex failure.
+No theorem is asserted that converts the BF-supported sector into the full Lorentzian causal-Toller amplitude. The qualification below concerns only the **multi-vertex refinement measure/map**, not the one-wedge/K5 source ordering.
 
 ## PROVENANCE_CHECK
 
-Chronology is valid:
+Chronology is prospective and internally consistent:
 
-- prereg `ee08121c94fd802f9111313d6f089fbf2ab10181`;
-- source lock `3543b523595b9b4d239866423ff279ae28f7236c`;
-- implementation `aa7440a939941b5bdde4e6f5c07f8f63ddfe8562`;
-- production/workflow head `7b12b0f8207d129ffd9b79bda158db77e265f8f6`;
-- terminal run `34789869127`;
-- durable result `03407a010f96e5d81af9813756d21fca6ffcda32`.
+- Iter078C prereg `bef22c39989905373c95bf49c666584dc898176e`;
+- source/theorem derivation `b531e3d9a2f5e0c9422b170cc220ae9890c0f71e`;
+- result `1eb593fdc97b46e3a2cc41e4ac568274e1c3b1c8`.
 
-Artifacts/digests recorded in the result agree with the terminal aggregate log. No partial Actions value is used as evidence. No post-hoc boundary component was selected; Lane A exhausts all 32 components.
+The prereg explicitly froze three separate claims: local 15j identification; pure-`L` BF state-sum identification **conditional on standard BF weights**; and the 1-to-5 gauge-volume qualification. The result preserves those conditions in its detailed findings.
 
-The Iter077J exact-rank repair finished only after the later local-amplitude line had already advanced. Its terminal result is now synchronized separately; it is not retroactively used to change Iter077N criteria.
+However, its compact classification string and phrase “refinement-stable ... channel” can be misread as a statement about the actual CRQN causal-Toller RG map. That stronger interpretation conflicts with upstream Iter078A, whose source audit established that the causal-Toller coarse/fine measure, embedding/projection map and fixed-point equation are not yet defined.
+
+A durable qualification is recorded at `results/ITER078C_ADVERSARIAL_QUALIFICATION.md`, commit `6206080d12a629bf9cca9b7084d8e8e03a843ecb`.
 
 ## ERRATUM_CHECK
 
-`status/ITER077_CONTACT_FORMULA_ERRATUM.md` remains controlling. Historical Iter077E/F source-dependent gates remain quarantined as `NON_AUTHORITATIVE_SOURCE_LOCK_INVALID`.
+`status/ITER077_CONTACT_FORMULA_ERRATUM.md` remains controlling. Historical Iter077E/F source-lock-invalid runs remain quarantined.
 
-Iter077N does not reuse the erroneous historical contact coefficient. Its authority descends through corrected Iter077G/H and the source-ordered Iter077I object, so the contact erratum does not invalidate the reviewed result.
+Iter078C does not reuse their erroneous contact coefficient. Its local supported direction descends through corrected Iter077G/H and source-ordered Iter077I-L-N. No new contact-formula transcription is introduced in this gate.
+
+The BF identification itself is a compact boundary spin-network statement and is not sensitive to the quarantined historical contact formula.
 
 ## BOUNDARY_COMPLETENESS_CHECK
 
-The controlling minimal sector keeps all ten `j_ab=1/2` wedges and the complete `2^5=32` five-node intertwiner basis. Iter077N Lane A checks all 32 exactly.
+No representative boundary state is selected post hoc. The local supported functional had already been tested on the complete `2^5=32` all-`j=1/2` intertwiner basis; exactly 16 components are nonzero. The 15j identification concerns that full K5 invariant tensor, not one convenient scalar component.
 
-Independent critic reproduction confirms `16` nonzero and `16` zero compact boundary functionals. Therefore the ambiguity is a nonzero linear functional on the full frozen boundary space; the conclusion does not depend on choosing a convenient representative component post hoc.
-
-This is still a special-spin minimal-sector theorem. It is not a generic-spin theorem.
+The result remains finite-spin scoped. Identifying the graph/tensor structure with a 15j vertex does not establish any generic-spin causal-Toller extension theorem beyond the standard representation-theoretic identification itself, and it does not show that the full Iter077L order-8 normal-jet ambiguity space reduces to this single supported direction.
 
 ## DISTRIBUTIONAL_CHECK
 
-Iter077L established transverse scaling degree `sd_N=20` at codimension `12`, so same-scaling-degree extensions exist and have normal-jet ambiguity through order `8`. The Iter077M/N order-zero term `F_SU2 delta_N` is an admissible member of that ambiguity class because `sd_N(delta_N)=12` and therefore does not increase the maximal scaling degree.
+Iter077L gives transverse scaling degree 20 at codimension 12 and permits supported extension terms through normal-jet order 8. Iter077M/N exhibited the order-zero supported term `F_SU2 delta_N` and showed it survives group integration.
 
-The supported term changes no off-`N` source-ordered Toller object. Its integration against the group measure reduces to a compact integral along `N`; the exact nonzero compact K5 evaluation proves that this particular supported direction is not annihilated by the vertex integration.
+Iter078C identifies the **compact coefficient** of this one allowed supported direction. That identification neither removes nor classifies the rest of the allowed normal-jet ambiguity space.
 
-No full causal-vertex divergence/nonexistence theorem follows. The result is about nonuniqueness of extension, not nonexistence.
+No distributional theorem implies that Pachner/BF identities for the compact coefficient select the full Lorentzian extension. Mixed sectors containing the off-`N` causal-Toller part and supported terms remain a separate product/convolution/refinement problem.
 
 ## REGULATOR_CHECK
 
-No joint K5 regulator, finite-part law, or regulator-independent subtraction is supplied by the published causal source. Iter077N does not claim otherwise.
+Iter078C correctly refuses to set the 1-to-5 BF proportionality constant to one: the cited Ooguri/BF Pachner relation has redundant-flatness/gauge-volume normalization issues. Therefore the schematic equation
 
-Standard state-sum gluing is only a multilinear operation on whichever local vertex tensor is supplied. For `A_c=A_0+cL`, the two-vertex contraction is polynomial in `c`; without an independently defined `c`-independent target it is not an equation selecting `c`.
+`Fine[L^5]=K_BF L`
 
-The actual causal multi-vertex/refinement law remains undefined in the cited single-vertex source. Therefore Iter077N does **not** establish that every possible future causal gluing/refinement/RG prescription fails to select the extension.
+contains a regulator/gauge-fixing/normalization-dependent `K_BF` until those choices are specified.
+
+More importantly, `K_BF` is **not yet a CRQN RG coefficient**. Iter078A established that CRQN v0.2 has no concrete causal-Toller refinement map: no frozen fine face/edge measure, boundary embedding/projection map, same-boundary coarse/fine amplitude or fixed-point equation. Iter078B removed only the causal-orientation compatibility obstruction and explicitly treated a future Lorentzian EPRL-like multi-vertex measure as new structure.
+
+Thus the pure-BF Pachner identity is an exact conditional control under BF weights, not a source-selected regulator-independent CRQN flow law.
 
 ## COUNTEREXAMPLE_ATTEMPTS
 
-1. **Integrated-kernel attempt:** falsified. Independent all-32 exact compact contraction reproduces `16/32` nonzero components, so the supported term survives integration.
-2. **Boundary-component artifact:** falsified. Full 32-component census used; no post-hoc state selection.
-3. **One-wedge EPRL additive-identity selector:** falsified by an exact critic construction committed as `results/ITER077N_ADVERSARIAL_BRANCH_CUBE_CONTROL.md`, commit `64e364df099f879b876d10a2d4653c21ddf12d4d`. On the complete independent-sign branch cube choose `Delta A_kappa=C(prod_e kappa_e)L`. Summing either sign on any wedge gives zero, so every `T^+ + T^- = D` control is preserved; the full `2^10` EPRL sum is unchanged. Yet for every factorizable causal K5 pattern `kappa_ab=sigma_a sigma_b`, `prod_(a<b) kappa_ab=prod_a sigma_a^4=+1`, so every causal sector retains the same nonzero coefficient `C`.
-4. **Toller conjugation selector:** no same-causal cancellation follows. Exact conjugation flips all ten wedge branches; the branch-flipped pattern is outside the source-factorizable causal image, while the ten-edge product sign in the critic branch-cube control is unchanged under a global branch flip.
-5. **Ordinary two-vertex gluing selector:** fails as a selector absent an external target; bilinear/multilinear contraction propagates the local choice.
-6. **Future stronger consistency law:** not falsified. Cylindrical consistency, refinement, RG, transfer/positivity or a genuinely source-derived multi-vertex law could still constrain the ambiguity and must be tested separately.
+1. **Local tensor not really 15j:** not supported. The actual object is exactly the closed K5 SU(2) invariant with ten spins/five invariant intertwiners, which is the defining 15j spin-network tensor in a recoupling basis. Independent all-32 compact contraction supports the object match.
+2. **Representative-state artifact:** falsified. Full 32-component minimal boundary basis was already checked; 16 components are nonzero.
+3. **Source additive identities force the supported direction away:** falsified upstream by `results/ITER077N_ADVERSARIAL_BRANCH_CUBE_CONTROL.md`; exact `T^+ + T^- = D` and the full independent-sign EPRL sum can be preserved while all causal K5 sectors retain a common supported coefficient.
+4. **Unconditional CRQN refinement stability:** falsified as an inference. Keep the same local 15j tensor `L` but choose a non-BF internal face/edge measure, which remains allowed because the causal-Toller multi-vertex measure is currently undefined. The Ooguri Pachner identity need not hold. Therefore local 15j identity alone cannot imply refinement stability of CRQN v0.2.
+5. **Use `c=K_BF c^5` immediately as CRQN fixed-point equation:** rejected. The equation belongs only to the pure-`L` BF-weighted conditional sector; mixed `A_0^{5-r}L^r` sectors and the actual causal measure are not yet closed.
+6. **Set `K_BF=1`:** rejected by the gate itself because the 1-to-5 BF move carries gauge-volume/redundant-flatness normalization dependence.
 
 ## SURROGATE_CHECK
 
-No scalar K4/K5 incidence surrogate is used for the Iter077N scientific verdict. The exact compact control uses the true five invariant boundary tensors and ten edge contractions in the frozen all-spin-half K5 boundary space.
+The local Iter078C tensor is not a scalar incidence/Hodge surrogate. It is the true compact K5 boundary spin network inherited from the physical boundary data.
 
-Historical `-FF` and `-BCH` companion results remain conditional controls only and are not promoted into the source-amplitude line.
+The **BF multi-vertex state sum**, however, is a conditional comparator construction unless and until a causal-Toller refinement map is proven to induce the same BF internal weights on the pure-supported sector. It must not be silently substituted for the undefined Lorentzian causal-Toller RG map.
+
+Conditional `-FF` and `-BCH` lines remain non-authoritative for this RG conclusion.
 
 ## OVERCLAIM_CHECK
 
-The Researcher result is valid only with the phrase **standard state-sum gluing**. It must not be generalized to “all possible causal composition laws do not select the extension.” The causal paper explicitly leaves many-vertex construction open, and the next refinement/RG layer may contain additional equations not present in ordinary contraction.
+Allowed:
 
-The exact `16/32` survival result is all-`j=1/2` scoped. It is sufficient to keep the current local-amplitude definition nonunique in a required finite-spin sector, but it is not a generic-spin statement.
+- the supported ambiguity direction has a local compact boundary tensor equal to the SU(2) BF/Ooguri 15j tensor up to nonzero basis normalization/sign conventions;
+- under standard Ooguri BF internal sums/weights, a pure-`L` multi-vertex sector is the BF state sum up to `c^V`, basis normalization and gauge-volume factors;
+- BF refinement therefore demonstrates that this tensor direction is not generically suppressed by refinement in every conceivable measure.
 
-No G3, regulator independence, physical finiteness/divergence, F9/G8/K5 promotion, new physics, or complete-QG claim is authorized.
+Not allowed without a new bridge/map theorem:
+
+- “the supported ambiguity is already a refinement-stable direction of CRQN v0.2”;
+- `c=K_BF c^5` as the actual CRQN RG equation;
+- a discrete/nonzero CRQN fixed point;
+- `K_BF=1`;
+- closure of mixed causal-gravity/BF sectors;
+- reduction of the full order-8 normal-jet ambiguity to one scalar `c`;
+- regulator independence, G3 promotion, continuum/Einstein/matter conclusions.
 
 ## VERDICT
 
-`CONFIRMED_SCOPED`
+`QUALIFIED`
 
-Iter077N survives adversarial review in exactly its preregistered scope: the exhibited supported ambiguity is nonzero after integrated compact K5 contraction, and ordinary source-backed spin-foam state-sum contraction does not by itself select its coefficient. Independent controls strengthen this conclusion rather than weaken it.
+The local 15j identification is confirmed. The BF refinement statement is confirmed **only conditionally on choosing the Ooguri BF internal measure/resolution weights**. Because Iter078A independently establishes that the actual causal-Toller refinement map is absent, the phrase “refinement-stable BF channel” must not be promoted into an unconditional CRQN RG fact.
 
 ## QUALIFICATIONS
 
-- “Gluing does not select `c`” means ordinary bilinear/multilinear state-sum contraction without an independent `c`-independent target. It is not a theorem about an as-yet-undefined causal refinement or transfer law.
-- Compact-Haar/tensor normalizations may rescale the exact integer values by nonzero common factors; the authoritative scientific statement is zero/nonzero survival of the boundary functional.
-- The explicit ambiguity direction is sufficient to prove nonuniqueness, but Iter077L permits a larger order-8 normal-jet freedom; future selector gates must not pretend the entire ambiguity space is one scalar coupling unless separately derived.
-- Iter077J exact repair is now terminal: its exact rank-9 FAIL is scoped only to the frozen one-parameter angular family and neither rescues nor invalidates Iter077I/L-N.
+- Authoritative scientific core: `ITER078C_LOCAL_SUPPORTED_K5_TENSOR_IS_SU2_BF_15J_UP_TO_NONZERO_BASIS_NORMALIZATION_EXACT_SCOPED`.
+- Conditional extension: `PURE_L_MULTI_VERTEX_SECTOR_IS_OOGURI_BF_IF_INTERNAL_SUMS_AND_MEASURE_ARE_THE_BF_ONES`.
+- The known BF 1-to-5 identity needs explicit gauge fixing/regulator normalization before a finite `K_BF` is assigned.
+- The actual causal-Toller refinement measure is missing; BF weights cannot be imported as if source-selected.
+- Mixed `A_0/L` sectors are the decisive unresolved object.
+- The full Iter077L normal-jet ambiguity space is larger than the exhibited BF-like direction.
 
 ## UPDATED_CRQN_CHAIN
 
-`carrier/source mechanism F1-F8` -> `one-wedge causal Toller object defined` -> `source-ordered K5 ordinary local L1 fails in controlling j=1/2 sector` -> `local distributional extensions exist` -> `published single-vertex constraints do not uniquely select them` -> `at least one supported ambiguity survives the integrated vertex` -> `ordinary state-sum gluing propagates rather than selects that ambiguity` -> `refinement/cylindrical/RG selector ?` -> `unique local amplitude ?` -> `regulator independence ?` -> `G3 quantum dynamics ?` -> `RG/continuum ?` -> `spin-2/Einstein ?` -> `matter/QFT ?` -> `normalized prediction ?`.
+`carrier/source mechanism F1-F8` -> `one-wedge causal Toller object defined` -> `source-ordered K5 ordinary local L1 fails in controlling j=1/2 sector` -> `local extensions exist but are nonunique` -> `published single-vertex constraints do not select them` -> `supported ambiguity survives integrated vertex` -> `ordinary gluing does not select it` -> `causal 1-to-5 orientation compatibility PASS` -> `actual causal-Toller refinement measure/map BLOCKED` -> `one supported local tensor identified with SU(2) BF 15j; BF refinement behavior conditional on BF weights` -> `mixed-sector causal refinement closure ?` -> `unique local amplitude ?` -> `regulator independence ?` -> `G3 ?` -> `continuum/RG ?` -> `spin-2/Einstein ?` -> `matter/QFT ?` -> `normalized prediction ?`.
 
-Current blocking status remains `BLOCKED_NONUNIQUE_EXTENSION_SELECTOR_MISSING`.
+The controlling blocker remains a **source-faithful multi-vertex refinement/coarse-graining object and selector for the extension freedom**, not the existence of a compatible causal orientation.
 
 ## AUTHORIZED_NEXT_GATE
 
-The prospectively opened `Iter078A-RG` object-definition gate is authorized and has higher information gain than additional local collision lemmas.
+Highest-information next gate: **mixed-sector closure under one prospectively frozen causal 1-to-5 refinement prescription**.
 
-It must first ask whether a **concrete causal-Toller refinement/cylindrical/coarse-graining map actually exists** in source authority, with boundary Hilbert spaces, embedding/coarse-graining map, face/edge/vertex measure, gauge fixing, causal-label propagation, internal sums, projection/truncation rule, coarse/fine consistency equation, and an explicit transport law for the Iter077 extension freedom.
+Before computing a fixed point, freeze the actual multi-vertex object: fine face/edge weights, internal spin/intertwiner sums, per-vertex gauge fixing, causal orientation sum/selection, boundary embedding, coarse projection/matching functional, regulator and explicit transport of extension data. Any use of Lorentzian EPRL-like weights must be versioned as new independently motivated CRQN structure, not retroactively attributed to the 2026 single-vertex source.
 
-Do not substitute restricted Euclidean/hypercuboidal/tensor-network RG examples for the Lorentzian causal-Toller object. If the general consistent-boundary/RG framework exists but the causal map data are absent, the scientific outcome is `BLOCKED_MAP_DEFINITION`, not an invented fixed point.
+Then expand `A_c=A_0+cL` over the five fine vertices by `r=0,...,5` supported insertions and test whether the coarse image closes on the proposed theory space. A source-defined finite-spin witness that generates a boundary tensor outside `{A_0,L}` is a decisive FAIL of one-parameter closure and requires an enlarged coupling space before any RG fixed-point search.
 
-If a genuine causal map is source-defined, the successor selector test must act on the relevant ambiguity space, at minimum retaining the independently verified `F_SU2 delta_N` direction and not silently reducing the full order-8 normal-jet freedom to one scalar. A new map/mechanism is admissible only as prospectively versioned CRQN structure motivated independently by continuum/regulator requirements, not as a post-hoc rescue.
+If the multi-vertex measure/embedding/projection cannot be defined prospectively, return `BLOCKED_MAP_DEFINITION`; do not use the pure-BF `c=K_BF c^5` equation as a surrogate CRQN flow.
