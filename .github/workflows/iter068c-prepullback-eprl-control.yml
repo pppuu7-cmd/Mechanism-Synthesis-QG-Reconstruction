@@ -27,7 +27,7 @@ jobs:
         run: |
           mkdir -p results
           safe_gamma=$(echo '${{ matrix.gamma }}' | tr '.' '_')
-          python distributional/iter068c_prepullback_eprl_control.py \
+          PYTHONPATH=. python distributional/iter068c_prepullback_eprl_control.py \
             --gamma '${{ matrix.gamma }}' --output "results/iter068c_${safe_gamma}.json"
       - uses: actions/upload-artifact@v4
         if: always()
