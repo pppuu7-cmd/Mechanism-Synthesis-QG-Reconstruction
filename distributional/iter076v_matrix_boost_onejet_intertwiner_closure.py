@@ -64,7 +64,7 @@ def lane_a():
     text = (ROOT / "sources" / "GAMMA_SIMPLE_TOLLER_MATRIX_ONEJET_INTERTWINER_SUPPLEMENT.md").read_text(encoding="utf-8")
     locks = {
         "five_su2_intertwiners": "five SU(2) intertwiners" in text,
-        "eq4_relative_group": "g_b^(-1) g_a" in text,
+        "eq4_relative_group": "g_b^{-1} g_a" in text,
         "eq4_magnetic_slots": "T_{j_ab m_ba, j_ab m_ab}" in text,
         "eq7_compact_covariance": "Eq. (7) gives compact covariance" in text,
         "boost_normal_scope": "boost-normal" in text,
@@ -138,13 +138,10 @@ def lane_c():
         _, C = leading_shape(jv)
         Jz = Jz_matrix(jv)
         D = C * (I * gamma * Jz)
-
-        # Identity-axis control.
         rel_z_l = C.inv() * D
         rel_z_r = D * C.inv()
         z_ok = exact_zero_matrix(rel_z_l - I * gamma * Jz) and exact_zero_matrix(rel_z_r - I * gamma * Jz)
 
-        # Opposite-axis exact SU(2) rotation by pi around y.
         U = Ry_pi(jv)
         Uinv = U.inv()
         Cminus = sp.simplify(U * C * Uinv)
@@ -159,7 +156,6 @@ def lane_c():
             and exact_zero_matrix(rel_minus_r + I * gamma * Jz)
         )
 
-        # Generic conjugation identity control with an exact invertible matrix.
         d = C.rows
         Uc = sp.eye(d)
         if d >= 2:
