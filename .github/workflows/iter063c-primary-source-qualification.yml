@@ -1,0 +1,49 @@
+name: Iter063C Primary Source Qualification
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/iter063c-primary-source-qualification.yml'
+  workflow_dispatch:
+
+jobs:
+  lane:
+    strategy:
+      fail-fast: false
+      matrix:
+        lane: [vertex_object, eprl_control, causal_conventions, representation_guard]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run frozen qualification lane
+        run: python scripts/iter063c_primary_source_lane.py --lane '${{ matrix.lane }}' --output 'iter063c_${{ matrix.lane }}.json'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter063c-${{ matrix.lane }}
+          path: iter063c_${{ matrix.lane }}.json
+
+  aggregate:
+    needs: lane
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: iter063c-*
+          path: lanes
+      - name: Frozen aggregate classification
+        run: python scripts/iter063c_primary_source_aggregate.py
+      - name: Record provenance
+        run: |
+          printf 'head_sha=%s\nrun_id=%s\nprereg_commit=%s\nsource_snapshot_commit=%s\n' "$GITHUB_SHA" "$GITHUB_RUN_ID" '66ce9c87bcdf5b08e4c1e5604568766847321d98' '7df82d28dd6426aa7aaac353a1e0abf795e6fdee' > iter063c_provenance.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter063c-aggregate
+          path: |
+            iter063c_aggregate.json
+            iter063c_provenance.txt
