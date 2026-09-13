@@ -8,7 +8,7 @@
 - G3 quantum dynamics: `OPEN`
 - G8 novelty: `BLOCKED_CONVERGENCE_ONLY`
 - K5 distributional/vertex extension: `BLOCKED_CORRELATED_EXTENSION_OBJECT_MISSING`
-- Active front: `SOURCE_MATH_OBJECT_ACQUISITION / MULTIVARIATE_K5_CORRELATED_FINITE_I_EPSILON`
+- Active front: `SOURCE_ANALYTICITY_SELECTOR / JOINT_BOUNDARY_VALUE_UNIQUENESS`
 
 ## Newly controlling source/direct chain
 
@@ -18,16 +18,19 @@
 - Iter064A authoritative run `34732198011`, aggregate job `103656960238`, artifact `10309427622`, digest `sha256:2cb05aa6b626f23256a0ba1fcd3502404ecc3387a8521baece660ab238a9f161`: 6/6 `ITER064A_DIRECT_CAUSAL_POINTWISE_EPRL_CONTROL_PASS`. Initial run `34732114933` was runtime-invalid before science and is non-authoritative. Worst controls: KAK `1.9462e-15`, edge additive `5.2303e-64`, independent-wedge EPRL sum `5.6631e-64`, global sigma-flip duplication `1.1054e-80`; min pair boost `0.44134`.
 - Historical Iter038 run `34694739107` was re-consumed rather than repeated: 6/6 raw carrier-S5 lanes PASS. Worst causal even/odd errors `3.39e-14 / 2.38e-14`, EPRL `6.95e-12`, KAK `2.34e-15`, all within its frozen gates.
 - Iter064B authoritative run `34732360103`, aggregate job `103657391209`, artifact `10310016825`, digest `sha256:8012eb7aedfcb1765509a7e86e94ff3816da3f349ca2524e208236c29d665a8a`: 4/4 `ITER064B_K4_SOURCE_PREREQUISITES_CLOSED_FOR_K5_QUALIFICATION`. This closed the prerequisite blocker only; it did not pass K5.
-- Iter065A prereg `987b0b27aaccc9e75ceed5fe209e9944a17f5e94`, authoritative head `fd93c7e968df49f0b1df9468117cf6795afed701`, run `34732545131`, aggregate job `103657905982`, artifact `10310465490`, digest `sha256:3d171139e80274074924065acdc12fdba265de78238f1cf2a859b62820dad5ba`: 0/4, `ITER065A_K5_BLOCKED_CORRELATED_EXTENSION_OBJECT_MISSING`. All four raw lane artifacts were consumed. Durable result: `status/ITERATION_065A_RESULT.md`.
+- Iter065A prereg `987b0b27aaccc9e75ceed5fe209e9944a17f5e94`, authoritative head `fd93c7e968df49f0b1df9468117cf6795afed701`, run `34732545131`, aggregate job `103657905982`, artifact `10310465490`, digest `sha256:3d171139e80274074924065acdc12fdba265de78238f1cf2a859b62820dad5ba`: 0/4, `ITER065A_K5_BLOCKED_CORRELATED_EXTENSION_OBJECT_MISSING`.
+- Iter066A prereg `b6846ee0515853cd9981dc0d6688c021174922be`, authoritative head `9cfc3cc3f94e9246f103d6f50628621726cd9967`, run `34734333416`, aggregate job `103662960682`, artifact `10309673723`, digest `sha256:05fd9933952a634158d4cee4a5f680ba0e48182b748a0d15053f7aab4f85082b`: `ITER066A_GENERIC_MULTIVARIATE_FRAMEWORK_AVAILABLE_SOURCE_SELECTOR_STILL_MISSING`. `BBK2009_WONDERFUL_EG` supplies a genuine multivariate framework, but no audited source supplies a unique physical Toller/EPRL selector. Durable result: `status/ITERATION_066A_RESULT.md`.
 
-## Exact K5 blocker after Iter065A
+## Exact K5 blocker after Iter066A
 
-The project currently lacks all four source-faithful objects required by the frozen K5 qualification:
+The project no longer lacks generic multivariate extension machinery in the abstract: BBK-style wonderful/analytic-regularization machinery exists for nontrivial singular arrangements. What remains missing is the **source-faithful selector/bridge** proving that the physical Toller finite-spectral-`i epsilon` family itself has the required unique correlated K5 distributional boundary value.
 
-1. a correlated K5 finite-spectral-`i epsilon` construction/derivation that is explicitly equal to, or derived from, the physical source prescription rather than a support-native surrogate;
-2. a source-derived selector/excluder for the remaining primitive K5 extension directions identified by Iter039/040/042;
-3. a genuinely multivariate K5 regulator/removal rule with distributional integration-order/tree/cycle independence; the K3 rule from Iter045 failed as a sequential extension already at K4 in Iter046;
-4. Eq.(5)/(6) independent-wedge EPRL control at the **distributional K5 level**, not only the source/pointwise control of Iter063C/064A.
+The unresolved requirements are:
+
+1. a source-defined *joint* multivariate analytic/distributional family corresponding to the physical causal vertex, not a support-native or Euclidean subtraction surrogate;
+2. a theorem-level selector establishing uniqueness of the boundary value/extension without arbitrary local counterterms or preferred sequential order;
+3. hypotheses sufficient for tree/cycle/permutation/order independence and controlled regulator removal in the intersecting K5 singular arrangement;
+4. inheritance of Eq.(5)/(6) independent-wedge EPRL control at the resulting **distributional K5 level**.
 
 This is `BLOCKED`, not a theorem of vertex divergence/nonexistence.
 
@@ -43,7 +46,7 @@ This is `BLOCKED`, not a theorem of vertex divergence/nonexistence.
 
 ## Next admissible step
 
-Acquire or derive a genuinely multivariate, source-faithful correlated finite-`i epsilon` K5 prescription before launching another heavy K5 production batch. Any candidate must be prospectively frozen and independently test extension selection, permutation/tree/cycle/order independence, regulator removal/distributional limit, and exact Eq.(5)/(6) EPRL control. Repeating symmetry scans, pointwise branch sums, or the already-failed sequential finite-part rule is not scientifically useful.
+Prospectively qualify boundary-value / microlocal uniqueness routes for the physical finite-spectral-`i epsilon` family. A route is scientifically useful only if it states checkable hypotheses for a joint multivariate boundary value (holomorphy/tube or wavefront/cone conditions, growth/temperedness, uniqueness) and can in principle be tied to the BCG2026 Toller prescription and distributional Eq.(5)/(6). Generic subtraction or finite-part machinery without such a source bridge is insufficient.
 
 ## Claim locks
 
