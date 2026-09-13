@@ -8,7 +8,7 @@
 - G3 quantum dynamics: `OPEN`
 - G8 novelty: `BLOCKED_CONVERGENCE_ONLY`
 - K5 distributional/vertex extension: `BLOCKED_CORRELATED_EXTENSION_OBJECT_MISSING`
-- Active front: `COMMON_EPSILON_SIGNED_CUTSPACE / PROPER_FACE_COEFFICIENTS / INDEPENDENT_WEDGE_EPRL_CONTROL / EPSILON_TO_ZERO_BOUNDARY_VALUE`
+- Active front: `COMMON_EPSILON_BOUNDARY_VALUE / TRANSITIVE_FACE_COEFFICIENTS / INDEPENDENT_WEDGE_EPRL_CONTROL`
 
 ## Controlling recent results
 
@@ -21,18 +21,25 @@
 - Iter071A run `34741938861`, aggregate job `103683058319`, artifact `10312601343`, digest `sha256:53adba7a50db94dfdeac5f340d569bc5b079672f310536858a86f12602904544`: `ITER071A_K4_COMMON_EPSILON_SCHWARTZ_ACTION_REVIEW`; 32/32 lanes numerically valid, frozen convergence/basis predicates fail under rising small-epsilon QMC variance; no divergence theorem.
 - Iter072A run `34744136699`, artifact `10313745085`, digest `sha256:263f46b94d10835e3ec156e553697f98ca213d5619ef1f58a6ff57c8d9ffb96d`: `ITER072A_LEADING_COLLISION_THEOREM_ROUTE_FAIL`; cycle-space positive circulation is not the Schwinger cut-space constraint.
 - Iter072B run `34744334585`, aggregate job `103689386630`, artifact `10313588852`, digest `sha256:4ab193fb0e66cabfe48ce6fa1bdad180154d00c2f7a258b933f729f9e09db48f`: `ITER072B_K4_COMMON_EPSILON_EPS_MINUS3_LEADING_COEFFICIENT_IFF_TRANSITIVE_TOURNAMENT_SCOPED`. Strict-positive full-set cut-space kernel has nullity 3 exactly for source sigma `++++`, `+++-`, `++--`, `+---`.
-- Iter073A prereg `8b87abc4aea6636b9e554729bba4670b91d9e7f3`, authoritative head `9fb30be9831c01b4e13571e5dac2569fb95667d5`, run `34746503186`, aggregate job `103695339471`, artifact `10314755546`, digest `sha256:b1c46b3ac61eb4416df337514f1610a34c40e74901e6b765c8ffbd84f345fe7a`: `ITER073A_K4_SIGNED_CUTSPACE_PROPER_FACE_ATLAS_EXACT_SCOPED`. The four transitive classes each have proper-face histogram `{3:1 -> 2, 4:1 -> 1, 5:2 -> 3}` with maximal proper nullity 2. The four nontransitive classes `++-+`, `+-++`, `+-+-`, `+--+` have no positive-admissible nonempty proper face at all. Durable result: `status/ITERATION_073A_RESULT.md`.
+- Iter073A prereg `8b87abc4aea6636b9e554729bba4670b91d9e7f3`, head `9fb30be9831c01b4e13571e5dac2569fb95667d5`, run `34746503186`, aggregate job `103695339471`, artifact `10314755546`, digest `sha256:b1c46b3ac61eb4416df337514f1610a34c40e74901e6b765c8ffbd84f345fe7a`: `ITER073A_K4_SIGNED_CUTSPACE_PROPER_FACE_ATLAS_EXACT_SCOPED`. Four transitive source classes each have proper histogram `(3,1)x2,(4,1)x1,(5,2)x3`; four nontransitive source classes have no positive-admissible proper face. Durable result `status/ITERATION_073A_RESULT.md`.
+- Iter073B prereg `e89805765ba2c993ba5b1f082586675543cd9eba`, head `dbd3fcf56a8060c508bf065e012961b99a7c366f`, run `34748536488`, job `103700759855`, artifact `10315061564`, digest `sha256:b5d1638a7bada9ed6371d46bcee6526d9f61abd06668458370fe63e482cc96cd`: `ITER073B_K4_INDEPENDENT_WEDGE_64_SIGN_ATLAS_EXACT_SCOPED`. Full independent-wedge census: 24/64 transitive/full-positive, 40/64 cyclic; maximal proper nullity distribution `-1:24, 1:16, 2:24`. The eight source-factorized vectors are recovered exactly as a strict subset. Durable result `status/ITERATION_073B_RESULT.md`.
+- Iter073C prereg `77af541dfe371632c92eb3e5cda176511be7eef7`, head `291a9f6a71265c9e768960bbc0d00f039ca352c5`, run `34748542204`, job `103700784152`, artifact `10315585117`, digest `sha256:27fd61945577078dd4dd16d85015b067073943ba87745dbdaa167450f81514c5`: `ITER073C_NONTRANSITIVE_ALL_FACES_EXACT_STIEMKE_SEPARATED_SCOPED`. Exact Stiemke/Gordan certificates exist for all 1008 nontransitive `(source class,basis,nonempty subset)` cases; 1000 certificates have primitive L1=1 and 8 have L1=2; minimum positive integer margin is 1. This is positive-real nonpinch separation, not epsilon->0 boundedness. Durable result `status/ITERATION_073C_RESULT.md`.
+- Iter073D is prospectively frozen and launched as run `34748577817` on head `48a21509026968b7bd7edc72f1ef759c585f1882`; it audits exact extreme-ray/relative-interior geometry of the six allowed proper faces in each transitive source class. At this snapshot it is queued and non-terminal.
 
-## Exact blocker after Iter073A
+## Exact blocker after Iter073B/C
 
-For the reduced K4 common-epsilon rational family, positive Schwinger face geometry is now exactly classified. What remains unresolved is no longer whether hidden positive proper faces exist for the four nontransitive source classes: they do not under the frozen cut-space criterion.
+The reduced K4 signed cut-space geometry is now unusually constrained:
 
-The next admissible questions are now separated cleanly:
+1. the complete 64-sign independent-wedge space is exactly classified;
+2. the four nontransitive source classes have no positive full or proper face and possess explicit exact Stiemke separation certificates on every nonempty subset;
+3. the four transitive source classes retain a finite set of positive full/proper faces, whose cone geometry is being audited in Iter073D.
 
-1. for the transitive source classes, determine whether the geometrically allowed proper strata actually carry nonzero regulated asymptotic coefficients, rather than merely nonzero nullity;
-2. for the nontransitive source classes, derive explicit exact separation/nonpinch certificates strong enough to support a scoped boundedness or boundary-value theorem, without promoting absence of positive faces directly to finiteness;
-3. independently classify the complete `2^6=64` K4 independent-wedge sign space required by the Eq.(5)/(6)-type EPRL control analogue, rather than confusing it with the eight source edge-sign classes;
-4. ultimately prove a source-faithful correlated `epsilon -> 0+` distributional boundary value and inheritance of Eq.(5)/(6) through non-transverse K4/K5 pullback.
+What remains scientifically decisive is not another sign census. The next high-value work is:
+
+- determine actual regulated asymptotic coefficients on the transitive positive faces, including numerator/Jacobian factors and possible cancellations;
+- convert exact separation for nontransitive source classes into a scoped analytic bound or boundary-value theorem, rather than assuming no positive pinch implies convergence;
+- study the independent-wedge 64-sign sum at the **correlated boundary-value** level and determine whether the Eq.(5)/(6)-type control survives non-transverse pullback;
+- lift any K4 theorem from the reduced rational family to the source-backed full Toller/group object before using it in K5.
 
 K5 remains blocked until a source-faithful correlated extension object and distributional inheritance theorem are available.
 
