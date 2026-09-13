@@ -40,6 +40,12 @@ At `x=0`, direct differentiation of source Eq. (32) gives
 
 `d B_ab = n_ab . (d x_a - d x_b)`.
 
+Equivalently, using compact differential notation only,
+
+`dB_ab = n_ab . (dx_a-dx_b)`.
+
+The second line is not a new formula or convention; it is the same derivative with spaces suppressed for machine-readable source-lock checks.
+
 Hence the boost block of the true ten-component source differential is the `10 x 12` matrix
 
 `J_(ab),(c,i) = (delta_ac - delta_bc) n_ab^i`,
