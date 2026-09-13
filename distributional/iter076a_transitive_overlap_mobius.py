@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Iter076A: exact intersection-poset/Mobius bookkeeping for transitive K4 faces.
 
-Scientific scope is frozen in status/ITERATION_076A_PREREG.md.  This constructs
+Scientific scope is frozen in status/ITERATION_076A_PREREG.md. This constructs
 only the combinatorial overlap object; it does not choose a finite-part or
 counterterm prescription and does not evaluate an epsilon^-1 coefficient.
 """
@@ -69,9 +69,9 @@ def permute_support(s, p):
 
 
 def canonical_family_signature(nodes):
-    # Small exact canonicalization under all 6! edge relabellings.  Equality of
-    # these signatures implies support-poset isomorphism (stronger than merely
-    # matching a few histograms) without assigning physical meaning to S6.
+    # Small exact canonicalization under all 6! edge relabellings. Equality of
+    # these signatures implies support-poset isomorphism without attaching any
+    # physical meaning to the larger S6 relabelling set.
     best = None
     for p in itertools.permutations(range(6)):
         sig = tuple(sorted(mask(permute_support(s, p)) for s in nodes))
@@ -138,7 +138,7 @@ def main():
             basis[tree] = rec
             got_hist = Counter({tuple(k): v for k, v in rec["face_histogram"]})
             p1 &= rec["face_count"] == 6 and got_hist == expected_hist
-            p2 &= rec["closure_size"] == len({tuple(x) for x in rec["canonical_family_signature"]})
+            p2 &= rec["closure_size"] == len(set(rec["canonical_family_signature"]))
             p3 &= rec["mobius_identity_ok"]
             p6 &= rec["all_faces_in_closure"] and rec["all_faces_chain_to_top"]
             basis_key = (
