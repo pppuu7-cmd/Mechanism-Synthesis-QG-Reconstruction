@@ -1,0 +1,51 @@
+name: Iter076N Toller restrictor Omega saddle selection
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/iter076n_toller_restrictor_omega_saddle_selection.yml'
+      - 'distributional/iter076n_toller_restrictor_omega_saddle_selection.py'
+      - 'prereg/ITER076N_TOLLER_RESTRICTOR_OMEGA_SADDLE_SELECTION.md'
+      - 'sources/CAUSAL_SPINFOAM_VERTEX_2026_TOLLER_RESTRICTOR_SADDLE_ORIENTATION_SNAPSHOT.md'
+
+jobs:
+  lane:
+    strategy:
+      fail-fast: false
+      matrix:
+        lane: [A, B, C, D]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - run: |
+          mkdir -p out
+          python distributional/iter076n_toller_restrictor_omega_saddle_selection.py --lane ${{ matrix.lane }} --output out/iter076n_${{ matrix.lane }}.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter076n-${{ matrix.lane }}
+          path: out/iter076n_${{ matrix.lane }}.json
+          if-no-files-found: error
+  aggregate:
+    needs: lane
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: iter076n-*
+          path: downloaded
+      - run: |
+          mkdir -p out
+          python distributional/iter076n_toller_restrictor_omega_saddle_selection.py --aggregate-dir downloaded --output out/iter076n_aggregate.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter076n-aggregate
+          path: out/iter076n_aggregate.json
+          if-no-files-found: error
