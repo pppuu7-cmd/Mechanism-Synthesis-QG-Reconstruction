@@ -1,0 +1,52 @@
+name: Iter076N exact amplitude orientation provenance
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/iter076n_exact_amplitude_orientation_provenance.yml'
+      - 'distributional/iter076n_exact_amplitude_orientation_provenance.py'
+      - 'prereg/ITER076N_EXACT_AMPLITUDE_ORIENTATION_PROVENANCE.md'
+      - 'sources/CAUSAL_SPINFOAM_VERTEX_2026_SOURCE_SNAPSHOT.md'
+      - 'sources/LORENTZIAN_PROPER_VERTEX_ORIENTATION_2016_SOURCE_SNAPSHOT.md'
+
+jobs:
+  lane:
+    strategy:
+      fail-fast: false
+      matrix:
+        lane: [A, B, C, D]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - run: |
+          mkdir -p out
+          python distributional/iter076n_exact_amplitude_orientation_provenance.py --lane ${{ matrix.lane }} --output out/iter076n_${{ matrix.lane }}.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter076n-${{ matrix.lane }}
+          path: out/iter076n_${{ matrix.lane }}.json
+          if-no-files-found: error
+  aggregate:
+    needs: lane
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: iter076n-*
+          path: downloaded
+      - run: |
+          mkdir -p out
+          python distributional/iter076n_exact_amplitude_orientation_provenance.py --aggregate-dir downloaded --output out/iter076n_aggregate.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter076n-aggregate
+          path: out/iter076n_aggregate.json
+          if-no-files-found: error
