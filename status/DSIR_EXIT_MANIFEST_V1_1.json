@@ -1,0 +1,188 @@
+{
+  "manifest": "DSIR_EXIT_MANIFEST_V1_1",
+  "date": "2026-09-13",
+  "supersedes_for_scientific_scope": "status/DSIR_EXIT_MANIFEST_V1.json",
+  "funnel_contract_status": "COMPLETE",
+  "contract_completeness_percent": 100,
+  "meaning_of_100": "100 percent handoff-contract completeness only; not a percentage of quantum gravity solved or physical gates passed",
+  "authoritative_handoff_contract": {
+    "classification": "DSIR_FUNNEL_CONTRACT_COMPLETE_TERMINAL_HANDOFF_V1",
+    "run": 34781821095,
+    "aggregate_job": 103790123435,
+    "aggregate_artifact": 10324863936,
+    "aggregate_digest": "sha256:4baaeeff632a4873156cebf114ddf67970197c4e0929bbf4b0a48f986b617200",
+    "production_head": "888a521e2f3a134e4e13badefdd6b279a4771746"
+  },
+  "science_snapshot_through": "Iter076T",
+  "native_branch": "P0_SOURCE_NATIVE",
+  "extension_branches": {
+    "P1_ORIENTATION_EXTENSION": "allowed only as an explicit new-model branch if a stronger generic finite-spin orientation rule is added beyond source-native P0",
+    "P2_CORRELATED_BOUNDARY_EXTENSION": "allowed only with explicit extension/uniqueness conditions and comparison against the source finite-epsilon family"
+  },
+  "fields": {
+    "source_evidence": {
+      "status": "PASS_SOURCE_NATIVE",
+      "scope": "BCG causal vertex Eq.(3)-(7), Toller branches and published spectral i-epsilon prescription",
+      "dependencies": [],
+      "polygon_test": "retain source equations and spectral prescription as immutable comparator"
+    },
+    "carrier_selection": {
+      "status": "PASS_DERIVED_MSQGR",
+      "scope": "oriented causal labelled 2-complex Q=(K,o,j,i,x)",
+      "dependencies": [],
+      "polygon_test": "instantiate the selected carrier without silently changing ontology"
+    },
+    "g1_final_equivalence_gauge": {
+      "status": "BLOCKED_TRANSFER_TO_POLYGON",
+      "missing_object": "FINAL_REPRESENTATION_CATEGORY_EQUIVALENCE_GAUGE_RELATIONS",
+      "dependencies": ["carrier_selection"],
+      "polygon_test": "fix exact group/representation/equivalence data and verify no hidden redundant states"
+    },
+    "g2_no_preferred_structure": {
+      "status": "BLOCKED_TRANSFER_TO_POLYGON",
+      "missing_object": "NO_PREFERRED_FRAME_FOLIATION_CONTINUUM_CERTIFICATE",
+      "dependencies": ["carrier_selection", "source_evidence"],
+      "polygon_test": "show regulator/bookkeeping foliation leaves physical observables or classify a different symmetry theory"
+    },
+    "universal_explicit_orientation_prefactor": {
+      "status": "NO_GO_SOURCE_NATIVE",
+      "scope": "narrow displayed Eq.(4)/(7) product/Haar scalar prefactor plus sigma/kappa plus generic boundary-representation audit",
+      "classification": "ITER076N_EQ4_EQ7_HAVE_NO_CANONICAL_S5_ODD_SELECTOR_EXACT_SIGNED_P3_BLOCKED_SEMICLASSICAL_ONLY_SCOPED",
+      "dependencies": ["source_evidence"],
+      "polygon_test": "do not infer a universal alternating scalar prefactor from the displayed product/Haar skeleton or causal sigma/kappa data"
+    },
+    "saddle_effective_signed_p3": {
+      "status": "PASS_SOURCE_NATIVE",
+      "scope": "non-degenerate Lorentzian Regge stationary locus only",
+      "classification": "ITER076N_EXACT_TOLLER_RESTRICTOR_SELECTS_ONE_OMEGA_SECTOR_ON_NONDEGENERATE_LORENTZIAN_REGGE_SADDLE_LOCUS_SCOPED",
+      "dependencies": ["source_evidence"],
+      "polygon_test": "use the signed Hodge representative only on the frozen Regge saddle locus unless a stronger finite-spin selector is separately established"
+    },
+    "generic_finite_spin_signed_p3": {
+      "status": "BLOCKED_TRANSFER_TO_POLYGON",
+      "scope": "exact off-saddle finite-spin amplitude",
+      "missing_object": "GENERIC_FINITE_SPIN_FULL_AMPLITUDE_ORIENTATION_SELECTOR",
+      "dependencies": ["source_evidence", "saddle_effective_signed_p3"],
+      "polygon_test": "establish a source-backed full-amplitude parity/interference selector beyond Toller support alone; do not extrapolate the saddle result"
+    },
+    "off_saddle_toller_support_orientation": {
+      "status": "PASS_DERIVED_MSQGR",
+      "scope": "negative selector result: exact Toller bulk support contains both nonzero Omega sectors for fixed causal data",
+      "classification": "ITER076O_EXACT_TOLLER_BULK_SUPPORT_CONTAINS_BOTH_OMEGA_SECTORS_OFF_SADDLE_NO_GLOBAL_FINITE_SPIN_SELECTOR_SCOPED",
+      "dependencies": ["source_evidence"],
+      "polygon_test": "treat support overlap as a no-selector result, not as a proof that both sectors survive full integration"
+    },
+    "same_causal_toller_conjugation_selector": {
+      "status": "NO_GO_SOURCE_NATIVE",
+      "scope": "known exact all-wedge gamma-simple conjugation mechanism",
+      "classification": "ITER076P_EXACT_TOLLER_CONJUGATION_FLIPS_OUTSIDE_SOURCE_CAUSAL_K5_IMAGE_NO_SAME_CAUSAL_SELECTOR_SCOPED",
+      "dependencies": ["source_evidence"],
+      "polygon_test": "do not use the known global branch-conjugation flip as an internal same-causal pairing/cancellation mechanism"
+    },
+    "homogeneous_quadratic_hodge_transport": {
+      "status": "PASS_DERIVED_MSQGR",
+      "scope": "homogeneous degree-two transport through the exact linear Hodge line",
+      "classification": "ITER076Q_HODGE_LINE_DESCENDS_TO_UNTWISTED_SYM2_QUADRATIC_TRANSPORT_EXACT_SCOPED",
+      "dependencies": ["carrier_selection"],
+      "polygon_test": "use Sym2 transport without a global Hodge-sign ambiguity, but do not confuse it with a physical nonlinear pushforward"
+    },
+    "quadratic_curvature_symmetry_channel": {
+      "status": "PASS_DERIVED_MSQGR",
+      "scope": "representation-theoretic existence and transitive-face survival of one unique twisted quadratic-curvature channel",
+      "classification": "ITER076S_UNIQUE_TWISTED_QUADRATIC_CURVATURE_ALLOWS_ONEJET_CONTAMINATION_ON_TRANSITIVE_FACES_EXACT_SCOPED",
+      "dependencies": ["homogeneous_quadratic_hodge_transport"],
+      "polygon_test": "do not assume the physical curvature is nonzero; if a source one-jet survives contraction, derive the actual nonlinear source-to-K4 curvature"
+    },
+    "source_local_toller_haar_onejet_witness": {
+      "status": "PASS_SOURCE_NATIVE",
+      "scope": "exact gamma-simple j=1/2 extremal magnetic-component wedge after radial Haar pole cancellation",
+      "classification": "ITER076T_EXACT_TOLLER_HAAR_REGULARIZED_WEDGE_HAS_NONZERO_ONEJET_WITNESS_FULL_VERTEX_CONTRACTED_ONEJET_STILL_REQUIRED_SCOPED",
+      "authoritative_run": 34782826916,
+      "aggregate_job": 103792853336,
+      "aggregate_artifact": 10325424697,
+      "aggregate_digest": "sha256:4b8e43807a9680e8319ad58480ac46d49549f1de3b58ea82bfcbcdaffa35a287",
+      "dependencies": ["source_evidence", "quadratic_curvature_symmetry_channel"],
+      "polygon_test": "retain this as a local source witness only; do not promote it to the fully contracted/integrated vertex one-jet"
+    },
+    "full_contracted_numerator_onejet": {
+      "status": "BLOCKED_TRANSFER_TO_POLYGON",
+      "scientific_substatus": "BLOCKED_OBJECT_DEFINITION",
+      "missing_object": "FULL_TOLLER_INTERTWINER_CONTRACTED_NUMERATOR_ONEJET",
+      "dependencies": ["source_local_toller_haar_onejet_witness"],
+      "polygon_test": "audit magnetic-component sums, five intertwiner contractions, ten-wedge correlated collision geometry and the integration layer without collapsing these stages"
+    },
+    "physical_nonlinear_source_to_k4_curvature": {
+      "status": "BLOCKED_TRANSFER_TO_POLYGON",
+      "scientific_substatus": "BLOCKED_OBJECT_DEFINITION",
+      "missing_object": "PHYSICAL_SOURCE_TO_K4_NONLINEAR_CURVATURE",
+      "dependencies": ["quadratic_curvature_symmetry_channel", "full_contracted_numerator_onejet"],
+      "polygon_test": "derive the actual nonlinear source-to-K4 map from source variables; symmetry-allowed curvature is not physical provenance"
+    },
+    "epsilon_minus1_source_coefficient": {
+      "status": "BLOCKED_TRANSFER_TO_POLYGON",
+      "scientific_substatus": "BLOCKED_OBJECT_DEFINITION",
+      "missing_object": "SOURCE_DEFINED_DEGREE2_NUMERATOR_HAAR_JACOBIAN_PUSHFORWARD_COEFFICIENT",
+      "dependencies": ["homogeneous_quadratic_hodge_transport", "full_contracted_numerator_onejet", "physical_nonlinear_source_to_k4_curvature"],
+      "polygon_test": "form the true degree-two source numerator/Haar-Jacobian pushforward only after both the contracted one-jet and nonlinear curvature are source-defined; do not label the coefficient zero, nonzero or divergent earlier"
+    },
+    "k5_correlated_boundary_value": {
+      "status": "BLOCKED_TRANSFER_TO_POLYGON",
+      "missing_object": "JOINT_SOURCE_FAITHFUL_TOLLER_K5_BOUNDARY_VALUE",
+      "dependencies": ["source_evidence"],
+      "polygon_test": "keep finite-spectral-i-epsilon variables correlated; prove boundary-value existence/uniqueness, order/root independence and distributional Eq.(5)/(6) inheritance"
+    },
+    "g3_quantum_dynamics": {
+      "status": "BLOCKED_TRANSFER_TO_POLYGON",
+      "missing_object": "CRQN_NORMALIZED_LOCAL_DYNAMICS_AND_COMPOSITION",
+      "dependencies": ["carrier_selection", "source_evidence"],
+      "polygon_test": "derive one CRQN-specific normalized amplitude/measure and gluing/composition package in the same realization"
+    },
+    "f9_causal_analytic_rg": {
+      "status": "BLOCKED_TRANSFER_TO_POLYGON",
+      "missing_object": "PHYSICAL_MULTISCALE_CCI_REALIZATION",
+      "dependencies": ["g3_quantum_dynamics"],
+      "polygon_test": "define H_b,P_b^+-, dynamically justified iota_b'b; verify cylindrical consistency, CCI over multiple refinements and Toller analytic-class closure"
+    },
+    "g4_rg_continuum": {
+      "status": "BLOCKED_TRANSFER_TO_POLYGON",
+      "missing_object": "CRQN_COARSE_GRAINING_FLOW_AND_CRITICAL_SURFACE",
+      "dependencies": ["g3_quantum_dynamics"],
+      "polygon_test": "derive coarse-graining flow and test a controlled continuum trajectory"
+    },
+    "g5_symmetry_anomaly": {
+      "status": "BLOCKED_TRANSFER_TO_POLYGON",
+      "missing_object": "CONTINUUM_GAUGE_ANOMALY_CLOSURE",
+      "dependencies": ["g4_rg_continuum"],
+      "polygon_test": "verify emergent gauge/diffeomorphism/refoliation structure without uncontrolled anomaly"
+    },
+    "g6_ir_einstein_qft": {
+      "status": "BLOCKED_TRANSFER_TO_POLYGON",
+      "missing_object": "SAME_REALIZATION_EINSTEIN_QFT_IR_LIMIT",
+      "dependencies": ["g4_rg_continuum", "g5_symmetry_anomaly"],
+      "polygon_test": "recover Einstein-Hilbert plus matter with controlled corrections and causal propagation"
+    },
+    "g7_observable": {
+      "status": "BLOCKED_TRANSFER_TO_POLYGON",
+      "missing_object": "SAME_REALIZATION_NORMALIZED_OBSERVABLE",
+      "dependencies": ["g3_quantum_dynamics", "g4_rg_continuum"],
+      "polygon_test": "derive at least one normalized cross-scale observable from the same measure and flow"
+    },
+    "g8_nontriviality": {
+      "status": "CONVERGENCE_ONLY",
+      "dependencies": ["g3_quantum_dynamics", "f9_causal_analytic_rg"],
+      "polygon_test": "promote only if a same-realization relation or prediction is not equivalent to a registered source framework"
+    }
+  },
+  "claim_locks": [
+    "NO_NEW_PHYSICS_FOUND_CLAIM",
+    "NO_COMPLETE_QG_CLAIM",
+    "NO_GENERIC_FINITE_SPIN_SIGNED_P3_CLAIM",
+    "NO_PHYSICAL_CAUSAL_VERTEX_FINITE_OR_DIVERGENT_THEOREM",
+    "NO_EPSILON_MINUS1_ZERO_NONZERO_OR_DIVERGENT_CLAIM_BEFORE_OBJECT_DEFINITION",
+    "NO_G3_F9_G8_K5_PROMOTION_FROM_CONTRACT_COMPLETENESS",
+    "NO_ARBITRARY_COUNTERTERM_OR_FITTED_CANCELLATION",
+    "NO_SILENT_ORIENTATION_INSERTION",
+    "RETAIN_PUBLISHED_SPECTRAL_I_EPSILON",
+    "KEEP_P0_SOURCE_NATIVE_DISTINCT_FROM_P1_P2_EXTENSIONS"
+  ]
+}
