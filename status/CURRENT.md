@@ -8,7 +8,7 @@
 - G3 quantum dynamics: `OPEN`
 - G8 novelty: `BLOCKED_CONVERGENCE_ONLY`
 - K5 distributional/vertex extension: `BLOCKED`
-- Active front: `ITERATION_062 / ORDERED_ORIENTATION_KAPPA_SPECTRAL_BRIDGE`
+- Active front: `ITERATION_063A / K4_ORDERED_BRIDGE_TREE_CYCLE_PRESCRIPTION_INDEPENDENCE`
 
 ## Controlling closed K4 chain
 
@@ -28,27 +28,22 @@
 - Iter058 `K4_STRICT_CHAMBER_IFF_STRONGLY_CONNECTED_TOURNAMENT`: run `34719879504`, job `103623650207`, artifact `10305894028`, digest `sha256:24d06807b51f87d4751d3df3e4804c4e839e5e6cfce75ffb8d202492790bd84f`.
 - Iter059 `K4_TOLLER_EQUAL_SPIN_WEDGE_REVERSAL_BRANCH_SWAP_SOURCE_DERIVED`: run `34721276444`, job `103627484707`, artifact `10306671166`, digest `sha256:7e35f534cd9dac42d53107ff8536c2be9c68cf0e59546f3864c88c8a3cf4884e`.
 - Iter060 `K4_SOURCE_REVERSAL_ANALYTICITY_GEOMETRY_COVARIANT`: run `34724006585`, job `103634827689`, artifact `10307765024`, digest `sha256:c8bce3178df43b99657d4463155dd153d64185e0eb62686cd440a4c52da124c5`.
-- **Iter061 terminal `K4_ORIENTATION_BLIND_KAPPA_SPECTRAL_IDENTIFICATION_OBSTRUCTED`**: prereg `7549bb44a3e4d58225df67f5f1becbe8be46c066`, implementation `0b23cc4eb7b14e9a2e711162fba4b0cf695483cd`, head `73c33197f6b38c4516b99a2c80f49312eda11a6f`, run `34724072187`, job `103635002582`, artifact `10307780179`, digest `sha256:adb4b2f15f8846f7cc4bf41fba75149f4716b23d1bddc42ad1d98f43c732588a`. Direct candidates compatible `0/16`; reversal-covariant orientation-blind edge-local maps `0/4`. Durable result: `status/ITERATION_061_RESULT.md`.
+- Iter061 `K4_ORIENTATION_BLIND_KAPPA_SPECTRAL_IDENTIFICATION_OBSTRUCTED`: run `34724072187`, job `103635002582`, artifact `10307780179`, digest `sha256:adb4b2f15f8846f7cc4bf41fba75149f4716b23d1bddc42ad1d98f43c732588a`.
+- **Iter062 terminal `K4_ORDERED_ORIENTATION_BRIDGE_COVARIANT_CONVENTION_UNFIXED`**: prereg `8b31b9b1f3d852301e2a20ea76cc59c3da861a35`, head `a08c1705d1bc17fae3f13e7711ba500575066fee`, run `34726816242`, aggregate job `103642356021`, artifact `10307958661`, digest `sha256:ee15cdda66899082d10d207bfa5c4647c01fd4d149b99d9c64299bf8921f61fa`. All 16 lanes valid; strong/non-strong census is 4/4 for each global convention and pairwise convention status is invariant. Durable result: `status/ITERATION_062_RESULT.md`.
 
-## Exact scoped interpretation after Iter061
+## Exact scoped interpretation after Iter062
 
-The source-backed equal-spin Toller branch sign flips under wedge-order reversal, whereas unordered physical `kappa_ab=sigma_a sigma_b` does not. Therefore no orientation-blind direct identification `s=f(kappa)` is compatible with both frozen laws. This is a scoped algebraic obstruction. It does not rule out an orientation-sensitive ordered-wedge bridge and does not select a physical causal sector.
+The minimal ordered-wedge bridge `s(a,b)=c eta(a,b) kappa_ab` is covariance-compatible for all frozen K4 sigma classes, S4 relabelings, order reversal, and both unfixed global conventions `c=±1`. This is bookkeeping/analyticity geometry only. It does not select a physical causal sector or establish a causal-vertex amplitude/prescription.
 
-## Active Iter062 — ordered-wedge orientation-sensitive bridge
+## Active Iter063A — tree/fundamental-cycle representation independence prerequisite
 
-Prospectively preregistered at commit `8b31b9b1f3d852301e2a20ea76cc59c3da861a35` before implementation. Implementation head before workflow: `b7d8acc8fdeade0091a87cae06002752dc96e079`; workflow/head `a08c1705d1bc17fae3f13e7711ba500575066fee`; authoritative run `34726816242`.
+Prospectively preregistered at `bc61d185d0ab5b5b5e91ffb3626854dd16c70d11` before implementation. Frozen production uses 16 lanes (`8 sigma classes × 2 global conventions`), with each lane testing all 24 S4 relabelings and all 16 K4 spanning trees/fundamental-cycle bases, exact kernel rank/reconstruction, constructive positive circulation for strong tournaments, one-way-cut obstruction for non-strong tournaments, order reversal, and global-convention invariance.
 
-Frozen bridge family:
+Authoritative production run: `34729151990`, workflow/head `cb94a44dfd2966caf394314e81cbcf5ac672d7fc`.
 
-`s(a,b)=c * eta(a,b) * kappa_ab`,
+Frozen classifiers: `ITER063A_SOURCE_OR_IMPLEMENTATION_INVALID`, `K4_ORDERED_BRIDGE_TREE_CYCLE_PRESCRIPTION_DEPENDENCE_FAIL`, `K4_ORDERED_BRIDGE_TREE_CYCLE_PRESCRIPTION_INDEPENDENT`.
 
-where `eta(a,b)=+1` for `a<b`, `-1` for `a>b`, and global convention `c=±1` remains unfixed. No edge-dependent fitted signs or weights are allowed.
-
-Frozen production: 16 independent lanes (`8` physical sigma classes × `2` global branch conventions), each exhaustively checking all 24 S4 relabelings and both order states. Tests include source-reversal covariance, Iter056 orientation-cocycle covariance, Iter058 positive-circulation / directed-cut certificates, Iter057 orbit consistency, and invariance under the global branch convention.
-
-Frozen classifiers: `ITER062_SOURCE_OR_IMPLEMENTATION_INVALID`, `K4_ORDERED_ORIENTATION_BRIDGE_COVARIANCE_FAIL`, or `K4_ORDERED_ORIENTATION_BRIDGE_COVARIANT_CONVENTION_UNFIXED`.
-
-Even a PASS only establishes an orientation-compatible bookkeeping bridge up to an unfixed global branch convention. A subsequent direct-causal-vertex analyticity gate would still need prospective tree/cycle-basis/permutation/order independence plus exact EPRL controls. K5 remains blocked until such a source-selected K4 prescription is established.
+Even a PASS is only an exact K4 representation-independence prerequisite. A separate source-backed direct-vertex / exact-EPRL control gate remains mandatory before K5 can be considered.
 
 ## Claim locks
 
