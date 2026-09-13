@@ -1,0 +1,67 @@
+name: Iter076Y mixed polar KAK connection entry
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/iter076y_mixed_polar_kak_connection_entry.yml'
+      - 'distributional/iter076y_mixed_polar_kak_connection_entry.py'
+      - 'prereg/ITER076Y_MIXED_POLAR_KAK_CONNECTION_ENTRY.md'
+      - 'sources/TOLLER_MIXED_POLAR_KAK_JET_SUPPLEMENT.md'
+      - 'results/ITER076X_TOLLER_NORMAL_BLOWUP_CONNECTION_RESULT.md'
+
+jobs:
+  audit:
+    strategy:
+      fail-fast: false
+      matrix:
+        lane: [A, B, C, D]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install exact algebra dependency
+        run: python -m pip install 'sympy==1.13.3'
+      - name: Run frozen lane ${{ matrix.lane }}
+        env:
+          PYTHONPATH: .
+        run: |
+          mkdir -p out
+          python distributional/iter076y_mixed_polar_kak_connection_entry.py --lane '${{ matrix.lane }}' --output 'out/iter076y_${{ matrix.lane }}.json'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter076y-${{ matrix.lane }}
+          path: out/iter076y_${{ matrix.lane }}.json
+          if-no-files-found: error
+
+  aggregate:
+    needs: audit
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install exact algebra dependency
+        run: python -m pip install 'sympy==1.13.3'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: iter076y-*
+          path: downloaded
+          merge-multiple: false
+      - name: Frozen aggregate
+        env:
+          PYTHONPATH: .
+        run: |
+          mkdir -p out
+          python distributional/iter076y_mixed_polar_kak_connection_entry.py --aggregate-dir downloaded --output out/iter076y_aggregate.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter076y-aggregate
+          path: out/iter076y_aggregate.json
+          if-no-files-found: error
