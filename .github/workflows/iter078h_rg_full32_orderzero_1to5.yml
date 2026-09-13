@@ -1,0 +1,73 @@
+name: Iter078H-RG full32 orderzero 1to5 tensor map
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'prereg/ITER078H_RG_FULL32_ORDERZERO_1TO5_TENSOR_MAP.md'
+      - 'distributional/iter078h_rg_full32_orderzero_1to5.py'
+      - '.github/workflows/iter078h_rg_full32_orderzero_1to5.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    name: Iter078H lane ${{ matrix.lane }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        lane: [A, B, C, D]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run exact frozen lane
+        env:
+          PYTHONPATH: .
+        run: |
+          mkdir -p out
+          python distributional/iter078h_rg_full32_orderzero_1to5.py \
+            --lane '${{ matrix.lane }}' \
+            --output 'out/iter078h_${{ matrix.lane }}.json'
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter078h-${{ matrix.lane }}
+          path: out/iter078h_${{ matrix.lane }}.json
+          if-no-files-found: error
+
+  aggregate:
+    name: Aggregate Iter078H-RG
+    needs: audit
+    if: always()
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: iter078h-*
+          path: downloaded
+          merge-multiple: false
+      - name: Aggregate exact control lanes
+        env:
+          PYTHONPATH: .
+        run: |
+          mkdir -p out
+          python distributional/iter078h_rg_full32_orderzero_1to5.py \
+            --aggregate-dir downloaded \
+            --output out/iter078h_aggregate.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter078h-aggregate
+          path: out/iter078h_aggregate.json
+          if-no-files-found: error
