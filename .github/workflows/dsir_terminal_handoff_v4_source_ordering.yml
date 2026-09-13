@@ -1,0 +1,73 @@
+name: DSIR terminal handoff V4 source ordering
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'prereg/DSIR_TERMINAL_HANDOFF_V4_SOURCE_ORDERING_REFRESH.md'
+      - 'docs/DSIR_TO_POLYGON_FUNNEL_V0_4.md'
+      - 'results/ITER077G_SM_CORRECTED_JHALF_CONTACT_MICROLOCAL_SCALING_RESULT.md'
+      - 'results/ITER077H_SM_FINITE_EPSILON_CONTACT_PERSISTENCE_RESULT.md'
+      - 'results/DSIR_TERMINAL_HANDOFF_V3_CORRECTED_RESULT.md'
+      - 'status/DSIR_V2_CONTACT_FORMULA_SUPERSESSION.md'
+      - 'analysis/dsir_terminal_handoff_v4_source_ordering_audit.py'
+      - '.github/workflows/dsir_terminal_handoff_v4_source_ordering.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    name: DSIR V4 lane ${{ matrix.lane }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        lane: [R4, S4, T4, U4]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run frozen V4 lane
+        run: |
+          mkdir -p out
+          python analysis/dsir_terminal_handoff_v4_source_ordering_audit.py \
+            --lane '${{ matrix.lane }}' \
+            --output 'out/dsir_v4_${{ matrix.lane }}.json'
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: dsir-v4-${{ matrix.lane }}
+          path: out/dsir_v4_${{ matrix.lane }}.json
+          if-no-files-found: error
+
+  aggregate:
+    name: Aggregate DSIR V4 handoff
+    needs: audit
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: dsir-v4-*
+          path: downloaded
+          merge-multiple: false
+      - name: Aggregate frozen V4 contract
+        run: |
+          mkdir -p out
+          python analysis/dsir_terminal_handoff_v4_source_ordering_audit.py \
+            --aggregate-dir downloaded \
+            --output out/dsir_v4_aggregate.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: dsir-v4-aggregate
+          path: out/dsir_v4_aggregate.json
+          if-no-files-found: error
