@@ -1,0 +1,33 @@
+name: Iter078M RG causal stabilizer restricted Jacobian
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'distributional/iter078m_rg_causal_stabilizer_restricted_jacobian.py'
+      - '.github/workflows/iter078m_rg_causal_stabilizer_restricted_jacobian.yml'
+  workflow_dispatch:
+
+jobs:
+  restricted-jacobian:
+    strategy:
+      fail-fast: false
+      matrix:
+        p: [0, 1, 2, 3, 4, 5]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Exact fixed-causal stabilizer restriction p=${{ matrix.p }}
+        run: |
+          mkdir -p out
+          python distributional/iter078m_rg_causal_stabilizer_restricted_jacobian.py \
+            --p '${{ matrix.p }}' \
+            --output 'out/iter078m_rg_p${{ matrix.p }}.json'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter078m-rg-p${{ matrix.p }}
+          path: out/iter078m_rg_p${{ matrix.p }}.json
+          if-no-files-found: error
