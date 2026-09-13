@@ -1,0 +1,76 @@
+name: Iter077B-BCH source K4 cycle curvature
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'sources/ITER077_PARALLEL_FRONTIER_SOURCE_DERIVATION.md'
+      - 'prereg/ITER077B_SOURCE_BCH_K4_CYCLE_CURVATURE.md'
+      - 'distributional/iter077b_source_bch_k4_cycle_curvature.py'
+      - 'status/ITER077_PROVENANCE_LEDGER.md'
+      - '.github/workflows/iter077b_bch_source_k4_cycle_curvature.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    name: Iter077B-BCH lane ${{ matrix.lane }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        lane: [A, B, C, D]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install exact algebra dependency
+        run: python -m pip install 'sympy==1.13.3'
+      - name: Run frozen lane
+        env:
+          PYTHONPATH: .
+        run: |
+          mkdir -p out
+          python distributional/iter077b_source_bch_k4_cycle_curvature.py \
+            --lane '${{ matrix.lane }}' \
+            --output 'out/iter077b_bch_${{ matrix.lane }}.json'
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter077b-bch-${{ matrix.lane }}
+          path: out/iter077b_bch_${{ matrix.lane }}.json
+          if-no-files-found: error
+
+  aggregate:
+    name: Aggregate Iter077B-BCH
+    needs: audit
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: iter077b-bch-*
+          path: downloaded
+          merge-multiple: false
+      - name: Aggregate frozen contract
+        env:
+          PYTHONPATH: .
+        run: |
+          mkdir -p out
+          python distributional/iter077b_source_bch_k4_cycle_curvature.py \
+            --aggregate-dir downloaded \
+            --output out/iter077b_bch_aggregate.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter077b-bch-aggregate
+          path: out/iter077b_bch_aggregate.json
+          if-no-files-found: error
