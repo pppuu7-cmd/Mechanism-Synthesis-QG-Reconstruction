@@ -20,6 +20,8 @@ jobs:
       - name: Install exact algebra dependency
         run: python -m pip install --disable-pip-version-check sympy==1.13.3
       - name: Run frozen Iter076A exact audit
+        env:
+          PYTHONPATH: ${{ github.workspace }}
         run: |
           mkdir -p artifacts/iter076a
           python distributional/iter076a_transitive_overlap_mobius.py --output artifacts/iter076a/result.json
