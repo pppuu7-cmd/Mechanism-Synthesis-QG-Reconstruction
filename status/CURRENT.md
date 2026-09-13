@@ -5,10 +5,10 @@
 - Candidate: `CRQN v0.2` (`CARRIER_SELECTED`)
 - Established/source-backed mechanism union: `F1-F8`
 - Physical F9: `BLOCKED`
-- G3 quantum dynamics: `OPEN`
+- G3 quantum dynamics: `OPEN_BUT_NOT_ADMISSIBLE_UNTIL_LOCAL_AMPLITUDE_DEFINED`
 - G8 novelty: `BLOCKED_CONVERGENCE_ONLY`
-- K5 distributional/vertex extension: `BLOCKED_CORRELATED_EXTENSION_OBJECT_MISSING`
-- **Authoritative active front:** `FULL_SOURCE_CAUSAL_VERTEX_LOCAL_LIMIT / SOURCE_ORDERED_TOLLER_K5_CONDITIONAL_BOUNDARY_VALUE / FULL_BOUNDARY_CONTRACTION / REGULATOR_INDEPENDENCE`
+- K5 distributional/vertex extension: `BLOCKED_OBJECT_DEFINITION`
+- **Authoritative active front:** `FULL_SOURCE_CAUSAL_VERTEX_LOCAL_LIMIT / SOURCE_SELECTED_K5_BOUNDARY_VALUE_OBJECT_DEFINITION / FULL_BOUNDARY_CONTRACTION / REGULATOR_INDEPENDENCE`
 - Conditional companion fronts: `TOLLER_FRONT_FACE_ALGEBRA (-FF) / SOURCE_BCH_K4_COORDINATE_CONTROL (-BCH)`.
 
 Durable results are authoritative only in their recorded scopes. Naming collisions and quarantined source locks are governed by `status/ITER077_PROVENANCE_LEDGER.md` and `status/ITER077_CONTACT_FORMULA_ERRATUM.md`.
@@ -25,7 +25,7 @@ At the common group collision the exact coherent-spinor Jacobian has a rank-10 w
 
 Run `34784868939`.
 
-Frozen witness `xxxxxyyyzz` has exact rank 9 and self-stress `lambda=(1,-1,0,0,1,0,0,0,0,0)`. The first tested full-span exceptional stratum is locally transverse codimension 3 in the 20-dimensional wedge-normal manifold.
+Frozen witness `xxxxxyyyzz` has rank 9 and self-stress `lambda=(1,-1,0,0,1,0,0,0,0,0)`. The first tested full-span exceptional stratum is locally transverse codimension 3 in the 20-dimensional wedge-normal manifold.
 
 ### Iter077D-SM CLOSED — canonical mixed nonlinear normal form
 
@@ -85,6 +85,8 @@ Authoritative run: `34788323622`.
 
 Frozen question: do exact leading angular coefficient vectors sampled on prospectively fixed nondegenerate K5 collision directions span the complete 32-dimensional boundary space? A full-rank result would exclude any nonzero **angle-independent** boundary-state superposition from cancelling the leading `r^-20` coefficient identically.
 
+At the last recovery read, lanes A/B/C were terminal-successful but lane D was still `in_progress`; therefore **no Iter077J scientific verdict is yet authoritative**. Partial Actions results are not evidence.
+
 Frozen lanes:
 
 - A: source/provenance locks and admissibility of all 56 fixed main+held-out rays;
@@ -94,21 +96,39 @@ Frozen lanes:
 
 The finite-field `F_p(i)` certificate with inert prime `p=1000000007` is only used as an exact nonzero-minor certificate: full rank modulo this prime proves the corresponding Gaussian-integer minor is nonzero over `Q(i)`.
 
+### Iter077K-SM CLOSED — published source does not select the missing joint K5 boundary value
+
+Preregistration: `prereg/ITER077K_SM_SOURCE_SELECTED_K5_BOUNDARY_VALUE_OBJECT_DEFINITION.md`, commit `97f0114f80edee3a42f67490f81cb1eb8f497304`.
+
+Durable result: `results/ITER077K_SM_SOURCE_SELECTED_K5_BOUNDARY_VALUE_OBJECT_DEFINITION_RESULT.md`, commit `898355bea286d6a64934ea20c95711aa4e408b3d`.
+
+Classification:
+`ITER077K_SM_SOURCE_SELECTED_K5_COMMON_COLLISION_BOUNDARY_VALUE_NOT_DEFINED_IN_PRIMARY_SOURCE_OBJECT_DEFINITION_BLOCKED`.
+
+The two frozen primary sources do define each one-wedge Toller matrix through the spectral Feynman prescription and formally define the fixed-causal vertex as the product of ten resulting Toller functions under four gauge-fixed `SL(2,C)` integrations. The companion source proves uniqueness of the **one-wedge Toller splitting**.
+
+However, after Iter077I-SM establishes that the complete minimal-sector source-ordered product is not locally `L1` at the common collision, those sources do not supply a separate joint K5 prescription/theorem selecting a unique correlated/conditional boundary value: no common ten-wedge regulator retained through group integration, correlated extension, Hadamard finite part, group-variable contour prescription, conditional-convergence theorem, or theorem commuting the one-wedge limits with K5 multiplication/integration was found in the frozen source authority.
+
+This is `BLOCKED`, not `FAIL`: no theorem of mathematical nonexistence has been established. But a new common-`epsilon` limit, finite part, correlated extension, subtraction, or contour deformation would now be a **new mechanism/definition**, not something already source-selected by the published one-wedge `i epsilon`.
+
 ## Exact blocker
 
-A fully contracted causal K5 vertex as a unique local distributional functional is still unestablished. The missing object is now narrowed to:
+A fully contracted fixed-causal K5 vertex as a unique finite-spin local distributional/conditional functional is still unestablished. The controlling missing object remains:
 
 `SOURCE_SELECTED_CORRELATED_OR_CONDITIONAL_COMMON_COLLISION_BOUNDARY_VALUE_WITH_FULL_BOUNDARY_CONTRACTION_AND_SUBLEADING_SOURCE_DATA`.
+
+Its status is sharpened to `BLOCKED_OBJECT_DEFINITION_IN_PUBLISHED_SOURCE`.
 
 The physical nonlinear source-to-K4 curvature remains unselected. The nominal `epsilon^-1` coefficient remains `BLOCKED_OBJECT_DEFINITION`.
 
 ## Next admissible steps
 
-1. Consume every raw Iter077J-SM lane artifact and aggregate; classify scientifically, not by green CI.
-2. If Iter077J-SM passes, fixed boundary-superposition cancellation of the leading all-`j=1/2` term is excluded. Then derive/test the source-selected correlated/conditional common-collision extension including exact smooth subleading Toller phase, Haar measure and intertwiner data.
-3. Only after a source-defined local boundary value is established or disproved may regulator independence or a physical causal-vertex finiteness/divergence statement be attempted.
-4. Continue `-FF` and `-BCH` only as conditional controls; never promote them into the source-amplitude line without an explicit theorem.
+1. Consume every raw Iter077J-SM lane artifact and aggregate **only after the run is terminal**, and classify it scientifically rather than by green CI. Do not launch a duplicate J gate.
+2. Regardless of J's outcome, do not continue accumulating leading-angle lemmas as a substitute for the missing amplitude definition.
+3. Highest-information next physical/mathematical gate: prospectively identify and test an external theorem that makes the exact fixed-causal Eq. (4) a unique distributional/conditional functional under the published ordering and its actual hypotheses. If no such theorem applies, keep K5 at `BLOCKED_OBJECT_DEFINITION`.
+4. A new common-regulator/correlated-extension mechanism is admissible only if independently motivated **before** testing, with source ordering, complete 32-component boundary contraction, regulator path, positive/negative controls and regulator-independence criteria frozen prospectively. It may not be introduced merely to rescue CRQN.
+5. G3 quantum dynamics remains downstream and is not admissible for promotion until the local vertex/amplitude is mathematically defined.
 
 ## Claim locks
 
-No `NEW_PHYSICS_FOUND`; no complete-QG claim; no generic finite-spin signed P3; no exact full-amplitude cancellation/non-cancellation theorem; no physical causal-vertex finiteness/divergence theorem; no regulator-independence theorem; no physical source-to-K4 pushforward; no nominal `epsilon^-1` coefficient; no G3 PASS or F9/G8/K5 promotion; retain the published spectral `i epsilon`.
+No `NEW_PHYSICS_FOUND`; no complete-QG claim; no generic finite-spin signed P3; no exact full-amplitude cancellation/non-cancellation theorem; no physical causal-vertex finiteness/divergence theorem; no source-selected K5 correlated-extension theorem; no regulator-independence theorem; no physical source-to-K4 pushforward; no nominal `epsilon^-1` coefficient; no G3 PASS or F9/G8/K5 promotion; retain the published one-wedge spectral `i epsilon`; do not reinterpret it as a joint K5 regulator without a theorem.
