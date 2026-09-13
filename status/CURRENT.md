@@ -8,7 +8,7 @@
 - G3 quantum dynamics: `OPEN`
 - G8 novelty: `BLOCKED_CONVERGENCE_ONLY`
 - K5 distributional/vertex extension: `BLOCKED_CORRELATED_EXTENSION_OBJECT_MISSING`
-- Active front: `EPSILON_MINUS1_SOURCE_NUMERATOR_JACOBIAN_OBJECT / TRANSITIVE_FACE_COEFFICIENTS / CORRELATED_BOUNDARY_VALUE`
+- Active front: `SOURCE_TO_K4_PUSHFORWARD / EPSILON_MINUS1_SOURCE_NUMERATOR_JACOBIAN_OBJECT / TRANSITIVE_FACE_COEFFICIENTS / CORRELATED_BOUNDARY_VALUE`
 
 ## Controlling recent results
 
@@ -26,20 +26,22 @@
 - Iter075C/D/E: the branch-flip/index-swap Feynman-kernel relation is successively numerically supported and then exact at Appendix-D kernel level. Iter075E run `34755819190`, job `103719893727`, artifact `10317735773`, digest `sha256:e9994dae30d1d2d12c1b3905e8370e0871dbafa15f276e116a835c89c7c751c3`; no full unequal-spin Toller group law is implied.
 - Iter076A prereg `71e765cf597131424e297fd6b70587fa33db7b63`; initial run `34758486126` was infrastructure-only before predicates. Authoritative retry head `85ecaac967f78ac675552708f4fa2fc15f857e2d`, run `34758521734`, job `103727049365`, artifact `10318116775`, digest `sha256:23edf7fc462f8b2e9cf82a2c1701b4fcde7c6bbd4ffcbd0e5f5f2011c7e07f31`: `ITER076A_TRANSITIVE_OVERLAP_MOBIUS_BOOKKEEPING_EXACT_SCOPED`. All seven frozen predicates pass; exact 13-node overlap closure and Möbius bookkeeping are established. Durable result commit `8e90c279e7863b5c5ec7e7ef57cd767b3eca3727`.
 - Iter076B prereg `ddafd0c3df126d30f0135931abb2349f69464bad`, production head `30633fb7d4b6de6c5880c6e19116ff1bfa1d2473`, run `34761228718`; source-class jobs `103734304527`, `103734304537`, `103734304441`, `103734304563`; aggregate job `103734341502`, aggregate artifact `10318722679`, digest `sha256:dc73bd0be09b53029160ae841189e315f21427b0d02508872079dd83d44fd005`: `ITER076B_TRANSITIVE_DEGREE2_OVERLAP_JET_COMPLEX_EXACT_COVARIANT_SCOPED`. All raw lanes and aggregate were consumed. The exact common signature contains nonzero degree-two ranks (`rank 3` on a 2D stratum and `rank 1` on several 1D strata), so degree-two data are not automatically annihilated. Durable result commit `f1ca24eb16338ee3b0f97f893870453c15e99efe`.
+- Iter076C prereg `af7445f9ff2c17ab7ee9f4d00fbc636c5801ba71`; durable result `b9f5875002695fdd1f7e164fdba66cfeaf16b406`: `ITER076C_BLOCKED_SOURCE_TO_K4_PUSHFORWARD_OR_QUADRATIC_DENSITY_MISSING`. Frozen source audit gives P0/P1/P2 PASS: full Eq.(4) four-group/ten-wedge carrier, Eq.(7)-style KAK reconstruction, and scoped Haar-domain radial object are present. First missing object is P3: no provenance-linked coordinate/projection/pushforward map derives the 3D K4 cycle variables and six constrained edge flows from the four `SL(2,C)` group variables. Therefore P4 source-induced quadratic numerator×Jacobian density and P5 physical transitive-face coefficients remain undefined.
 
 ## Next prospective gates
 
-- **Do not launch another denominator-only density/quadrature or arbitrary quadratic-coefficient test.** Iter076A/B have saturated the combinatorial/quadratic-jet bookkeeping layer.
-- Derive a source-faithful map from the full causal vertex Eq.(4) / Cartan decomposition Eq.(7) to the reduced K4 collision coordinates that identifies the actual local numerator and Jacobian through quadratic order. Every factor must have explicit provenance; no Euclidean metric on cycle coordinates, fitted coefficient or Möbius-as-counterterm substitution is allowed.
-- Only after that object exists, prospectively preregister the actual degree-two / nominal `epsilon^-1` coefficient gate with explicit overlap terms and basis/S4 controls.
+- **Do not launch another denominator-only density/quadrature or arbitrary quadratic-coefficient test.** Iter076A/B have saturated the combinatorial/quadratic-jet bookkeeping layer and Iter076C localizes the missing bridge at P3.
+- Derive source-domain local geometry prerequisites independently where possible (relative-group local/BCH jet; exact local Haar/KAK density jet), with explicit scope that these do not themselves define the K4 pushforward.
+- Construct a provenance-linked source-faithful map from the full causal vertex Eq.(4) / Cartan decomposition Eq.(7) to the reduced K4 collision coordinates. It must identify the actual local numerator and Jacobian through quadratic order. No Euclidean metric on cycle coordinates, fitted coefficient or Möbius-as-counterterm substitution is allowed.
+- Only after that P3/P4 object exists, prospectively preregister the actual degree-two / nominal `epsilon^-1` coefficient gate with explicit overlap terms and basis/S4 controls.
 - Determine actual coefficients on the six admissible transitive proper faces under the same source-derived measure/numerator object.
 - Establish the full source-backed Toller/group correlated boundary value and Eq.(5)/(6) under non-transverse pullback before any K5 promotion.
 
 ## Exact blocker
 
-The reduced K4 collision geometry, overlap poset and degree-two restriction complex are now exact and basis/S4-consistent. The next decisive quantity is **not defined by those denominator-skeleton results alone**. The primary-source snapshot defines the physical vertex as a four-`SL(2,C)` Haar integral of ten Toller functions and gives the Cartan/magnetic decomposition, but the repository does not yet contain a validated source-derived coordinate reduction that maps that full object to the local K4 collision variables together with its numerator/Jacobian quadratic jet. Therefore the nominal `epsilon^-1` coefficient is `BLOCKED_OBJECT_DEFINITION`, not zero, nonzero or divergent.
+The full-group source carrier and the reduced K4 collision geometry are each independently represented and validated, but their connecting pushforward is absent. Eq.(4) supplies four `SL(2,C)` integrations and ten relative arguments `g_b^-1 g_a`; Eq.(7) and the repository KAK code reconstruct full Toller matrices; the regulated Haar pilot supplies a scoped source-domain radial density. Separately, the K4 chain starts from three cycle variables and exact six-edge constrained-flow maps. Iter076C establishes that the repository does not derive the latter variables from the former group-domain variables or an explicitly source-derived submanifold/projection. Consequently the induced numerator/Haar-Jacobian quadratic jet in K4 coordinates is not source-defined, and the nominal `epsilon^-1` coefficient remains `BLOCKED_OBJECT_DEFINITION`, not zero, nonzero or divergent.
 
-No scientifically useful nonduplicating Actions batch should be launched merely to keep runners busy until this source-derived map is constructed; analysis/source derivation has priority.
+No scientifically useful nonduplicating Actions batch should be launched merely to keep runners busy. Only independent source-domain geometry prerequisites or an actual source-to-K4 bridge have information gain at this frontier.
 
 ## Claim locks
 
@@ -50,4 +52,4 @@ No scientifically useful nonduplicating Actions batch should be launched merely 
 - no arbitrary counterterm, fitted cancellation, or preferred sequential order/tree;
 - retain published spectral `i epsilon`; do not replace it by `beta+i epsilon`;
 - do not transfer Wigner-D representation identities branchwise to Toller functions without source derivation;
-- distinguish reduced denominator theorem, fixed-epsilon temperedness, overlap bookkeeping, source-derived coefficient object, correlated distributional boundary value and full Toller vertex.
+- distinguish reduced denominator theorem, fixed-epsilon temperedness, overlap bookkeeping, source-domain local geometry, source-derived pushforward/coefficient object, correlated distributional boundary value and full Toller vertex.
