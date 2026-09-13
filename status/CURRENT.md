@@ -8,48 +8,114 @@
 - G3 quantum dynamics: `OPEN`
 - G8 novelty: `BLOCKED_CONVERGENCE_ONLY`
 - K5 distributional/vertex extension: `BLOCKED_CORRELATED_EXTENSION_OBJECT_MISSING`
-- DSIR handoff-contract completeness V1: `100%` (`DSIR_FUNNEL_CONTRACT_COMPLETE_TERMINAL_HANDOFF_V1`; this is interface completeness only, not physical-gate completion)
-- Active front: `COVARIANT_K5_TOLLER_FRONT_FACE_DATA_MODEL / CORRELATED_TOLLER_GROUP_BOUNDARY_VALUE / NONLINEAR_SOURCE_TO_K4_CURVATURE / EPSILON_MINUS1_OBJECT_DEFINITION / POLYGON_HANDOFF_REFRESH`
+- DSIR handoff-contract completeness V1: `100%` (interface completeness only, not physical-gate completion)
+- **Authoritative active front:** `FULL_SOURCE_CAUSAL_VERTEX_LOCAL_LIMIT / TRUE_SOURCE_B_MAP_EXCEPTIONAL_CONTACT_PULLBACK / FULL_BOUNDARY_CONTRACTION / REGULATOR_INDEPENDENCE`
+- Conditional companion fronts: `TOLLER_FRONT_FACE_ALGEBRA (-FF) / SOURCE_BCH_K4_COORDINATE_CONTROL (-BCH)`.
 
-Durable result notes remain authoritative for all closed earlier iterations.
+Durable result notes remain authoritative for all closed earlier iterations. Naming/provenance collisions in the parallel Iter077 campaign are governed by `status/ITER077_PROVENANCE_LEDGER.md` and `status/ITER077_NUMBERING_AND_SCOPE_CORRECTION.md`.
 
-## Controlling Iter076 chain
-- Iter076H-J: canonical twisted Hodge generator, reversal twist character, and unique unsigned K4 complement support are closed exact scoped results.
-- Iter076K CLOSED: the source K5 incidence and causal data fix the signed Hodge line but not its global sign.
-- Iter076L CLOSED: Regge 4-volume orientation has the required selector character in semiclassical scope, without an exact Eq.(4) bridge.
-- Iter076M CLOSED: exact source variables admit the non-degenerate orientation pseudoscalar `Omega_sigma(g)=sgn det([1; sigma_a ghat_a T])`.
-- Iter076N CLOSED: `EXACT_TOLLER_RESTRICTOR_SELECTS_ONE_OMEGA_SECTOR_ON_NONDEGENERATE_LORENTZIAN_REGGE_SADDLE_LOCUS_SCOPED`; run `34781543192`, aggregate artifact `10324993593`, digest `sha256:6fd653c302afc865c33296b1f540d3f9a7cc92ae48424f207ddb6a63ae22ef30`.
-- Iter076O CLOSED: `EXACT_TOLLER_BULK_SUPPORT_CONTAINS_BOTH_OMEGA_SECTORS_OFF_SADDLE_NO_GLOBAL_FINITE_SPIN_SELECTOR_SCOPED`; run `34781757359`. Exact off-saddle Heaviside bulk support contains both nonzero orientation sectors for the same fixed causal data.
-- Iter076P CLOSED: `EXACT_TOLLER_CONJUGATION_FLIPS_OUTSIDE_SOURCE_CAUSAL_K5_IMAGE_NO_SAME_CAUSAL_SELECTOR_SCOPED`; run `34781943529`. The known all-wedge branch-conjugation flip exits the causal K5 image.
-- Iter076Q CLOSED: `ITER076Q_HODGE_LINE_DESCENDS_TO_UNTWISTED_SYM2_QUADRATIC_TRANSPORT_EXACT_SCOPED`; production head `9e067f74c8087b7d91cd88ae8818ed1edd84af28`; run `34782102274`; aggregate artifact `10324959288`, digest `sha256:33b461b58d7b9b7e56f6cf32e175b7b883ef3d45a9e2c2a4543b8ef12785a5af`. The unresolved global sign of the exact linear Hodge line cancels in homogeneous quadratic transport only.
-- Iter076R CLOSED: `ITER076R_HAAR_ONEJET_ZERO_BUT_SYMMETRY_ALLOWS_NONLINEAR_QUADRATIC_CURVATURE_SOURCE_NUMERATOR_ONEJET_STILL_REQUIRED_EXACT_SCOPED`; prereg `3c6c179aeea5bafa02c986b0cd6a197b65f4e24e`; control-only repair `1f7971e547f04fbe95809f356b0a6e4a7fa50dd0`; authoritative retry run `34782351018`; aggregate job `103791710390`; aggregate artifact `10325685566`, digest `sha256:10707a2a9207e20488644bce0ba3861c8db8216cc2f9ffc2dc51b3f151e1c3c6`. The source Haar one-jet is exactly zero, but the symmetry-allowed quadratic-curvature channel is one-dimensional and admits a nonzero generic one-jet contamination witness.
-- Iter076S CLOSED: `ITER076S_UNIQUE_TWISTED_QUADRATIC_CURVATURE_ALLOWS_ONEJET_CONTAMINATION_ON_TRANSITIVE_FACES_EXACT_SCOPED`; frozen scientific predictions `62bdff74931814d2fbf598b6d0898bcb0140b271`; renumbered prereg `382dc5424d9a5f7eaa2d6c6772c01ada56541014`; production head `f6de9eb571a5ef05154ebd7b04d206cc2e6afa1b`; authoritative run `34782561421`; aggregate job `103792160990`; aggregate artifact `10325780492`, digest `sha256:025282186fa349b5bbb47af87ff135886ca54af39182800f3bf84227ac4f3fac`. Exact survival census: `32/96` proper-face restrictions have rank 1, `64/96` rank 0; each class/tree six-face stack has rank 2 and the full transitive stack rank 3. Therefore no nonzero generic one-jet direction is globally invisible across the frozen transitive family.
-- Iter076T CLOSED: `ITER076T_NAIVE_TOLLER_IDENTITY_ONEJET_SINGULAR_POLE_STRIPPED_BC_BRANCH_HAS_GENERIC_NONZERO_ONEJET_EXACT_SCOPED`; authoritative run `34782925764`. An individual causal Toller branch is singular at the identity, so its ordinary derivative is not the regular one-jet object. In the exact Barrett-Crane control, the minimally pole-stripped branch factor has a generic nonzero linear term; smoothness/evenness of `T^(+)+T^(-)=D` cannot be assigned to the separate branches.
-- Iter076U CLOSED: `ITER076U_GAMMA_SIMPLE_TOLLER_MINIMAL_POWER_STRIP_ONEJET_EQUALS_I_GAMMA_M_BOTH_BRANCHES_EXACT_SCOPED`; authoritative run `34783135619`. For the gamma-simple minimally power-stripped diagonal wedge germ, `G_+'(0+)=G_-'(0+)=i gamma m`; generic wedge-level branch evenness is therefore excluded.
-- Iter076V CLOSED: `ITER076V_RELATIVE_TOLLER_BOOST_ONEJET_IS_I_GAMMA_J_AND_SU2_INTERTWINER_KILLS_NODE_COMMON_BOOST_EXACT_SCOPED`; authoritative run `34783477289`, aggregate artifact `10326046124`, digest `sha256:fbf45078186fe796c353d90fc34d4a72bc319f862109f35721dd00f9d34a0ce6`. The matrix relative boost-normal one-jet is exactly `i gamma J_n` on either branch, and a common source-node boost inserts total `J_n`, which every tested SU(2)-invariant boundary intertwiner annihilates exactly.
-- Iter076W CLOSED: canonical classification `ITER076W_COMPACT_NODE_GAUGE_ONEJET_ZERO_AND_RELABEL_EXTENDS_PURE_DIRECTION_CLOSURE_ALL_INTEGRATED_NODES_EXACT_SCOPED`; authoritative run `34783642774`, durable result commit `0f543f69cd2acb364349ebd656898b84c2970ec0`. Exact Eq.(7) compact covariance makes a common compact source-node variation a total SU(2) generator, killed by intertwiner invariance; root-stabilizer `S4` transports the result over all four integrated nodes. A separately preregistered independent confirmation (`fd58cc2856062eccee9c5b01af2bd6ee6d96d8ac` -> `bb8577615b114192d186a4c8f2d26112363549ef` -> `07d1249375532572c3f85cfe7588a0170ab18b35`, run `34783679839`, aggregate artifact `10324989307`, digest `sha256:9f9393d4c061e03f862450f43709b3683b02db19c59e52c670084890149d10f0`) also passed and includes a nonzero single-wedge magnetic-leg control.
-- Iter076X CLOSED: `ITER076X_TOLLER_NORMAL_BLOWUP_ANGULAR_CONNECTION_SURVIVES_GENERIC_INTERTWINERS_EXACT_SCOPED`; authoritative run `34783825102`, aggregate artifact `10326171246`, digest `sha256:0f0c104731eaa338c37ce354053b2ef04ed8df7882f615b799ff28bcda86a6e1`. The leading family `C_n=D^j(U_n)C_zD^j(U_n)^(-1)` has a nontrivial transverse connection; after exact four-valent boundary contraction it survives in `5/7` frozen controls.
-- Iter076Y CLOSED: `ITER076Y_MIXED_POLAR_KAK_JET_FEEDS_HALF_ANGLE_TOLLER_CONNECTION_SURVIVING_GENERIC_INTERTWINERS_EXACT_SCOPED`; authoritative run `34783973208`, aggregate artifact `10326041750`, digest `sha256:bc6d48f02a06e615b251e078ee97a228c01eedfd356f4106feab5e5313ca20ae`. For `g(t)=exp[t(A+B)]`, the exact polar/KAK jet splits the compact rotation with half-angle coefficient and feeds the Iter076X connection; the mixed survivor is nonzero in the same `5/7` controls.
-- Iter076Z CLOSED: `ITER076Z_SCALAR_RADIAL_STRIP_LEAVES_NONSCALAR_DIRECTION_DEPENDENT_TOLLER_FRONT_FACE_BUNDLE_OBJECT_REQUIRED_EXACT_SCOPED`; production head `0aabe8fd5bde622bdd0eb6c94f56561d0ec292e1`; authoritative run `34784158494`; aggregate job `103796524140`; aggregate artifact `10325742841`, digest `sha256:a6207d22357012e4165b2bc19ef995760925f8c9a1d762e99629fc4f746674bc`; durable result commit `f2697b7d6ef7abc6bd9fe16cea26680f5902653c`. After universal radial stripping, generic source data retain a direction-dependent matrix/bundle-valued front face. In `5/7` exact controls the transverse angular response occupies `M=+/-1` sectors and cannot be canceled by any scalar normalization derivative in `M=0`.
+## Controlling earlier results
+
+The Iter076 H-Z chain remains closed in its recorded scopes. In particular:
+
+- H-Q establish the exact/scoped Hodge-line, orientation and quadratic-transport algebra, but not a physical nonlinear source-to-K4 pushforward.
+- R-S establish zero Haar one-jet but allow a nonlinear quadratic-curvature contamination channel.
+- T-U establish that an individual causal Toller branch is singular at the identity and that a minimally stripped gamma-simple wedge germ generically has nonzero one-jet.
+- V-W show that common-node pure boost and compact generator directions are killed by exact SU(2)-intertwiner closure.
+- X-Y show that those pure-direction zeros do not imply a direction-independent zero source germ: a transverse matrix-valued angular connection survives generic frozen intertwiner controls and is fed by a concrete mixed compact/boost path.
+- Z establishes that after scalar radial stripping the generic Toller front face remains direction-dependent and matrix/bundle-valued; no scalar normalization derivative flattens it in `5/7` frozen exact controls.
+
+These are useful local ingredients, but they do not by themselves establish existence of the source causal vertex.
+
+## Strategic source-map handoff
+
+The 2026 causal-vertex source defines the coherent vertex using four gauge-fixed `SL(2,C)` group integrations and ten wedge Toller factors. In the exact coherent-spinor representation each wedge carries an independent auxiliary `CP^1` spinor and the contact/restrictor structure is supported on
+
+`B(z,g)=log(<g^dagger z|g^dagger z>/<z|z>)`.
+
+Therefore the relevant local source map is
+
+`B : SL(2,C)^4 x (CP^1)^10 -> R^10`,
+
+not the scalar rooted K5 incidence surrogate. A scalar-incidence cycle/Hodge result is conditional algebra until an explicit source pushforward theorem is supplied.
+
+### Iter077A-SM CLOSED — true source-map transversality
+
+Authoritative run `34784565177`; durable result `results/ITER077A_TRUE_SOURCE_B_MAP_TRANSVERSALITY_RESULT.md`.
+
+At the common group collision, with root 0 gauge fixed and Hermitian boost coordinates,
+
+`dB_ab = n_ab . (dx_a-dx_b)`,
+
+so the exact boost Jacobian is
+
+`J_(ab),(c,i)=(delta_ac-delta_bc)n_ab^i`.
+
+A frozen exact wedge-spinor witness has `rank_Q(J)=10`, left nullity `0`, and an exact nonzero maximal minor `-1`. The rooted scalar K5 incidence matrix has rank `4`, left nullity `6`, and `0/6` of its cycle-nullspace basis relations annihilate the true witness Jacobian.
+
+**Durable consequence:** the scalar K5 rank-4/cycle picture is a special collinear slice, not the generic first-order structure of the coherent-spinor source map. Reduced K4/Hodge cycle coefficients do not transfer to the source amplitude without an explicit pushforward derivation.
+
+Exact axis-control census over `3^10=59049` normal assignments gives ranks
+
+`4:3, 5:60, 6:600, 7:4800, 8:17766, 9:26100, 10:9720`.
+
+No continuum measure statement follows from this finite census.
+
+### Iter077C-SM CLOSED — first exceptional source stratum
+
+Authoritative retry run `34784868939`; durable result `results/ITER077C_SM_SOURCE_COLLISION_EXCEPTIONAL_STRATA_RESULT.md`; result commit `5cdafc091295526f49323f38be13e01dcd553926`.
+
+Rank deficiency of the true common-collision Jacobian is exactly equivalent to a nonzero **vector self-stress** satisfying five-node equilibrium. It is not generically the scalar K5 cycle nullspace.
+
+The prospectively frozen first full-span rank-9 axis witness is
+
+`xxxxxyyyzz`
+
+in edge order `01,02,03,04,12,13,14,23,24,34`. It has:
+
+- `rank_Q(J)=9`;
+- one-dimensional left kernel with
+  `lambda=(1,-1,0,0,1,0,0,0,0,0)`;
+- three-dimensional right kernel;
+- exact self-stress equilibrium;
+- structured normal-variation map `L` of shape `3 x 20` and exact rank `3`;
+- a nonzero `3 x 3` minor `-1` on tangent directions `01:y`, `01:z`, `02:z`.
+
+Therefore this first tested genuinely three-dimensional rank-9 exceptional source stratum is crossed transversely and is locally codimension `3` in the 20-dimensional wedge-normal manifold.
+
+This is **not** a theorem for every exceptional point and does **not** prove that contact-distribution pullback is harmless.
+
+## Conditional parallel branches
+
+### `Iter077A-FF`
+
+The later bare-name front-face preregistration is provenance-disambiguated as `Iter077A-FF`. Its algebraic/covariant closure results, if validly aggregated, remain front-face conditional controls. They cannot replace `Iter077A-SM` or establish a full source-amplitude theorem. The initial combined A/B workflow is non-authoritative for iteration numbering.
+
+### `Iter077B-BCH`
+
+The BCH/K4 branch is provenance-disambiguated as `Iter077B-BCH` and may run independently as a coordinate-scoped quadratic-curvature control. Even a PASS does not establish the physical Toller/front-face pushforward or a physical K4 numerator. Independent lane relaunch began at commit `f5ac9f4c45c1460fe75329de244df5c65d406e6b`.
 
 ## Exact blocker
-The signed Hodge/P3 orientation is source-selected on the non-degenerate Lorentzian Regge saddle locus, but a **generic finite-spin off-saddle signed P3 is not established**. Iter076Q removes the global Hodge-sign ambiguity from homogeneous quadratic linear transport, but it does not establish the physical nonlinear source-to-K4 pushforward.
 
-Iter076R-S prove that the Haar contribution to the local one-jet vanishes, while symmetry permits a nonlinear quadratic-curvature channel whose generic one-jet contamination survives the transitive-face complex. Iter076T-U establish that the separate causal branch is singular at the identity and that a minimally power-stripped gamma-simple wedge germ generically has nonzero one-jet. Iter076V-W close all six common-node pure generator directions after boundary-intertwiner contraction.
+A **fully contracted source causal K5 vertex as a unique local distributional functional has not been established**.
 
-Iter076X-Y then show why those pure-direction zeros do not assemble into a direction-independent ordinary source germ: the leading Toller coefficient is an equivariant matrix family over the sphere of boost normals, and a concrete mixed compact/boost source path feeds its transverse angular connection at the first subleading radial order. Iter076Z sharpens this into an exact object-definition obstruction: after scalar radial stripping, no scalar direction-dependent normalization can flatten the generic boundary coefficient in `5/7` frozen controls because the angular response leaves the total-magnetic `M=0` sector.
+Generic common-collision transversality is now demonstrated by an exact full-rank witness. The first tested full-span rank-9 exceptional stratum is locally codimension 3. The decisive unresolved question has therefore moved to the **true nonlinear source geometry on the exceptional set**:
 
-Therefore the source-side object required before any physical degree-two pushforward is no longer an unspecified scalar regular one-jet. It is a **correlated blown-up/polyhomogeneous K5 front-face object** carrying radial weights, normal directions, matrix leading coefficients, and angular connection data, with source-node incidence/gauge/relabel covariance.
+1. for a frozen self-stress `lambda`, determine the first nonzero nonlinear term of
+   `Phi=sum_e lambda_e B_e` along the right kernel of `dB`;
+2. determine whether this excess constraint is quadratic/nondegenerate, higher-order, or has exact flat directions;
+3. from that nonlinear normal form, test the local pullback/scaling of the source contact distributions;
+4. only after exceptional-stratum control retain all boundary intertwiner components through the ten `CP^1` integrations and four group variables and test regulator removal/independence.
 
-The physical nonlinear source-to-K4 curvature is still not selected, and the correlated Toller/group boundary value remains unproved. The nominal `epsilon^-1` coefficient therefore remains `BLOCKED_OBJECT_DEFINITION`: neither zero, nonzero nor divergent is authorized.
-
-The existing DSIR terminal handoff V1 remains valid as a 100% interface-completeness statement, but a versioned handoff refresh must incorporate the stronger Iter076X-Y-Z source-object definition before the polygon consumes this branch.
+The physical nonlinear source-to-K4 curvature is still not selected. The nominal `epsilon^-1` coefficient remains `BLOCKED_OBJECT_DEFINITION`: neither zero, nonzero nor divergent is authorized.
 
 ## Next admissible steps
-1. Construct and preregister the minimal covariant K5 Toller front-face data model on the source relative-coordinate cut complex: radial weights, normal directions, leading `C_n` matrices, angular connection, incidence constraints, compact-gauge covariance, root change and relabel covariance. Test closure before any K4 Hodge/Sym2 transport.
-2. In parallel, derive the actual nonlinear source-to-K4 curvature independently of any presumed scalar one-jet; only a source-selected map may be combined with the Iter076R-S degree-two channel.
-3. In parallel, establish or terminally obstruct the full source-backed correlated Toller/group boundary value required for K5 promotion, using the existing Iter067A theorem-route contract rather than an arbitrary finite part.
-4. After the independent branches are terminally classified, issue a versioned DSIR-to-polygon handoff refresh that preserves the existing `100%` contract-completeness semantics and exports the new blown-up front-face object/blocker explicitly.
+
+1. **Primary:** `Iter077D-SM` — at the frozen rank-9 witness `xxxxxyyyzz`, compute the source-faithful nonlinear Taylor jet of `Phi=sum lambda_e B_e` from the exact Eq.(32) matrix expression. Restrict the quadratic form to `ker dB`, determine exact rank/signature, and test any remaining flat kernel direction without changing the witness after inspection.
+2. If the nonlinear normal form is determined, test the local scaling/pullback of the source contact terms on that exceptional stratum. A negative/non-unique result is a valid source-amplitude obstruction.
+3. Only then build the frozen all-`j=1/2` complete boundary sector (32 intertwiner components) through all ten auxiliary-spinor integrations and test the first potentially divergent fully contracted coefficient/regulator dependence.
+4. Continue `-FF` and `-BCH` only as independent conditional lanes; do not merge their PASS/FAIL with the source-amplitude line without an explicit pushforward theorem.
 
 ## Claim locks
-No `NEW_PHYSICS_FOUND`; no complete-QG claim; no generic finite-spin signed P3; no exact full-amplitude cancellation/non-cancellation theorem; no physical causal-vertex finiteness/divergence theorem; no nominal `epsilon^-1` coefficient; no G3 PASS or F9/G8/K5 promotion; no arbitrary scalar flattening of the Toller front face; retain the published spectral `i epsilon`.
+
+No `NEW_PHYSICS_FOUND`; no complete-QG claim; no generic finite-spin signed P3; no exact full-amplitude cancellation/non-cancellation theorem; no physical causal-vertex finiteness/divergence theorem; no regulator-independence theorem; no physical source-to-K4 pushforward; no nominal `epsilon^-1` coefficient; no G3 PASS or F9/G8/K5 promotion; no arbitrary scalar flattening of the Toller front face; retain the published spectral `i epsilon`.
