@@ -1,0 +1,65 @@
+name: Iter076R source one-jet curvature contamination
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/iter076r_source_onejet_curvature_contamination.yml'
+      - 'distributional/iter076r_source_onejet_curvature_contamination.py'
+      - 'prereg/ITER076R_SOURCE_ONEJET_CURVATURE_CONTAMINATION.md'
+      - 'results/ITER076Q_HODGE_LINE_SYM2_QUADRATIC_DESCENT_RESULT.md'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    strategy:
+      fail-fast: false
+      matrix:
+        lane: [A, B, C, D]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install exact algebra dependency
+        run: python -m pip install 'sympy==1.13.3'
+      - name: Run frozen lane ${{ matrix.lane }}
+        run: |
+          mkdir -p out
+          python distributional/iter076r_source_onejet_curvature_contamination.py --lane '${{ matrix.lane }}' --output 'out/iter076r_${{ matrix.lane }}.json'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter076r-${{ matrix.lane }}
+          path: out/iter076r_${{ matrix.lane }}.json
+          if-no-files-found: error
+
+  aggregate:
+    needs: audit
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install exact algebra dependency
+        run: python -m pip install 'sympy==1.13.3'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: iter076r-*
+          path: downloaded
+          merge-multiple: false
+      - name: Frozen aggregate
+        run: |
+          mkdir -p out
+          python distributional/iter076r_source_onejet_curvature_contamination.py --aggregate-dir downloaded --output out/iter076r_aggregate.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter076r-aggregate
+          path: out/iter076r_aggregate.json
+          if-no-files-found: error
