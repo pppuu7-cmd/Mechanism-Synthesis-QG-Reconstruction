@@ -1,0 +1,105 @@
+name: Iter068A K4 Microlocal Collision Skeleton
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'distributional/iter068a_k4_microlocal_collision.py'
+      - 'status/ITERATION_068A_PREREG.md'
+      - '.github/workflows/iter068a-k4-microlocal-collision.yml'
+  workflow_dispatch:
+
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      max-parallel: 16
+      matrix:
+        sigma: ['++++','+++-','++-+','++--','+-++','+-+-','+--+','+---']
+        convention: ['+1','-1']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run frozen exact microlocal skeleton lane
+        run: |
+          mkdir -p results
+          safe_sigma=$(echo '${{ matrix.sigma }}' | tr '+' 'p' | tr '-' 'm')
+          safe_c=$(echo '${{ matrix.convention }}' | tr '+' 'p' | tr '-' 'm')
+          python distributional/iter068a_k4_microlocal_collision.py \
+            --sigma '${{ matrix.sigma }}' \
+            --convention '${{ matrix.convention }}' \
+            --output "results/iter068a_${safe_sigma}_${safe_c}.json"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter068a-${{ matrix.sigma }}-${{ matrix.convention }}
+          path: results/*.json
+          if-no-files-found: error
+          retention-days: 90
+
+  aggregate:
+    runs-on: ubuntu-24.04
+    needs: [audit]
+    if: always()
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: iter068a-*
+          path: gathered
+          merge-multiple: true
+      - name: Frozen aggregate classification
+        run: |
+          python - <<'PY'
+          import json, glob
+          from pathlib import Path
+
+          files=sorted(glob.glob('gathered/*.json'))
+          rows=[json.load(open(f,encoding='utf-8')) for f in files]
+          sigmas=['++++','+++-','++-+','++--','+-++','+-+-','+--+','+---']
+          expected={(s,c) for s in sigmas for c in (1,-1)}
+          got={(r.get('sigma'),r.get('convention')) for r in rows}
+          all_valid=(len(rows)==16 and got==expected and all(r.get('valid') for r in rows))
+          by={}
+          for r in rows:
+              by[(r['sigma'],r['convention'])]=r
+          paired=True
+          for s in sigmas:
+              a=by.get((s,1)); b=by.get((s,-1))
+              if not a or not b or a['classification']!=b['classification']:
+                  paired=False
+          obs=[r for r in rows if r.get('classification')=='K4_HORMANDER_PRODUCT_SKELETON_OBSTRUCTED_AT_FULL_COLLISION']
+          comp=[r for r in rows if r.get('classification')=='K4_HORMANDER_PRODUCT_SKELETON_COMPATIBLE_AT_FULL_COLLISION']
+          if all_valid and paired:
+              classification=f'ITER068A_K4_MICROLOCAL_SKELETON_MIXED_{len(obs)}_OBSTRUCTED_{len(comp)}_COMPATIBLE_CONVENTION_INVARIANT'
+          else:
+              classification='ITER068A_INVALID_OR_INCONSISTENT'
+          out={
+              'gate':'ITER068A_K4_MICROLOCAL_PRODUCT_COLLISION_SKELETON',
+              'frozen_prereg_commit':'d64bf56cb4eac29228262d80bc57960911e507f5',
+              'lanes':len(rows),
+              'all_lanes_valid':all_valid,
+              'global_convention_invariance':paired,
+              'obstructed_lanes':len(obs),
+              'compatible_lanes':len(comp),
+              'obstructed_sigma_classes':sorted({r['sigma'] for r in obs}),
+              'compatible_sigma_classes':sorted({r['sigma'] for r in comp}),
+              'classification':classification,
+              'scope_lock':'Denominator-skeleton Hörmander collision audit only. No full Toller wavefront theorem, no physical sector selection, no causal-vertex finiteness/divergence theorem, and no K5/F9/G3/G8 promotion.'
+          }
+          Path('aggregate').mkdir(exist_ok=True)
+          Path('aggregate/iter068a-aggregate.json').write_text(json.dumps(out,indent=2,sort_keys=True),encoding='utf-8')
+          print(json.dumps(out,indent=2,sort_keys=True))
+          if not (all_valid and paired):
+              raise SystemExit(9)
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter068a-aggregate
+          path: aggregate/iter068a-aggregate.json
+          if-no-files-found: error
+          retention-days: 90
