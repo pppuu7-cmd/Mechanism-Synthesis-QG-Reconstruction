@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - '.github/workflows/iter063b-source-control-qualification.yml'
+      - 'scripts/iter063b_source_control_qualification.py'
   workflow_dispatch:
 
 jobs:
