@@ -2,7 +2,7 @@
 
 **Date:** 2026-09-14
 
-This ledger resolves a historical naming collision created by parallel research lanes. Existing preregistration filenames, workflow names, JSON labels, run IDs and result files are immutable provenance and are **not renamed**. Stable prose aliases below should be used in future `status/`, recovery and result notes.
+This ledger resolves historical naming collisions created by parallel research lanes. Existing preregistration filenames, workflow names, JSON labels, run IDs and result files are immutable provenance and are **not renamed**. Stable prose aliases below should be used in future `status/`, recovery and result notes.
 
 ## Stable aliases
 
@@ -45,9 +45,29 @@ Historical frozen label: `Iter077B`.
 - prereg commit: `ee7338fc314847a2524544445baf01ea78e87994`
 - implementation lineage: `8c43363781fdd450de8396ec2ede0a1602e680a1`
 - pre-production predicate repair: `cdba02a770db55b4ff2c1bba5df0cdf49e257951`
-- workflow launch lineage includes commit `339c71b2b5e211cbfa61d7613eeccdffe0c7d184`
+- initial combined workflow launch: `339c71b2b5e211cbfa61d7613eeccdffe0c7d184`
+- later independent canonical lane relaunch: `f5ac9f4c45c1460fe75329de244df5c65d406e6b`
 
 Scientific scope: source BCH second-order relative-coordinate curvature projected into the reduced K4 cycle channel. By preregistration, it does **not** establish the physical Toller/front-face pushforward or the nominal `epsilon^-1` coefficient.
+
+### `Iter077C-SM` — first true-source exceptional-strata sibling
+
+Stable frozen label: `Iter077C-SM`.
+
+- preregistration: `prereg/ITER077C_SM_SOURCE_COLLISION_EXCEPTIONAL_STRATA.md`
+- prereg commit: `d2414780967cc36c4b2f31ba4fbcb8453e13f978`
+- implementation: `distributional/iter077c_sm_source_collision_exceptional_strata.py`
+- implementation commit: `9c11041e3ce1bce8148452c14e05103e1bed02e0`
+- initial workflow head: `9cd251318135274b4fd7824f22d95b1bd84869ac`
+- control-only source-notation repair: `54fe49f1041ef28ac324e2a503196c9b6a6d7ed3`
+- authoritative retry/workflow head: `287c22078d275085888c173adfe395fec32bfc98`
+- authoritative run: `34784868939`
+- durable result: `results/ITER077C_SM_SOURCE_COLLISION_EXCEPTIONAL_STRATA_RESULT.md`
+- result commit: `5cdafc091295526f49323f38be13e01dcd553926`
+- verdict: PASS
+- classification: `ITER077C_SM_SOURCE_COLLISION_RANK9_EXCEPTIONAL_STRATUM_TRANSVERSE_CODIM3_EXACT_SCOPED`
+
+Scientific scope: exact first rank-deficient source geometry at the common collision. Rank deficiency is a vector self-stress/equilibrium condition. The frozen first full-span rank-9 witness `xxxxxyyyzz` has a one-dimensional self-stress, three-dimensional right kernel, and a `3 x 20` structured normal-variation map of exact rank 3 with a nonzero minor `-1`; locally this tested rank-9 stratum is transverse codimension 3 in the 20-dimensional normal manifold. This does not establish that every exceptional stratum is codimension 3 or that the source contact pullback is harmless.
 
 ## Forward naming rule
 
@@ -57,8 +77,8 @@ From this ledger onward:
 - use suffix `-FF` for the Toller front-face algebra line;
 - use suffix `-BCH` for the source-relative BCH/K4 line;
 - do not reuse an existing bare `Iter077A` or `Iter077B` label for a new object;
-- future source-map gates begin at `Iter077C-SM` unless the repository already contains that exact stable alias.
+- the next source-map gate after `Iter077C-SM` is `Iter077D-SM` unless that exact stable alias is already present.
 
 ## Claim firewall
 
-Parallel execution does not merge scientific scopes. A PASS in `-FF` or `-BCH` cannot be imported as a source-amplitude existence theorem. A PASS in `-SM` does not establish physical K4/Hodge transport unless an explicit source pushforward is constructed.
+Parallel execution does not merge scientific scopes. A PASS in `-FF` or `-BCH` cannot be imported as a source-amplitude existence theorem. A PASS in `-SM` does not establish physical K4/Hodge transport unless an explicit source pushforward is constructed. No source-map transversality result by itself establishes contact-distribution pullback, full-vertex finiteness, or regulator independence.
