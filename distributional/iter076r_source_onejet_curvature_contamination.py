@@ -191,7 +191,7 @@ def lane_d():
         "status/ITERATION_076D_RESULT.md",
         [
             "odd terms vanish",
-            "does not establish the source-to-K4 pushforward",
+            "does **not** establish the source-to-K4 pushforward",
         ],
     )
     p_checks = require(
