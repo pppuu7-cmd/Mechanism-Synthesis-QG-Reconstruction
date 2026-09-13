@@ -1,0 +1,51 @@
+name: Iter076P Toller conjugation causal-factor obstruction
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/iter076p_toller_conjugation_causal_factor_obstruction.yml'
+      - 'distributional/iter076p_toller_conjugation_causal_factor_obstruction.py'
+      - 'prereg/ITER076P_TOLLER_CONJUGATION_CAUSAL_FACTOR_OBSTRUCTION.md'
+      - 'sources/TOLLER_MATRICES_2026_CONJUGATION_BRANCH_FLIP_SNAPSHOT.md'
+
+jobs:
+  lane:
+    strategy:
+      fail-fast: false
+      matrix:
+        lane: [A, B, C, D]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - run: |
+          mkdir -p out
+          python distributional/iter076p_toller_conjugation_causal_factor_obstruction.py --lane ${{ matrix.lane }} --output out/iter076p_${{ matrix.lane }}.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter076p-${{ matrix.lane }}
+          path: out/iter076p_${{ matrix.lane }}.json
+          if-no-files-found: error
+  aggregate:
+    needs: lane
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: iter076p-*
+          path: downloaded
+      - run: |
+          mkdir -p out
+          python distributional/iter076p_toller_conjugation_causal_factor_obstruction.py --aggregate-dir downloaded --output out/iter076p_aggregate.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter076p-aggregate
+          path: out/iter076p_aggregate.json
+          if-no-files-found: error
