@@ -1,0 +1,26 @@
+name: Iter075C Toller kernel inversion candidates
+
+on:
+  push:
+    branches:
+      - research/iter075c-toller-kernel-inversion-candidates
+  workflow_dispatch:
+
+jobs:
+  kernel-audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --disable-pip-version-check mpmath
+      - name: Run frozen kernel audit
+        run: python distributional/iter075c_toller_kernel_inversion_candidates.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter075c-kernel-audit
+          path: out/iter075c-kernel-audit.json
+          if-no-files-found: error
+          retention-days: 90
