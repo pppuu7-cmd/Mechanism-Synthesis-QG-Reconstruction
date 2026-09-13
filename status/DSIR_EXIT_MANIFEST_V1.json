@@ -1,0 +1,127 @@
+{
+  "manifest": "DSIR_EXIT_MANIFEST_V1",
+  "date": "2026-09-13",
+  "funnel_contract_status": "COMPLETE",
+  "contract_completeness_percent": 100,
+  "meaning_of_100": "100 percent handoff-contract completeness only; not a percentage of quantum gravity solved or physical gates passed",
+  "authoritative_handoff": {
+    "classification": "DSIR_FUNNEL_CONTRACT_COMPLETE_TERMINAL_HANDOFF_V1",
+    "run": 34781821095,
+    "aggregate_job": 103790123435,
+    "aggregate_artifact": 10324863936,
+    "aggregate_digest": "sha256:4baaeeff632a4873156cebf114ddf67970197c4e0929bbf4b0a48f986b617200",
+    "production_head": "888a521e2f3a134e4e13badefdd6b279a4771746",
+    "result_commit": "dfb723c3a9de0daff84cd4cf3ad8f63dc5072635"
+  },
+  "native_branch": "P0_SOURCE_NATIVE",
+  "extension_branches": {
+    "P1_ORIENTATION_EXTENSION": "allowed only as an explicit new-model branch after source-native signed-P3 no-go",
+    "P2_CORRELATED_BOUNDARY_EXTENSION": "allowed only with explicit extension/uniqueness conditions and comparison against the source finite-epsilon family"
+  },
+  "fields": {
+    "source_evidence": {
+      "status": "PASS_SOURCE_NATIVE",
+      "definition": "BCG causal vertex Eq.(3)-(7), Toller branches, published spectral i-epsilon prescription",
+      "dependencies": [],
+      "polygon_test": "retain source equations and spectral prescription as immutable comparator"
+    },
+    "carrier_selection": {
+      "status": "PASS_DERIVED_MSQGR",
+      "definition": "oriented causal labelled 2-complex Q=(K,o,j,i,x)",
+      "dependencies": [],
+      "polygon_test": "instantiate the selected carrier without silently changing ontology"
+    },
+    "g1_final_equivalence_gauge": {
+      "status": "BLOCKED_TRANSFER_TO_POLYGON",
+      "missing_object": "FINAL_REPRESENTATION_CATEGORY_EQUIVALENCE_GAUGE_RELATIONS",
+      "dependencies": ["carrier_selection"],
+      "polygon_test": "fix exact group/representation/equivalence data and verify no hidden redundant states"
+    },
+    "g2_no_preferred_structure": {
+      "status": "BLOCKED_TRANSFER_TO_POLYGON",
+      "missing_object": "NO_PREFERRED_FRAME_FOLIATION_CONTINUUM_CERTIFICATE",
+      "dependencies": ["carrier_selection", "source_evidence"],
+      "polygon_test": "show regulator/bookkeeping foliation leaves physical observables or classify a different symmetry theory"
+    },
+    "signed_p3_source_native": {
+      "status": "NO_GO_SOURCE_NATIVE",
+      "classification": "ITER076N_EQ4_EQ7_HAVE_NO_CANONICAL_S5_ODD_SELECTOR_EXACT_SIGNED_P3_BLOCKED_SEMICLASSICAL_ONLY_SCOPED",
+      "dependencies": ["source_evidence"],
+      "polygon_test": "P0 retains the unsigned Hodge line; any added orientation selector belongs to P1"
+    },
+    "regge_orientation_semiclassical": {
+      "status": "PASS_DERIVED_MSQGR",
+      "classification": "REGGE_4VOLUME_ORIENTATION_SELECTS_HODGE_SIGN_SEMICLASSICAL_EXACT_BRIDGE_STILL_BLOCKED_SCOPED",
+      "dependencies": ["source_evidence"],
+      "polygon_test": "use only in explicitly semiclassical tests; do not reinterpret it as an exact source factor"
+    },
+    "exact_variable_orientation_candidate": {
+      "status": "PASS_DERIVED_MSQGR",
+      "definition": "Omega_sigma(g)=sgn det([1; sigma_a ghat_a T]) on the non-degenerate locus",
+      "dependencies": ["source_evidence"],
+      "polygon_test": "availability may be tested in extension branches but is not source-native selection"
+    },
+    "epsilon_minus1_signed_p3_native": {
+      "status": "NOT_APPLICABLE",
+      "dependencies": ["signed_p3_source_native"],
+      "polygon_test": "do not assign zero/nonzero/divergent value in P0; define anew only after an explicit extension supplies its own pushforward/provenance"
+    },
+    "k5_correlated_boundary_value": {
+      "status": "BLOCKED_TRANSFER_TO_POLYGON",
+      "missing_object": "JOINT_SOURCE_FAITHFUL_TOLLER_K5_BOUNDARY_VALUE",
+      "dependencies": ["source_evidence"],
+      "polygon_test": "keep finite-spectral-i-epsilon variables correlated; prove boundary-value existence/uniqueness, order/root independence and distributional Eq.(5)/(6) inheritance"
+    },
+    "g3_quantum_dynamics": {
+      "status": "BLOCKED_TRANSFER_TO_POLYGON",
+      "missing_object": "CRQN_NORMALIZED_LOCAL_DYNAMICS_AND_COMPOSITION",
+      "dependencies": ["carrier_selection", "source_evidence"],
+      "polygon_test": "derive one CRQN-specific normalized amplitude/measure and gluing/composition package in the same realization"
+    },
+    "f9_causal_analytic_rg": {
+      "status": "BLOCKED_TRANSFER_TO_POLYGON",
+      "missing_object": "PHYSICAL_MULTISCALE_CCI_REALIZATION",
+      "dependencies": ["g3_quantum_dynamics"],
+      "polygon_test": "define H_b,P_b^+-, dynamically justified iota_b'b; verify cylindrical consistency, CCI over multiple refinements and Toller analytic-class closure"
+    },
+    "g4_rg_continuum": {
+      "status": "BLOCKED_TRANSFER_TO_POLYGON",
+      "missing_object": "CRQN_COARSE_GRAINING_FLOW_AND_CRITICAL_SURFACE",
+      "dependencies": ["g3_quantum_dynamics"],
+      "polygon_test": "derive coarse-graining flow and test a controlled continuum trajectory"
+    },
+    "g5_symmetry_anomaly": {
+      "status": "BLOCKED_TRANSFER_TO_POLYGON",
+      "missing_object": "CONTINUUM_GAUGE_ANOMALY_CLOSURE",
+      "dependencies": ["g4_rg_continuum"],
+      "polygon_test": "verify emergent gauge/diffeomorphism/refoliation structure without uncontrolled anomaly"
+    },
+    "g6_ir_einstein_qft": {
+      "status": "BLOCKED_TRANSFER_TO_POLYGON",
+      "missing_object": "SAME_REALIZATION_EINSTEIN_QFT_IR_LIMIT",
+      "dependencies": ["g4_rg_continuum", "g5_symmetry_anomaly"],
+      "polygon_test": "recover Einstein-Hilbert plus matter with controlled corrections and causal propagation"
+    },
+    "g7_observable": {
+      "status": "BLOCKED_TRANSFER_TO_POLYGON",
+      "missing_object": "SAME_REALIZATION_NORMALIZED_OBSERVABLE",
+      "dependencies": ["g3_quantum_dynamics", "g4_rg_continuum"],
+      "polygon_test": "derive at least one normalized cross-scale observable from the same measure and flow"
+    },
+    "g8_nontriviality": {
+      "status": "CONVERGENCE_ONLY",
+      "dependencies": ["g3_quantum_dynamics", "f9_causal_analytic_rg"],
+      "polygon_test": "promote only if a same-realization relation or prediction is not equivalent to a registered source framework"
+    }
+  },
+  "claim_locks": [
+    "NO_NEW_PHYSICS_FOUND_CLAIM",
+    "NO_COMPLETE_QG_CLAIM",
+    "NO_PHYSICAL_CAUSAL_VERTEX_FINITE_OR_DIVERGENT_THEOREM",
+    "NO_G3_F9_G8_K5_PROMOTION_FROM_CONTRACT_COMPLETENESS",
+    "NO_ARBITRARY_COUNTERTERM_OR_FITTED_CANCELLATION",
+    "NO_SILENT_ORIENTATION_INSERTION",
+    "RETAIN_PUBLISHED_SPECTRAL_I_EPSILON",
+    "KEEP_P0_SOURCE_NATIVE_DISTINCT_FROM_P1_P2_EXTENSIONS"
+  ]
+}
