@@ -1,0 +1,73 @@
+name: Iter078N-RG universal output hyperplane
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'prereg/ITER078N_RG_UNIVERSAL_OUTPUT_HYPERPLANE.md'
+      - 'distributional/iter078n_rg_universal_output_hyperplane.py'
+      - '.github/workflows/iter078n_rg_universal_output_hyperplane.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    name: Iter078N lane ${{ matrix.lane }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        lane: [A, B, C, D]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run exact frozen lane
+        env:
+          PYTHONPATH: .
+        run: |
+          mkdir -p out
+          python distributional/iter078n_rg_universal_output_hyperplane.py \
+            --lane '${{ matrix.lane }}' \
+            --output 'out/iter078n_${{ matrix.lane }}.json'
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter078n-${{ matrix.lane }}
+          path: out/iter078n_${{ matrix.lane }}.json
+          if-no-files-found: error
+
+  aggregate:
+    name: Aggregate Iter078N-RG
+    needs: audit
+    if: always()
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: iter078n-*
+          path: downloaded
+          merge-multiple: false
+      - name: Aggregate exact hyperplane lanes
+        env:
+          PYTHONPATH: .
+        run: |
+          mkdir -p out
+          python distributional/iter078n_rg_universal_output_hyperplane.py \
+            --aggregate-dir downloaded \
+            --output out/iter078n_aggregate.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter078n-aggregate
+          path: out/iter078n_aggregate.json
+          if-no-files-found: error
