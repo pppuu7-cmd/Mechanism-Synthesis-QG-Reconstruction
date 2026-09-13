@@ -1,0 +1,42 @@
+{
+  "gate": "ITER066A_MULTIVARIATE_SOURCE_FRAMEWORK_QUALIFICATION",
+  "frozen_prereg_commit": "b6846ee0515853cd9981dc0d6688c021174922be",
+  "candidates": {
+    "BCG2026_PRIMARY": {
+      "source": "https://arxiv.org/abs/2601.23162",
+      "source_version": "v1 / 2026-01-30",
+      "P1_CORRELATED_MULTIVARIATE": false,
+      "P2_SOURCE_SELECTED_UNIQUE": false,
+      "P3_ORDER_PERMUTATION_INDEPENDENT": false,
+      "P4_TOLLER_EPRL_COMPATIBLE": false,
+      "evidence": "Defines the physical causal vertex and Feynman spectral i-epsilon Toller functions, plus T+ + T- = D / EPRL pointwise control. Discussion explicitly states causal-model finiteness must be investigated; it does not provide the required K5 correlated distributional extension or distributional Eq.(5)/(6) control."
+    },
+    "BBK2009_WONDERFUL_EG": {
+      "source": "https://arxiv.org/abs/0908.0633",
+      "source_version": "2009-08-05 arXiv record",
+      "P1_CORRELATED_MULTIVARIATE": true,
+      "P2_SOURCE_SELECTED_UNIQUE": false,
+      "P3_ORDER_PERMUTATION_INDEPENDENT": false,
+      "P4_TOLLER_EPRL_COMPATIBLE": false,
+      "evidence": "Treats nontrivial arrangements of singular linear subspaces by resolution to normal crossings and analytic regularization; however extensions use local counterterms and different subtraction choices generate a renormalization group. The paper is Euclidean perturbative-QFT machinery and supplies no derivation tying its subtraction choice to the Lorentzian Toller spectral prescription or Eq.(5)/(6)."
+    },
+    "FELDER_KAZHDAN2018_FINITE_PART": {
+      "source": "https://doi.org/10.1007/s00029-017-0323-9",
+      "source_version": "Selecta Mathematica 24 (2018) 157-186",
+      "P1_CORRELATED_MULTIVARIATE": false,
+      "P2_SOURCE_SELECTED_UNIQUE": false,
+      "P3_ORDER_PERMUTATION_INDEPENDENT": false,
+      "P4_TOLLER_EPRL_COMPATIBLE": false,
+      "evidence": "Studies finite parts for forms singular on submanifolds and explicitly analyzes dependence on the choice of regularization through a local residue. This is evidence against treating an unspecified finite part as a unique physical selector; it does not furnish the K5/Toller bridge."
+    },
+    "SELLIER1997_MULTIDIM_HFP": {
+      "source": "https://doi.org/10.1017/S030500419600148X",
+      "source_version": "Math. Proc. Camb. Phil. Soc. 122 (1997) 131-148",
+      "P1_CORRELATED_MULTIVARIATE": false,
+      "P2_SOURCE_SELECTED_UNIQUE": false,
+      "P3_ORDER_PERMUTATION_INDEPENDENT": false,
+      "P4_TOLLER_EPRL_COMPATIBLE": false,
+      "evidence": "Provides an n>=2 Hadamard finite-part construction and studies change of variables and a Fubini theorem for its stated isolated-singularity setting. That scope does not establish a canonical extension for the intersecting K5 singular arrangement or compatibility with the physical Toller/EPRL prescription."
+    }
+  }
+}
