@@ -106,6 +106,10 @@ def matrix_zero(M):
     return M == sp.zeros(*M.shape)
 
 
+def columns_in(A: sp.Matrix, subspace_basis: sp.Matrix) -> bool:
+    return subspace_basis.row_join(A).rank() == subspace_basis.rank()
+
+
 def lane_a():
     edges, B, Br, _Pcut, _Pcyc, H = k4_objects()
     cut = Br.T
@@ -130,7 +134,7 @@ def lane_a():
 
 
 def lane_b():
-    _edges, B, Br, Pcut, Pcyc, _H = k4_objects()
+    _edges, _B, _Br, Pcut, Pcyc, _H = k4_objects()
     rows = []
     all_ok = True
     s = sp.Rational(3, 2)
@@ -173,7 +177,7 @@ def lane_b():
 
 
 def lane_c():
-    _edges, B, Br, _Pcut, Pcyc, H = k4_objects()
+    _edges, B, Br, _Pcut, _Pcyc, H = k4_objects()
     all_ok = True
     rows = []
     for ci, X5 in enumerate(generic_controls()):
@@ -192,7 +196,7 @@ def lane_c():
                 cov &= matrix_zero(sp.simplify(Qp - E * Qc))
                 twist &= matrix_zero(sp.simplify(H * Qp - parity(p) * E * H * Qc))
                 cycle_ok &= (B * Qp == sp.zeros(4, 3))
-            Hcut = same_colspace(Br.T, H * Qc) if Qc.rank() else True
+            Hcut = columns_in(H * Qc, Br.T)
             ok = root_nonzero and cov and twist and cycle_ok and Hcut
             all_ok &= ok
             rows.append({
