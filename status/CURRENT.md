@@ -8,7 +8,7 @@
 - G3 quantum dynamics: `OPEN`
 - G8 novelty: `BLOCKED_CONVERGENCE_ONLY`
 - K5 distributional/vertex extension: `BLOCKED_CORRELATED_EXTENSION_OBJECT_MISSING`
-- Active front: `COMMON_EPSILON_SIGNED_CUTSPACE / SUBLEADING_PROPER_COLLISION / EPSILON_TO_ZERO_DISTRIBUTIONAL_BOUNDARY_VALUE`
+- Active front: `COMMON_EPSILON_SIGNED_CUTSPACE / PROPER_FACE_COEFFICIENTS / INDEPENDENT_WEDGE_EPRL_CONTROL / EPSILON_TO_ZERO_BOUNDARY_VALUE`
 
 ## Controlling recent results
 
@@ -20,13 +20,21 @@
 - Iter070C run `34741632282`, aggregate job `103682249488`, artifact `10313090332`, digest `sha256:75750b8efdbd3e053151e64defec5d798eb189c0e9c94dd3f03fd3c59cfa9f84`: low-gamma smaller-epsilon pre-pullback convergence support; historical Iter068C remains REVIEW.
 - Iter071A run `34741938861`, aggregate job `103683058319`, artifact `10312601343`, digest `sha256:53adba7a50db94dfdeac5f340d569bc5b079672f310536858a86f12602904544`: `ITER071A_K4_COMMON_EPSILON_SCHWARTZ_ACTION_REVIEW`; 32/32 lanes numerically valid, frozen convergence/basis predicates fail under rising small-epsilon QMC variance; no divergence theorem.
 - Iter072A run `34744136699`, artifact `10313745085`, digest `sha256:263f46b94d10835e3ec156e553697f98ca213d5619ef1f58a6ff57c8d9ffb96d`: `ITER072A_LEADING_COLLISION_THEOREM_ROUTE_FAIL`; cycle-space positive circulation is not the Schwinger cut-space constraint.
-- Iter072B run `34744334585`, aggregate job `103689386630`, artifact `10313588852`, digest `sha256:4ab193fb0e66cabfe48ce6fa1bdad180154d00c2f7a258b933f729f9e09db48f`: `ITER072B_K4_COMMON_EPSILON_EPS_MINUS3_LEADING_COEFFICIENT_IFF_TRANSITIVE_TOURNAMENT_SCOPED`. All 8 raw lanes valid; the strict-positive `L^T diag(s)t=0` kernel has 3D relative interior exactly for source sigma `++++`, `+++-`, `++--`, `+---`; proper strata have degree at most 2. Durable result commit `cab00268ef4a6bf03c098e503edaf296ae3b15ba`.
+- Iter072B run `34744334585`, aggregate job `103689386630`, artifact `10313588852`, digest `sha256:4ab193fb0e66cabfe48ce6fa1bdad180154d00c2f7a258b933f729f9e09db48f`: `ITER072B_K4_COMMON_EPSILON_EPS_MINUS3_LEADING_COEFFICIENT_IFF_TRANSITIVE_TOURNAMENT_SCOPED`. Strict-positive full-set cut-space kernel has nullity 3 exactly for source sigma `++++`, `+++-`, `++--`, `+---`.
+- Iter073A prereg `8b87abc4aea6636b9e554729bba4670b91d9e7f3`, authoritative head `9fb30be9831c01b4e13571e5dac2569fb95667d5`, run `34746503186`, aggregate job `103695339471`, artifact `10314755546`, digest `sha256:b1c46b3ac61eb4416df337514f1610a34c40e74901e6b765c8ffbd84f345fe7a`: `ITER073A_K4_SIGNED_CUTSPACE_PROPER_FACE_ATLAS_EXACT_SCOPED`. The four transitive classes each have proper-face histogram `{3:1 -> 2, 4:1 -> 1, 5:2 -> 3}` with maximal proper nullity 2. The four nontransitive classes `++-+`, `+-++`, `+-+-`, `+--+` have no positive-admissible nonempty proper face at all. Durable result: `status/ITERATION_073A_RESULT.md`.
 
-## Exact blocker / next decision
+## Exact blocker after Iter073A
 
-Iter072B closes only the leading full-collision `epsilon^-3` coefficient. For the four nontransitive classes `++-+`, `+-++`, `+-+-`, `+--+`, the full-collision leading coefficient vanishes under the exact cut-space criterion; subleading/proper-collision contributions remain open. The next admissible exact gate is an exhaustive positive-face/cut-space atlas that freezes and classifies the maximal proper-stratum exponent and support before any further numerical epsilon->0 fit.
+For the reduced K4 common-epsilon rational family, positive Schwinger face geometry is now exactly classified. What remains unresolved is no longer whether hidden positive proper faces exist for the four nontransitive source classes: they do not under the frozen cut-space criterion.
 
-The deeper missing bridge remains the source-selected correlated `epsilon -> 0+` boundary value and Eq.(5)/(6) inheritance through non-transverse K4/K5 pullback. K5 remains blocked until a source-faithful correlated extension object and distributional inheritance theorem are available.
+The next admissible questions are now separated cleanly:
+
+1. for the transitive source classes, determine whether the geometrically allowed proper strata actually carry nonzero regulated asymptotic coefficients, rather than merely nonzero nullity;
+2. for the nontransitive source classes, derive explicit exact separation/nonpinch certificates strong enough to support a scoped boundedness or boundary-value theorem, without promoting absence of positive faces directly to finiteness;
+3. independently classify the complete `2^6=64` K4 independent-wedge sign space required by the Eq.(5)/(6)-type EPRL control analogue, rather than confusing it with the eight source edge-sign classes;
+4. ultimately prove a source-faithful correlated `epsilon -> 0+` distributional boundary value and inheritance of Eq.(5)/(6) through non-transverse K4/K5 pullback.
+
+K5 remains blocked until a source-faithful correlated extension object and distributional inheritance theorem are available.
 
 ## Claim locks
 
