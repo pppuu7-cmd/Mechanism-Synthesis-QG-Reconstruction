@@ -1,0 +1,73 @@
+name: Iter078B-RG 1to5 causal refinement orientation
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'prereg/ITER078B_RG_1TO5_CAUSAL_REFINEMENT_ORIENTATION.md'
+      - 'distributional/iter078b_rg_1to5_causal_refinement.py'
+      - '.github/workflows/iter078b_rg_1to5_causal_refinement.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  enumerate:
+    name: Iter078B chunk ${{ matrix.chunk }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        chunk: [0, 1, 2, 3]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Enumerate frozen causal orientations
+        env:
+          PYTHONPATH: .
+        run: |
+          mkdir -p out
+          python distributional/iter078b_rg_1to5_causal_refinement.py \
+            --lane '${{ matrix.chunk }}' \
+            --output 'out/iter078b_chunk_${{ matrix.chunk }}.json'
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter078b-chunk-${{ matrix.chunk }}
+          path: out/iter078b_chunk_${{ matrix.chunk }}.json
+          if-no-files-found: error
+
+  aggregate:
+    name: Aggregate Iter078B-RG
+    needs: enumerate
+    if: always()
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: iter078b-chunk-*
+          path: downloaded
+          merge-multiple: false
+      - name: Aggregate exact causal refinement contract
+        env:
+          PYTHONPATH: .
+        run: |
+          mkdir -p out
+          python distributional/iter078b_rg_1to5_causal_refinement.py \
+            --aggregate-dir downloaded \
+            --output out/iter078b_aggregate.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter078b-aggregate
+          path: out/iter078b_aggregate.json
+          if-no-files-found: error
