@@ -7,6 +7,7 @@ on:
       - '.github/workflows/iter063a-tree-cycle-prescription.yml'
   workflow_dispatch:
 
+# Frozen production trigger after prospective preregistration bc61d185d0ab5b5b5e91ffb3626854dd16c70d11
 jobs:
   lane:
     name: tree-cycle-lane (${{ matrix.mask }}, ${{ matrix.c }})
