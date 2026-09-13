@@ -1,0 +1,55 @@
+name: Iter076G source reversal twist compatibility
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/iter076g_source_reversal_twist.yml'
+  workflow_dispatch:
+
+jobs:
+  audit:
+    strategy:
+      fail-fast: false
+      matrix:
+        lane: [A, B, C, D]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run frozen lane ${{ matrix.lane }}
+        run: |
+          mkdir -p out
+          python distributional/iter076g_source_reversal_twist.py --lane '${{ matrix.lane }}' --output 'out/iter076g_${{ matrix.lane }}.json'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter076g-${{ matrix.lane }}
+          path: out/iter076g_${{ matrix.lane }}.json
+          if-no-files-found: error
+
+  aggregate:
+    needs: audit
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: iter076g-*
+          path: downloaded
+          merge-multiple: false
+      - name: Frozen aggregate
+        run: |
+          mkdir -p out
+          python distributional/iter076g_source_reversal_twist.py --aggregate-dir downloaded --output out/iter076g_aggregate.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter076g-aggregate
+          path: out/iter076g_aggregate.json
+          if-no-files-found: error
