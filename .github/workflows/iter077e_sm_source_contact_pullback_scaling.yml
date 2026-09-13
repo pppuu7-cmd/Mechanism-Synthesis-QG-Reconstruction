@@ -1,0 +1,70 @@
+name: Iter077E-SM source contact pullback scaling
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'prereg/ITER077E_SM_SOURCE_CONTACT_PULLBACK_SCALING.md'
+      - 'distributional/iter077e_sm_source_contact_pullback_scaling.py'
+      - 'results/ITER077D_SM_NONLINEAR_EXCESS_B_JET_RESULT.md'
+      - 'sources/CAUSAL_SPINFOAM_VERTEX_2026_TOLLER_RESTRICTOR_SADDLE_ORIENTATION_SNAPSHOT.md'
+      - 'sources/CAUSAL_SPINFOAM_VERTEX_2026_SOURCE_SNAPSHOT.md'
+      - 'status/CURRENT.md'
+      - '.github/workflows/iter077e_sm_source_contact_pullback_scaling.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    strategy:
+      fail-fast: false
+      matrix:
+        lane: [A, B, C, D]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install exact algebra dependency
+        run: python -m pip install 'sympy==1.13.3'
+      - name: Run frozen lane ${{ matrix.lane }}
+        run: |
+          mkdir -p out
+          python distributional/iter077e_sm_source_contact_pullback_scaling.py \
+            --lane '${{ matrix.lane }}' \
+            --output 'out/iter077e_sm_${{ matrix.lane }}.json'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter077e-sm-${{ matrix.lane }}
+          path: out/iter077e_sm_${{ matrix.lane }}.json
+          if-no-files-found: error
+
+  aggregate:
+    needs: audit
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install exact algebra dependency
+        run: python -m pip install 'sympy==1.13.3'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: iter077e-sm-*
+          path: downloaded
+          merge-multiple: false
+      - name: Frozen aggregate
+        run: |
+          mkdir -p out
+          python distributional/iter077e_sm_source_contact_pullback_scaling.py \
+            --aggregate-dir downloaded \
+            --output out/iter077e_sm_aggregate.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter077e-sm-aggregate
+          path: out/iter077e_sm_aggregate.json
+          if-no-files-found: error
