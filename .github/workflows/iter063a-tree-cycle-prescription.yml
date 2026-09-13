@@ -1,0 +1,61 @@
+name: Iter063A K4 Tree Cycle Prescription Audit
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/iter063a-tree-cycle-prescription.yml'
+  workflow_dispatch:
+
+jobs:
+  lane:
+    name: tree-cycle-lane (${{ matrix.mask }}, ${{ matrix.c }})
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        mask: [0,1,2,3,4,5,6,7]
+        c: [-1,1]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run frozen Iter063A lane
+        run: python scripts/iter063a_tree_cycle_prescription_lane.py --mask ${{ matrix.mask }} --c ${{ matrix.c }}
+      - name: Record provenance
+        run: |
+          printf 'head_sha=%s\nrun_id=%s\nprereg_commit=%s\n' "$GITHUB_SHA" "$GITHUB_RUN_ID" 'bc61d185d0ab5b5b5e91ffb3626854dd16c70d11' > iter063a_provenance.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter063a-lane-m${{ matrix.mask }}-c${{ matrix.c }}
+          path: |
+            iter063a_lane_m${{ matrix.mask }}_c${{ matrix.c }}.json
+            iter063a_provenance.txt
+
+  aggregate:
+    needs: lane
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: iter063a-lane-*
+          path: iter063a_lanes
+          merge-multiple: false
+      - name: Run frozen Iter063A aggregate
+        run: python scripts/iter063a_tree_cycle_prescription_aggregate.py | tee iter063a_aggregate_stdout.txt
+      - name: Record aggregate provenance
+        run: |
+          printf 'head_sha=%s\nrun_id=%s\nprereg_commit=%s\n' "$GITHUB_SHA" "$GITHUB_RUN_ID" 'bc61d185d0ab5b5b5e91ffb3626854dd16c70d11' > iter063a_aggregate_provenance.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter063a-tree-cycle-prescription-aggregate
+          path: |
+            iter063a_tree_cycle_prescription_aggregate.json
+            iter063a_aggregate_stdout.txt
+            iter063a_aggregate_provenance.txt
