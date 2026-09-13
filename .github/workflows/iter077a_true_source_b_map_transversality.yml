@@ -1,0 +1,63 @@
+name: Iter077A true source B-map transversality
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'distributional/iter077a_true_source_b_map_transversality.py'
+      - 'prereg/ITER077A_TRUE_SOURCE_B_MAP_TRANSVERSALITY.md'
+      - 'sources/CAUSAL_SPINFOAM_VERTEX_2026_TRUE_B_MAP_TRANSVERSALITY_SUPPLEMENT.md'
+      - '.github/workflows/iter077a_true_source_b_map_transversality.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    strategy:
+      fail-fast: false
+      matrix:
+        lane: [A, B, C, D]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run frozen lane ${{ matrix.lane }}
+        run: |
+          mkdir -p out
+          python distributional/iter077a_true_source_b_map_transversality.py \
+            --lane '${{ matrix.lane }}' \
+            --output 'out/iter077a_${{ matrix.lane }}.json'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter077a-${{ matrix.lane }}
+          path: out/iter077a_${{ matrix.lane }}.json
+          if-no-files-found: error
+
+  aggregate:
+    needs: audit
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: iter077a-*
+          path: downloaded
+          merge-multiple: false
+      - name: Frozen aggregate
+        run: |
+          mkdir -p out
+          python distributional/iter077a_true_source_b_map_transversality.py \
+            --aggregate-dir downloaded \
+            --output out/iter077a_aggregate.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter077a-aggregate
+          path: out/iter077a_aggregate.json
+          if-no-files-found: error
