@@ -1,0 +1,59 @@
+name: DSIR terminal RST handoff
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "analysis/dsir_terminal_handoff_audit.py"
+      - "prereg/DSIR_TERMINAL_HANDOFF_RST.md"
+      - ".github/workflows/dsir_terminal_handoff_rst.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  lane:
+    name: DSIR lane ${{ matrix.lane }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        lane: [R, S, T, U]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run frozen terminal lane
+        run: python analysis/dsir_terminal_handoff_audit.py --lane ${{ matrix.lane }}
+      - name: Upload lane result
+        uses: actions/upload-artifact@v4
+        with:
+          name: dsir-terminal-lane-${{ matrix.lane }}
+          path: results/dsir_terminal_lane_${{ matrix.lane }}.json
+          retention-days: 30
+
+  aggregate:
+    name: Aggregate DSIR terminal handoff
+    needs: lane
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Download lane artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: dsir-terminal-lane-*
+          path: dsir-terminal-artifacts
+      - name: Aggregate frozen contract
+        run: python analysis/dsir_terminal_handoff_audit.py --aggregate-dir dsir-terminal-artifacts
+      - name: Upload aggregate
+        uses: actions/upload-artifact@v4
+        with:
+          name: dsir-terminal-handoff-aggregate
+          path: results/dsir_terminal_handoff_aggregate.json
+          retention-days: 30
