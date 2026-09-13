@@ -8,7 +8,7 @@
 - G3 quantum dynamics: `OPEN`
 - G8 novelty: `BLOCKED_CONVERGENCE_ONLY`
 - K5 distributional/vertex extension: `BLOCKED_CORRELATED_EXTENSION_OBJECT_MISSING`
-- Active front: `EPSILON_MINUS1_OVERLAP_COEFFICIENT / TRANSITIVE_FACE_COEFFICIENTS / TOLLER_BRANCHFLIP_RECURRENCE / CORRELATED_BOUNDARY_VALUE`
+- Active front: `EPSILON_MINUS1_OVERLAP_COEFFICIENT / TRANSITIVE_FACE_COEFFICIENTS / TOLLER_APPENDIXD_EXACT_BRANCHFLIP / CORRELATED_BOUNDARY_VALUE`
 
 ## Controlling recent results
 
@@ -25,24 +25,26 @@
 - Iter074A run `34748799901`, job `103701442665`, artifact `10315446037`, digest `sha256:c6888b4eca98055b6bb6fff5c0b5585ba02a812cd50f4864483520ccb9027c70`: exact 64-sign/S4 alternating cancellation removes nominal full-collision `epsilon^-3` and `epsilon^-2`; degree-two / nominal `epsilon^-1` overlap remains OPEN.
 - Iter074B run `34748900260`, job `103701957025`, artifact `10315162039`, digest `sha256:34d40a7c34f7aafac37d0c3deb8f451e1479178519222a878ac43755e4747419`: strict dual certificates exist for all `1008/1008` nontransitive cases, global exact L1-normalized margin `1/7`.
 - Iter075A run `34750595140`, job `103706458814`, artifact `10315304394`, digest `sha256:e76003536c5dec1a9b7a02c9d22765d6237233a56040020b0dde98ca62bb4c2d`: all `1008/1008` nontransitive positive-real faces satisfy exact L1 coercivity; actual global exact minimum is `1/3`.
-- Iter075B run `34753179897`, job `103713045234`, artifact `10315658865`, digest `sha256:23143a335551347f5f88836f456616d911ccf87d3d83f158132fd1c08bd0ebe0`: `BLOCKED_SOURCE_LAW_NOT_ESTABLISHED`; available sources do not establish a full branchwise Toller inversion/order-reversal law.
-- Iter075C prereg `0106e9b658aa37171e60262352810be48e6b674f`, head `f0d9b7fda85e4a05c9d2dbca100c59104abf835f`, run `34753274168`, job `103713294964`, artifact `10316637744`, digest `sha256:095e3057b03d2eb2d0ff5863b708c91bb0c708e1cac7d4cd059f3ee050107163`: `ITER075C_SIMPLE_TOLLER_INVERSION_CANDIDATE_SURVIVES_KERNEL_GATE_SCOPED`. The branch-flipped `(s,j,l)->(-s,l,j)` conjugated Feynman-kernel candidate is constant-ratio compatible in all frozen lanes to about `1e-91`, with unit magnitude and phase pi; the same-branch candidate fails the frozen tolerance. This is kernel-level only, not a full Toller-function inversion law. Durable result `status/ITERATION_075C_RESULT.md`.
-- Iter075D prereg commit `c7166bdeeb0f5dc2adb65b1a3d28b4d664bf2f31`; implementation `e613ffa8b4a10f82b99733149e26d79fc1b649fd`; workflow/head `d8b24077897a89ca40efa5f1ee2e00e2eba58adc`: active six-lane held-out branch-flip recurrence certificate. Frozen thresholds and interpretation are in `status/ITERATION_075D_PREREG.md`.
+- Iter075B run `34753179897`, job `103713045234`, artifact `10315658865`, digest `sha256:23143a335551347f5f88836f456616d911ccf87d3d83f158132fd1c08bd0ebe0`: `BLOCKED_SOURCE_LAW_NOT_ESTABLISHED`; the literature/source audit alone did not establish a general branchwise Toller inversion/order-reversal law.
+- Historical Iter059 run `34721276444`, artifact `10306671166`: source-backed full group inversion/order-reversal branch swap is already derived for the **equal-spin causal EPRL wedge** only. Iter060 shows the K4 tournament/positive-circulation surrogate is covariant under that actual source-backed equal-spin reversal law. Iter061 obstructs orientation-blind `kappa -> spectral sign`; Iter062 supplies only the minimal ordered orientation bookkeeping bridge with global convention unfixed.
+- Iter075C prereg `0106e9b658aa37171e60262352810be48e6b674f`, head `f0d9b7fda85e4a05c9d2dbca100c59104abf835f`, run `34753274168`, job `103713294964`, artifact `10316637744`, digest `sha256:095e3057b03d2eb2d0ff5863b708c91bb0c708e1cac7d4cd059f3ee050107163`: `ITER075C_SIMPLE_TOLLER_INVERSION_CANDIDATE_SURVIVES_KERNEL_GATE_SCOPED`; branch-flipped `(s,j,l)->(-s,l,j)` conjugated Feynman-kernel candidate survives the frozen panel while same-branch fails.
+- Iter075D prereg `c7166bdeeb0f5dc2adb65b1a3d28b4d664bf2f31`, implementation `e613ffa8b4a10f82b99733149e26d79fc1b649fd`, head `d8b24077897a89ca40efa5f1ee2e00e2eba58adc`, run `34755617861`: `ITER075D_BRANCH_FLIP_KERNEL_RECURRENCE_CERTIFICATE_SUPPORTED_SCOPED`. Six held-out lanes, `648/648` valid records, residuals at ~`1e-101`, same-branch negative fraction `1.0` in every lane. Six raw artifacts/digests are recorded in `status/ITERATION_075D_RESULT.md`. This strengthens the Appendix-D/Feynman-kernel relation beyond equal spin but remains kernel-level, not a full unequal-spin Toller group law.
+- Iter075E prereg `5e6899e9a35043f24c48fdfdbaa2b1f436314a13`, implementation `2f9d7212e626a6c148b993b4f99b129a13e50c5b`, workflow/head `1905295fb7e96cc6652fc4edb48bd142748fd52a`: active exact symbolic Appendix-D branch-flip identity gate. It tests the index-set bijection, exact polynomial conjugation and exact Feynman-pole branch flip for all admissible `2j,2l<=16`, with an unequal-spin wrong-same-branch control.
 
 ## Next prospective gates
 
 - Degree-two / nominal `epsilon^-1` overlap: compute the overlap-subtracted local coefficient on the transitive strata with numerator/Jacobian factors; do not infer cancellation from degree 0/1 symmetry.
 - Transitive proper-stratum coefficients: determine actual coefficients on the six admissible proper faces per transitive source class, with explicit overlap bookkeeping and basis/S4 controls.
-- Toller inversion: terminally consume Iter075D. Only if it passes may a full-group branch/order-reversal transformation gate be preregistered; do not promote a kernel identity to a group-function identity.
+- Toller inversion: terminally consume Iter075E. Equal-spin full-group reversal is already source-backed by Iter059 and must not be duplicated. If Iter075E passes, the new conclusion is an exact **kernel** identity for admissible unequal spins; any full unequal-spin group-function promotion still requires a separately source-derived transformation law.
 - Source-backed correlated boundary value: establish the full Toller/group object and Eq.(5)/(6) under non-transverse pullback before any K5 promotion.
 
 ## Exact blocker
 
-The reduced K4 collision geometry is closed at the sign/cone level. The first two nominal full-collision powers cancel, and nontransitive positive-real faces have exact global L1 coercivity at least `1/3`. Iter075C has now identified a sharply constrained surviving branch-flip/minus-sign candidate at the published Feynman-kernel level, while Iter075B still blocks any direct promotion to a full Toller inversion law. Remaining decisive tasks are coefficient and boundary-value questions plus the full group-level transformation:
+The reduced K4 collision geometry is closed at the sign/cone level. The first two nominal full-collision powers cancel, and nontransitive positive-real faces have exact global L1 coercivity at least `1/3`. Equal-spin causal wedge reversal is already source-derived at the full-group level (Iter059), while Iter075C/D reveal a much more general branch-flip/index-swap identity at the Appendix-D/Feynman-kernel level. Remaining decisive tasks are coefficient and boundary-value questions plus determining whether any source-derived unequal-spin full-group law exists:
 
 1. resolve the degree-two / nominal `epsilon^-1` overlap coefficient rather than extrapolating S4 cancellation;
 2. determine actual coefficients on transitive proper strata, including overlap subtraction and numerator/Jacobian factors;
-3. terminally classify Iter075D and, only if supported, test the full Toller branch/index/phase/order-reversal law on the group;
+3. terminally classify Iter075E and keep its scope kernel-level unless a separate full Toller derivation exists;
 4. prove that the source-backed full Toller/group correlated boundary value exists and that Eq.(5)/(6) survives non-transverse pullback;
 5. only then revisit K5.
 
@@ -54,5 +56,5 @@ The reduced K4 collision geometry is closed at the sign/cone level. The first tw
 - no G3 PASS or F9/G8/K5 promotion;
 - no arbitrary counterterm, fitted cancellation, or preferred sequential order/tree;
 - retain published spectral `i epsilon`; do not replace it by `beta+i epsilon`;
-- do not transfer Wigner-D representation identities branchwise to Toller functions without derivation;
+- do not transfer Wigner-D representation identities branchwise to Toller functions without source derivation;
 - distinguish reduced denominator theorem, fixed-epsilon temperedness, correlated distributional boundary value and full source-backed Toller vertex.
