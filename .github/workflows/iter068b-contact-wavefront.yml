@@ -17,7 +17,7 @@ jobs:
       max-parallel: 24
       matrix:
         sigma: ['++++','+++-','++-+','++--','+-++','+-+-','+--+','+---']
-        gamma: ['1/5','6/5','2']
+        gamma: ['0.2','1.2','2']
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -27,7 +27,7 @@ jobs:
         run: |
           mkdir -p results
           safe_sigma=$(echo '${{ matrix.sigma }}' | tr '+' 'p' | tr '-' 'm')
-          safe_gamma=$(echo '${{ matrix.gamma }}' | tr '/' '_')
+          safe_gamma=$(echo '${{ matrix.gamma }}' | tr '.' '_')
           python distributional/iter068b_contact_wavefront.py \
             --sigma '${{ matrix.sigma }}' --gamma '${{ matrix.gamma }}' \
             --output "results/iter068b_${safe_sigma}_${safe_gamma}.json"
