@@ -1,0 +1,78 @@
+name: Iter068D K4 Skeleton S4 Covariance
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'distributional/iter068d_s4_skeleton_covariance.py'
+      - 'status/ITERATION_068D_PREREG.md'
+      - '.github/workflows/iter068d-s4-skeleton-covariance.yml'
+  workflow_dispatch:
+
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      max-parallel: 16
+      matrix:
+        sigma: ['++++','+++-','++-+','++--','+-++','+-+-','+--+','+---']
+        convention: ['+1','-1']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run exact S4 covariance lane
+        run: |
+          mkdir -p results
+          safe_sigma=$(echo '${{ matrix.sigma }}' | tr '+' 'p' | tr '-' 'm')
+          safe_c=$(echo '${{ matrix.convention }}' | tr '+' 'p' | tr '-' 'm')
+          python distributional/iter068d_s4_skeleton_covariance.py \
+            --sigma '${{ matrix.sigma }}' --convention '${{ matrix.convention }}' \
+            --output "results/iter068d_${safe_sigma}_${safe_c}.json"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter068d-${{ matrix.sigma }}-${{ matrix.convention }}
+          path: results/*.json
+          if-no-files-found: error
+          retention-days: 90
+
+  aggregate:
+    runs-on: ubuntu-24.04
+    needs: [audit]
+    if: always()
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: iter068d-*
+          path: gathered
+          merge-multiple: true
+      - name: Frozen aggregate
+        run: |
+          python - <<'PY'
+          import glob,json
+          from pathlib import Path
+          rows=[json.load(open(f,encoding='utf-8')) for f in sorted(glob.glob('gathered/*.json'))]
+          target='ITER068D_K4_MICROLOCAL_SKELETON_S4_COVARIANT'
+          valid=(len(rows)==16 and all(r.get('all_valid') and r.get('permutations')==24 and r.get('classification')==target for r in rows))
+          out={'gate':'ITER068D_K4_MICROLOCAL_SKELETON_S4_COVARIANCE',
+               'frozen_prereg_commit':'124274f910c1cec8fde810a5e96d96224b0e4d45',
+               'lanes':len(rows),'transformed_cases':sum(r.get('permutations',0) for r in rows),
+               'all_valid':valid,
+               'classification':(target if valid else 'ITER068D_K4_MICROLOCAL_SKELETON_PERMUTATION_FAILURE'),
+               'scope_lock':'Denominator-skeleton covariance only; no full Toller wavefront or physical sector selection.'}
+          Path('aggregate').mkdir(exist_ok=True)
+          Path('aggregate/iter068d-aggregate.json').write_text(json.dumps(out,indent=2,sort_keys=True),encoding='utf-8')
+          print(json.dumps(out,indent=2,sort_keys=True))
+          if not valid: raise SystemExit(9)
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter068d-aggregate
+          path: aggregate/iter068d-aggregate.json
+          if-no-files-found: error
+          retention-days: 90
