@@ -1,0 +1,66 @@
+name: Iter080H-SM line-aware frozen candidate universe build
+
+on:
+  push:
+    paths:
+      - '.github/workflows/iter080h_sm_line_aware_universe_build.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-universe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build line-aware exact statement universe
+        shell: bash
+        run: |
+          python - <<'PY'
+          import hashlib, json, re, subprocess
+          from pathlib import Path
+          frozen=[
+            ('V01','candidates/CANDIDATE_A_CRQN.md','a3023dadb75f4c53d0c44a6de1c46958f4149178'),
+            ('V02','candidates/CANDIDATE_A_CRQN_V0_2.md','3933c110f9bafabb6593f8301029adaa25458bb2')]
+          out={'schema':'ITER080H_LINE_AWARE_UNIVERSE_V1','files':[],'records':[]}
+          for prefix,path,expected in frozen:
+            actual=subprocess.check_output(['git','hash-object',path],text=True).strip()
+            if actual!=expected: raise SystemExit(f'INVALID_PROVENANCE {path}: {actual} != {expected}')
+            raw=Path(path).read_text(encoding='utf-8').replace('\r\n','\n')
+            lines=raw.split('\n')
+            records=[]; buf=[]; start=None
+            def flush(endline):
+              nonlocal buf,start
+              if buf:
+                text='\n'.join(buf)
+                if text.strip():
+                  d=hashlib.sha256(text.encode()).hexdigest()
+                  records.append({'id':f'{prefix}-L{start:03d}-{endline:03d}-{d[:12]}','file':path,'start_line':start,'end_line':endline,'kind':'SCIENTIFIC_SEGMENT','sha256':d,'text':text})
+              buf=[]; start=None
+            for n,line in enumerate(lines,1):
+              if re.match(r'^\s*#{1,6}\s+',line):
+                flush(n-1)
+                d=hashlib.sha256(line.encode()).hexdigest()
+                records.append({'id':f'{prefix}-L{n:03d}-{n:03d}-{d[:12]}','file':path,'start_line':n,'end_line':n,'kind':'HEADING_LINE','sha256':d,'text':line})
+              elif line.strip()=='' :
+                flush(n-1)
+              else:
+                if start is None: start=n
+                buf.append(line)
+            flush(len(lines))
+            out['records'] += records
+            out['files'].append({'prefix':prefix,'path':path,'blob_sha':actual,'line_count':len(lines),'record_count':len(records)})
+          canon=json.dumps(out,sort_keys=True,separators=(',',':'),ensure_ascii=False).encode()
+          out['universe_sha256']=hashlib.sha256(canon).hexdigest()
+          Path('iter080h_line_aware_universe.json').write_text(json.dumps(out,ensure_ascii=False,indent=2),encoding='utf-8')
+          summary={'schema':out['schema'],'universe_sha256':out['universe_sha256'],'files':out['files'],'total_records':len(out['records']),'heading_lines':sum(r['kind']=='HEADING_LINE' for r in out['records']),'scientific_segments':sum(r['kind']=='SCIENTIFIC_SEGMENT' for r in out['records'])}
+          Path('iter080h_universe_summary.json').write_text(json.dumps(summary,indent=2),encoding='utf-8')
+          print(json.dumps(summary,indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter080h-line-aware-universe
+          path: |
+            iter080h_line_aware_universe.json
+            iter080h_universe_summary.json
