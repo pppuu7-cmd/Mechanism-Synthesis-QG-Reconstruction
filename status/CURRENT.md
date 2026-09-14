@@ -8,7 +8,8 @@
 - Established/source-backed mechanism union: `F1-F8`.
 - Physical F9: `BLOCKED`.
 - K5 local amplitude: `BLOCKED_INFINITE_DIMENSIONAL_EXTENSION_SELECTOR_MISSING`.
-- Causal multi-vertex composition: parent KKL E3/E5 structures are explicit and algebraically inherit under a strict local-vertex-only replacement; E4 is likewise algebraically conditional. Physical causal promotion is still blocked because a complete many-vertex causal inheritance prescription is not explicit in the audited primary causal source.
+- Causal multi-vertex composition: parent KKL E3/E5 structures are explicit and algebraically inherit under a strict local-vertex-only replacement; E4 is likewise algebraically conditional. Physical causal promotion is still blocked because a complete many-vertex causal inheritance prescription is not explicit in the validated source authority.
+- E3 authority after adversarial review: `BLOCKED_SOURCE_BRIDGE` remains supported by independent Iter079A/Iter079B generalized-causal source audits; Iter079L is `INVALID_IMPLEMENTATION` and is not authoritative pending control-only retry.
 - E6: parent Lorentzian EPRL fixes/removes one redundant `SL(2,C)` integration per 4-simplex; the causal one-vertex amplitude explicitly fixes `g_1=1`; the remaining blocker is the **many-vertex causal inheritance of that quotient/fixing normalization**, not absence of a one-vertex gauge-fixing object.
 - E7/E8: `BLOCKED` until an actual composed causal E3-E6 functional and K5 extension selector exist.
 - RG/refinement map: `BLOCKED_E9_COARSE_FINE_MAP_MISSING`.
@@ -17,6 +18,8 @@
 
 **Physical active front:**
 `FUNCTION_SPACE_K5_EXTENSION_SELECTOR / CAUSAL_MULTIVERTEX_E3_PARENT_CONTRACTION_INHERITANCE_BRIDGE / PHYSICAL_E4_INHERITANCE_SOURCE_BRIDGE / CAUSAL_MULTIVERTEX_E6_PARENT_GAUGE_FIXING_NORMALIZATION_INHERITANCE_BRIDGE / E7_E8_EXTENSION_TRANSPORT`.
+
+Latest independent review: `status/MSQGR_ADVERSARIAL_CRITIC_HANDOFF.md`; verdict `INVALID_IMPLEMENTATION` on Iter079L-SM. Durable audit: `results/ITER079L_ADVERSARIAL_IMPLEMENTATION_REVIEW.md`.
 
 `status/ITER077_PROVENANCE_LEDGER.md` and `status/ITER077_CONTACT_FORMULA_ERRATUM.md` remain controlling. Historical Iter077E/F source-dependent gates remain `NON_AUTHORITATIVE_SOURCE_LOCK_INVALID`.
 
@@ -38,10 +41,10 @@ This remains the controlling local-amplitude blocker.
 ## Causal multi-vertex inheritance
 
 ### Iter079A-D — baseline blockers
-- Iter079A: E1/E2 source-explicit; E3-E8 missing in that audit.
-- Iter079B: parent EPRL-KKL composition skeleton exists, but causal inheritance was not supplied.
+- Iter079A: E1/E2 source-explicit; E3-E8 missing in that audit. Its source snapshot explicitly includes Beltrán `arXiv:2603.22661v2`; E3 remains `MISSING_REQUIRED_OBJECT` there.
+- Iter079B: parent EPRL-KKL composition skeleton exists, but causal inheritance was not supplied; its frozen snapshot also includes Beltrán and leaves E3 missing.
 - Iter079C: one-vertex causal data + combinatorial skeleton do not uniquely fix E3/E4 absent an inheritance rule.
-- Iter079D: minimal algebra alone underdetermines E5/E6; subsequently narrowed by E/F/H/I/J/K/L.
+- Iter079D: minimal algebra alone underdetermines E5/E6; subsequently narrowed by E/F/H/I/J/K.
 
 ### Iter079E-SM CLOSED PASS CONDITIONAL — E5
 Run `34804405962`, artifact `10332976631`, digest `sha256:2f89020f2c8723c521dc8decce4b2f8739a3567acddc22ceaa599fe8df5c0089`.
@@ -75,18 +78,22 @@ Classification:
 
 Primary result: Engle-Pereira explicitly remove/fix one redundant Lorentz `SL(2,C)` integration per 4-simplex in the parent full-triangulation construction; Bianchi-Chen-Gamonal Eq.(4) explicitly fixes causal one-vertex `g_1=1`. The audited causal paper focuses on a single vertex and does not derive the general many-vertex inheritance of that quotient/fixing normalization.
 
-### Iter079L-SM CLOSED BLOCKED_SOURCE_BRIDGE — E3 source audit
-Prospective preregistration `e138617934d651fda7825a2ca55adc661c470190`; source matrix `2d4860decba0f24e23ef03ccf101fe842cda5bed`; implementation `d337751dbf2a1f53b985268710d014901d026132`; production `359189734e9480f100191a0778f77ca56ed8f256`; run `34816340786`; aggregate artifact `10337195212`, digest `sha256:0d25cb738cb24894168d8dfda031f8558ff9f4983ec002a2cb8fcab985805e1e`; durable result `fdcd576ff2aef421b88436590899f294b77646bc`.
+### Iter079L-SM HISTORICAL INVALID_IMPLEMENTATION — E3 source audit
+Historical Researcher chain: preregistration `e138617934d651fda7825a2ca55adc661c470190`; source matrix `2d4860decba0f24e23ef03ccf101fe842cda5bed`; implementation `d337751dbf2a1f53b985268710d014901d026132`; production `359189734e9480f100191a0778f77ca56ed8f256`; run `34816340786`; aggregate artifact `10337195212`, digest `sha256:0d25cb738cb24894168d8dfda031f8558ff9f4983ec002a2cb8fcab985805e1e`; historical result `fdcd576ff2aef421b88436590899f294b77646bc`.
 
-Classification:
+Historical classification:
 `ITER079L_SM_E3_PARENT_CONTRACTION_CONDITIONALLY_INHERITS_ALGEBRAICALLY_BUT_CAUSAL_MULTIVERTEX_SOURCE_BRIDGE_MISSING_BLOCKED_EXACT_SCOPED`.
 
-KKL Eqs.(41)-(44) explicitly define the boundary normalization/contraction and gluing identity. Keeping that parent pairing fixed makes a strict local vertex replacement algebraically composable. But the audited causal/Toller primary source does not derive a complete many-vertex causal state sum or explicitly authorize unchanged E3 inheritance over general causal foams.
+Independent critic verdict: `INVALID_IMPLEMENTATION`, durable review `results/ITER079L_ADVERSARIAL_IMPLEMENTATION_REVIEW.md`, commit `16dfea4fd8a83e15588fc946a043cdea21b4ab7a`.
 
-## Exact blockers after Iter079L
+Reason: frozen Lane C required a generalized causal/Toller primary-source inheritance audit, but the source matrix omitted the already-known Beltrán v2 generalized causal authority and the executed Lane C only asserted that a Bianchi-Chen-Gamonal source identifier was present. It did not test the scientific inheritance predicate. Green CI therefore cannot authorize the Iter079L classification.
+
+This does **not** reopen E3 as unblocked: independent prospectively frozen Iter079A/Iter079B source authority explicitly includes Beltrán and still leaves the complete causal E3 inheritance rule missing. E3 remains `BLOCKED_SOURCE_BRIDGE` on that earlier authority pending a control-only Iter079L retry.
+
+## Exact blockers after adversarial Iter079L review
 
 1. `FUNCTION_SPACE_K5_DISTRIBUTIONAL_EXTENSION_SELECTOR`.
-2. `CAUSAL_MULTIVERTEX_E3_PARENT_CONTRACTION_INHERITANCE_BRIDGE`.
+2. `CAUSAL_MULTIVERTEX_E3_PARENT_CONTRACTION_INHERITANCE_BRIDGE` — blocked on Iter079A/Iter079B authority; Iter079L itself invalid implementation.
 3. `PHYSICAL_E4_INHERITANCE_SOURCE_BRIDGE`.
 4. `CAUSAL_MULTIVERTEX_E6_PARENT_GAUGE_FIXING_NORMALIZATION_INHERITANCE_BRIDGE`.
 5. `E7_E8_DISTRIBUTIONAL_EXTENSION_TRANSPORT_OR_SELECTOR`.
@@ -95,9 +102,9 @@ KKL Eqs.(41)-(44) explicitly define the boundary normalization/contraction and g
 
 ## Exact next admissible steps
 
-1. Do not spend more Actions on larger toy `G^V` counts.
-2. Search primary generalized causal-spin-foam authority for an explicit many-vertex state-sum inheritance rule that jointly fixes E3/E4/E6, rather than separately inventing these structures.
-3. If no such primary rule exists, keep E3/E4/E6 as `BLOCKED_SOURCE_BRIDGE` and move high-value work to the K5 extension selector or source-defined E7/E8 transport only when prerequisites exist.
+1. **Control-only repair/retry Iter079L first:** keep the frozen hypothesis/object/source scope/A-B-C-D criteria/interpretation ceiling unchanged; include all already-frozen generalized causal/Toller primary authorities relevant to E3, explicitly Beltrán v2; make Lane C evaluate the actual source-inheritance predicate and record source-specific evidence.
+2. Preserve the historical Iter079L result; do not rewrite it.
+3. If repaired Iter079L again returns `BLOCKED_SOURCE_BRIDGE`, do not spend more Actions on toy contraction counts. Prefer one joint generalized-causal primary-source bridge gate for E3/E4/E6, or move high-value work to `FUNCTION_SPACE_K5_EXTENSION_SELECTOR`.
 4. Do not promote E7/E8 from conditional algebra alone.
 5. Keep RG/G3/F9/G8/K5 promotions locked.
 
