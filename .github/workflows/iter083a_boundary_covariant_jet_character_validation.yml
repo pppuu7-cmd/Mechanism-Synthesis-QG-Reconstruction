@@ -53,3 +53,5 @@ jobs:
             iter083a_sha256.txt
           if-no-files-found: error
           retention-days: 90
+
+# Explicit post-registration push marker: scientific predicates unchanged.
