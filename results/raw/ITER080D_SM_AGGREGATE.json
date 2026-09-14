@@ -1,0 +1,15 @@
+{
+  "claim_ceiling": "This excludes only a fixed finite list of scalar-valued linear conditions. It does not exclude function-valued or infinite condition families, differential/spectral/microlocal equations, or nonlinear selectors; it does not prove a unique K5 extension, full-vertex divergence, regulator independence, E7/E8, G3, RG, F9/G8/K5 promotion, or new physics.",
+  "claim_lock": "No NEW_PHYSICS_FOUND; no complete-QG claim; no generic finite-spin signed P3; no exact full-amplitude cancellation/non-cancellation theorem; no causal-vertex finiteness/divergence theorem; no regulator-independence theorem; no physical source-to-K4 pushforward; no nominal epsilon^-1; no G3 PASS; no F9/G8/K5 promotion; retain published spectral i epsilon.",
+  "classification": "ITER080D_SM_FIXED_FINITE_SCALAR_LINEAR_RENORMALIZATION_CONDITIONS_CANNOT_SELECT_ITER077Q_INFINITE_FUNCTION_SPACE_AMBIGUITY_EXACT_THEOREM_SCOPED",
+  "execution_valid": true,
+  "iteration": "Iter080D-SM",
+  "lane_scientific_outcomes": {
+    "A": "PASS_SOURCE_LOCK",
+    "B": "PASS_EXACT_THEOREM",
+    "C": "PASS_SCOPE_CONTROL"
+  },
+  "new_scientific_fact": "The exact Iter077Q ambiguity W contains infinitely many linearly independent source-compatible directions, and every selector consisting of a fixed finite number of scalar-valued complex-linear conditions W->C^m has an infinite-dimensional kernel. Such finite scalar renormalization conditions cannot uniquely select the K5 extension.",
+  "next_admissible_gate": "Audit primary Toller/causal source authority for a genuinely function-valued, differential, spectral, or microlocal joint-K5 extension condition acting on the full tangential ambiguity space; do not repeat finite symmetry or finite scalar-normalization controls.",
+  "verdict": "PASS_EXACT_SCOPED"
+}
