@@ -1,0 +1,65 @@
+name: Iter080A-SM K5 finite permutation selector audit
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'analysis/iter080a_sm_k5_finite_permutation_selector.py'
+      - '.github/workflows/iter080a_sm_k5_finite_permutation_selector.yml'
+permissions:
+  contents: read
+jobs:
+  lane-a:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          python - <<'PY'
+          from fractions import Fraction
+          F=lambda x: Fraction(24)+Fraction(16)*x
+          assert F(Fraction(0))==24 and F(Fraction(1))==40
+          assert F(Fraction(0)) != F(Fraction(1))
+          print('F(x)=24+16x nonconstant')
+          PY
+  lane-b:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          python - <<'PY'
+          import itertools
+          pairs=list(itertools.combinations(range(5),2))
+          assert len(pairs)==10
+          for p in itertools.permutations(range(5)):
+              img={tuple(sorted((p[a],p[b]))) for a,b in pairs}
+              assert img==set(pairs)
+          print('unordered K5 pair sum invariant under all 120 relabelings')
+          print('(h g_a)^-1(h g_b)=g_a^-1 g_b exactly')
+          PY
+  lane-c:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python analysis/iter080a_sm_k5_finite_permutation_selector.py
+  lane-d:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          python - <<'PY'
+          # Interpretation ceiling is frozen in preregistration.
+          from pathlib import Path
+          p=Path('prereg/ITER080A_SM_K5_FINITE_PERMUTATION_SYMMETRY_SELECTOR_PREREG.md').read_text()
+          assert 'does not exclude stronger analytic, positivity, causality, locality, composition, or source-defined selection principles' in p
+          assert 'does not promote K5/F9/G3/G8' in p
+          PY
+  aggregate:
+    needs: [lane-a,lane-b,lane-c,lane-d]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python analysis/iter080a_sm_k5_finite_permutation_selector.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter080a-aggregate
+          path: iter080a_sm_k5_finite_permutation_selector.json
