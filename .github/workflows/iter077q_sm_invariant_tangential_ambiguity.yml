@@ -1,0 +1,74 @@
+name: Iter077Q-SM invariant tangential ambiguity
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'prereg/ITER077Q_SM_INVARIANT_TANGENTIAL_EXTENSION_AMBIGUITY_DIMENSION.md'
+      - 'sources/ITER077Q_SM_INVARIANT_TANGENTIAL_AMBIGUITY_DERIVATION.md'
+      - 'distributional/iter077q_sm_invariant_tangential_ambiguity.py'
+      - '.github/workflows/iter077q_sm_invariant_tangential_ambiguity.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    name: Iter077Q-SM lane ${{ matrix.lane }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        lane: [A, B, C, D]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run frozen exact lane
+        env:
+          PYTHONPATH: .
+        run: |
+          mkdir -p out
+          python distributional/iter077q_sm_invariant_tangential_ambiguity.py \
+            --lane '${{ matrix.lane }}' \
+            --output 'out/iter077q_sm_${{ matrix.lane }}.json'
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter077q-sm-${{ matrix.lane }}
+          path: out/iter077q_sm_${{ matrix.lane }}.json
+          if-no-files-found: error
+
+  aggregate:
+    name: Aggregate Iter077Q-SM
+    needs: audit
+    if: always()
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: iter077q-sm-*
+          path: downloaded
+          merge-multiple: false
+      - name: Aggregate frozen exact contract
+        env:
+          PYTHONPATH: .
+        run: |
+          mkdir -p out
+          python distributional/iter077q_sm_invariant_tangential_ambiguity.py \
+            --aggregate-dir downloaded \
+            --output out/iter077q_sm_aggregate.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter077q-sm-aggregate
+          path: out/iter077q_sm_aggregate.json
+          if-no-files-found: error
