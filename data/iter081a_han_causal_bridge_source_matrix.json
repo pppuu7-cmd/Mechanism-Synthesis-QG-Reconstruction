@@ -1,0 +1,50 @@
+{
+  "gate": "ITER081A_SM_HAN_UV_STACK_CAUSAL_TOLLER_BRIDGE_W_REACHABILITY",
+  "sources": {
+    "han_2602_18665v1": {
+      "role": "parent EPRL/KKL UV stack and coarse graining",
+      "stack_amplitude": true,
+      "uv_localization": true,
+      "finite_leading_boundary_blocks": true,
+      "causal_toller_vertex": false,
+      "joint_k5_extension_selector": false,
+      "explicit_map_from_iter077q_W": false
+    },
+    "bcg_2601_23162": {
+      "role": "causal Toller local vertex",
+      "local_causal_vertex": true,
+      "han_stack_bridge": false,
+      "complete_causal_multivertex_e3_e4_e6": false,
+      "explicit_map_from_iter077q_W": false
+    },
+    "bcg_2604_24945": {
+      "role": "one-wedge Toller analyticity and spectral i-epsilon",
+      "toller_branch_data": true,
+      "han_stack_bridge": false,
+      "joint_k5_selector": false,
+      "explicit_map_from_iter077q_W": false
+    },
+    "beltran_2603_22661v2": {
+      "role": "causal structure on generalized EPRL-KKL 2-complex",
+      "arbitrary_2complex_causal_structure": true,
+      "causal_vertex": true,
+      "han_stack_bridge": false,
+      "complete_han_stack_e3_e4_e6_inheritance": false,
+      "explicit_map_from_iter077q_W": false
+    }
+  },
+  "frozen_predicates": {
+    "B1_e3_bridge": false,
+    "B2_e4_bridge": false,
+    "B3_e6_bridge": false,
+    "B4_source_order_and_toller_data_preserved_in_han_stack": false,
+    "B5_explicit_full_W_map": false,
+    "B6_full_W_selection_power": false
+  },
+  "negative_controls": {
+    "su2_localization_is_selector": false,
+    "finite_boundary_block_scalars_select_W": false,
+    "iter080d_applies_to_fixed_finite_scalar_linear_map": true
+  },
+  "excluded_positive_authority": ["arXiv:2603.17207"]
+}
