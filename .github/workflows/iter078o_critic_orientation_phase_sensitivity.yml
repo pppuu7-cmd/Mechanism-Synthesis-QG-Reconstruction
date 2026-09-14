@@ -1,0 +1,37 @@
+name: Iter078O critic orientation phase sensitivity
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'prereg/ITER078O_CRITIC_ORIENTATION_PHASE_SENSITIVITY.md'
+      - 'distributional/iter078o_critic_orientation_phase_sensitivity.py'
+      - '.github/workflows/iter078o_critic_orientation_phase_sensitivity.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    name: Iter078O critic phase control
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run exact phase-character control
+        env:
+          PYTHONPATH: .
+        run: |
+          mkdir -p out
+          python distributional/iter078o_critic_orientation_phase_sensitivity.py \
+            --output out/iter078o_critic_phase_sensitivity.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter078o-critic-phase-sensitivity
+          path: out/iter078o_critic_phase_sensitivity.json
+          if-no-files-found: error
