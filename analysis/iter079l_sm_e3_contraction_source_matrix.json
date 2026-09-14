@@ -1,16 +1,22 @@
 {
-  "gate":"Iter079L-SM",
-  "prereg_commit":"e138617934d651fda7825a2ca55adc661c470190",
+  "gate":"Iter079L-SM-control-only-retry",
+  "original_prereg_commit":"e138617934d651fda7825a2ca55adc661c470190",
+  "repair_prereg_commit":"66135bf4dec50ab16af37a13f19207eebab14935",
   "primary_sources":[
-    {"id":"KKL2010","arxiv":"0909.0939","evidence":["Sec. III.3 defines vertex trace by contraction of incoming/outgoing intertwiners.","Eqs. (41)-(44) introduce boundary normalization specifically for gluing consistency and state the spin-foam trace gluing identity.","Eq. (57) uses that trace in the spin-foam amplitude."]},
-    {"id":"BianchiChenGamonal2026","arxiv":"2601.23162","evidence":["Eq. (4) defines the causal/Toller single-vertex amplitude by local replacement of Wigner D wedge functions.","Discussion states the paper focuses on a single vertex, described as a building block for a many-vertex path integral; no complete many-vertex causal contraction/gluing derivation is given."]}
+    {"id":"KKL2010","arxiv":"0909.0939","role":"parent_E3","evidence":["Sec. III.3 defines vertex trace by contraction of incoming/outgoing intertwiners.","Eqs. (41)-(44) introduce boundary normalization for gluing consistency and state the spin-foam trace gluing identity.","Eq. (57) uses that trace in the spin-foam amplitude."]},
+    {"id":"BianchiChenGamonal2026","arxiv":"2601.23162","role":"causal_Toller_single_vertex","explicit_many_vertex_parent_E3_inheritance":false,"evidence":["Eq. (4) defines the causal/Toller single-vertex amplitude by local replacement of Wigner-D wedge functions.","The construction is explicitly one-vertex/building-block level; no derivation was identified that fixes unchanged parent KKL E3 contraction for a complete many-vertex causal foam."]},
+    {"id":"Beltran2026v2","arxiv":"2603.22661v2","role":"generalized_causal_vertex_arbitrary_2complex","explicit_many_vertex_parent_E3_inheritance":false,"evidence":["Generalized causal structure/vertex is formulated for vertices of an arbitrary 2-complex.","The audited authority does not explicitly derive a full many-vertex causal state-sum theorem retaining the parent KKL boundary pairing/contraction unchanged; local generalized-vertex scope alone is insufficient for frozen Lane C."]}
   ],
   "frozen_inputs":{
     "A_parent_E3_explicit":true,
     "B_parent_gluing_identity_explicit":true,
-    "C_causal_multivertex_E3_inheritance_explicit":false,
     "D_fixed_pairing_conditional_algebra":true,
     "D_rescaled_pairing_changes_composition":true
+  },
+  "lane_C_predicate":{
+    "question":"Does any audited causal/Toller primary authority explicitly state or derive unchanged inheritance of parent KKL E3 boundary contraction/pairing in a many-vertex causal foam?",
+    "single_vertex_or_local_arbitrary_2complex_is_insufficient":true,
+    "required_causal_sources":["BianchiChenGamonal2026","Beltran2026v2"]
   },
   "toy_control":{"left":[1,2],"right":[3,5],"pairing_identity":11,"pairing_scaled_by_2":22},
   "claim_locks_preserved":true
