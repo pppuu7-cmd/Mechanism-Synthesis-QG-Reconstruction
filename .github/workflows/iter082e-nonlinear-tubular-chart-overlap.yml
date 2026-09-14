@@ -6,6 +6,7 @@ on:
     branches: [ main ]
     paths:
       - 'scripts/iter082e_nonlinear_tubular_chart_overlap.py'
+      - 'scripts/iter082e_control_repair2.py'
       - '.github/workflows/iter082e-nonlinear-tubular-chart-overlap.yml'
 
 permissions:
@@ -25,9 +26,12 @@ jobs:
           mkdir -p artifacts/iter082e
           printf '%s\n' "${GITHUB_SHA}" > artifacts/iter082e/production_commit.txt
           sha256sum prereg/ITER082E_SM_K5_NONLINEAR_TUBULAR_CHART_OVERLAP_EXTENSION_CLASS_INDEPENDENCE.md > artifacts/iter082e/prereg.sha256
+          sha256sum prereg/ITER082E_CONTROL_ONLY_REPAIR_1.md > artifacts/iter082e/repair1_prereg.sha256
+          sha256sum prereg/ITER082E_CONTROL_ONLY_REPAIR_2.md > artifacts/iter082e/repair2_prereg.sha256
           sha256sum scripts/iter082e_nonlinear_tubular_chart_overlap.py > artifacts/iter082e/implementation.sha256
-      - name: Run exact frozen gate
-        run: python3 scripts/iter082e_nonlinear_tubular_chart_overlap.py
+          sha256sum scripts/iter082e_control_repair2.py > artifacts/iter082e/repair2_driver.sha256
+      - name: Run exact frozen gate with control-only repair 2
+        run: python3 scripts/iter082e_control_repair2.py
       - name: Hash aggregate
         if: always()
         run: |
