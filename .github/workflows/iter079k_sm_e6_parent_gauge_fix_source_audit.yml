@@ -1,0 +1,132 @@
+name: Iter079K-SM E6 parent gauge-fixing inheritance source audit
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'analysis/iter079k_sm_e6_parent_gauge_fix_source_matrix.json'
+      - 'analysis/iter079k_sm_e6_parent_gauge_fix_source_audit.py'
+      - '.github/workflows/iter079k_sm_e6_parent_gauge_fix_source_audit.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  lane-a-parent-local:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Frozen lane A
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          m=json.loads(Path('analysis/iter079k_sm_e6_parent_gauge_fix_source_matrix.json').read_text())
+          a=m['frozen_lane_assessment_inputs']['A_parent_local_gauge_treatment']
+          ok=all(a[k] for k in ['redundancy_explicit','integration_removal_explicit','normalization_convention_explicit'])
+          out={'lane':'A','valid':ok,'assessment':a,'prereg_commit':m['prereg_commit']}
+          Path('lane_A.json').write_text(json.dumps(out,indent=2,sort_keys=True)+'\n')
+          print(json.dumps(out,indent=2))
+          assert ok
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter079k-lane-a
+          path: lane_A.json
+
+  lane-b-parent-full-foam:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Frozen lane B
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          m=json.loads(Path('analysis/iter079k_sm_e6_parent_gauge_fix_source_matrix.json').read_text())
+          b=m['frozen_lane_assessment_inputs']['B_parent_full_triangulation_compatibility']
+          out={'lane':'B','valid':bool(b['explicit']),'assessment':b,'prereg_commit':m['prereg_commit']}
+          Path('lane_B.json').write_text(json.dumps(out,indent=2,sort_keys=True)+'\n')
+          print(json.dumps(out,indent=2))
+          assert out['valid']
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter079k-lane-b
+          path: lane_B.json
+
+  lane-c-causal-bridge:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Frozen lane C
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          m=json.loads(Path('analysis/iter079k_sm_e6_parent_gauge_fix_source_matrix.json').read_text())
+          c=m['frozen_lane_assessment_inputs']['C_causal_inheritance_bridge']
+          out={'lane':'C','one_vertex_same_fix_explicit':bool(c['one_vertex_same_fix_explicit']),'many_vertex_normalization_inheritance_explicit':bool(c['many_vertex_normalization_inheritance_explicit']),'assessment':c,'prereg_commit':m['prereg_commit']}
+          Path('lane_C.json').write_text(json.dumps(out,indent=2,sort_keys=True)+'\n')
+          print(json.dumps(out,indent=2))
+          assert out['one_vertex_same_fix_explicit']
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter079k-lane-c
+          path: lane_C.json
+
+  lane-d-controls:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Frozen lane D claim locks
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          m=json.loads(Path('analysis/iter079k_sm_e6_parent_gauge_fix_source_matrix.json').read_text())
+          forbidden=m['forbidden_inferences']
+          out={'lane':'D','valid':len(forbidden)>=4,'forbidden_inferences':forbidden,'prereg_commit':m['prereg_commit']}
+          Path('lane_D.json').write_text(json.dumps(out,indent=2,sort_keys=True)+'\n')
+          print(json.dumps(out,indent=2))
+          assert out['valid']
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter079k-lane-d
+          path: lane_D.json
+
+  aggregate:
+    needs: [lane-a-parent-local, lane-b-parent-full-foam, lane-c-causal-bridge, lane-d-controls]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: iter079k-lane-*
+          path: raw_lanes
+          merge-multiple: true
+      - name: Aggregate frozen classification
+        run: |
+          python analysis/iter079k_sm_e6_parent_gauge_fix_source_audit.py
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          o=json.loads(Path('iter079k_sm_e6_parent_gauge_fix_source_audit.json').read_text())
+          assert o['claim_locks_preserved'] is True
+          assert o['classification'] in {
+            'ITER079K_SM_E6_PARENT_QUOTIENT_FIXING_AND_NORMALIZATION_EXPLICIT_AND_CAUSAL_INHERITANCE_SOURCE_EXPLICIT_EXACT_SCOPED',
+            'ITER079K_SM_PARENT_E6_GAUGE_FIXING_PRESCRIPTION_EXISTS_BUT_CAUSAL_INHERITANCE_BRIDGE_MISSING_SOURCE_BLOCKED_EXACT_SCOPED',
+            'ITER079K_SM_PARENT_E6_QUOTIENT_NORMALIZATION_NOT_FULLY_DEFINED_IN_PRIMARY_SOURCE_BLOCKED_OBJECT_DEFINITION_EXACT_SCOPED',
+            'ITER079K_SM_E6_SOURCE_PRESCRIPTIONS_INCONSISTENT_INVALID',
+            'ITER079K_SM_INVALID_PROVENANCE_OR_CONTROL'
+          }
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter079k-aggregate
+          path: |
+            iter079k_sm_e6_parent_gauge_fix_source_audit.json
+            raw_lanes/*.json
