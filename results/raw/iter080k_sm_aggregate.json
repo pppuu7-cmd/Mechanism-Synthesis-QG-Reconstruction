@@ -1,0 +1,13 @@
+{
+  "classification": "ITER080K_SM_NEW_TOLLER_ANALYTICITY_AUTHORITY_UNIQUELY_FIXES_ONE_WEDGE_BRANCHES_BUT_DOES_NOT_EXPLICITLY_SELECT_JOINT_K5_EXTENSION_SOURCE_BRIDGE_BLOCKED_SCOPED",
+  "complete": true,
+  "execution_valid": true,
+  "lane": "aggregate",
+  "lane_pass": {
+    "A": true,
+    "B": true,
+    "C": true,
+    "D": true
+  },
+  "verdict": "BLOCKED_SOURCE_BRIDGE_SCOPED"
+}
