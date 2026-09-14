@@ -1,0 +1,58 @@
+name: Iter083C Toller-additivity selector nullmode
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'prereg/ITER083C_SM_TOLLER_ADDITIVITY_K5_SELECTOR_NULLMODE.md'
+      - 'scripts/iter083c_toller_additivity_selector_nullmode.py'
+      - 'sources/ITER077I_SM_SOURCE_ORDERED_TOLLER_FUNCTION_K5_L1_DERIVATION.md'
+      - 'sources/ITER077M_SM_SOURCE_SYMMETRY_SELECTOR_DERIVATION.md'
+      - '.github/workflows/iter083c_toller_additivity_selector_nullmode.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run exact Iter083C validation
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p results/raw
+          python3 scripts/iter083c_toller_additivity_selector_nullmode.py \
+            --output results/raw/iter083c_sm_toller_additivity_selector_nullmode.json \
+            | tee iter083c_stdout.json
+          python3 - <<'PY'
+          import json
+          p='results/raw/iter083c_sm_toller_additivity_selector_nullmode.json'
+          d=json.load(open(p, encoding='utf-8'))
+          assert d['verdict']=='PASS_EXACT_SCOPED', d['verdict']
+          assert all(d['predicates'].values()), d['predicates']
+          assert all(d['controls'].values()), d['controls']
+          assert d['conditional_marginal_sums_checked']==58025
+          assert d['distinct_causal_patterns']==16
+          assert d['top_character_values_on_causal_patterns']==[1]
+          print('ITER083C_GATE=PASS_EXACT_SCOPED')
+          print('marginal_checks=', d['conditional_marginal_sums_checked'])
+          print('causal_patterns=', d['distinct_causal_patterns'])
+          print('causal_top_values=', d['top_character_values_on_causal_patterns'])
+          print('iter083a_dependency=', d['iter083a_dependency_status'])
+          PY
+          sha256sum results/raw/iter083c_sm_toller_additivity_selector_nullmode.json | tee iter083c_sha256.txt
+
+      - name: Upload exact result artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: iter083c-toller-additivity-selector-nullmode
+          path: |
+            results/raw/iter083c_sm_toller_additivity_selector_nullmode.json
+            iter083c_stdout.json
+            iter083c_sha256.txt
+          if-no-files-found: error
+          retention-days: 90
