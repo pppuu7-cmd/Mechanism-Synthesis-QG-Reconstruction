@@ -1,0 +1,73 @@
+name: Iter078O-RG causal stabilizer symmetry
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'prereg/ITER078O_RG_CAUSAL_STABILIZER_SYMMETRY_REDUCTION.md'
+      - 'distributional/iter078o_rg_causal_stabilizer_symmetry.py'
+      - '.github/workflows/iter078o_rg_causal_stabilizer_symmetry.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    name: Iter078O lane ${{ matrix.lane }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      matrix:
+        lane: [A, B, C, D]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run exact symmetry lane
+        env:
+          PYTHONPATH: .
+        run: |
+          mkdir -p out
+          python distributional/iter078o_rg_causal_stabilizer_symmetry.py \
+            --lane '${{ matrix.lane }}' \
+            --output 'out/iter078o_${{ matrix.lane }}.json'
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter078o-${{ matrix.lane }}
+          path: out/iter078o_${{ matrix.lane }}.json
+          if-no-files-found: error
+
+  aggregate:
+    name: Aggregate Iter078O-RG
+    needs: audit
+    if: always()
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: iter078o-*
+          path: downloaded
+          merge-multiple: false
+      - name: Aggregate exact symmetry lanes
+        env:
+          PYTHONPATH: .
+        run: |
+          mkdir -p out
+          python distributional/iter078o_rg_causal_stabilizer_symmetry.py \
+            --aggregate-dir downloaded \
+            --output out/iter078o_aggregate.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter078o-aggregate
+          path: out/iter078o_aggregate.json
+          if-no-files-found: error
