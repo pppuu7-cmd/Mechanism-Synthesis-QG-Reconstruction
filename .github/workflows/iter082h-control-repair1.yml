@@ -1,0 +1,45 @@
+name: Iter082H control repair 1
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+    paths:
+      - 'scripts/iter082h_control_repair1.py'
+      - '.github/workflows/iter082h-control-repair1.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  repaired-exact-invariant-cech-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout repaired production commit
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Record provenance
+        run: |
+          mkdir -p artifacts/iter082h
+          printf '%s\n' "${GITHUB_SHA}" > artifacts/iter082h/production_commit.txt
+          sha256sum prereg/ITER082H_SM_FULL_INVARIANT_SYMBOL_CECH_DESCENT.md > artifacts/iter082h/prereg.sha256
+          sha256sum prereg/ITER082H_SM_CONTROL_ONLY_REPAIR_1.md > artifacts/iter082h/control_repair_prereg.sha256
+          sha256sum scripts/iter082h_full_invariant_symbol_cech_descent.py > artifacts/iter082h/implementation.sha256
+          sha256sum scripts/iter082h_control_repair1.py > artifacts/iter082h/control_repair_implementation.sha256
+      - name: Run repaired frozen Iter082H gate
+        run: python3 scripts/iter082h_control_repair1.py
+      - name: Hash aggregate
+        if: always()
+        run: |
+          if [ -f artifacts/iter082h/aggregate.json ]; then
+            sha256sum artifacts/iter082h/aggregate.json | tee artifacts/iter082h/aggregate.sha256
+          fi
+      - name: Upload raw artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: iter082h-control-repair1-${{ github.run_id }}
+          path: artifacts/iter082h/
+          if-no-files-found: error
