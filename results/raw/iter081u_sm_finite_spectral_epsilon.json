@@ -1,0 +1,18 @@
+{
+  "P_half_R": "(4*R**2 + 1)/(4*rho**2 + 1)",
+  "P_half_expected": "(4*R**2 + 1)/(4*rho**2 + 1)",
+  "branch_rows": [
+    {"P_shifted":"-(2*eps - 2*I*rho - 1)*(2*eps - 2*I*rho + 1)/(4*rho**2 + 1)","epsilon_independent":true,"leading_m_minus_half":"2/(4*rho**2 + 1)","leading_m_plus_half":"-2/(4*rho**2 + 1)","shifted_rho":"I*eps + rho","sigma":1},
+    {"P_shifted":"-(2*eps + 2*I*rho - 1)*(2*eps + 2*I*rho + 1)/(4*rho**2 + 1)","epsilon_independent":true,"leading_m_minus_half":"-2/(4*rho**2 + 1)","leading_m_plus_half":"2/(4*rho**2 + 1)","shifted_rho":"-I*eps + rho","sigma":-1}
+  ],
+  "claim_locks": ["no regulator independence","no theorem against other correlated regulators","no distributional nonexistence/divergence","no NEW_PHYSICS_FOUND"],
+  "classification": "ITER081U_SM_FINITE_SPECTRAL_EPSILON_DOES_NOT_REGULARIZE_K5_L1_COLLISION_EXACT_SCOPED",
+  "common_vs_independent_epsilon": "exact wedgewise epsilon independence implies both common and independent fixed positive epsilons preserve the leading K5 tensor",
+  "controls": {"bcg_eq16_product_derived_not_hardcoded":true,"common_epsilon_case_checked":true,"does_not_read_duplicate_iter081t_outputs":true,"epsilon_zero_limit_matches_iter077i":true,"independent_epsilon_case_follows_wedgewise":true,"no_contact_distribution_multiplication":true,"spectral_factor_cancels_shifted_leading_denominator_exactly":true},
+  "iteration":"Iter081U-SM",
+  "k5":{"all_32_iter077i_leading_contractions_unchanged":true,"l1_margin":-8,"local_L1":false,"q":-20,"radial_absolute_exponent":-9,"transverse_dimension":12},
+  "provenance":{"git_head":"87e9f2a663df0b2d5f612a3404dbb69dc7b3b83b","prereg_ancestor":true,"prereg_commit_expected":"084c65dbb5f89531fc1885fbdd64316b60423417"},
+  "source_formula":"BCG Eq.(16)/(17)/(18) finite-epsilon residue diagnostic, j=l=k=1/2",
+  "source_scope":"retaining finite spectral epsilon through K5 integration is diagnostic, not published source ordering",
+  "verdict":"PASS_EXACT_SCOPED"
+}
