@@ -10,6 +10,8 @@
 - Raw aggregate archive: `ba69dcbf0b8145defef82904bf2c0ce5ffb681ed`
 - Result note: `2f11309b3a405cf74db4d2f11a8bcc0becd284a6`
 - CURRENT synchronization: `3ea4b93c6413022bcb69890634e233b3b1a6e778`
+- Independent Critic review: `results/ITER080I_ADVERSARIAL_REVIEW.md`, commit `e039c1235f8ddea149456609cde46a351c536f1f`
+- Critic handoff synchronization: `83d611eb630f18c5651e4b2c2c96889933268d32`
 
 The preregistration predates implementation and production. The scientific contract was a dependency/status decision only and explicitly prohibited inserting a selector, reinterpreting sources, fitting counterterms, altering CRQN v0.2, or treating the blocked local amplitude as already defined.
 
@@ -44,7 +46,7 @@ Artifacts:
 - lane C `10352020789`, `sha256:58b0fab7f1d010a096463604618fe31f1467e175be6b1135d207251f10d50e65`;
 - aggregate `10351735754`, `sha256:7bb77c19fbdc7b671a82a2ac7da19f27b8676db657ed8388667889fb7a20c187`.
 
-All four jobs were terminal before promotion. Green CI is execution evidence only; scientific authority comes from the prospectively frozen dependency predicates plus exact blob/provenance matches and the terminal aggregate.
+All four jobs were terminal before promotion. Green CI is execution evidence only.
 
 ## Terminal aggregate
 
@@ -63,6 +65,16 @@ Classification:
 `ITER080I_SM_CRQN_V0_2_LOCAL_K5_AMPLITUDE_REMAINS_BLOCKED_BY_UNSELECTED_INFINITE_DIMENSIONAL_EXTENSION_AMBIGUITY_SUCCESSOR_CANDIDATE_REQUIRED_EXACT_DEPENDENCY_SCOPED`.
 
 Durable result: `results/ITER080I_SM_CRQN_V0_2_LOCAL_AMPLITUDE_SURVIVAL_DECISION_RESULT.md`.
+
+## Independent Critic review
+
+Verdict: `CONFIRMED_SCOPED`.
+
+The Critic independently re-read the exact frozen authority blobs and confirmed the substantive dependency chain. The executable field `semantic_frozen_predicates_present=true` is only supported by generic token-presence checks, and `posthoc_selector_added=false` is a procedural constant; therefore green CI alone is not scientific proof of P1-P6. For this dependency-only gate, exact blob locking plus independent content review confirms the result within scope.
+
+The confirmed statement is that present CRQN v0.2, under the frozen presently authoritative content, does not define a unique predictive local K5 distributional amplitude because the Iter077Q extension ambiguity remains unselected.
+
+The classification phrase `SUCCESSOR_CANDIDATE_REQUIRED` is conditional rather than universal: genuinely new/revised primary authority may supply a selector without itself forcing a new candidate identity; if the cure is new model content, it must be introduced prospectively as a separately named successor candidate/model choice.
 
 ## Scientific meaning
 
@@ -84,6 +96,6 @@ Iter080I introduced no termwise contact-product surrogate, no one-wedge-to-joint
 
 No `NEW_PHYSICS_FOUND`; no complete-QG claim; no unique K5 extension theorem; no causal-vertex divergence/nonexistence theorem; no regulator-independence theorem; no G3 PASS; no F9/G8/K5 promotion; no physical source-to-K4 pushforward; no nominal `epsilon^-1`. Published one-wedge spectral `i epsilon` remains source-scoped only.
 
-## Independent review status
+## Authorized next gate
 
-At ledger creation, the latest independent Critic authority remains Iter080H `CONFIRMED_SCOPED`; Iter080I has not yet received an independent Critic verdict. No successor selector gate should be promoted from Iter080I alone before fresh recovery of any new Critic handoff.
+Only a prospectively frozen `SUCCESSOR_SELECTOR_INDEPENDENT_MOTIVATION_OR_NEW_PRIMARY_AUTHORITY_GATE` is authorized. It must first establish genuinely new/revised primary authority for a correlated joint-K5 full-function-space prescription or an independent pre-test motivation for a separately named successor selector principle. It must not invent a selector merely because Iter080I blocked CRQN v0.2. If neither source authority nor independent motivation exists, the current candidate remains blocked.
