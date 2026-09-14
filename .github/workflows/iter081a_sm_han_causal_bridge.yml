@@ -1,0 +1,28 @@
+name: Iter081A-SM Han UV stack causal Toller bridge
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/iter081a_sm_han_causal_bridge.yml'
+      - 'scripts/iter081a_han_causal_bridge_gate.py'
+      - 'data/iter081a_han_causal_bridge_source_matrix.json'
+      - 'prereg/ITER081A_SM_HAN_UV_STACK_CAUSAL_TOLLER_BRIDGE_W_REACHABILITY.md'
+  workflow_dispatch:
+
+jobs:
+  exact-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run frozen Iter081A gate
+        run: python scripts/iter081a_han_causal_bridge_gate.py
+      - name: Upload aggregate
+        uses: actions/upload-artifact@v4
+        with:
+          name: iter081a-sm-aggregate
+          path: results/raw/iter081a_sm_aggregate.json
+          if-no-files-found: error
