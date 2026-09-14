@@ -8,20 +8,20 @@
 - Established/source-backed mechanism union: `F1-F8`.
 - Physical F9: `BLOCKED`.
 - K5 local amplitude: `BLOCKED_INFINITE_DIMENSIONAL_EXTENSION_SELECTOR_MISSING`.
-- Iter077Q is the controlling local-extension theorem: the source-compatible K5 extension ambiguity contains an infinite-dimensional tangential subspace.
-- Iter080A is independently `CONFIRMED_SCOPED`: finite K5 permutation covariance does not select a unique extension.
-- Repaired Iter080D is authoritative and independently `CONFIRMED_SCOPED`: every selector made from a fixed finite number of scalar-valued complex-linear conditions `L:W->C^m` has an infinite-dimensional kernel and cannot uniquely select the Iter077Q ambiguity.
-- Repaired Iter080E is authoritative in frozen-corpus scope: the complete frozen primary BCG/Beltran causal-Toller corpus represented in-repo contains no explicit prescription satisfying all five frozen requirements for a correlated joint-K5 full-function-space extension selector. Verdict `BLOCKED_OBJECT_DEFINITION`.
-- **Repaired Iter080F is authoritative:** the pre-Iter077Q CRQN v0.1/v0.2 candidate specifications contain no explicit independently motivated principle satisfying all A1-A5 and therefore no pre-existing full-function-space selector axiom capable of uniquely removing the Iter077Q ambiguity. Verdict `BLOCKED_EXISTING_AXIOM_SELECTOR_MISSING`.
-- Causal multi-vertex E3/E4/E6 remains independently `BLOCKED_SOURCE_BRIDGE` for the validated KKL + BCG + Beltran corpus under Iter080B.
-- E5: KKL gluing/duality conditionally inherits under strict local causal-vertex replacement with parent boundary normalization fixed (Iter079E).
-- E7/E8: `BLOCKED` until both a physical composed E3-E6 causal functional and a K5 extension selector exist.
+- Iter077Q remains the controlling local-extension theorem: source-compatible K5 extension ambiguity contains an infinite-dimensional tangential subspace.
+- Iter080A remains independently `CONFIRMED_SCOPED`: finite K5 permutation covariance does not select a unique extension.
+- Repaired Iter080D remains independently `CONFIRMED_SCOPED`: any fixed finite family of scalar complex-linear selector conditions has an infinite-dimensional kernel on the Iter077Q ambiguity and cannot uniquely select it.
+- Repaired Iter080E remains authoritative in its frozen-source scope: the represented primary BCG/Beltran causal-Toller corpus contains no explicit P1-P5-complete correlated joint-K5 full-function-space extension selector. Verdict `BLOCKED_OBJECT_DEFINITION`.
+- **Repaired Iter080F is NOT authoritative after independent review.** The second repaired execution is `INVALID_IMPLEMENTATION`: its Lane-B `coverage_complete=true` certificate only checks a manually chosen 42-anchor manifest against itself and does not establish the preregistered requirement to audit every plausibly relevant frozen candidate statement. Direct reading still finds no hidden selector, but the anti-rescue census conclusion is not yet executable authority.
+- Causal multi-vertex E3/E4/E6 remains independently `BLOCKED_SOURCE_BRIDGE` under Iter080B.
+- E5 remains conditional parent KKL gluing/duality inheritance under strict local vertex replacement with parent boundary normalization fixed.
+- E7/E8 remain `BLOCKED` until both a physical composed E3-E6 causal functional and a K5 extension selector exist.
 - RG/refinement map: `BLOCKED_E9_COARSE_FINE_MAP_MISSING`.
 - G3 quantum dynamics: `OPEN_BUT_NOT_ADMISSIBLE_UNTIL_LOCAL_AMPLITUDE_AND_COMPOSITION_ARE_DEFINED`.
 - G8 novelty: `BLOCKED_CONVERGENCE_ONLY`.
 
 **Physical active front:**
-`FUNCTION_SPACE_K5_DISTRIBUTIONAL_EXTENSION_SELECTOR / CRQN_V0_2_LOCAL_AMPLITUDE_ANTI_RESCUE_SURVIVAL_DECISION / NEW_PRIMARY_SOURCE_FOR_CAUSAL_MULTIVERTEX_BRIDGE / E7_E8_EXTENSION_TRANSPORT / REGULATOR_INDEPENDENCE_AFTER_OBJECT_DEFINITION`.
+`FUNCTION_SPACE_K5_DISTRIBUTIONAL_EXTENSION_SELECTOR / EXHAUSTIVE_PRE_ITER077Q_CRQN_SELECTOR_ANTI_RESCUE_CENSUS / NEW_PRIMARY_SOURCE_FOR_CAUSAL_MULTIVERTEX_BRIDGE / E7_E8_EXTENSION_TRANSPORT / REGULATOR_INDEPENDENCE_AFTER_OBJECT_DEFINITION`.
 
 ## Controlling erratum and source ordering
 
@@ -35,20 +35,15 @@ Authoritative source order remains:
 
 `one-wedge spectral/spinor integration -> Toller function -> product of ten Toller matrices -> full boundary contraction -> K5 group integration / extension`.
 
-Termwise `theta/delta/delta'` multiplication/pullback is not silently identified with the source-ordered full Toller object. Individual one-wedge Toller functions do not prove a full K5 amplitude. The published one-wedge spectral `i epsilon` is not a joint K5 regulator without a theorem.
+Termwise `theta/delta/delta'` multiplication/pullback is not silently identified with the source-ordered full Toller object. Individual one-wedge Toller functions do not prove a full K5 amplitude. Published one-wedge spectral `i epsilon` is not a joint-K5 regulator or selector without a theorem.
 
-## Controlling local K5 results
+## Controlling local K5 authority
 
-### Iter077I
+### Iter077I / Iter077K / Iter077L / Iter077Q
 
-Initial run `34786550378` failed and is not scientific authority. Authoritative source-order-lock alias run `34786586785` completed all required lanes. Aggregate artifact `10326812769`, digest `sha256:b9e7d617598acaeb60ee7018e3ee4f78a232b32be86b112da4713352d9797887`.
-
-All 32 minimal all-`j=1/2` boundary components have nonzero leading contractions on the frozen source-faithful collision witness. Ten wedges give homogeneous power `q=-20` in transverse dimension `d=12`, radial absolute-integrability exponent `-9`; the source-ordered leading K5 product is not locally absolutely integrable. Ceiling: no full distributional divergence/nonexistence theorem.
-
-### Iter077K/L/Q
-
-- Iter077K: published one-wedge spectral `i epsilon` does not define a joint K5 finite part, correlated extension, contour, conditional-convergence theorem, or interchange theorem.
-- Iter077L: on `N=SU(2)^4 subset SL(2,C)^4`, real codimension `12`, transverse scaling degree `20`; same-scaling-degree extensions have supported normal-jet ambiguity through order `8` with smooth tangential coefficient data.
+- Iter077I authoritative source-order-lock run `34786586785`: all 32 minimal all-`j=1/2` boundary components have nonzero leading contractions on the frozen source-faithful collision witness. Ten wedges give `q=-20` in transverse dimension `d=12`, radial absolute-integrability exponent `-9`; source-ordered leading K5 product is not locally absolutely integrable. Ceiling: no full distributional divergence/nonexistence theorem.
+- Iter077K: published one-wedge spectral `i epsilon` does not define a joint-K5 finite part, correlated extension, contour, conditional-convergence theorem or interchange theorem.
+- Iter077L: on `N=SU(2)^4 subset SL(2,C)^4`, codimension 12, transverse scaling degree 20; same-scaling-degree extensions have normal-jet ambiguity through order 8 with smooth tangential coefficient data.
 - Iter077Q run `34792482045`, aggregate artifact `10328598487`, digest `sha256:58e3cb389a985838942a4d0181e6e680cdd75480cfc24e0ec7bb07d73b199a96`, result commit `5941b3a064d93f2898d9e9a48545826e950455f1`.
 
 Iter077Q classification:
@@ -65,62 +60,44 @@ Classification:
 
 ### Iter080D repaired
 
-Authoritative repaired run `34830802802`; aggregate artifact `10342436008`, digest `sha256:731a83d348b89689fc51b22ce610b377079d6cc40617a8f87040054ca768bad4`; durable result commit `e77b2c39562f8c4128ae22eaa4fcc6f22ac1af01`; independent Critic verdict `CONFIRMED_SCOPED`.
+Authoritative run `34830802802`; aggregate artifact `10342436008`, digest `sha256:731a83d348b89689fc51b22ce610b377079d6cc40617a8f87040054ca768bad4`; durable result `e77b2c39562f8c4128ae22eaa4fcc6f22ac1af01`; independent Critic verdict `CONFIRMED_SCOPED`.
 
 Classification:
 `ITER080D_SM_FIXED_FINITE_SCALAR_LINEAR_RENORMALIZATION_CONDITIONS_CANNOT_SELECT_ITER077Q_INFINITE_FUNCTION_SPACE_AMBIGUITY_EXACT_THEOREM_SCOPED`.
 
-Any selector consisting of a fixed finite number of scalar complex-linear renormalization/normalization conditions fails to uniquely select the Iter077Q function space. Scope excludes function-valued/infinite, differential/spectral/microlocal, nonlinear, or genuinely source-derived correlated joint-K5 selectors.
+Scope excludes function-valued/infinite, differential/spectral/microlocal, nonlinear or genuinely source-derived correlated joint-K5 selectors.
 
-## Iter080E repaired source-selector census — AUTHORITATIVE SCOPED BLOCKER
+### Iter080E repaired
 
-Original preregistration `f1a465a059f7c4da8270bed8021f920013b7f5da`. Historical source-dependent implementation remains preserved as invalid; repaired authority is run `34836322547`, head `085ea36e51b3e805be39a8d6503f81a72fe5aa34`, aggregate artifact `10344366649`, digest `sha256:11f3af328c3686c17769c36e69164a9098f5d10e6cbdd7806f0c58a72ca327e7`.
-
-Lane outcomes: A `PASS_SOURCE_COVERAGE`; B `BLOCKED_OBJECT_DEFINITION`; C `PASS_CLASSIFIER_CONTROLS`; D `PASS_DEPENDENCY_LOCK`; `eligible_real_primary_sources=[]`.
+Authoritative repaired run `34836322547`, head `085ea36e51b3e805be39a8d6503f81a72fe5aa34`, aggregate artifact `10344366649`, digest `sha256:11f3af328c3686c17769c36e69164a9098f5d10e6cbdd7806f0c58a72ca327e7`.
 
 Classification:
 `ITER080E_SM_PRIMARY_CAUSAL_TOLLER_CORPUS_HAS_NO_JOINT_K5_FUNCTION_SPACE_EXTENSION_SELECTOR_SOURCE_BLOCKED_EXACT_AUDIT_SCOPED`.
 
-Scoped fact: within the complete frozen primary BCG/Beltran causal-Toller corpus represented in-repo, no explicit prescription satisfies all five frozen requirements `P1_JOINT_K5`, `P2_SOURCE_ORDER`, `P3_FULL_OBJECT_REACH`, `P4_FUNCTION_SPACE_UNIQUENESS`, `P5_REGULATOR_BRANCH_AUTHORITY` for a correlated joint-K5 selector acting on full Iter077Q ambiguity `W`. This is a source-object-definition obstruction for that frozen corpus, not a universal no-selector theorem.
+Scoped fact only: within the complete frozen primary BCG/Beltran causal-Toller corpus represented in-repo, no explicit prescription satisfies all `P1_JOINT_K5`, `P2_SOURCE_ORDER`, `P3_FULL_OBJECT_REACH`, `P4_FUNCTION_SPACE_UNIQUENESS`, `P5_REGULATOR_BRANCH_AUTHORITY`. This is not a universal no-selector theorem.
 
-## Iter080F repaired anti-rescue candidate-axiom census — AUTHORITATIVE SCOPED BLOCKER
+## Iter080F anti-rescue census — CURRENTLY INVALID_IMPLEMENTATION
 
-Original prospective preregistration: `382948b3369c3bc2132ff4c2757500fdd7b77ba1`.
-Historical run `34837108991` and historical Researcher result remain preserved but were invalidated by independent Critic verdict `INVALID_IMPLEMENTATION` in `results/ITER080F_ADVERSARIAL_IMPLEMENTATION_REVIEW.md`, commit `e4d90e29c9bcbb9fd7ec6f54a4e42a432b5bc503`.
+Original preregistration: `382948b3369c3bc2132ff4c2757500fdd7b77ba1`.
+Historical first implementation and run remain non-authoritative under earlier Critic review `results/ITER080F_ADVERSARIAL_IMPLEMENTATION_REVIEW.md`, commit `e4d90e29c9bcbb9fd7ec6f54a4e42a432b5bc503`.
 
-Control-only implementation repair plan: `4b5e1d1638f366e8384fef3a03da59db9c42dde6`.
-First repair run `34841208883` is non-authoritative: Lane B exposed an implementation-only completeness-check defect and aggregate was skipped.
+Prospective control-only repair plan: `4b5e1d1638f366e8384fef3a03da59db9c42dde6`.
+First repair head `f435f0a0edf88c83c21eb830e052d9d49ba50f2f`, run `34841208883`: Lane B failed with `coverage_complete=false`; aggregate skipped; no scientific verdict authority.
 
-Authoritative repaired production head: `71b5551c034506b7bb0c07bf222d08d7756f31ca`.
-Authoritative run: `34841351539`, terminal `success`.
-
-Jobs/outcomes:
-
-- A job `103966834681`: `PASS_PROVENANCE_TIMING`;
-- B job `103966834664`: `BLOCKED_EXISTING_AXIOM_SELECTOR_MISSING`;
-- C job `103966834585`: `PASS_ANTI_RESCUE_CONTROLS`;
-- D job `103966834678`: `PASS_DEPENDENCY_LOCK`;
-- aggregate job `103966883834`: success.
-
+Second repaired head `71b5551c034506b7bb0c07bf222d08d7756f31ca`, run `34841351539`: terminal `success`.
+Jobs A `103966834681`, B `103966834664`, C `103966834585`, D `103966834678`, aggregate `103966883834`.
 Aggregate artifact `10346645528`, digest `sha256:8dffd7c2804e12cafb875721b6c322169404f2a44c2c00167c967b511d4f8c54`.
-Durable aggregate commit `01539238222b42128d051444d6baa91cf5de45d8`.
-Durable repaired result commit `97980ecf17e60392389f519f70fb6629dc82a1dc`.
-Provenance ledger commit `df0bed9d121075e953f6d27c7f1a01bfea44217a`.
+Researcher durable result commit `97980ecf17e60392389f519f70fb6629dc82a1dc` claimed `BLOCKED_EXISTING_AXIOM_SELECTOR_MISSING`.
 
-Repaired Lane B has 35 explicit census statements and a 42-anchor independent exact-text completeness manifest: `coverage_complete=true`, `uncovered_required_anchors=[]`, `qualifying_preexisting_axioms=[]`.
+Independent Critic durable review:
+`results/ITER080F_REPAIRED_ADVERSARIAL_COMPLETENESS_REVIEW.md`, commit `8fb1ff2fa7335cd7ca58bbe69561a24f0f4f2421`.
+Critic verdict: `INVALID_IMPLEMENTATION`.
 
-Repaired Lane C executes predicate-specific controls and the actual post-Iter077Q dependency-isolation replay. It identified 116 tracked paths changed after Iter077Q, verified neither frozen candidate file changed, temporarily removed all 116 post-Iter077Q paths in the ephemeral checkout, reran the scientific census from the frozen candidate blobs, obtained an identical scientific fingerprint, and restored all removed paths: `replay_executed=true`, `fingerprint_equal=true`, `restore_ok=true`, isolation `valid=true`.
+Decisive defect: final Lane B manually defines 42 required anchors and then proves only that those same anchors are represented. It has no independent executable check that the 42-anchor set exhausts the preregistered universe of plausibly relevant frozen statements. Explicit omitted relevant witnesses include the v0.1 history-amplitude formula, alternate `Z` history expression, `Gamma_k` effective-functional/UV-critical-surface statement, schematic RG flow/fixed-point equations, early-success microstate/amplitude-pair criterion, and the v0.2 local-vertex placeholder `A_v^CRQN=A_v^geom F_causal`. The preceding failed repair run had already exposed several such lines before the final manifest was chosen.
 
-**Verdict:** `BLOCKED_EXISTING_AXIOM_SELECTOR_MISSING`.
+Direct adversarial reading finds no A1-A5-complete selector in these omissions, so CRQN is not rescued. But the repaired Iter080F negative census is not authoritative and may not support a downstream survival/anti-rescue decision.
 
-**Classification:**
-`ITER080F_SM_CRQN_V0_2_HAS_NO_PREEXISTING_FULL_FUNCTION_SPACE_EXTENSION_SELECTOR_AXIOM_ANTI_RESCUE_BLOCKED_EXACT_CENSUS_SCOPED`.
-
-Scoped authoritative fact: the pre-Iter077Q CRQN v0.1/v0.2 candidate specifications contain no explicit independently motivated already-existing principle satisfying all A1-A5 and therefore no pre-existing full-function-space selector axiom capable of uniquely selecting the Iter077Q extension ambiguity. The candidate contains amplitude/composition desiderata, analyticity/unitarity filters, gauge/refoliation requirements, RG targets, normalized-observable requirements, the finite `Phi` existence question and open/blocker language, but none defines a selector acting on the whole `W` with sufficient uniqueness power.
-
-Scientific effect: current CRQN v0.2 cannot claim that a missing selector was already implicit before Iter077Q. A future selector would require genuinely new/revised primary authority or a separately motivated, prospectively frozen new candidate version. Anti-rescue forbids retroactive promotion into v0.2.
-
-This is not a universal no-selector theorem and does not by itself convert the current candidate from `BLOCKED` to a universal scientific no-go.
+Lane C's repaired predicate controls and actual post-Iter077Q remove/replay/restore isolation survive review; Lane A and D also survive. Lane B alone invalidates aggregate scientific authority.
 
 ## Causal multi-vertex inheritance
 
@@ -129,13 +106,13 @@ Authoritative Iter080B run `34825084313`, aggregate artifact `10339454847`, dige
 Classification:
 `ITER080B_SM_PARENT_E3_E4_E6_STRUCTURES_EXIST_LOCAL_CAUSAL_VERTICES_EXIST_BUT_COMPLETE_MULTIVERTEX_INHERITANCE_BRIDGE_NOT_SOURCE_EXPLICIT_BLOCKED_EXACT_SCOPED`.
 
-The validated KKL + BCG `2601.23162` + Beltran `2603.22661v2` corpus does not explicitly state/derive the complete causal many-vertex functional together with E3 contraction, E4 weights/sums/normalization, and E6 quotient/fixing normalization. This branch remains `BLOCKED_SOURCE_BRIDGE` until genuinely new/revised primary authority changes the object definition.
+Validated KKL + BCG + Beltran corpus does not explicitly state/derive the complete causal many-vertex functional together with E3 contraction, E4 weights/sums/normalization and E6 quotient/fixing normalization. Branch remains `BLOCKED_SOURCE_BRIDGE` absent genuinely new/revised primary authority.
 
 ## Exact blockers
 
 1. `FUNCTION_SPACE_K5_DISTRIBUTIONAL_EXTENSION_SELECTOR`.
-2. `CRQN_V0_2_LOCAL_AMPLITUDE_ANTI_RESCUE_SURVIVAL_DECISION` — repaired Iter080F excludes a pre-existing v0.2 selector; current version remains blocked absent new authority/version.
-3. `CAUSAL_MULTIVERTEX_E3_E4_E6_COMPLETE_SOURCE_BRIDGE` for the validated source corpus.
+2. `EXHAUSTIVE_PRE_ITER077Q_CRQN_SELECTOR_ANTI_RESCUE_CENSUS` — Iter080F second repair invalid implementation; no downstream v0.2 survival decision may use it.
+3. `CAUSAL_MULTIVERTEX_E3_E4_E6_COMPLETE_SOURCE_BRIDGE`.
 4. `E7_E8_DISTRIBUTIONAL_EXTENSION_TRANSPORT_OR_SELECTOR`.
 5. `RG_REFINEMENT_E9_COARSE_FINE_BOUNDARY_MAP_AND_MATCHING_FUNCTIONAL`.
 6. `REGULATOR_INDEPENDENCE_AFTER_OBJECT_DEFINITION`.
@@ -144,20 +121,24 @@ Any blocked mandatory arrow prevents full-QG completion.
 
 ## CRQN survival chain
 
-`carrier/source F1-F8` -> `local source-ordered K5 off-collision object` -> `non-L1 common collision` -> `same-scaling-degree extensions exist` -> `Iter077Q infinite-dimensional source-compatible tangential ambiguity` -> `finite K5 permutation covariance DOES NOT SELECT` -> `fixed finite scalar-linear conditions DO NOT SELECT` -> `frozen primary BCG/Beltran causal-Toller corpus HAS NO P1-P5-COMPLETE JOINT-K5 SELECTOR` -> `pre-Iter077Q CRQN v0.1/v0.2 HAS NO A1-A5-COMPLETE PREEXISTING SELECTOR AXIOM` -> `unique local amplitude ? BLOCKED` -> `causal many-vertex E3/E4/E6 bridge ? BLOCKED` -> `E7/E8 ?` -> `G3 ?` -> `finiteness/regulator removal ?` -> `RG/E9 ?` -> `continuum 3+1 Lorentzian geometry ?` -> `massless spin-2 ?` -> `Einstein/GR recovery ?` -> `matter/QFT IR ?` -> `normalized falsifiable prediction ?`.
+`carrier/source F1-F8` -> `local source-ordered K5 off-collision object` -> `non-L1 common collision` -> `same-scaling-degree extensions exist` -> `Iter077Q infinite-dimensional source-compatible tangential ambiguity` -> `finite K5 permutation covariance DOES NOT SELECT` -> `fixed finite scalar-linear conditions DO NOT SELECT` -> `frozen primary BCG/Beltran corpus HAS NO P1-P5-COMPLETE JOINT-K5 SELECTOR` -> `pre-Iter077Q CRQN anti-rescue census ? INVALID_IMPLEMENTATION` -> `unique local amplitude ? BLOCKED` -> `causal many-vertex E3/E4/E6 bridge ? BLOCKED` -> `E7/E8 ?` -> `G3 ?` -> `finiteness/regulator removal ?` -> `RG/E9 ?` -> `continuum 3+1 Lorentzian geometry ?` -> `massless spin-2 ?` -> `Einstein/GR recovery ?` -> `matter/QFT IR ?` -> `normalized falsifiable prediction ?`.
 
 ## Claim locks
 
 No `NEW_PHYSICS_FOUND`; no complete-QG claim; no generic finite-spin signed P3; no exact full-amplitude cancellation/non-cancellation theorem; no causal-vertex finiteness/divergence theorem; no unique K5 extension theorem; no regulator-independence theorem; no physical source-to-K4 pushforward; no nominal `epsilon^-1`; no physical CRQN RG fixed point; no G3 PASS or F9/G8/K5 promotion. Retain published one-wedge spectral `i epsilon` only in source scope.
 
+## Latest independent Critic authority
+
+Critic audit: `results/ITER080F_REPAIRED_ADVERSARIAL_COMPLETENESS_REVIEW.md`, commit `8fb1ff2fa7335cd7ca58bbe69561a24f0f4f2421`.
+Critic handoff update: `f0f466a2fe15583d2283a8887597ff18d0dd4ebe`.
+Iter080F provenance reconciliation: see `status/ITER080F_PROVENANCE_LEDGER.md`.
+
 ## Next admissible Researcher gate
 
-At each recovery first inspect queued/in-progress/newly-terminal workflows and the latest Critic handoff.
+At recovery first inspect new commits, active Actions and the latest Critic handoff.
 
-If repaired Iter080F has not yet received a newer independent Critic review, do not launch a competing selector gate on the same object. Outcome-independent provenance/recovery preparation is allowed.
+Do **not** launch `CRQN_V0_2_LOCAL_AMPLITUDE_ANTI_RESCUE_SURVIVAL_DECISION` from the invalid repaired Iter080F result. Do not perform a third hand-edited anchor-list patch under the already-inspected repair sequence.
 
-If Critic confirms the repaired authority and no genuinely new/revised primary source has appeared, do not repeat finite permutation/group variants, invariant-polynomial witnesses, fixed finite scalar conditions, the frozen BCG/Beltran joint-K5 source scan, the pre-Iter077Q candidate-specification census, or the Iter080B E3/E4/E6 source scan.
+Highest-value admissible successor is a **new prospectively preregistered exhaustive pre-Iter077Q candidate-corpus selector census**. Preserve the scientific question and A1-A5, but before any production execution freeze a stable statement universe and relevance/exclusion rule. At minimum every non-heading paragraph/list/formula block in both frozen candidate blobs must receive a stable ID and either an A1-A5 classification or a pre-frozen machine-checkable exclusion reason; freeze the manifest/hash before execution. Explicitly classify the omitted witnesses identified by the Critic. If a production run reveals a substantive statement-universe/criteria defect, require another prospective successor rather than narrowing the universe post hoc.
 
-Highest-value successor is a prospectively frozen `CRQN_V0_2_LOCAL_AMPLITUDE_ANTI_RESCUE_SURVIVAL_DECISION`: determine the scientific status of the current candidate version given the now-combined authority that (i) its source-defined local object has infinite-dimensional extension freedom, (ii) tested finite selector classes fail, (iii) frozen primary causal-Toller authority contains no full-W selector, and (iv) pre-Iter077Q CRQN v0.1/v0.2 contained no such selector axiom. The gate must not invent a mechanism. Its admissible outcomes are scoped continuation as `BLOCKED` pending genuinely independent new authority, or a current-version failure only if a pre-frozen criterion logically warrants it. Any new selector must be introduced only as independently motivated new/revised authority or a separately versioned prospectively testable candidate, never as a post-hoc repair of v0.2.
-
-E7/E8, G3, regulator independence and RG remain downstream-locked.
+No repeated finite permutation/group variants, invariant-polynomial witnesses, fixed finite scalar-condition gates, frozen BCG/Beltran selector scans, or Iter080B E3/E4/E6 re-scans absent changed authority. Downstream E7/E8, G3, regulator independence and RG remain locked.
