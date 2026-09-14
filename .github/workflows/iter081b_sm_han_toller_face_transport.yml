@@ -1,0 +1,40 @@
+name: Iter081B-SM Han-Toller face transport
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/iter081b_han_toller_face_transport_gate.py'
+      - 'prereg/ITER081B_SM_HAN_TOLLER_FACE_FUNCTIONAL_TRANSPORT_OBSTRUCTION.md'
+      - '.github/workflows/iter081b_sm_han_toller_face_transport.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  iter081b:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run prospectively frozen source/formula gate
+        run: python scripts/iter081b_han_toller_face_transport_gate.py
+      - name: SHA256 aggregate
+        if: always()
+        run: |
+          if [ -f results/raw/iter081b_sm_aggregate.json ]; then
+            sha256sum results/raw/iter081b_sm_aggregate.json | tee results/raw/iter081b_sm_aggregate.sha256
+          fi
+      - name: Upload aggregate artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: iter081b-sm-aggregate
+          path: |
+            results/raw/iter081b_sm_aggregate.json
+            results/raw/iter081b_sm_aggregate.sha256
+          if-no-files-found: warn
