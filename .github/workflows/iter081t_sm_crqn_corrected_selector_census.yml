@@ -1,0 +1,37 @@
+name: Iter081T-SM corrected CRQN invariant-jet selector census
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - '.github/workflows/iter081t_sm_crqn_corrected_selector_census.yml'
+      - 'code/iter081t_sm_crqn_corrected_selector_census.py'
+      - 'prereg/ITER081T_SM_CRQN_RIGHT_SU2_INVARIANT_JET_SELECTOR_CENSUS.md'
+      - 'candidates/CANDIDATE_A_CRQN.md'
+      - 'candidates/CANDIDATE_A_CRQN_V0_2.md'
+      - 'status/CURRENT.md'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  census:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Record provenance
+        run: |
+          echo "HEAD=$(git rev-parse HEAD)"
+          echo "PREREG=$(git log -1 --format=%H -- prereg/ITER081T_SM_CRQN_RIGHT_SU2_INVARIANT_JET_SELECTOR_CENSUS.md)"
+          echo "IMPL=$(git log -1 --format=%H -- code/iter081t_sm_crqn_corrected_selector_census.py)"
+          sha256sum candidates/CANDIDATE_A_CRQN.md candidates/CANDIDATE_A_CRQN_V0_2.md status/CURRENT.md prereg/ITER081T_SM_CRQN_RIGHT_SU2_INVARIANT_JET_SELECTOR_CENSUS.md code/iter081t_sm_crqn_corrected_selector_census.py
+      - name: Run frozen census
+        run: python3 code/iter081t_sm_crqn_corrected_selector_census.py
+      - name: Upload aggregate
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: iter081t-sm-aggregate
+          path: results/raw/iter081t_sm_aggregate.json
+          if-no-files-found: error
