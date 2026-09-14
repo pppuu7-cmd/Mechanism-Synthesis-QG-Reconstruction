@@ -1,0 +1,30 @@
+name: Iter082C-SM K5 analytic forest extension
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/iter082c_sm_k5_analytic_forest_extension.yml'
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Verify prospective chronology
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f prereg/ITER082C_SM_K5_ANALYTIC_STRATIFIED_FOREST_EXTENSION_OPERATOR_GATE.md
+          git merge-base --is-ancestor 3a8dcdd732065540abf753f5f0e891ddc9257632 8c07f6f6dd8fe5f1191a1bdd783a7e20d470797a
+          git merge-base --is-ancestor 8c07f6f6dd8fe5f1191a1bdd783a7e20d470797a HEAD
+      - name: Run exact local analytic forest-extension gate
+        run: python scripts/iter082c_sm_k5_analytic_forest_extension.py
+      - name: Upload authoritative aggregate
+        uses: actions/upload-artifact@v4
+        with:
+          name: iter082c-sm-aggregate
+          path: iter082c_aggregate.json
+          if-no-files-found: error
