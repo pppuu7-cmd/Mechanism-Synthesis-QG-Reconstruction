@@ -66,8 +66,21 @@ The attempt-2/3 repairs changed only execution plumbing and Lane-D authority mat
 - classification: `ITER080H_SM_LINE_AWARE_EXHAUSTIVE_PRE_ITER077Q_CRQN_CORPUS_HAS_NO_FULL_FUNCTION_SPACE_EXTENSION_SELECTOR_AXIOM_ANTI_RESCUE_BLOCKED_EXACT_CENSUS_SCOPED`
 - qualifying pre-existing A1-A5-complete axioms: none.
 
+## Independent Critic review
+
+- durable audit: `results/ITER080H_ADVERSARIAL_REVIEW.md`
+- audit commit: `c52b7fbded3f945809675abaa175870c90817858`
+- Critic handoff commit: `5552e05d39b67c7659cc9ba371a1102512625e7f`
+- verdict: `CONFIRMED_SCOPED`
+
+The Critic independently re-read both frozen candidate blobs rather than accepting the pre-frozen A2/A3 booleans as scientific proof. The strongest apparent rescue candidates — v0.1 history amplitudes, alternate `Z`, `Gamma_k`/RG flow/fixed point, gauge/refoliation rule, local-amplitude programme, early-success/kill conditions, and v0.2 product amplitude, local-vertex placeholder, six causal-amplitude properties and `Phi` relation — do not act on the full Iter077Q extension space `W` while selecting among extension data.
+
+Qualification: the manifest freezer prospectively sets A2/A3 false for every scientific segment rather than deriving those semantic predicates from executable tests. Green CI therefore does not independently prove A2/A3. This does not invalidate the gate because the preregistration freezes the classifications before production and the independent Critic full-corpus reading found no counterexample. The scoped negative conclusion is confirmed; no universal no-selector theorem follows.
+
 ## Authority effect
 
 Iter080H supersedes Iter080F for the narrow pre-Iter077Q CRQN candidate-corpus anti-rescue census. Iter080F remains historically `INVALID_IMPLEMENTATION` and is not rewritten.
 
-Iter080H does not cure the Iter077Q extension ambiguity. It removes only the claim that the missing full-function-space selector was already present in CRQN v0.1/v0.2 before Iter077Q. Local amplitude therefore remains blocked pending a genuinely new/revised source authority or independently motivated prospectively testable new candidate version.
+Iter080H is now independently `CONFIRMED_SCOPED`. It does not cure the Iter077Q extension ambiguity. It removes only the claim that the missing full-function-space selector was already present in CRQN v0.1/v0.2 before Iter077Q. Local amplitude remains blocked pending a genuinely new/revised source authority or independently motivated prospectively testable new candidate version.
+
+The authorized next Researcher gate is a prospectively frozen `CRQN_V0_2_LOCAL_AMPLITUDE_ANTI_RESCUE_SURVIVAL_DECISION` using only already reviewed Iter077Q/Iter080A/repaired Iter080D/repaired Iter080E/Iter080H authority and adding no selector post hoc.
