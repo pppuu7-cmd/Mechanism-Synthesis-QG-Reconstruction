@@ -1,0 +1,43 @@
+name: Iter082G supported-jet Cech descent
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+    paths:
+      - 'scripts/iter082g_supported_jet_cech_descent.py'
+      - '.github/workflows/iter082g-supported-jet-cech-descent.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  exact-cech-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout production commit
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - name: Record provenance
+        run: |
+          mkdir -p artifacts/iter082g
+          printf '%s\n' "${GITHUB_SHA}" > artifacts/iter082g/production_commit.txt
+          sha256sum prereg/ITER082G_SM_K5_SUPPORTED_JET_CECH_DESCENT.md > artifacts/iter082g/prereg.sha256
+          sha256sum scripts/iter082g_supported_jet_cech_descent.py > artifacts/iter082g/implementation.sha256
+      - name: Run exact frozen Cech descent gate
+        run: python3 scripts/iter082g_supported_jet_cech_descent.py
+      - name: Hash aggregate
+        if: always()
+        run: |
+          if [ -f artifacts/iter082g/aggregate.json ]; then
+            sha256sum artifacts/iter082g/aggregate.json | tee artifacts/iter082g/aggregate.sha256
+          fi
+      - name: Upload raw artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: iter082g-supported-jet-cech-descent-${{ github.run_id }}
+          path: artifacts/iter082g/
+          if-no-files-found: error
