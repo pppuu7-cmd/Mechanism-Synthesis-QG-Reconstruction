@@ -30,11 +30,12 @@ def lane_a():
 
 def lane_b():
     p = PREREG.read_text(); i = ITER029.read_text()
+    p_plain = p.replace('**','')
     checks = {
         'iter029_predates_and_is_microlocal': 'exact microlocal cycle / wavefront audit' in i and ('Hormander' in i or 'Hörmander' in i),
         'bf_source_frozen': 'math-ph/9903028' in p and 'Brunetti--Fredenhagen' in p,
         'dang_source_frozen': '1412.2808' in p and 'Dang' in p,
-        'no_successor_construction': 'does not invent CRQN v0.3' in p,
+        'no_successor_construction': 'does not invent CRQN v0.3' in p_plain,
     }
     return {'lane':'B','kind':'independent_motivation','checks':checks,'pass':all(checks.values())}
 
