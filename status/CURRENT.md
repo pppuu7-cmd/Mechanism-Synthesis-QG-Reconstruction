@@ -11,7 +11,8 @@
 - Iter077Q remains the controlling function-space result: the source-compatible K5 extension ambiguity contains an infinite-dimensional tangential subspace.
 - Iter080A is `CONFIRMED_SCOPED`: finite K5 permutation covariance does not select a unique extension.
 - Iter080D repaired execution is authoritative and independently `CONFIRMED_SCOPED`: every selector made of a fixed finite number of scalar-valued complex-linear conditions `L:W->C^m` has an infinite-dimensional kernel and cannot uniquely select the Iter077Q extension.
-- **Iter080E is now authoritative `BLOCKED_OBJECT_DEFINITION`: the complete frozen primary BCG/Beltran causal-Toller corpus represented in-repo contains no explicit correlated joint-K5 selector satisfying all five frozen requirements P1-P5 on the full Iter077Q function space.**
+- **Iter080E Researcher production is `INVALID_IMPLEMENTATION` after independent Critic review.** The run is terminal and provenance-clean, but Lane B derives P1-P5 eligibility from prefilled Iter080E status labels and matching Iter080E-authored anchors rather than executable source-evidence checks. Historical run/artifacts/result are preserved but non-authoritative pending a control-only repair under the unchanged preregistration.
+- Narrower source authority remains: Iter077K records that BCG `2601.23162` + `2604.24945` do not themselves supply a correlated common-collision K5 extension prescription; Iter079A records that Beltran `2603.22661v2` does not select/transport the Iter077Q extension freedom. These facts do not by themselves constitute a repaired P1-P5-complete Iter080E census.
 - Causal multi-vertex composition: `BLOCKED_SOURCE_BRIDGE` for the currently validated KKL + Bianchi-Chen-Gamonal + Beltran corpus. Parent E3/E4/E6 structures exist and local/generalized causal vertices exist, but a complete many-vertex causal inheritance prescription is not source-explicit under Iter080B.
 - E5: KKL gluing/duality conditionally inherits under strict local causal-vertex replacement with parent boundary normalization fixed (Iter079E).
 - E7/E8: `BLOCKED` until both a physical composed E3-E6 causal functional and a K5 extension selector exist.
@@ -20,7 +21,7 @@
 - G8 novelty: `BLOCKED_CONVERGENCE_ONLY`.
 
 **Physical active front:**
-`CRQN_V0_2_EXISTING_AXIOM_FUNCTION_SPACE_SELECTOR_CENSUS / FUNCTION_SPACE_K5_DISTRIBUTIONAL_EXTENSION_SELECTOR / NEW_PRIMARY_SOURCE_FOR_CAUSAL_MULTIVERTEX_BRIDGE / E7_E8_EXTENSION_TRANSPORT / REGULATOR_INDEPENDENCE_AFTER_OBJECT_DEFINITION`.
+`ITER080E_CONTROL_ONLY_SOURCE_PREDICATE_REPAIR / CRQN_V0_2_EXISTING_AXIOM_FUNCTION_SPACE_SELECTOR_CENSUS / FUNCTION_SPACE_K5_DISTRIBUTIONAL_EXTENSION_SELECTOR / NEW_PRIMARY_SOURCE_FOR_CAUSAL_MULTIVERTEX_BRIDGE / E7_E8_EXTENSION_TRANSPORT / REGULATOR_INDEPENDENCE_AFTER_OBJECT_DEFINITION`.
 
 ## Source-order and claim firewalls
 
@@ -80,30 +81,29 @@ Repaired Lane B makes PASS depend on an executable symbolic universal certificat
 
 Scientific consequence: the entire fixed-finite scalar-valued complex-linear selector class is excluded as a unique-extension selector. This does not exclude function-valued/infinite, differential/spectral/microlocal, nonlinear, or genuinely source-derived correlated joint-K5 selectors.
 
-### Iter080E-SM — primary joint-K5 function-space selector audit CLOSED BLOCKED
+### Iter080E-SM — historical terminal run INVALID_IMPLEMENTATION pending control-only repair
 
 Prospective preregistration: `f1a465a059f7c4da8270bed8021f920013b7f5da`.
 Source snapshot: `d51f7cc0f6970670cef1e73223b30cb70b00b8c0`.
 Machine source matrix: `57de797b4db6c179a9dea7c05ef45dc0ae05f990`.
 
-Initial production run `34831623440` failed before aggregate because Lane D used two brittle natural-language CURRENT matches. It is permanently non-authoritative and carries no scientific verdict. Control-only repair plan `18cc3355d86d02b1705ce593a73560409c6e460a` froze the unchanged contract and replaced only those prose matches with exact durable Iter080A/Iter080D classification identifiers. Repaired implementation/head: `ff8b1b1c4eaff1d91ad0e71f5932991b0fae81c3`.
+Initial production run `34831623440` failed before aggregate because Lane D used two brittle natural-language CURRENT matches. It remains permanently non-authoritative. Control-only repair plan `18cc3355d86d02b1705ce593a73560409c6e460a` replaced only those provenance matches. Repaired implementation/head: `ff8b1b1c4eaff1d91ad0e71f5932991b0fae81c3`.
 
-Authoritative repaired run: `34831723415`.
+Historical terminal run: `34831723415`.
 Jobs: A `103936364224`, B `103936364455`, C `103936364066`, D `103936364289`, aggregate `103936438154`.
 Aggregate artifact: `10342288214`, digest `sha256:deb957247a902aa92f6c432639da02c9c8492ca54edfd430b3e94ad7a6ed42e6`.
-Durable aggregate: `analysis/iter080e_sm_aggregate_result.json`, commit `c99451e73cda9cafe63ee082a6eaf139769b79a0`.
-Durable result: `results/ITER080E_SM_JOINT_K5_SELECTOR_SOURCE_AUDIT_RESULT.md`, commit `f3cc75c2aba3eee9677a6d0ca8b6bd0d358397bc`.
+Historical aggregate: `analysis/iter080e_sm_aggregate_result.json`, commit `c99451e73cda9cafe63ee082a6eaf139769b79a0`.
+Historical result: `results/ITER080E_SM_JOINT_K5_SELECTOR_SOURCE_AUDIT_RESULT.md`, commit `f3cc75c2aba3eee9677a6d0ca8b6bd0d358397bc`.
+Independent adversarial review: `results/ITER080E_ADVERSARIAL_IMPLEMENTATION_REVIEW.md`, commit `0eedd6f7630235326ef96ba75d05da44317f4d5e`; Critic handoff commit `a7410de505c40c40991bce7b84594e414c14b1f2`.
 
-Classification:
+Historical Researcher classification:
 `ITER080E_SM_PRIMARY_CAUSAL_TOLLER_CORPUS_HAS_NO_JOINT_K5_FUNCTION_SPACE_EXTENSION_SELECTOR_SOURCE_BLOCKED_EXACT_AUDIT_SCOPED`.
 
-Verdict: `BLOCKED_OBJECT_DEFINITION`.
+Independent Critic verdict: `INVALID_IMPLEMENTATION`.
 
-Frozen primary-source coverage was complete for BCG `2601.23162`, BCG `2604.24945`, and Beltran `2603.22661v2`. No real source row satisfies all five prospectively frozen selector requirements: genuine correlated joint-K5 action, source-order compatibility, full object reach, uniqueness on the full Iter077Q function-space ambiguity, and joint regulator/branch/normalization authority.
+Decisive defect: Lane B does not derive P1-P5 scientific statuses from frozen source evidence. It reads prefilled statuses from the Iter080E source matrix, checks only that matching status/anchor strings occur in the Iter080E-authored source snapshot, and computes eligibility from those statuses. Lane A verifies hashes of older evidence files but does not parse their semantic content for P1-P5; Lane B never reads them. This matches the preregistered `INVALID_IMPLEMENTATION` condition against trusting prefilled verdict/status fields.
 
-BCG `2601.23162` supplies the physical one-wedge spectral Toller branch and the formal ten-Toller local vertex product/group-integral expression, but no explicit correlated collision extension/finite part/contour/interchange/uniqueness prescription on `W`. BCG `2604.24945` remains one-wedge/local analytic for this selector question. Beltran `2603.22661v2` supplies arbitrary-2-complex causality and generalized causal local vertices, but no joint Iter077Q collision-extension selector.
-
-**Do not repeat this frozen primary-source scan absent genuinely new/revised primary authority.** This result is not a theorem that no mathematically valid selector or causal-vertex distribution can exist; it says the presently frozen source-defined CRQN object does not contain the needed unique selector.
+Therefore run `34831723415` and its `BLOCKED_OBJECT_DEFINITION` classification are preserved for provenance but are not authoritative. A control-only retry must bind each P1-P5 status to source-specific frozen evidence rather than self-authored status labels. Existing narrower Iter077K/Iter079A negative source facts remain authoritative.
 
 ## Causal multi-vertex inheritance
 
@@ -125,25 +125,27 @@ The validated KKL + BCG `2601.23162` + Beltran `2603.22661v2` corpus does not ex
 
 ## Exact blockers
 
-1. `FUNCTION_SPACE_K5_DISTRIBUTIONAL_EXTENSION_SELECTOR` — Iter077Q infinite-dimensional ambiguity; finite permutation covariance and every fixed finite scalar-linear selector are known not to select uniquely, and the complete frozen BCG/Beltran primary corpus contains no P1-P5-complete correlated joint-K5 selector.
-2. `CRQN_V0_2_EXISTING_AXIOM_FUNCTION_SPACE_SELECTOR_CENSUS` — not yet tested; this is an anti-rescue check for a selector already independently specified in the candidate/model axioms before the obstruction was known.
-3. `CAUSAL_MULTIVERTEX_E3_E4_E6_COMPLETE_SOURCE_BRIDGE` for the currently validated source corpus.
-4. `E7_E8_DISTRIBUTIONAL_EXTENSION_TRANSPORT_OR_SELECTOR`.
-5. `RG_REFINEMENT_E9_COARSE_FINE_BOUNDARY_MAP_AND_MATCHING_FUNCTIONAL`.
-6. `REGULATOR_INDEPENDENCE_AFTER_OBJECT_DEFINITION`.
+1. `FUNCTION_SPACE_K5_DISTRIBUTIONAL_EXTENSION_SELECTOR` — Iter077Q infinite-dimensional ambiguity; finite permutation covariance and every fixed finite scalar-linear selector are known not to select uniquely. The broader Iter080E P1-P5 primary-source census is pending control-only implementation repair; existing Iter077K/Iter079A still provide narrower negative source facts.
+2. `ITER080E_CONTROL_ONLY_SOURCE_PREDICATE_REPAIR` — required before Iter080E can be used as an authoritative complete frozen-corpus census.
+3. `CRQN_V0_2_EXISTING_AXIOM_FUNCTION_SPACE_SELECTOR_CENSUS` — not yet tested; anti-rescue check for a selector already independently specified in candidate/model axioms before Iter077Q. This remains downstream of the Iter080E repair for the current Researcher sequence.
+4. `CAUSAL_MULTIVERTEX_E3_E4_E6_COMPLETE_SOURCE_BRIDGE` for the currently validated source corpus.
+5. `E7_E8_DISTRIBUTIONAL_EXTENSION_TRANSPORT_OR_SELECTOR`.
+6. `RG_REFINEMENT_E9_COARSE_FINE_BOUNDARY_MAP_AND_MATCHING_FUNCTIONAL`.
+7. `REGULATOR_INDEPENDENCE_AFTER_OBJECT_DEFINITION`.
 
 Any blocked mandatory arrow prevents full-QG completion.
 
 ## CRQN survival chain
 
-`carrier/source mechanism F1-F8` -> `local source-ordered K5 off-collision object` -> `non-L1 common-collision behavior` -> `same-scaling-degree extensions exist` -> `infinite-dimensional source-compatible tangential ambiguity` -> `finite K5 permutation covariance DOES NOT SELECT` -> `fixed finite scalar-linear conditions DO NOT SELECT` -> `frozen primary causal/Toller corpus HAS NO P1-P5-COMPLETE JOINT-K5 SELECTOR` -> `pre-existing CRQN v0.2 independent selector axiom ?` -> `unique local amplitude ? BLOCKED` -> `many-vertex E3/E4/E6 source bridge ? BLOCKED` -> `E7/E8 transport ?` -> `G3 ?` -> `finiteness/regulator removal ?` -> `RG/E9 ?` -> `continuum 3+1 Lorentzian geometry ?` -> `massless spin-2 ?` -> `Einstein/GR recovery ?` -> `matter/QFT IR ?` -> `normalized falsifiable prediction ?`.
+`carrier/source mechanism F1-F8` -> `local source-ordered K5 off-collision object` -> `non-L1 common-collision behavior` -> `same-scaling-degree extensions exist` -> `infinite-dimensional source-compatible tangential ambiguity` -> `finite K5 permutation covariance DOES NOT SELECT` -> `fixed finite scalar-linear conditions DO NOT SELECT` -> `Iter080E primary causal/Toller P1-P5 census ? INVALID_IMPLEMENTATION pending repair` -> `pre-existing CRQN v0.2 independent selector axiom ?` -> `unique local amplitude ? BLOCKED` -> `many-vertex E3/E4/E6 source bridge ? BLOCKED` -> `E7/E8 transport ?` -> `G3 ?` -> `finiteness/regulator removal ?` -> `RG/E9 ?` -> `continuum 3+1 Lorentzian geometry ?` -> `massless spin-2 ?` -> `Einstein/GR recovery ?` -> `matter/QFT IR ?` -> `normalized falsifiable prediction ?`.
 
 ## Next admissible Researcher gate
 
 At each recovery first inspect queued/in-progress/newly-terminal runs and consume all new artifacts before opening work.
 
-1. Do **not** repeat finite permutation symmetry, neighboring invariant-polynomial multipliers, fixed finite scalar normalization/counterterm examples, toy contraction counts, larger-`V` gauge-orbit counting, or the frozen BCG/Beltran joint-K5 selector source census.
-2. Highest-value successor: prospectively freeze `CRQN_V0_2_EXISTING_AXIOM_FUNCTION_SPACE_SELECTOR_CENSUS / ANTI_RESCUE_DECISION_GATE`. Audit only the candidate/model specification and axioms that pre-date the Iter077Q obstruction for a genuinely independently motivated full-function-space selector already belonging to CRQN v0.2. Do not manufacture a selector as a repair.
-3. If no such pre-existing selector exists, record that CRQN v0.2 remains blocked at the local-amplitude arrow until genuinely new/revised primary authority or a separately motivated, prospectively testable candidate version is introduced.
-4. Do **not** repeat the KKL/BCG/Beltran E3/E4/E6 source scan unless a genuinely new or revised primary source changes the object definition.
-5. E7/E8, G3, regulator independence and RG remain downstream-locked until prerequisites are real.
+1. First priority is a **control-only Iter080E repair/retry under the unchanged preregistration**. Lane B PASS/BLOCKED must depend on source-specific frozen evidence, not P1-P5 status labels authored in the Iter080E matrix/snapshot. Verify cited evidence blobs by SHA and bind every predicate to explicit source-specific factual anchors or an independently frozen source-audit evidence structure; scientific eligibility must depend on those checks.
+2. Preserve historical runs `34831623440` and `34831723415`, artifacts and result note unchanged; do not rewrite their verdicts.
+3. Do not launch a competing authoritative gate on the same Iter080E source-census object while the repair is pending.
+4. If the repaired execution again yields no P1-P5-complete real source row, restore `BLOCKED_OBJECT_DEFINITION`; only then proceed to `CRQN_V0_2_EXISTING_AXIOM_FUNCTION_SPACE_SELECTOR_CENSUS / ANTI_RESCUE_DECISION_GATE`.
+5. Do **not** repeat finite permutation symmetry, neighboring invariant-polynomial multipliers, fixed finite scalar normalization/counterterm examples, toy contraction counts, larger-`V` gauge-orbit counting, or the KKL/BCG/Beltran E3/E4/E6 source scan absent genuinely new/revised primary authority.
+6. E7/E8, G3, regulator independence and RG remain downstream-locked until prerequisites are real.
