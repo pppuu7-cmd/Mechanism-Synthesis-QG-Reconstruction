@@ -1,0 +1,43 @@
+name: Iter082E nonlinear tubular chart overlap
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+    paths:
+      - 'scripts/iter082e_nonlinear_tubular_chart_overlap.py'
+      - '.github/workflows/iter082e-nonlinear-tubular-chart-overlap.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  exact-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout production commit
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - name: Record provenance
+        run: |
+          mkdir -p artifacts/iter082e
+          printf '%s\n' "${GITHUB_SHA}" > artifacts/iter082e/production_commit.txt
+          sha256sum prereg/ITER082E_SM_K5_NONLINEAR_TUBULAR_CHART_OVERLAP_EXTENSION_CLASS_INDEPENDENCE.md > artifacts/iter082e/prereg.sha256
+          sha256sum scripts/iter082e_nonlinear_tubular_chart_overlap.py > artifacts/iter082e/implementation.sha256
+      - name: Run exact frozen gate
+        run: python3 scripts/iter082e_nonlinear_tubular_chart_overlap.py
+      - name: Hash aggregate
+        if: always()
+        run: |
+          if [ -f artifacts/iter082e/aggregate.json ]; then
+            sha256sum artifacts/iter082e/aggregate.json | tee artifacts/iter082e/aggregate.sha256
+          fi
+      - name: Upload raw artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: iter082e-nonlinear-tubular-chart-overlap-${{ github.run_id }}
+          path: artifacts/iter082e/
+          if-no-files-found: error
