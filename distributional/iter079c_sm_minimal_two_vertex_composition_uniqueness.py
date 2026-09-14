@@ -66,9 +66,15 @@ def lane_D():
     if not p.exists():
         return {"iteration": ITER, "lane":"D", "valid":False, "scientific_outcome":"INVALID", "reason":"Iter079B durable result missing"}
     text = p.read_text(encoding="utf-8")
+    # Control-only repair: accept the authoritative durable notation "E3-E6"
+    # as equivalent provenance for the frozen four-object missing bridge lock.
+    e3_e6_recorded = (
+        "E3-E6 remain missing required objects" in text
+        or all(k in text for k in ["E3", "E4", "E5", "E6"])
+    )
     locks = {
         "iter079b_classification_present": "ITER079B_SM_PARENT_COMPOSITION_SKELETON_EXISTS_BUT_CAUSAL_INHERITANCE_REQUIRES_NEW_BRIDGE_E3_E8_BLOCKED_EXACT_SOURCE_AUDIT" in text,
-        "E3_E6_missing_recorded": all(k in text for k in ["E3", "E4", "E5", "E6"]),
+        "E3_E6_missing_recorded": e3_e6_recorded,
         "parent_not_silent_causal_authority": "may not be silently" in Path("prereg/ITER079C_SM_MINIMAL_TWO_VERTEX_COMPOSITION_UNIQUENESS.md").read_text(encoding="utf-8")
     }
     valid = all(locks.values())
@@ -94,7 +100,7 @@ def aggregate(root):
         classification = INVALID_CLASS
         verdict = "INVALID"
     out = {
-        "iteration":ITER, "execution_valid":execution_valid, "verdict":verdict, "classification":classification,
+        "iteration":ITER, "execution_valid":execution_valid, "verdict":verdict,"classification":classification,
         "lane_scientific_outcomes":{k:data[k]["scientific_outcome"] for k in data},
         "new_scientific_fact":"Local causal one-vertex data plus combinatorial gluing do not uniquely fix minimal two-vertex normalization/pairing or internal weight: exact inequivalent compositions exist unless an E3/E4 inheritance rule is added." if verdict=="BLOCKED" else "",
         "next_admissible_gate":"If BLOCKED, isolate E5/E6 orientation-duality and gauge-quotient inheritance; keep E7/E8 separate until an E3-E6 composed object exists.",
