@@ -7,6 +7,8 @@ on:
     paths:
       - 'prereg/ITER080F_SM_CRQN_V0_2_EXISTING_AXIOM_FUNCTION_SPACE_SELECTOR_CENSUS.md'
       - 'analysis/iter080f_sm_crqn_existing_axiom_selector_census.py'
+      - 'analysis/iter080f_sm_crqn_existing_axiom_selector_census_repaired.py'
+      - 'status/ITER080F_CONTROL_ONLY_TIMEZONE_PROVENANCE_REPAIR_PLAN.md'
       - '.github/workflows/iter080f_sm_crqn_existing_axiom_selector_census.yml'
 
 permissions:
@@ -22,7 +24,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - run: mkdir -p out && python analysis/iter080f_sm_crqn_existing_axiom_selector_census.py --lane A --output out/iter080f_sm_A.json
+      - run: mkdir -p out && python analysis/iter080f_sm_crqn_existing_axiom_selector_census_repaired.py --lane A --output out/iter080f_sm_A.json
       - uses: actions/upload-artifact@v4
         with:
           name: iter080f-sm-A
