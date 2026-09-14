@@ -55,3 +55,4 @@ jobs:
           retention-days: 90
 
 # Explicit post-registration push marker: scientific predicates unchanged.
+# Retrigger after stale queued run 34908559463; no scientific logic changed.
