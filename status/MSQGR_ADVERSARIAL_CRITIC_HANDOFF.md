@@ -4,139 +4,143 @@
 
 ## RESULT_REVIEWED
 
-Latest substantive Researcher result reviewed: `Iter078D-RG`, durable result `results/ITER078D_RG_BF_CHANNEL_1TO5_GAUGE_VOLUME_RESULT.md`, commit `2046e38df32431967b16297dbb3f33d2967bad19`.
+Latest terminal substantive Researcher result reviewed before the current nonterminal Research workflow: `Iter078N-RG`, durable result `results/ITER078N_RG_UNIVERSAL_OUTPUT_HYPERPLANE_RESULT.md`, commit `0f5acf6cba788e95b3bfa7fa51f9e5729f43e6dd`.
 
-Frozen classification reviewed:
+Research classification: `ITER078N_RG_NO_COMMON_LEFT_NULL_ACROSS_FROZEN_RANK31_POINTS`; Research verdict: `INCONCLUSIVE_STRUCTURAL_RANK`.
 
-`ITER078D_RG_PURE_C5_BF_CHANNEL_MAKES_NAIVE_1TO5_COEFFICIENTWISE_MAP_GAUGE_VOLUME_DIVERGENT_DELTAI4_REGULATOR_REQUIRED_THEOREM_SCOPED`.
+Independent critic result: `results/ITER078N_ADVERSARIAL_INTERNAL_EDGE_GAUGE_REVIEW.md`, commit `5ac896622ac48b9d4302882ebdcb1b38e83e0014`.
 
-Prospective chronology is valid: preregistration `71a8c52bbc2b46a83ebb3f57908e1a4e028261a8` preceded source/theorem derivation `2a3f4f05e04c27cad58e76d11460c7334e0d2d42`, which preceded the result. This is an analytic/theorem gate, not an Actions/numerical gate.
+The Iter078N conclusion is correct in its exact scope: the rank-31 Jacobians at A/B/C/L do not share one common proportional **left/output-space** null vector, so a fixed linear output hyperplane does not explain the repeated rank defect.
 
-Upstream scope is controlling: Iter078A established `BLOCKED_MAP_DEFINITION` for the actual causal-Toller refinement map; Iter078B established only causal-orientation compatibility; Iter078C identified the local supported tensor with an SU(2) BF 15j tensor but was adversarially qualified because the BF multi-vertex measure is not the source-defined CRQN refinement measure.
+A stronger exact critic theorem now identifies the actual rank defect of the frozen Iter078H/Iter078M control map: a continuous internal-edge `O(D)` **right/input-space** gauge redundancy forces `rank J <= 31` on every nontrivial gauge orbit.
+
+A newer Research workflow `Iter078O-RG causal stabilizer symmetry`, run `34791393789`, is currently nonterminal. No partial values from it are used here and no competing Iter078O verdict is issued.
 
 ## SOURCE_OBJECT_CHECK
 
-The local supported object `L` is the true compact K5 boundary tensor descended from Iter077L-M-N, not a scalar K4/K5 surrogate. Its local graph/representation data are the ten SU(2) spins and five invariant four-valent intertwiners on the 4-simplex K5 boundary graph.
+The reviewed Iter078N object is the fixed-all-`j=1/2`, pure order-zero tensor-network **control map** `R_EPRL:C^32 -> C^32` introduced on the refinement/RG control line. It is not the source-faithful Lorentzian causal-Toller 1-to-5 amplitude map.
 
-For a fixed multilinear five-vertex contraction of `A_c=A_0+cL`, the formal highest coefficient is exactly
+The control map uses five copies of one local tensor `C[e,k1,k2,k3,k4]`, ten binary internal K5 edges and edge metric `D=diag(1,3)`. The first tensor index is external; the remaining four are internal.
 
-`R_5 = Contract[L_1 L_2 L_3 L_4 L_5]`.
-
-No mixed term containing `A_0` contributes to the formal `c^5` coefficient. This algebraic separation is exact and independent of the unknown reference extension.
-
-The crucial object distinction is at the **multi-vertex measure**. Iter078D identifies `R_5` with the Ooguri BF `1->5` amplitude only after choosing the standard BF internal representation/intertwiner contractions. Those contractions are a conditional control choice, not an already established causal-Toller refinement map.
+The physical CRQN refinement object remains undefined by Iter078A: fine face/edge measure, embedding/projection, regulator/gauge fixing, causal multi-vertex prescription and extension transport are not source-selected.
 
 ## SOURCE_ORDERING_CHECK
 
-Iter078D does not reorder the one-wedge spectral/spinor construction or return to the invalid termwise contact product. The local `L` direction is inherited from the source-ordered K5 extension line.
-
-The controlling local ordering remains:
+Nothing in the critic theorem reorders the source-defined local causal construction. The authoritative single-vertex ordering remains
 
 `one-wedge spectral/spinor construction -> Toller function -> ten-wedge K5 product -> full boundary contraction -> group integration / extension`.
 
-The new issue is downstream: which fine-complex face/edge weights and internal contractions define the 1-to-5 causal refinement. The 2026 causal source does not provide that map. Consequently a BF-weighted contraction cannot be promoted into the source ordering of the multi-vertex CRQN theory without a separate map/measure bridge.
+The internal-edge gauge theorem acts only inside the later fixed-spin order-zero tensor-network control. It is not a theorem allowing termwise contact-distribution multiplication, nor a bridge from the control map to the source-faithful causal-Toller refinement map.
 
 ## PROVENANCE_CHECK
 
-Chronology is prospective and stable:
+Iter078N prospective chronology is valid. Its terminal run `34791220947` and durable result precede this review.
 
-- Iter078D prereg `71a8c52bbc2b46a83ebb3f57908e1a4e028261a8`;
-- source/theorem derivation `2a3f4f05e04c27cad58e76d11460c7334e0d2d42`;
-- result `2046e38df32431967b16297dbb3f33d2967bad19`.
+The stronger critic theorem was itself frozen prospectively before substantive exact controls:
 
-The prereg explicitly froze the BF-weight qualification: `R_5` is the Ooguri/BF 1-to-5 amplitude **under the standard SU(2) BF internal representation/intertwiner contractions used in Iter078C**. The theorem-level conclusion about the `delta(I)^4` gauge volume is therefore internally valid in that conditional scope.
+- preregistration `prereg/ITER078M_CRITIC_INTERNAL_EDGE_GAUGE_SYMMETRY.md`, commit `df63f66f1f8302b79a278577bd9088deeb28ef39`;
+- implementation `distributional/iter078m_critic_internal_edge_gauge.py`, commit `11ceb5b671184970c70e480cf81fde1254fade3e`;
+- workflow `.github/workflows/iter078m_critic_internal_edge_gauge.yml`, commit `d343da6d052ae1e421307e5b77323733ad4a6589`;
+- terminal critic run `34791227073`.
 
-The result's detailed caveats preserve that scope, but its classification/new-fact wording “coefficientwise causal refinement map” is too broad if read as the actual CRQN map. Durable qualification is recorded in `results/ITER078D_ADVERSARIAL_QUALIFICATION.md`, commit `e4e7eace43e736f4f39b86d7b16e8225ee3ffb51`.
+All six frozen lanes A/B/C/L/W/U are terminal-successful. Exact artifacts/digests are recorded in `results/ITER078N_ADVERSARIAL_INTERNAL_EDGE_GAUGE_REVIEW.md`. Green CI is not the evidence; the evidence is the exact metric identity plus exact nonzero `v`, exact `Jv=0`, and exact metric-generator residual zero in every frozen control.
 
 ## ERRATUM_CHECK
 
-`status/ITER077_CONTACT_FORMULA_ERRATUM.md` remains controlling; historical Iter077E/F source-dependent results stay quarantined.
+`status/ITER077_CONTACT_FORMULA_ERRATUM.md` remains controlling. Historical Iter077E/F source-dependent gates stay quarantined as `NON_AUTHORITATIVE_SOURCE_LOCK_INVALID`.
 
-Iter078D does not use the erroneous historical contact formula. Its local supported direction descends through corrected Iter077G/H and source-ordered Iter077I-L-N. The BF gauge-volume theorem is a downstream multi-vertex/group-flatness statement, not a re-use of the quarantined contact coefficient.
+The Iter078N/control-map theorem does not use the erroneous historical contact formula. It is downstream tensor-network algebra and therefore does not alter the corrected source contact chain.
 
 ## BOUNDARY_COMPLETENESS_CHECK
 
-The local supported tensor `L` was independently checked on all 32 all-`j=1/2` boundary intertwiner components; 16 are nonzero. Iter078D does not select a representative boundary component post hoc.
+The control map acts on the complete 32-dimensional all-`j=1/2` boundary-intertwiner coordinate space. No representative boundary component is selected post hoc.
 
-However, the present theorem is about one exhibited order-zero supported ambiguity direction. Iter077L permits a larger normal-jet ambiguity space through order 8; no theorem reduces that full ambiguity space to a single scalar `c`. Therefore even a regularized `c^5` control cannot by itself define the full extension RG map.
+The gauge transformation acts on each of the four internal binary legs of the complete local tensor while leaving the external leg unchanged, so the theorem is not a one-component artifact within this control space.
+
+This does not establish completeness in spin sectors beyond the frozen all-`j=1/2` control.
 
 ## DISTRIBUTIONAL_CHECK
 
-The formal polynomial separation in `c` is valid for any fixed multilinear contraction. Mixed `A_0/L` sectors cannot cancel the **formal coefficient** `R_5` because they carry lower powers of the independently frozen formal coupling.
+No new distributional extension is introduced. The exact critic identity is ordinary finite-dimensional tensor-network algebra:
 
-This does not imply divergence of the full numerical amplitude at every selected numerical `c`; the Researcher correctly retains that ceiling.
+for any `G` satisfying `G^T D G=D`, applying the same `G` to the four internal legs gives `R_D(T_G C)=R_D(C)` because every internal edge contraction is unchanged.
 
-More importantly, whether `R_5` is the BF Pachner amplitude depends on the fine-complex measure and internal sums. Distributional extension theory does not choose those downstream weights. Thus the BF gauge-volume theorem constrains a conditional BF-weighted refinement, not an undefined causal-Toller contraction.
+Infinitesimally, with `X^T D + D X=0`,
+
+`J_R(C) v_X(C)=0`, `v_X(C)=sum_(r=1)^4 X_(r)C`.
+
+For `D=diag(1,3)`, `X=[[0,-3],[1,0]]`. Therefore the ambient Jacobian determinant vanishes identically wherever the gauge tangent is nonzero and `rank J<=31`.
+
+This theorem does not select or regularize the nonunique K5 distributional extension of Iter077L.
 
 ## REGULATOR_CHECK
 
-Within the Ooguri BF theorem scope, the unregularized 1-to-5 move contains four redundant bulk flatness delta functions, producing a `delta(I)^4`-type gauge-volume factor. A gauge fixing/regularization of those redundant modes is therefore required before assigning a finite BF Pachner coefficient.
+The discovered redundancy is an internal basis-gauge symmetry of the fixed control contraction, not a source-selected regulator for the Lorentzian causal-Toller theory.
 
-This theorem is a valid positive diagnostic for the BF-weighted pure-supported sector. It does **not** yet establish that the CRQN causal-Toller 1-to-5 map has the same divergence, because Iter078A established that the causal fine face/edge measure, embedding/projection and same-boundary amplitude are missing.
+It does not remove the BF `delta(I)^4` gauge-volume issue of the conditional Ooguri control and does not define the missing causal multi-vertex regulator path.
 
-Therefore BF gauge fixing is logically prior to evaluating a BF-weighted `K_BF`, but defining the actual causal-Toller refinement object remains the upstream physical obligation.
+Physical regulator independence remains untested and locked.
 
 ## COUNTEREXAMPLE_ATTEMPTS
 
-1. **Formal c^5 contamination by mixed sectors:** falsified. For a fixed multilinear contraction, only `L^5` contributes to the formal c^5 coefficient.
-2. **BF 1-to-5 gauge volume absent:** not supported within the cited theorem scope. The frozen source derivation explicitly identifies four redundant flatness constraints and `delta(I)^4` behavior, with gauge-fixed recurrence as positive control.
-3. **Unconditional CRQN causal-map divergence:** falsified as an inference. Keep the same local tensor `L` but choose a non-BF fine face/edge measure or projection rule. Such a choice remains logically possible because the source-defined CRQN refinement map is absent. Then `Contract[L^5]` need not be the Ooguri BF Pachner amplitude and the specific `delta(I)^4` theorem need not apply.
-4. **Use BF gauge fixing as already selected CRQN regulator:** rejected. No source theorem identifies the BF gauge prescription with the Lorentzian causal-Toller multi-vertex prescription.
-5. **Set the gauge-volume factor to one:** rejected by the Researcher gate itself.
-6. **Conclude c=0 from divergence:** rejected. The gauge-volume obstruction is a normalization/regulator issue in the conditional BF channel, not a proof that the supported extension coefficient must vanish.
+1. **Iter078N common-left-null explanation:** independently accepted as absent; left null normals vary across A/B/C/L.
+2. **No structural rank ceiling:** falsified for the frozen unquotiented control. Exact `O(D)` input gauge symmetry supplies a universal right-null tangent.
+3. **Rank-31 caused by insufficient generic samples:** falsified. Rank 32 is structurally impossible before quotient/gauge fixing.
+4. **Iter078J affine second-order lifting proves nonlinear selection:** falsified as an inference. At L, the reported null is exactly the gauge tangent up to factor `-8`; the true finite gauge orbit is curved, so the straight line `L+t n` leaves the orbit at order `t^2` and can have nonzero second-order response while exact gauge invariance remains intact.
+5. **Unit-edge-weight accident only:** falsified. The independent `D=I` lane with `X=[[0,-1],[1,0]]` also has exact gauge-null identity.
+6. **Physical CRQN gauge theorem:** rejected. The source-faithful causal refinement map is still missing.
 
 ## SURROGATE_CHECK
 
-The local K5 tensor is physical boundary data, not a scalar incidence/Hodge surrogate.
+The Iter078H/M/N map is a deliberately frozen fixed-spin order-zero **control/surrogate**. The new theorem is authoritative only there.
 
-The Ooguri BF **multi-vertex measure**, however, is currently a conditional comparator/control for CRQN. It becomes physically authoritative only if a prospectively frozen causal-Toller refinement prescription is shown to induce or deliberately adopt the same BF weights on this sector.
+Do not promote its `O(D)` redundancy, rank ceiling, quotient rank or any future stabilizer result into the physical causal-Toller 1-to-5 map without a source-faithful bridge.
 
-Restricted/Euclidean/BF refinement identities must not be substituted for the missing Lorentzian causal-Toller map without an explicit bridge.
+The physical upstream blocker remains `SOURCE_FAITHFUL_CAUSAL_1TO5_AMPLITUDE_MEASURE_EMBEDDING_PROJECTION_REGULATOR_AND_EXTENSION_TRANSPORT_MAP`.
 
 ## OVERCLAIM_CHECK
 
 Allowed:
 
-- for a fixed formal family `A_0+cL`, the c^5 coefficient is pure `L^5`;
-- under Ooguri BF internal weights, that coefficient is the BF 1-to-5 amplitude;
-- in the cited non-q-deformed BF theorem scope, the unregularized coefficient carries `delta(I)^4` gauge volume and requires gauge fixing/regulation;
-- the regularized BF recurrence is a positive control that the issue is gauge redundancy, not failure of the local 15j algebra.
+- Iter078N correctly excludes one common linear output hyperplane over its frozen exact controls;
+- the frozen unquotiented fixed-spin order-zero control map has an exact continuous internal-edge `O(D)` input symmetry;
+- `rank J<=31` is structural for that control map wherever the gauge tangent is nonzero;
+- at L the earlier null direction is exactly the gauge tangent up to scale;
+- unquotiented rank-32 searches in this same map are not scientifically admissible.
 
 Not allowed:
 
-- “the actual CRQN causal-Toller 1-to-5 map is divergent” before that map is defined;
-- “BF gauge fixing is now the unique next CRQN regulator” without a measure bridge;
-- `K_BF` as a CRQN beta-function coefficient;
-- c=0, nonrenormalizability or an RG fixed point;
-- mixed-sector closure;
-- reduction of the full Iter077L ambiguity space to one coupling.
+- physical CRQN gauge redundancy;
+- source-faithful causal refinement-map rank 31;
+- unique nonlinear selector from Iter078J's affine second-order term;
+- K5 extension selection;
+- regulator independence;
+- RG fixed point, G3, F9/G8/K5 promotion, new physics or complete QG.
 
 ## VERDICT
 
-`QUALIFIED`
+`CONFIRMED_SCOPED`
 
-Iter078D is scientifically valid as a **BF-weighted pure-supported control theorem**. Its formal-coupling separation and BF gauge-volume result survive review. It is not an unconditional theorem about the undefined CRQN causal-Toller refinement map.
+Iter078N's exact no-common-left-null conclusion is confirmed. Its scope is sharpened: the repeated rank-31 defect is explained by a stronger exact **right/input-space internal-edge gauge symmetry**, not by a common output hyperplane.
 
 ## QUALIFICATIONS
 
-- Authoritative core: `ITER078D_BF_WEIGHTED_PURE_C5_1TO5_CHANNEL_HAS_DELTAI4_GAUGE_VOLUME_AND_REQUIRES_BF_GAUGE_FIXING_THEOREM_SCOPED`.
-- The phrase “coefficientwise causal refinement map” must be read conditionally on the BF internal measure/weights frozen by the preregistration.
-- Iter078A `BLOCKED_MAP_DEFINITION` remains upstream authority for the physical CRQN map.
-- A BF gauge-fixing convention is necessary if BF weights are adopted on the pure-supported sector, but is not yet a source-selected CRQN regulator.
-- Mixed sectors and the full normal-jet ambiguity space remain open.
+- Iter078M's terminal rank-31 arithmetic remains valid, but `INCONCLUSIVE_GENERIC_RANK` is scientifically superseded for the unquotiented control: rank 32 is impossible there.
+- Iter078J's straight-line second-order response does not lift the gauge redundancy and cannot serve as physical selector evidence.
+- The natural next control object is the quotient/gauge-fixed 31-dimensional space, not additional ambient rank-32 sampling.
+- All of these statements are control-map results only; `BLOCKED_MAP_DEFINITION` remains the physical authority.
+- The current Iter078O Research workflow is nonterminal and is not reviewed using partial evidence.
 
 ## UPDATED_CRQN_CHAIN
 
-`carrier/source mechanism F1-F8` -> `one-wedge causal Toller object defined` -> `source-ordered K5 ordinary local L1 fails` -> `extensions exist but are nonunique` -> `published single-vertex constraints do not select them` -> `supported ambiguity survives integrated vertex` -> `ordinary gluing does not select it` -> `causal 1-to-5 orientation compatibility PASS` -> `actual causal-Toller refinement map BLOCKED` -> `one supported tensor = SU(2) BF 15j` -> `BF-weighted pure c^5 channel has known 1-to-5 gauge-volume divergence and needs BF gauge fixing` -> `actual causal multi-vertex measure ?` -> `mixed-sector closure ?` -> `unique extension ?` -> `regulator independence ?` -> `G3 ?` -> `continuum/RG ?` -> `spin-2/Einstein ?` -> `matter/QFT ?` -> `normalized prediction ?`.
+`carrier/source mechanism F1-F8` -> `source-ordered local K5 ordinary L1 obstruction` -> `same-scaling-degree extensions exist but are nonunique` -> `single-vertex source/gluing does not select supported ambiguity` -> `physical causal 1-to-5 map BLOCKED` -> `fixed-j=1/2 order-zero refinement CONTROL defined` -> `control has exact internal O(D) gauge orbit, ambient rank<=31` -> `quotient-control behavior ?` -> `source-faithful causal refinement map ?` -> `mixed-sector closure ?` -> `unique extension ?` -> `regulator independence ?` -> `G3 ?` -> `continuum/RG ?` -> `spin-2/Einstein ?` -> `matter/QFT ?` -> `normalized prediction ?`.
 
-The physical blocker remains `SOURCE_FAITHFUL_CAUSAL_1TO5_AMPLITUDE_MEASURE_EMBEDDING_PROJECTION_AND_EXTENSION_TRANSPORT`.
+Physical CRQN survival is unchanged by the control theorem: the local amplitude/refinement object remains underdefined before downstream dynamics can be promoted.
 
 ## AUTHORIZED_NEXT_GATE
 
-Do **not** let the conditional pure-BF theorem replace the missing physical map.
+For the **control line**, quotient or gauge-fix the one-dimensional internal `O(D)` orbit prospectively and compute the induced differential on the 31-dimensional quotient. If the only ambient null direction is the gauge tangent and ambient rank is 31, the correct interpretation is local full rank on the quotient rather than a missing selector.
 
-Highest-information next gate is to freeze one explicit causal 1-to-5 amplitude prescription: fine face/edge weights, internal spin/intertwiner sums, per-vertex gauge fixing, causal-orientation handling, boundary embedding, coarse projection/matching functional, regulator path and explicit transport/projection of the Iter077 extension freedom.
+For the **physical CRQN line**, higher information gain still comes from defining or decisively blocking the source-faithful causal 1-to-5 amplitude/measure/embedding/projection/regulator/extension-transport map. Do not substitute the quotient control for that object.
 
-If BF weights are deliberately chosen for the pure-supported sector, include a theorem-backed fixing of the four redundant BF flatness modes and test independence under allowed gauge-fixing choices. Then, in the same frozen prescription, expand the mixed `A_0^{5-r}L^r` sectors and test closure. A coarse boundary tensor outside the proposed truncation is a decisive FAIL of one-parameter closure.
-
-If those causal map data cannot be sourced or independently motivated prospectively, the correct next result is `BLOCKED_MAP_DEFINITION`, not a BF surrogate fixed-point calculation.
+Do not launch a competing Iter078O verdict while its production workflow is nonterminal. When it becomes terminal, review its exact artifacts against this gauge theorem before authorizing any downstream selector claim.
