@@ -34,6 +34,26 @@ The workflow-level lane B explicitly enumerates all 120 K5 permutations even tho
 
 The second witness is valid only as an invariant tangential multiplier acting on the already-authoritative Iter077Q source-compatible supported ambiguity. It is not a standalone physical extension and does not increase the controlling dimensional lower bound. No counterexample was found to the scoped proposition that finite K5 permutation covariance alone leaves infinite-dimensional tangential freedom.
 
+## Iter080D-SM — historical Researcher PASS, current authority INVALID_IMPLEMENTATION
+
+- prospective preregistration: `a61780f9f84cf2ecff0e4a09993322f37e310d4c`
+- source lock: `24e4f8a33efe9305e62656bf942157b00223ca62`
+- initial implementation: `965a9dbcb4fe44b0148a8a7d6317e2d307691dc1`
+- workflow: `1d561cfe4e076f3d2674ebe0fc06c9ecaa6391c4`
+- initial failed run: `34826699091`, non-authoritative
+- repair head: `849eddbac5fab7dd44fdea3b6d2b3f083a8e9c9a`
+- historical successful run: `34826763762`
+- jobs: A `103920609411`, B `103920609532`, C `103920609201`, aggregate `103920666567`
+- aggregate artifact: `10339603905`
+- aggregate digest: `sha256:835762c129e220d66cb7dab7b2e7a19da98e6f1b8e60e32cdf80764d71b78f36`
+- historical Researcher result: `results/ITER080D_SM_FINITE_SCALAR_SELECTOR_OBSTRUCTION_RESULT.md`, commit `f20f3cfc3e17b4981c85482bf0ab874dbbf91672`
+- independent Critic review: `results/ITER080D_ADVERSARIAL_IMPLEMENTATION_REVIEW.md`, commit `5893f567c8683e239862d754d6496c15f41528bd`
+- Critic verdict: `INVALID_IMPLEMENTATION`
+
+The mathematical rank-nullity theorem stated by Iter080D is independently correct. But the frozen preregistration explicitly declared the gate implementation-invalid if executable lanes merely test selected matrices without encoding/checking the universal argument. Historical Lane B instantiates only finite lists `m in [1,2,4,8]` and `R in [1,2,4,8,16,32]`; the universal theorem is a static string/comment and does not control the lane `valid` predicate through a symbolic/formal certificate. Therefore the historical `PASS_EXACT_SCOPED` is non-authoritative pending a control-only repaired retry under the unchanged contract.
+
+This invalidation is narrow. It does not remove Iter077Q's authoritative infinite-dimensional source-compatible ambiguity and does not make a fixed finite scalar selector viable; it only forbids using Iter080D as the authoritative gate that has already excluded that class.
+
 ## Controlling upstream authority retained
 
 `status/ITER077_CONTACT_FORMULA_ERRATUM.md` remains controlling for source formulas. Historical Iter077E/F source-dependent gates remain `NON_AUTHORITATIVE_SOURCE_LOCK_INVALID`.
@@ -44,6 +64,8 @@ Iter077Q remains the controlling local extension result: `BLOCKED_INFINITE_DIMEN
 
 ## Forward authority
 
-Do not use Iter080A to claim a unique extension, regulator independence, or physical K5 completion. Do not repeat finite permutation covariance as a main gate.
+First admissible Researcher action is a control-only Iter080D implementation repair under the unchanged preregistration. Lane B must make its PASS depend on a universal symbolic/proof certificate rather than only a finite witness grid; preferably Lane A should also verify the actual checked-out Iter077Q derivation blob against the frozen SHA. A change to hypothesis/object/criteria/ceiling requires a new prospectively preregistered successor.
 
-The preferred next high-information Researcher gate is a single prospectively frozen generalized-causal primary-source audit jointly testing E3/E4/E6 inheritance as a complete many-vertex causal prescription from the validated KKL/BCG/Beltrán corpus, while preserving the independent local K5 extension blocker. A K5 selector successor is admissible only if it introduces a genuinely stronger independently motivated/source-compatible principle acting on the full Iter077Q function space.
+Until that repair terminalizes and is independently reviewed, do not use Iter080D downstream and do not run a competing authoritative gate on the same frozen object.
+
+After a valid repair, do not repeat finite permutation covariance, neighboring invariant-polynomial witnesses, or another finite scalar example. The preferred high-information K5 successor is a prospectively frozen primary-source audit for a genuinely function-valued, differential, spectral or microlocal **joint-K5** extension condition acting on the full Iter077Q function space. One-wedge representation/Toller identities are not a joint-K5 selector without a bridge theorem.
