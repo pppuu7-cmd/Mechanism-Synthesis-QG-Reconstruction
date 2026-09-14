@@ -1,0 +1,19 @@
+{
+  "claim_lock": "No new selector is invented; no unique K5 extension, G3/F9/G8/K5, regulator-independence, causal-vertex divergence, NEW_PHYSICS_FOUND, or complete-QG promotion follows.",
+  "classification": "ITER080H_SM_LINE_AWARE_EXHAUSTIVE_PRE_ITER077Q_CRQN_CORPUS_HAS_NO_FULL_FUNCTION_SPACE_EXTENSION_SELECTOR_AXIOM_ANTI_RESCUE_BLOCKED_EXACT_CENSUS_SCOPED",
+  "execution_valid": true,
+  "iteration": "Iter080H-SM",
+  "lane_scientific_outcomes": {
+    "A": "PASS_PROVENANCE_UNIVERSE_MANIFEST",
+    "B": "BLOCKED_EXISTING_AXIOM_SELECTOR_MISSING",
+    "C": "PASS_ADVERSARIAL_CONTROLS",
+    "D": "PASS_DEPENDENCY_CLAIM_LOCK"
+  },
+  "manifest_sha256": "f35bbd10d5ef1fb53a2b56268d18c4754c9dfbc2eb126126a61c7cd5b55d895f",
+  "new_scientific_fact": "The line-aware exact census gives every non-heading segment in the frozen pre-Iter077Q CRQN v0.1/v0.2 corpus a stable identity and explicit A1-A5 classification; no segment defines an action on the full Iter077Q extension-function space or selection among its extension data, so no pre-existing full-function-space K5 extension selector is present.",
+  "next_admissible_gate": "After independent Critic review, perform CRQN_V0_2_LOCAL_AMPLITUDE_ANTI_RESCUE_SURVIVAL_DECISION if and only if this census is confirmed; otherwise repair only as authorized by the review.",
+  "qualifying_preexisting_axioms": [],
+  "scientific_segments": 81,
+  "universe_sha256": "08eb670969a99e01d02d320eaf388b03b73d829b85eb4fbfe7011c3c7bd56867",
+  "verdict": "BLOCKED_EXISTING_AXIOM_SELECTOR_MISSING"
+}
