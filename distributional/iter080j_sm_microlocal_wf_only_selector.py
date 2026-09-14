@@ -31,7 +31,7 @@ def lane_a():
 def lane_b():
     p = PREREG.read_text(); i = ITER029.read_text()
     checks = {
-        'iter029_predates_and_is_microlocal': 'exact microlocal cycle / wavefront audit' in i and 'Hörmander' in i,
+        'iter029_predates_and_is_microlocal': 'exact microlocal cycle / wavefront audit' in i and ('Hormander' in i or 'Hörmander' in i),
         'bf_source_frozen': 'math-ph/9903028' in p and 'Brunetti--Fredenhagen' in p,
         'dang_source_frozen': '1412.2808' in p and 'Dang' in p,
         'no_successor_construction': 'does not invent CRQN v0.3' in p,
