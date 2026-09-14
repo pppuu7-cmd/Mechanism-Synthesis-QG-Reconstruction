@@ -97,10 +97,13 @@ def main():
     )
 
     # P4: summed source remains at the authoritative nonzero r^-20 leading order.
+    # Control-only dependency-token repair prospectively frozen in
+    # prereg/ITER083D_SM_CONTROL_ONLY_P4_DEPENDENCY_LOCK_REPAIR.md.
     p4_lock, p4_missing = require(args.iter081h, [
         "16 C_alpha r^(-20)",
         "q=-20",
-        "16 eta=+1 assignments",
+        "d=12",
+        "eta=+1",
     ])
     p4 = p4_lock
 
