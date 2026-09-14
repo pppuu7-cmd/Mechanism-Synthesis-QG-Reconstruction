@@ -9,6 +9,8 @@ on:
       - 'sources/ITER080E_SM_JOINT_K5_SELECTOR_SOURCE_SNAPSHOT.md'
       - 'analysis/iter080e_sm_joint_k5_selector_source_matrix.json'
       - 'analysis/iter080e_sm_joint_k5_selector_source_audit.py'
+      - 'analysis/iter080e_sm_joint_k5_selector_source_audit_repaired.py'
+      - 'status/ITER080E_CONTROL_ONLY_SOURCE_PREDICATE_REPAIR_PLAN.md'
       - '.github/workflows/iter080e_sm_joint_k5_selector_source_audit.yml'
 
 permissions:
@@ -34,17 +36,17 @@ jobs:
           if-no-files-found: error
 
   lane-b:
-    name: Iter080E-SM lane B selector predicates
+    name: Iter080E-SM lane B repaired source predicates
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Run frozen lane B
+      - name: Run control-only repaired lane B
         run: |
           mkdir -p out
-          python analysis/iter080e_sm_joint_k5_selector_source_audit.py --lane B --output out/iter080e_sm_B.json
+          python analysis/iter080e_sm_joint_k5_selector_source_audit_repaired.py --lane B --output out/iter080e_sm_B.json
       - uses: actions/upload-artifact@v4
         with:
           name: iter080e-sm-B
