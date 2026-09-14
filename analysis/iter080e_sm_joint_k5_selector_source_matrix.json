@@ -1,0 +1,120 @@
+{
+  "iteration": "Iter080E-SM",
+  "contract": "prereg/ITER080E_SM_JOINT_K5_FUNCTION_SPACE_SELECTOR_SOURCE_AUDIT.md",
+  "contract_commit": "f1a465a059f7c4da8270bed8021f920013b7f5da",
+  "source_snapshot": "sources/ITER080E_SM_JOINT_K5_SELECTOR_SOURCE_SNAPSHOT.md",
+  "erratum": {
+    "path": "status/ITER077_CONTACT_FORMULA_ERRATUM.md",
+    "blob_sha": "63356e5099929f2b21d9d7296ab97f15ff163dba",
+    "required_anchor": "delta^(rho,1/2)(x) = -(2 i rho/D) delta(x) - (1/D) delta'(x)"
+  },
+  "required_predicates": [
+    "P1_JOINT_K5",
+    "P2_SOURCE_ORDER",
+    "P3_FULL_OBJECT_REACH",
+    "P4_FUNCTION_SPACE_UNIQUENESS",
+    "P5_REGULATOR_BRANCH_AUTHORITY"
+  ],
+  "sources": [
+    {
+      "id": "BCG_CAUSAL_VERTEX",
+      "arxiv": "2601.23162",
+      "primary": true,
+      "evidence_files": [
+        {
+          "path": "sources/CAUSAL_SPINFOAM_VERTEX_2026_SOURCE_SNAPSHOT.md",
+          "blob_sha": "006001f06ec9beef56906b2e808920e1ec72b99e"
+        }
+      ],
+      "predicates": {
+        "P1_JOINT_K5": {"status": "NOT_EXPLICIT", "anchor": "P1_JOINT_K5 = NOT_EXPLICIT"},
+        "P2_SOURCE_ORDER": {"status": "EXPLICIT_FOR_VERTEX_FORMULA", "anchor": "P2_SOURCE_ORDER = EXPLICIT_FOR_VERTEX_FORMULA"},
+        "P3_FULL_OBJECT_REACH": {"status": "EXPLICIT_FOR_FORMAL_VERTEX_FORMULA_ONLY", "anchor": "P3_FULL_OBJECT_REACH = EXPLICIT_FOR_FORMAL_VERTEX_FORMULA_ONLY"},
+        "P4_FUNCTION_SPACE_UNIQUENESS": {"status": "NOT_EXPLICIT", "anchor": "P4_FUNCTION_SPACE_UNIQUENESS = NOT_EXPLICIT"},
+        "P5_REGULATOR_BRANCH_AUTHORITY": {"status": "ONE_WEDGE_ONLY", "anchor": "P5_REGULATOR_BRANCH_AUTHORITY = ONE_WEDGE_ONLY"}
+      }
+    },
+    {
+      "id": "BCG_TOLLER_MATRICES",
+      "arxiv": "2604.24945",
+      "primary": true,
+      "evidence_files": [
+        {
+          "path": "sources/TOLLER_MATRICES_2026_CONJUGATION_BRANCH_FLIP_SNAPSHOT.md",
+          "blob_sha": "2f9312b5e596dffddd348fe57c58af59e4e51671"
+        },
+        {
+          "path": "sources/CAUSAL_VERTEX_TOLLER_ONEJET_SOURCE_SNAPSHOT.md",
+          "blob_sha": "7fc5482bff78ea97e7a64681413257b6c8d7d359"
+        },
+        {
+          "path": "sources/ITER079A_SM_CAUSAL_MULTIVERTEX_SOURCE_INHERITANCE_SNAPSHOT.md",
+          "blob_sha": "2c3c5744494faef8cf070bc49e031fb446ce1180"
+        }
+      ],
+      "predicates": {
+        "P1_JOINT_K5": {"status": "NOT_EXPLICIT", "anchor": "P1_JOINT_K5 = NOT_EXPLICIT"},
+        "P2_SOURCE_ORDER": {"status": "LOCAL_WEDGE_ONLY", "anchor": "P2_SOURCE_ORDER = LOCAL_WEDGE_ONLY"},
+        "P3_FULL_OBJECT_REACH": {"status": "NOT_EXPLICIT_FOR_EXTENSION", "anchor": "P3_FULL_OBJECT_REACH = NOT_EXPLICIT_FOR_EXTENSION"},
+        "P4_FUNCTION_SPACE_UNIQUENESS": {"status": "NOT_EXPLICIT", "anchor": "P4_FUNCTION_SPACE_UNIQUENESS = NOT_EXPLICIT"},
+        "P5_REGULATOR_BRANCH_AUTHORITY": {"status": "ONE_WEDGE_ONLY", "anchor": "P5_REGULATOR_BRANCH_AUTHORITY = ONE_WEDGE_ONLY"}
+      }
+    },
+    {
+      "id": "BELTRAN_GENERALIZED_CAUSAL",
+      "arxiv": "2603.22661v2",
+      "primary": true,
+      "evidence_files": [
+        {
+          "path": "sources/ITER079A_SM_CAUSAL_MULTIVERTEX_SOURCE_INHERITANCE_SNAPSHOT.md",
+          "blob_sha": "2c3c5744494faef8cf070bc49e031fb446ce1180"
+        }
+      ],
+      "predicates": {
+        "P1_JOINT_K5": {"status": "NOT_EXPLICIT", "anchor": "P1_JOINT_K5 = NOT_EXPLICIT"},
+        "P2_SOURCE_ORDER": {"status": "GENERALIZED_LOCAL_VERTEX_ONLY", "anchor": "P2_SOURCE_ORDER = GENERALIZED_LOCAL_VERTEX_ONLY"},
+        "P3_FULL_OBJECT_REACH": {"status": "NOT_EXPLICIT_FOR_COLLISION_EXTENSION", "anchor": "P3_FULL_OBJECT_REACH = NOT_EXPLICIT_FOR_COLLISION_EXTENSION"},
+        "P4_FUNCTION_SPACE_UNIQUENESS": {"status": "NOT_EXPLICIT", "anchor": "P4_FUNCTION_SPACE_UNIQUENESS = NOT_EXPLICIT"},
+        "P5_REGULATOR_BRANCH_AUTHORITY": {"status": "NOT_EXPLICIT_FOR_JOINT_EXTENSION", "anchor": "P5_REGULATOR_BRANCH_AUTHORITY = NOT_EXPLICIT_FOR_JOINT_EXTENSION"}
+      }
+    }
+  ],
+  "selector_eligible_status": "EXPLICIT",
+  "controls": {
+    "positive_synthetic": {
+      "P1_JOINT_K5": "EXPLICIT",
+      "P2_SOURCE_ORDER": "EXPLICIT",
+      "P3_FULL_OBJECT_REACH": "EXPLICIT",
+      "P4_FUNCTION_SPACE_UNIQUENESS": "EXPLICIT",
+      "P5_REGULATOR_BRANCH_AUTHORITY": "EXPLICIT"
+    },
+    "negative_one_wedge": {
+      "P1_JOINT_K5": "NOT_EXPLICIT",
+      "P2_SOURCE_ORDER": "LOCAL_WEDGE_ONLY",
+      "P3_FULL_OBJECT_REACH": "NOT_EXPLICIT_FOR_EXTENSION",
+      "P4_FUNCTION_SPACE_UNIQUENESS": "NOT_EXPLICIT",
+      "P5_REGULATOR_BRANCH_AUTHORITY": "ONE_WEDGE_ONLY"
+    },
+    "negative_finite_symmetry": {
+      "P1_JOINT_K5": "EXPLICIT",
+      "P2_SOURCE_ORDER": "EXPLICIT",
+      "P3_FULL_OBJECT_REACH": "EXPLICIT",
+      "P4_FUNCTION_SPACE_UNIQUENESS": "FINITE_SYMMETRY_ONLY",
+      "P5_REGULATOR_BRANCH_AUTHORITY": "EXPLICIT"
+    },
+    "negative_finite_scalar": {
+      "P1_JOINT_K5": "EXPLICIT",
+      "P2_SOURCE_ORDER": "EXPLICIT",
+      "P3_FULL_OBJECT_REACH": "EXPLICIT",
+      "P4_FUNCTION_SPACE_UNIQUENESS": "FIXED_FINITE_SCALAR_ONLY",
+      "P5_REGULATOR_BRANCH_AUTHORITY": "EXPLICIT"
+    },
+    "negative_causal_orientation": {
+      "P1_JOINT_K5": "NOT_EXPLICIT",
+      "P2_SOURCE_ORDER": "GENERALIZED_LOCAL_VERTEX_ONLY",
+      "P3_FULL_OBJECT_REACH": "NOT_EXPLICIT_FOR_COLLISION_EXTENSION",
+      "P4_FUNCTION_SPACE_UNIQUENESS": "NOT_EXPLICIT",
+      "P5_REGULATOR_BRANCH_AUTHORITY": "NOT_EXPLICIT_FOR_JOINT_EXTENSION"
+    }
+  }
+}
