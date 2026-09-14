@@ -1,0 +1,50 @@
+name: Iter080H-SM exhaustive pre-Iter077Q selector census
+
+on:
+  push:
+    paths:
+      - '.github/workflows/iter080h_sm_exhaustive_census.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  lane:
+    strategy:
+      fail-fast: false
+      matrix:
+        lane: [A, B, C, D]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run frozen lane
+        run: |
+          mkdir -p out
+          python analysis/iter080h_sm_exhaustive_census.py --lane ${{ matrix.lane }} --output out/iter080h_${{ matrix.lane }}.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter080h-sm-${{ matrix.lane }}
+          path: out/iter080h_${{ matrix.lane }}.json
+          if-no-files-found: error
+
+  aggregate:
+    needs: lane
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: iter080h-sm-*
+          path: downloaded
+          merge-multiple: false
+      - name: Aggregate frozen contract
+        run: |
+          mkdir -p out
+          python analysis/iter080h_sm_exhaustive_census.py --aggregate-dir downloaded --output out/iter080h_sm_aggregate.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter080h-sm-aggregate
+          path: out/iter080h_sm_aggregate.json
+          if-no-files-found: error
