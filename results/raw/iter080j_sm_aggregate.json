@@ -1,0 +1,13 @@
+{
+  "classification": "ITER080J_SM_WAVEFRONT_CONORMAL_ADMISSIBILITY_ALONE_CANNOT_SELECT_ITER077Q_INFINITE_SMOOTH_TANGENTIAL_AMBIGUITY_EXACT_THEOREM_SCOPED",
+  "complete": true,
+  "execution_valid": true,
+  "lane": "aggregate",
+  "lane_pass": {
+    "A": true,
+    "B": true,
+    "C": true,
+    "D": true
+  },
+  "verdict": "PASS_EXACT_SCOPED"
+}
