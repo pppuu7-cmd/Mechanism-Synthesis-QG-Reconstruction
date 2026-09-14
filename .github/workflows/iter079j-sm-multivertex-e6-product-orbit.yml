@@ -1,0 +1,52 @@
+name: Iter079J-SM multivertex E6 product orbit
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'code/iter079j_sm_multivertex_e6_product_orbit.py'
+      - 'prereg/ITER079J_SM_MULTIVERTEX_E6_PRODUCT_ORBIT.md'
+      - '.github/workflows/iter079j-sm-multivertex-e6-product-orbit.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  PYTHONUNBUFFERED: '1'
+
+jobs:
+  lane:
+    strategy:
+      fail-fast: false
+      matrix:
+        lane: [A, B, C, D]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run exact frozen lane
+        run: |
+          mkdir -p out
+          python code/iter079j_sm_multivertex_e6_product_orbit.py --lane ${{ matrix.lane }} --out out/iter079j_sm_${{ matrix.lane }}.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter079j-sm-${{ matrix.lane }}
+          path: out/iter079j_sm_${{ matrix.lane }}.json
+
+  aggregate:
+    needs: lane
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: iter079j-sm-*
+          path: raw
+      - name: Aggregate frozen classification
+        run: |
+          mkdir -p out
+          python code/iter079j_sm_multivertex_e6_product_orbit.py --lane aggregate --root raw --out out/iter079j_sm_aggregate.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter079j-sm-aggregate
+          path: out/iter079j_sm_aggregate.json
