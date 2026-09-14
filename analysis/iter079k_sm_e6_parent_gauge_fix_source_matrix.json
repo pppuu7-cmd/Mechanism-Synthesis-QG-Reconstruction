@@ -1,0 +1,50 @@
+{
+  "gate": "Iter079K-SM",
+  "prereg_commit": "fa6ed0fff963e5db2e6dfba4846b9cc9f10361bd",
+  "frozen_question": "parent E6 quotient/fixing prescription and causal inheritance source audit",
+  "primary_sources": [
+    {
+      "id": "EnglePereira2009",
+      "arxiv": "0805.4696v2",
+      "role": "parent Lorentzian EPRL gauge regularization",
+      "evidence": [
+        "Sec.3: one of five SL(2,C) integrations is redundant; its integral is the infinite group volume; regularization drops that last integral and is independent of which one is dropped.",
+        "Appendix C eqs.86-86ff: full-triangulation derivation; gauge freedom at each vertex; after simplicity constraints one can fix exactly one V_tv per 4-simplex to identity; this is explicitly stated equivalent to the regularization.",
+        "The full partition function is written as a product over vertex amplitudes after the local integrations are absorbed into A_v."
+      ]
+    },
+    {
+      "id": "BianchiChenGamonal2026",
+      "arxiv": "2601.23162",
+      "role": "causal/Toller vertex",
+      "evidence": [
+        "Eq.(4): causal vertex integrates prod_{a=2}^5 dg_a and replaces wedge Wigner D functions by Toller T functions.",
+        "Immediately after Eq.(4): SL(2,C) invariance is gauge-fixed to g_1=1 by introducing delta(g_1), citing Engle-Pereira regularization/finiteness authority.",
+        "Discussion: the paper focuses on the amplitude of a single vertex; that vertex is described as a building block for a many-vertex spinfoam path integral, but no full causal multi-vertex quotient/fixing normalization or gluing theorem is supplied there."
+      ]
+    }
+  ],
+  "frozen_lane_assessment_inputs": {
+    "A_parent_local_gauge_treatment": {
+      "redundancy_explicit": true,
+      "integration_removal_explicit": true,
+      "normalization_convention_explicit": true,
+      "reason": "drop the redundant group-volume integral / equivalently fix one V_tv per 4-simplex to identity"
+    },
+    "B_parent_full_triangulation_compatibility": {
+      "explicit": true,
+      "reason": "Appendix C derives the prescription in the full triangulation partition function and states one fixed V_tv per 4-simplex"
+    },
+    "C_causal_inheritance_bridge": {
+      "one_vertex_same_fix_explicit": true,
+      "many_vertex_normalization_inheritance_explicit": false,
+      "reason": "causal Eq.(4) fixes g1=1, but the paper explicitly focuses on a single vertex and does not derive a full causal many-vertex quotient/gluing normalization"
+    }
+  },
+  "forbidden_inferences": [
+    "Do not infer a many-vertex causal normalization merely from using the same one-vertex gauge condition.",
+    "Do not divide by an infinite group volume beyond the explicit parent prescription.",
+    "Do not insert a Faddeev-Popov determinant or rescale Haar measure post hoc.",
+    "Do not promote E7/E8, K5 extension uniqueness, convergence, G3, F9/G8, RG, or new physics."
+  ]
+}
