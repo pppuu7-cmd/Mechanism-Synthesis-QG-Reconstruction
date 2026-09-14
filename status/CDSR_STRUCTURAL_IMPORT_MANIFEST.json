@@ -1,0 +1,94 @@
+{
+  "import_kind": "CDSR -> MSQGR STRUCTURAL IMPORT",
+  "integration_only": true,
+  "new_scientific_iteration": false,
+  "repository_merge": false,
+  "source_repo": "pppuu7-cmd/Causal-Distributional-Selection-Reconstruction",
+  "source_head": "aa94e9ba3e89e6ad65b7edb9bf5ed6f5b25ffdc1",
+  "target_repo": "pppuu7-cmd/Mechanism-Synthesis-QG-Reconstruction",
+  "target_head_before_import": "fd5c4373e241334b0c240132cdc0afd5b8d2045c",
+  "source_corrected_terminal": {
+    "current_front": {
+      "path": "recovery/CURRENT_FRONT.md",
+      "blob": "a000a901a86b2fdcfb90f102de3a3998690c1edf"
+    },
+    "source_lock_erratum": {
+      "path": "results/CD003_SOURCE_LOCK_ERRATUM.md",
+      "commit": "05f678e1e8e087a1a85b3bbb75ac1a58b5317317",
+      "blob": "c35248e53d41a855855f3260700434140e1b6a3d"
+    },
+    "cd003_corrected_result": {
+      "path": "results/CD003_STRUCTURAL_GLUING_RESULT.md",
+      "commit": "fa66376ae481f07975f9b0732ee038af52e37148",
+      "blob": "700854a9903aca3e7b645e7a2eb219e56d23af77",
+      "classification": "CD003_STRUCTURAL_GLUING_COHERENCE_IS_SELECTOR_BLIND_PHYSICAL_EXTENSION_TRANSPORT_UNESTABLISHED_SCOPED"
+    },
+    "cd001_result": {
+      "path": "results/CD001_SELECTOR_POWER_BASELINE_RESULT.md",
+      "commit": "d5e296eff8cf76a97b32ac623ba7ffd59935350e",
+      "blob": "c56d29f9fb79ce1dadf5c903003fc9f46db4bb95"
+    },
+    "cd002a_result": {
+      "path": "results/CD002A_MULTIPLICATIVE_COMPOSITION_COHERENCE_RESULT.md",
+      "commit": "17d14afca62a91daef4a9ad66739f03956374f40",
+      "blob": "7da64c3bf1b0e688071f2189d73b6ad35b0d4c84"
+    },
+    "source_correction_manifest": {
+      "path": "sources/CD003_SOURCE_CORRECTION_MANIFEST.json",
+      "blob": "229057c6743c984a4bfa5867130f2dd8ed744589"
+    }
+  },
+  "current_cdsr_ledgers_at_source_head": {
+    "selector_power_matrix_blob": "c0e39aab6561650b021ffafc9832cd29b6c77704",
+    "ambiguity_space_blob": "9cd8f11b30123b95c3c6c2c47a5f34d4ad4fb810",
+    "physical_equivalence_blob": "2c7dcd493272648da211f2b3c68d9ab5c6ee6864",
+    "dependency_dag_blob": "4c259b4161e51603a457be2cf09d5b05f1f4d9a4",
+    "claim_locks_blob": "f8eff7872f1aab5eef9b477d85111ae714996369",
+    "theorem_registry_blob": "b4067cab5bee48e2b61e3cc7b78c77042e9d439d"
+  },
+  "already_independently_established_in_msqgr": [
+    {
+      "result": "ITER077Q physical source-compatible infinite tangential application invalid",
+      "authority": "results/ITER077Q_ADVERSARIAL_RIGHT_SU2_SOURCE_LOCK_REVIEW.md",
+      "commit": "c0ae0ef208a3eccef4ece7960cdf5337e7d5fa2e",
+      "verdict": "INVALID_SOURCE_LOCK"
+    },
+    {
+      "result": "J_inv scalar invariant normal-jet lower-bound dimension 28 with grades (1,0,1,0,3,0,7,0,16)",
+      "authority": "results/ITER081R_SM_RIGHT_SU2_S5_INVARIANT_JET_CLASSIFICATION_RESULT.md",
+      "commit": "5fe42e766aab2660b36c654502a029930db28890"
+    },
+    {
+      "result": "m<28 scalar-linear conditions are guaranteed insufficient on J_inv; no dimension-only obstruction at m>=28",
+      "authority": "results/ITER081S_CRITIC_REPAIRED_SELECTOR_CONSEQUENCES.md",
+      "commit": "8c2fc23084e89c39f624853ac0d445e3103850d1"
+    }
+  ],
+  "new_structural_results_imported": [
+    {
+      "id": "CD003_T4",
+      "msqgr_name": "SAME_GRAPH_REASSOCIATION_SELECTOR_BLIND_SCOPED",
+      "statement": "For fixed contraction/gluing maps on the same already-fixed decorated graph, legal reassociation or contraction-order identities hold identically on their common domain and impose no additional local-tensor selector equation beyond membership in that domain."
+    },
+    {
+      "id": "CD003_T5",
+      "msqgr_name": "REGULAR_CONTEXT_NORMAL_JET_PAIRING_DIAGNOSTIC_SCOPED",
+      "statement": "Supported finite-normal-order extension differences pair with regular contexts through the contexts' normal jets; residual invisible variations are the admissible-sector intersection with the kernel/annihilator of the declared context-jet map. Distinguishability is not selection without independently specified target relations or values."
+    }
+  ],
+  "not_imported_as_established_msqgr_science": [
+    "CD001 universal finite-list K5 no-go based on historical infinite physical W",
+    "CD002-A multiplicativity as a physical K5 selector law",
+    "UNIQUE_K5_EXTENSION",
+    "PHYSICAL_SELECTOR_DERIVED",
+    "FULL_PHYSICAL_AMBIGUITY_DIMENSION = 28",
+    "28 CONDITIONS SUFFICE",
+    "CRQN_V0_3_AUTHORIZED",
+    "CAUSAL_MULTIVERTEX_CLOSURE",
+    "REGULATOR_INDEPENDENCE",
+    "RG_CLOSURE",
+    "NEW_PHYSICS_FOUND"
+  ],
+  "independence_preserved": true,
+  "cdsr_remains_selector_falsification_layer": true
+}
