@@ -1,0 +1,39 @@
+name: Iter081E-SM actual Toller Han-bound reproduction
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'results/ITER081E_PRE_GATE_RESEARCHER_ACTUAL_TOLLER_BOUND_REPRODUCTION.md'
+      - 'scripts/iter081e_sm_actual_toller_bound_reproduction.py'
+      - '.github/workflows/iter081e_sm_actual_toller_bound_reproduction.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  exact-reproduction:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install exact symbolic dependency
+        run: python -m pip install --disable-pip-version-check 'sympy==1.14.0'
+      - name: Verify prospective ordering
+        run: |
+          git merge-base --is-ancestor 0f5414c9471a382527ca06c7f29ef2da6b8f8c1d HEAD
+          test "$(git rev-parse 0f5414c9471a382527ca06c7f29ef2da6b8f8c1d^0)" != "$(git rev-parse HEAD)"
+      - name: Run exact reproduction
+        run: python scripts/iter081e_sm_actual_toller_bound_reproduction.py
+      - name: Upload authoritative aggregate
+        uses: actions/upload-artifact@v4
+        with:
+          name: iter081e-sm-aggregate
+          path: results/raw/iter081e_sm_aggregate.json
+          if-no-files-found: error
+          retention-days: 90
