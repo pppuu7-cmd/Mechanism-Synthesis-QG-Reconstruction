@@ -3,15 +3,14 @@ from __future__ import annotations
 
 import copy
 import importlib.util
-import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE_PATH = ROOT / "analysis" / "iter080e_sm_joint_k5_selector_source_audit.py"
 
 spec = importlib.util.spec_from_file_location("iter080e_base", BASE_PATH)
-base = importlib.util.module_from_spec(spec)
 assert spec and spec.loader
+base = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(base)
 
 REQUIRED = (
@@ -51,15 +50,15 @@ def _derive_source_predicates(sid: str, text: str) -> tuple[dict, dict]:
     """Derive frozen P1-P5 from source-specific pinned evidence only.
 
     No Iter080E matrix predicate status/anchor and no Iter080E-authored source
-    snapshot is read here. Missing positive source evidence fails closed to a
-    non-eligible status rather than manufacturing EXPLICIT authority.
+    snapshot is read here. Missing frozen evidence fails closed instead of
+    manufacturing EXPLICIT authority.
     """
     facts = {}
 
     if sid == "BCG_CAUSAL_VERTEX":
         facts["vertex_formula"] = _all(text, [
-            "fixed-causal single-vertex amplitude",
-            "four-`SL(2,C)` group integral with a ten-wedge product",
+            "## Fixed-causal vertex — Eq. (4)",
+            "direct four-`SL(2,C)` group integral with a ten-wedge product",
         ])
         facts["one_wedge_regulator"] = _all(text, [
             "Feynman `i epsilon` spectral integral",
@@ -159,8 +158,6 @@ def lane_b_repaired() -> dict:
     matrix = base.load_matrix()
     rows, structurally_valid = _derive_rows(matrix)
 
-    # Adversarial non-circularity control: poison every prefilled status in a
-    # deep copy. Derived source predicates and eligibility MUST be unchanged.
     poisoned = copy.deepcopy(matrix)
     for row in poisoned.get("sources", []):
         for item in row.get("predicates", {}).values():
@@ -168,20 +165,13 @@ def lane_b_repaired() -> dict:
             item["anchor"] = "POISONED_ITER080E_SELF_AUTHORED_ANCHOR"
     poisoned_rows, poisoned_valid = _derive_rows(poisoned)
 
-    canonical_projection = [
-        (r["id"], r["statuses"], r["selector_eligible"]) for r in rows
-    ]
-    poisoned_projection = [
-        (r["id"], r["statuses"], r["selector_eligible"]) for r in poisoned_rows
-    ]
+    canonical_projection = [(r["id"], r["statuses"], r["selector_eligible"]) for r in rows]
+    poisoned_projection = [(r["id"], r["statuses"], r["selector_eligible"]) for r in poisoned_rows]
     noncircularity_ok = structurally_valid and poisoned_valid and canonical_projection == poisoned_projection
 
     eligible_real = [r["id"] for r in rows if r["selector_eligible"]]
     valid = structurally_valid and noncircularity_ok
-    if valid:
-        outcome = "PASS_SOURCE_DEFINED_SELECTOR" if eligible_real else "BLOCKED_OBJECT_DEFINITION"
-    else:
-        outcome = "INVALID_IMPLEMENTATION"
+    outcome = ("PASS_SOURCE_DEFINED_SELECTOR" if eligible_real else "BLOCKED_OBJECT_DEFINITION") if valid else "INVALID_IMPLEMENTATION"
 
     return {
         "iteration": "Iter080E-SM",
@@ -199,8 +189,35 @@ def lane_b_repaired() -> dict:
     }
 
 
+def lane_d_repaired() -> dict:
+    current = base.read_text(base.CURRENT)
+    q_sha = base.git_blob_sha(base.Q_DERIVATION) if base.Q_DERIVATION.exists() else None
+    locks = {
+        "iter077k_joint_gap": "one-wedge spectral `i epsilon` does not define a joint K5 finite part" in current,
+        "iter077q_function_space": "ITER077Q_SM_SOURCE_COMPATIBLE_K5_EXTENSION_AMBIGUITY_CONTAINS_INFINITE_DIMENSIONAL_TANGENTIAL_SUBSPACE_EXACT_THEOREM_SCOPED" in current,
+        "iter080a_authoritative": "ITER080A_SM_FINITE_K5_PERMUTATION_COVARIANCE_LEAVES_INFINITE_DIMENSIONAL_TANGENTIAL_EXTENSION_AMBIGUITY_EXACT_SCOPED" in current,
+        "iter080d_authoritative": "ITER080D_SM_FIXED_FINITE_SCALAR_LINEAR_RENORMALIZATION_CONDITIONS_CANNOT_SELECT_ITER077Q_INFINITE_FUNCTION_SPACE_AMBIGUITY_EXACT_THEOREM_SCOPED" in current,
+        "k5_selector_blocker": "BLOCKED_INFINITE_DIMENSIONAL_EXTENSION_SELECTOR_MISSING" in current,
+        "repair_front_active": "ITER080E_CONTROL_ONLY_SOURCE_PREDICATE_REPAIR" in current,
+        "historical_iter080e_not_promoted": "Iter080E Researcher production is `INVALID_IMPLEMENTATION`" in current,
+        "q_derivation_hash": q_sha == base.EXPECTED_Q_BLOB,
+    }
+    valid = all(locks.values())
+    return {
+        "iteration": "Iter080E-SM",
+        "lane": "D",
+        "repair": "CONTROL_ONLY_DEPENDENCY_PROVENANCE",
+        "valid": valid,
+        "scientific_outcome": "PASS_DEPENDENCY_LOCK" if valid else "INVALID_PROVENANCE",
+        "locks": locks,
+        "iter077q_derivation_blob": q_sha,
+    }
+
+
 base.lane_b = lane_b_repaired
+base.lane_d = lane_d_repaired
 base.LANES["B"] = lane_b_repaired
+base.LANES["D"] = lane_d_repaired
 
 if __name__ == "__main__":
     base.main()
