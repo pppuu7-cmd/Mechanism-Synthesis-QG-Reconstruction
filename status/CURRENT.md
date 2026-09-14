@@ -156,3 +156,22 @@ No `NEW_PHYSICS_FOUND`; no complete-QG claim; no exact total extension-space dim
 3. Keep subtraction constants, analytic scales and the deepest 28/16 invariant-jet coefficients symbolic until an independently motivated source/candidate selector is frozen.
 4. In parallel, continue genuinely independent source work on a correlated Rühl/Toller boundary-value law and on the causal E3/E4/E6 many-vertex bridge.
 5. Do not repeat Iter082A, forest census, S5 combinatorics, finite spectral epsilon, or already-closed selector/source scans.
+
+## CDSR -> MSQGR structural import
+
+Controlled integration record: `status/CDSR_STRUCTURAL_IMPORT_AND_INTERFACE.md`. Machine-readable provenance: `status/CDSR_STRUCTURAL_IMPORT_MANIFEST.json`.
+
+Source repository remains independent: `pppuu7-cmd/Causal-Distributional-Selection-Reconstruction`, source head read at import `aa94e9ba3e89e6ad65b7edb9bf5ed6f5b25ffdc1`. This was a structural synchronization, not a new MSQGR science gate and not a repository merge.
+
+Independent CDSR corroboration agrees with the existing MSQGR right-SU2 repair, Iter081R 28-dimensional scalar invariant normal-jet lower bound, and Iter081S corrected `m<28` rank obstruction. These are **not** re-imported as new discoveries.
+
+Two source-corrected terminal CD003 results are newly available to MSQGR as scoped structural tools:
+
+1. `SAME_GRAPH_REASSOCIATION_SELECTOR_BLIND_SCOPED`: legal reassociation/parenthesization of the same already-fixed decorated graph computation, with fixed contraction/gluing data and common domain, is an identity in the local tensors and supplies no additional selector equation. This does **not** imply `ALL_COMPOSITION_CANNOT_SELECT`; different-complex/refinement equations, domain restrictions, spectral laws and genuinely extension-sensitive source composition remain open.
+2. `REGULAR_CONTEXT_NORMAL_JET_PAIRING_DIAGNOSTIC_SCOPED`: a finite-normal-order supported extension difference is seen by a regular context only through that context's normal jets. For a declared context family, the invisible variation space is the admissible-sector kernel/annihilator `N_K=ker J_K`. This is a selector-reach diagnostic only. **Distinguishing extensions is not selecting one extension** without independently source-fixed target relations/values and a physical-equivalence quotient.
+
+Operational consequence for the active MSQGR front: during the upcoming analytic K3/K4/K5 forest-extension gate, same-graph reassociation may be used as a consistency test but must not be counted as an independent coefficient selector. Subtraction constants/scales/deepest jets remain symbolic. Once MSQGR has an actual physical insertion/composition/context object, export the frozen interface package described in `status/CDSR_STRUCTURAL_IMPORT_AND_INTERFACE.md` back to CDSR for independent rank, residual-kernel, equivalence and no-smuggling audit.
+
+Do not import as established MSQGR science: CD001's obsolete universal finite-list physical K5 corollary, CD002-A multiplicativity as a physical law, unique K5 extension, physical selector derived, exact total ambiguity dimension 28, sufficiency of 28 conditions, CRQN v0.3 authorization, causal multivertex closure, regulator independence, RG closure or new physics.
+
+`CDSR_REMAINS_INDEPENDENT = YES`.
