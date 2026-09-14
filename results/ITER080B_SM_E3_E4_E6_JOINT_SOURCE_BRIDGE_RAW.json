@@ -1,0 +1,18 @@
+{
+  "run_id": 34825084313,
+  "production_head": "3b7bbfbbae5f1718ea1c4195e4fd44675f2c456e",
+  "aggregate_job": 103915305607,
+  "aggregate_artifact": 10339454847,
+  "aggregate_digest": "sha256:73cf815a59649f0e5b8ec8b972dc0583fe0d4a869e94da13f9e3686c60bd601b",
+  "lane_artifacts": {
+    "A": {"id": 10339741158, "digest": "sha256:9b30b46978994f5db13377229abf404c1a3514393b34eed943cdef7fa018e9fc"},
+    "B": {"id": 10340565443, "digest": "sha256:52d6e4b8e20c44972997934c444b0ef34a0bf7b42256b51b246abd3cb5692853"},
+    "C": {"id": 10340156204, "digest": "sha256:c6b26164c3bac9c1cac268ffa2bc677003723cb4203620961e6e1aead035472b"},
+    "D": {"id": 10339965910, "digest": "sha256:4d5b5ad55fb9b1a9bfbb1ec239cd9f0330151c6720251a5bf5eb6f227fb76725"}
+  },
+  "classification": "ITER080B_SM_PARENT_E3_E4_E6_STRUCTURES_EXIST_LOCAL_CAUSAL_VERTICES_EXIST_BUT_COMPLETE_MULTIVERTEX_INHERITANCE_BRIDGE_NOT_SOURCE_EXPLICIT_BLOCKED_EXACT_SCOPED",
+  "valid": true,
+  "P1_P4_corpus_explicit": [false, false, false, false],
+  "parent_structures": true,
+  "local_causal_vertices": true
+}
