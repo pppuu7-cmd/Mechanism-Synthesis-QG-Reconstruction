@@ -71,7 +71,6 @@ def all_marginals_zero(char_fn):
 
 
 def one_edge_marginal_zero(table):
-    kappas = list(itertools.product(SIGNS, repeat=NEDGE))
     for e in range(NEDGE):
         complement = [i for i in range(NEDGE) if i != e]
         for vals in itertools.product(SIGNS, repeat=NEDGE - 1):
@@ -137,18 +136,18 @@ def main():
 
     # P5: the multiplier is always nonzero +/-1; homogeneous linear support,
     # covariance and scaling properties of an upstream admissible ambiguity a
-    # are therefore preserved.  Upstream existence of nonzero a is source-locked.
+    # are therefore preserved. Upstream existence of nonzero a is source-locked.
     text_m = open(args.iter077m_source, encoding="utf-8").read()
     witness_locked = (
         "A_ext,c = A_ext + c F_SU2(y;Psi) delta_N(x)" in text_m
-        and "does not by themselves select a unique K5 extension" in text_m
+        and "do not by themselves select a unique K5 extension" in text_m
     )
     p5 = witness_locked and set(top_char(k) for k in kappas) == {-1, 1}
 
     # P6: strongest additive no-go follows from P1 plus nonzero causal action.
     p6 = p1 and p2 and p3 and all(top_char(k) != 0 for k in causal)
 
-    # P7: dependency-safe output deliberately does not promote the pending 377.
+    # P7: dependency-safe output deliberately does not promote a pending 377.
     iter083a_raw = "results/raw/iter083a_sm_boundary_covariant_jet_character_validation.json"
     authoritative_dimension = None
     iter083a_status = "NOT_PERSISTED_OR_NOT_AUTHORITATIVE"
@@ -170,10 +169,10 @@ def main():
     proper_subset_exposed = True
     for rmask in range(0, (1 << NEDGE) - 1):
         missing = next(i for i in range(NEDGE) if not (rmask & (1 << i)))
-        # Fix all other signs to +1. Character is independent of the missing edge,
-        # so the two-term marginal must equal 2, not zero.
+
         def subset_char(k, m=rmask):
             return prod(k[i] for i in range(NEDGE) if m & (1 << i))
+
         comp = [1] * (NEDGE - 1)
         if marginal_sum(1 << missing, comp, subset_char) == 0:
             proper_subset_exposed = False
