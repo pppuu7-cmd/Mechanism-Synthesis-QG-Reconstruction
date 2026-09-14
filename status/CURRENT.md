@@ -4,102 +4,120 @@
 
 ## Candidate / authoritative front
 
-- Candidate: `CRQN v0.2`, `CARRIER_SELECTED` only for source-backed carrier/mechanism structure `F1-F8`.
+- Candidate: `CRQN v0.2`, `CARRIER_SELECTED` only for source-backed F1-F8 carrier/mechanism structure.
 - Predictive local K5 amplitude: `BLOCKED_CURRENT_CANDIDATE_LOCAL_AMPLITUDE`.
 - Physical F9: `BLOCKED`.
-- Controlling local blocker: `FUNCTION_SPACE_K5_DISTRIBUTIONAL_EXTENSION_SELECTOR`.
-- Controlling composition blocker: `CAUSAL_MULTIVERTEX_E3_E4_E6_COMPLETE_SOURCE_BRIDGE`.
+- **Corrected controlling local blocker:** `RIGHT_SU2_COVARIANT_K5_INVARIANT_NORMAL_JET_COEFFICIENT_SELECTOR`.
+- Causal composition blocker: `CAUSAL_MULTIVERTEX_E3_E4_E6_COMPLETE_SOURCE_BRIDGE`.
 - Han causal-stack blocker: `REPLACEMENT_FOR_FAILED_HAN_D2_BOUND_IN_CAUSAL_FACE_OBJECT`.
 - RG/refinement: `BLOCKED_E9_COARSE_FINE_MAP_MISSING`.
 - G3: `OPEN_BUT_NOT_ADMISSIBLE_UNTIL_LOCAL_AMPLITUDE_AND_COMPOSITION_ARE_DEFINED`.
 - G8: `BLOCKED_CONVERGENCE_ONLY`.
 
 **Physical active front:**
-`GENUINELY_NEW_OR_REVISED_JOINT_K5_PRIMARY_AUTHORITY / INDEPENDENTLY_MOTIVATED_STRONGER_JOINT_FUNCTION_SPACE_SELECTOR / CAUSAL_MULTIVERTEX_E3_E4_E6_SOURCE_BRIDGE / NEW_BOUNDED_OR_RENORMALIZED_CAUSAL_FACE_FUNCTIONAL / E7_E8_AFTER_PREREQUISITES / REGULATOR_INDEPENDENCE_AFTER_OBJECT_DEFINITION`.
+`RIGHT_SU2_COVARIANT_JET_SELECTOR_SOURCE_OR_CANDIDATE_CENSUS / GENUINELY_NEW_CORRELATED_JOINT_K5_BOUNDARY_VALUE / CAUSAL_MULTIVERTEX_E3_E4_E6_SOURCE_BRIDGE / NEW_BOUNDED_OR_RENORMALIZED_CAUSAL_FACE_FUNCTIONAL / REGULATOR_INDEPENDENCE_AFTER_OBJECT_DEFINITION`.
 
-`Iter081F` remains prospectively frozen and may be completed only as a diagnostic local cancellation atlas; finite causal orientation summation is no longer a plausible cure of the controlling local blocker after Iter081H/I/K/L.
+## Critical authority correction — historical Iter077Q
 
-## Latest authoritative Researcher result — Iter081E
+Historical Iter077Q is no longer controlling physical authority.
 
-- prereg `0f5414c9471a382527ca06c7f29ef2da6b8f8c1d`;
-- implementation `8ceb7cc99925bb1d2a262b304ce29731f438ffdb`;
-- production `5743b4e0d6f5ce247ebe207b0ad48b0f17f3f664`;
-- run `34877725730`, job `104088973504`, terminal success;
-- artifact `10361621460`, digest `sha256:f2a4c52535799fad2aa7ad94b7bb2eeedde1933dde62cb66281dcff7493b4a82`;
+Re-review: `results/ITER077Q_ADVERSARIAL_RIGHT_SU2_SOURCE_LOCK_REVIEW.md`, commit `c0ae0ef208a3eccef4ece7960cdf5337e7d5fa2e`.
+
+Verdict: **`INVALID_SOURCE_LOCK`**.
+
+Reason: the fully boundary-contracted BCG causal K5 integrand uses SU(2)-invariant intertwiners and exact bi-SU(2) covariance of the Toller blocks. After common-left SL(2,C) gauge fixing, the node-wise compact gauge action is transitive on the collision manifold `N=SU(2)^4`. Iter077Q omitted this exact symmetry when declaring
+
+`{Q^n F_SU2 delta_N}`
+
+source-compatible. Its nonconstant multiplier `Q=sum tr(g_b^-1 g_a)` is not invariant under the omitted node gauge action. The mathematical linear-independence theorem remains true for that artificial family, but the physical qualifier `source-compatible` is false.
+
+Iter077M's order-zero `F_SU2 delta_N` ambiguity remains valid. Iter077L's normal derivatives through order 8 remain valid and require corrected invariant-jet classification.
+
+Dependency reconciliation: `status/ITER077Q_RIGHT_SU2_DEPENDENCY_RECONCILIATION.md`, commit `dde337992f54a9444b19dede4c5d752ae4699363`.
+
+## Corrected ambiguity authority — Iter081R
+
+Prospective chain:
+- prereg `18945b681978cf22a8253a6489034e68a1cae372`;
+- implementation `62c8ee3ac378ddc96df8263cb56c38ae76988517`;
+- production `22f87a8cb1e5a87285066ac658e7823b223a3bc9`;
+- Actions run `34882711232`, terminal success;
+- job `104105657918`, success;
+- artifact `10363029817`;
+- artifact ZIP digest `sha256:260017c1b2ac7186f8f2d5e10a499f40293315fec3d26ad174f3ba67726bf8a8`;
+- downloaded aggregate JSON SHA256 `ede1d88e1cabf8ca7c545aa88172ddd425e31a9e6ccd8376e45f382d9c4ab939`;
+- durable result `results/ITER081R_SM_RIGHT_SU2_S5_INVARIANT_JET_CLASSIFICATION_RESULT.md`, commit `5fe42e766aab2660b36c654502a029930db28890`;
+- provenance ledger `573ffe66896173913842d664d9d4a3e3eb8774d2`.
+
+Classification:
+`ITER081R_SM_RIGHT_SU2_S5_INVARIANT_NORMAL_JET_SPACE_NONTRIVIAL_EXACT_SCOPED`.
+
+Corrected normal geometry:
+
+`V = spin1_SO(3) tensor Std5_S5`, dimension 12.
+
+Iter077L scaling degree/codimension allows total normal derivative order `k<=8`. Exact invariant-theory count gives
+
+`dim Sym^k(V)^(SO3 x S5) = [1,0,1,0,3,0,7,0,16]`, `k=0..8`.
+
+Total demonstrated scalar invariant normal-jet dimension through order 8:
+
+**`28`**.
+
+This is a **lower bound/subspace dimension**, not the exact dimension of the full physical extension space. It proves the right-SU2 correction does not make the local amplitude unique.
+
+## Repaired selector consequences — Iter081S
+
+`results/ITER081S_CRITIC_REPAIRED_SELECTOR_CONSEQUENCES.md`, commit `8c2fc23084e89c39f624853ac0d445e3103850d1`.
+
+- Full S5 covariance still does not select: Iter081R already imposes it and leaves >=28 scalar directions.
+- Weak support + conormal/WF admissibility still does not select: invariant normal derivatives of `delta_N` remain conormal, leaving >=28 directions.
+- Corrected finite scalar-linear rank bound: for `L:J_inv->C^m`, `m<28` implies `dim ker L >= 28-m`; for `m>=28`, finite dimensionality alone gives no obstruction to injectivity.
+- Causal orientation summation does not select: supported invariant jets are invisible off `N`; source-defined eta=+ and eta=+- causal sums retain >=28 scalar ambiguity directions.
+
+Therefore historical Iter080D's universal `any fixed finite family fails` theorem is not physically applicable after repair.
+
+## Downstream status after correction
+
+- Iter080A: `QUALIFIED`; historical infinite S5 tangential witness invalid, but qualitative S5 nonselection repaired by Iter081R.
+- Iter080D: physical application `INVALID_SOURCE_LOCK`; only `m<28` insufficiency is now guaranteed on demonstrated scalar subspace.
+- Iter080E: `QUALIFIED`; frozen BCG/Beltran corpus still has no explicit complete correlated joint-K5 boundary-value/extension prescription, but references to acting on infinite `W` are obsolete.
+- Iter080H: `REQUIRES_NEW_PREREGISTERED_GATE` before reuse against corrected jet target.
+- Iter080I: historical infinite-W dependency proof `INVALID_SOURCE_LOCK`; high-level `BLOCKED_CURRENT_CANDIDATE_LOCAL_AMPLITUDE` is independently re-established by Iter081R/S.
+- Iter080J: `QUALIFIED`; old `Q^n` witness invalid, weak WF-only nonselection repaired with >=28 invariant jets.
+- Iter081I: infinite-dimensional persistence claim `INVALID_SOURCE_LOCK`; repaired causal-sum persistence is >=28 scalar invariant jets.
+- Iter080K remains `INVALID_PROVENANCE`.
+
+## Results unaffected by the Iter077Q correction
+
+- Iter077I: all-j=1/2 source-ordered common-collision non-L1 obstruction; all 32 boundary components and all 16 eta=+ causal assignments have nonzero equal leading contractions.
+- Iter077K: published one-wedge i-epsilon is not a correlated joint-K5 boundary value.
+- Iter077L: `N=SU(2)^4`, codim 12, `sd=20`, normal jets through order 8.
+- Iter077M: nonzero order-zero compact-boundary supported ambiguity.
+- Iter080B: causal E3/E4/E6 complete source bridge remains blocked.
+- Iter081B/E: direct Han/Toller inheritance source-blocked; actual selected-Toller Han bounds fail on frozen source-formula objects.
+- Iter081G/H/K/L/M: causal orientation-sum cycle-space/leading-sign/noncancellation results remain valid insofar as they rely on Iter077I rather than the invalid Iter077Q family.
+- Iter081N/O/P: generic finite-spin one-wedge/full projected-block/uncontracted K5 carrier sign theorems remain valid in their stated pre-boundary scopes.
+
+## Causal-sum local result
+
+Beltran proper-causal orientation sums do not cancel the validated minimal-sector leading singularity:
+
+- eta=+ sum: `16 C_alpha r^-20`;
+- eta=+ plus eta=- proper-causal sum: `32 C_alpha r^-20`;
+- unrestricted EPRL cancellation requires the net contribution from non-causal branch assignments at this leading order.
+
+These are local absolute-integrability statements only, not distributional nonexistence/divergence theorems.
+
+## Latest authoritative Researcher result
+
+Latest Researcher-A result remains Iter081E; independent Critic verdict `CONFIRMED_SCOPED`.
+
+- run `34877725730`;
 - result `e5eb0cbd49328e4e3ffcc604428af9b36c6295a2`;
-- specific Researcher handoff `ed6ce07c38c3a93265873c90c8e8490e68334706`.
+- specific A handoff `status/MSQGR_RESEARCHER_HANDOFF_ITER081E.md`, commit `ed6ce07c38c3a93265873c90c8e8490e68334706`.
 
-Classification `ITER081E_SM_ACTUAL_TOLLER_ONE_WEDGE_AND_NATURAL_TWO_WEDGE_HAN_BOUNDS_COUNTEREXAMPLES_REPRODUCED_EXACT_SCOPED`; Researcher `PASS_EXACT_SCOPED`; independent Critic `CONFIRMED_SCOPED` at `379b5979ef0e38973af3196b678dc6d8ab7b35f6`.
-
-The generic `status/MSQGR_RESEARCHER_HANDOFF.md` is stale at Iter080J; use the newer specific Iter081E handoff until superseded.
-
-## Iter081E exact actual-Toller result
-
-For BCG Eq. (46), gamma-simple `j=k=1/2`, branch `+`, pure boost and fixed `rho>0`,
-
-`|t^+_(m=+1/2)(beta)| = 1/[2(rho^2+1/4)sinh^2(beta)] -> infinity`.
-
-For the frozen natural two-wedge `(+,+)` term,
-
-`lim_(beta->0+) beta^4 tau_(++,2)=1/(rho^2+1/4)^2>0`.
-
-Thus Han's unchanged projected contraction and unchanged `d_j^2` face bound fail for these actual selected-Toller objects. This is not an all-branch/full-stack divergence theorem.
-
-## Source-defined K5 causal sums — new exact chain
-
-### Iter081F scope/projection controls
-Frozen gate `01b4ad5369798a4548576bb282afdd89375e4a59`; scope firewall `4ec621a2739b175943bceca9f7d341f03ddac137`; K5 two-wedge projection theorem `86450e5c7bb895bdc30db40e2ec03f679211619e`.
-
-For any two distinct K5 wedges, every local pair `++,+-,-+,--` appears among the 16 Beltran eta=+ global causal assignments, four completions each. Therefore causal admissibility does not source-select a proper local two-wedge subset.
-
-### Iter081G — cycle-space identity
-`results/ITER081G_CRITIC_K5_CAUSAL_CYCLE_SPACE_IDENTITY.md`, commit `6f8ae2dbaea67b040adb18bde8274ce7652108df`.
-
-With `a_e=(T_e^++T_e^-)/2=D_e/2`, `b_e=(T_e^+-T_e^-)/2`,
-
-`C_+ = 16 sum_(S in Z_1(K5;F2)) b_S a_(E\S)`.
-
-K5 cycle-space dimension is 6, so the eta=+ sum contains 64 Eulerian channels. The unrestricted `2^10` branch sum keeps only the empty `b` channel and reconstructs `prod_e D_e`.
-
-### Iter081H — eta=+ sum does not cancel the K5 singularity
-`results/ITER081H_CRITIC_BELTRAN_CAUSAL_SUM_L1_COROLLARY.md`, commit `56a7d831da5b7703fe55bc4c91d949960b60a8bd`.
-
-Beltran eta=+ K5 assignments are exactly the 16 factorized `epsilon_ab=sigma_a sigma_b` patterns exhaustively tested in Iter077I. Iter077I proved `512/512` nonzero leading contractions and equality to the all-plus coefficient for all 32 minimal boundary components. Hence
-
-`I^+_alpha = 16 C_alpha r^-20 + O(r^-19)`, `C_alpha != 0`.
-
-With transverse `d=12`, radial exponent is `-9`; the source-defined eta=+ summed K5 integrand is not locally absolutely `L1` on the validated common-collision patch.
-
-### Iter081I — eta=+ sum does not select the extension
-`results/ITER081I_CRITIC_BELTRAN_CAUSAL_SUM_EXTENSION_AMBIGUITY_COROLLARY.md`, commit `411719e26129fc7ab2a4b9ad9ccf5750c5843917`.
-
-The summed object retains exact `sd_N=20`, `N=SU(2)^4`, codim 12. The Iter077Q family `Q^n F delta_N` is supported on `N`, invisible off collision, source-compatible and same-maximal-scaling-degree admissible. Therefore the countably infinite-dimensional tangential extension ambiguity survives the causal orientation sum.
-
-### Iter081K — even both proper causal signature sectors do not cancel
-`results/ITER081K_CRITIC_BOTH_CAUSAL_SIGNATURE_SECTORS_L1_COROLLARY.md`, commit `2793da94390a226217360bf6fbeb97ff4d8e3bde`.
-
-Changing eta=+ to eta=- reverses all ten K5 wedge signs. At the exact Iter077I leading branch transport this contributes `(-1)^10=+1`, so eta=- assignments have the same leading contractions. Summing all 32 proper causal assignments gives
-
-`I^(causal-only)_alpha = 32 C_alpha r^-20 + O(r^-19)`.
-
-Thus retaining both causal signatures while excluding non-causal assignments also remains locally non-L1 and does not select an extension.
-
-### Iter081L — non-causal sectors are exactly what completes the unrestricted EPRL leading cancellation
-`results/ITER081L_CRITIC_NONCAUSAL_SECTORS_REQUIRED_FOR_EPRL_LEADING_POLE_CANCELLATION.md`, commit `b29aa4a6e49dff412b0eea43834ba72bd855c074`.
-
-At frozen `j=1/2` leading order a branch assignment carries relative sign `prod_e epsilon_e`. Over all `2^10=1024` assignments,
-
-`sum_epsilon prod_e epsilon_e = 0`.
-
-All 32 proper causal assignments have product parity `+1`, giving `+32 C_alpha`. Therefore the remaining 992 non-causal assignments contribute exactly `-32 C_alpha`; equivalently they contain 480 positive-parity and 512 negative-parity patterns.
-
-Hence standard unrestricted EPRL leading Toller-pole cancellation cannot occur inside the proper causal sectors alone. The causal restriction removes sectors whose net leading contribution is required for that cancellation. This does not imply non-causal sectors must appear in a final physical theory; it means a causal theory needs a genuinely different cure.
-
-## Targeted new-selector authority scan
-
-`results/ITER081J_TARGETED_NEW_K5_SELECTOR_AUTHORITY_SCAN.md`, commit `e668e59b6d4e6810a37760d961fe8287cebf8084`.
-
-Fresh targeted 2026 searches returned already-audited BCG/Beltran causal sources and older EPRL/Wick-rotation work, but no separate primary authority explicitly supplying a correlated joint-K5 boundary-value/extension selector acting on the complete Iter077Q function space. This is not a universal absence theorem. Beltran v2 explicitly leaves finiteness of the generalized causal vertex open.
+Generic `status/MSQGR_RESEARCHER_HANDOFF.md` remains stale at Iter080J. No later Researcher terminal result has been observed.
 
 ## Source-order / erratum lock
 
@@ -111,35 +129,51 @@ Correct `j=1/2` contact formula:
 Authoritative order:
 `one-wedge spectral/spinor integration -> Toller function -> product of ten Toller matrices -> full boundary contraction -> K5 group integration / extension`.
 
-Published one-wedge spectral `i epsilon` uniquely selects a one-wedge Toller branch but is not a joint-K5 extension selector. Do not interchange source ordering or multiply contact distributions termwise.
+One-wedge spectral i-epsilon remains one-wedge authority only.
 
-## Controlling local chain
+## Exact blockers
 
-`Iter077I non-L1` -> `Iter077L sd20/codim12 order-8 extension freedom` -> `Iter077Q infinite-dimensional tangential ambiguity` -> `Iter080A/D/E/H/I/J no adequate selector in tested classes/source scope` -> `Iter081H/I/K/L causal orientation sums neither cancel the minimal-sector singularity nor remove the extension ambiguity`.
-
-CRQN v0.2 therefore remains `BLOCKED_CURRENT_CANDIDATE_LOCAL_AMPLITUDE`.
-
-## Other blockers
-
-1. `FUNCTION_SPACE_K5_DISTRIBUTIONAL_EXTENSION_SELECTOR`.
-2. `CAUSAL_MULTIVERTEX_E3_E4_E6_COMPLETE_SOURCE_BRIDGE` (Iter080B remains controlling).
+1. `RIGHT_SU2_COVARIANT_K5_INVARIANT_NORMAL_JET_COEFFICIENT_SELECTOR`.
+2. `CAUSAL_MULTIVERTEX_E3_E4_E6_COMPLETE_SOURCE_BRIDGE`.
 3. `REPLACEMENT_FOR_FAILED_HAN_D2_BOUND_IN_CAUSAL_FACE_OBJECT`.
 4. `E7_E8_DISTRIBUTIONAL_EXTENSION_TRANSPORT_OR_SELECTOR`.
 5. `RG_REFINEMENT_E9_COARSE_FINE_BOUNDARY_MAP_AND_MATCHING_FUNCTIONAL`.
 6. `REGULATOR_INDEPENDENCE_AFTER_OBJECT_DEFINITION`.
 
-Any mandatory blocked arrow prevents full-QG completion.
+## Corrected CRQN survival chain
+
+`F1-F8 carrier`
+`-> source-ordered K5`
+`-> Iter077I non-L1 common collision`
+`-> Iter077L sd20/codim12 normal extension freedom`
+`-> Iter077M nonzero supported ambiguity`
+`-> Iter077Q infinite tangential W INVALID_SOURCE_LOCK`
+`-> exact node-wise SU2 quotient`
+`-> Iter081R >=28-dimensional SO3xS5 invariant scalar normal-jet ambiguity`
+`-> corrected coefficient selector ?`
+`-> causal E3/E4/E6 ?`
+`-> E7/E8 ?`
+`-> G3 ?`
+`-> regulator removal ?`
+`-> physical RG/E9 ?`
+`-> continuum 3+1 Lorentzian geometry ?`
+`-> massless spin-2 ?`
+`-> Einstein/GR recovery ?`
+`-> matter/QFT IR ?`
+`-> normalized falsifiable prediction ?`.
 
 ## Claim locks
 
-No `NEW_PHYSICS_FOUND`; no complete-QG claim; no theorem that the generalized causal vertex cannot exist distributionally; no generic-spin theorem; no regulator-independence; no unique-extension impossibility theorem against all future independently motivated principles; no G3 PASS; no F9/G8/K5 promotion. Keep absolute L1, conditional/oscillatory/PV/finite-part amplitudes and source-defined distributions distinct.
+No `NEW_PHYSICS_FOUND`; no complete-QG claim; no infinite-dimensional source-compatible tangential ambiguity claim; no exact total extension dimension claim; no theorem that 28 conditions suffice physically; no causal-vertex distributional nonexistence/divergence theorem; no generic-spin full-boundary non-L1 theorem; no regulator-independence; no G3 PASS; no F9/G8/K5 promotion.
 
 ## Next admissible work
 
-- Iter081F may run only as a diagnostic exact local subset atlas; it cannot overturn Iter081H/I/K/L.
-- Do not open more finite sign/orientation-sum gates as a local-amplitude cure.
-- Highest-value substantive successor: `STRONGER_FUNCTION_SPACE_SELECTOR_INDEPENDENT_MOTIVATION_OR_NEW_PRIMARY_AUTHORITY_GATE`.
-- Before implementation freeze either a genuinely new/revised primary correlated joint-K5 prescription, or an independently motivated function-valued law that acts on the entire Iter077Q tangential space and ultimately normal jets through order 8.
-- If neither exists, keep the local amplitude blocked and pursue orthogonal source/provenance/composition reconnaissance only. Do not invent a common epsilon, posthoc finite part, tuned signed causal weights, or downstream G3/RG promotion.
+Highest-value successor is a prospectively frozen `RIGHT_SU2_COVARIANT_JET_SELECTOR_SOURCE_OR_CANDIDATE_CENSUS`:
 
-Latest Critic handoff: `status/MSQGR_ADVERSARIAL_CRITIC_HANDOFF.md`, commit `ce2ed638431dd624bb4600c0059a481a52000ccf`, verdict on latest Researcher result `CONFIRMED_SCOPED`.
+1. audit genuinely new/revised primary authority for a correlated joint-K5 boundary-value/extension law acting on invariant normal jets;
+2. separately re-audit the pre-existing CRQN v0.1/v0.2 candidate corpus against the **corrected jet target**, because historical Iter080H froze A2/A3 against invalid infinite `W`;
+3. any candidate selector must specify enough independent equations/normalizations to act on at least the demonstrated 28 scalar directions, respect source ordering, node gauge, S5 and boundary covariance, and state its reach to representation-valued jet sectors;
+4. do not invent 28 post-hoc conditions and do not infer impossibility merely because the repaired ambiguity is finite-dimensional;
+5. until a motivated selector is found, retain `BLOCKED_CURRENT_CANDIDATE_LOCAL_AMPLITUDE` and keep E7/E8, G3 and physical RG downstream locked.
+
+Latest Critic handoff: `status/MSQGR_ADVERSARIAL_CRITIC_HANDOFF.md`, commit `7fc0a4d0392599e404127a5ae60ac401105c2a82`, verdict on latest Researcher result `CONFIRMED_SCOPED`.
