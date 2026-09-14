@@ -1,0 +1,64 @@
+name: Iter083D repaired causal-sum 377 ambiguity
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'prereg/ITER083D_SM_CAUSAL_SUM_REPAIRED_377_AMBIGUITY.md'
+      - 'scripts/iter083d_causal_sum_repaired_377_ambiguity.py'
+      - 'results/ITER081I_CRITIC_BELTRAN_CAUSAL_SUM_EXTENSION_AMBIGUITY_COROLLARY.md'
+      - 'results/ITER081H_CRITIC_BELTRAN_CAUSAL_SUM_L1_COROLLARY.md'
+      - 'results/ITER083A_SM_BOUNDARY_COVARIANT_JET_CHARACTER_RESULT.md'
+      - 'results/ITER083B_SM_FILTERED_BOUNDARY_COVARIANT_SUPPORTED_AMBIGUITY_RESULT.md'
+      - 'results/ITER083C_SM_TOLLER_ADDITIVITY_SELECTOR_NULLMODE_RESULT.md'
+      - '.github/workflows/iter083d_causal_sum_repaired_377_ambiguity.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run exact Iter083D validation
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p results/raw
+          python3 scripts/iter083d_causal_sum_repaired_377_ambiguity.py \
+            --output results/raw/iter083d_sm_causal_sum_repaired_377_ambiguity.json \
+            | tee iter083d_stdout.json
+          python3 - <<'PY'
+          import json
+          p='results/raw/iter083d_sm_causal_sum_repaired_377_ambiguity.json'
+          d=json.load(open(p, encoding='utf-8'))
+          assert d['verdict']=='PASS_EXACT_SCOPED', d
+          assert all(d['predicates'].values()), d['predicates']
+          assert all(d['controls'].values()), d['controls']
+          assert d['node_sign_assignments']==32
+          assert d['distinct_causal_wedge_patterns']==16
+          assert d['multiplicities_in_32_label_sum']==[2]
+          assert d['top_character_values_on_causal_patterns']==[1]
+          assert d['beltran_unit_sum_top_mode_factor']==16
+          assert d['bcg_32_label_sum_top_mode_factor']==32
+          assert d['frozen_ambiguity_dimension']==377
+          print('ITER083D_GATE=PASS_EXACT_SCOPED')
+          print('BCG labels/distinct=', d['node_sign_assignments'], d['distinct_causal_wedge_patterns'])
+          print('sum factors Beltran/BCG=', d['beltran_unit_sum_top_mode_factor'], d['bcg_32_label_sum_top_mode_factor'])
+          print('repaired dimension=', d['frozen_ambiguity_dimension'])
+          PY
+          sha256sum results/raw/iter083d_sm_causal_sum_repaired_377_ambiguity.json | tee iter083d_sha256.txt
+
+      - name: Upload exact result artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: iter083d-causal-sum-repaired-377-ambiguity
+          path: |
+            results/raw/iter083d_sm_causal_sum_repaired_377_ambiguity.json
+            iter083d_stdout.json
+            iter083d_sha256.txt
+          if-no-files-found: error
+          retention-days: 90
