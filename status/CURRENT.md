@@ -8,6 +8,7 @@
 - Established/source-backed mechanism union: `F1-F8`.
 - Physical F9: `BLOCKED`.
 - K5 local amplitude: `BLOCKED_INFINITE_DIMENSIONAL_EXTENSION_SELECTOR_MISSING`.
+- Iter080D now proves that **no fixed finite number of scalar-valued complex-linear renormalization/normalization conditions can uniquely select** the established Iter077Q source-compatible ambiguity space.
 - Causal multi-vertex composition: `BLOCKED_SOURCE_BRIDGE` for the currently validated KKL + Bianchi–Chen–Gamonal + Beltrán corpus. Parent E3/E4/E6 structures exist and local/generalized causal vertices exist, but a complete many-vertex causal inheritance prescription is not source-explicit under the prospectively frozen Iter080B criteria.
 - E5: KKL gluing/duality conditionally inherits under strict local causal-vertex replacement with parent boundary normalization fixed (Iter079E).
 - E7/E8: `BLOCKED` until both a physical composed E3-E6 causal functional and a K5 extension selector exist.
@@ -16,11 +17,11 @@
 - G8 novelty: `BLOCKED_CONVERGENCE_ONLY`.
 
 **Physical active front:**
-`FUNCTION_SPACE_K5_EXTENSION_SELECTOR / NEW_PRIMARY_SOURCE_FOR_CAUSAL_MULTIVERTEX_BRIDGE / E7_E8_EXTENSION_TRANSPORT / REGULATOR_INDEPENDENCE_AFTER_OBJECT_DEFINITION`.
+`FUNCTION_SPACE_K5_FUNCTIONAL_OR_DIFFERENTIAL_SELECTOR / NEW_PRIMARY_SOURCE_FOR_CAUSAL_MULTIVERTEX_BRIDGE / E7_E8_EXTENSION_TRANSPORT / REGULATOR_INDEPENDENCE_AFTER_OBJECT_DEFINITION`.
 
-Latest independent Critic handoff: `status/MSQGR_ADVERSARIAL_CRITIC_HANDOFF.md`, confirming Iter080A as `CONFIRMED_SCOPED` and authorizing the joint E3/E4/E6 source audit now closed as Iter080B.
+Latest independent Critic handoff: `status/MSQGR_ADVERSARIAL_CRITIC_HANDOFF.md`. It predates Iter080D and must be reread together with newer repository authority on the next recovery.
 
-Controlling provenance includes `status/ITER077_PROVENANCE_LEDGER.md`, `status/ITER077_CONTACT_FORMULA_ERRATUM.md`, `status/ITER080_PROVENANCE_LEDGER.md`, and durable results under `results/`. Historical Iter077E/F source-dependent gates remain `NON_AUTHORITATIVE_SOURCE_LOCK_INVALID`; historical pre-repair Iter079L remains `INVALID_IMPLEMENTATION`.
+Controlling provenance includes `status/ITER077_PROVENANCE_LEDGER.md`, `status/ITER077_CONTACT_FORMULA_ERRATUM.md`, `status/ITER080_PROVENANCE_LEDGER.md`, `status/ITER080D_PROVENANCE.md`, and durable results under `results/`. Historical Iter077E/F source-dependent gates remain `NON_AUTHORITATIVE_SOURCE_LOCK_INVALID`; historical pre-repair Iter079L remains `INVALID_IMPLEMENTATION`. `prereg/ITER080C_SM_JOINT_E3_E4_E6_CAUSAL_SOURCE_BRIDGE_AUDIT.md` is an administratively aborted duplicate, preserved only for provenance under `status/ITER080C_DUPLICATE_PREREG_ABORT.md`; it has no scientific execution or verdict.
 
 ## Source-order and claim firewalls
 
@@ -60,6 +61,32 @@ Classification:
 
 Independent Critic verdict: `CONFIRMED_SCOPED`. This is robustness evidence only; Iter077Q is still stronger and controlling. Do not repeat finite permutation covariance, neighboring invariant-polynomial witnesses, or toy symmetry restatements as main gates.
 
+### Iter080D-SM CLOSED — fixed finite scalar linear conditions cannot select the ambiguity
+
+Prospective preregistration `a61780f9f84cf2ecff0e4a09993322f37e310d4c`; source lock `24e4f8a33efe9305e62656bf942157b00223ca62`; initial implementation `965a9dbcb4fe44b0148a8a7d6317e2d307691dc1`; workflow head `1d561cfe4e076f3d2674ebe0fc06c9ecaa6391c4`.
+
+Initial run `34826699091` failed only because Lane A used an overly brittle matcher for the already-correct contact erratum. It produced `INVALID_SOURCE_LOCK` and is non-authoritative. Control-only repair commit `849eddbac5fab7dd44fdea3b6d2b3f083a8e9c9a` changed only that matcher and did not alter the preregistered scientific contract.
+
+Authoritative terminal run `34826763762`; all required lanes and aggregate succeeded:
+
+- Lane A job `103920609411`: `PASS_SOURCE_LOCK`.
+- Lane B job `103920609532`: `PASS_EXACT_THEOREM`.
+- Lane C job `103920609201`: `PASS_SCOPE_CONTROL`.
+- Aggregate job `103920666567`.
+- Aggregate artifact `10339603905`, digest `sha256:835762c129e220d66cb7dab7b2e7a19da98e6f1b8e60e32cdf80764d71b78f36`.
+- Durable raw result `results/raw/ITER080D_SM_AGGREGATE.json`, commit `4c26dd49531be05195881c7c5c8a8ccfac363c5c`.
+- Durable result `results/ITER080D_SM_FINITE_SCALAR_SELECTOR_OBSTRUCTION_RESULT.md`, commit `f20f3cfc3e17b4981c85482bf0ab874dbbf91672`.
+- Provenance `status/ITER080D_PROVENANCE.md`, commit `e6a7735f30724d6c34e41e53f31e62a4dcfe5264`.
+
+Classification:
+`ITER080D_SM_FIXED_FINITE_SCALAR_LINEAR_RENORMALIZATION_CONDITIONS_CANNOT_SELECT_ITER077Q_INFINITE_FUNCTION_SPACE_AMBIGUITY_EXACT_THEOREM_SCOPED`.
+
+Exact theorem: for any fixed finite `m` and complex-linear `L:W->C^m`, with `W=span_C{h_n:n>=0}` and `h_n=Q^n F_SU2 delta_N`, restriction to `W_N=span{h_0,...,h_N}` gives `dim W_N=N+1`, `rank(L|W_N)<=m`, hence `dim ker(L|W_N)>=N+1-m`. For arbitrary `R`, choosing `N=m+R-1` gives `dim ker L>=R`; therefore `ker L` is infinite-dimensional. No fixed finite set of scalar-valued linear renormalization/normalization conditions can uniquely select the extension on the established Iter077Q subspace.
+
+Negative control: the identity `W_N->C^(N+1)` has zero kernel. Thus Iter080D does **not** exclude condition families whose information content grows without bound, function-valued conditions, differential/spectral/microlocal equations, or nonlinear selectors.
+
+Scientific effect: the local-amplitude blocker survives and the selector search is narrowed to genuinely functional/infinite/source-derived structure. This is not a no-selector theorem.
+
 ## Causal multi-vertex inheritance
 
 ### Iter079E/G/K/L — narrowed component status
@@ -90,11 +117,11 @@ Classification:
 
 Frozen combined-corpus predicates P1-P4 are all false: the validated KKL + BCG `2601.23162` + Beltrán `2603.22661v2` corpus does not explicitly state or derive the complete causal many-vertex functional together with unchanged/defined E3 contraction, E4 weights/sums/normalization, and E6 quotient/fixing normalization. BCG explicitly focuses on a single causal vertex and treats many vertices as future construction; Beltrán extends causal structure to arbitrary 2-complexes and defines a generalized causal vertex, but does not supply the full frozen E3/E4/E6 inheritance bridge.
 
-Scientific effect: the composition branch is now efficiently consolidated as `BLOCKED_SOURCE_BRIDGE` for this source corpus. This is not a no-go theorem. A genuinely new/revised primary source can reopen the bridge question in a new prospectively frozen gate.
+Scientific effect: the composition branch is consolidated as `BLOCKED_SOURCE_BRIDGE` for this source corpus. This is not a no-go theorem. A genuinely new/revised primary source can reopen the bridge question in a new prospectively frozen gate.
 
 ## Exact blockers
 
-1. `FUNCTION_SPACE_K5_DISTRIBUTIONAL_EXTENSION_SELECTOR`.
+1. `FUNCTION_SPACE_K5_DISTRIBUTIONAL_EXTENSION_SELECTOR` — now known not to be resolvable by finite permutation covariance or by any fixed finite set of scalar-valued linear renormalization conditions.
 2. `CAUSAL_MULTIVERTEX_E3_E4_E6_COMPLETE_SOURCE_BRIDGE` for the currently validated source corpus.
 3. `E7_E8_DISTRIBUTIONAL_EXTENSION_TRANSPORT_OR_SELECTOR`.
 4. `RG_REFINEMENT_E9_COARSE_FINE_BOUNDARY_MAP_AND_MATCHING_FUNCTIONAL`.
@@ -104,14 +131,14 @@ Any blocked mandatory arrow prevents full-QG completion.
 
 ## CRQN survival chain
 
-`carrier/source mechanism F1-F8` -> `local source-ordered K5 off-collision object` -> `non-L1 common-collision behavior` -> `same-scaling-degree extensions exist` -> `infinite-dimensional source-compatible tangential ambiguity` -> `finite K5 permutation covariance DOES NOT SELECT` -> `unique local amplitude ? BLOCKED` -> `many-vertex E3/E4/E6 source bridge ? BLOCKED` -> `E7/E8 transport ?` -> `G3 ?` -> `finiteness/regulator removal ?` -> `RG/E9 ?` -> `continuum 3+1 Lorentzian geometry ?` -> `massless spin-2 ?` -> `Einstein/GR recovery ?` -> `matter/QFT IR ?` -> `normalized falsifiable prediction ?`.
+`carrier/source mechanism F1-F8` -> `local source-ordered K5 off-collision object` -> `non-L1 common-collision behavior` -> `same-scaling-degree extensions exist` -> `infinite-dimensional source-compatible tangential ambiguity` -> `finite K5 permutation covariance DOES NOT SELECT` -> `fixed finite scalar linear renormalization conditions DO NOT SELECT` -> `functional/differential/source-derived selector ? BLOCKED` -> `unique local amplitude ? BLOCKED` -> `many-vertex E3/E4/E6 source bridge ? BLOCKED` -> `E7/E8 transport ?` -> `G3 ?` -> `finiteness/regulator removal ?` -> `RG/E9 ?` -> `continuum 3+1 Lorentzian geometry ?` -> `massless spin-2 ?` -> `Einstein/GR recovery ?` -> `matter/QFT IR ?` -> `normalized falsifiable prediction ?`.
 
 ## Next admissible Researcher gate
 
 At recovery, first read any newer Critic handoff and inspect queued/in-progress/newly-terminal runs.
 
 1. Do **not** repeat the KKL/BCG/Beltrán E3/E4/E6 source scan unless a genuinely new or revised primary source changes the object definition.
-2. Do **not** repeat finite permutation symmetry, nearby invariant-polynomial multipliers, toy contraction counts, or larger-`V` gauge-orbit counting.
-3. Highest-value active option is a K5 selector gate only if it introduces a genuinely stronger, independently motivated and source-compatible selection principle acting on the full Iter077Q function space. The principle must be frozen before implementation and may not be invented after seeing the result.
+2. Do **not** repeat finite permutation symmetry, nearby invariant-polynomial multipliers, toy contraction counts, larger-`V` gauge-orbit counting, or any fixed finite collection of scalar normalization/counterterm conditions.
+3. Highest-value active successor: prospectively audit the primary causal/Toller source corpus for a **genuinely function-valued, differential, spectral or microlocal condition on the joint K5 extension** that acts on the full Iter077Q tangential ambiguity space. The audit must distinguish one-wedge equations/representation identities from a correlated joint-K5 extension selector. If no such source-derived condition exists, retain `BLOCKED_OBJECT_DEFINITION`; do not invent one post hoc.
 4. A newly discovered primary source that explicitly defines the complete causal many-vertex prescription is also admissible and should be audited prospectively.
 5. E7/E8, G3, regulator independence and RG remain downstream-locked until prerequisites are real.
