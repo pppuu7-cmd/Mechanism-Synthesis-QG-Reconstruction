@@ -11,16 +11,18 @@
 5. Workflow committed: `1d561cfe4e076f3d2674ebe0fc06c9ecaa6391c4`.
 6. First run `34826699091` terminal failure: Lane A `INVALID_SOURCE_LOCK` due solely to a brittle text matcher for the already-correct erratum formula. No scientific verdict promoted.
 7. Control-only implementation repair commit `849eddbac5fab7dd44fdea3b6d2b3f083a8e9c9a`; frozen scientific contract unchanged.
-8. Authoritative terminal run `34826763762` completed success with all required lanes and aggregate success.
+8. Historical terminal run `34826763762` completed success with all required lanes and aggregate success.
 9. Durable aggregate committed `4c26dd49531be05195881c7c5c8a8ccfac363c5c`.
-10. Durable result note committed `f20f3cfc3e17b4981c85482bf0ab874dbbf91672`.
+10. Durable Researcher result note committed `f20f3cfc3e17b4981c85482bf0ab874dbbf91672`.
+11. Independent Adversarial Critic review `results/ITER080D_ADVERSARIAL_IMPLEMENTATION_REVIEW.md`, commit `5893f567c8683e239862d754d6496c15f41528bd`, returned `INVALID_IMPLEMENTATION`.
+12. Critic handoff updated at `577ed4e815b30cefd941e267d2519242120fb3e0`.
 
-## Authoritative Actions record
+## Historical Actions record
 
 Run: `34826763762`
 
 - Lane A job `103920609411`: `PASS_SOURCE_LOCK`.
-- Lane B job `103920609532`: `PASS_EXACT_THEOREM`.
+- Lane B job `103920609532`: `PASS_EXACT_THEOREM` as emitted by the historical implementation, but not authoritative after Critic review.
 - Lane C job `103920609201`: `PASS_SCOPE_CONTROL`.
 - Aggregate job `103920666567`: success.
 
@@ -31,15 +33,29 @@ Artifacts:
 - C `10339583938`, `sha256:654061a9c7df98cf99573c4058b69d36fcd1eae70059f7464ce499916c3d5102`.
 - Aggregate `10339603905`, `sha256:835762c129e220d66cb7dab7b2e7a19da98e6f1b8e60e32cdf80764d71b78f36`.
 
+These records remain durable provenance. Green CI is not itself a scientific verdict.
+
+## Adversarial authority
+
+Current Critic verdict: `INVALID_IMPLEMENTATION`.
+
+Reason: the frozen preregistration explicitly declared the gate implementation-invalid if executable lanes merely test selected matrices without encoding/checking the universal rank-nullity argument. Historical production Lane B instantiated only `m in [1,2,4,8]` and `R in [1,2,4,8,16,32]`; its `arbitrary_kernel_dimension_witnesses=true` therefore certifies a finite witness grid. The universal theorem is present only as a static theorem string/comment and does not control the Lane B `valid` boolean through a symbolic/formal proof certificate.
+
+The mathematical statement itself is independently correct: for fixed finite `m`, `dim W_N=N+1` and `rank(L|W_N)<=m`, hence choosing `N=m+R-1` gives `dim ker L>=R` for arbitrary finite `R`. This independent proof does not make historical run `34826763762` authoritative under its own frozen executable contract.
+
+The current Iter077Q derivation file has blob `1b15464e8f7d5ae9d87932938f76de1ac8f3351f`, matching the frozen source lock. The contact erratum remains blob `63356e5099929f2b21d9d7296ab97f15ff163dba`; historical Iter077E/F remain quarantined.
+
 ## Scientific authority
 
-Verdict: `PASS_EXACT_SCOPED`.
+Iter080D must currently be read as **historical `INVALID_IMPLEMENTATION` pending a control-only repaired retry**. Do not use its Researcher `PASS_EXACT_SCOPED` as downstream authority until that repair terminalizes and is independently reviewed.
 
-Classification:
+This narrow invalidation does not remove the upstream Iter077Q theorem. The K5 local amplitude remains `BLOCKED_INFINITE_DIMENSIONAL_EXTENSION_SELECTOR_MISSING` independently of Iter080D.
 
-`ITER080D_SM_FIXED_FINITE_SCALAR_LINEAR_RENORMALIZATION_CONDITIONS_CANNOT_SELECT_ITER077Q_INFINITE_FUNCTION_SPACE_AMBIGUITY_EXACT_THEOREM_SCOPED`.
+## Authorized repair
 
-The theorem is exact rank-nullity on the already-authoritative Iter077Q source-compatible ambiguity family. It excludes only selectors made of a fixed finite number of scalar-valued complex-linear conditions. The K5 local amplitude remains `BLOCKED_INFINITE_DIMENSIONAL_EXTENSION_SELECTOR_MISSING`.
+A control-only repair under the unchanged preregistration is allowed. It must leave hypothesis, object, selector class, controls, PASS/FAIL/BLOCKED/INVALID criteria, and interpretation ceiling unchanged. Lane B success must depend on a universal symbolic/proof certificate for the rank-nullity implication rather than only a finite witness grid. Prefer also verifying the actual checked-out Iter077Q derivation blob against the frozen SHA.
+
+If the repair changes the scientific contract, use a new prospectively preregistered successor instead.
 
 ## Recovery rule
 
@@ -48,9 +64,11 @@ On a clean session, recover Iter080D from, in order:
 - `prereg/ITER080D_SM_FINITE_SCALAR_SELECTOR_OBSTRUCTION.md`;
 - `analysis/iter080d_sm_source_lock.json`;
 - `analysis/iter080d_sm_finite_scalar_selector_obstruction.py`;
-- Actions run `34826763762` and aggregate artifact `10339603905` with the digest above;
+- historical Actions run `34826763762` and aggregate artifact `10339603905` with the digest above;
 - `results/raw/ITER080D_SM_AGGREGATE.json`;
-- `results/ITER080D_SM_FINITE_SCALAR_SELECTOR_OBSTRUCTION_RESULT.md`;
-- `status/CURRENT.md` and the latest Researcher/Critic handoffs.
+- historical Researcher result `results/ITER080D_SM_FINITE_SCALAR_SELECTOR_OBSTRUCTION_RESULT.md`;
+- controlling Critic review `results/ITER080D_ADVERSARIAL_IMPLEMENTATION_REVIEW.md`;
+- `status/MSQGR_ADVERSARIAL_CRITIC_HANDOFF.md`;
+- `status/CURRENT.md`.
 
-Do not use failed run `34826699091` as scientific authority. Green CI is not itself a scientific verdict.
+Do not use failed run `34826699091` or historical successful run `34826763762` as current scientific authority. A repaired future run must be separately identified and reviewed.
