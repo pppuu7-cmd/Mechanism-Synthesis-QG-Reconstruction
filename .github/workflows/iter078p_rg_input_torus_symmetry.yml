@@ -1,0 +1,73 @@
+name: Iter078P-RG input torus symmetry
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'prereg/ITER078P_RG_INPUT_TORUS_SYMMETRY.md'
+      - 'distributional/iter078p_rg_input_torus_symmetry.py'
+      - '.github/workflows/iter078p_rg_input_torus_symmetry.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    name: Iter078P lane ${{ matrix.lane }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        lane: [A, B, C, D]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run exact frozen lane
+        env:
+          PYTHONPATH: .
+        run: |
+          mkdir -p out
+          python distributional/iter078p_rg_input_torus_symmetry.py \
+            --lane '${{ matrix.lane }}' \
+            --output 'out/iter078p_${{ matrix.lane }}.json'
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter078p-${{ matrix.lane }}
+          path: out/iter078p_${{ matrix.lane }}.json
+          if-no-files-found: error
+
+  aggregate:
+    name: Aggregate Iter078P-RG
+    needs: audit
+    if: always()
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: iter078p-*
+          path: downloaded
+          merge-multiple: false
+      - name: Aggregate exact input-symmetry lanes
+        env:
+          PYTHONPATH: .
+        run: |
+          mkdir -p out
+          python distributional/iter078p_rg_input_torus_symmetry.py \
+            --aggregate-dir downloaded \
+            --output out/iter078p_aggregate.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter078p-aggregate
+          path: out/iter078p_aggregate.json
+          if-no-files-found: error
