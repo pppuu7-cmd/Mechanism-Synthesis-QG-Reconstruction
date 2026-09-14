@@ -24,7 +24,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: python -c "import json; m=json.load(open('analysis/iter079l_sm_e3_contraction_source_matrix.json')); assert m['primary_sources'][1]['arxiv']=='2601.23162'"
+      - run: |
+          python - <<'PY'
+          import json
+          m=json.load(open('analysis/iter079l_sm_e3_contraction_source_matrix.json'))
+          src={s['id']:s for s in m['primary_sources']}
+          req=m['lane_C_predicate']['required_causal_sources']
+          assert set(req)=={'BianchiChenGamonal2026','Beltran2026v2'}
+          for sid in req:
+              assert sid in src
+              assert src[sid]['evidence']
+              assert 'explicit_many_vertex_parent_E3_inheritance' in src[sid]
+          predicate=any(bool(src[sid]['explicit_many_vertex_parent_E3_inheritance']) for sid in req)
+          print(json.dumps({'source_specific':{sid:src[sid]['explicit_many_vertex_parent_E3_inheritance'] for sid in req},'aggregate_inheritance_predicate':predicate},indent=2))
+          PY
   lane-d:
     runs-on: ubuntu-latest
     steps:
@@ -43,5 +56,5 @@ jobs:
       - run: python analysis/iter079l_sm_e3_contraction_source_audit.py
       - uses: actions/upload-artifact@v4
         with:
-          name: iter079l-aggregate
+          name: iter079l-control-only-retry-aggregate
           path: iter079l_sm_e3_contraction_source_audit.json
