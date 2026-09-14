@@ -11,6 +11,7 @@ on:
       - 'analysis/iter080e_sm_joint_k5_selector_source_audit.py'
       - 'analysis/iter080e_sm_joint_k5_selector_source_audit_repaired.py'
       - 'status/ITER080E_CONTROL_ONLY_SOURCE_PREDICATE_REPAIR_PLAN.md'
+      - 'status/ITER080E_CONTROL_ONLY_DEPENDENCY_PROVENANCE_REPAIR_PLAN.md'
       - '.github/workflows/iter080e_sm_joint_k5_selector_source_audit.yml'
 
 permissions:
@@ -48,6 +49,7 @@ jobs:
           mkdir -p out
           python analysis/iter080e_sm_joint_k5_selector_source_audit_repaired.py --lane B --output out/iter080e_sm_B.json
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: iter080e-sm-B
           path: out/iter080e_sm_B.json
@@ -72,18 +74,19 @@ jobs:
           if-no-files-found: error
 
   lane-d:
-    name: Iter080E-SM lane D dependency provenance
+    name: Iter080E-SM lane D repaired dependency provenance
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Run frozen lane D
+      - name: Run control-only repaired lane D
         run: |
           mkdir -p out
-          python analysis/iter080e_sm_joint_k5_selector_source_audit.py --lane D --output out/iter080e_sm_D.json
+          python analysis/iter080e_sm_joint_k5_selector_source_audit_repaired.py --lane D --output out/iter080e_sm_D.json
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: iter080e-sm-D
           path: out/iter080e_sm_D.json
