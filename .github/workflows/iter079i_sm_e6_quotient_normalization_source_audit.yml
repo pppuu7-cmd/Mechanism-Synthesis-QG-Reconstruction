@@ -1,0 +1,65 @@
+name: Iter079I-SM E6 quotient-normalization source audit
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'prereg/ITER079I_SM_E6_QUOTIENT_NORMALIZATION_SOURCE_AUDIT.md'
+      - 'distributional/iter079i_sm_e6_quotient_normalization_source_audit.py'
+      - '.github/workflows/iter079i_sm_e6_quotient_normalization_source_audit.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    name: Iter079I-SM lane ${{ matrix.lane }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        lane: [A, B, C, D]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run frozen lane
+        run: |
+          mkdir -p out
+          python distributional/iter079i_sm_e6_quotient_normalization_source_audit.py --lane '${{ matrix.lane }}' --output 'out/iter079i_sm_${{ matrix.lane }}.json'
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter079i-sm-${{ matrix.lane }}
+          path: out/iter079i_sm_${{ matrix.lane }}.json
+          if-no-files-found: error
+
+  aggregate:
+    name: Aggregate Iter079I-SM
+    needs: audit
+    if: always()
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: iter079i-sm-*
+          path: downloaded
+          merge-multiple: false
+      - name: Aggregate frozen contract
+        run: |
+          mkdir -p out
+          python distributional/iter079i_sm_e6_quotient_normalization_source_audit.py --aggregate-dir downloaded --output out/iter079i_sm_aggregate.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter079i-sm-aggregate
+          path: out/iter079i_sm_aggregate.json
+          if-no-files-found: error
