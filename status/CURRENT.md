@@ -8,11 +8,11 @@
 - Established/source-backed mechanism union: `F1-F8`.
 - Physical F9: `BLOCKED`.
 - K5 local amplitude: `BLOCKED_INFINITE_DIMENSIONAL_EXTENSION_SELECTOR_MISSING`.
-- Causal multi-vertex composition: `PARTIAL_SOURCE_BRIDGE_E1_E2_CLOSED_E3_E8_BLOCKED`.
+- Causal multi-vertex composition: `PARENT_SKELETON_EXISTS_BUT_CAUSAL_E3_E8_BRIDGE_BLOCKED`.
 - RG/refinement map: `BLOCKED_E9_COARSE_FINE_MAP_MISSING`.
 - G3 quantum dynamics: `OPEN_BUT_NOT_ADMISSIBLE_UNTIL_LOCAL_AMPLITUDE_AND_COMPOSITION_ARE_DEFINED`.
 - G8 novelty: `BLOCKED_CONVERGENCE_ONLY`.
-- **Physical active front:** `CAUSAL_MULTIVERTEX_COMPOSITION_E3_E8 / FUNCTION_SPACE_K5_EXTENSION_SELECTOR / REGULATOR_INDEPENDENCE`.
+- **Physical active front:** `MINIMAL_TWO_VERTEX_CAUSAL_COMPOSITION_E3_E4 / CAUSAL_MULTIVERTEX_E5_E8 / FUNCTION_SPACE_K5_EXTENSION_SELECTOR`.
 - **Conditional/control front:** `FIXED_JHALF_ORDERZERO_1TO5_MAP / INTERNAL_EDGE_GAUGE_QUOTIENT / CAUSAL_STABILIZER_REDUCTION / INPUT_TORUS_SYMMETRY`.
 
 `status/ITER077_PROVENANCE_LEDGER.md` and `status/ITER077_CONTACT_FORMULA_ERRATUM.md` remain controlling. Historical Iter077E/F source-dependent gates remain `NON_AUTHORITATIVE_SOURCE_LOCK_INVALID`.
@@ -115,9 +115,31 @@ Terminal frozen matrix:
 - `E8 MISSING_REQUIRED_OBJECT`: transport/projection/selection of the Iter077Q supported function-space ambiguity through composition.
 - `E9 NOT_REQUIRED_AT_THIS_LAYER` for merely defining a fixed multi-vertex amplitude, but `MISSING_REQUIRED_OBJECT` for RG/refinement.
 
-This supersedes the broad wording of Iter078A: **do not repeat E1/E2 orientation/valence work**. The unresolved multi-vertex blocker is now specifically E3-E8.
+This supersedes the broad wording of Iter078A: **do not repeat E1/E2 orientation/valence work**. The unresolved multi-vertex blocker is specifically E3-E8.
 
-Adversarial source reread confirms the scope: Beltrán defines arbitrary-2-complex causality and a generalized causal *vertex*, but treats replacing the EPRL-KKL vertex in multi-vertex discretizations as a proposal/application direction and explicitly leaves finiteness of the generalized causal vertex open. Parent EPRL/EPRL-KKL state-sum machinery may not be silently promoted to CRQN causal-Toller authority without an explicit inheritance theorem.
+### Iter079B-SM CLOSED BLOCKED — parent skeleton does not supply causal bridge
+
+Prospective preregistration `45121d1b772057c61a861169ae93902c0b42e725`; source matrix `f0f746665e222d4c61c401dc3013383a23c3d900`; implementation `e871c3a3741a930dfa2ce041799b91e441cb2b4f`; production head `2ce5edac7f125f0345101fe158b191d2cb5cd91b`.
+
+Authoritative run `34794348389`; raw artifacts A `10329072156`, B `10329022300`, C `10329880059`, D `10328987312`; aggregate artifact `10329172140`, digest `sha256:074a329a902df070692a76503db7dd98e9e8b450e102f37c94f97aeb41b5a06a`; durable result commit `61b297136f5a7ec1cc45e6a2c543d1dbec9d11dc`.
+
+Classification:
+`ITER079B_SM_PARENT_COMPOSITION_SKELETON_EXISTS_BUT_CAUSAL_INHERITANCE_REQUIRES_NEW_BRIDGE_E3_E8_BLOCKED_EXACT_SOURCE_AUDIT`.
+
+- Lane A `PASS`: the parent EPRL-KKL algebraic composition skeleton exists.
+- Lane B `PASS`: Beltrán supplies causal E1-E2 but no complete multi-vertex inheritance theorem in the frozen scope.
+- Lane C `BLOCKED`: E3-E6 remain missing required objects.
+- Lane D `BLOCKED`: E7-E8 remain missing; ordinary linear gluing transports Iter077Q extension ambiguity unless an annihilation theorem or selector is supplied.
+
+This is a scientific/object-definition blocker, not an infrastructure failure and not a no-go theorem for causal multi-vertex amplitudes.
+
+### Iter079C-SM ACTIVE — minimal two-vertex E3/E4 uniqueness gate
+
+Prospective preregistration `824c5ab264e74eff216ba89a55aa446dea61d5f7`; implementation `c136479db3e6f7b4d9db5e3c557c960ea1bb873a`; production head `fb3c04a372d4fbdb70adb9f3e1900763de48737b`; authoritative run `34797624110` queued at last synchronization.
+
+Frozen question: do source-defined one-vertex causal data plus the parent **combinatorial** gluing skeleton uniquely determine the minimal two-vertex functional, or do exact pairing-normalization/internal-weight alternatives survive until an explicit E3/E4 inheritance axiom is supplied?
+
+Do not classify before terminal raw artifacts and aggregate are consumed.
 
 ## Conditional/control line — never promote without a bridge
 
@@ -148,14 +170,11 @@ A blocked local amplitude or composition arrow blocks downstream promotion even 
 
 ## Exact next admissible step
 
-Highest-information physical successor:
+Highest-information physical successor is the already-active Iter079C-SM minimal two-vertex composition-uniqueness gate.
 
-`EPRL_KKL_TO_CAUSAL_TOLLER_COMPOSITION_INHERITANCE_THEOREM / EXTENSION_TRANSPORT_COMPATIBILITY`.
-
-Prospectively test whether the standard parent EPRL-KKL state-sum composition (face/edge weights, internal sums, boundary contraction and gauge quotient) can be inherited **without adding a new physical choice** when each local vertex is replaced by the BCG/Beltrán causal Toller vertex. The theorem must specify orientation/duality and normalization and must be tested against the Iter077Q supported extension family.
-
-- If exact inheritance fails or is not derivable from frozen source/model axioms: retain `BLOCKED_MULTI_VERTEX_CAUSAL_OBJECT_DEFINITION`.
-- If inheritance is proved: immediately test whether composition reduces the infinite-dimensional Iter077Q ambiguity or merely transports it.
+- If Iter079C proves nonuniqueness from pairing normalization/internal weights, record E3/E4 as requiring an explicit inheritance/normalization bridge and then isolate E5/E6.
+- If Iter079C unexpectedly establishes uniqueness from frozen authority, consume the proof before opening E5/E6.
+- Keep E7/E8 distributional extension transport separate until an E3-E6 composed object exists.
 - Do not open RG/G3 until E3-E8 are defined; E9 is separately required before refinement/RG.
 
 ## Claim locks
