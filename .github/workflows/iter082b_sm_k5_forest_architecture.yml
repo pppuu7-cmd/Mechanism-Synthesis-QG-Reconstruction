@@ -1,0 +1,30 @@
+name: Iter082B-SM K5 forest architecture
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/iter082b_sm_k5_forest_architecture.yml'
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Verify prospective chronology
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f prereg/ITER082B_SM_K5_SOURCE_COVARIANT_FOREST_EXTENSION_PRESCRIPTION_GATE.md
+          git merge-base --is-ancestor b263efeeeb052a8d5cf082334d350b5a4967d82b 061c7fa9bb52b8e0157a2980959caa6ef0a40e3c
+          git merge-base --is-ancestor 061c7fa9bb52b8e0157a2980959caa6ef0a40e3c HEAD
+      - name: Run exact combinatorial gate
+        run: python scripts/iter082b_sm_k5_forest_architecture.py
+      - name: Upload authoritative aggregate
+        uses: actions/upload-artifact@v4
+        with:
+          name: iter082b-sm-aggregate
+          path: iter082b_aggregate.json
+          if-no-files-found: error
