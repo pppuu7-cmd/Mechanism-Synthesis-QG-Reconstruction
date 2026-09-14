@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# Production trigger only; frozen Iter079D-SM criteria unchanged.
 import argparse, json
 from fractions import Fraction
 from pathlib import Path
