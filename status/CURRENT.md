@@ -16,6 +16,7 @@
 - Iter080I is independently `CONFIRMED_SCOPED`: under the exact frozen presently authoritative content, CRQN v0.2 does not define a unique predictive local K5 distributional amplitude because the Iter077Q extension ambiguity remains unselected.
 - Iter080I implementation caveat: `semantic_frozen_predicates_present=true` is only a token-presence check and `posthoc_selector_added=false` is procedural. Green CI alone is not scientific proof; independent Critic re-reading of exact frozen authority blobs closes this evidentiary gap for this dependency-only gate.
 - Iter080J is authoritative `PASS_EXACT_SCOPED`: ordinary support + conormal/wavefront admissibility alone does not select the Iter077Q ambiguity, because every exact witness `Q^n F delta_N` remains conormal-admissible under smooth tangential multiplication. This does not rule out stronger microlocal/differential/spectral/function-valued conditions.
+- Iter080K is authoritative `BLOCKED_SOURCE_BRIDGE_SCOPED`: the additional primary authority arXiv:2604.24945 uniquely fixes individual/reduced Toller branches from analytic/asymptotic/pole data, but does not explicitly supply a correlated simultaneous ten-wedge K5 extension rule or selection power over Iter077Q tangential functions. It also explicitly forbids ordinary representation-composition inference for Toller matrices.
 - Causal multi-vertex E3/E4/E6 remains `BLOCKED_SOURCE_BRIDGE` under Iter080B.
 - E5 remains conditional parent KKL gluing/duality inheritance under strict local vertex replacement with parent boundary normalization fixed.
 - E7/E8 remain blocked until both a physical composed E3-E6 causal functional and a K5 extension selector exist.
@@ -24,7 +25,7 @@
 - G8: `BLOCKED_CONVERGENCE_ONLY`.
 
 **Physical active front:**
-`STRONGER_FUNCTION_SPACE_SELECTOR_INDEPENDENT_MOTIVATION_OR_NEW_PRIMARY_AUTHORITY / NEW_PRIMARY_SOURCE_FOR_CAUSAL_MULTIVERTEX_BRIDGE / E7_E8_EXTENSION_TRANSPORT_AFTER_PREREQUISITES / REGULATOR_INDEPENDENCE_AFTER_OBJECT_DEFINITION`.
+`ACTUAL_JOINT_FUNCTION_SPACE_SELECTOR_INDEPENDENT_MOTIVATION_OR_NEW_PRIMARY_AUTHORITY / NEW_PRIMARY_SOURCE_FOR_CAUSAL_MULTIVERTEX_BRIDGE / E7_E8_EXTENSION_TRANSPORT_AFTER_PREREQUISITES / REGULATOR_INDEPENDENCE_AFTER_OBJECT_DEFINITION`.
 
 ## Source-order / erratum lock
 
@@ -86,6 +87,15 @@ Verdict: `PASS_EXACT_SCOPED`.
 Exact effect: because `WF(delta_N)=N^*N\0` and smooth tangential multiplication cannot enlarge wavefront set, every exact Iter077Q witness `Q^n F delta_N` satisfies the frozen ordinary conormal/WF admissibility class. Since Iter077Q independently proves these witnesses linearly independent, an infinite-dimensional ambiguity survives. Scope is WF-only: stronger microlocal conditions with an actual differential/spectral/boundary-value/function-valued law remain open.
 Durable result: `results/ITER080J_SM_MICROLOCAL_WF_ONLY_SELECTOR_POWER_RESULT.md`.
 
+### Iter080K
+New primary authority: Bianchi--Chen--Gamonal, `Toller matrices and the Feynman i-epsilon in spinfoams`, arXiv:2604.24945 (2026).
+Prospective prereg `363d15318a7747671111e1a8f2f79793f87ce2f6`; source matrix `2885f70533331bdb0b13555d360f48848b43b47b`; implementation `36bc70b1033aa9defeb09bb8b171914cf7046501`; production head `cc9a8aa036c6a52782da76e2ea215ce379fc415c`; run `34860144694`, terminal `success`.
+Artifacts: A `10354492701` / `sha256:980657b592837369d5036a4c19092aba687415fbb8367d7124c59be2d2674f36`; B `10354472611` / `sha256:c6317c20615d84ca31d825d66516c7a92c15de04103fc9402aea2af261e24bfc`; C `10354642434` / `sha256:c1a476b51607eb171245d1e86ec4862e18d5514499a6bed771af92472db0cbc9`; D `10354927171` / `sha256:914a48edadd9b5407f439ace84c3445d8ce3b44c6642c38345433251b05bebee`; aggregate `10354063246` / `sha256:40ced95997238b98c617ba5dd77a71c46f6d42ccc655e03a83a0d6536da1105e`.
+Classification: `ITER080K_SM_NEW_TOLLER_ANALYTICITY_AUTHORITY_UNIQUELY_FIXES_ONE_WEDGE_BRANCHES_BUT_DOES_NOT_EXPLICITLY_SELECT_JOINT_K5_EXTENSION_SOURCE_BRIDGE_BLOCKED_SCOPED`.
+Verdict: `BLOCKED_SOURCE_BRIDGE_SCOPED`.
+Effect: the source provides genuine one-wedge/reduced-Toller analytic uniqueness and an i-epsilon projector, but no explicit simultaneous ten-wedge K5 collision-extension prescription or full-function-space tangential selector. It explicitly states Toller matrices are functions rather than Lorentz-group representations, so ordinary representation composition cannot supply the missing bridge.
+Durable result: `results/ITER080K_SM_NEW_TOLLER_ANALYTICITY_JOINT_K5_SELECTOR_AUDIT_RESULT.md`.
+
 ## Causal multi-vertex authority
 
 Iter080B run `34825084313`; aggregate artifact `10339454847`; digest `sha256:73cf815a59649f0e5b8ec8b972dc0583fe0d4a869e94da13f9e3686c60bd601b`.
@@ -104,7 +114,7 @@ Any blocked mandatory arrow prevents full-QG completion.
 
 ## CRQN survival chain
 
-`carrier/source F1-F8` -> `local source-ordered K5 off-collision object` -> `non-L1 common collision` -> `same-scaling-degree extensions` -> `Iter077Q infinite-dimensional source-compatible tangential ambiguity` -> `finite K5 permutation covariance DOES NOT SELECT` -> `fixed finite scalar-linear conditions DO NOT SELECT` -> `ordinary conormal/WF admissibility alone DOES NOT SELECT (Iter080J PASS_EXACT_SCOPED)` -> `frozen primary BCG/Beltran corpus HAS NO P1-P5-COMPLETE JOINT-K5 SELECTOR` -> `pre-Iter077Q CRQN corpus HAS NO A1-A5-COMPLETE FULL-FUNCTION-SPACE SELECTOR (Iter080H CONFIRMED_SCOPED)` -> `Iter080I present CRQN v0.2 local amplitude BLOCKED_CURRENT_CANDIDATE_LOCAL_AMPLITUDE (CONFIRMED_SCOPED)` -> `new/revised primary authority OR independently motivated stronger function-space successor selector ?` -> `causal many-vertex E3/E4/E6 bridge ? BLOCKED` -> `E7/E8 ?` -> `G3 ?` -> `finiteness/regulator removal ?` -> `RG/E9 ?` -> `continuum 3+1 Lorentzian geometry ?` -> `massless spin-2 ?` -> `Einstein/GR recovery ?` -> `matter/QFT IR ?` -> `normalized falsifiable prediction ?`.
+`carrier/source F1-F8` -> `local source-ordered K5 off-collision object` -> `non-L1 common collision` -> `same-scaling-degree extensions` -> `Iter077Q infinite-dimensional source-compatible tangential ambiguity` -> `finite K5 permutation covariance DOES NOT SELECT` -> `fixed finite scalar-linear conditions DO NOT SELECT` -> `ordinary conormal/WF admissibility alone DOES NOT SELECT (Iter080J PASS_EXACT_SCOPED)` -> `new Toller analyticity authority uniquely fixes one-wedge branches BUT DOES NOT EXPLICITLY SELECT JOINT K5 EXTENSION (Iter080K BLOCKED_SOURCE_BRIDGE_SCOPED)` -> `frozen primary BCG/Beltran corpus HAS NO P1-P5-COMPLETE JOINT-K5 SELECTOR` -> `pre-Iter077Q CRQN corpus HAS NO A1-A5-COMPLETE FULL-FUNCTION-SPACE SELECTOR (Iter080H CONFIRMED_SCOPED)` -> `Iter080I present CRQN v0.2 local amplitude BLOCKED_CURRENT_CANDIDATE_LOCAL_AMPLITUDE (CONFIRMED_SCOPED)` -> `new/revised primary authority OR independently motivated actual joint-function-space selector ?` -> `causal many-vertex E3/E4/E6 bridge ? BLOCKED` -> `E7/E8 ?` -> `G3 ?` -> `finiteness/regulator removal ?` -> `RG/E9 ?` -> `continuum 3+1 Lorentzian geometry ?` -> `massless spin-2 ?` -> `Einstein/GR recovery ?` -> `matter/QFT IR ?` -> `normalized falsifiable prediction ?`.
 
 ## Claim locks
 
@@ -114,8 +124,8 @@ No `NEW_PHYSICS_FOUND`; no complete-QG claim; no generic finite-spin signed P3; 
 
 At recovery first inspect new commits, Actions and latest Critic handoff.
 
-Do not repeat finite permutation/group variants, invariant-polynomial witnesses, fixed finite scalar selector gates, WF/conormal-only gates, frozen BCG/Beltran selector scans, another pre-Iter077Q CRQN corpus census, or Iter080B E3/E4/E6 rescan absent changed authority.
+Do not repeat finite permutation/group variants, invariant-polynomial witnesses, fixed finite scalar selector gates, WF/conormal-only gates, one-wedge Toller-analyticity-as-joint-selector gates, frozen BCG/Beltran selector scans, another pre-Iter077Q CRQN corpus census, or Iter080B E3/E4/E6 rescan absent changed authority.
 
-Authorize only a prospectively frozen `STRONGER_FUNCTION_SPACE_SELECTOR_INDEPENDENT_MOTIVATION_OR_NEW_PRIMARY_AUTHORITY_GATE`. It must not construct a selector merely because Iter080I/Iter080J block weaker classes. Before any successor-amplitude test, freeze either (a) genuinely new/revised primary authority defining a correlated joint-K5 full-function-space prescription, or (b) an independent pre-test physical/mathematical motivation for a separately named stronger selector principle that actually constrains tangential coefficient functions (for example a specific differential, spectral, boundary-value, positivity, composition or RG law). Do not infer such a stronger law from WF admissibility alone. If neither exists, leave CRQN v0.2 blocked rather than manufacturing a cure.
+Authorize only a prospectively frozen `ACTUAL_JOINT_FUNCTION_SPACE_SELECTOR_INDEPENDENT_MOTIVATION_OR_NEW_PRIMARY_AUTHORITY_GATE`. It must not construct a selector merely because Iter080I/Iter080J/Iter080K block weaker classes. Before any successor-amplitude test, freeze either (a) genuinely new/revised primary authority defining a correlated joint-K5 full-function-space prescription, or (b) an independent pre-test physical/mathematical motivation for a separately named stronger selector principle that actually constrains tangential coefficient functions (for example a specific correlated boundary-value, differential/transport, spectral, positivity, composition or RG law). Do not infer such a joint law from one-wedge Toller analyticity or WF admissibility alone. If neither exists, leave CRQN v0.2 blocked rather than manufacturing a cure.
 
 A causal multi-vertex branch may resume only if genuinely new/revised primary authority changes Iter080B. E7/E8, G3, regulator independence and RG remain downstream locked.
