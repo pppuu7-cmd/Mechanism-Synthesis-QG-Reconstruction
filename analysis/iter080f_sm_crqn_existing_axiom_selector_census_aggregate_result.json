@@ -1,0 +1,30 @@
+{
+  "iteration": "Iter080F-SM",
+  "execution_valid": true,
+  "lane_scientific_outcomes": {
+    "A": "PASS_PROVENANCE_TIMING",
+    "B": "BLOCKED_EXISTING_AXIOM_SELECTOR_MISSING",
+    "C": "PASS_ANTI_RESCUE_CONTROLS",
+    "D": "PASS_DEPENDENCY_LOCK"
+  },
+  "qualifying_preexisting_axioms": [],
+  "verdict": "BLOCKED_EXISTING_AXIOM_SELECTOR_MISSING",
+  "classification": "ITER080F_SM_CRQN_V0_2_HAS_NO_PREEXISTING_FULL_FUNCTION_SPACE_EXTENSION_SELECTOR_AXIOM_ANTI_RESCUE_BLOCKED_EXACT_CENSUS_SCOPED",
+  "prereg_commit": "382948b3369c3bc2132ff4c2757500fdd7b77ba1",
+  "implementation_commit": "082bfb7facf57f8cf42405a1b514d88a7ffb8831",
+  "control_only_timezone_repair_plan": "9f857e8acec6de180185a206ec67791efe333f37",
+  "control_only_repaired_lane_a": "28d3d04124855aeff8209a91287cbb727570bf9c",
+  "production_head": "1a78e94ad72e4bdad4b132a37699debd964789bc",
+  "authoritative_run": 34837108991,
+  "aggregate_artifact": 10344587578,
+  "aggregate_digest": "sha256:bd815e8cafa5a03c3d13af96220570758a9300e7f759671c81b2ca198b2b86f9",
+  "lane_artifacts": {
+    "A": {"id": 10344301951, "digest": "sha256:92c8666c963127ffc9bba1d5bf306c2b8702c0dc443c3ee27a7e5268ea4beaaf"},
+    "B": {"id": 10344258250, "digest": "sha256:0c75a7af91840167b3ff16bc1d59d5aa80bc3bbb4de1c2bc99da6ad6e5e96440"},
+    "C": {"id": 10344168296, "digest": "sha256:4109251b99040c408037dfabbc62012a3e5d6b71feb0733f11f550e080901e16"},
+    "D": {"id": 10344592580, "digest": "sha256:765093c9d9d3a040b36e6e9db1f8809aeee71775fafb058edfe963aea5e4caf8"}
+  },
+  "historical_invalid_run": 34836984921,
+  "historical_invalid_reason": "Lane A compared equivalent ISO-8601 commit instants by literal timezone-offset strings; aggregate skipped. Scientific criteria unchanged in repair.",
+  "interpretation_ceiling": "The frozen pre-Iter077Q CRQN v0.1/v0.2 candidate corpus contains no already-specified A1-A5-complete selector acting on the full Iter077Q function space. This does not prove that no independently motivated future candidate version or new primary source can define such a selector."
+}
