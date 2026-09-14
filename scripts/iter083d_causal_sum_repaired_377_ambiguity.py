@@ -96,10 +96,10 @@ def main():
         and bcg_factor != 0
     )
 
-    # P4: summed source remains sd 20 with same 16-pattern source family.
+    # P4: summed source remains at the authoritative nonzero r^-20 leading order.
     p4_lock, p4_missing = require(args.iter081h, [
         "16 C_alpha r^(-20)",
-        "transverse scaling degree",
+        "q=-20",
         "16 eta=+1 assignments",
     ])
     p4 = p4_lock
