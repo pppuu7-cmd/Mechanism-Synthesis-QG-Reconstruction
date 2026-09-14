@@ -1,0 +1,43 @@
+name: Iter082F three-chart tubular atlas
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+    paths:
+      - 'scripts/iter082f_three_chart_tubular_atlas.py'
+      - '.github/workflows/iter082f-three-chart-tubular-atlas.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  exact-atlas-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout production commit
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - name: Record provenance
+        run: |
+          mkdir -p artifacts/iter082f
+          printf '%s\n' "${GITHUB_SHA}" > artifacts/iter082f/production_commit.txt
+          sha256sum prereg/ITER082F_SM_K5_THREE_CHART_TUBULAR_ATLAS_COCYCLE.md > artifacts/iter082f/prereg.sha256
+          sha256sum scripts/iter082f_three_chart_tubular_atlas.py > artifacts/iter082f/implementation.sha256
+      - name: Run exact frozen atlas gate
+        run: python3 scripts/iter082f_three_chart_tubular_atlas.py
+      - name: Hash aggregate
+        if: always()
+        run: |
+          if [ -f artifacts/iter082f/aggregate.json ]; then
+            sha256sum artifacts/iter082f/aggregate.json | tee artifacts/iter082f/aggregate.sha256
+          fi
+      - name: Upload raw artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: iter082f-three-chart-tubular-atlas-${{ github.run_id }}
+          path: artifacts/iter082f/
+          if-no-files-found: error
