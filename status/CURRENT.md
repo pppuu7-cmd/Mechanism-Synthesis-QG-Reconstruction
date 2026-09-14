@@ -8,12 +8,15 @@
 - Established/source-backed mechanism union: `F1-F8`.
 - Physical F9: `BLOCKED`.
 - K5 local amplitude: `BLOCKED_INFINITE_DIMENSIONAL_EXTENSION_SELECTOR_MISSING`.
-- Causal multi-vertex composition: `PARTIAL_INHERITANCE_E5_E4_CONDITIONAL_AND_E6_PRODUCT_ORBIT_STRUCTURE_PARTIAL; E3_E4_SOURCE_BRIDGE_E6_NORMALIZATION_E7_E8_BLOCKED`.
+- Causal multi-vertex composition: parent KKL E3/E5 structures are explicit and algebraically inherit under a strict local-vertex-only replacement; E4 is likewise algebraically conditional. Physical causal promotion is still blocked because a complete many-vertex causal inheritance prescription is not explicit in the audited primary causal source.
+- E6: parent Lorentzian EPRL fixes/removes one redundant `SL(2,C)` integration per 4-simplex; the causal one-vertex amplitude explicitly fixes `g_1=1`; the remaining blocker is the **many-vertex causal inheritance of that quotient/fixing normalization**, not absence of a one-vertex gauge-fixing object.
+- E7/E8: `BLOCKED` until an actual composed causal E3-E6 functional and K5 extension selector exist.
 - RG/refinement map: `BLOCKED_E9_COARSE_FINE_MAP_MISSING`.
 - G3 quantum dynamics: `OPEN_BUT_NOT_ADMISSIBLE_UNTIL_LOCAL_AMPLITUDE_AND_COMPOSITION_ARE_DEFINED`.
 - G8 novelty: `BLOCKED_CONVERGENCE_ONLY`.
-- **Physical active front:** `CAUSAL_E3_E4_SOURCE_INHERITANCE / E6_QUOTIENT_NORMALIZATION / E7_E8_EXTENSION_TRANSPORT / FUNCTION_SPACE_K5_EXTENSION_SELECTOR`.
-- **Conditional/control front:** `FIXED_JHALF_ORDERZERO_1TO5_MAP / INTERNAL_EDGE_GAUGE_QUOTIENT / CAUSAL_STABILIZER_REDUCTION / INPUT_TORUS_SYMMETRY`.
+
+**Physical active front:**
+`FUNCTION_SPACE_K5_EXTENSION_SELECTOR / CAUSAL_MULTIVERTEX_E3_PARENT_CONTRACTION_INHERITANCE_BRIDGE / PHYSICAL_E4_INHERITANCE_SOURCE_BRIDGE / CAUSAL_MULTIVERTEX_E6_PARENT_GAUGE_FIXING_NORMALIZATION_INHERITANCE_BRIDGE / E7_E8_EXTENSION_TRANSPORT`.
 
 `status/ITER077_PROVENANCE_LEDGER.md` and `status/ITER077_CONTACT_FORMULA_ERRATUM.md` remain controlling. Historical Iter077E/F source-dependent gates remain `NON_AUTHORITATIVE_SOURCE_LOCK_INVALID`.
 
@@ -22,108 +25,81 @@
 ### Iter077I-SM CLOSED — source-ordered local L1 obstruction
 Run `34786586785`. All 32 minimal all-`j=1/2` boundary components have nonzero leading contractions on the frozen source-faithful collision witness. Ten wedges give homogeneous power `q=-20` in transverse dimension `d=12`, radial absolute-integrability exponent `-9`. Ceiling: no full distributional vertex nonexistence/divergence theorem.
 
-### Iter077K-SM CLOSED BLOCKED — joint K5 boundary value absent from source
-Published one-wedge spectral `i epsilon` selects individual Toller branches but does not define a joint K5 finite part, correlated extension, contour, conditional-convergence theorem, or interchange theorem for the one-wedge limits with K5 multiplication/integration.
+### Iter077K/L/Q-SM — controlling extension blocker
+Iter077K: published one-wedge spectral `i epsilon` does not define a joint K5 finite part/correlated extension/interchange theorem.
 
-### Iter077L-SM CLOSED — extension theorem
-For the source-gauge-fixed collision submanifold `N=SU(2)^4 subset SL(2,C)^4`, real codimension is `12` and transverse scaling degree is `20`. Same-scaling-degree extensions have supported normal-jet ambiguity through order `8` with smooth tangential coefficient data.
+Iter077L: for `N=SU(2)^4 subset SL(2,C)^4`, real codimension `12`, transverse scaling degree `20`; same-scaling-degree extensions have supported normal-jet ambiguity through order `8` with smooth tangential coefficient data.
 
-### Iter077Q-SM CLOSED PASS — infinite-dimensional tangential ambiguity
-Run `34792482045`; aggregate artifact `10328598487`, digest `sha256:58e3cb389a985838942a4d0181e6e680cdd75480cfc24e0ec7bb07d73b199a96`; durable result commit `5941b3a064d93f2898d9e9a48545826e950455f1`.
-
-Classification:
+Iter077Q run `34792482045`, aggregate artifact `10328598487`, digest `sha256:58e3cb389a985838942a4d0181e6e680cdd75480cfc24e0ec7bb07d73b199a96`, durable result `5941b3a064d93f2898d9e9a48545826e950455f1`:
 `ITER077Q_SM_SOURCE_COMPATIBLE_K5_EXTENSION_AMBIGUITY_CONTAINS_INFINITE_DIMENSIONAL_TANGENTIAL_SUBSPACE_EXACT_THEOREM_SCOPED`.
 
-With `Q(g)=sum_(a<b) tr_(1/2)(g_b^-1 g_a)`, the family `{Q^n F_SU2 delta_N : n>=0}` is linearly independent whenever the boundary functional is nonzero. The extension problem is therefore a function-space problem, not a one-counterterm problem.
+This remains the controlling local-amplitude blocker.
 
-## Causal multi-vertex source inheritance
+## Causal multi-vertex inheritance
 
-### Iter079A-SM CLOSED BLOCKED — E1/E2 source-explicit, E3-E8 missing
-Run `34793089002`; aggregate artifact `10328048914`; result commit `646a447b6bb6a654cb3e17b3b759d0981636d8a8`.
+### Iter079A-D — baseline blockers
+- Iter079A: E1/E2 source-explicit; E3-E8 missing in that audit.
+- Iter079B: parent EPRL-KKL composition skeleton exists, but causal inheritance was not supplied.
+- Iter079C: one-vertex causal data + combinatorial skeleton do not uniquely fix E3/E4 absent an inheritance rule.
+- Iter079D: minimal algebra alone underdetermines E5/E6; subsequently narrowed by E/F/H/I/J/K/L.
 
-- E1 causal orientation/consistency on arbitrary oriented 2-complex: source explicit.
-- E2 generalized causal vertex on arbitrary vertex boundary graph/valence: source explicit.
-- E3-E8: missing required objects in that source audit.
-
-### Iter079B-SM CLOSED BLOCKED — parent skeleton alone is insufficient
-Run `34794348389`; aggregate artifact `10329172140`, digest `sha256:074a329a902df070692a76503db7dd98e9e8b450e102f37c94f97aeb41b5a06a`; durable result commit `61b297136f5a7ec1cc45e6a2c543d1dbec9d11dc`.
-
-The parent EPRL-KKL algebraic composition skeleton exists, but the then-frozen causal inheritance bridge for E3-E8 was not supplied. Ordinary linear gluing transports Iter077Q ambiguity unless an annihilation theorem or selector is supplied.
-
-### Iter079C-SM CLOSED BLOCKED — E3/E4 nonuniqueness without inheritance axiom
-Authoritative retry run `34800692127`; durable result commit `0a502c439e3e1069d19b66bb7a8bd65928f537bf`.
-
-Classification:
-`ITER079C_SM_MINIMAL_TWO_VERTEX_CAUSAL_FUNCTIONAL_NOT_UNIQUELY_FIXED_BY_LOCAL_VERTEX_DATA_AND_COMBINATORIAL_SKELETON_E3_E4_BRIDGE_REQUIRED_EXACT_SCOPED`.
-
-Pairing normalization and internal-weight witnesses show that one-vertex causal data plus the combinatorial skeleton do not uniquely fix E3/E4 absent an explicit inheritance/normalization rule.
-
-### Iter079D-SM CLOSED BLOCKED — E5/E6 underdetermined at minimal algebraic level
-Run `34800826649`; aggregate artifact `10331188275`; durable result commit `1307e545262d8d534aae5082f1dfa6198d4e6a7d`.
-
-Classification:
-`ITER079D_SM_E5_E6_BOUNDARY_DUALITY_AND_GAUGE_QUOTIENT_NOT_UNIQUELY_FIXED_BY_CURRENT_CAUSAL_INHERITANCE_DATA_EXACT_SCOPED`.
-
-This result is superseded/narrowed for E5 and the existence/counting of the E6 redundancy by Iter079E/F/H/J below; it remains relevant for the absence of a unique E6 quotient normalization.
-
-### Iter079E-SM CLOSED PASS CONDITIONAL — E5 inherits under fixed parent normalization
-Run `34804405962`; aggregate artifact `10332976631`, digest `sha256:2f89020f2c8723c521dc8decce4b2f8739a3567acddc22ceaa599fe8df5c0089`; durable result commit `e7667acd5724f5965b9d923796863e9f06903181`.
-
-Classification:
+### Iter079E-SM CLOSED PASS CONDITIONAL — E5
+Run `34804405962`, artifact `10332976631`, digest `sha256:2f89020f2c8723c521dc8decce4b2f8739a3567acddc22ceaa599fe8df5c0089`.
 `ITER079E_SM_E5_KKL_GLUE_DUALITY_CONDITIONALLY_INHERITS_UNDER_LOCAL_CAUSAL_VERTEX_REPLACEMENT_PARENT_BOUNDARY_NORMALIZATION_FIXED_EXACT_SCOPED`.
 
-### Iter079F-SM CLOSED PASS CONDITIONAL — one-vertex E6 redundancy inherits
-Run `34807939721`; aggregate artifact `10333931825`, digest `sha256:a542e13e6ebe2d59e78fc47d5da12b586141e224fec9a621ab8dd82345ad88da`; durable result commit `f4d3ba5679a8df3ad4b4d684fe9376c558d166b9`.
+### Iter079F/H/J-SM — E6 redundancy/orbit structure
+Iter079F: one-vertex common-left `SL(2,C)` redundancy survives the causal/Toller replacement.
 
-Classification:
-`ITER079F_SM_CAUSAL_TOLLER_VERTEX_COMMON_LEFT_GAUGE_REDUNDANCY_CONDITIONALLY_INHERITS_EXACT_SCOPED_E6_PARTIAL`.
+Iter079H: minimal two-vertex frozen gluing retains two independent local common-left redundancies; quotient by diagonal `G` alone leaves six real relative directions.
 
-### Iter079G-SM CLOSED CONDITIONAL/BLOCKED — E4 algebraic inheritance without physical source bridge
-Run `34808074226`; aggregate artifact `10334036403`, digest `sha256:1a6e77a773b542f0dc53739b06f9231bfe2b1e917fe80afda63126e7ce808750`; durable result commit `dff96005a73cafbd6629ded65951b4475d8443a2`.
-
-Classification:
-`ITER079G_SM_E4_PARENT_WEIGHTS_CONDITIONALLY_INHERIT_UNDER_VERTEX_ONLY_REPLACEMENT_BUT_SOURCE_BRIDGE_NOT_EXPLICIT_EXACT_SCOPED`.
-
-### Iter079H-SM CLOSED PASS EXACT SCOPED — minimal two-vertex E6 orbit counting
-Run `34808179196`; aggregate artifact `10333921372`, digest `sha256:bec93b1c71d8fc2cc1a675c312216dae6adfff17c721b6d88275be74f167b8b0`; durable result commit `12d86bec6cac44f9a30207cab845f15ad068d53c`.
-
-Classification:
-`ITER079H_SM_MINIMAL_TWO_VERTEX_KKL_GLUE_RETAINS_TWO_INDEPENDENT_COMMON_LEFT_REDUNDANCIES_DIAGONAL_QUOTIENT_INSUFFICIENT_EXACT_SCOPED_E6_PARTIAL`.
-
-### Iter079I-SM CLOSED BLOCKED — orbit known, quotient normalization object missing
-Run `34808310776`; aggregate artifact `10333912424`, digest `sha256:df611a8c0d2abe3ee8ac9abd4288118648a928c70170107d980c1c846a465421`; durable result commit `6d11968f28f4ee21ce944f2a8b7ec925158b96ac`.
-
-Classification:
-`ITER079I_SM_E6_ORBIT_STRUCTURE_KNOWN_BUT_QUOTIENT_FIXING_NORMALIZATION_SOURCE_BRIDGE_MISSING_OBJECT_DEFINITION_BLOCKED_EXACT_SCOPED`.
-
-The source matrix supplies neither an explicit local integration-removal/fixing rule nor quotient measure, normalization convention, KKL-gluing compatibility proof, or generalized causal-Toller E6 validity proof. Constant rescaling of a gauge-invariant reduced measure changes the frozen amplitude witness (`7 -> 14`), so gauge invariance alone does not select normalization.
-
-### Iter079J-SM CLOSED PASS EXACT SCOPED — multivertex E6 product-orbit counting
-Prospective preregistration `6645d44efe9319401f8c0c77e361c0a105573add`; implementation `4a31a5c7ddb7627d876377e098c3ccdde221ad1c`; production head `f1696f0aa2aea3bd4c0264b44006e92d3033736d`; run `34811432966`.
-
-Raw artifacts A `10334064547`, B `10335076992`, C `10335126360`, D `10335017304`; aggregate artifact `10334368430`, digest `sha256:afe3c383f40c70821d8ca03665afb5b1b3ae1ac78fc7753fc4bf2a1f9b65215b`; durable result commit `a31aa8e0c226df170515510a3163488ddbf537a0`.
-
-Classification:
+Iter079J run `34811432966`, aggregate artifact `10334368430`, digest `sha256:afe3c383f40c70821d8ca03665afb5b1b3ae1ac78fc7753fc4bf2a1f9b65215b`, durable result `a31aa8e0c226df170515510a3163488ddbf537a0`:
 `ITER079J_SM_VERTEX_ONLY_KKL_GLUE_RETAINS_PRODUCT_COMMON_LEFT_REDUNDANCY_G_POWER_V_DIAGONAL_QUOTIENT_LEAVES_6V_MINUS_6_RELATIVE_DIRECTIONS_EXACT_SCOPED_E6_PARTIAL`.
 
-All 50 exact local word checks pass. Path/cycle/star representatives through `V=5` preserve independent local left actions under the frozen vertex-only gluing layer. Hence the scoped redundancy is `G^V`, `G=SL(2,C)`, with real orbit dimension `6V`; quotient by only diagonal `G` leaves `6(V-1)` relative directions. This sharpens E6 orbit counting but does not define its quotient measure or normalization.
+Do not extend this toy count to larger V merely for load.
 
-## Exact blockers after Iter079J
+### Iter079G-SM CLOSED CONDITIONAL/BLOCKED — E4
+Run `34808074226`, artifact `10334036403`, digest `sha256:1a6e77a773b542f0dc53739b06f9231bfe2b1e917fe80afda63126e7ce808750`.
+Parent face/edge weights, internal sums and normalization algebraically stay unchanged under a strict vertex-only replacement, but primary causal authority does not explicitly promote this to a physical full causal state-sum prescription.
+
+### Iter079I-SM CLOSED BLOCKED — historical broad E6 audit
+Run `34808310776`, artifact `10333912424`, digest `sha256:df611a8c0d2abe3ee8ac9abd4288118648a928c70170107d980c1c846a465421`.
+Its broad `quotient/fixing normalization object missing` statement is **narrowed by Iter079K** below: the parent and causal one-vertex gauge-fixing objects are explicit; what remains missing is their causal multi-vertex inheritance theorem/prescription.
+
+### Iter079K-SM CLOSED BLOCKED_SOURCE_BRIDGE — E6 source audit
+Prospective preregistration `fa6ed0fff963e5db2e6dfba4846b9cc9f10361bd`; source matrix `9c286ec5971f9eb90bce00390cff7d603343f2e2`; implementation `2b8e2cd4cb9144359d1100c2433585470ca11d6c`; production `227475923fbb2f3b9d5fc25e5515fe01f785b9b6`; run `34816195887`.
+
+Lane artifacts A `10336945329`, B `10336571070`, C `10336254710`, D `10336460796`; aggregate `10335744094`, digest `sha256:096481370c671e1b07b1b5856947116608364f54d5c66f4b585af1da07df2bc0`; durable result `cdc16f38369e8d57fb2ac1045364991c5b0b8d1f`.
+
+Classification:
+`ITER079K_SM_PARENT_E6_GAUGE_FIXING_PRESCRIPTION_EXISTS_BUT_CAUSAL_INHERITANCE_BRIDGE_MISSING_SOURCE_BLOCKED_EXACT_SCOPED`.
+
+Primary result: Engle-Pereira explicitly remove/fix one redundant Lorentz `SL(2,C)` integration per 4-simplex in the parent full-triangulation construction; Bianchi-Chen-Gamonal Eq.(4) explicitly fixes causal one-vertex `g_1=1`. The audited causal paper focuses on a single vertex and does not derive the general many-vertex inheritance of that quotient/fixing normalization.
+
+### Iter079L-SM CLOSED BLOCKED_SOURCE_BRIDGE — E3 source audit
+Prospective preregistration `e138617934d651fda7825a2ca55adc661c470190`; source matrix `2d4860decba0f24e23ef03ccf101fe842cda5bed`; implementation `d337751dbf2a1f53b985268710d014901d026132`; production `359189734e9480f100191a0778f77ca56ed8f256`; run `34816340786`; aggregate artifact `10337195212`, digest `sha256:0d25cb738cb24894168d8dfda031f8558ff9f4983ec002a2cb8fcab985805e1e`; durable result `fdcd576ff2aef421b88436590899f294b77646bc`.
+
+Classification:
+`ITER079L_SM_E3_PARENT_CONTRACTION_CONDITIONALLY_INHERITS_ALGEBRAICALLY_BUT_CAUSAL_MULTIVERTEX_SOURCE_BRIDGE_MISSING_BLOCKED_EXACT_SCOPED`.
+
+KKL Eqs.(41)-(44) explicitly define the boundary normalization/contraction and gluing identity. Keeping that parent pairing fixed makes a strict local vertex replacement algebraically composable. But the audited causal/Toller primary source does not derive a complete many-vertex causal state sum or explicitly authorize unchanged E3 inheritance over general causal foams.
+
+## Exact blockers after Iter079L
 
 1. `FUNCTION_SPACE_K5_DISTRIBUTIONAL_EXTENSION_SELECTOR`.
-2. `CAUSAL_E3_INHERITANCE_OR_COMPOSITION_RULE`.
+2. `CAUSAL_MULTIVERTEX_E3_PARENT_CONTRACTION_INHERITANCE_BRIDGE`.
 3. `PHYSICAL_E4_INHERITANCE_SOURCE_BRIDGE`.
-4. `E6_QUOTIENT_FIXING_MEASURE_AND_NORMALIZATION_SOURCE_BRIDGE`.
+4. `CAUSAL_MULTIVERTEX_E6_PARENT_GAUGE_FIXING_NORMALIZATION_INHERITANCE_BRIDGE`.
 5. `E7_E8_DISTRIBUTIONAL_EXTENSION_TRANSPORT_OR_SELECTOR`.
 6. `RG_REFINEMENT_E9_COARSE_FINE_BOUNDARY_MAP_AND_MATCHING_FUNCTIONAL`.
 7. `REGULATOR_INDEPENDENCE_AFTER_OBJECT_DEFINITION`.
 
 ## Exact next admissible steps
 
-1. Do not spend more computation merely extending the already exact conditional `G^V` count to larger toy `V`; the next E6 value is source-defined quotient/fixing data, not larger graph size.
-2. Search primary Lorentzian EPRL/KKL and generalized causal-Toller authority for an explicit per-vertex gauge-fixing/quotient measure and normalization compatible with gluing. If absent, preserve `BLOCKED_OBJECT_DEFINITION`.
-3. Keep E7/E8 dependent on an actual composed E3-E6 functional; do not promote them from conditional algebra alone.
-4. Keep RG/G3/F9/G8/K5 promotions locked.
+1. Do not spend more Actions on larger toy `G^V` counts.
+2. Search primary generalized causal-spin-foam authority for an explicit many-vertex state-sum inheritance rule that jointly fixes E3/E4/E6, rather than separately inventing these structures.
+3. If no such primary rule exists, keep E3/E4/E6 as `BLOCKED_SOURCE_BRIDGE` and move high-value work to the K5 extension selector or source-defined E7/E8 transport only when prerequisites exist.
+4. Do not promote E7/E8 from conditional algebra alone.
+5. Keep RG/G3/F9/G8/K5 promotions locked.
 
 ## Claim locks
 
