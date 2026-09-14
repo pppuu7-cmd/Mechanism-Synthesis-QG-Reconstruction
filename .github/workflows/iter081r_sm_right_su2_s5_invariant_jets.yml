@@ -1,0 +1,37 @@
+name: Iter081R-SM right-SU2 S5 invariant normal jets
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'prereg/ITER081R_SM_RIGHT_SU2_S5_INVARIANT_NORMAL_JET_CLASSIFICATION.md'
+      - 'scripts/iter081r_sm_right_su2_s5_invariant_jets.py'
+      - '.github/workflows/iter081r_sm_right_su2_s5_invariant_jets.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  exact-invariant-jet-count:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify prospective ordering
+        run: |
+          git merge-base --is-ancestor 18945b681978cf22a8253a6489034e68a1cae372 HEAD
+          test "$(git rev-parse 18945b681978cf22a8253a6489034e68a1cae372^0)" != "$(git rev-parse HEAD)"
+      - name: Run exact invariant-jet classification
+        run: python scripts/iter081r_sm_right_su2_s5_invariant_jets.py
+      - name: Upload authoritative aggregate
+        uses: actions/upload-artifact@v4
+        with:
+          name: iter081r-sm-invariant-jets
+          path: results/raw/iter081r_sm_invariant_jets.json
+          if-no-files-found: error
+          retention-days: 90
