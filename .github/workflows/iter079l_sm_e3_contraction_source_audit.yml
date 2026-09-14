@@ -1,0 +1,47 @@
+name: Iter079L-SM E3 contraction inheritance source audit
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'analysis/iter079l_sm_e3_contraction_source_matrix.json'
+      - 'analysis/iter079l_sm_e3_contraction_source_audit.py'
+      - '.github/workflows/iter079l_sm_e3_contraction_source_audit.yml'
+permissions:
+  contents: read
+jobs:
+  lane-a:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python -c "import json; m=json.load(open('analysis/iter079l_sm_e3_contraction_source_matrix.json')); assert m['frozen_inputs']['A_parent_E3_explicit']"
+  lane-b:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python -c "import json; m=json.load(open('analysis/iter079l_sm_e3_contraction_source_matrix.json')); assert m['frozen_inputs']['B_parent_gluing_identity_explicit']"
+  lane-c:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python -c "import json; m=json.load(open('analysis/iter079l_sm_e3_contraction_source_matrix.json')); assert m['primary_sources'][1]['arxiv']=='2601.23162'"
+  lane-d:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          python - <<'PY'
+          import json
+          m=json.load(open('analysis/iter079l_sm_e3_contraction_source_matrix.json'))
+          t=m['toy_control']; assert t['pairing_identity']==11 and t['pairing_scaled_by_2']==22
+          PY
+  aggregate:
+    needs: [lane-a,lane-b,lane-c,lane-d]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python analysis/iter079l_sm_e3_contraction_source_audit.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter079l-aggregate
+          path: iter079l_sm_e3_contraction_source_audit.json
