@@ -12,6 +12,8 @@
 - Iter082E proves one explicit nonlinear chart overlap preserves the allowed supported-jet class locally through degree 9.
 - **Iter082F now closes an explicit nontrivial three-chart X/V/W finite-jet atlas cocycle exactly through degree 9.**
 - **Iter082G now shows the associated abstract scalar normal-order supported-jet Čech 1-cocycles are exact coboundaries, while a global supported-jet gauge mode remains free.**
+- Automation-B adversarial review of Iter082G is `CONFIRMED_SCOPED`; durable review `results/ITER082G_ADVERSARIAL_REVIEW.md`, commit `00c9ad7c1ff4a5fd431753ebd3ac3787b5ca4e87`, handoff commit `49acaefb2fe6e29a178a4e9db05ff880dd64fe76`.
+- The critic confirmation does **not** promote Iter082G beyond its frozen abstract scalar normal-order module. Full right-SU2 invariant tensor-jet and actual distribution-space descent remain open.
 - Deepest coefficient-selector blocker remains `RIGHT_SU2_COVARIANT_K5_INVARIANT_NORMAL_JET_COEFFICIENT_SELECTOR`.
 - Current next analytic blocker: **`K5_FULL_INVARIANT_JET_OR_DISTRIBUTIONAL_CECH_PATCHING`**.
 - Causal composition blocker: `CAUSAL_MULTIVERTEX_E3_E4_E6_COMPLETE_SOURCE_BRIDGE`.
@@ -85,7 +87,15 @@ Classification:
 
 `K5_SUPPORTED_JET_CECH_DESCENT_EXACTLY_SOLVABLE_WITH_GLOBAL_JET_GAUGE_FREEDOM_SCOPED`.
 
-Verdict: `PASS_EXACT_SCOPED`.
+Researcher verdict: `PASS_EXACT_SCOPED`.
+
+Automation-B adversarial verdict: `CONFIRMED_SCOPED`.
+
+Durable critic authority:
+
+- review `results/ITER082G_ADVERSARIAL_REVIEW.md`;
+- review commit `00c9ad7c1ff4a5fd431753ebd3ac3787b5ca4e87`;
+- recovery handoff `status/MSQGR_ADVERSARIAL_CRITIC_HANDOFF.md`, commit `49acaefb2fe6e29a178a4e9db05ff880dd64fe76`.
 
 Scoped module audit:
 
@@ -99,7 +109,7 @@ Scoped module audit:
 - global supported-jet gauge freedom is explicitly retained;
 - all six negative controls are rejected.
 
-Important scope: Iter082G uses abstract scalar normal-order modules `J_k` of dimension `omega_k+1`; it is **not** the full right-SU2 invariant tensor normal-jet module. Therefore it removes an algebraic scalar-module Čech-H1 concern but does not establish global physical distributional descent.
+Important scope: Iter082G uses abstract scalar normal-order modules `J_k` of dimension `omega_k+1`; it is **not** the full right-SU2 invariant tensor normal-jet module. The critic independently confirmed the algebraic theorem on that frozen object and found explicit wrong-object/topology/distribution-law witnesses preventing physical promotion. Therefore Iter082G removes an algebraic scalar-module Čech-H1 concern but does not establish global physical distributional descent.
 
 ## Corrected right-SU2 selector target
 
@@ -139,22 +149,28 @@ No universal causal-vertex divergence/nonexistence theorem follows.
 `-> Iter082D local forest scheme class`
 `-> Iter082E nonlinear pairwise chart covariance`
 `-> Iter082F exact three-chart finite-jet cocycle`
-`-> Iter082G scalar normal-order Čech descent with global jet gauge freedom`
+`-> Iter082G abstract scalar normal-order Čech descent CONFIRMED_SCOPED`
 `-> full invariant tensor-jet / actual distributional patching ?`
 `-> finite coefficient/scale/invariant-jet selector ?`
 `-> causal E3/E4/E6 ?`
-`-> CDSR rank/equivalence/no-smuggling audit once immutable physical interface exists`
-`-> regulator independence / RG / continuum / GR / matter / observables ?`.
+`-> quantum dynamics G3 ?`
+`-> regulator removal/finiteness ?`
+`-> physical RG/refinement ?`
+`-> continuum 3+1 Lorentzian geometry ?`
+`-> spin-2 spectrum ?`
+`-> Einstein/GR ?`
+`-> matter/QFT IR ?`
+`-> normalized falsifiable prediction ?`.
 
 ## Claim locks
 
-No `NEW_PHYSICS_FOUND`; no complete-QG claim; no unique K5 extension; no physical selector; no exact total extension-space dimension; no theorem that 28/16 conditions suffice physically; no generic-spin fully contracted non-L1 theorem; no causal-vertex distributional nonexistence theorem; no full tensor-jet/global distributional patching theorem; no regulator independence; no G3/F9/G8/K5 promotion; no arbitrary fitted subtraction constants/scales or preferred finite parts.
+No `NEW_PHYSICS_FOUND`; no complete-QG claim; no unique K5 extension; no physical selector; no exact total extension-space dimension; no theorem that 28/16 conditions suffice physically; no generic-spin fully contracted non-L1 theorem; no causal-vertex distributional nonexistence theorem; no full tensor-jet/global distributional patching theorem; no regulator independence; no G3/F9/G8/K5 promotion; no arbitrary fitted subtraction constants/scales or preferred finite parts. Retain published spectral `i epsilon` in its source scope.
 
 ## Next admissible work
 
 1. Do not repeat the X/V/W scalar finite-jet cocycle or scalar Čech calculation.
-2. Lift descent to the corrected right-SU2 invariant tensor normal-jet object, with the module and transition action prospectively defined before implementation; if that object cannot yet be source-defined, classify it as `BLOCKED_OBJECT_DEFINITION` rather than inventing a selector.
-3. Independently pursue an actual distribution-space partition-of-unity/descent construction only after the local distribution space, overlap pullbacks and continuity/topology are explicitly defined.
+2. Prospectively define the corrected right-SU2 invariant tensor normal-jet module and transition action, including inter-stratum maps if any are claimed. If the physical object cannot be source-defined, return `BLOCKED_OBJECT_DEFINITION` rather than substituting the scalar `J_k` surrogate.
+3. Independently pursue an actual distribution-space partition-of-unity/descent construction only after local distribution spaces, overlap pullback/pushforward laws, Jacobian/density factors, topology/continuity and source ordering are explicitly defined.
 4. Keep all finite coefficients, analytic scales and invariant-jet coefficients symbolic.
 5. Treat atlas/descent compatibility as admissibility, never as a selector equation.
 6. In parallel, continue independent primary-source work on correlated Ruhl/Toller boundary-value laws and causal E3/E4/E6 many-vertex inheritance.
