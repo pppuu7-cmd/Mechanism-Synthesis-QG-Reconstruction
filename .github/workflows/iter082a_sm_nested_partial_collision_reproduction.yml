@@ -1,0 +1,28 @@
+name: Iter082A-SM nested partial-collision reproduction
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/iter082a_sm_nested_partial_collision_reproduction.yml'
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify prospective chronology
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f prereg/ITER082A_SM_INDEPENDENT_NESTED_PARTIAL_COLLISION_REPRODUCTION.md
+          git merge-base --is-ancestor 53cd6cea982192b80fe0e23434866dda97f46002 52ac5fb9e4db1637305a2d2959273410bc03ffb6
+          git merge-base --is-ancestor 52ac5fb9e4db1637305a2d2959273410bc03ffb6 HEAD
+      - name: Run exact frozen gate
+        run: python scripts/iter082a_sm_nested_partial_collision_reproduction.py
+      - name: Upload authoritative aggregate
+        uses: actions/upload-artifact@v4
+        with:
+          name: iter082a-sm-aggregate
+          path: iter082a_aggregate.json
+          if-no-files-found: error
