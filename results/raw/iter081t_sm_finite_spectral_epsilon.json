@@ -1,0 +1,56 @@
+{
+  "P_half_identity": "P_1/2,1/2(R;rho)=(R^2+1/4)/(rho^2+1/4)",
+  "branch_rows": [
+    {
+      "P_shifted": "(-4*eps**2 + 8*I*eps*rho + 4*rho**2 + 1)/(4*rho**2 + 1)",
+      "branch_sigma": 1,
+      "epsilon_independent": true,
+      "projected_leading_m_minus_half": "2/(4*rho**2 + 1)",
+      "projected_leading_m_plus_half": "-2/(4*rho**2 + 1)",
+      "shifted_rho": "I*eps + rho"
+    },
+    {
+      "P_shifted": "(-4*eps**2 - 8*I*eps*rho + 4*rho**2 + 1)/(4*rho**2 + 1)",
+      "branch_sigma": -1,
+      "epsilon_independent": true,
+      "projected_leading_m_minus_half": "-2/(4*rho**2 + 1)",
+      "projected_leading_m_plus_half": "2/(4*rho**2 + 1)",
+      "shifted_rho": "-I*eps + rho"
+    }
+  ],
+  "claim_locks": [
+    "not source-authorized regulator ordering",
+    "no theorem against other correlated group-variable regulators",
+    "no regulator independence",
+    "no distributional nonexistence/divergence theorem",
+    "no NEW_PHYSICS_FOUND"
+  ],
+  "classification": "FINITE_SPECTRAL_EPSILON_DOES_NOT_REGULARIZE_K5_L1_COLLISION_EXACT_SCOPED",
+  "common_vs_independent_epsilon": "leading result is epsilon-independent wedge by wedge, so common and independent fixed positive epsilons give the same r^-20 leading tensor",
+  "controls": {
+    "epsilon_to_zero_reproduces_source_leading_matrix": true,
+    "no_contact_distribution_product_used": true,
+    "rho_real_nonzero_avoids_shifted_Toller_pole_zero_denominator_coincidence": true,
+    "spectral_prefactor_cancels_shifted_D_exactly": true
+  },
+  "domain": "j=l=k=1/2; real rho!=0; fixed positive spectral epsilons; Iter077I collision ray",
+  "finite_epsilon_contour_identity": "I_eps^sigma[d] = P(rho+i sigma eps;rho) t^sigma(rho+i sigma eps) (diagnostic pre-limit projector)",
+  "iteration": "Iter081T-SM",
+  "k5": {
+    "all_32_iter077i_leading_contractions_unchanged": true,
+    "l1_margin_q_plus_d": -8,
+    "local_L1": false,
+    "num_wedges": 10,
+    "radial_absolute_exponent": -9,
+    "total_q": -20,
+    "transverse_dimension": 12,
+    "wedge_power": -2
+  },
+  "provenance": {
+    "git_head": "2935163250e31d267e6f398fae48aea8fd76817b",
+    "prereg_ancestor": true,
+    "prereg_commit_expected": "52313c08f39855bf18e3b56fce268e9cd262a074"
+  },
+  "source_scope": "finite epsilon retained through K5 is NOT the published source ordering; this is only a regulator diagnostic",
+  "verdict": "PASS_EXACT_SCOPED"
+}
