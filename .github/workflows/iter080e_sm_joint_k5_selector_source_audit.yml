@@ -1,0 +1,112 @@
+name: Iter080E-SM joint-K5 selector source audit
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'prereg/ITER080E_SM_JOINT_K5_FUNCTION_SPACE_SELECTOR_SOURCE_AUDIT.md'
+      - 'sources/ITER080E_SM_JOINT_K5_SELECTOR_SOURCE_SNAPSHOT.md'
+      - 'analysis/iter080e_sm_joint_k5_selector_source_matrix.json'
+      - 'analysis/iter080e_sm_joint_k5_selector_source_audit.py'
+      - '.github/workflows/iter080e_sm_joint_k5_selector_source_audit.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  lane-a:
+    name: Iter080E-SM lane A source coverage
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run frozen lane A
+        run: |
+          mkdir -p out
+          python analysis/iter080e_sm_joint_k5_selector_source_audit.py --lane A --output out/iter080e_sm_A.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter080e-sm-A
+          path: out/iter080e_sm_A.json
+          if-no-files-found: error
+
+  lane-b:
+    name: Iter080E-SM lane B selector predicates
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run frozen lane B
+        run: |
+          mkdir -p out
+          python analysis/iter080e_sm_joint_k5_selector_source_audit.py --lane B --output out/iter080e_sm_B.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter080e-sm-B
+          path: out/iter080e_sm_B.json
+          if-no-files-found: error
+
+  lane-c:
+    name: Iter080E-SM lane C classifier controls
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run frozen lane C
+        run: |
+          mkdir -p out
+          python analysis/iter080e_sm_joint_k5_selector_source_audit.py --lane C --output out/iter080e_sm_C.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter080e-sm-C
+          path: out/iter080e_sm_C.json
+          if-no-files-found: error
+
+  lane-d:
+    name: Iter080E-SM lane D dependency provenance
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run frozen lane D
+        run: |
+          mkdir -p out
+          python analysis/iter080e_sm_joint_k5_selector_source_audit.py --lane D --output out/iter080e_sm_D.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter080e-sm-D
+          path: out/iter080e_sm_D.json
+          if-no-files-found: error
+
+  aggregate:
+    name: Aggregate Iter080E-SM
+    needs: [lane-a, lane-b, lane-c, lane-d]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: iter080e-sm-*
+          path: downloaded
+          merge-multiple: false
+      - name: Aggregate frozen contract
+        run: |
+          mkdir -p out
+          python analysis/iter080e_sm_joint_k5_selector_source_audit.py --aggregate-dir downloaded --output out/iter080e_sm_aggregate.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter080e-sm-aggregate
+          path: out/iter080e_sm_aggregate.json
+          if-no-files-found: error
