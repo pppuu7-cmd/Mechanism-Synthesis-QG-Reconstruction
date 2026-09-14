@@ -1,0 +1,70 @@
+name: Iter080J SM Microlocal WF-only Selector
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'prereg/ITER080J_SM_MICROLOCAL_WF_ONLY_SELECTOR_MOTIVATION_AND_POWER.md'
+      - 'distributional/iter080j_sm_microlocal_wf_only_selector.py'
+      - '.github/workflows/iter080j_sm_microlocal_wf_only_selector.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  lane-a:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: mkdir -p out && python3 distributional/iter080j_sm_microlocal_wf_only_selector.py --lane A --out out/lane_a.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter080j-lane-a
+          path: out/lane_a.json
+
+  lane-b:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: mkdir -p out && python3 distributional/iter080j_sm_microlocal_wf_only_selector.py --lane B --out out/lane_b.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter080j-lane-b
+          path: out/lane_b.json
+
+  lane-c:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: mkdir -p out && python3 distributional/iter080j_sm_microlocal_wf_only_selector.py --lane C --out out/lane_c.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter080j-lane-c
+          path: out/lane_c.json
+
+  lane-d:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: mkdir -p out && python3 distributional/iter080j_sm_microlocal_wf_only_selector.py --lane D --out out/lane_d.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter080j-lane-d
+          path: out/lane_d.json
+
+  aggregate:
+    needs: [lane-a, lane-b, lane-c, lane-d]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: iter080j-lane-*
+          path: inputs
+      - run: mkdir -p out && python3 distributional/iter080j_sm_microlocal_wf_only_selector.py --lane aggregate --input-root inputs --out out/aggregate.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter080j-aggregate
+          path: out/aggregate.json
