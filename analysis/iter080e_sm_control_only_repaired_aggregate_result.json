@@ -1,0 +1,25 @@
+{
+  "iteration": "Iter080E-SM",
+  "execution_valid": true,
+  "lane_scientific_outcomes": {
+    "A": "PASS_SOURCE_COVERAGE",
+    "B": "BLOCKED_OBJECT_DEFINITION",
+    "C": "PASS_CLASSIFIER_CONTROLS",
+    "D": "PASS_DEPENDENCY_LOCK"
+  },
+  "eligible_real_primary_sources": [],
+  "verdict": "BLOCKED_OBJECT_DEFINITION",
+  "classification": "ITER080E_SM_PRIMARY_CAUSAL_TOLLER_CORPUS_HAS_NO_JOINT_K5_FUNCTION_SPACE_EXTENSION_SELECTOR_SOURCE_BLOCKED_EXACT_AUDIT_SCOPED",
+  "authoritative_run": 34836322547,
+  "aggregate_artifact": 10344366649,
+  "aggregate_digest": "sha256:11f3af328c3686c17769c36e69164a9098f5d10e6cbdd7806f0c58a72ca327e7",
+  "production_head": "085ea36e51b3e805be39a8d6503f81a72fe5aa34",
+  "source_predicate_repair_plan": "049b50758780cc0abddaf2214b7510a91918e171",
+  "dependency_provenance_repair_plan": "a84feac7d5a2824677f75d7bf6781401e9375658",
+  "repaired_implementation": "4ca74069323e7922630b839f272ca4e62496451d",
+  "noncircularity_control": {
+    "prefilled_status_and_anchor_poisoned": true,
+    "derived_projection_unchanged": true
+  },
+  "interpretation_ceiling": "A BLOCKED result is a source-object-definition statement for the frozen corpus, not a theorem that no selector or causal vertex distribution can exist; no regulator-independence, composition, G3, RG, continuum, spin-2, GR, matter/QFT or prediction claim follows."
+}
