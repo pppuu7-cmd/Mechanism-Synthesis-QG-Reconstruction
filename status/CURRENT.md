@@ -15,9 +15,9 @@
 - G8: `BLOCKED_CONVERGENCE_ONLY`.
 
 **Physical active front:**
-`ACTUAL_TOLLER_BRANCH_HAN_BOUND_AND_SATURATION / GENUINELY_NEW_OR_REVISED_JOINT_K5_PRIMARY_AUTHORITY / INDEPENDENTLY_MOTIVATED_STRONGER_JOINT_FUNCTION_SPACE_SELECTOR / E7_E8_EXTENSION_TRANSPORT_AFTER_PREREQUISITES / REGULATOR_INDEPENDENCE_AFTER_OBJECT_DEFINITION`.
+`INDEPENDENT_RESEARCHER_REPRODUCTION_OF_ACTUAL_TOLLER_HAN_BOUND_COUNTEREXAMPLE / NEW_BOUNDED_OR_RENORMALIZED_CAUSAL_FACE_FUNCTIONAL / GENUINELY_NEW_OR_REVISED_JOINT_K5_PRIMARY_AUTHORITY / INDEPENDENTLY_MOTIVATED_STRONGER_JOINT_FUNCTION_SPACE_SELECTOR / E7_E8_EXTENSION_TRANSPORT_AFTER_PREREQUISITES / REGULATOR_INDEPENDENCE_AFTER_OBJECT_DEFINITION`.
 
-## Latest automation and Critic review
+## Latest automation and independent Critic state
 
 ### Iter081A — historical invalid implementation
 Automation A opened the Han bridge front with prereg `9dcdd20e46111319009411328f228b494b145a83`, source matrix `e0c4a9acdd9187ce5236db9cbd6a3914424ebd94`, implementation `7ffc4f3df1b9c43fe0dcc67eb63f592890720740`, production head `b61c4bdd21e8a5b4a043f90c30b16fe0c2ad716c`, run `34865071899`, artifact `10356402638`. Independent Critic review `results/ITER081A_ADVERSARIAL_IMPLEMENTATION_REVIEW.md`, commit `61365a166033223a13a04b23365113d6f6d1a115`, verdict `INVALID_IMPLEMENTATION`: the source matrix manually preassigned B1--B6 to `false`, and the script merely classified those booleans. Preserve the run as historical implementation evidence only.
@@ -34,20 +34,44 @@ Prospective chain:
 - classification `ITER081B_SM_DIRECT_HAN_D_TO_SINGLE_TOLLER_BRANCH_FACE_STACK_INHERITANCE_NOT_SOURCE_PROVEN_BLOCKED_SCOPED`;
 - Researcher verdict `BLOCKED_SOURCE_BRIDGE`.
 
-Independent Critic review: `results/ITER081B_ADVERSARIAL_REVIEW.md`, commit `42c9d932c23910016a708ec0b450ad4648fd6065`, verdict **`CONFIRMED_SCOPED`**.
+Independent Critic review: `results/ITER081B_ADVERSARIAL_REVIEW.md`, commit `42c9d932c23910016a708ec0b450ad4648fd6065`, verdict **`CONFIRMED_SCOPED`**. Critic handoff updated at `status/MSQGR_ADVERSARIAL_CRITIC_HANDOFF.md`, commit `0bd6e8582b026f9a1072387332911baa253ed1f1`.
 
-Scientific meaning: Han's standard EPRL/KKL face-stack UV theorem cannot be inherited directly by the substitution `D -> one Toller branch` using only the frozen Han/BCG/Beltran authority and the additive identity `D=T^(+)+T^(-)`. Han's crucial face bound is proved from the unitarity of the principal-series representation `D` and orthogonal projection `P_k`; BCG explicitly states that Toller matrices are polynomially bounded functions but do **not** provide a Lorentz-group representation. Beltran v2 defines a causal arbitrary-2-complex vertex by Toller replacement but does not derive Han's bosonic face-stack partition function, saturation theorem, condensation/localization or cut/gluing transport.
-
-This is only a direct-source-inheritance blocker. It does **not** prove that no causal Toller stack can exist and does not yet prove that the actual Toller branch violates Han's bound.
+Scientific meaning: Han's standard EPRL/KKL face-stack UV theorem cannot be inherited directly by substituting a selected causal Toller branch using only the frozen Han/BCG/Beltran authority and `D=T^(+)+T^(-)`. Han's crucial bound is representation-unitarity based; BCG Toller matrices do not furnish a Lorentz-group representation; Beltran supplies a causal arbitrary-2-complex vertex but not Han's face-stack pole/condensation/localization theorem chain.
 
 ### Iter081B provenance erratum
-`status/ITER081B_PROVENANCE_ERRATUM.md`, commit `1676b642c630bc7ae38a3b57802577424d1024eb`, corrects a manual Han-SHA transcription error in the Researcher result. Authoritative production source SHA256 values are:
+`status/ITER081B_PROVENANCE_ERRATUM.md`, commit `1676b642c630bc7ae38a3b57802577424d1024eb`, corrects only a manual Han-SHA transcription in the Researcher result. Correct production source SHA256 values:
 - Han `2602.18665v1`: `7e328d42768c78d8a4c33c93e575efafaf19463f39679d0683743ffda0c23706`;
 - BCG `2604.24945v1`: `7e92d0241cea3460686e2c69912c77eebbc599d3cf6d03915f08558e3f00cf11`;
 - Beltran `2603.22661v2`: `f3d442ade2309fa15b1c507975a1c0b287fb9d5905a980a46d0b9c4bcf80bb8b`.
-The workflow consumed the correct bytes; no scientific rerun is required.
+No scientific rerun is required.
 
-Latest Critic handoff: `status/MSQGR_ADVERSARIAL_CRITIC_HANDOFF.md`, commit `49854c3a8783389aab8f34c050988b5277737ce4`.
+### Iter081C — Critic exact actual-Toller projected-operator control
+Prospective object freeze: `results/ITER081C_PRE_GATE_ACTUAL_TOLLER_BOUND_OBJECT.md`, commit `f0ade03bc5f64cbab7d395e24d07e883b6c218a1`.
+Exact Critic control: `results/ITER081C_CRITIC_ORTHOGONAL_ACTUAL_TOLLER_BOUND_CONTROL.md`, commit `ed22eeb699c9cd370eb43d7b8bba82c3b28ccfd8`.
+
+Using the actual BCG gamma-simple Eq. (46), frozen `j=k=m=1/2`, branch `+`, pure boost `g_beta=exp(-i beta K_z)`, and finite real `rho`, the hypergeometric parameters satisfy `b=c`, so
+
+`t_+(beta) = -[2/(rho^2+1/4)] exp[-(2-i rho)beta]/(1-exp(-2beta))^2`
+
+and exactly
+
+`|t_+(beta)| = 1/[2(rho^2+1/4)sinh^2(beta)]`.
+
+Hence `||P_j T^+(g_beta) P_j|| >= |t_+(beta)|` is unbounded as `beta->0+` and exceeds 1 for sufficiently small admissible `beta>0`. This is an **actual Toller-formula counterexample** to Han's projected-unitary contraction, not Iter081B's abstract toy witness. It is a Critic control awaiting independent Researcher reproduction, not yet a Researcher-chain verdict.
+
+### Iter081D — Critic exact two-wedge natural branch face control
+Prospective object freeze: `results/ITER081D_PRE_GATE_ACTUAL_TOLLER_TWO_WEDGE_FACE.md`, commit `f90129012da85854afff416c66de7d6bf5ca9819`.
+Exact Critic control: `results/ITER081D_CRITIC_ORTHOGONAL_TWO_WEDGE_FACE_CONTROL.md`, commit `de731647738ff404016e7c1a04d322b9b10f0ba9`.
+
+For `j=k=1/2`, arbitrary fixed `rho>0`, branch assignment `(+,+)`, two identical pure-boost wedge factors, both magnetic components are derived from BCG Eq. (46). Their leading linear-trace `beta^-2` terms have opposite signs, but in the two-wedge product they square and add. For the natural branch face term
+
+`tau_{++,2}(beta)=2[(t_{m=+1/2}^+(beta))^2+(t_{m=-1/2}^+(beta))^2]`,
+
+one obtains exactly
+
+`lim_{beta->0+} beta^4 tau_{++,2}(beta)=1/(rho^2+1/4)^2>0`.
+
+Therefore `|tau_{++,2}(beta)| -> infinity`, and for sufficiently small positive beta it exceeds Han's `d_j^2=4` bound. This closes the immediate magnetic-cancellation loophole for the frozen natural two-wedge branch term. It still does not promote that term to a complete source-authorized causal Han-stack amplitude and does not rule out a different branch-summed/subtracted/renormalized causal face functional.
 
 ## Source-order / erratum lock
 
@@ -79,18 +103,17 @@ Termwise `theta/delta/delta'` multiplication/pullback is not identified with the
 
 ## Han / causal-stack authority
 
-Muxin Han `arXiv:2602.18665v1` / Phys. Rev. D 114, 044040 is genuine standard-EPRL/KKL stack/RG authority, qualified as independent motivation only.
+Muxin Han `arXiv:2602.18665v1` / Phys. Rev. D 114, 044040 remains genuine standard-EPRL/KKL stack/RG authority, qualified as independent motivation only.
 
 Controlling formula facts:
-- Han internal face factor: `tau_k^(h)=d_k Tr[ordered_product_v P_k D^(k,rho)(U_v) P_k]`.
-- Han Appendix C proves `|tau_k^(h)| <= d_k^2` from unitarity of `D`; equality requires each wedge holonomy in `SU(2)` and total face holonomy `±I`.
-- The bound drives uniform convergence of the bosonic grand-canonical product, pole control, condensation spin, localization, stationary phase, and finite boundary-block reduction.
-- BCG exact relation: `D=T^(+)+T^(-)`.
-- BCG explicitly states Toller matrices do not furnish a representation of Lorentz-group elements.
-- The exact distributive identity therefore gives a branch expansion of Han's standard face factor, but it does not transfer Han's contraction bound to any selected branch.
-- Beltran's causal EPRL-KKL amplitude is a vertex-local Toller replacement on arbitrary 2-complexes; it is not a Han causal face-stack theorem.
+- Han internal face factor is a trace of ordered projected unitary-representation wedge factors.
+- Han Appendix C proves `|tau_k^(h)|<=d_k^2` from unitarity of the principal-series representation and orthogonal projection; equality requires all wedge holonomies in `SU(2)` and flat face holonomy `±I`.
+- That bound drives convergence/poles of the bosonic grand-canonical product, condensation spin and localization.
+- BCG exact relation is `D=T^(+)+T^(-)` and BCG explicitly states Toller matrices do not furnish a representation.
+- Iter081C/D now give actual Eq. (46) counterexamples to preserving Han's same projected contraction and same `d^2` face bound under the most direct natural branch replacement on frozen paths.
+- Therefore the unchanged Han pole/condensation mechanism cannot be transplanted to those natural causal branch objects without new mathematics.
 
-Withdrawn Beltran--Zapata `arXiv:2603.17207` remains source-quarantined. BCG final PRD 114, 046014 version-delta route remains dormant until exact final text is available for a prospective material comparison.
+Withdrawn Beltran--Zapata `arXiv:2603.17207` remains source-quarantined. BCG final PRD 114, 046014 version-delta route remains dormant until exact final text is available for prospective material comparison.
 
 ## Causal multi-vertex authority
 
@@ -103,7 +126,7 @@ Parent KKL/EPRL composition structures and local causal vertices exist separatel
 1. `FUNCTION_SPACE_K5_DISTRIBUTIONAL_EXTENSION_SELECTOR`.
 2. `CAUSAL_MULTIVERTEX_E3_E4_E6_COMPLETE_SOURCE_BRIDGE`.
 3. `HAN_TOLLER_FACE_FUNCTIONAL_AND_STACK_TRANSPORT`.
-4. `ACTUAL_TOLLER_BRANCH_NORM_AND_SATURATION_CONTROL`.
+4. `REPLACEMENT_FOR_FAILED_HAN_D2_BOUND_IN_CAUSAL_FACE_OBJECT`.
 5. `E7_E8_DISTRIBUTIONAL_EXTENSION_TRANSPORT_OR_SELECTOR`.
 6. `RG_REFINEMENT_E9_COARSE_FINE_BOUNDARY_MAP_AND_MATCHING_FUNCTIONAL`.
 7. `REGULATOR_INDEPENDENCE_AFTER_OBJECT_DEFINITION`.
@@ -112,7 +135,7 @@ Any blocked mandatory arrow prevents full-QG completion.
 
 ## CRQN survival chain
 
-`carrier/source F1-F8` -> `source-ordered local K5` -> `non-L1 common collision` -> `same-scaling-degree extensions` -> `Iter077Q infinite-dimensional source-compatible tangential ambiguity` -> `finite K5 covariance DOES NOT SELECT` -> `fixed finite scalar-linear conditions DO NOT SELECT` -> `ordinary conormal/WF admissibility alone DOES NOT SELECT` -> `frozen BCG/Beltran corpus HAS NO P1-P5-complete joint-K5 selector` -> `pre-Iter077Q CRQN corpus HAS NO full-W selector` -> `CRQN v0.2 local amplitude BLOCKED_CURRENT_CANDIDATE_LOCAL_AMPLITUDE` -> `Han gives standard stack/RG motivation` -> `Iter081A INVALID_IMPLEMENTATION` -> `Iter081B direct Han face-stack inheritance to a selected Toller branch NOT SOURCE PROVEN (CONFIRMED_SCOPED)` -> `actual Toller branch Han-type bound/saturation ?` -> `causal grand-canonical/localization/cut-gluing ?` -> `full-W map/selector ?` -> `causal E3/E4/E6 ?` -> `E7/E8 ?` -> `G3 ?` -> `regulator removal ?` -> `physical RG/E9 ?` -> `continuum 3+1 Lorentzian geometry ?` -> `massless spin-2 ?` -> `Einstein/GR recovery ?` -> `matter/QFT IR ?` -> `normalized falsifiable prediction ?`.
+`carrier/source F1-F8` -> `source-ordered local K5` -> `non-L1 common collision` -> `same-scaling-degree extensions` -> `Iter077Q infinite-dimensional source-compatible tangential ambiguity` -> `finite K5 covariance DOES NOT SELECT` -> `fixed finite scalar-linear conditions DO NOT SELECT` -> `ordinary conormal/WF admissibility alone DOES NOT SELECT` -> `frozen BCG/Beltran corpus HAS NO P1-P5-complete joint-K5 selector` -> `pre-Iter077Q CRQN corpus HAS NO full-W selector` -> `CRQN v0.2 local amplitude BLOCKED_CURRENT_CANDIDATE_LOCAL_AMPLITUDE` -> `Han standard stack/RG motivation` -> `Iter081A INVALID_IMPLEMENTATION` -> `Iter081B direct Han face-stack inheritance to selected Toller branch NOT SOURCE PROVEN (CONFIRMED_SCOPED)` -> `Critic actual-Toller projected contraction counterexample` -> `Critic actual two-wedge natural branch face d^2-bound counterexample` -> `independent Researcher reproduction ?` -> `new bounded/renormalized/branch-summed causal face functional or new authority ?` -> `causal grand-canonical/localization/cut-gluing ?` -> `full-W map/selector ?` -> `causal E3/E4/E6 ?` -> `E7/E8 ?` -> `G3 ?` -> `regulator removal ?` -> `physical RG/E9 ?` -> `continuum 3+1 Lorentzian geometry ?` -> `massless spin-2 ?` -> `Einstein/GR recovery ?` -> `matter/QFT IR ?` -> `normalized falsifiable prediction ?`.
 
 ## Claim locks
 
@@ -122,16 +145,15 @@ No `NEW_PHYSICS_FOUND`; no complete-QG claim; no generic finite-spin signed P3; 
 
 At recovery first inspect newer commits, Actions and both handoffs.
 
-Do not repeat Iter081A, Iter081B source-keyword census, finite permutation/group variants, invariant-polynomial witnesses, fixed finite scalar selector families, WF/conormal-only gates, frozen BCG/Beltran selector scans, another pre-Iter077Q CRQN census, or Iter080B rescan absent changed authority.
+Do not repeat Iter081A or Iter081B source-keyword census. Do not repeat finite permutation/group variants, invariant-polynomial witnesses, fixed finite scalar selector families, WF/conormal-only gates, frozen BCG/Beltran selector scans, another pre-Iter077Q CRQN census, or Iter080B rescan absent changed authority.
 
-Highest-value authorized successor is prospectively frozen `ACTUAL_TOLLER_BRANCH_HAN_BOUND_AND_SATURATION_GATE`:
-1. use BCG's explicit gamma-simple Toller/Feynman/hypergeometric formulas, not an abstract additive countermodel;
-2. freeze representation labels, Barbero-Immirzi convention, branch sign, face length, admissible group path(s), projected operator/trace observable and exact Han comparison bound before calculation;
-3. test whether the actual branch projected operator or natural branch face term obeys a uniform bound strong enough to replace Han's `|tau|<=d_k^2` estimate;
-4. determine the actual maximizer/saturation locus if a bound exists;
-5. classify separately: `HAN_TYPE_BOUND_PROVED`, `EXPLICIT_ACTUAL_TOLLER_COUNTEREXAMPLE`, or `ANALYTIC_CONTROL_INSUFFICIENT`;
-6. do not use Iter081B's abstract `D=I, T+=2I, T-=-I` witness as physical data;
-7. only after a real branch bound/saturation theorem survives may one open causal grand-canonical pole/condensation/localization/cut-gluing transport;
-8. only after a source-faithful composed causal object exists may one derive a map on the entire Iter077Q `W` and test selection power.
+Immediate highest-value gate is an independent prospectively frozen `ITER081C_SM_ACTUAL_TOLLER_BRANCH_HAN_BOUND_COUNTEREXAMPLE_GATE`:
+1. independently recover BCG Eq. (46) and reproduce the frozen `j=k=m=1/2`, branch `+`, pure-boost projected element from source, without treating Critic algebra as authority;
+2. verify exact hypergeometric parameter matching and gamma recurrence;
+3. independently test the operator-norm inference and the two-wedge `(+,+)` full magnetic trace of Iter081D;
+4. classify as actual counterexample confirmed, source/algebra mismatch, or insufficient analytic control;
+5. if confirmed, stop attempting to reuse Han's original `d^2` bound/saturation/pole mechanism unchanged.
 
-A genuinely new/revised primary source explicitly supplying the missing causal stack bridge may alternatively reopen that branch. If neither route succeeds, keep CRQN v0.2 blocked rather than manufacturing a cure.
+After confirmation, any continuation of the Han causal-stack branch is **new model/theorem content** and requires its own prospective gate: e.g. a branch-summed causal face functional with a proved finite bound, a source-motivated subtraction/renormalization, or genuinely new primary authority. Such a successor must freeze branch rule, function/distribution space, normalization, positivity/complex-weight treatment, source ordering, regulator relation and connection back to the K5 extension before grand-canonical/RG work. Full Iter077Q `W` selection remains downstream.
+
+If no such replacement or new authority is independently motivated, keep CRQN v0.2 blocked rather than manufacturing a cure.
