@@ -2,170 +2,126 @@
 
 **Date:** 2026-09-14
 
-## Scientific contract
+## Frozen scientific contract
 
-- preregistration: `382948b3369c3bc2132ff4c2757500fdd7b77ba1`
-- gate: `CRQN_V0_2_EXISTING_AXIOM_FUNCTION_SPACE_SELECTOR_CENSUS / ANTI_RESCUE_DECISION_GATE`
-- frozen positive-evidence corpus:
-  - `candidates/CANDIDATE_A_CRQN.md`, blob `a3023dadb75f4c53d0c44a6de1c46958f4149178`, origin `906c903892803b9a08b97340a1efc5a369a31061`
-  - `candidates/CANDIDATE_A_CRQN_V0_2.md`, blob `3933c110f9bafabb6593f8301029adaa25458bb2`, origin `75250042861f613fe8048a1d001352da478ace0d`
-- controlling ambiguity: full Iter077Q function space `W`, not a finite-dimensional surrogate
-- selector predicates: `A1_PREEXISTING`, `A2_FULL_W_ACTION`, `A3_SELECTION_POWER`, `A4_OBJECT_REACH`, `A5_INDEPENDENT_MOTIVATION`
+Original prospective preregistration: `382948b3369c3bc2132ff4c2757500fdd7b77ba1`.
+Gate: `CRQN_V0_2_EXISTING_AXIOM_FUNCTION_SPACE_SELECTOR_CENSUS / ANTI_RESCUE_DECISION_GATE`.
 
-The control-only repair does not change the scientific contract, frozen corpus, predicates, outcome criteria or interpretation ceiling.
+Frozen positive-evidence corpus:
 
-## Historical chronology — preserved non-authoritative executions
+- `candidates/CANDIDATE_A_CRQN.md`, blob `a3023dadb75f4c53d0c44a6de1c46958f4149178`, origin `906c903892803b9a08b97340a1efc5a369a31061`;
+- `candidates/CANDIDATE_A_CRQN_V0_2.md`, blob `3933c110f9bafabb6593f8301029adaa25458bb2`, origin `75250042861f613fe8048a1d001352da478ace0d`.
 
-- preregistration: `382948b3369c3bc2132ff4c2757500fdd7b77ba1`
-- initial implementation: `082bfb7facf57f8cf42405a1b514d88a7ffb8831`
-- initial workflow trigger: `4c89411f516efc4ceef13ccb7ab3363feba8a10c`
-- first run: `34836984921` — invalid/non-authoritative because Lane A compared equivalent timestamp instants by literal ISO strings
-- control-only timezone/provenance repair plan: `9f857e8acec6de180185a206ec67791efe333f37`
-- repaired Lane A implementation: `28d3d04124855aeff8209a91287cbb727570bf9c`
-- repaired workflow/production head: `1a78e94ad72e4bdad4b132a37699debd964789bc`
-- historical terminal run: `34837108991` — all jobs terminal `success`, but later independently invalidated at implementation level
-- historical durable aggregate commit: `5736e129c228e83a04c651d27faddc346c26c111`
-- historical Researcher result commit: `61ee95efdda1d13b47e3ef04de61d40d08ca95c1`
-- historical Researcher handoff commit: `e415723af51e7d5f613ad55da0505f6af27ed513`
+Controlling object: full Iter077Q function space `W`, not a finite-dimensional surrogate.
+Frozen predicates: `A1_PREEXISTING`, `A2_FULL_W_ACTION`, `A3_SELECTION_POWER`, `A4_OBJECT_REACH`, `A5_INDEPENDENT_MOTIVATION`.
 
-Historical run `34837108991` artifacts:
+The original Lane-B requirement is to parse/audit every candidate statement plausibly relevant to amplitude uniqueness, normalization, composition, RG, gauge/refoliation, analyticity/unitarity and finite `Phi`, with exact anchors and A1-A5 values.
 
-- Lane A job `103953327454`, artifact `10344301951`, digest `sha256:92c8666c963127ffc9bba1d5bf306c2b8702c0dc443c3ee27a7e5268ea4beaaf`
-- Lane B job `103953327735`, artifact `10344258250`, digest `sha256:0c75a7af91840167b3ff16bc1d59d5aa80bc3bbb4de1c2bc99da6ad6e5e96440`
-- Lane C job `103953327704`, artifact `10344168296`, digest `sha256:4109251b99040c408037dfabbc62012a3e5d6b71feb0733f11f550e080901e16`
-- Lane D job `103953327677`, artifact `10344592580`, digest `sha256:765093c9d9d3a040b36e6e9db1f8809aeee71775fafb058edfe963aea5e4caf8`
-- aggregate job `103953376077`, artifact `10344587578`, digest `sha256:bd815e8cafa5a03c3d13af96220570758a9300e7f759671c81b2ca198b2b86f9`
+## Historical implementation — non-authoritative
 
-Historical Researcher aggregate classification:
-`ITER080F_SM_CRQN_V0_2_HAS_NO_PREEXISTING_FULL_FUNCTION_SPACE_EXTENSION_SELECTOR_AXIOM_ANTI_RESCUE_BLOCKED_EXACT_CENSUS_SCOPED`.
-Historical Researcher verdict: `BLOCKED_EXISTING_AXIOM_SELECTOR_MISSING`.
-These historical scientific labels are not authority because the executable implementation failed the frozen contract.
+Initial implementation `082bfb7facf57f8cf42405a1b514d88a7ffb8831`; initial run `34836984921` invalid because Lane A compared equivalent timestamp instants by literal strings. Timezone-only repair plan `9f857e8acec6de180185a206ec67791efe333f37`; repaired production head `1a78e94ad72e4bdad4b132a37699debd964789bc`; run `34837108991` terminal-successful but later independently invalidated.
 
-## Independent Critic invalidation
+Historical durable result `61ee95efdda1d13b47e3ef04de61d40d08ca95c1` claimed `BLOCKED_EXISTING_AXIOM_SELECTOR_MISSING`.
+Independent Critic review `results/ITER080F_ADVERSARIAL_IMPLEMENTATION_REVIEW.md`, commit `e4d90e29c9bcbb9fd7ec6f54a4e42a432b5bc503`, verdict `INVALID_IMPLEMENTATION` because Lane B was only six rows, Lane C did not implement the frozen predicate-specific controls, and dependency isolation was hard-coded rather than executed.
 
-Durable review: `results/ITER080F_ADVERSARIAL_IMPLEMENTATION_REVIEW.md`, commit `e4d90e29c9bcbb9fd7ec6f54a4e42a432b5bc503`.
-Critic handoff commit: `42646f8aa10e1c869f73ddec4c822f279ef59f32`.
+Historical run/artifacts remain immutable provenance and are not scientific authority.
 
-Independent verdict: `INVALID_IMPLEMENTATION` for the historical implementation.
+## Prospectively frozen control-only repair
 
-Decisive frozen-contract defects:
+Repair plan `status/ITER080F_CONTROL_ONLY_IMPLEMENTATION_REPAIR_PLAN.md`, commit `4b5e1d1638f366e8384fef3a03da59db9c42dde6`, was committed before repaired execution.
 
-1. Lane C frozen aspiration control requires A1/A2/A3 all false, but historical executable control hard-coded A1 true and tested only failure of the overall A1-A5 conjunction.
-2. Lane C frozen post-Iter077Q mutation/removal independence control was not executed; historical code substituted a literal `scientific_inputs_only_two_frozen_candidate_blobs=True`.
-3. Lane B frozen requirement to audit every plausibly relevant statement was implemented as six selected hard-coded rows with no executable completeness criterion.
-4. Finite-scalar control checked only overall rejection rather than predicate-specific A2=false and A3=false.
+It preserved the scientific object, frozen corpus, A1-A5, outcome mapping and interpretation ceiling, and required:
 
-Direct adversarial reading found no hidden A1-A5-complete selector in the two frozen candidate files. Thus the invalidation was implementation authority only and did not scientifically unblock CRQN.
+- Lane B: auditable coverage manifest spanning **every frozen-corpus statement plausibly relevant** to local/history amplitude definition or uniqueness, normalized amplitude/measure/composition, local causal-amplitude requirements, RG/coarse-graining/beta-functional conditions, gauge/refoliation/foliation, analyticity/unitarity, normalized same-realization observables, finite `Phi`, and explicit blocker/open-target language;
+- Lane C: exact predicate-specific positive/negative controls;
+- Lane C: actual post-Iter077Q remove/replay/restore dependency isolation;
+- Lane A/D: unchanged scientific meaning.
 
-## Control-only implementation repair — prospectively frozen
+## First repaired attempt — terminal non-authoritative
 
-Control-only implementation repair plan: `status/ITER080F_CONTROL_ONLY_IMPLEMENTATION_REPAIR_PLAN.md`, commit `4b5e1d1638f366e8384fef3a03da59db9c42dde6`.
+Head `f435f0a0edf88c83c21eb830e052d9d49ba50f2f`; run `34841208883`.
 
-The plan prospectively required, before repaired execution results were inspected:
+Lane A/C/D succeeded. Lane B failed with `coverage_complete=false`; aggregate was skipped. Its machine output listed uncovered candidate lines. The output contained obvious false positives but also materially relevant statements, including the v0.1 `Gamma_k` effective-functional/UV-critical-surface statement and the v0.2 local-vertex placeholder. The implementation also attempted a v0.1 history-amplitude row whose exact anchor was brittle and failed.
 
-- an auditable Lane-B completeness manifest over all plausibly relevant frozen candidate-specification statements;
-- predicate-specific Lane-C positive and negative controls;
-- actual executable post-Iter077Q remove/replay/restore dependency isolation;
-- unchanged Lane-A timing provenance semantics and Lane-D dependency lock;
-- no change to scientific object, corpus, A1-A5, PASS/BLOCKED/INVALID mapping or interpretation ceiling.
+No scientific verdict from this run is authoritative.
 
-## First repair implementation attempt — non-authoritative
+## Second repaired production execution — terminal but independently invalidated
 
-Implementation commit/head `f435f0a0edf88c83c21eb830e052d9d49ba50f2f`; run `34841208883`.
+After the failed run above was inspected, commit/head `71b5551c034506b7bb0c07bf222d08d7756f31ca` replaced the broad relevance scan by a hand-authored 42-anchor `REQUIRED_COVERAGE_ANCHORS` manifest.
 
-- Lane A success;
-- Lane C success;
-- Lane D success;
-- Lane B failed before artifact/aggregate because the first completeness implementation used an over-broad relevance scan and a brittle exact anchor;
-- aggregate skipped.
+Run `34841351539` completed terminal `success`.
 
-This run is `INVALID_IMPLEMENTATION_OR_PROVENANCE` in execution authority and carries no scientific verdict. No scientific contract field was changed afterward.
+Jobs:
 
-## Authoritative repaired implementation and terminal run
+- A `103966834681`;
+- B `103966834664`;
+- C `103966834585`;
+- D `103966834678`;
+- aggregate `103966883834`.
 
-Coverage-manifest repair / production head:
-`71b5551c034506b7bb0c07bf222d08d7756f31ca`.
+Artifacts/digests:
 
-Authoritative run:
-`34841351539` — terminal `success` with all four lanes plus aggregate completed.
+- A `10345649802`, `sha256:cf806e51999dc093555f02e0d158b02f036da8518eb6c40a70ed96d7bc4a77bd`;
+- B `10345799538`, `sha256:bbd7e6811c525ad8ac3bf70e91a4a3b8e3b7abec63256b1d7a065602257106fa`;
+- C `10345904100`, `sha256:f85599b41d18d464cf2a74bc6d20a30df8a41245a5db89b65de122874609bee4`;
+- D `10346401464`, `sha256:2470f900e5b896922473bd01f875d6ad3b13529d2c2c633322c5b1ea7d389904`;
+- aggregate `10346645528`, `sha256:8dffd7c2804e12cafb875721b6c322169404f2a44c2c00167c967b511d4f8c54`.
 
-Jobs and scientific lane outcomes:
+Durable aggregate commit `01539238222b42128d051444d6baa91cf5de45d8`.
+Durable repaired result commit `97980ecf17e60392389f519f70fb6629dc82a1dc`.
+Researcher provenance promotion `df0bed9d121075e953f6d27c7f1a01bfea44217a`.
+Researcher CURRENT reconciliation `ced6dc44e00e611c7e0af49af1ad93c6374177f6`.
+Researcher handoff `943d7261894b052501822f51dcf59dc1a3171590`.
 
-- Lane A job `103966834681`: `PASS_PROVENANCE_TIMING`;
-- Lane B job `103966834664`: `BLOCKED_EXISTING_AXIOM_SELECTOR_MISSING`;
-- Lane C job `103966834585`: `PASS_ANTI_RESCUE_CONTROLS`;
-- Lane D job `103966834678`: `PASS_DEPENDENCY_LOCK`;
-- aggregate job `103966883834`: success.
+Researcher claimed Lane-B `coverage_complete=true`, `uncovered_required_anchors=[]`, `qualifying_preexisting_axioms=[]`, and verdict `BLOCKED_EXISTING_AXIOM_SELECTOR_MISSING`.
 
-Artifacts:
+## Independent Critic review of second repaired execution
 
-- Lane A artifact `10345649802`, digest `sha256:cf806e51999dc093555f02e0d158b02f036da8518eb6c40a70ed96d7bc4a77bd`;
-- Lane B artifact `10345799538`, digest `sha256:bbd7e6811c525ad8ac3bf70e91a4a3b8e3b7abec63256b1d7a065602257106fa`;
-- Lane C artifact `10345904100`, digest `sha256:f85599b41d18d464cf2a74bc6d20a30df8a41245a5db89b65de122874609bee4`;
-- Lane D artifact `10346401464`, digest `sha256:2470f900e5b896922473bd01f875d6ad3b13529d2c2c633322c5b1ea7d389904`;
-- aggregate artifact `10346645528`, digest `sha256:8dffd7c2804e12cafb875721b6c322169404f2a44c2c00167c967b511d4f8c54`.
+Durable review: `results/ITER080F_REPAIRED_ADVERSARIAL_COMPLETENESS_REVIEW.md`, commit `8fb1ff2fa7335cd7ca58bbe69561a24f0f4f2421`.
+Critic handoff update: commit `f0f466a2fe15583d2283a8887597ff18d0dd4ebe`.
 
-Durable repaired aggregate:
-`analysis/iter080f_sm_control_only_implementation_repair_aggregate_result.json`, commit `01539238222b42128d051444d6baa91cf5de45d8`.
+Mandatory verdict: `INVALID_IMPLEMENTATION`.
 
-Durable repaired result:
-`results/ITER080F_SM_CONTROL_ONLY_IMPLEMENTATION_REPAIR_RESULT.md`, commit `97980ecf17e60392389f519f70fb6629dc82a1dc`.
+Decisive defect: final Lane B verifies only that every string in its manually chosen 42-anchor manifest is represented in the census. It performs no independent executable check that the 42-anchor manifest itself exhausts the preregistered universe of plausibly relevant statements. Therefore `coverage_complete=true` is self-consistency of the chosen manifest, not proof of the frozen completeness requirement.
 
-## Authoritative repaired controls
+Concrete omitted plausibly relevant witnesses include:
 
-Lane B:
+- v0.1 history-amplitude formula `A[B_f,B_i] = Sum_H ...`;
+- v0.1 alternate `Z = Sum_H integral ...` history expression;
+- v0.1 `Gamma_k` effective-functional / finite-dimensional UV critical-surface statement;
+- v0.1 schematic functional flow and fixed-point equations;
+- v0.1 explicit early-success microstate/amplitude-pair criterion;
+- v0.2 local-vertex placeholder `A_v^CRQN = A_v^geom F_causal`.
 
-- 35 explicit census statements;
-- 42 independent exact-text required coverage anchors;
-- `coverage_complete=true`;
-- `uncovered_required_anchors=[]`;
-- `qualifying_preexisting_axioms=[]`.
+These omissions do not reveal a hidden selector; direct adversarial reading still finds no A1-A5-complete rule. They nevertheless invalidate the executable claim of corpus completeness.
 
-Lane C predicate-specific controls:
+The prior failed repair run had already exposed several of these lines before the final manifest was selected. This creates a partial-result-informed narrowing warning. The Critic verdict remains `INVALID_IMPLEMENTATION`, rather than `INVALID_PROVENANCE`, because the final executable is independently insufficient even if the rewrite is treated as a good-faith implementation repair.
 
-- synthetic full-function-space prescription has A1-A5 true and is accepted;
-- fixed finite scalar condition has A2=false and A3=false and is rejected;
-- aspirational future RG/gauge closure has A1=false, A2=false, A3=false and is rejected.
+Lane C's repaired predicate controls and actual dependency-isolation replay survive review. Lane A and Lane D also survive this attack. Lane B alone invalidates the aggregate scientific authority.
 
-Lane C post-Iter077Q dependency isolation:
+## Current authority after Critic review
 
-- changed tracked paths after Iter077Q: 116;
-- frozen candidate files among changed paths: none;
-- removed in ephemeral checkout: 116;
-- replay executed: true;
-- exact scientific fingerprint equal: true;
-- restore successful: true;
-- isolation valid: true.
+The second repaired Iter080F execution and Researcher result are preserved as terminal historical provenance but are **not** authoritative for the scientific classification.
 
-Thus later post-Iter077Q repository interpretation does not provide hidden positive evidence to the repaired frozen candidate-axiom census.
+Current Iter080F status:
+`INVALID_IMPLEMENTATION — exhaustive pre-Iter077Q candidate-corpus census not yet established`.
 
-## Current scientific authority
+No hidden selector has been found. CRQN v0.2 remains independently blocked at the unique-local-amplitude arrow by upstream authority.
 
-**Verdict:** `BLOCKED_EXISTING_AXIOM_SELECTOR_MISSING`.
-
-**Classification:**
-`ITER080F_SM_CRQN_V0_2_HAS_NO_PREEXISTING_FULL_FUNCTION_SPACE_EXTENSION_SELECTOR_AXIOM_ANTI_RESCUE_BLOCKED_EXACT_CENSUS_SCOPED`.
-
-Scoped authoritative fact: the frozen pre-Iter077Q CRQN v0.1/v0.2 candidate specifications contain no explicit, independently motivated, already-existing principle satisfying all A1-A5 and therefore no pre-existing full-function-space selector axiom capable of uniquely selecting the Iter077Q extension ambiguity.
-
-This closes the anti-rescue interpretation for current CRQN v0.2: a future selector cannot be retroactively described as already implicit in the pre-Iter077Q v0.2 specification.
-
-It is not a universal no-selector theorem. A genuinely new/revised primary authority or a separately motivated, prospectively preregistered new candidate version could define a selector, but that would be new authority and must be tested as such.
-
-## Independent upstream authority retained
+Retained upstream authority:
 
 - Iter077Q: infinite-dimensional source-compatible K5 extension ambiguity;
 - Iter080A: finite K5 permutation covariance does not select (`CONFIRMED_SCOPED`);
 - repaired Iter080D: fixed finite scalar complex-linear conditions do not select (`CONFIRMED_SCOPED`);
-- repaired Iter080E: frozen primary BCG/Beltran causal-Toller corpus has no P1-P5-complete joint-K5 selector (`BLOCKED_OBJECT_DEFINITION`, scoped);
+- repaired Iter080E: frozen BCG/Beltran causal-Toller corpus has no P1-P5-complete joint-K5 selector (`BLOCKED_OBJECT_DEFINITION`, scoped);
 - Iter080B: causal multivertex E3/E4/E6 remains `BLOCKED_SOURCE_BRIDGE`.
 
-The controlling contact-formula erratum remains `status/ITER077_CONTACT_FORMULA_ERRATUM.md`, blob `63356e5099929f2b21d9d7296ab97f15ff163dba`; historical Iter077E/F source-dependent siblings remain quarantined.
+Controlling contact erratum remains `status/ITER077_CONTACT_FORMULA_ERRATUM.md`, blob `63356e5099929f2b21d9d7296ab97f15ff163dba`; historical source-dependent Iter077E/F siblings remain quarantined.
 
 ## Forward authority
 
-Do not repeat the same pre-Iter077Q candidate-specification census, finite K5 symmetry variants, fixed finite scalar selectors, or the frozen primary BCG/Beltran selector scan absent changed authority.
+Do not use second repaired Iter080F downstream and do not launch the v0.2 local-amplitude survival decision from it.
 
-Current `CRQN v0.2` remains blocked at the unique-local-amplitude arrow. A subsequent gate may formalize the current-version survival/anti-rescue decision, but it must not invent a selector. Any new selector principle requires independently motivated new/revised source authority or an explicitly new, prospectively frozen candidate version and direct source-faithful testing.
+Do not cure this by a third post-hoc hand edit of the inspected anchor list. Highest-value admissible successor is a new prospectively preregistered exhaustive pre-Iter077Q candidate-corpus census. Before any production run it must freeze a stable statement universe and relevance/exclusion rule, bind every non-heading paragraph/list/formula block of both frozen candidate blobs to a stable ID, and classify each as A1-A5 or exclude it by a pre-frozen machine-checkable reason. The statement-universe manifest/hash must be frozen before execution, including explicit treatment of the omitted witnesses above.
 
-E7/E8, G3, regulator independence and RG remain downstream-locked while the local amplitude and E3/E4/E6 composition bridge are undefined.
+Until such a successor is terminal and independently reviewed, Iter080F remains non-authoritative; E7/E8, G3, regulator independence, RG and later physical arrows remain downstream-locked.
