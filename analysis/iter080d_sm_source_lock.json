@@ -1,0 +1,53 @@
+{
+  "iteration": "Iter080D-SM",
+  "preregistration_commit": "a61780f9f84cf2ecff0e4a09993322f37e310d4c",
+  "authority": {
+    "iter077q": {
+      "derivation_path": "sources/ITER077Q_SM_INVARIANT_TANGENTIAL_AMBIGUITY_DERIVATION.md",
+      "derivation_blob_sha": "1b15464e8f7d5ae9d87932938f76de1ac8f3351f",
+      "run_id": 34792482045,
+      "aggregate_artifact_id": 10328598487,
+      "aggregate_digest": "sha256:58e3cb389a985838942a4d0181e6e680cdd75480cfc24e0ec7bb07d73b199a96",
+      "result_commit": "5941b3a064d93f2898d9e9a48545826e950455f1",
+      "classification": "ITER077Q_SM_SOURCE_COMPATIBLE_K5_EXTENSION_AMBIGUITY_CONTAINS_INFINITE_DIMENSIONAL_TANGENTIAL_SUBSPACE_EXACT_THEOREM_SCOPED",
+      "locked_facts": [
+        "N = SU(2)^4 subset SL(2,C)^4",
+        "Q(g)=sum_(a<b) tr_1/2(g_b^-1 g_a)",
+        "Q(t)=12+8 cos(t)",
+        "For an actual frozen minimal-sector boundary state with F_SU2 not identically zero, {Q^n F_SU2}_{n>=0} is linearly independent.",
+        "Therefore {Q^n F_SU2 delta_N}_{n>=0} is a countably infinite-dimensional source-compatible supported ambiguity subspace at normal-derivative order zero."
+      ]
+    },
+    "iter077l": {
+      "result_commit": "2da1cce87fb102761d3e2cad83ec93f39ff0f144",
+      "locked_facts": [
+        "The common-collision submanifold after source gauge fixing is N=SU(2)^4 subset SL(2,C)^4.",
+        "Real codimension is 12 and transverse scaling degree is 20.",
+        "Same-scaling-degree extensions permit supported normal derivatives through order 8 with smooth tangential coefficient data before additional independently imposed conditions."
+      ]
+    },
+    "contact_erratum": {
+      "path": "status/ITER077_CONTACT_FORMULA_ERRATUM.md",
+      "blob_sha": "63356e5099929f2b21d9d7296ab97f15ff163dba",
+      "locked_formula": "delta^(rho,1/2)(x)=-(2 i rho/D) delta(x)-(1/D) delta'(x), D=rho^2+1/4",
+      "historical_iter077e_f": "NON_AUTHORITATIVE_SOURCE_LOCK_INVALID"
+    }
+  },
+  "selector_class": {
+    "space": "W=span_C{h_n:n>=0}, h_n=Q^n F_SU2 delta_N",
+    "maps": "L=(L_1,...,L_m):W->C^m",
+    "scope": "fixed finite m; scalar-valued; complex-linear",
+    "excluded": [
+      "condition families whose number grows without bound with truncation dimension",
+      "function-valued constraints",
+      "differential/spectral/microlocal selector equations",
+      "nonlinear selectors"
+    ]
+  },
+  "frozen_controls": {
+    "pairs_m_N": [[1,8],[2,16],[4,32],[8,64]],
+    "positive": "For coordinate projection W_N->C^m, rank=m and nullity=N+1-m.",
+    "negative": "Identity W_N->C^(N+1) has rank=N+1 and nullity=0; it lies outside fixed-finite-m scope as N grows."
+  },
+  "claim_ceiling": "No theorem against function-valued/infinite/PDE/spectral/microlocal/nonlinear selectors; no unique K5 extension; no causal-vertex finiteness/divergence; no regulator independence; no E7/E8, G3, RG, F9/G8/K5 promotion; no new physics."
+}
