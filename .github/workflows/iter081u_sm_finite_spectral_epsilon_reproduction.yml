@@ -1,0 +1,39 @@
+name: Iter081U-SM finite spectral epsilon reproduction
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'prereg/ITER081U_SM_FINITE_SPECTRAL_EPSILON_K5_L1_REPRODUCTION.md'
+      - 'scripts/iter081u_sm_finite_spectral_epsilon_reproduction.py'
+      - '.github/workflows/iter081u_sm_finite_spectral_epsilon_reproduction.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  exact-reproduction:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install exact symbolic dependency
+        run: python -m pip install --disable-pip-version-check 'sympy==1.14.0'
+      - name: Verify prospective ordering
+        run: |
+          git merge-base --is-ancestor 084c65dbb5f89531fc1885fbdd64316b60423417 HEAD
+          test "$(git rev-parse 084c65dbb5f89531fc1885fbdd64316b60423417^0)" != "$(git rev-parse HEAD)"
+      - name: Run exact successor reproduction
+        run: python scripts/iter081u_sm_finite_spectral_epsilon_reproduction.py
+      - name: Upload authoritative aggregate
+        uses: actions/upload-artifact@v4
+        with:
+          name: iter081u-sm-finite-spectral-epsilon
+          path: results/raw/iter081u_sm_finite_spectral_epsilon.json
+          if-no-files-found: error
+          retention-days: 90
