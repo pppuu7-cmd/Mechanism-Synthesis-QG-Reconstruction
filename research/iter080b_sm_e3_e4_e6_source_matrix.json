@@ -1,0 +1,44 @@
+{
+  "gate": "Iter080B-SM",
+  "frozen_prereg": "d9b4d8a6c489b2c7560cfad538ff62fd1e4f7b07",
+  "sources": [
+    {
+      "id": "KKL_PARENT",
+      "role": "parent_composition",
+      "parent_e3_explicit": true,
+      "parent_e4_explicit": true,
+      "parent_e6_fixing_exists": true,
+      "causal_toller_local_vertex": false,
+      "complete_causal_many_vertex_bridge": false
+    },
+    {
+      "id": "BCG_2601.23162",
+      "role": "causal_eprl_vertex",
+      "single_vertex_focus_explicit": true,
+      "many_vertex_described_as_future_construction": true,
+      "causal_toller_local_vertex": true,
+      "p1_many_vertex_causal_functional_explicit": false,
+      "p2_e3_inheritance_explicit": false,
+      "p3_e4_inheritance_explicit": false,
+      "p4_e6_inheritance_explicit": false
+    },
+    {
+      "id": "BELTRAN_2603.22661v2",
+      "role": "generalized_causal_eprl_kkl_vertex",
+      "arbitrary_2complex_causal_structure_explicit": true,
+      "generalized_causal_vertex_explicit": true,
+      "generalized_causal_vertex_finiteness_open": true,
+      "causal_toller_local_vertex": true,
+      "p1_many_vertex_causal_functional_explicit": false,
+      "p2_e3_inheritance_explicit": false,
+      "p3_e4_inheritance_explicit": false,
+      "p4_e6_inheritance_explicit": false
+    }
+  ],
+  "frozen_claim_ceiling": {
+    "preserve_k5_extension_blocker": true,
+    "no_e7_e8_promotion": true,
+    "no_g3_promotion": true,
+    "no_new_physics_claim": true
+  }
+}
