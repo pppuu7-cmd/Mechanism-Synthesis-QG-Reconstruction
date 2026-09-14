@@ -1,0 +1,100 @@
+name: Iter080F-SM CRQN existing-axiom selector census
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'prereg/ITER080F_SM_CRQN_V0_2_EXISTING_AXIOM_FUNCTION_SPACE_SELECTOR_CENSUS.md'
+      - 'analysis/iter080f_sm_crqn_existing_axiom_selector_census.py'
+      - '.github/workflows/iter080f_sm_crqn_existing_axiom_selector_census.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  lane-a:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: mkdir -p out && python analysis/iter080f_sm_crqn_existing_axiom_selector_census.py --lane A --output out/iter080f_sm_A.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter080f-sm-A
+          path: out/iter080f_sm_A.json
+          if-no-files-found: error
+
+  lane-b:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: mkdir -p out && python analysis/iter080f_sm_crqn_existing_axiom_selector_census.py --lane B --output out/iter080f_sm_B.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter080f-sm-B
+          path: out/iter080f_sm_B.json
+          if-no-files-found: error
+
+  lane-c:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: mkdir -p out && python analysis/iter080f_sm_crqn_existing_axiom_selector_census.py --lane C --output out/iter080f_sm_C.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter080f-sm-C
+          path: out/iter080f_sm_C.json
+          if-no-files-found: error
+
+  lane-d:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: mkdir -p out && python analysis/iter080f_sm_crqn_existing_axiom_selector_census.py --lane D --output out/iter080f_sm_D.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter080f-sm-D
+          path: out/iter080f_sm_D.json
+          if-no-files-found: error
+
+  aggregate:
+    needs: [lane-a, lane-b, lane-c, lane-d]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: iter080f-sm-*
+          path: downloaded
+          merge-multiple: false
+      - run: mkdir -p out && python analysis/iter080f_sm_crqn_existing_axiom_selector_census.py --aggregate-dir downloaded --output out/iter080f_sm_aggregate.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter080f-sm-aggregate
+          path: out/iter080f_sm_aggregate.json
+          if-no-files-found: error
