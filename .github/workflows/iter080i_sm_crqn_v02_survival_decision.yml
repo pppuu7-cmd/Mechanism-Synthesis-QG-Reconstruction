@@ -1,0 +1,47 @@
+name: Iter080I-SM CRQN v0.2 local-amplitude survival decision
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/iter080i_sm_crqn_v02_survival_decision.yml'
+      - 'analysis/iter080i_sm_crqn_v02_survival_decision.py'
+      - 'prereg/ITER080I_SM_CRQN_V0_2_LOCAL_AMPLITUDE_ANTI_RESCUE_SURVIVAL_DECISION.md'
+
+permissions:
+  contents: read
+
+jobs:
+  lane-a-provenance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - run: python analysis/iter080i_sm_crqn_v02_survival_decision.py A > iter080i_lane_a.json
+      - uses: actions/upload-artifact@v4
+        with: {name: iter080i-lane-a, path: iter080i_lane_a.json}
+  lane-b-dependency:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - run: python analysis/iter080i_sm_crqn_v02_survival_decision.py B > iter080i_lane_b.json
+      - uses: actions/upload-artifact@v4
+        with: {name: iter080i-lane-b, path: iter080i_lane_b.json}
+  lane-c-claim-lock:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - run: python analysis/iter080i_sm_crqn_v02_survival_decision.py C > iter080i_lane_c.json
+      - uses: actions/upload-artifact@v4
+        with: {name: iter080i-lane-c, path: iter080i_lane_c.json}
+  aggregate:
+    needs: [lane-a-provenance, lane-b-dependency, lane-c-claim-lock]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - run: python analysis/iter080i_sm_crqn_v02_survival_decision.py aggregate > iter080i_aggregate.json
+      - uses: actions/upload-artifact@v4
+        with: {name: iter080i-aggregate, path: iter080i_aggregate.json}
