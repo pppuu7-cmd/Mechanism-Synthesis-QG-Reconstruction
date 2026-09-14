@@ -1,0 +1,49 @@
+name: Iter080B-SM joint E3 E4 E6 source bridge
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/iter080b_sm_e3_e4_e6_joint_source_bridge.yml'
+      - 'scripts/iter080b_sm_e3_e4_e6_source_bridge.py'
+      - 'research/iter080b_sm_e3_e4_e6_source_matrix.json'
+
+permissions:
+  contents: read
+
+jobs:
+  lane-a-parent:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python scripts/iter080b_sm_e3_e4_e6_source_bridge.py --lane A | tee iter080b_lane_a.json
+      - uses: actions/upload-artifact@v4
+        with: {name: iter080b-lane-a, path: iter080b_lane_a.json}
+  lane-b-bcg:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python scripts/iter080b_sm_e3_e4_e6_source_bridge.py --lane B | tee iter080b_lane_b.json
+      - uses: actions/upload-artifact@v4
+        with: {name: iter080b-lane-b, path: iter080b_lane_b.json}
+  lane-c-beltran:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python scripts/iter080b_sm_e3_e4_e6_source_bridge.py --lane C | tee iter080b_lane_c.json
+      - uses: actions/upload-artifact@v4
+        with: {name: iter080b-lane-c, path: iter080b_lane_c.json}
+  lane-d-logic:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python scripts/iter080b_sm_e3_e4_e6_source_bridge.py --lane D | tee iter080b_lane_d.json
+      - uses: actions/upload-artifact@v4
+        with: {name: iter080b-lane-d, path: iter080b_lane_d.json}
+  aggregate:
+    needs: [lane-a-parent, lane-b-bcg, lane-c-beltran, lane-d-logic]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python scripts/iter080b_sm_e3_e4_e6_source_bridge.py --lane aggregate | tee iter080b_aggregate.json
+      - uses: actions/upload-artifact@v4
+        with: {name: iter080b-aggregate, path: iter080b_aggregate.json}
