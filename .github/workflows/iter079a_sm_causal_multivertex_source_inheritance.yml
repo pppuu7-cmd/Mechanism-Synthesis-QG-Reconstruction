@@ -1,0 +1,74 @@
+name: Iter079A-SM causal multivertex source inheritance
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'prereg/ITER079A_SM_CAUSAL_MULTIVERTEX_SOURCE_INHERITANCE.md'
+      - 'sources/ITER079A_SM_CAUSAL_MULTIVERTEX_SOURCE_INHERITANCE_SNAPSHOT.md'
+      - 'distributional/iter079a_sm_causal_multivertex_source_inheritance.py'
+      - '.github/workflows/iter079a_sm_causal_multivertex_source_inheritance.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    name: Iter079A-SM lane ${{ matrix.lane }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        lane: [A, B, C, D]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run frozen lane
+        env:
+          PYTHONPATH: .
+        run: |
+          mkdir -p out
+          python distributional/iter079a_sm_causal_multivertex_source_inheritance.py \
+            --lane '${{ matrix.lane }}' \
+            --output 'out/iter079a_sm_${{ matrix.lane }}.json'
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter079a-sm-${{ matrix.lane }}
+          path: out/iter079a_sm_${{ matrix.lane }}.json
+          if-no-files-found: error
+
+  aggregate:
+    name: Aggregate Iter079A-SM
+    needs: audit
+    if: always()
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: iter079a-sm-*
+          path: downloaded
+          merge-multiple: false
+      - name: Aggregate frozen contract
+        env:
+          PYTHONPATH: .
+        run: |
+          mkdir -p out
+          python distributional/iter079a_sm_causal_multivertex_source_inheritance.py \
+            --aggregate-dir downloaded \
+            --output out/iter079a_sm_aggregate.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iter079a-sm-aggregate
+          path: out/iter079a_sm_aggregate.json
+          if-no-files-found: error
