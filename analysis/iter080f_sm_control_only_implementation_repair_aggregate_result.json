@@ -1,0 +1,37 @@
+{
+  "iteration": "Iter080F-SM",
+  "repair_scope": "CONTROL_ONLY_IMPLEMENTATION_REPAIR_UNCHANGED_SCIENTIFIC_CONTRACT",
+  "execution_valid": true,
+  "authoritative_run": 34841351539,
+  "head_sha": "71b5551c034506b7bb0c07bf222d08d7756f31ca",
+  "lane_scientific_outcomes": {
+    "A": "PASS_PROVENANCE_TIMING",
+    "B": "BLOCKED_EXISTING_AXIOM_SELECTOR_MISSING",
+    "C": "PASS_ANTI_RESCUE_CONTROLS",
+    "D": "PASS_DEPENDENCY_LOCK"
+  },
+  "lane_b_statement_count": 35,
+  "lane_b_coverage_anchor_count": 42,
+  "lane_b_coverage_complete": true,
+  "lane_b_uncovered_required_anchors": [],
+  "qualifying_preexisting_axioms": [],
+  "lane_c_isolation": {
+    "changed_post_iter077q_count": 116,
+    "forbidden_candidate_changes": [],
+    "removed_count": 116,
+    "replay_executed": true,
+    "fingerprint_equal": true,
+    "restore_ok": true,
+    "valid": true
+  },
+  "verdict": "BLOCKED_EXISTING_AXIOM_SELECTOR_MISSING",
+  "classification": "ITER080F_SM_CRQN_V0_2_HAS_NO_PREEXISTING_FULL_FUNCTION_SPACE_EXTENSION_SELECTOR_AXIOM_ANTI_RESCUE_BLOCKED_EXACT_CENSUS_SCOPED",
+  "artifacts": {
+    "A": {"id": 10345649802, "digest": "sha256:cf806e51999dc093555f02e0d158b02f036da8518eb6c40a70ed96d7bc4a77bd"},
+    "B": {"id": 10345799538, "digest": "sha256:bbd7e6811c525ad8ac3bf70e91a4a3b8e3b7abec63256b1d7a065602257106fa"},
+    "C": {"id": 10345904100, "digest": "sha256:f85599b41d18d464cf2a74bc6d20a30df8a41245a5db89b65de122874609bee4"},
+    "D": {"id": 10346401464, "digest": "sha256:2470f900e5b896922473bd01f875d6ad3b13529d2c2c633322c5b1ea7d389904"},
+    "aggregate": {"id": 10346645528, "digest": "sha256:8dffd7c2804e12cafb875721b6c322169404f2a44c2c00167c967b511d4f8c54"}
+  },
+  "claim_lock": "No new selector, no unique K5 extension, no G3/F9/G8/K5 promotion, no regulator-independence theorem, no complete-QG claim."
+}
