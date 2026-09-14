@@ -1,0 +1,30 @@
+name: Iter080H-SM freeze exhaustive manifest
+
+on:
+  push:
+    paths:
+      - '.github/workflows/iter080h_sm_freeze_manifest.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  freeze-manifest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Generate frozen manifest and lock
+        run: |
+          python analysis/iter080h_freeze_manifest.py
+      - name: Commit frozen manifest
+        run: |
+          git config user.name "pppuu7-cmd"
+          git config user.email "pppuu7@gmail.com"
+          git add analysis/iter080h_frozen_manifest.json status/ITER080H_MANIFEST_LOCK.md
+          git diff --cached --quiet && { echo "manifest already frozen"; exit 0; }
+          git commit -m "freeze: Iter080H exhaustive statement manifest"
+          git pull --rebase origin main
+          git push origin HEAD:main
