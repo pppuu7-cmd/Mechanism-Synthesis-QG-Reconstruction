@@ -1,0 +1,93 @@
+name: Iter080D-SM finite scalar selector obstruction
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'analysis/iter080d_sm_source_lock.json'
+      - 'analysis/iter080d_sm_finite_scalar_selector_obstruction.py'
+      - 'prereg/ITER080D_SM_FINITE_SCALAR_SELECTOR_OBSTRUCTION.md'
+      - '.github/workflows/iter080d_sm_finite_scalar_selector_obstruction.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  lane-a:
+    name: Iter080D-SM lane A source lock
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run frozen lane A
+        run: |
+          mkdir -p out
+          python analysis/iter080d_sm_finite_scalar_selector_obstruction.py --lane A --output out/iter080d_sm_A.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter080d-sm-A
+          path: out/iter080d_sm_A.json
+          if-no-files-found: error
+
+  lane-b:
+    name: Iter080D-SM lane B exact theorem
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run frozen lane B
+        run: |
+          mkdir -p out
+          python analysis/iter080d_sm_finite_scalar_selector_obstruction.py --lane B --output out/iter080d_sm_B.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter080d-sm-B
+          path: out/iter080d_sm_B.json
+          if-no-files-found: error
+
+  lane-c:
+    name: Iter080D-SM lane C scope control
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run frozen lane C
+        run: |
+          mkdir -p out
+          python analysis/iter080d_sm_finite_scalar_selector_obstruction.py --lane C --output out/iter080d_sm_C.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter080d-sm-C
+          path: out/iter080d_sm_C.json
+          if-no-files-found: error
+
+  aggregate:
+    name: Aggregate Iter080D-SM
+    runs-on: ubuntu-latest
+    needs: [lane-a, lane-b, lane-c]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: iter080d-sm-*
+          path: downloaded
+          merge-multiple: false
+      - name: Aggregate frozen contract
+        run: |
+          mkdir -p out
+          python analysis/iter080d_sm_finite_scalar_selector_obstruction.py --aggregate-dir downloaded --output out/iter080d_sm_aggregate.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter080d-sm-aggregate
+          path: out/iter080d_sm_aggregate.json
+          if-no-files-found: error
