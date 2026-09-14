@@ -1,0 +1,37 @@
+name: Iter081X-SM K5 stratified diagonal forest
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'prereg/ITER081X_SM_K5_STRATIFIED_DIAGONAL_FOREST_OBJECT_DEFINITION.md'
+      - 'scripts/iter081x_sm_k5_stratified_forest.py'
+      - '.github/workflows/iter081x_sm_k5_stratified_forest.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  exact-forest-object:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify prospective ordering
+        run: |
+          git merge-base --is-ancestor 3c306fdc4581bc5d1fdd2cb6c3500a4e49a2e676 HEAD
+          test "$(git rev-parse 3c306fdc4581bc5d1fdd2cb6c3500a4e49a2e676^0)" != "$(git rev-parse HEAD)"
+      - name: Run exact forest object definition
+        run: python scripts/iter081x_sm_k5_stratified_forest.py
+      - name: Upload authoritative aggregate
+        uses: actions/upload-artifact@v4
+        with:
+          name: iter081x-sm-k5-stratified-forest
+          path: results/raw/iter081x_sm_k5_stratified_forest.json
+          if-no-files-found: error
+          retention-days: 90
