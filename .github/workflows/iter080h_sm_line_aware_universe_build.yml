@@ -29,15 +29,17 @@ jobs:
             if actual!=expected: raise SystemExit(f'INVALID_PROVENANCE {path}: {actual} != {expected}')
             raw=Path(path).read_text(encoding='utf-8').replace('\r\n','\n')
             lines=raw.split('\n')
-            records=[]; buf=[]; start=None
+            records=[]
+            state={'buf':[],'start':None}
             def flush(endline):
-              nonlocal buf,start
-              if buf:
-                text='\n'.join(buf)
+              if state['buf']:
+                text='\n'.join(state['buf'])
                 if text.strip():
                   d=hashlib.sha256(text.encode()).hexdigest()
+                  start=state['start']
                   records.append({'id':f'{prefix}-L{start:03d}-{endline:03d}-{d[:12]}','file':path,'start_line':start,'end_line':endline,'kind':'SCIENTIFIC_SEGMENT','sha256':d,'text':text})
-              buf=[]; start=None
+              state['buf']=[]
+              state['start']=None
             for n,line in enumerate(lines,1):
               if re.match(r'^\s*#{1,6}\s+',line):
                 flush(n-1)
@@ -46,8 +48,8 @@ jobs:
               elif line.strip()=='' :
                 flush(n-1)
               else:
-                if start is None: start=n
-                buf.append(line)
+                if state['start'] is None: state['start']=n
+                state['buf'].append(line)
             flush(len(lines))
             out['records'] += records
             out['files'].append({'prefix':prefix,'path':path,'blob_sha':actual,'line_count':len(lines),'record_count':len(records)})
