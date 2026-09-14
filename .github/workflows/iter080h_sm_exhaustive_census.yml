@@ -9,6 +9,8 @@ on:
 permissions:
   contents: read
 
+# Control-only retry: execution loader/source-lock matchers repaired; frozen
+# preregistration, manifest, A1-A5 criteria and scientific outcomes unchanged.
 jobs:
   lane:
     strategy:
