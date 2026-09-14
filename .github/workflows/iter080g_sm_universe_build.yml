@@ -1,0 +1,64 @@
+name: Iter080G-SM frozen candidate block-universe build
+
+on:
+  push:
+    paths:
+      - '.github/workflows/iter080g_sm_universe_build.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-universe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify frozen blobs and build exact block universe
+        shell: bash
+        run: |
+          python - <<'PY'
+          import hashlib, json, re
+          from pathlib import Path
+
+          frozen = [
+            ('V01','candidates/CANDIDATE_A_CRQN.md','a3023dadb75f4c53d0c44a6de1c46958f4149178'),
+            ('V02','candidates/CANDIDATE_A_CRQN_V0_2.md','3933c110f9bafabb6593f8301029adaa25458bb2'),
+          ]
+          out={'schema':'ITER080G_BLOCK_UNIVERSE_V1','files':[],'blocks':[]}
+          for prefix,path,expected_blob in frozen:
+              import subprocess
+              actual_blob=subprocess.check_output(['git','hash-object',path],text=True).strip()
+              if actual_blob != expected_blob:
+                  raise SystemExit(f'INVALID_PROVENANCE {path} blob {actual_blob} != {expected_blob}')
+              raw=Path(path).read_text(encoding='utf-8').replace('\r\n','\n')
+              blocks=[b for b in re.split(r'\n\s*\n+',raw) if b.strip()]
+              out['files'].append({'prefix':prefix,'path':path,'blob_sha':actual_blob,'raw_block_count':len(blocks)})
+              for i,b in enumerate(blocks,1):
+                  digest=hashlib.sha256(b.encode()).hexdigest()
+                  first=b.lstrip().splitlines()[0] if b.strip() else ''
+                  kind='HEADING_BLOCK' if first.startswith('#') else 'SCIENTIFIC_BLOCK'
+                  out['blocks'].append({
+                    'id':f'{prefix}-B{i:03d}-{digest[:12]}',
+                    'file':path,'ordinal':i,'kind':kind,'sha256':digest,'text':b
+                  })
+          canon=json.dumps(out,sort_keys=True,separators=(',',':'),ensure_ascii=False).encode()
+          out['universe_sha256']=hashlib.sha256(canon).hexdigest()
+          Path('iter080g_block_universe.json').write_text(json.dumps(out,ensure_ascii=False,indent=2),encoding='utf-8')
+          summary={
+            'schema':out['schema'],
+            'universe_sha256':out['universe_sha256'],
+            'files':out['files'],
+            'total_blocks':len(out['blocks']),
+            'heading_blocks':sum(x['kind']=='HEADING_BLOCK' for x in out['blocks']),
+            'scientific_blocks':sum(x['kind']=='SCIENTIFIC_BLOCK' for x in out['blocks']),
+          }
+          Path('iter080g_universe_summary.json').write_text(json.dumps(summary,indent=2),encoding='utf-8')
+          print(json.dumps(summary,indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter080g-frozen-block-universe
+          path: |
+            iter080g_block_universe.json
+            iter080g_universe_summary.json
