@@ -1,0 +1,50 @@
+{
+  "claim_locks": [
+    "scalar invariant-jet lower bound only",
+    "not full boundary-covariant extension-space dimension",
+    "no unique selector",
+    "no causal-vertex divergence/nonexistence",
+    "no regulator independence",
+    "no G3/F9/G8/K5 promotion",
+    "no NEW_PHYSICS_FOUND"
+  ],
+  "classification": "ITER081R_SM_RIGHT_SU2_S5_INVARIANT_NORMAL_JET_SPACE_NONTRIVIAL_EXACT_SCOPED",
+  "controls": {
+    "class_sizes_sum_120": true,
+    "d0_eq_1": true,
+    "d1_eq_0": true,
+    "dimensions_integral": true,
+    "dimensions_nonnegative": true,
+    "laplacian_power_orders_exist": true,
+    "quadratic_invariant_exists": true,
+    "s5_projection_active": true,
+    "seven_cycle_types": true
+  },
+  "degree_dimensions_d0_to_d8": [1,0,1,0,3,0,7,0,16],
+  "geometry": {
+    "codimension_N": 12,
+    "max_normal_derivative_order": 8,
+    "node_gauge_orbit": "SU2^5 / SU2_diag ~= SU2^4 = N",
+    "normal_dimension": 12,
+    "normal_fiber": "spin1_SU2 tensor Std5_S5",
+    "source_scaling_degree": 20
+  },
+  "iteration": "Iter081R-SM",
+  "provenance": {
+    "git_head": "22f87a8cb1e5a87285066ac658e7823b223a3bc9",
+    "prereg_ancestor": true,
+    "prereg_commit_expected": "18945b681978cf22a8253a6489034e68a1cae372"
+  },
+  "s5_class_rows": [
+    {"class_size":1,"cycle_type":[1,1,1,1,1],"su2_singlet_multiplicity_by_degree":[1,0,10,4,55,36,220,180,714]},
+    {"class_size":10,"cycle_type":[2,1,1,1],"su2_singlet_multiplicity_by_degree":[1,0,4,-2,13,-6,32,-18,70]},
+    {"class_size":15,"cycle_type":[2,2,1],"su2_singlet_multiplicity_by_degree":[1,0,2,0,7,0,12,0,26]},
+    {"class_size":20,"cycle_type":[3,1,1],"su2_singlet_multiplicity_by_degree":[1,0,1,1,1,0,4,0,3]},
+    {"class_size":20,"cycle_type":[3,2],"su2_singlet_multiplicity_by_degree":[1,0,1,1,1,0,2,0,1]},
+    {"class_size":30,"cycle_type":[4,1],"su2_singlet_multiplicity_by_degree":[1,0,0,0,1,0,0,0,2]},
+    {"class_size":24,"cycle_type":[5],"su2_singlet_multiplicity_by_degree":[1,0,0,-1,0,1,0,0,-1]}
+  ],
+  "so3_only_negative_control_dimensions": [1,0,10,4,55,36,220,180,714],
+  "total_scalar_invariant_jet_dimension_leq8": 28,
+  "verdict": "PASS_EXACT_SCOPED"
+}
