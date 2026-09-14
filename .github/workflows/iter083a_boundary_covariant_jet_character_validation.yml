@@ -1,0 +1,55 @@
+name: Iter083A boundary-covariant jet character validation
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'prereg/ITER083A_SM_BOUNDARY_COVARIANT_JET_CHARACTER_VALIDATION.md'
+      - 'scripts/iter083a_boundary_covariant_jet_character_validation.py'
+      - 'results/raw/iter081r_sm_invariant_jets.json'
+      - '.github/workflows/iter083a_boundary_covariant_jet_character_validation.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run exact Iter083A validation
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p results/raw
+          python3 scripts/iter083a_boundary_covariant_jet_character_validation.py \
+            --input results/raw/iter081r_sm_invariant_jets.json \
+            --output results/raw/iter083a_sm_boundary_covariant_jet_character_validation.json \
+            | tee iter083a_stdout.json
+          python3 - <<'PY'
+          import json
+          p='results/raw/iter083a_sm_boundary_covariant_jet_character_validation.json'
+          d=json.load(open(p, encoding='utf-8'))
+          assert d['verdict']=='PASS_EXACT_SCOPED', d['verdict']
+          assert all(d['predicates'].values()), d['predicates']
+          assert all(d['controls'].values()), d['controls']
+          print('ITER083A_GATE=PASS_EXACT_SCOPED')
+          print('boundary_character=', d['boundary_character'])
+          print('m_k_0_to_8=', d['m_k_0_to_8'])
+          print('total_m_leq8=', d['total_m_leq8'])
+          print('orders_opened_beyond_scalar=', d['orders_opened_beyond_scalar'])
+          PY
+          sha256sum results/raw/iter083a_sm_boundary_covariant_jet_character_validation.json | tee iter083a_sha256.txt
+
+      - name: Upload exact result artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: iter083a-boundary-covariant-character-validation
+          path: |
+            results/raw/iter083a_sm_boundary_covariant_jet_character_validation.json
+            iter083a_stdout.json
+            iter083a_sha256.txt
+          if-no-files-found: error
+          retention-days: 90
