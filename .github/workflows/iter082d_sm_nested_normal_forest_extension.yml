@@ -1,0 +1,30 @@
+name: Iter082D-SM nested normal forest extension
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/iter082d_sm_nested_normal_forest_extension.yml'
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Verify prospective chronology
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f prereg/ITER082D_SM_NESTED_NORMAL_PROJECTOR_FOREST_EXTENSION_REPAIR_GATE.md
+          git merge-base --is-ancestor 09b1affb5489e0dfcbe01b0100e0fc8a44aded98 ed15c5436a3d83b0119faea9a94e9f7a74b76189
+          git merge-base --is-ancestor ed15c5436a3d83b0119faea9a94e9f7a74b76189 HEAD
+      - name: Run exact repaired nested-normal forest gate
+        run: python scripts/iter082d_sm_nested_normal_forest_extension.py
+      - name: Upload authoritative aggregate
+        uses: actions/upload-artifact@v4
+        with:
+          name: iter082d-sm-aggregate
+          path: iter082d_aggregate.json
+          if-no-files-found: error
