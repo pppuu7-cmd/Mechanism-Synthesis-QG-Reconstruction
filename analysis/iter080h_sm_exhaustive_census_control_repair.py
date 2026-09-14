@@ -3,10 +3,18 @@ from __future__ import annotations
 
 # Control-only implementation repair for Iter080H-SM.
 # Scientific corpus, frozen manifest, A1-A5 predicates, outcome criteria, and
-# interpretation ceiling are unchanged. Only two brittle textual source-lock
-# matchers in Lane D are replaced by exact/current durable-authority checks.
+# interpretation ceiling are unchanged. Only execution plumbing and the two
+# brittle Lane-D textual source-lock matchers are repaired.
 
-import analysis.iter080h_sm_exhaustive_census as base
+import importlib.util
+from pathlib import Path
+
+BASE_PATH=Path(__file__).resolve().with_name('iter080h_sm_exhaustive_census.py')
+spec=importlib.util.spec_from_file_location('iter080h_sm_exhaustive_census_base', BASE_PATH)
+if spec is None or spec.loader is None:
+    raise SystemExit('cannot load frozen Iter080H base implementation')
+base=importlib.util.module_from_spec(spec)
+spec.loader.exec_module(base)
 
 
 def lane_d_repaired():
@@ -24,7 +32,7 @@ def lane_d_repaired():
         'claim_locks':'No `NEW_PHYSICS_FOUND`' in c and 'no complete-QG claim' in c and 'Retain published one-wedge spectral `i epsilon`' in c,
     }
     valid=all(locks.values())
-    return {'iteration':'Iter080H-SM','lane':'D','valid':valid,'scientific_outcome':'PASS_DEPENDENCY_CLAIM_LOCK' if valid else 'INVALID_IMPLEMENTATION_OR_PROVENANCE','locks':locks,'repair_scope':'control-only textual source-lock matcher repair; frozen scientific contract unchanged'}
+    return {'iteration':'Iter080H-SM','lane':'D','valid':valid,'scientific_outcome':'PASS_DEPENDENCY_CLAIM_LOCK' if valid else 'INVALID_IMPLEMENTATION_OR_PROVENANCE','locks':locks,'repair_scope':'control-only execution/source-lock matcher repair; frozen scientific contract unchanged'}
 
 
 base.lane_d=lane_d_repaired
