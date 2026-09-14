@@ -1,0 +1,55 @@
+name: Iter080K SM Toller Joint-K5 Source Audit
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'prereg/ITER080K_SM_NEW_TOLLER_ANALYTICITY_JOINT_K5_SELECTOR_AUDIT.md'
+      - 'sources/ITER080K_SM_TOLLER_ANALYTICITY_JOINT_K5_SOURCE_MATRIX.md'
+      - 'distributional/iter080k_sm_toller_joint_k5_source_audit.py'
+      - '.github/workflows/iter080k_sm_toller_joint_k5_source_audit.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  lane-a:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: mkdir -p out && python3 distributional/iter080k_sm_toller_joint_k5_source_audit.py --lane A --out out/lane_a.json
+      - uses: actions/upload-artifact@v4
+        with: {name: iter080k-lane-a, path: out/lane_a.json}
+  lane-b:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: mkdir -p out && python3 distributional/iter080k_sm_toller_joint_k5_source_audit.py --lane B --out out/lane_b.json
+      - uses: actions/upload-artifact@v4
+        with: {name: iter080k-lane-b, path: out/lane_b.json}
+  lane-c:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: mkdir -p out && python3 distributional/iter080k_sm_toller_joint_k5_source_audit.py --lane C --out out/lane_c.json
+      - uses: actions/upload-artifact@v4
+        with: {name: iter080k-lane-c, path: out/lane_c.json}
+  lane-d:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: mkdir -p out && python3 distributional/iter080k_sm_toller_joint_k5_source_audit.py --lane D --out out/lane_d.json
+      - uses: actions/upload-artifact@v4
+        with: {name: iter080k-lane-d, path: out/lane_d.json}
+  aggregate:
+    needs: [lane-a,lane-b,lane-c,lane-d]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with: {pattern: iter080k-lane-*, path: inputs}
+      - run: mkdir -p out && python3 distributional/iter080k_sm_toller_joint_k5_source_audit.py --lane aggregate --input-root inputs --out out/aggregate.json
+      - uses: actions/upload-artifact@v4
+        with: {name: iter080k-aggregate, path: out/aggregate.json}
