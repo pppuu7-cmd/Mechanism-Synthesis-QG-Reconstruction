@@ -207,8 +207,8 @@ def lane_d() -> dict:
     locks = {
         "iter077k_joint_gap": "one-wedge spectral `i epsilon` does not define a joint K5 finite part" in current,
         "iter077q_function_space": "infinite-dimensional tangential subspace" in current,
-        "iter080a_finite_symmetry_insufficient": "finite K5 permutation covariance does not uniquely select" in current,
-        "iter080d_finite_scalar_insufficient": "fixed finite scalar-valued complex-linear selector" in current,
+        "iter080a_finite_symmetry_insufficient": "ITER080A_SM_FINITE_K5_PERMUTATION_COVARIANCE_LEAVES_INFINITE_DIMENSIONAL_TANGENTIAL_EXTENSION_AMBIGUITY_EXACT_SCOPED" in current,
+        "iter080d_finite_scalar_insufficient": "ITER080D_SM_FIXED_FINITE_SCALAR_LINEAR_RENORMALIZATION_CONDITIONS_CANNOT_SELECT_ITER077Q_INFINITE_FUNCTION_SPACE_AMBIGUITY_EXACT_THEOREM_SCOPED" in current,
         "active_selector_front": "SOURCE_DERIVED_FUNCTION_VALUED_DIFFERENTIAL_SPECTRAL_MICROLOCAL_JOINT_K5_CONDITION" in current,
         "q_derivation_hash": q_sha == EXPECTED_Q_BLOB,
     }
