@@ -51,9 +51,15 @@ The stronger Researcher census “all seven R1-R7 independently absent/condition
 
 Repair3 positive detection is restricted to paths tagged `physical_source_authority`, while negative/conditional evidence can come from the broader corpus. The current recovered repository contains no valid positive bridge, so this does not overturn the present blocker. However, after any future new authority is added, the validator must become supersession-aware: a newer valid bridge must not be ignored or converted into `CONTRADICTORY/FAIL` solely because older scoped “not present in the published formula” records remain in history.
 
+## Late Critic-prereg quarantine
+
+Commit `6df512d2e85a83461754f76eeb4ab07e2d767e74` added `prereg/ITER083P_CONTROL_REPAIR_3_INDEPENDENT_CRITIC_REVIEW.md` with text claiming a prospective Critic contract. Git ancestry proves this commit is **two commits after** the completed substantive Critic review `f3e8d7134be751ce74557691b2aae34019b15cab`; comparison status is `ahead`, merge base is the completed review commit. Therefore that file is `NON_PROSPECTIVE_NON_CONTROLLING` for the already-completed review and must not be used to rewrite or retroactively constrain its verdict.
+
+This late preregistration does not invalidate the Researcher run or the independent Critic review, because neither depended on it. It is retained only as provenance history. Any future new Critic production under that contract would be a distinct successor review and must not overwrite this review retrospectively.
+
 ## Erratum / quarantine lock
 
-`status/ITER077_CONTACT_FORMULA_ERRATUM.md` remains controlling. Historical source-lock-invalid Iter077E/F siblings remain quarantined. Original Iter083P, repair1 and repair2 also retain their historical invalid classifications and are not rehabilitated by repair3.
+`status/ITER077_CONTACT_FORMULA_ERRATUM.md` remains controlling. Historical source-lock-invalid Iter077E/F siblings remain quarantined. Original Iter083P, repair1 and repair2 also retain their historical invalid classifications and are not rehabilitated by repair3. The late Critic preregistration at `6df512d...` is additionally quarantined as non-prospective/non-controlling for this review.
 
 ## Downstream authority
 
