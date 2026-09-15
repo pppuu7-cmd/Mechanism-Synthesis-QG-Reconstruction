@@ -76,7 +76,7 @@ def series_q_of_s():
     # cosh(sqrt(q)) = 1 + q/2 + q^2/24 + q^3/720 + ...
     a1 = Fraction(2)
     a2 = -a1*a1/Fraction(12)
-    a3 = -2 * (a1*a2/Fraction(24) + a1**3/Fraction(720))
+    a3 = -2 * (2*a1*a2/Fraction(24) + a1**3/Fraction(720))
     return [a1, a2, a3]
 
 
@@ -207,7 +207,7 @@ def main():
         and all(laplacian_checks.values())
         and set(chain_ranks) == {(6,3,3)}
         and set(chain_density) == {(5,2,2)}
-        and series_q_of_s()[:2] == [Fraction(2), Fraction(-1,3)]
+        and series_q_of_s() == [Fraction(2), Fraction(-1,3), Fraction(4,45)]
     )
 
     candidate = {
