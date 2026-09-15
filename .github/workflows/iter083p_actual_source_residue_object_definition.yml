@@ -1,10 +1,12 @@
-name: Iter083P actual source residue object definition
+name: Iter083P actual source residue object definition repair3
 
 on:
   push:
     paths:
       - 'prereg/ITER083P_SM_ACTUAL_SOURCE_ORDERED_RESIDUE_OBJECT_DEFINITION.md'
       - 'prereg/ITER083P_CONTROL_ONLY_REPAIR_1.md'
+      - 'prereg/ITER083P_CONTROL_ONLY_REPAIR_2.md'
+      - 'prereg/ITER083P_CONTROL_ONLY_REPAIR_3.md'
       - 'scripts/iter083p_actual_source_residue_object_definition.py'
       - '.github/workflows/iter083p_actual_source_residue_object_definition.yml'
   workflow_dispatch:
@@ -21,58 +23,63 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Verify prospective prereg ancestry
+      - name: Verify prospective prereg and Critic ancestry
         shell: bash
         run: |
           set -euo pipefail
-          git cat-file -e ea29cd3e716d7b35457db493834347a0ca6176a6^{commit}
-          git cat-file -e 0554c312d3254fc1a7a7cc47a39278cb102fff34^{commit}
-          git merge-base --is-ancestor ea29cd3e716d7b35457db493834347a0ca6176a6 HEAD
-          git merge-base --is-ancestor 0554c312d3254fc1a7a7cc47a39278cb102fff34 HEAD
+          for c in \
+            ea29cd3e716d7b35457db493834347a0ca6176a6 \
+            0554c312d3254fc1a7a7cc47a39278cb102fff34 \
+            46bc10e4dba55f5fb2ae8051beb88941f6eb3060 \
+            ec4b7b58b515fb7bc952a53ffb8da1732a0fda5d \
+            45c7595838ade746935a5d6d6ea495cfc4fd44a8; do
+            git cat-file -e ${c}^{commit}
+            git merge-base --is-ancestor ${c} HEAD
+          done
           echo "HEAD=$(git rev-parse HEAD)"
 
-      - name: Run evidence-driven repository source-object audit
+      - name: Run complete evidence-certified source-object audit
         shell: bash
         run: |
           set -euo pipefail
           mkdir -p results/raw
           python3 scripts/iter083p_actual_source_residue_object_definition.py \
-            --output results/raw/iter083p_actual_source_residue_object_definition.json \
-            | tee iter083p_stdout.json
+            --output results/raw/iter083p_actual_source_residue_object_definition_repair3.json \
+            | tee iter083p_repair3_stdout.json
           python3 - <<'PY'
           import json
-          p='results/raw/iter083p_actual_source_residue_object_definition.json'
+          p='results/raw/iter083p_actual_source_residue_object_definition_repair3.json'
           d=json.load(open(p,encoding='utf-8'))
           assert d['manifest_complete'] is True, d['missing_required_manifest_paths']
           assert d['execution_valid'] is True, d
           assert d['positive_fixture']['passed'] is True, d['positive_fixture']
           assert d['positive_fixture']['verdict']=='PASS_OBJECT_DEFINED_SCOPED', d['positive_fixture']
+          assert d['missing_evidence_control']['passed'] is True, d['missing_evidence_control']
+          assert d['unresolved_requirements']==[], d['unresolved_requirements']
           assert all(v['rejected'] for v in d['negative_controls'].values()), d['negative_controls']
           assert d['negative_controls_ok'] is True
           assert all(d['provenance_anchors'].values()), d['provenance_anchors']
-          assert d['authority_manifest_count'] >= 13, d['authority_manifest_count']
-          assert d['verdict'] in {
-              'PASS_OBJECT_DEFINED_SCOPED',
-              'FAIL_EXACT_SCOPED',
-              'BLOCKED_OBJECT_DEFINITION',
-              'INVALID_IMPLEMENTATION',
-          }, d['verdict']
-          print('ITER083P_REPAIR_EXECUTION_VALID=1')
-          print('ITER083P_VERDICT=', d['verdict'])
-          print('ITER083P_CLASSIFICATION=', d['classification'])
-          print('ITER083P_MISSING=', d['missing_requirements'])
+          paths={x['path'] for x in d['authority_manifest']}
+          assert 'sources/ITER077I_SM_SOURCE_ORDERED_TOLLER_FUNCTION_K5_L1_DERIVATION.md' in paths
+          assert 'results/ITER083P_CONTROL_REPAIR_2_ADVERSARIAL_REVIEW.md' in paths
+          assert 'prereg/ITER083P_CONTROL_ONLY_REPAIR_3.md' in paths
+          assert d['verdict'] in {'PASS_OBJECT_DEFINED_SCOPED','FAIL_EXACT_SCOPED','BLOCKED_OBJECT_DEFINITION'}, d['verdict']
+          print('ITER083P_REPAIR3_EXECUTION_VALID=1')
+          print('ITER083P_REPAIR3_VERDICT=', d['verdict'])
+          print('ITER083P_REPAIR3_CLASSIFICATION=', d['classification'])
+          print('ITER083P_REPAIR3_MISSING=', d['missing_requirements'])
           PY
-          sha256sum results/raw/iter083p_actual_source_residue_object_definition.json | tee iter083p_sha256.txt
-          git rev-parse HEAD | tee iter083p_head.txt
+          sha256sum results/raw/iter083p_actual_source_residue_object_definition_repair3.json | tee iter083p_repair3_sha256.txt
+          git rev-parse HEAD | tee iter083p_repair3_head.txt
 
-      - name: Upload Iter083P repaired audit artifact
+      - name: Upload Iter083P repair3 audit artifact
         uses: actions/upload-artifact@v4
         with:
-          name: iter083p-actual-source-residue-object-definition-repair1
+          name: iter083p-actual-source-residue-object-definition-repair3
           path: |
-            results/raw/iter083p_actual_source_residue_object_definition.json
-            iter083p_stdout.json
-            iter083p_sha256.txt
-            iter083p_head.txt
+            results/raw/iter083p_actual_source_residue_object_definition_repair3.json
+            iter083p_repair3_stdout.json
+            iter083p_repair3_sha256.txt
+            iter083p_repair3_head.txt
           if-no-files-found: error
           retention-days: 90
