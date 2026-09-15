@@ -1,0 +1,65 @@
+name: Iter083E Ruhl-Toller one-wedge uniqueness non-implication
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'prereg/ITER083E_SM_RUHL_TOLLER_ONE_WEDGE_UNIQUENESS_NOT_JOINT_K5_SELECTOR.md'
+      - 'sources/ITER083E_PUBLIC_SOURCE_LOCK.md'
+      - 'sources/raw/iter083e_public_source_lock.json'
+      - 'sources/ITER083E_SM_RUHL_TOLLER_ONE_WEDGE_UNIQUENESS_NONIMPLICATION_DERIVATION.md'
+      - 'scripts/iter083e_ruhl_toller_one_wedge_nonimplication.py'
+      - 'results/ITER083B_SM_FILTERED_BOUNDARY_COVARIANT_SUPPORTED_AMBIGUITY_RESULT.md'
+      - 'results/ITER083C_SM_TOLLER_ADDITIVITY_SELECTOR_NULLMODE_RESULT.md'
+      - 'results/ITER083D_SM_CAUSAL_SUM_REPAIRED_377_AMBIGUITY_RESULT.md'
+      - '.github/workflows/iter083e_ruhl_toller_one_wedge_nonimplication.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run exact Iter083E validation
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p results/raw
+          python3 scripts/iter083e_ruhl_toller_one_wedge_nonimplication.py \
+            --output results/raw/iter083e_sm_ruhl_toller_one_wedge_nonimplication.json \
+            | tee iter083e_stdout.json
+          python3 - <<'PY'
+          import json
+          p='results/raw/iter083e_sm_ruhl_toller_one_wedge_nonimplication.json'
+          d=json.load(open(p, encoding='utf-8'))
+          assert d['verdict']=='PASS_EXACT_SCOPED', d
+          assert all(d['predicates'].values()), d['predicates']
+          assert all(d['controls'].values()), d['controls']
+          assert d['frozen_supported_ambiguity_dimension']==377
+          assert d['one_wedge_uniqueness_variable']=='rho'
+          assert d['feynman_projector_integration_variables']==1
+          assert d['toller_is_sl2c_representation'] is False
+          assert d['k5_wedge_toller_factors']==10
+          assert d['supported_basis_translations_checked']==377
+          print('ITER083E_GATE=PASS_EXACT_SCOPED')
+          print('one-wedge variable=', d['one_wedge_uniqueness_variable'])
+          print('Feynman projector variables=', d['feynman_projector_integration_variables'])
+          print('Toller representation=', d['toller_is_sl2c_representation'])
+          print('joint ambiguity dimension=', d['frozen_supported_ambiguity_dimension'])
+          PY
+          sha256sum results/raw/iter083e_sm_ruhl_toller_one_wedge_nonimplication.json | tee iter083e_sha256.txt
+
+      - name: Upload exact result artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: iter083e-ruhl-toller-one-wedge-nonimplication
+          path: |
+            results/raw/iter083e_sm_ruhl_toller_one_wedge_nonimplication.json
+            iter083e_stdout.json
+            iter083e_sha256.txt
+          if-no-files-found: error
+          retention-days: 90
