@@ -1,0 +1,43 @@
+{
+  "gate": "ACTUAL_MULTIVARIATE_K4_ORDER3_PARITY_GATE",
+  "authoritative_run": 34994467079,
+  "authoritative_job": 104467110732,
+  "head": "cd57b6d0a9c7c48c17ffea7ac3c978e77107c95f",
+  "artifact_id": 10407455156,
+  "artifact_zip_sha256": "1021b31937956cf2ff3e84c0a98bd8d3f2abac2ce021f087fd19e8cb39d40486",
+  "production_json_sha256": "dd93d6bfe0151a3f72b2dc3bcee3ac530108e5f7966f919021e165edd2981934",
+  "classification": "K4_ACTUAL_ORDER3_POLAR_COEFFICIENT_ZERO_EXACT_BY_FULL_NORMAL_INVERSION_PARITY_SCOPED",
+  "verdict": "PASS_EXACT_SCOPED",
+  "execution_valid": true,
+  "predicates": {
+    "P0_upstream_authority": true,
+    "P1_9d_front_inversion": true,
+    "P2_six_internal_baseline_degree6": true,
+    "P3_all_order3_partitions_total_degree9": true,
+    "P4_analytic_common_chart_authority": true,
+    "P5_odd_front_pairing_zero": true,
+    "P6_all5_full32_and_s5": true,
+    "P7_k4_residue_zero_and_full_annihilator": true,
+    "P8_simple_residue_zero_scheme_stable": true
+  },
+  "normal_dimension": 9,
+  "front_dimension": 8,
+  "gram_determinant": 64,
+  "degree_partition_count": 364,
+  "full32_raw_contraction_terms": 500000,
+  "edge_census_failures": 0,
+  "k4_blocks": 5,
+  "boundary_components_per_block": 32,
+  "internal_edges_per_block": 6,
+  "external_edges_per_block": 4,
+  "s5_transports": 120,
+  "historical_invalid_implementation_runs": [34993972013, 34994071337, 34994172757, 34994282499],
+  "claim_ceiling": {
+    "k5_order8_computed": false,
+    "physical_finite_part_selected": false,
+    "regulator_independence_claimed": false,
+    "f9_promoted": false,
+    "g3_promoted": false,
+    "new_physics_found": false
+  }
+}
