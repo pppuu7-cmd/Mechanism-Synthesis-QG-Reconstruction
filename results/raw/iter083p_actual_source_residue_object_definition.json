@@ -1,0 +1,61 @@
+{
+  "anchors": {
+    "critic_requires_actual_source_residue_next": true,
+    "current_authorizes_actual_residue_gate": true,
+    "finite_common_spectral_epsilon_not_collision_regulator": true,
+    "iter083n_family_is_formal_not_physical_residue": true,
+    "no_joint_source_prescription_in_audited_vertex": true,
+    "one_wedge_uniqueness_is_not_joint_selector": true,
+    "source_audit_has_no_joint_subtraction_or_common_regulator": true,
+    "source_order_locked": true
+  },
+  "available_inputs": {
+    "formal_iter083n_local_meromorphic_family_as_mathematical_control_only": true,
+    "four_gauge_fixed_sl2c_group_integrations": true,
+    "one_wedge_toller_analytic_object": true,
+    "published_one_wedge_feynman_i_epsilon": true,
+    "ten_factor_off_collision_k5_vertex_formula": true
+  },
+  "classification": "ITER083P_SM_ACTUAL_SOURCE_ORDERED_MEROMORPHIC_RESIDUE_NOT_DEFINED_BY_CURRENT_REPOSITORY_AUTHORITY_SCOPED",
+  "execution_valid": true,
+  "gate": "ACTUAL_SOURCE_ORDERED_RESIDUE_OBJECT_DEFINITION",
+  "interpretation_ceiling": "Missing bridge/object definition only; not a no-go theorem for future source-faithful meromorphic constructions and not a physical residue or finite-part verdict.",
+  "iteration": "Iter083P-SM",
+  "missing_requirements": [
+    "R1_full_source_meromorphic_deformation_parameter_and_object",
+    "R2_exact_source_to_joint_deformation_map",
+    "R3_full_boundary_contracted_residue_map_all_32_or_exact_reduction",
+    "R4_deformed_full_object_measure_and_normalization",
+    "R5_joint_deformation_branch_and_published_spectral_compatibility_theorem",
+    "R6_full_k5_laurent_expansion_theorem_near_collision",
+    "R7_unique_source_identification_of_A_minus_1"
+  ],
+  "negative_controls": {
+    "auxiliary_Q_hodge_scalar_surrogates_not_used": true,
+    "generic_extension_existence_not_promoted_to_physical_selector": true,
+    "iter083n_formal_rho_power_not_promoted_to_source_authority": true,
+    "no_posthoc_finite_part_scale_state_or_regulator": true,
+    "one_wedge_spectral_epsilon_not_relabelled_joint_residue_parameter": true,
+    "representative_component_not_used_for_full_residue": true,
+    "termwise_contact_product_not_substituted_for_source_order": true
+  },
+  "requirements": {
+    "R1_full_source_meromorphic_deformation_parameter_and_object": false,
+    "R2_exact_source_to_joint_deformation_map": false,
+    "R3_full_boundary_contracted_residue_map_all_32_or_exact_reduction": false,
+    "R4_deformed_full_object_measure_and_normalization": false,
+    "R5_joint_deformation_branch_and_published_spectral_compatibility_theorem": false,
+    "R6_full_k5_laurent_expansion_theorem_near_collision": false,
+    "R7_unique_source_identification_of_A_minus_1": false
+  },
+  "source_file_sha256": {
+    "critic_n": "262747e5fbe5e0a9599c2d0b53a573209ab629c6bb30f09f81234a45ec74b9ed",
+    "current": "25934c7ce78b8d0eedaea55b77cf7bba8fdc0d31d8c6f2409b44d755b3755e05",
+    "result_e": "4ff2a86e76fb47ce667617ffbb68d915200ee49be8b4620b5eaeca4672088197",
+    "result_f": "1baa55c0fbba4ca0da19e36a42473d88ee8d7dd0cc739377676ec8b8e4763446",
+    "result_l": "88393e8c94073fe9307ac8c7779863d7194de3700ab11f475f152381215ad93b",
+    "result_n": "686222360384b4d4eacd754d13eb48f98cd8bb6c2900c63d127ab4cbd96f9be2",
+    "source_lock_e": "4f03a809e01a91428bab85a87b0efe7e3e379feee26b1edf6bda468aa019e2ce"
+  },
+  "verdict": "BLOCKED_OBJECT_DEFINITION"
+}
