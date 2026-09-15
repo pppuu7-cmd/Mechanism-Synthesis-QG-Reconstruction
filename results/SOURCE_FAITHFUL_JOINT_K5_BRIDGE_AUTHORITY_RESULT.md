@@ -2,7 +2,7 @@
 
 Date: 2026-09-15
 
-Status: **PASS_EXACT_SCOPED**
+Status: **PASS_EXACT_SCOPED — REPAIRED PRODUCTION**
 
 Classification:
 
@@ -18,24 +18,35 @@ The positive construction was then derived and locked before production:
 
 - derivation `sources/SOURCE_FAITHFUL_JOINT_K5_BRIDGE_DERIVATION.md`, commit `15c19a67f10f6cd26e522649bd41b3d9f1cadd8a`;
 - machine-readable source/geometry lock `sources/raw/source_faithful_joint_k5_bridge_lock.json`, commit `221c91c5846cc60d1841ac432a542871a712ddba`;
-- validator `scripts/source_faithful_joint_k5_bridge_gate.py`, commit `61926d293dca424e23c348b2f7b5de0b7d94441e`;
-- workflow/production head `13a73422493b7e66964883b91ff01b5c670601d7`.
+- initial validator `scripts/source_faithful_joint_k5_bridge_gate.py`, commit `61926d293dca424e23c348b2f7b5de0b7d94441e`;
+- initial workflow/head `13a73422493b7e66964883b91ff01b5c670601d7`.
 
-Production authority:
+Initial production run `34952663240` was terminal success and returned the same scientific classification with B1-B9 true and all nine malformed controls rejected. Before durable promotion, an implementation-only diagnostic defect was found: the cubic coefficient in the formal inversion `cosh(sqrt(q))=1+s` was printed as `1/30` rather than the exact `4/45`. The scientific predicates had depended only on the exact lower coefficients and were unaffected, but the diagnostic was not accepted as durable authority.
 
-- GitHub Actions run `34952663240`, terminal `success`;
-- job `104326933193`, terminal `success`;
-- artifact `10389024952`, `source-faithful-joint-k5-bridge-gate`;
-- artifact ZIP digest `sha256:83770a227f00d36c4608a1c33e517ffa4af0ca3de6894555097cc7d71bd88327`;
-- production JSON SHA256 `84f433176d571a7d19e0e5280201024fc3dc85c8c4976b53643de1e03b2edc02`.
+The repair scope was prospectively frozen before code repair:
 
-The exact production JSON was downloaded from the terminal artifact and persisted as `results/raw/source_faithful_joint_k5_bridge_gate.json`.
+- `prereg/SOURCE_FAITHFUL_JOINT_K5_BRIDGE_CONTROL_ONLY_REPAIR_1.md`, commit `a7157dd0a5a896db9a26e4036cd754934ed852f6`.
 
-## Recovered-authority ordering
+Only the exact cubic-series calculation/assertion was repaired:
 
-A later same-scope audit workflow, run `34952709428` on head `3889de168d1705ac57bdd8c022c49548cad26417`, terminated `failure`/`INVALID_IMPLEMENTATION` because its supersession guard detected the already-created positive bridge derivation and raw lock but had not ingested them. It produced no competing scientific verdict and no artifact.
+- repaired validator/head `87e732bab75e3d60f1df1390561fc584f667526f`.
 
-`prereg/ITER083Q_CONTROL_ONLY_REPAIR_1.md`, commit `19697881b766a3d64c544c6696f2dba4bb4f0ea6`, was prospectively frozen only to repair that later audit. No repaired duplicate production is run because the earlier authoritative same-object gate `34952663240` is already terminal and complete.
+### Authoritative repaired production
+
+- GitHub Actions run `34953022566`, terminal `success`;
+- job `104328280379`, terminal `success`;
+- artifact `10389449925`, `source-faithful-joint-k5-bridge-gate`;
+- artifact ZIP digest `sha256:abf75fdd1d1bfe97a0913cdcddb723b9c9fec6ca075dd47cc414fff593769d1b`;
+- production JSON SHA256 `3a66499afb5c16b4fd0643ab3796f7da827d5ec09d3e03359fba2a5ba6c56011`;
+- corrected durable raw JSON: `results/raw/source_faithful_joint_k5_bridge_gate.json`, replacement commit `b3f09df77af61a09fec425ce18e7d73d52d66ebe`.
+
+The historical run `34952663240` is retained only as pre-repair evidence; the repaired run above is scientific production authority.
+
+## Parallel auto-research / supersession ordering
+
+The hourly MSQGR Researcher independently opened Iter083Q from the same parent bridge preregistration. Its first audit implementation was absence-based and contained a supersession guard. When the new positive bridge derivation and raw lock appeared, run `34952709428` correctly refused classification as `INVALID_IMPLEMENTATION` rather than overwriting the new evidence with historical `not found` statements.
+
+Auto-research then prospectively froze `prereg/ITER083Q_CONTROL_ONLY_REPAIR_1.md`, commit `19697881b766a3d64c544c6696f2dba4bb4f0ea6`, requiring detected positive authority to be ingested and evaluated. That independent lane is evidence/audit redundancy; it is not a competing scientific BLOCKED verdict.
 
 ## Exact source-faithful construction
 
@@ -47,9 +58,9 @@ For a relative Lorentz element `h`, use the exact source Cartan rapidity and def
 
 `q(h)=beta(h)^2 = arcosh(Tr(h h^dagger)/2)^2`.
 
-Near the compact locus, with `s=Tr(h h^dagger)/2-1`,
+Near the compact locus, with `s=Tr(h h^dagger)/2-1`, exact formal inversion gives
 
-`q=2s-(1/3)s^2+(1/30)s^3+...`.
+`q=2s-(1/3)s^2+(4/45)s^3+O(s^4)`.
 
 Thus `q` is real analytic near `SU(2)`, nonnegative, vanishes exactly on the compact locus, and has the source-normal nondegenerate boost-normal Hessian.
 
@@ -75,7 +86,7 @@ For sufficiently large real parts of the parameters, the lifted family is locall
 
 ## B1-B9 result
 
-Production returns all frozen bridge predicates true:
+Repaired production returns all frozen bridge predicates true:
 
 - B1: simultaneous true-K5 multivariate analytic/meromorphic family — PASS;
 - B2: exact post-Toller source-to-joint-family map without spectral substitution — PASS;
@@ -87,7 +98,7 @@ Production returns all frozen bridge predicates true:
 - B8: S5 block covariance with no preferred label/chain/basis — PASS;
 - B9: enough of the actual full local object is defined to authorize a multivariate polar-coefficient normal-jet gate — PASS.
 
-Mechanical controls also passed: 26/26 block census, 16/16 divergent-block census, 20 maximal divergent chains, exact `(6,3,3)` ranks, exact `(5,2,2)` density powers, all 120 S5 relabelings, Laplacian/projector identities, and exact first source-radius series coefficients. All nine malformed bridge controls were rejected.
+Mechanical controls also passed: 26/26 block census, 16/16 divergent-block census, 20 maximal divergent chains, exact `(6,3,3)` ranks, exact `(5,2,2)` density powers, all 120 S5 relabelings, Laplacian/projector identities, and exact source-radius series `(2,-1/3,4/45)` through cubic order. All nine malformed bridge controls were rejected.
 
 ## New scientific fact
 
