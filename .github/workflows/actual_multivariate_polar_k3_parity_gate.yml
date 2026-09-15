@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'prereg/ACTUAL_SOURCE_ORDERED_MULTIVARIATE_POLAR_NORMAL_JET_ANNIHILATOR.md'
+      - 'prereg/ACTUAL_MULTIVARIATE_K3_PARITY_CONTROL_ONLY_REPAIR_2.md'
       - 'sources/ACTUAL_MULTIVARIATE_POLAR_K3_PARITY_DERIVATION.md'
       - 'scripts/actual_multivariate_polar_k3_parity_gate.py'
       - '.github/workflows/actual_multivariate_polar_k3_parity_gate.yml'
@@ -15,7 +16,7 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
-      - name: Run exact K3 parity gate
+      - name: Run repaired full-coefficient K3 parity gate
         shell: bash
         run: |
           set -euo pipefail
@@ -28,19 +29,31 @@ jobs:
           p='results/raw/actual_multivariate_polar_k3_parity_gate.json'
           d=json.load(open(p, encoding='utf-8'))
           assert d['verdict'] in {'PASS_EXACT_SCOPED','FAIL_EXACT_SCOPED'}, d
+          assert d['execution_valid'] is True, d
           assert d['provenance_ok'] is True, d['provenance_missing']
-          assert all(d['controls'].values()), d['controls']
+          assert d['positive_validation']['valid'] is True, d['positive_validation']
+          assert len(d['controls']) == 10, d['controls']
+          assert all(d['controls'].values()), (d['controls'], d['control_reasons'])
           c=d['computed']
           assert c['source_wedges']==10
+          assert c['regulator_parameters']==16
           assert c['k3_blocks']==10
-          assert len(c['representative_internal_edges'])==3
-          assert c['representative_external_edge_count']==7
-          assert c['internal_product_parity']==-1
-          assert all(c['leading_matrix_odd_checks'])
-          assert c['full32_components_executed']==32
+          assert c['full32_components_per_block']==32
+          assert c['symbolic_boundary_component_checks']==320
+          assert c['haar_gram_determinant']==27
+          assert abs(c['haar_inversion_determinant'])==1
+          assert c['haar_inversion_preserves_gram'] is True
+          assert c['q_front_even'] is True
           assert c['k2_front_radial_exponent']==0
-          assert c['maximal_k3_k4_k5_chains']==20
-          assert c['candidate_k3_normal_order']==0
+          assert c['s5_permutations_checked']==120
+          assert c['s5_transport_failures']==[]
+          assert c['density_chain_powers']==[5,8,11]
+          assert c['laurent_residue_convolution_pairs']==[[0,-1]]
+          assert len(c['block_certificates'])==10
+          assert all(x['component_count']==32 for x in c['block_certificates'])
+          assert all(x['all_components_odd'] for x in c['block_certificates'])
+          assert all(x['all_term_degrees_exactly_three'] for x in c['block_certificates'])
+          assert all(x['all_terms_have_3_internal_7_external'] for x in c['block_certificates'])
           if d['verdict']=='PASS_EXACT_SCOPED':
               s=d['scientific_conclusion']
               assert s['k3_face_residue_at_physical_origin_zero'] is True
@@ -51,7 +64,8 @@ jobs:
           print('K3_GATE_VERDICT=',d['verdict'])
           print('K3_GATE_CLASSIFICATION=',d['classification'])
           print('K3_PREDICATES=',d['predicates'])
-          print('K3_FULL32_CHECKSUM=',c['full32_checksum'])
+          print('K3_CONTROLS=',d['controls'])
+          print('K3_SYMBOLIC_CHECKS=',c['symbolic_boundary_component_checks'])
           PY
           sha256sum results/raw/actual_multivariate_polar_k3_parity_gate.json | tee actual_multivariate_polar_k3_parity_sha256.txt
       - name: Upload K3 gate artifact
