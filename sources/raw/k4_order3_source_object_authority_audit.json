@@ -1,0 +1,88 @@
+{
+  "gate": "ACTUAL_MULTIVARIATE_K4_ORDER3_OBJECT_DEFINITION_REACHABILITY",
+  "prereg_commit": "a6983a4d7379bf73f48752a4de357450996d8572",
+  "authority_cut": "a6983a4d7379bf73f48752a4de357450996d8572",
+  "allowed_statuses": ["SOURCE_DEFINED_SUFFICIENT", "ABSENT_OR_ONLY_CONDITIONAL", "UNRESOLVED_EVIDENCE"],
+  "requirements": {
+    "R1_K4_NORMAL_CHART": {
+      "status": "ABSENT_OR_ONLY_CONDITIONAL",
+      "evidence": [
+        {"path": "sources/SOURCE_FAITHFUL_JOINT_K5_BRIDGE_NESTED_JACOBIAN_REPAIR_DERIVATION.md", "commit": "b227ad0d433d89c9fe1df589535b354961e5a91b", "must_contain": ["choose boundary scales so that to leading order", "smooth nonzero factors are suppressed"]},
+        {"path": "sources/SOURCE_FAITHFUL_JOINT_K5_BRIDGE_NESTED_JACOBIAN_REPAIR_DERIVATION.md", "commit": "b227ad0d433d89c9fe1df589535b354961e5a91b", "must_contain": ["It does not yet compute the full boundary-contracted coefficient tensors at those orders"]}
+      ],
+      "reason": "Authority supplies leading hierarchical blow-up scaling and abstract smooth front charts, but no exact nested K3/K4/K5 source-coordinate map through cubic order from which the K4 Taylor tensor can be extracted."
+    },
+    "R2_BCH_ORDER3": {
+      "status": "ABSENT_OR_ONLY_CONDITIONAL",
+      "evidence": [
+        {"path": "sources/SOURCE_FAITHFUL_JOINT_K5_BRIDGE_DERIVATION.md", "commit": "b94aafa1b30e75d2bc93b2e7b0c349fd4a7f3648", "must_contain": ["beta_ab(r)=r |x_a-x_b|+O(r^2)", "q_B = r^2 R_B^2 + O(r^3)"]},
+        {"path": "sources/SOURCE_FAITHFUL_JOINT_K5_BRIDGE_NESTED_JACOBIAN_REPAIR_DERIVATION.md", "commit": "b227ad0d433d89c9fe1df589535b354961e5a91b", "must_contain": ["It does not yet compute the full boundary-contracted coefficient tensors at those orders"]}
+      ],
+      "reason": "Current physical bridge retains nonlinear geometry abstractly but does not give the complete cubic noncommutative multiplication/BCH expansion for all ten relative group arguments. Companion BCH controls are not promoted into the physical source-amplitude line."
+    },
+    "R3_TOLLER_ORDER3": {
+      "status": "ABSENT_OR_ONLY_CONDITIONAL",
+      "evidence": [
+        {"path": "sources/SOURCE_FAITHFUL_JOINT_K5_BRIDGE_DERIVATION.md", "commit": "b94aafa1b30e75d2bc93b2e7b0c349fd4a7f3648", "must_contain": ["The source companion paper gives the explicit `j=l=k=1/2` Toller branches", "every frozen `j=1/2` Toller matrix lifts to a polyhomogeneous conormal matrix-valued function"]},
+        {"path": "sources/SOURCE_FAITHFUL_JOINT_K5_BRIDGE_NESTED_JACOBIAN_REPAIR_DERIVATION.md", "commit": "b227ad0d433d89c9fe1df589535b354961e5a91b", "must_contain": ["actual source polar coefficient at such a face probes normal Taylor order `omega_C`", "It does not yet compute the full boundary-contracted coefficient tensors at those orders"]}
+      ],
+      "reason": "Exact one-wedge functions exist and imply polyhomogeneity, but current authority has not derived the full all-component source Toller Taylor jets after nonlinear K4 composition through total normal degree 3."
+    },
+    "R4_EXTERNAL_TOLLER_JETS": {
+      "status": "ABSENT_OR_ONLY_CONDITIONAL",
+      "evidence": [
+        {"path": "results/ACTUAL_MULTIVARIATE_K3_PARITY_CONTROL_REPAIR2_RESULT.md", "commit": "c90d26128e5d7b36c012d8285252e7ca91126474", "must_contain": ["Every external edge is evaluated at the collapsed K3 point at normal order zero", "K4 and K5 actual polar coefficients remain unresolved"]},
+        {"path": "sources/SOURCE_FAITHFUL_JOINT_K5_BRIDGE_NESTED_JACOBIAN_REPAIR_DERIVATION.md", "commit": "b227ad0d433d89c9fe1df589535b354961e5a91b", "must_contain": ["It does not yet compute the full boundary-contracted coefficient tensors at those orders"]}
+      ],
+      "reason": "K3 authority certifies external factors only at K3 normal order zero. No source-faithful order-1/2/3 external Toller jet census needed for K4 has yet been materialized."
+    },
+    "R5_HAAR_JACOBIAN_ORDER3": {
+      "status": "ABSENT_OR_ONLY_CONDITIONAL",
+      "evidence": [
+        {"path": "sources/SOURCE_FAITHFUL_JOINT_K5_BRIDGE_NESTED_JACOBIAN_REPAIR_DERIVATION.md", "commit": "b227ad0d433d89c9fe1df589535b354961e5a91b", "must_contain": ["up to a smooth nonvanishing angular/tangential density", "rho3^5 rho4^8 rho5^11"]},
+        {"path": "results/ACTUAL_MULTIVARIATE_K3_PARITY_CONTROL_REPAIR2_RESULT.md", "commit": "c90d26128e5d7b36c012d8285252e7ca91126474", "must_contain": ["Because the K3 candidate pole occurs at normal Taylor order zero, only the leading source-Haar/tubular coefficient enters"]}
+      ],
+      "reason": "The corrected bridge fixes exact radial powers and a smooth nonvanishing residual density, while K3 needs only its leading value. The cubic pulled-back Haar/Jacobian jet required at K4 order 3 is not provided."
+    },
+    "R6_Q_DEFINING_FUNCTION_ORDER3": {
+      "status": "ABSENT_OR_ONLY_CONDITIONAL",
+      "evidence": [
+        {"path": "sources/SOURCE_FAITHFUL_JOINT_K5_BRIDGE_DERIVATION.md", "commit": "b94aafa1b30e75d2bc93b2e7b0c349fd4a7f3648", "must_contain": ["q(h)=beta(h)^2 = arcosh(1+s(h))^2", "Define the exact block radius", "q_B = r^2 R_B^2 + O(r^3)"]},
+        {"path": "sources/SOURCE_FAITHFUL_JOINT_K5_BRIDGE_NESTED_JACOBIAN_REPAIR_DERIVATION.md", "commit": "b227ad0d433d89c9fe1df589535b354961e5a91b", "must_contain": ["q_B=(1/|B|) sum_(a<b in B) beta_ab^2", "It does not yet compute the full boundary-contracted coefficient tensors at those orders"]}
+      ],
+      "reason": "The nonlinear source-derived defining functions q_B are exact, but their mutually compatible pullback/cross-couplings in an exact nested K4 cubic chart have not been derived."
+    },
+    "R7_FULL32_CONTRACTION_MAP": {
+      "status": "SOURCE_DEFINED_SUFFICIENT",
+      "evidence": [
+        {"path": "results/ACTUAL_MULTIVARIATE_K3_PARITY_CONTROL_REPAIR2_RESULT.md", "commit": "c90d26128e5d7b36c012d8285252e7ca91126474", "must_contain": ["complete all-32 boundary contraction is symbolically certified term-by-term", "all 32 boundary components"]},
+        {"path": "sources/SOURCE_FAITHFUL_JOINT_K5_BRIDGE_DERIVATION.md", "commit": "b94aafa1b30e75d2bc93b2e7b0c349fd4a7f3648", "must_contain": ["full 32-component boundary contraction", "every one of the 32 frozen boundary components"]}
+      ],
+      "reason": "All-ten-wedge/full-32 contraction structure is authoritative and coefficientwise finite linear algebra."
+    },
+    "R8_FRONT_PAIRING": {
+      "status": "ABSENT_OR_ONLY_CONDITIONAL",
+      "evidence": [
+        {"path": "sources/SOURCE_FAITHFUL_JOINT_K5_BRIDGE_NESTED_JACOBIAN_REPAIR_DERIVATION.md", "commit": "b227ad0d433d89c9fe1df589535b354961e5a91b", "must_contain": ["angular variables range over smooth compact front-face charts", "smooth nonzero factors are suppressed"]},
+        {"path": "results/ACTUAL_MULTIVARIATE_K3_PARITY_CONTROL_REPAIR2_RESULT.md", "commit": "c90d26128e5d7b36c012d8285252e7ca91126474", "must_contain": ["The internal K2 singularity exponent", "K4 and K5 actual polar coefficients remain unresolved"]}
+      ],
+      "reason": "K3 front pairing is exact and integrable, but no exact K4 front angular measure/domain with K3/K2 subface distributional pairing at total order 3 has been supplied."
+    },
+    "R9_BRANCH_NORMALIZATION": {
+      "status": "SOURCE_DEFINED_SUFFICIENT",
+      "evidence": [
+        {"path": "sources/SOURCE_FAITHFUL_JOINT_K5_BRIDGE_DERIVATION.md", "commit": "b94aafa1b30e75d2bc93b2e7b0c349fd4a7f3648", "must_contain": ["published spectral `i epsilon` remains untouched", "All branch/sign data remain those of the already-constructed source Toller matrices"]}
+      ],
+      "reason": "The joint regulator is branch-blind and source normalization/spectral prescription are explicitly retained."
+    },
+    "R10_S5_TRANSPORT": {
+      "status": "SOURCE_DEFINED_SUFFICIENT",
+      "evidence": [
+        {"path": "results/ACTUAL_MULTIVARIATE_K3_PARITY_CONTROL_REPAIR2_RESULT.md", "commit": "c90d26128e5d7b36c012d8285252e7ca91126474", "must_contain": ["All 120 permutations", "permute the 32 boundary labels bijectively"]},
+        {"path": "sources/SOURCE_FAITHFUL_JOINT_K5_BRIDGE_DERIVATION.md", "commit": "b94aafa1b30e75d2bc93b2e7b0c349fd4a7f3648", "must_contain": ["equivariant under `S5`", "no representative-component selection"]}
+      ],
+      "reason": "True induced-leg S5 transport of the full boundary fiber and block-indexed regulator family is authoritative."
+    }
+  },
+  "audit_scope_statement": "This manifest audits whether current repository authority contains a mutually compatible explicit cubic source-coordinate realization sufficient to extract the complete K4 order-3 coefficient. It does not deny that the abstract multivariate meromorphic germ and its K4 polar distribution exist in the q_B scheme."
+}
