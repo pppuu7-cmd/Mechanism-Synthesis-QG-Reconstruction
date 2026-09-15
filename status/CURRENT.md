@@ -116,6 +116,16 @@ If two future admissible Q-based schemes do differ, Iter083B says their same-sco
 
 ---
 
+## In-flight successor — Iter083H
+
+After the Iter083G result/review, Researcher A prospectively froze `prereg/ITER083H_SM_PRIMITIVE_SIMPLE_K5_POLE_Q_INDEPENDENCE.md` at commit `8a959d565777bd57e5d102c467b140bd618abce0`, followed by a pre-production derivation commit `238c3828fd69b01eb8c71d2f25948529f06a8972`.
+
+The frozen Iter083H object is explicitly only a primitive deepest single-simple-pole model, not the full K3/K4/K5 forest meromorphic germ. Its preregistration retains the nested-pole/Q-dependence loophole and the full physical-source ceiling.
+
+At the last recovery check there was **no Iter083H implementation/workflow/terminal production/result** in repository authority. Therefore no Iter083H substantive values or verdict are authoritative yet, and no competing Critic verdict is permitted. Until a terminal production exists, only contract/provenance/code review or outcome-independent controls are admissible for Iter083H.
+
+---
+
 ## Source-order / erratum locks
 
 Authoritative source ordering remains:
@@ -159,7 +169,8 @@ This is not a generic-spin or all-strata ambiguity dimension and does not mean 3
 `-> one-wedge analytic uniqueness / published i-epsilon do not select`
 `-> common finite spectral epsilon does not regularize`
 `-> S5 alone does not fix Q in candidate multivariate projection class`
-`-> stronger source locality/functoriality and source-faithful K5 polar germ ?`
+`-> Iter083H primitive single-pole Q-independence gate IN FLIGHT / non-authoritative`
+`-> nested/source-faithful K5 multivariate polar germ + stronger locality/functoriality ?`
 `-> actual Q-dependence or Q-independence ?`
 `-> physical finite-part/composition selector ?`
 `-> global multistratum patching ?`
@@ -177,7 +188,7 @@ This is not a generic-spin or all-strata ambiguity dimension and does not mean 3
 
 ## Claim locks
 
-No `NEW_PHYSICS_FOUND`; no complete-QG claim; no unique K5 extension; no physical finite-part selector; no actual Q-dependence theorem; no generic-spin complete extension-space dimension; no all-strata global distributional patching theorem; no causal-vertex finiteness/divergence or distributional-nonexistence theorem; no regulator independence/dependence theorem; no physical source->K4 pushforward; no nominal epsilon^-1 coefficient; no G3/F9/G8/K5 promotion; no arbitrary fitted subtraction constants/scales or preferred finite parts.
+No `NEW_PHYSICS_FOUND`; no complete-QG claim; no unique K5 extension; no physical finite-part selector; no actual Q-dependence theorem; no primitive-pole Q-independence promotion before terminal Iter083H review; no generic-spin complete extension-space dimension; no all-strata global distributional patching theorem; no causal-vertex finiteness/divergence or distributional-nonexistence theorem; no regulator independence/dependence theorem; no physical source->K4 pushforward; no nominal epsilon^-1 coefficient; no G3/F9/G8/K5 promotion; no arbitrary fitted subtraction constants/scales or preferred finite parts.
 
 ---
 
@@ -185,11 +196,8 @@ No `NEW_PHYSICS_FOUND`; no complete-QG claim; no unique K5 extension; no physica
 
 Do not repeat the S5 invariant-metric census and do not install `Q=I` by mathematical convenience.
 
-Highest-information-gain successor is a prospectively frozen **source-faithful K5 multivariate polar-germ / stronger-functoriality discrimination gate**:
+Iter083H is the currently frozen successor and remains non-authoritative until terminal production. Its allowed scope is the isolated primitive deepest single-simple-pole model only. Do not use any pre-production derivation value downstream.
 
-1. first test whether source-backed forest/subgraph factorization, collision-stratum restriction, deletion/contraction, composition or gluing imposes additional Q-orthogonality/functoriality constraints that reduce the three-sector positive cone;
-2. construct the actual source-faithful leading K5 multivariate Laurent/polar germ (or an explicitly justified authoritative leading resolved-forest polar object) and compare at least two inequivalent admissible positive metrics such as `Q1,Q2`;
-3. determine whether the relevant holomorphic projection is genuinely Q-dependent or Q-independent;
-4. keep all finite parts, scales and normalization coefficients symbolic unless an independent source/composition law fixes them.
+After a terminal independently reviewed Iter083H, highest-information-gain work remains the source-faithful **nested K3/K4/K5 multivariate polar-germ / stronger-functoriality discrimination** problem: test whether source-backed forest/subgraph factorization, collision-stratum restriction, deletion/contraction, composition or gluing fixes Q or whether actual multi-pole projection differs across inequivalent allowed metrics. Keep all finite parts, scales and normalization coefficients symbolic unless an independent source/composition law fixes them.
 
 If the physical multivariate germ, transition law or stronger Q-law cannot be source-defined, the correct result is `BLOCKED_OBJECT_DEFINITION`. Do not replace the missing object with a generic Euclidean renormalization scheme. In parallel, actual multistratum distributional patching and the independent causal E3/E4/E6 source bridge remain admissible orthogonal work.
