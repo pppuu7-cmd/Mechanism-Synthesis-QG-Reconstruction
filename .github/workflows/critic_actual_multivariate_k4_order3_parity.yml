@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - 'scripts/critic_actual_multivariate_k4_order3_parity.py'
+      - 'scripts/critic_actual_multivariate_k4_order3_parity_repair2.py'
       - '.github/workflows/critic_actual_multivariate_k4_order3_parity.yml'
 permissions:
   contents: read
@@ -18,7 +19,7 @@ jobs:
         with:
           python-version: '3.12'
       - name: Independent repaired Critic
-        run: python scripts/critic_actual_multivariate_k4_order3_parity.py
+        run: python scripts/critic_actual_multivariate_k4_order3_parity_repair2.py
       - name: Upload raw Critic result
         if: always()
         uses: actions/upload-artifact@v4
