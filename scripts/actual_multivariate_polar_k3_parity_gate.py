@@ -103,7 +103,7 @@ def main():
         "results/SOURCE_FAITHFUL_JOINT_K5_BRIDGE_NESTED_JACOBIAN_REPAIR_RESULT.md",
         [
             "omega=(0,3,8)",
-            "full 32-component boundary contraction",
+            "B3 all 32 boundary components retained",
             "16-by-16 incidence matrix",
             "PASS_EXACT_SCOPED",
         ],
@@ -135,11 +135,8 @@ def main():
         odd_checks.append(lhs == rhs)
     leading_matrix_odd_exact = all(odd_checks)
 
-    # Execute the authoritative exact full-boundary engine rather than trusting a literal count.
     full32_rows, full32_checksum = mod.exact_full32()
     full_boundary_components = len(full32_rows)
-
-    # Internal K2 singularity on the K3 front: beta^-2 in 3 relative dimensions.
     k2_front_radial_exponent = (3 - 1) - 2
 
     chains = []
