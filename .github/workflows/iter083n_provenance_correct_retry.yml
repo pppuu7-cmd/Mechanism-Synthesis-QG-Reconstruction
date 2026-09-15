@@ -1,3 +1,4 @@
+# Production trigger after workflow registration; scientific contract unchanged.
 name: Iter083N provenance-correct retry 1
 
 on:
