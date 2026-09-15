@@ -4,11 +4,12 @@ from fractions import Fraction
 
 
 def require(path,needles):
-    t=open(path,encoding='utf-8').read(); missing=[n for n in needles if n not in t]; return not missing,missing
+    t=open(path,encoding='utf-8').read()
+    missing=[n for n in needles if n not in t]
+    return not missing,missing
 
 
 def multiply_n_once(state):
-    # state dict k->coefficient for delta^(k)
     out={}
     for k,c in state.items():
         if k>=1:
@@ -18,7 +19,8 @@ def multiply_n_once(state):
 
 def multiply_n_power(k,q):
     s={k:Fraction(1)}
-    for _ in range(q): s=multiply_n_once(s)
+    for _ in range(q):
+        s=multiply_n_once(s)
     return s
 
 
@@ -33,66 +35,48 @@ def main():
     args=ap.parse_args()
 
     p0m,m0m=require(args.iter083m,['unique local forest radial quadratic basis','finite part','PASS_EXACT_SCOPED'])
-    p0d,m0d=require(args.iter082d,['omega=(0,3,8)','normal derivative orders'])
-    if not p0d:
-        p0d,m0d=require(args.iter082d,['omega=(0,3,8)','omega_B'])
+    p0d,m0d=require(args.iter082d,['omega=(0,3,8)','omega_B'])
     p0b,m0b=require(args.iter083b,['normal order at most','dim_C F_8 = 377'])
     p0p,m0p=require(args.prereg,['LAURENT_TRANSFORMATION','SUPPORTED_JET_ANNIHILATOR','ACTUAL_RESIDUE_FIREWALL'])
     p0=p0m and p0d and p0b and p0p
 
-    # P1 formal Laurent coefficient bookkeeping in a free module basis.
-    # Basis coordinates: A_-1, A_0, phi*A_-1.
-    residue_before=(1,0,0)
-    finite_before=(0,1,0)
-    residue_after=(1,0,0)
-    finite_after=(0,1,1)
+    residue_before=(1,0,0); finite_before=(0,1,0)
+    residue_after=(1,0,0); finite_after=(0,1,1)
     residue_unchanged=(residue_after==residue_before)
     finite_shift=tuple(finite_after[i]-finite_before[i] for i in range(3))
     p1=(residue_unchanged and finite_shift==(0,0,1))
 
-    # P2 exact n^q delta^(k) identities through the deepest allowed order 8.
     delta_checks=0; delta_failures=[]
-    for k in range(0,9):
-        for q in range(0,10):
+    for k in range(9):
+        for q in range(10):
             got=multiply_n_power(k,q)
-            if q<=k:
-                expected={k-q:Fraction(((-1)**q)*math.factorial(k),math.factorial(k-q))}
-            else:
-                expected={}
+            expected={k-q:Fraction(((-1)**q)*math.factorial(k),math.factorial(k-q))} if q<=k else {}
             delta_checks+=1
-            if got!=expected: delta_failures.append({'k':k,'q':q,'got':{str(a):str(b) for a,b in got.items()},'expected':{str(a):str(b) for a,b in expected.items()}})
-    # For an order<=omega supported jet, n^(omega+1) annihilates every basis delta^k.
-    annihilator_checks={}
-    sharp_witnesses={}
+            if got!=expected:
+                delta_failures.append((k,q))
+    annihilator_checks={}; sharp_witnesses={}
     for omega in (0,3,8):
-        all_k=all(multiply_n_power(k,omega+1)=={} for k in range(omega+1))
-        # Every q<=omega has a nonzero action on delta^(q).
-        witnesses=all(multiply_n_power(q,q)!={} for q in range(omega+1))
-        annihilator_checks[str(omega)]=all_k
-        sharp_witnesses[str(omega)]=witnesses
+        annihilator_checks[str(omega)]=all(multiply_n_power(k,omega+1)=={} for k in range(omega+1))
+        sharp_witnesses[str(omega)]=all(multiply_n_power(q,q)!={} for q in range(omega+1))
     p2=(not delta_failures and all(annihilator_checks.values()) and all(sharp_witnesses.values()))
 
-    # P3 thresholds.
-    thresholds={'K3':{'omega':0,'required_I_power':1},'K4':{'omega':3,'required_I_power':4},'K5':{'omega':8,'required_I_power':9}}
+    thresholds={
+        'K3':{'omega':0,'required_I_power':1},
+        'K4':{'omega':3,'required_I_power':4},
+        'K5':{'omega':8,'required_I_power':9},
+    }
     p3=(thresholds['K3']['required_I_power']==1 and thresholds['K4']['required_I_power']==4 and thresholds['K5']['required_I_power']==9)
 
-    # P4 same normalized Hessian only forces phi|N=0 in the conformal class.
     p4t,m4t=require(args.theorem,['Equality of the normalized Hessians','phi|_N=0','not enough, by itself'])
     p4=(p4t and thresholds['K3']['required_I_power']==1 and thresholds['K4']['required_I_power']>1 and thresholds['K5']['required_I_power']>1)
 
-    # P5 constant scaling formula.
-    p5t,m5t=require(args.theorem',['rho\'=c rho','(log c) A_-1'])
-    # accept source file escaping differences via fallback
-    if not p5t:
-        p5t,m5t=require(args.theorem,["rho'=c rho",'(log c) A_-1'])
+    p5t,m5t=require(args.theorem,["rho'=c rho",'(log c) A_-1'])
     p5=p5t
 
-    # P6 actual residue firewall.
     p6p,m6p=require(args.prereg,['do not infer that the physical Toller residue activates every allowed derivative channel','Actual independence can be stronger'])
     p6t,m6t=require(args.theorem,['particular physical residue may have smaller order','No actual nonzero physical scheme dependence is proved'])
     p6=p6p and p6t
 
-    # P7 external theorem and applicability ceiling.
     p7s,m7s=require(args.source_lock,['Felder and David Kazhdan','finite part changes by a local residue term','odd-codimension','not established'])
     p7p,m7p=require(args.prereg,['odd-codimension residue-vanishing','must NOT be promoted automatically'])
     p7=p7s and p7p
@@ -125,8 +109,10 @@ def main():
     }
     payload=json.dumps(result,indent=2,sort_keys=True)
     if args.output:
-        with open(args.output,'w',encoding='utf-8') as f:f.write(payload+'\n')
+        with open(args.output,'w',encoding='utf-8') as f:
+            f.write(payload+'\n')
     print(payload)
     return 0 if passed else 2
 
-if __name__=='__main__':raise SystemExit(main())
+if __name__=='__main__':
+    raise SystemExit(main())
