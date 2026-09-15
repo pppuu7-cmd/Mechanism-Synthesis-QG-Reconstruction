@@ -8,7 +8,7 @@ def main():
     ap=argparse.ArgumentParser(); ap.add_argument('--output')
     ap.add_argument('--prereg',default='prereg/ITER083L_SM_K5_LOCALITY_SELECTOR_SOURCE_AUTHORITY_AUDIT.md')
     ap.add_argument('--source-lock',default='sources/ITER083L_CAUSAL_TOLLER_SOURCE_AUTHORITY_LOCK.md')
-    ap.add_argument('--iter083e',default='results/ITER083E_SM_RUHL_TOLLER_ONE_WEDGE_NONIMPLICATION_RESULT.md')
+    ap.add_argument('--iter083e',default='results/ITER083E_SM_RUHL_TOLLER_ONE_WEDGE_UNIQUENESS_NONIMPLICATION_RESULT.md')
     ap.add_argument('--iter083f',default='results/ITER083F_SM_COMMON_SPECTRAL_EPSILON_COLLISION_RESULT.md')
     ap.add_argument('--iter083j',default='results/ITER083J_SM_PRODUCT_FACTORIZATION_METRIC_UNIQUENESS_RESULT.md')
     ap.add_argument('--iter083k',default='results/ITER083K_SM_FOREST_EXTERNAL_DECOUPLING_METRIC_UNIQUENESS_RESULT.md')
