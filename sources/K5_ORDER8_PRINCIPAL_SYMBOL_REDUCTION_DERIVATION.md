@@ -118,14 +118,36 @@ The `[3,1,1]` projection is zero, exactly as required because that irrep is abse
 
 This establishes that no boundary-algebra or S5 channel is pointwise killed already at the leading K5 tensor. It does not establish that the resolved angular/Mellin order-eight moment in any channel is nonzero.
 
-## 6. Authorized next computation
+## 6. Proper-face zeros make the physical-origin K5 face primitive
+
+The exact K3 theorem proves the K3 simple residue is identically zero as a meromorphic function of the remaining regulator variables, so every multiresidue containing a K3 factor vanishes.
+
+The exact K4 theorem likewise proves that every compatible iterated/multiresidue containing the simple K4 residue factor vanishes under the frozen normal-crossing convention.
+
+Therefore the proper K3/K4 candidate poles are removable for the purpose of physical-origin residue extraction, and no nonzero proper-face multiresidue can mix into the surviving simple K5 residue. In this precise sense the physical-origin K5 face is primitive relative to the already-classified proper divergent faces.
+
+This has two consequences.
+
+First, the K5 principal-symbol calculation does not require choosing forest subtraction constants or a sequential finite part. Nested-face bookkeeping must still be retained in the meromorphic construction, but the already-proved proper-face residues contribute zero to the physical-origin K5 residue.
+
+Second, under an allowed defining-function gauge
+
+`q'_B=exp(phi_B) q_B`,
+
+one has
+
+`U'(lambda)=exp[(1/2) sum_B lambda_B phi_B] U(lambda)`
+
+with holomorphic multiplier equal to one at the regulator origin. The simple physical-origin K5 residue is therefore unchanged by such a gauge. In particular, for the principal-symbol calculation one may replace an exact nonlinear `q_B` by its source-normal quadratic representative when their ratio is a smooth positive unit on the resolved face. This does not imply invariance of the regular/finite part.
+
+## 7. Authorized next computation
 
 The highest-information next calculation is the actual order-eight principal-symbol moment of the leading K5 homogeneous tensor, preferably first in the two invariant boundary channels. If either invariant principal-symbol period is proved nonzero, lower normal-order Toller/Haar/q corrections cannot cancel that order-eight distributional symbol, and the full K5 residue is necessarily nonzero.
 
 If both invariant periods vanish, the calculation must continue in the remaining S5 sectors; no zero theorem follows from the invariant subspace alone.
 
-Nested K3 and K4 simple-face residues are exact zero in the frozen sector, so any treatment of the K5 angular coefficient must retain the multivariate meromorphic construction but may use those established zeros to simplify proper-face residue terms. It must not replace the joint family by a one-parameter physical regulator.
+Because K5 is primitive relative to the exact-zero K3/K4 proper residues, this angular calculation may be organized as a primitive K5 period/residue problem while retaining the joint-family provenance. It must not replace the 16-parameter family by a one-parameter physical regulator.
 
 ## Interpretation ceiling
 
-No K5 zero/nonzero classification is made here. No finite part, unique extension, regulator independence, physical amplitude, F9/G3 promotion, new physics, or complete-QG claim follows.
+No K5 zero/nonzero classification is made here. No finite part, unique extension, regulator independence of the full amplitude, physical amplitude, F9/G3 promotion, new physics, or complete-QG claim follows.
