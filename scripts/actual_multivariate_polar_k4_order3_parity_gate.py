@@ -66,7 +66,7 @@ def main():
  controls={}
  for name,ch in muts.items():x=dict(base);x.update(ch);v=validate(x);controls[name]={'rejected':not v['valid'],'reasons':v['reasons']}
  pred={'P0_upstream_authority':bridge_ok and critic_ok,'P1_9d_front_inversion':geo['normal_dimension']==9 and geo['gram_determinant']==64 and geo['inversion_preserves_gram'] and geo['positive_front_measure_invariant'],'P2_six_internal_baseline_degree6':bad==0 and all(c['all_components_edge_complete'] for c in certs),'P3_all_order3_partitions_total_degree9':pok and td=={9},'P4_analytic_common_chart_authority':bridge_ok,'P5_odd_front_pairing_zero':odd_control() and td=={9} and geo['antipodal_domain_invariant'] and geo['positive_front_measure_invariant'],'P6_all5_full32_and_s5':len(certs)==5 and all(len(c['components'])==32 for c in certs) and len(list(itertools.permutations(V)))==120,'P7_k4_residue_zero_and_full_annihilator':bridge_ok and td=={9} and bad==0,'P8_simple_residue_zero_scheme_stable':scheme()}
- valid=all(pos['candidate_validator'].values()) and pos['synthetic_odd_pairing_zero'] and pos['gram_control'] and all(v['rejected'] for v in controls.values())
+ valid=(pos['candidate_validator']['valid'] is True) and pos['synthetic_odd_pairing_zero'] and pos['gram_control'] and all(v['rejected'] for v in controls.values())
  if valid and all(pred.values()):verdict='PASS_EXACT_SCOPED';cl='K4_ACTUAL_ORDER3_POLAR_COEFFICIENT_ZERO_EXACT_BY_FULL_NORMAL_INVERSION_PARITY_SCOPED'
  elif valid:verdict='FAIL_EXACT_SCOPED';cl='K4_ACTUAL_ORDER3_PARITY_ZERO_PREDICTION_FALSE_EXACT_SCOPED'
  else:verdict='INVALID_IMPLEMENTATION';cl='INVALID_IMPLEMENTATION'
