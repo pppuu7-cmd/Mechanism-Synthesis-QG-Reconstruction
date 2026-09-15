@@ -21,6 +21,10 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p results/raw
+          # Infrastructure-only compatibility repair: the scientific output contains
+          # a diagnostic mapping with mixed int/string keys, which Python 3.12 cannot
+          # sort during JSON serialization. This changes no frozen computation.
+          sed -i 's/json.dumps(out,indent=2,sort_keys=True)/json.dumps(out,indent=2,sort_keys=False)/g' scripts/k5_order8_edge01_rankone_positivity.py
           python3 scripts/k5_order8_edge01_rankone_positivity.py \
             --output results/raw/k5_order8_edge01_rankone_positivity.json \
             | tee k5_order8_edge01_rankone_positivity_stdout.json
