@@ -14,7 +14,11 @@ The latest independently confirmed upstream local authorities are:
 2. repaired full-coefficient K3 parity theorem — `K3_PARITY_REPAIR2_CRITIC_CONFIRMED_SCOPED` / independent Critic `CONFIRMED_SCOPED`;
 3. K4 order-3 source-object reachability blocker — Researcher `ACTUAL_K4_ORDER3_SOURCE_COEFFICIENT_OBJECT_DEFINITION_BLOCKED_SCOPED` / independent Critic `K4_ORDER3_REACHABILITY_CRITIC_CONFIRMED_BLOCKED_OBJECT_DEFINITION_SCOPED`.
 
-The bridge defines the frozen all-`j=1/2`, source-ordered, full-32-boundary, original-Haar 16-parameter family
+A new successor construction has now passed Researcher validation but is **not yet independently Critic-confirmed**:
+
+4. `K4_ORDER3_SOURCE_FAITHFUL_CUBIC_REALIZATION_BRIDGE_DEFINED_EXACT_SCOPED` — Researcher `PASS_EXACT_SCOPED`, independent Critic pending.
+
+The confirmed joint bridge defines the frozen all-`j=1/2`, source-ordered, full-32-boundary, original-Haar 16-parameter family
 
 `U(lambda)=[product_(B in D) q_B^(lambda_B/2)] A_source`,
 
@@ -36,68 +40,113 @@ for every K3 block and all 32 boundary components in the frozen local all-`j=1/2
 
 ---
 
-## K4 order-3 reachability — independently confirmed blocker
+## K4 reachability Critic — terminal confirmed blocker
 
-Researcher scientific preregistration:
-
-`prereg/ACTUAL_MULTIVARIATE_K4_ORDER3_OBJECT_DEFINITION_REACHABILITY.md`, commit `a6983a4d7379bf73f48752a4de357450996d8572`.
-
-Authoritative Researcher production:
-
-- head `0bcd68093ab19afb1d6643c3c876b4f0c2e261c4`;
-- run `34964010302`, success;
-- job `104364057703`, success;
-- artifact `10394990199`;
-- artifact ZIP digest `sha256:22cc7680b651802c96f5ce4ca0de8d358df6d790f6b61deccf198510d01c6c47`;
-- production JSON SHA256 `60a4787f73d1b0908222ba85ae11eb3f55434465f1d1d5dcc386a090ec22957c`.
-
-Researcher classification:
-
-`ACTUAL_K4_ORDER3_SOURCE_COEFFICIENT_OBJECT_DEFINITION_BLOCKED_SCOPED` / **`BLOCKED_OBJECT_DEFINITION`**.
-
-Independent Critic preregistration commit:
-
-`8a1dd0cb57c9d895ebf1b2a56bf04af7d4428194`.
-
-Historical Critic run `34971934034` failed only byte-level provenance because the durable Researcher raw JSON had been reserialized. It remains `INVALID_PROVENANCE` and has no scientific authority. Control-only repair was prospectively frozen at `927b5f489c85a116936d8b208df618f3befa4cba`; exact production bytes were restored at `4b4f6504f5474ce7e49fe8c9ad28c37f45e513b4`; workflow-trigger repair was `43fd33507b1360f48bbbb31453411ba713f96c6b`.
-
-Authoritative independent Critic production:
+The earlier K4 reachability gate correctly identified that an explicit mutually compatible cubic realization was absent from authority at that time. Its authoritative independent Critic production is:
 
 - run `34975020879`, terminal success;
 - job `104400456761`, success;
 - artifact `10399550019`;
 - artifact ZIP digest `sha256:04472e48edcf2ce393459db998a5fe855408d9723cf31e4f3ed5b8b5c09a9964`;
 - Critic JSON SHA256 `7638d51595372a4df9420db42a67761be13eecc97fa947d60316c9703f481345`;
-- durable result `results/ACTUAL_K4_ORDER3_SOURCE_OBJECT_REACHABILITY_CRITIC_RESULT.md`;
-- provenance `status/ACTUAL_K4_ORDER3_REACHABILITY_CRITIC_PROVENANCE_LEDGER.md`.
+- classification `K4_ORDER3_REACHABILITY_CRITIC_CONFIRMED_BLOCKED_OBJECT_DEFINITION_SCOPED`.
 
-Critic classification:
+The historical Critic run `34971934034` remains `INVALID_PROVENANCE`; it has no scientific authority. Its durable-byte issue was repaired prospectively before the successful Critic rerun.
 
-`K4_ORDER3_REACHABILITY_CRITIC_CONFIRMED_BLOCKED_OBJECT_DEFINITION_SCOPED`.
+The terminal Critic isolated the decisive missing realization subset as R3/R4/R6: complete source Toller order-3 jets, all four external-to-K4 Toller jets, and exact nested source `q_B` cubic pullbacks/cross-couplings.
 
-### Exact independently reviewed reachability status
+---
 
-Retained positive authority:
+## Latest Researcher result — K4 source-faithful cubic realization bridge
 
-- `R7_FULL32_CONTRACTION_MAP`;
-- `R9_BRANCH_NORMALIZATION` including the published one-wedge spectral `i epsilon`;
-- `R10_S5_TRANSPORT`.
+Prospective preregistration:
 
-The Critic's conservative repository scan additionally locates constructive material for R1, R2, R5 and R8. It still does not find a complete mutually compatible source-faithful cubic realization for the decisive missing subset:
+`prereg/K4_ORDER3_SOURCE_FAITHFUL_CUBIC_REALIZATION_BRIDGE.md`, commit `fd01325771e4161d332e09eb8456d679e6bf96e9`.
 
-1. `R3_TOLLER_ORDER3` — complete all-component/branch Toller Taylor jets after nonlinear K4 composition through total normal degree 3;
-2. `R4_EXTERNAL_TOLLER_JETS` — complete external smooth Toller jet census through the K4-required orders;
-3. `R6_Q_DEFINING_FUNCTION_ORDER3` — exact nested source `q_B` cubic pullbacks/cross-couplings in the same chart.
+Source derivation:
 
-Therefore the complete all-32 K4 order-3 source coefficient is still not extractable source-faithfully. No K4 zero/nonzero or annihilator classification exists yet.
+`sources/K4_ORDER3_SOURCE_FAITHFUL_CUBIC_REALIZATION_BRIDGE_DERIVATION.md`, commit `a4c645ee920b5bc5047756542d38d70888fd74e0`.
 
-The abstract multivariate meromorphic germ and its abstract K4 polar distribution remain authoritative; the blocker concerns explicit physical coefficient realization, not existence of the abstract polar object.
+Implementation:
+
+`scripts/k4_order3_source_faithful_cubic_realization_bridge.py`, commit `616669186371b997dd85976dca530ca630fa9cac`.
+
+Production head/workflow:
+
+`45293ae8191fcee74788a743442911f9e6ed7b3e`.
+
+Authoritative Researcher production:
+
+- run `34976334040`, terminal success;
+- job `104404869316`, success;
+- artifact `10399632086`, `k4-order3-source-faithful-cubic-realization-bridge`;
+- artifact ZIP digest `sha256:a63a60a5c53608db9e8a1484d1bc2611df96e43271221e25fc7d9c41b0fa6630`;
+- production JSON SHA256 `c3fd167e17b4f3cf10c69f481011d66844afd0958c6a376fb0aa8682a9fee6b7`;
+- durable raw `results/raw/k4_order3_source_faithful_cubic_realization_bridge.json`, commit `3f827f47db9208e4b9a2cd2be91e7aa5f4a03f36`;
+- durable result `results/K4_ORDER3_SOURCE_FAITHFUL_CUBIC_REALIZATION_BRIDGE_RESULT.md`, commit `fe948a8292ffefac9f406839ae80536f1d33b342`;
+- provenance ledger `status/K4_ORDER3_SOURCE_FAITHFUL_CUBIC_REALIZATION_BRIDGE_PROVENANCE_LEDGER.md`, commit `1fdd351affd86b9d06f6de6adcc374f4f21a443b`.
+
+Classification:
+
+`K4_ORDER3_SOURCE_FAITHFUL_CUBIC_REALIZATION_BRIDGE_DEFINED_EXACT_SCOPED`.
+
+Researcher verdict: **`PASS_EXACT_SCOPED`**. Independent Critic review is pending.
+
+### Exact new construction
+
+For the source spin-half Cartan matrix
+
+`h=U1 exp(beta sigma_3/2) U2`,
+
+with reduced magnetic entries `t_+^kappa(beta),t_-^kappa(beta)`, define
+
+`t0=(t_++t_-)/2`, `t3=(t_+-t_-)/2`.
+
+Then the full source matrix can be reconstructed without choosing a KAK angular section:
+
+`T^kappa(h)=t0(beta)[h+h^{-dagger}]/[2 cosh(beta/2)] + t3(beta)[h-h^{-dagger}]/[2 sinh(beta/2)]`.
+
+This is an exact algebraic identity equal to `U1 diag(t_+,t_-) U2`. It gives the complete full-matrix internal and external K4 normal jets directly from the source group element and exact reduced functions.
+
+The exact source block radii remain
+
+`q(h)=beta(h)^2=arcosh((1/2)Tr(hh^dagger))^2`,
+
+`q_B=(1/|B|)sum_(a<b in B)q(g_b^-1g_a)`.
+
+Production exactly verified the corrected cubic scalar relation
+
+`q=2s-(1/3)s^2+(4/45)s^3+O(s^4)`, `s=(1/2)Tr(hh^dagger)-1`,
+
+and retains all 16 divergent blocks simultaneously.
+
+Each of the five K4 blocks was mechanically checked to have exactly six internal and four external source wedges. All 120 S5 block transports passed. All 12 frozen malformed constructions were rejected.
+
+### Requirement status after the Researcher bridge
+
+Retained authority:
+
+- R1 K4 normal chart;
+- R2 noncommutative relative-group/BCH structure;
+- R5 original Haar/Jacobian structure;
+- R7 full-32 contraction map;
+- R8 resolved-front pairing;
+- R9 source branch normalization / published spectral `i epsilon`;
+- R10 true S5 transport.
+
+Newly constructed at exact object-definition level:
+
+- `R3_TOLLER_ORDER3 = CONSTRUCTED_EXACT_FULL_MATRIX_JET_OPERATOR`;
+- `R4_EXTERNAL_TOLLER_JETS = CONSTRUCTED_EXACT_SMOOTH_MATRIX_JET_OPERATOR`;
+- `R6_Q_DEFINING_FUNCTION_ORDER3 = CONSTRUCTED_EXACT_16_BLOCK_COMPOSITION_JET_OPERATOR`.
+
+No K4 polar coefficient was evaluated in this gate.
 
 ---
 
 ## Immediate active front
 
-`K4_ORDER3_SOURCE_FAITHFUL_CUBIC_REALIZATION_BRIDGE / ACTUAL_SOURCE_ORDERED_MULTIVARIATE_POLAR_NORMAL_JET_ANNIHILATOR_K4_LANE / ACTUAL_SOURCE_ORDERED_MULTIVARIATE_POLAR_NORMAL_JET_ANNIHILATOR_K5_LANE / PHYSICAL_FINITE_PART_OR_JOINT_K5_SELECTOR / K5_ACTUAL_DISTRIBUTIONAL_PARTITION_OF_UNITY_PATCHING_AND_INTER_STRATUM_TRANSPORT / CAUSAL_MULTIVERTEX_E3_E4_E6_COMPLETE_SOURCE_BRIDGE / REGULATOR_INDEPENDENCE_AFTER_GLOBAL_ANALYTIC_OBJECT_DEFINITION`.
+`K4_ORDER3_SOURCE_FAITHFUL_CUBIC_REALIZATION_BRIDGE_INDEPENDENT_CRITIC_REVIEW / ACTUAL_SOURCE_ORDERED_MULTIVARIATE_POLAR_NORMAL_JET_ANNIHILATOR_K4_LANE / ACTUAL_SOURCE_ORDERED_MULTIVARIATE_POLAR_NORMAL_JET_ANNIHILATOR_K5_LANE / PHYSICAL_FINITE_PART_OR_JOINT_K5_SELECTOR / K5_ACTUAL_DISTRIBUTIONAL_PARTITION_OF_UNITY_PATCHING_AND_INTER_STRATUM_TRANSPORT / CAUSAL_MULTIVERTEX_E3_E4_E6_COMPLETE_SOURCE_BRIDGE / REGULATOR_INDEPENDENCE_AFTER_GLOBAL_ANALYTIC_OBJECT_DEFINITION`.
 
 ## Current survival chain
 
@@ -106,8 +155,8 @@ The abstract multivariate meromorphic germ and its abstract K4 polar distributio
 `-> exact boundary-covariant supported ambiguity F_8, dim=377`
 `-> source-faithful 16-parameter meromorphic polar germ CONFIRMED_SCOPED`
 `-> actual K3 polar coefficient ZERO_EXACT CONFIRMED_SCOPED`
-`-> K4 order-3 explicit source coefficient BLOCKED_OBJECT_DEFINITION CONFIRMED_SCOPED`
-`-> K4 source-faithful cubic realization bridge ?`
+`-> K4 order-3 source-object reachability blocker CONFIRMED_SCOPED`
+`-> K4 source-faithful cubic realization bridge PASS_EXACT_SCOPED (Researcher; Critic pending)`
 `-> actual K4 tensor/annihilator ?`
 `-> actual K5 order-8 tensor/annihilator ?`
 `-> physical finite-part / joint-K5 selector ?`
@@ -122,15 +171,13 @@ The abstract multivariate meromorphic germ and its abstract K4 polar distributio
 `-> matter/QFT IR ?`
 `-> normalized falsifiable prediction ?`.
 
-## Authorized next Researcher work
+## Authorized next work
 
-Prospectively freeze exactly one `K4_ORDER3_SOURCE_FAITHFUL_CUBIC_REALIZATION_BRIDGE` gate. Its highest-value target is now the independently isolated missing subset R3/R4/R6, while retaining and cross-checking R1/R2/R5/R7/R8/R9/R10 in one mutually compatible source chart/normalization.
+The immediate authority gate is an **independent Critic review** of the K4 cubic realization bridge. Do not consume the Researcher PASS as independently confirmed authority before that review is terminal and valid.
 
-The gate must preserve all ten Toller wedges, true K5 incidence, all 32 boundary components, source ordering, original Haar measure, published spectral `i epsilon`, true induced-leg S5 action and the confirmed 16-parameter `q_B` family. It must not replace the physical object by a scalar/Hodge control, commuting-coordinate BCH, representative boundary state, frozen angular ray, one-parameter regulator ray, termwise contact product or post-hoc finite part.
+The Critic should specifically adversarially check the exact gauge-free full-matrix identity, source-basis conventions, behavior on the resolved collision front, compatibility of internal and external jets with the same source chart, exact `q_B` pullbacks, original Haar structure, all-32 retention, S5 transport and all frozen negative controls.
 
-A PASS may establish only that the required cubic realization is now source-faithfully defined and mechanically consistent. It must not silently promote a K4 zero/nonzero theorem. If any required cubic source datum remains undefined or incompatible, classify `BLOCKED_OBJECT_DEFINITION`.
-
-K5 order 8 remains locked until K4 is terminal and independently reviewed.
+Only if the Critic confirms the bridge may a new Researcher gate prospectively freeze and compute the actual all-32 K4 order-3 polar coefficient/tensor and its annihilator. K5 order 8 remains locked until the K4 coefficient gate is terminal and independently reviewed.
 
 ## Claim locks
 
