@@ -1,0 +1,74 @@
+{
+  "scope": "frozen all-j=1/2 local K5 collision sector",
+  "parent_prereg_commit": "4151c02452edd3e5e2c49952686e42e64c6dc180",
+  "derivation_commit": "15c19a67f10f6cd26e522649bd41b3d9f1cadd8a",
+  "source_order": [
+    "one-wedge spectral/spinor integration",
+    "Toller function",
+    "product of ten Toller matrices",
+    "full 32-component boundary contraction",
+    "K5 group integration / distributional extension"
+  ],
+  "primary_sources": {
+    "causal_vertex": "arXiv:2601.23162",
+    "toller_companion": "arXiv:2604.24945"
+  },
+  "cartan": {
+    "formula": "g=U1 exp(-i beta K_z) U2",
+    "K_z": "i sigma_z/2",
+    "trace_identity": "Tr(g g^dagger)/2=cosh(beta)",
+    "analytic_pair_radius": "q(g)=arcosh(Tr(g g^dagger)/2)^2=beta(g)^2",
+    "series_at_compact_locus": "q=2s-(1/3)s^2+O(s^3), s=Tr(g g^dagger)/2-1",
+    "zero_locus": "q(g)=0 iff g in SU(2)",
+    "reversal_invariant": true,
+    "bi_SU2_invariant": true
+  },
+  "block_radius": {
+    "formula": "q_B=(1/|B|) sum_{a<b in B} beta(g_b^-1 g_a)^2",
+    "tangent_match": "q_B=r^2 R_B^2+O(r^3)",
+    "source_normal_authority": "Iter083M",
+    "uses_auxiliary_regulator_parameter_metric": false
+  },
+  "collision_arrangement": {
+    "all_blocks": {"K2": 10, "K3": 10, "K4": 5, "K5": 1, "total": 26},
+    "divergent_blocks": {"K3": 10, "K4": 5, "K5": 1, "total": 16},
+    "maximal_divergent_chains": 20,
+    "chain_increment_normal_ranks": [6, 3, 3],
+    "resolved_chain_density_powers": [5, 2, 2],
+    "geometry_authority": "Iter082D"
+  },
+  "boundary": {
+    "components": 32,
+    "retained_all_components": true,
+    "representative_component_only": false,
+    "authority": "repaired Iter077I"
+  },
+  "joint_family": {
+    "formula": "U(lambda)=product_{B in divergent blocks} q_B^(lambda_B/2) * A_source",
+    "parameter_count": 16,
+    "parameter_action": "lambda_B -> lambda_{pi(B)} under S5",
+    "modifies_one_wedge_spectral_prescription": false,
+    "uses_beta_plus_i_epsilon": false,
+    "uses_original_product_Haar_density": true,
+    "selects_holomorphic_projection": false,
+    "selects_finite_part": false,
+    "selects_subtraction_constants": false,
+    "selects_sequential_specialization": false
+  },
+  "analytic_bridge": {
+    "lift_class": "polyhomogeneous conormal on the full polydiagonal iterated real blow-up",
+    "toller_j_half_generators": ["exp(+/- i rho beta)", "sinh(beta)^(-2)", "cosh(beta)", "sinh(beta)", "compact Wigner factors"],
+    "continuation": "unique distribution-valued multivariate meromorphic continuation with linear/polar hyperplanes",
+    "authority_1": "polyhomogeneous-conormal Mellin theorem on manifolds with corners",
+    "authority_2": "Dang arXiv:1503.00995 complex powers of analytic functions / Hironaka resolution",
+    "polydiagonal_authority": "Ulyanov arXiv:math/9904049",
+    "requires_holomorphic_projection_for_polar_germ": false
+  },
+  "output_object": {
+    "type": "actual full-boundary-contracted source-ordered multivariate meromorphic polar germ",
+    "negative_laurent_coefficients_supported_on_collision_strata": true,
+    "authorizes_next_gate": "ACTUAL_SOURCE_ORDERED_MULTIVARIATE_POLAR_NORMAL_JET_ANNIHILATOR",
+    "does_not_authorize_one_parameter_A_minus_1_without_new_gate": true,
+    "does_not_select_physical_finite_part": true
+  }
+}
