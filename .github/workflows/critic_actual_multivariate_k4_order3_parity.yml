@@ -12,10 +12,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Independent frozen Critic
+      - name: Independent repaired Critic
         run: python scripts/critic_actual_multivariate_k4_order3_parity.py
       - name: Upload raw Critic result
         if: always()
