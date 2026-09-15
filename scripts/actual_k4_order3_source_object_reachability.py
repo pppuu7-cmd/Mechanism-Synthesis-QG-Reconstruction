@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 import argparse
-import copy
 import json
 from pathlib import Path
 
@@ -15,6 +14,10 @@ REQS = [
 SUFFICIENT = "SOURCE_DEFINED_SUFFICIENT"
 CONDITIONAL = "ABSENT_OR_ONLY_CONDITIONAL"
 UNRESOLVED = "UNRESOLVED_EVIDENCE"
+
+
+def normalized_text(s):
+    return " ".join(s.lower().split())
 
 
 def verify_evidence(manifest):
@@ -39,9 +42,9 @@ def verify_evidence(manifest):
             if not p.exists():
                 failures.append(f"missing_path:{r}:{ev['path']}")
                 continue
-            text = p.read_text(encoding="utf-8")
+            text = normalized_text(p.read_text(encoding="utf-8"))
             for needle in ev.get("must_contain", []):
-                if needle not in text:
+                if normalized_text(needle) not in text:
                     failures.append(f"missing_anchor:{r}:{ev['path']}:{needle}")
             if len(ev.get("commit", "")) != 40:
                 failures.append(f"bad_commit_anchor:{r}:{ev.get('commit')}")
