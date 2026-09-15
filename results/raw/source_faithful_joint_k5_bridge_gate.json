@@ -1,0 +1,75 @@
+{
+  "classification": "BRIDGE_AUTHORITY_CONFIRMED_SCOPED",
+  "computed": {
+    "all_block_count": 26,
+    "chain_density_power_values": [
+      [
+        5,
+        2,
+        2
+      ]
+    ],
+    "chain_density_powers": [
+      5,
+      2,
+      2
+    ],
+    "chain_rank_values": [
+      [
+        6,
+        3,
+        3
+      ]
+    ],
+    "divergent_block_count": 16,
+    "expected_all_block_count": 26,
+    "expected_divergent_block_count": 16,
+    "laplacian_projector_checks": {
+      "2": true,
+      "3": true,
+      "4": true,
+      "5": true
+    },
+    "maximal_divergent_chains": 20,
+    "q_series_coefficients": [
+      "2",
+      "-1/3",
+      "1/30"
+    ],
+    "s5_closure_failures": 0,
+    "s5_permutations": 120
+  },
+  "controls": {
+    "auxiliary_regulator_Q": true,
+    "beta_plus_i_epsilon": true,
+    "k5_only_no_full_incidence": true,
+    "omit_haar": true,
+    "posthoc_finite_part": true,
+    "preferred_label": true,
+    "preferred_sequential_specialization": true,
+    "representative_component": true,
+    "wrong_source_order": true
+  },
+  "gate": "SOURCE_FAITHFUL_JOINT_K5_MEROMORPHIC_OR_MULTIVARIABLE_BOUNDARY_VALUE_BRIDGE_AUTHORITY_GATE",
+  "geometry_ok": true,
+  "interpretation": {
+    "meromorphic_polar_germ_defined": true,
+    "next_gate": "ACTUAL_SOURCE_ORDERED_MULTIVARIATE_POLAR_NORMAL_JET_ANNIHILATOR",
+    "one_parameter_A_minus_1_authorized": false,
+    "physical_finite_part_selected": false,
+    "unique_k5_extension_claimed": false
+  },
+  "predicates": {
+    "B1": true,
+    "B2": true,
+    "B3": true,
+    "B4": true,
+    "B5": true,
+    "B6": true,
+    "B7": true,
+    "B8": true,
+    "B9": true
+  },
+  "provenance_missing": {},
+  "verdict": "PASS_EXACT_SCOPED"
+}
