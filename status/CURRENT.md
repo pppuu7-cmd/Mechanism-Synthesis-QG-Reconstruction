@@ -8,21 +8,21 @@ Candidate remains `CRQN v0.2`, `CARRIER_SELECTED` only for established source-ba
 
 Predictive local K5 amplitude remains `BLOCKED_CURRENT_CANDIDATE_LOCAL_AMPLITUDE`; physical F9 remains blocked. G3, regulator removal/independence, RG/refinement, continuum, spin-2, GR, matter/QFT and normalized prediction remain downstream-locked.
 
-The latest Researcher gate is the prospectively frozen
+Latest Researcher gate:
 
 `SOURCE_FAITHFUL_JOINT_K5_MEROMORPHIC_OR_MULTIVARIABLE_BOUNDARY_VALUE_BRIDGE_AUTHORITY_GATE`.
 
-Researcher production now gives **`PASS_EXACT_SCOPED`**, classification
+After a prospectively frozen control-only correction of an implementation diagnostic, authoritative repaired production gives **`PASS_EXACT_SCOPED`**, classification
 
 `BRIDGE_AUTHORITY_CONFIRMED_SCOPED`,
 
-for existence/definition of a frozen local full-source **multivariate meromorphic polar germ**. Independent Critic review of this new bridge is still required before downstream scientific promotion.
+for existence/definition of a frozen local full-source **multivariate meromorphic polar germ**. Independent Critic review of the repaired bridge remains required before downstream scientific promotion.
 
-The Iter083P `QUALIFIED` object-definition blocker is therefore superseded at one precise arrow only:
+The Iter083P `QUALIFIED` object-definition blocker is superseded at one precise arrow only:
 
 `source-ordered off-collision ten-Toller/full-32 object -> scoped multivariate meromorphic polar germ`.
 
-It is **not** superseded at the later selector arrow. No physical finite part, unique K5 extension or predictive local amplitude is selected.
+It is not superseded at the later selector arrow. No physical finite part, unique K5 extension or predictive local amplitude is selected.
 
 **Immediate active front:**
 
@@ -30,9 +30,9 @@ It is **not** superseded at the later selector arrow. No physical finite part, u
 
 No one-parameter `A_-1` calculation is authorized from this result. The new object is intrinsically multivariate and any one-parameter specialization is an additional choice requiring a separate prospective authority test.
 
-## Latest Researcher result — source-faithful joint K5 bridge
+## Latest Researcher result — repaired source-faithful joint K5 bridge
 
-Prospective preregistration:
+Scientific preregistration:
 
 `prereg/SOURCE_FAITHFUL_JOINT_K5_BRIDGE_AUTHORITY_GATE.md`, commit `4151c02452edd3e5e2c49952686e42e64c6dc180`.
 
@@ -44,27 +44,41 @@ Machine-readable bridge lock:
 
 `sources/raw/source_faithful_joint_k5_bridge_lock.json`, commit `221c91c5846cc60d1841ac432a542871a712ddba`.
 
-Validator/workflow:
+Initial validator/workflow:
 
-- validator commit `61926d293dca424e23c348b2f7b5de0b7d94441e`;
-- production head `13a73422493b7e66964883b91ff01b5c670601d7`;
-- run `34952663240`, terminal success;
-- job `104326933193`, terminal success;
-- artifact `10389024952`, `source-faithful-joint-k5-bridge-gate`;
-- artifact ZIP digest `sha256:83770a227f00d36c4608a1c33e517ffa4af0ca3de6894555097cc7d71bd88327`;
-- production JSON SHA256 `84f433176d571a7d19e0e5280201024fc3dc85c8c4976b53643de1e03b2edc02`.
+- validator `61926d293dca424e23c348b2f7b5de0b7d94441e`;
+- initial head `13a73422493b7e66964883b91ff01b5c670601d7`;
+- initial run `34952663240`, terminal success.
 
-Durable raw:
+Before durable promotion, an implementation-only cubic diagnostic was found wrong: formal inversion of `cosh(sqrt(q))=1+s` printed coefficient `1/30` instead of exact `4/45`. The initial scientific B1-B9 predicates did not depend on that cubic coefficient, but initial production was retained only as pre-repair evidence.
 
-`results/raw/source_faithful_joint_k5_bridge_gate.json`, commit `8fa19e7e2e861b570095e948b1fa68b41dd39c1a`.
+The correction was prospectively frozen before code modification:
+
+`prereg/SOURCE_FAITHFUL_JOINT_K5_BRIDGE_CONTROL_ONLY_REPAIR_1.md`, commit `a7157dd0a5a896db9a26e4036cd754934ed852f6`.
+
+Only the cubic-series calculation/assertion was repaired:
+
+- repaired validator/head `87e732bab75e3d60f1df1390561fc584f667526f`.
+
+### Authoritative repaired production
+
+- run `34953022566`, terminal success;
+- job `104328280379`, terminal success;
+- artifact `10389449925`, `source-faithful-joint-k5-bridge-gate`;
+- artifact ZIP digest `sha256:abf75fdd1d1bfe97a0913cdcddb723b9c9fec6ca075dd47cc414fff593769d1b`;
+- production JSON SHA256 `3a66499afb5c16b4fd0643ab3796f7da827d5ec09d3e03359fba2a5ba6c56011`.
+
+Corrected durable raw:
+
+`results/raw/source_faithful_joint_k5_bridge_gate.json`, replacement commit `b3f09df77af61a09fec425ce18e7d73d52d66ebe`.
 
 Durable result:
 
-`results/SOURCE_FAITHFUL_JOINT_K5_BRIDGE_AUTHORITY_RESULT.md`, commit `81a618280ef3545308c00a29c78d9b01c289abb7`.
+`results/SOURCE_FAITHFUL_JOINT_K5_BRIDGE_AUTHORITY_RESULT.md`, repaired-production reconciliation commit `79d166fdf89a9e42a653ed3bbb4b0cac426820da`.
 
 Provenance:
 
-`status/SOURCE_FAITHFUL_JOINT_K5_BRIDGE_PROVENANCE_LEDGER.md`, commit `211cfce15e39a138e9c6b6be6b32e8508d22f18a`.
+`status/SOURCE_FAITHFUL_JOINT_K5_BRIDGE_PROVENANCE_LEDGER.md`, latest reconciliation commit `601af41b88d63a9fcc0f52a4550958f056921320`.
 
 Researcher verdict: **`PASS_EXACT_SCOPED`**.
 
@@ -80,9 +94,9 @@ For every relative Lorentz element, define from the source Cartan rapidity
 
 `q(h)=beta(h)^2=arcosh(Tr(h h^dagger)/2)^2`.
 
-Writing `s=Tr(h h^dagger)/2-1`, production checks the source-radius series
+Writing `s=Tr(h h^dagger)/2-1`, authoritative repaired production checks
 
-`q=2s-(1/3)s^2+(1/30)s^3+...`.
+`q=2s-(1/3)s^2+(4/45)s^3+O(s^4)`.
 
 For a collision block `B`,
 
@@ -98,31 +112,31 @@ The joint family is
 
 with 16 independent block parameters and `A_source` the actual already-constructed ten-Toller/full-32-boundary local integrand with the original product Haar density.
 
-The scalar analytic regulator is inserted only **after** construction of the source Toller matrices. Published one-wedge spectral `i epsilon`, causal branch/sign data and wedge reversal conventions are not modified. No `beta+i epsilon` replacement is made.
+The scalar analytic regulator is inserted only after construction of the source Toller matrices. Published one-wedge spectral `i epsilon`, causal branch/sign data and wedge reversal conventions are not modified. No `beta+i epsilon` replacement is made.
 
 After the complete polydiagonal blow-up, the frozen all-`j=1/2` source object is treated as polyhomogeneous conormal and the Mellin/complex-power continuation framework supplies a unique distribution-valued multivariate meromorphic continuation from the convergent parameter domain.
 
-All frozen B1-B9 predicates passed in production, together with all nine malformed-bridge negative controls.
+All frozen B1-B9 predicates passed in repaired production, together with all nine malformed-bridge negative controls.
 
 ### What the bridge does and does not establish
 
-The bridge defines the actual scoped **multivariate meromorphic polar germ** and therefore removes the earlier Iter083P blocker at the existence/definition step.
+The bridge defines the actual scoped **multivariate meromorphic polar germ** and removes the earlier Iter083P blocker at the existence/definition step.
 
 It does **not** select a holomorphic projection, Hadamard finite part, subtraction constant, sequential specialization or unique physical extension. The exact frozen supported ambiguity `dim_C F_8=377` is therefore not yet removed.
 
 It also does not authorize a unique one-parameter physical residue `A_-1`. The next object must be the multivariate polar coefficients themselves.
 
-## Later same-scope implementation-invalid audit
+## Parallel same-scope implementation-invalid audit
 
-A later workflow run `34952709428` on head `3889de168d1705ac57bdd8c022c49548cad26417` terminated `failure`/`INVALID_IMPLEMENTATION`. Its supersession guard correctly detected the already-existing positive bridge derivation and bridge lock but its implementation had not ingested them. It produced no artifact and no scientific verdict.
+A separate audit workflow run `34952709428` on head `3889de168d1705ac57bdd8c022c49548cad26417` terminated `failure`/`INVALID_IMPLEMENTATION`. Its supersession guard correctly detected the already-existing positive bridge derivation and bridge lock but its implementation had not ingested them. It produced no artifact and no scientific verdict.
 
-`prereg/ITER083Q_CONTROL_ONLY_REPAIR_1.md`, commit `19697881b766a3d64c544c6696f2dba4bb4f0ea6`, was frozen to repair that later audit. No repaired duplicate production is admissible or needed because authoritative run `34952663240` had already terminalized the same frozen scientific object.
+`prereg/ITER083Q_CONTROL_ONLY_REPAIR_1.md`, commit `19697881b766a3d64c544c6696f2dba4bb4f0ea6`, was frozen to repair that evidence-ingestion audit. It is an independent audit-control lane, not a second scientific contract, and does not supersede the authoritative repaired bridge production.
 
 ## Previous Iter083P authority
 
-Iter083P repair3 Critic verdict remains `QUALIFIED` and is retained historically. Its robust statement was that the physical source residue could not then be instantiated because a joint source-faithful bridge was missing. The new bridge Researcher gate directly addresses and passes that missing transition in the frozen local sector.
+Iter083P repair3 Critic verdict remains `QUALIFIED` and is retained historically. Its robust statement was that the physical source residue could not then be instantiated because a joint source-faithful bridge was missing. The repaired bridge Researcher gate directly addresses and passes that missing transition in the frozen local sector.
 
-Do not reinterpret Iter083P as having claimed that the source lacked the all-32 boundary contraction or undeformed Haar measure; those were existing positive source structures and are explicitly retained in the new bridge.
+Do not reinterpret Iter083P as claiming that the source lacked the all-32 boundary contraction or undeformed Haar measure; those remain existing positive source structures and are explicitly retained.
 
 ## Source-order firewall
 
@@ -147,13 +161,13 @@ Published spectral `i epsilon` remains one-wedge prescription data. Scalar K4/K5
 9. repaired Iter083M — unique invariant tangent/tubular radial quadratic basis; Critic `CONFIRMED_SCOPED`.
 10. provenance-correct Iter083N — formal local simple-pole finite-part/jet theorem; Critic `CONFIRMED_SCOPED`.
 11. Iter083P repair3 — bridge missing at that recovered state; Critic `QUALIFIED`.
-12. source-faithful joint K5 bridge gate — actual scoped multivariate meromorphic polar germ constructed; Researcher `PASS_EXACT_SCOPED`, independent Critic review pending.
+12. repaired source-faithful joint K5 bridge gate — actual scoped multivariate meromorphic polar germ constructed; Researcher `PASS_EXACT_SCOPED`, independent Critic review pending.
 
 ## Iter077 / erratum locks
 
 `status/ITER077_CONTACT_FORMULA_ERRATUM.md` remains controlling. Historical source-lock-invalid Iter077E/F siblings remain quarantined.
 
-Repaired Iter077I source-order authority remains controlling in its scoped local-L1 role. Historical run `34786550378` failed; source-order-lock alias head `102fc7268b732bead5dfcf6d61fe4479ae1d3030` produced authoritative run `34786586785` with all four lanes plus aggregate success. Green CI alone is not the scientific authority; the frozen result/source-order records remain controlling.
+Repaired Iter077I source-order authority remains controlling in its scoped local-L1 role. Historical run `34786550378` failed; source-order-lock alias head `102fc7268b732bead5dfcf6d61fe4479ae1d3030` produced authoritative run `34786586785` with all four lanes plus aggregate success. Green CI alone is not scientific authority; frozen source/result records remain controlling.
 
 ## Current CRQN survival chain
 
@@ -162,7 +176,7 @@ Repaired Iter077I source-order authority remains controlling in its scoped local
 `-> frozen common non-L1 collision`
 `-> exact boundary-covariant supported ambiguity F_8, dim=377`
 `-> additive/causal/one-wedge analytic/spectral-epsilon mechanisms do not select`
-`-> source-faithful multivariate meromorphic polar germ DEFINED in frozen local scope (Researcher PASS; Critic ?)`
+`-> source-faithful multivariate meromorphic polar germ DEFINED in frozen local scope (repaired Researcher PASS; Critic ?)`
 `-> actual multivariate polar normal-jet orders / annihilator ?`
 `-> physical finite-part / joint-K5 selector ?`
 `-> global multistratum patching ?`
@@ -182,10 +196,10 @@ No `NEW_PHYSICS_FOUND`; no complete-QG claim; no unique physical K5 extension; n
 
 ## Authorized next work
 
-First obtain an independent Critic review of authoritative bridge run `34952663240`, with particular attention to the source-derived analyticity of `q=beta^2`, clean-polydiagonal blow-up applicability, polyhomogeneous-conormal lift of the full all-32 ten-Toller object, exact Haar-density transformation, source branch/spectral compatibility and the theorem/hypothesis match supporting the multivariate continuation.
+First obtain an independent Critic review of authoritative repaired bridge run `34953022566`, specifically challenging: analyticity/nondegeneracy of source `q=beta^2`; the corrected exact series; clean-polydiagonal resolution for the actual compact collision arrangement; polyhomogeneous-conormal lift of the full all-32 ten-Toller object; exact Haar-density transformation; source branch/spectral compatibility; and the precise hypotheses of the Mellin/complex-power continuation theorem.
 
-Do not repeat the bridge gate and do not execute the later `Iter083Q` repair as a competing production.
+Do not repeat the bridge Researcher gate and do not confuse the separate Iter083Q evidence-ingestion repair with the scientific bridge production.
 
-If Critic confirms the bridge, prospectively freeze `ACTUAL_SOURCE_ORDERED_MULTIVARIATE_POLAR_NORMAL_JET_ANNIHILATOR`. It must consume the full 16-parameter polar germ and determine actual source polar-coefficient support/order and annihilation under changes of the source-derived nonlinear collision-defining functions. It must not silently reduce to the formal one-parameter Iter083N object.
+If Critic confirms the repaired bridge, prospectively freeze `ACTUAL_SOURCE_ORDERED_MULTIVARIATE_POLAR_NORMAL_JET_ANNIHILATOR`. It must consume the full 16-parameter polar germ and determine actual source polar-coefficient support/order and annihilation under changes of the source-derived nonlinear collision-defining functions. It must not silently reduce to the formal one-parameter Iter083N object.
 
 Predictive local K5, physical finite-part selection, E3/E4/E6, G3, regulator independence, RG and all later CRQN arrows remain closed until their dependencies are separately established.
