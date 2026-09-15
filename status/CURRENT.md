@@ -4,206 +4,216 @@
 
 ## Authoritative front
 
-Candidate remains `CRQN v0.2`, `CARRIER_SELECTED` only for the established source-backed F1-F8 carrier/mechanism structure.
+Candidate remains `CRQN v0.2`, `CARRIER_SELECTED` only for established source-backed F1-F8 carrier/mechanism structure.
 
 Predictive local K5 amplitude remains `BLOCKED_CURRENT_CANDIDATE_LOCAL_AMPLITUDE`; physical F9 and G3 remain downstream-blocked.
 
-The latest **usable confirmed local result** remains the scientifically repaired source-faithful joint K5 multivariate meromorphic bridge:
+The latest **independently confirmed** local authority remains the scientifically repaired source-faithful joint K5 multivariate meromorphic bridge:
 
 `BRIDGE_AUTHORITY_CONFIRMED_SCOPED` / Researcher `PASS_EXACT_SCOPED` / independent Critic `CONFIRMED_SCOPED`.
 
-The bridge closes exactly one arrow in the frozen all-`j=1/2` local sector:
+That bridge defines the frozen all-`j=1/2`, source-ordered, full-32-boundary, original-Haar 16-parameter family
 
-`source-ordered ten-Toller/full-32 off-collision object`
-`-> explicit q_B-scheme 16-parameter multivariate meromorphic polar germ`.
+`U(lambda)=[product_(B in D) q_B^(lambda_B/2)] A_source`,
 
-It does **not** close
+with 10 K3, 5 K4 and 1 K5 divergent-block parameters and face forms
 
-`multivariate polar germ -> actual K3/K4/K5 source polar tensors -> physical finite part / unique K5 extension`.
+`L_C(lambda)=sum_(B subseteq C, |B|>=3) lambda_B`.
 
-### K3 parity attempt — terminal green but non-authoritative
+It closes only
 
-The first sublane of `ACTUAL_SOURCE_ORDERED_MULTIVARIATE_POLAR_NORMAL_JET_ANNIHILATOR` attempted to prove exact vanishing of the K3 physical-origin polar coefficient by normal inversion parity.
+`source-ordered ten-Toller/full-32 off-collision object -> q_B-scheme multivariate meromorphic polar germ`.
+
+It does not choose a finite part or a unique physical K5 extension.
+
+## Latest Researcher result — repaired K3 full-coefficient parity gate
+
+A new prospectively frozen control-only successor has repaired the implementation defects identified by the controlling K3 Critic review while leaving the parent scientific contract unchanged.
 
 Scientific parent preregistration:
 
 - `prereg/ACTUAL_SOURCE_ORDERED_MULTIVARIATE_POLAR_NORMAL_JET_ANNIHILATOR.md`, commit `4c4478db20e08387fb7067a55d773fce31d3fc34`.
 
-K3 derivation / implementation chain:
+Control-only repair 2:
 
-- theorem derivation `78e63844a8fe0a70af9ac8dc574d358e7ecab927`;
-- initial validator `c8ddedab0530cb08b17aea08299c1e45a1897d30`;
-- initial workflow/head `7f15c4f4188990f2bd7b0c08329fb46345da43cd`;
-- initial run `34955091523`, job `104335105619`, terminal failure/no artifact from a provenance literal mismatch;
-- control-only repair-1 prereg `6a048a91eb668787d1227331025888d86f8fb3ed`;
-- repaired head `4d45991d381930d84da2d5bf33c02d7d7050aa74`;
-- repaired run `34955160116`, job `104335856061`, terminal success;
-- artifact `10390188871`;
-- ZIP digest `sha256:e519d0b2c01327532ba5ad4024cd4791efe390b447f1ad5f705ca0af31794b83`;
-- aggregate JSON SHA256 `537c477b1bf2207a2935814dca6cffa532a0581dc539247653b4fe47176cddf9`.
+- `prereg/ACTUAL_MULTIVARIATE_K3_PARITY_CONTROL_ONLY_REPAIR_2.md`, commit `b32fdab248ea8a95bbb716ba30b459a59e4d6b78`.
 
-Researcher production classification:
+Repaired implementation / workflow:
+
+- implementation `0d9124fd9ef63493cf02c50004c718e443f3e0ed`;
+- workflow/head `cec769eb9a379ae26a1ae657130b01618df729f5`.
+
+Authoritative Researcher production:
+
+- run `34958274852`, terminal success;
+- job `104345480753`, terminal success;
+- artifact `10392590310`, `actual-multivariate-polar-k3-parity-gate`;
+- artifact ZIP digest `sha256:ba387d6c1a8d72ff4e44f4961cac3f298c36821a0394f89dc86b3fc6b8acead5`;
+- production JSON SHA256 `63f372003b01f9cf300969f18340d16017091a5254d37bf52c73bb3ae0ec3014`;
+- artifact size `5591` bytes.
+
+Durable result:
+
+- `results/ACTUAL_MULTIVARIATE_K3_PARITY_CONTROL_REPAIR2_RESULT.md`, commit `c90d26128e5d7b36c012d8285252e7ca91126474`;
+- terminal summary `results/raw/actual_multivariate_polar_k3_parity_repair2_terminal_summary.json`, commit `98b28390eca314a49993823605dbdb840f34b7e7`;
+- provenance ledger `status/ACTUAL_MULTIVARIATE_K3_PARITY_REPAIR2_PROVENANCE_LEDGER.md`, commit `70e08bb9cfb4056b305d1e1b55677c95411d8835`.
+
+Researcher classification:
 
 `K3_PHYSICAL_ORIGIN_POLAR_COEFFICIENT_ZERO_EXACT_BY_NORMAL_INVERSION_PARITY`
 
-Researcher production verdict: `PASS_EXACT_SCOPED`.
+Researcher verdict: **`PASS_EXACT_SCOPED`**.
 
-**Controlling Critic verdict: `INVALID_IMPLEMENTATION`.**
+Authority status: **awaiting independent Critic review**. Do not treat this Researcher PASS as independently confirmed until that review is terminal.
 
-Controlling review:
+### Mechanical full-coefficient certificate
 
-- `results/ACTUAL_MULTIVARIATE_K3_PARITY_ADVERSARIAL_IMPLEMENTATION_REVIEW.md`, commit `57e00152548b3ba8ab12c98c9b3145684d115d98`;
-- Critic provenance ledger `status/ACTUAL_MULTIVARIATE_K3_PARITY_CRITIC_PROVENANCE_LEDGER.md`, commit `6244929c33ecfe3b99ee2b5a4147340855d420e2`;
-- Critic handoff update `2e4399fed0288bcc975950a4c4dfc45f97f3db61`.
+For every K3 block `B={a,b,c}`, the six-dimensional barycentric normal fiber is represented by
 
-The green production is quarantined scientifically because decisive source/Haar/parity premises are hard-coded acceptance booleans, the imported `exact_full32()` engine is a fixed-ray 32-component witness rather than the K3 front-face coefficient, and multiple prospectively frozen malformed controls are not instantiated. Repair-1 was prospectively restricted to the provenance text needle and therefore cannot cure those independent implementation defects.
+`y_a=u`, `y_b=v`, `y_c=-u-v`.
 
-No exact scientific counterexample to the K3 parity hypothesis was found. The analytic parity argument remains a candidate theorem pending a valid control-only successor. Until then, do **not** consume the production claims
+The three internal K3 edge differences are exact nonzero linear forms in these six coordinates. With the Iter077I leading matrix
 
-- `Res_(L_K3=0) U = 0`;
-- every multiresidue containing K3 vanishes;
-- K3 annihilator is `ALL_TEST_FUNCTIONS`;
-- K3 zero is scheme invariant.
+`M(w)=[[w_z,-w_x-iw_y],[-w_x+iw_y,-w_z]]`,
 
-**Immediate active front:**
+each internal edge contributes K3 normal degree one and changes sign under simultaneous inversion.
 
-`K3_PARITY_FULL_COEFFICIENT_CONTROL_ONLY_REPAIR`
-`/ ACTUAL_SOURCE_ORDERED_MULTIVARIATE_POLAR_NORMAL_JET_ANNIHILATOR_K4_K5_PREPARATION`
-`/ PHYSICAL_FINITE_PART_OR_JOINT_K5_SELECTOR`
-`/ K5_GLOBAL_MULTISTRATUM_PATCHING`
-`/ CAUSAL_MULTIVERTEX_E3_E4_E6_COMPLETE_SOURCE_BRIDGE`
-`/ REGULATOR_INDEPENDENCE_AFTER_GLOBAL_ANALYTIC_OBJECT_DEFINITION`.
+The seven external wedges are retained as arbitrary full 2x2 collapsed Toller matrices of K3 normal degree zero, pointwise in all tangential/outer variables. They are not replaced by a frozen angular ray.
 
----
+Using the actual Iter077I node intertwiner options and leg incidence, production enumerated the full boundary contraction for all ten K3 blocks and all 32 boundary components:
 
-## Latest usable authoritative result — repaired joint K5 meromorphic bridge
+- `320` full boundary-component symbolic certificates;
+- `100000` raw contraction terms per K3 block;
+- `1000000` raw contraction terms total;
+- every term has exactly `3` internal and `7` external matrix factors;
+- every term has K3 normal degree exactly `3`.
 
-Parent scientific preregistration:
+Therefore every complete boundary component is odd under simultaneous K3 inversion independently of the values of the seven external collapsed Toller matrices.
 
-- `prereg/SOURCE_FAITHFUL_JOINT_K5_BRIDGE_AUTHORITY_GATE.md`, commit `4151c02452edd3e5e2c49952686e42e64c6dc180`.
+### Haar/front geometry and angular pairing
 
-Nested-Jacobian scientific-repair preregistration:
+The barycentric embedding per Cartesian axis
 
-- `prereg/SOURCE_FAITHFUL_JOINT_K5_BRIDGE_CRITIC_REPAIR_1.md`, commit `148dd5130c448420419a807826fdfd84bb1228ef`.
+`(u,v) -> (u,v,-u-v)`
 
-Corrected derivation / lock / production:
+has exact Gram matrix
 
-- derivation `b227ad0d433d89c9fe1df589535b354961e5a91b`;
-- machine lock `ae43268efc7e4b7bdc46df514a8fc03b3fe2267e`;
-- validator `2dfb4ad341bca7ebf1e41521909052e5056980cc`;
-- workflow/head `6aca4249f956f5e1a05a9e214660495427ab7470`;
-- run `34954021547`, terminal success;
-- job `104331589295`, terminal success;
-- artifact `10390666862`;
-- ZIP digest `sha256:2989f3b4aad1c1ccb8494f2f11821a66df17e99c15b731c3d84c587ed1003abb`;
-- production JSON SHA256 `079587747eb747e067400b88a3969982a495c17eee9150543cdede856d883acd`;
-- repaired Researcher result `457107f45513facf8911d3001610a362f9d924b8`;
-- independent Critic confirmation `9efc5d227afc3cff187d386a5574e2ae010cc7d9`.
+`[[2,1],[1,2]]`.
 
-The bridge defines, for the actual source-ordered ten-Toller/full-32-boundary local object with original product Haar density,
+Across three axes the six-dimensional Gram determinant is `27`. Simultaneous inversion has determinant `+1` and preserves this Gram form exactly. At K3 normal Taylor order zero the leading pulled-back source-Haar/tubular coefficient is therefore inversion-even and angle-independent.
 
-`U(lambda)=[product_(B in D) q_B^(lambda_B/2)] A_source`,
+The source front radius
 
-where the 16 parameters are attached to 10 K3, 5 K4 and 1 K5 divergent blocks and
+`q_B/rho_B^2=(1/3)sum_(i<j)|y_i-y_j|^2=sum_i|y_i|^2`
 
-`q_B=(1/|B|) sum_(a<b in B) beta(g_b^-1 g_a)^2`.
+is the same positive even quadratic form. The K3 front is inversion symmetric.
 
-Source order remains
+Internal K2 subfaces have radial exponent
 
-`one-wedge spectral/spinor integration -> Toller function -> product of ten Toller matrices -> full 32-component boundary contraction -> K5 group integration / distributional extension`.
+`(3-1)-2=0>-1`,
 
-The published one-wedge spectral prescription is retained; no `beta+i epsilon` substitution is made.
+so the front pairing is locally integrable and the inversion pairing is legitimate.
 
----
+Hence the repaired Researcher computation obtains exactly
+
+`Res_(L_K3=0) U = 0`
+
+for all ten K3 blocks and all 32 boundary components.
+
+### S5, nested residues and scheme status
+
+All `120` S5 permutations were checked with zero coefficient-transport failures.
+
+Because the seven external matrices remain arbitrary functions of the outer/tangential variables, the K3 residue vanishes identically before later K4/K5 extraction. Thus every multiresidue containing a K3 face factor is zero at Researcher level, including any maximal-chain coefficient containing `1/L_K3`.
+
+For a simple K3 face pole and an allowed holomorphic defining-function multiplier `H`, the repaired implementation enumerates the Laurent convolution and finds that the only contribution to the transformed `L_K3^-1` coefficient is exponent pair `(0,-1)`. Hence an identically zero K3 residue remains zero under the allowed holomorphic defining-function gauge.
+
+This does **not** make all Laurent coefficients or finite parts scheme invariant.
+
+### Frozen malformed controls
+
+The same validator rejects all ten malformed constructions frozen by the parent preregistration:
+
+1. one-parameter `rho^z u` replacement;
+2. representative boundary component only;
+3. omission of external smooth wedges;
+4. historical nested density `(5,2,2)`;
+5. one angular point without angular pairing;
+6. representation multiplicity promoted to source nonzero;
+7. all Laurent coefficients declared scheme invariant;
+8. sequential finite-part order called the source residue;
+9. omission of source Haar/Jacobian;
+10. import of the invalid historical Iter077Q tangential family.
+
+## Historical K3 repair-1 remains quarantined
+
+Historical K3 repair-1 run `34955160116` remains permanently `INVALID_IMPLEMENTATION` under
+
+`results/ACTUAL_MULTIVARIATE_K3_PARITY_ADVERSARIAL_IMPLEMENTATION_REVIEW.md`, commit `57e00152548b3ba8ab12c98c9b3145684d115d98`.
+
+Its green CI is not scientific evidence. The new repair-2 run is a prospective successor and does not rewrite that history.
 
 ## Correct nested local geometry retained
 
-Complete compact collision arrangement: 10 K2, 10 K3, 5 K4, 1 K5 blocks.
-
 For a maximal divergent chain `K3 subset K4 subset K5`:
 
-- orthogonal incremental normal dimensions `(6,3,3)`;
-- cumulative scale dimensions `(6,9,12)`;
-- correct pulled-back Haar/tubular radial powers `(5,8,11)`;
+- incremental normal dimensions `(6,3,3)`;
+- cumulative dimensions `(6,9,12)`;
+- correct pulled-back Haar/tubular powers `(5,8,11)`;
 - cumulative source powers `(-6,-12,-20)`;
 - combined powers `(-1,-4,-9)`;
 - superficial divergence degrees `omega=(0,3,8)`.
 
-The historical `(5,2,2)` tuple is not a valid nested Jacobian.
+The historical `(5,2,2)` tuple is invalid as a nested Jacobian.
 
-For every divergent face `C`,
-
-`L_C(lambda)=sum_(B subseteq C, |B|>=3) lambda_B`.
-
-The 16-by-16 block-to-face incidence matrix is rank 16, lower triangular by block size, unit diagonal and determinant 1. A nonempty convergence chamber is supplied by `lambda_B=1`, yielding K3/K4/K5 face values `(1,5,16)`.
-
-Candidate pole-producing Taylor orders at the physical origin are K3 `0`, K4 `3`, K5 `8`. These are allowed orders only; actual source polar coefficients remain unresolved because the K3 terminal PASS is invalidated and K4/K5 have not yet been authoritatively classified.
-
----
-
-## Defining-function scheme firewall
-
-For allowed smooth positive changes `q'_B=exp(phi_B)q_B`,
-
-`U'(lambda)=exp[(1/2)sum_B lambda_B phi_B] U(lambda)`.
-
-This multiplier is holomorphic and invertible in regulator parameters. Meromorphic bridge existence and the polar divisor are stable, but lower Laurent coefficients may mix in the presence of higher poles.
-
-Therefore:
-
-- bridge existence is confirmed;
-- regulator independence is not confirmed;
-- no lower Laurent coefficient or finite part is physically canonical without an additional theorem/selector;
-- no one-parameter specialization is authorized by the bridge.
-
----
+The candidate physical pole-producing Taylor orders remain K3 `0`, K4 `3`, K5 `8`. Repair 2 classifies only K3. K4 and K5 actual source polar tensors remain unresolved.
 
 ## Retained exact local authority
 
 1. Iter083A — all-`j=1/2` boundary-fiber/S5 graded normal-symbol classification.
-2. Iter083B — intrinsic supported ambiguity `F_8`, exact `dim_C F_8=377`.
-3. Iter083C — additive descendants retain a joint-K5 nullmode.
-4. Iter083D — source-defined causal orientation sums retain exact dimension 377; historical Iter081I infinity superseded.
-5. Iter083E — one-wedge analytic uniqueness does not lift to a joint-K5 selector.
-6. Iter083F — common finite spectral epsilon does not regularize the deepest frozen collision.
-7. Iter083G-L — auxiliary regulator/source-authority controls remain conditional/non-selecting.
-8. repaired Iter083M — source-normal tangent radial quadratic basis, scoped.
-9. provenance-correct Iter083N — formal local finite-part/jet theorem only.
-10. repaired source-faithful joint K5 bridge — local 16-parameter multivariate meromorphic polar germ, Researcher PASS + Critic CONFIRMED_SCOPED.
-11. K3 parity repair-1 run `34955160116` — green CI but `INVALID_IMPLEMENTATION`; no scientific authority.
+2. Iter083B — exact intrinsic supported ambiguity `F_8`, `dim_C F_8=377`.
+3. Iter083C/D/E/F — additive, causal, one-wedge analytic and common spectral-epsilon mechanisms do not remove the joint extension ambiguity in their frozen scopes.
+4. repaired Iter083M — source-normal tangent radial quadratic basis, scoped.
+5. provenance-correct Iter083N — formal local finite-part/jet theorem only.
+6. repaired source-faithful joint K5 bridge — 16-parameter multivariate meromorphic polar germ, independently confirmed.
+7. K3 parity repair-2 — Researcher `PASS_EXACT_SCOPED`, awaiting independent Critic review.
 
-The exact 377-dimensional physical extension-selection freedom has not been removed.
-
----
+The exact `377`-dimensional physical extension-selection freedom has not been removed.
 
 ## Current survival chain
 
 `F1-F8 carrier`
 `-> source-ordered K5 off-collision object`
 `-> exact boundary-covariant supported ambiguity F_8, dim=377`
-`-> additive / causal / one-wedge analytic / spectral-epsilon mechanisms fail as selectors`
-`-> source-faithful q_B-scheme 16-parameter meromorphic polar germ CONFIRMED`
-`-> K3 actual polar coefficient ? (green attempt INVALID_IMPLEMENTATION)`
-`-> K4/K5 actual polar tensors / annihilators ?`
+`-> source-faithful 16-parameter meromorphic polar germ CONFIRMED`
+`-> actual K3 polar coefficient ZERO_EXACT (Researcher repair-2 PASS; Critic ?)`
+`-> actual K4/K5 polar tensors / annihilators ?`
 `-> physical finite-part / joint-K5 selector ?`
-`-> global multistratum distributional patching ?`
+`-> global multistratum patching ?`
 `-> causal E3/E4/E6 ?`
 `-> quantum dynamics G3 ?`
 `-> regulator removal / independence ?`
 `-> RG/refinement ?`
-`-> continuum Lorentzian geometry ?`
+`-> continuum 3+1 Lorentzian geometry ?`
 `-> massless spin-2 ?`
 `-> Einstein/GR ?`
 `-> matter/QFT IR ?`
 `-> normalized falsifiable prediction ?`.
 
----
+## Immediate active front
+
+`K3_PARITY_REPAIR2_INDEPENDENT_CRITIC_REVIEW`
+`/ ACTUAL_SOURCE_ORDERED_MULTIVARIATE_POLAR_NORMAL_JET_ANNIHILATOR_K4_K5`
+`/ PHYSICAL_FINITE_PART_OR_JOINT_K5_SELECTOR`
+`/ K5_ACTUAL_DISTRIBUTIONAL_PARTITION_OF_UNITY_PATCHING_AND_INTER_STRATUM_TRANSPORT`
+`/ CAUSAL_MULTIVERTEX_E3_E4_E6_COMPLETE_SOURCE_BRIDGE`
+`/ REGULATOR_INDEPENDENCE_AFTER_GLOBAL_ANALYTIC_OBJECT_DEFINITION`.
 
 ## Exact remaining blockers
 
-1. **`K3_PARITY_FULL_COEFFICIENT_CONTROL_ONLY_REPAIR`** — mechanically certify or falsify the proposed K3 inversion-parity zero on the complete source coefficient.
-2. **`ACTUAL_SOURCE_ORDERED_MULTIVARIATE_POLAR_NORMAL_JET_ANNIHILATOR_K4_K5`** — classify actual K4/K5 polar coefficients/orders/tensors and annihilators after keeping K3 non-authoritative until repaired.
-3. **`PHYSICAL_FINITE_PART_OR_JOINT_K5_SELECTOR`**.
+1. **`K3_PARITY_REPAIR2_INDEPENDENT_CRITIC_REVIEW`** — independently challenge the repaired full-coefficient certificate before downstream promotion.
+2. **`ACTUAL_SOURCE_ORDERED_MULTIVARIATE_POLAR_NORMAL_JET_ANNIHILATOR_K4_K5`** — classify the actual K4 order-3 and K5 order-8 source polar tensors and exact annihilators; do not infer them from K3 parity.
+3. **`PHYSICAL_FINITE_PART_OR_JOINT_K5_SELECTOR`** — still no source-authorized finite-part/normalization law removing the physical extension ambiguity.
 4. **`K5_ACTUAL_DISTRIBUTIONAL_PARTITION_OF_UNITY_PATCHING_AND_INTER_STRATUM_TRANSPORT`**.
 5. **`CAUSAL_MULTIVERTEX_E3_E4_E6_COMPLETE_SOURCE_BRIDGE`**.
 6. **`REPLACEMENT_FOR_FAILED_HAN_D2_BOUND_IN_CAUSAL_FACE_OBJECT`**.
@@ -211,27 +221,16 @@ The exact 377-dimensional physical extension-selection freedom has not been remo
 8. **`RG_REFINEMENT_E9_COARSE_FINE_BOUNDARY_MAP_AND_MATCHING_FUNCTIONAL`**.
 9. **`REGULATOR_INDEPENDENCE_AFTER_GLOBAL_ANALYTIC_OBJECT_DEFINITION`**.
 
----
-
 ## Authorized next work
 
-Prospectively freeze a **new control-only K3 parity implementation repair** under the unchanged parent scientific hypothesis/object/interpretation ceiling. Repair-1 cannot be reused because it prospectively authorized only the provenance-text change.
+First perform an independent Critic review of repaired run `34958274852`. The review should specifically challenge whether the seven external Toller zeroth coefficients are legitimately normal-degree-zero in the full source object, whether the symbolic all-32 contraction certificate is sufficient despite keeping those matrices formal, whether leading source-Haar parity follows from the barycentric Gram calculation at K3 order zero, whether K2 angular subfaces are integrable, whether the all-120 S5 transport is coefficient-level, and whether the simple-pole gauge/nested-residue conclusions are algebraically sound.
 
-The successor must:
+Do not repeat the K3 Researcher gate while this review is outstanding. K4/K5 may only be prepared independently and must not assume independent confirmation of the K3 zero until Critic review is terminal.
 
-- consume the actual 16-parameter `q_B` meromorphic germ, not a one-parameter surrogate;
-- derive the seven external Toller zeroth-order K3-normal coefficients from the actual source expression;
-- derive the pulled-back Haar/front density and its transformation under K3 inversion;
-- construct or symbolically certify the full 32-component contracted K3 order-zero coefficient and verify oddness under inversion;
-- transport the coefficient-level statement over the S5 orbit;
-- derive nested-multiresidue and defining-function-gauge conclusions algebraically rather than assigning acceptance flags;
-- instantiate all ten malformed controls frozen by the parent preregistration through the same validator;
-- retain K4/K5 as unresolved unless independently prospectively computed.
+If Critic confirms, the next high-information Researcher gate is the actual K4/K5 coefficient extraction under the already-frozen parent multivariate polar contract, beginning with K4 order `3` and retaining full source order, all 32 boundary components, exact Haar/nonlinear geometry and angular pairing.
 
-K4/K5 work may proceed only as orthogonal preparation and must not consume the invalid K3 PASS. In parallel, independent global multistratum patching and causal E3/E4/E6 source-bridge work may continue without inferring them from local polar data.
-
----
+If Critic invalidates any ingredient, repair only that exact implementation/object defect prospectively; do not rescue CRQN post hoc.
 
 ## Claim locks
 
-No `NEW_PHYSICS_FOUND`; no complete-QG claim; no unique physical K5 extension; no physical finite-part selector; no authoritative K3 residue zero yet; no one-parameter physical `A_-1` without a new prospective specialization gate; no regulator independence; no generic-spin complete extension theorem; no global all-strata patching; no causal-vertex finiteness/divergence theorem; no G3/F9/G8/K5 promotion; no fitted subtraction constants/scales or preferred finite parts without independent authority. Historical source-lock-invalid Iter077E/F remain quarantined under `status/ITER077_CONTACT_FORMULA_ERRATUM.md`.
+No `NEW_PHYSICS_FOUND`; no complete-QG claim; no unique physical K5 extension; no physical finite-part selector; no independently confirmed K3 residue zero yet; no K4/K5 polar coefficient classification; no one-parameter physical `A_-1`; no regulator independence; no generic-spin complete extension theorem; no global all-strata patching; no causal-vertex finiteness/divergence theorem; no G3/F9/G8/K5 promotion; no fitted subtraction constants/scales or preferred finite parts without independent authority. Retain the published one-wedge spectral `i epsilon`. Historical source-lock-invalid Iter077E/F remain quarantined under `status/ITER077_CONTACT_FORMULA_ERRATUM.md`.
