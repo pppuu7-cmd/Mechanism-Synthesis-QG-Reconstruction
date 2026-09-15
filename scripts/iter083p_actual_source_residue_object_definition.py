@@ -263,7 +263,7 @@ FULL K5 meromorphic family. This physical source defines a full K5 meromorphic f
 
 Source map joint deformation. The source defines the exact map from Toller variables to the joint deformation parameter for K5.
 
-Residue boundary 32. The residue map uses the full boundary contraction on all 32 components with no representative-component reduction.
+Residue boundary 32. The residue map uses the full boundary contraction on all 32 components.
 
 Deformed full measure normalization. The deformed full K5 object uses the source Haar measure and normalization.
 
@@ -274,11 +274,7 @@ Full K5 Laurent collision. The full K5 object admits a Laurent expansion at the 
 A_-1 source unique. The full K5 residue coefficient A_-1 is uniquely identified by the source.
 '''
     fixture_path = 'sources/SYNTHETIC_ITER083P_POSITIVE_AUTHORITY.md'
-    fixture_texts = {fixture_path: synthetic_text}
     fixture_paths = [fixture_path]
-
-    # Use the same evidence machinery, with the synthetic document temporarily treated as physical authority.
-    original_prefixes = PHYSICAL_SOURCE_PREFIXES
     statuses = {}
     evidence = {}
     for req, spec in REQUIREMENT_SPECS.items():
