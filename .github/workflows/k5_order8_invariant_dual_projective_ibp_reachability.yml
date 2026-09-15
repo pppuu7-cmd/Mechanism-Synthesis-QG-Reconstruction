@@ -1,0 +1,61 @@
+name: K5 invariant-dual projective IBP reachability
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'prereg/K5_ORDER8_INVARIANT_DUAL_PROJECTIVE_PERIOD_IBP_NONCANCELLATION.md'
+      - 'sources/K5_ORDER8_INVARIANT_DUAL_PROJECTIVE_OBJECT_IBP_REACHABILITY_DERIVATION.md'
+      - 'scripts/k5_order8_invariant_dual_projective_ibp_reachability.py'
+      - 'scripts/k5_order8_schwinger_projective_reduction.py'
+      - 'distributional/iter077i_sm_source_ordered_jhalf_k5_l1.py'
+      - '.github/workflows/k5_order8_invariant_dual_projective_ibp_reachability.yml'
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run exact invariant-dual projective object / IBP audit
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p results/raw
+          python3 scripts/k5_order8_invariant_dual_projective_ibp_reachability.py \
+            --output results/raw/k5_order8_invariant_dual_projective_ibp_reachability.json \
+            | tee k5_order8_invariant_dual_projective_ibp_reachability_stdout.json
+          python3 - <<'PY'
+          import json
+          p='results/raw/k5_order8_invariant_dual_projective_ibp_reachability.json'
+          d=json.load(open(p,encoding='utf-8'))
+          assert d['status']=='PASS_EXACT_SCOPED',d
+          assert d['classification']=='K5_INVARIANT_DUAL_PROJECTIVE_OBJECT_DEFINED_IBP_REDUCTION_INCOMPLETE_SCOPED',d
+          assert all(d['checks'].values()),d['checks']
+          assert all(d['controls'].values()),d['controls']
+          assert d['boundary_character']==[32,0,8,2,0,0,2]
+          assert d['reynolds_rank']==2
+          assert d['uniform_full32']['source_choice_terms']==100000
+          assert d['uniform_full32']['dual_coordinates_rref_basis']==['-9225216/9765625','-7175168/9765625']
+          assert d['projective_object']['spanning_trees']==125
+          assert d['projective_object']['trees_surviving_each_single_edge_face']==[75]*10
+          assert d['projective_object']['numerator_degree']==27
+          assert d['projective_object']['denominator_exponent']=='21/2'
+          assert d['projective_object']['total_projective_degree']==0
+          assert d['invariant_dual_period_values'] is None
+          assert d['scientific_parent_k5_zero_nonzero_verdict'] is None
+          print('CLASSIFICATION=',d['classification'])
+          print('DUAL_COORDS=',d['uniform_full32']['dual_coordinates_rref_basis'])
+          print('PROJECTIVE_OBJECT=',d['projective_object']['form'])
+          print('FACE_TREE_COUNTS=',d['projective_object']['trees_surviving_each_single_edge_face'])
+          PY
+          sha256sum results/raw/k5_order8_invariant_dual_projective_ibp_reachability.json | tee k5_order8_invariant_dual_projective_ibp_reachability_sha256.txt
+      - name: Upload reachability artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: k5-invariant-dual-projective-ibp-reachability
+          path: |
+            results/raw/k5_order8_invariant_dual_projective_ibp_reachability.json
+            k5_order8_invariant_dual_projective_ibp_reachability_stdout.json
+            k5_order8_invariant_dual_projective_ibp_reachability_sha256.txt
+          retention-days: 90
