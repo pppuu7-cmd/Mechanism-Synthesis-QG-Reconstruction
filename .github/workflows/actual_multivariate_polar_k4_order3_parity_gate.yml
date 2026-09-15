@@ -1,0 +1,46 @@
+name: actual-multivariate-polar-k4-order3-parity-gate
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'scripts/actual_multivariate_polar_k4_order3_parity_gate.py'
+      - '.github/workflows/actual_multivariate_polar_k4_order3_parity_gate.yml'
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run exact K4 order3 parity gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p results/raw
+          python3 scripts/actual_multivariate_polar_k4_order3_parity_gate.py --output results/raw/actual_multivariate_polar_k4_order3_parity_gate.json | tee k4_order3_parity_stdout.json
+          python3 - <<'PY'
+          import json
+          p='results/raw/actual_multivariate_polar_k4_order3_parity_gate.json'
+          d=json.load(open(p,encoding='utf-8'))
+          assert d['execution_valid'] is True, d
+          assert d['verdict']=='PASS_EXACT_SCOPED', d
+          assert all(d['predicates'].values()), d['predicates']
+          assert d['classification']=='K4_ACTUAL_ORDER3_POLAR_COEFFICIENT_ZERO_EXACT_BY_FULL_NORMAL_INVERSION_PARITY_SCOPED'
+          assert d['degree_partition_count']==364
+          assert d['edge_census_failures']==0
+          assert d['geometry']['gram_determinant']==64
+          assert all(v['rejected'] for v in d['negative_controls'].values())
+          print('K4_ORDER3_PARITY_GATE=PASS_EXACT_SCOPED')
+          print('full32_raw_terms=',d['full32_raw_contraction_terms'])
+          PY
+          sha256sum results/raw/actual_multivariate_polar_k4_order3_parity_gate.json | tee k4_order3_parity_sha256.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: actual-multivariate-polar-k4-order3-parity-gate
+          path: |
+            results/raw/actual_multivariate_polar_k4_order3_parity_gate.json
+            k4_order3_parity_stdout.json
+            k4_order3_parity_sha256.txt
+          if-no-files-found: error
+          retention-days: 90
