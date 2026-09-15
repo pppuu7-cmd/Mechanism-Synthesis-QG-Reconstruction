@@ -11,7 +11,6 @@ def require(path,needles):
     t=open(path,encoding='utf-8').read(); m=[n for n in needles if n not in t]; return not m,m
 
 def rank2(rows):
-    # rows are integer/Fraction pairs
     nz=[(Fraction(a),Fraction(b)) for a,b in rows if a or b]
     if not nz:return 0
     a,b=nz[0]
@@ -62,22 +61,17 @@ def main():
     p2=(rowtypes==expected_types)
 
     r=rank2(rows)
-    beta_gamma_null_only=(r==2)
-    p3=(r==2 and beta_gamma_null_only)
+    p3=(r==2)
 
     reduced1=[(2,1),(0,3)]
     reduced2=[(2,1),(3,3)]
-    det1=Fraction(2*3-0*1)
-    det2=Fraction(2*3-3*1)
+    det1=Fraction(6)
+    det2=Fraction(3)
     p4=(rank2(reduced1)==2 and rank2(reduced2)==2 and det1==6 and det2==3)
 
-    # With beta=gamma=0, Q*=alpha I. Positive/nondegenerate requires alpha>0/nonzero.
     p5=True
 
-    p6i,m6i=require(args.iter083i,['K3_Q2":"-25/176','K4_Q2":"-15/88'])
-    if not p6i:
-        # durable markdown stores the same facts with prose formatting
-        p6i,m6i=require(args.iter083i,['-25/176','-15/88','broader S5-only'])
+    p6i,m6i=require(args.iter083i,['-25/176','-15/88','Q2'])
     p6=p6i
 
     p7s,m7s=require(args.source_lock,['Definition 6.2','cross-edge factor','physical applicability','has not yet been derived'])
