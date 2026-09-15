@@ -1,0 +1,53 @@
+name: K5 order8 edge01 rank-one positivity
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'sources/K5_ORDER8_EDGE01_RANKONE_POSITIVITY_DERIVATION.md'
+      - 'scripts/k5_order8_edge01_rankone_positivity.py'
+      - 'scripts/k5_order8_nonuniform_schwinger_sign_diagnostic.py'
+      - 'distributional/iter077i_sm_source_ordered_jhalf_k5_l1.py'
+      - '.github/workflows/k5_order8_edge01_rankone_positivity.yml'
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run exact rank-one positivity validator
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p results/raw
+          python3 scripts/k5_order8_edge01_rankone_positivity.py \
+            --output results/raw/k5_order8_edge01_rankone_positivity.json \
+            | tee k5_order8_edge01_rankone_positivity_stdout.json
+          python3 - <<'PY'
+          import json
+          p='results/raw/k5_order8_edge01_rankone_positivity.json'
+          d=json.load(open(p,encoding='utf-8'))
+          assert d['status']=='PASS_EXACT_SCOPED',d
+          assert d['classification']=='K5_00000_EDGE01_RANKONE_RADIAL_MOMENT_POSITIVE_FOR_ALL_T_GT_0_EXACT_SCOPED',d
+          assert all(d['checks'].values()),d['checks']
+          assert all(d['controls'].values()),d['controls']
+          assert d['effective_covariance_c']=='2/5'
+          assert d['quadratic_discriminant']==-29158276351851
+          assert d['strictly_positive_for_all_t_gt_0'] is True
+          assert d['scientific_k5_zero_nonzero_verdict'] is None
+          print('CLASSIFICATION=',d['classification'])
+          print('F=',d['F_factorization'])
+          print('P=',d['primitive_radial_numerator_coefficients_t0_up'])
+          print('DISCRIMINANT=',d['quadratic_discriminant'])
+          PY
+          sha256sum results/raw/k5_order8_edge01_rankone_positivity.json | tee k5_order8_edge01_rankone_positivity_sha256.txt
+      - name: Upload theorem artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: k5-order8-edge01-rankone-positivity
+          path: |
+            results/raw/k5_order8_edge01_rankone_positivity.json
+            k5_order8_edge01_rankone_positivity_stdout.json
+            k5_order8_edge01_rankone_positivity_sha256.txt
+          retention-days: 90
