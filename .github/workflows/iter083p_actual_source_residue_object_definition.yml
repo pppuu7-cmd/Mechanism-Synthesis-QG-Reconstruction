@@ -1,0 +1,69 @@
+name: Iter083P actual source residue object definition
+
+on:
+  push:
+    paths:
+      - 'prereg/ITER083P_SM_ACTUAL_SOURCE_ORDERED_RESIDUE_OBJECT_DEFINITION.md'
+      - 'scripts/iter083p_actual_source_residue_object_definition.py'
+      - '.github/workflows/iter083p_actual_source_residue_object_definition.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout repository with history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Verify prospective prereg ancestry
+        shell: bash
+        run: |
+          set -euo pipefail
+          git cat-file -e ea29cd3e716d7b35457db493834347a0ca6176a6^{commit}
+          git merge-base --is-ancestor ea29cd3e716d7b35457db493834347a0ca6176a6 HEAD
+          echo "HEAD=$(git rev-parse HEAD)"
+
+      - name: Run exact repository source-object audit
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p results/raw
+          python3 scripts/iter083p_actual_source_residue_object_definition.py \
+            --output results/raw/iter083p_actual_source_residue_object_definition.json \
+            | tee iter083p_stdout.json
+          python3 - <<'PY'
+          import json
+          p='results/raw/iter083p_actual_source_residue_object_definition.json'
+          d=json.load(open(p,encoding='utf-8'))
+          assert d['execution_valid'] is True, d
+          assert d['verdict']=='BLOCKED_OBJECT_DEFINITION', d
+          assert d['classification']=='ITER083P_SM_ACTUAL_SOURCE_ORDERED_MEROMORPHIC_RESIDUE_NOT_DEFINED_BY_CURRENT_REPOSITORY_AUTHORITY_SCOPED', d
+          assert all(d['anchors'].values()), d['anchors']
+          assert all(d['negative_controls'].values()), d['negative_controls']
+          assert len(d['missing_requirements']) >= 1, d['missing_requirements']
+          assert d['requirements']['R1_full_source_meromorphic_deformation_parameter_and_object'] is False
+          assert d['requirements']['R6_full_k5_laurent_expansion_theorem_near_collision'] is False
+          assert d['requirements']['R7_unique_source_identification_of_A_minus_1'] is False
+          assert d['available_inputs']['ten_factor_off_collision_k5_vertex_formula'] is True
+          print('ITER083P_GATE=BLOCKED_OBJECT_DEFINITION')
+          print('missing=',d['missing_requirements'])
+          PY
+          sha256sum results/raw/iter083p_actual_source_residue_object_definition.json | tee iter083p_sha256.txt
+          git rev-parse HEAD | tee iter083p_head.txt
+
+      - name: Upload Iter083P audit artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: iter083p-actual-source-residue-object-definition
+          path: |
+            results/raw/iter083p_actual_source_residue_object_definition.json
+            iter083p_stdout.json
+            iter083p_sha256.txt
+            iter083p_head.txt
+          if-no-files-found: error
+          retention-days: 90
