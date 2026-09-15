@@ -1,0 +1,513 @@
+{
+  "bridge_defined": true,
+  "classification": "K4_ORDER3_SOURCE_FAITHFUL_CUBIC_REALIZATION_BRIDGE_DEFINED_EXACT_SCOPED",
+  "exact_full_matrix_reconstruction": {
+    "N_recovered_exact": true,
+    "S_recovered_exact": true,
+    "full_matrix_identity_exact": true,
+    "h_minus_hminusdagger": [
+      "0",
+      "2s"
+    ],
+    "h_plus_hminusdagger": [
+      "2c",
+      "0"
+    ]
+  },
+  "exact_q_cubic_control": {
+    "cosh_sqrt_q_minus_one_recovers_s_through_s3": true,
+    "q_series": [
+      "0",
+      "2",
+      "-1/3",
+      "4/45"
+    ],
+    "recovered": [
+      "0",
+      "1",
+      "0",
+      "0"
+    ]
+  },
+  "exact_reduced_scalar_cubic_series": {
+    "leading_branch_sign_pattern_frozen": true,
+    "mixed_minus_z_flip_exact": true,
+    "mixed_plus_exact": true,
+    "pure_minus_z_flip_exact": true,
+    "pure_plus_exact": true
+  },
+  "gate": "K4_ORDER3_SOURCE_FAITHFUL_CUBIC_REALIZATION_BRIDGE",
+  "implementation_valid": true,
+  "inventory": {
+    "all_k4_have_6_internal_4_external_10_total": true,
+    "divergent_block_parameter_count": 16,
+    "k4_blocks": {
+      "0123": {
+        "external_count": 4,
+        "external_edges": [
+          [
+            0,
+            4
+          ],
+          [
+            1,
+            4
+          ],
+          [
+            2,
+            4
+          ],
+          [
+            3,
+            4
+          ]
+        ],
+        "internal_count": 6,
+        "internal_edges": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            0,
+            3
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            2,
+            3
+          ]
+        ],
+        "total_count": 10
+      },
+      "0124": {
+        "external_count": 4,
+        "external_edges": [
+          [
+            0,
+            3
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            4
+          ]
+        ],
+        "internal_count": 6,
+        "internal_edges": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            0,
+            4
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            4
+          ],
+          [
+            2,
+            4
+          ]
+        ],
+        "total_count": 10
+      },
+      "0134": {
+        "external_count": 4,
+        "external_edges": [
+          [
+            0,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            4
+          ]
+        ],
+        "internal_count": 6,
+        "internal_edges": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            3
+          ],
+          [
+            0,
+            4
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            1,
+            4
+          ],
+          [
+            3,
+            4
+          ]
+        ],
+        "total_count": 10
+      },
+      "0234": {
+        "external_count": 4,
+        "external_edges": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            1,
+            4
+          ]
+        ],
+        "internal_count": 6,
+        "internal_edges": [
+          [
+            0,
+            2
+          ],
+          [
+            0,
+            3
+          ],
+          [
+            0,
+            4
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            4
+          ],
+          [
+            3,
+            4
+          ]
+        ],
+        "total_count": 10
+      },
+      "1234": {
+        "external_count": 4,
+        "external_edges": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            0,
+            3
+          ],
+          [
+            0,
+            4
+          ]
+        ],
+        "internal_count": 6,
+        "internal_edges": [
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            1,
+            4
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            4
+          ],
+          [
+            3,
+            4
+          ]
+        ],
+        "total_count": 10
+      }
+    },
+    "s5_checks": 120,
+    "s5_failures": []
+  },
+  "negative_controls": {
+    "beta_shift_i_epsilon": {
+      "forbidden": [
+        "beta_shift_epsilon"
+      ],
+      "missing": [
+        "source_spectral_i_epsilon"
+      ],
+      "rejected": true
+    },
+    "commuting_bch": {
+      "forbidden": [
+        "commuting_bch"
+      ],
+      "missing": [
+        "noncommutative_relative_product"
+      ],
+      "rejected": true
+    },
+    "flat_haar": {
+      "forbidden": [
+        "flat_haar"
+      ],
+      "missing": [
+        "original_haar"
+      ],
+      "rejected": true
+    },
+    "frozen_angular_ray": {
+      "forbidden": [
+        "frozen_angular_ray"
+      ],
+      "missing": [],
+      "rejected": true
+    },
+    "infer_k4_zero_from_k3": {
+      "forbidden": [
+        "infer_k4_zero_from_k3"
+      ],
+      "missing": [],
+      "rejected": true
+    },
+    "omit_external_jets": {
+      "forbidden": [],
+      "missing": [
+        "all_four_external_jets"
+      ],
+      "rejected": true
+    },
+    "one_parameter_regulator": {
+      "forbidden": [
+        "one_parameter_regulator"
+      ],
+      "missing": [
+        "all_16_q_blocks"
+      ],
+      "rejected": true
+    },
+    "posthoc_finite_part": {
+      "forbidden": [
+        "posthoc_finite_part"
+      ],
+      "missing": [],
+      "rejected": true
+    },
+    "representative_boundary_component": {
+      "forbidden": [
+        "representative_boundary"
+      ],
+      "missing": [],
+      "rejected": true
+    },
+    "scalar_k4_surrogate": {
+      "forbidden": [
+        "scalar_surrogate"
+      ],
+      "missing": [],
+      "rejected": true
+    },
+    "termwise_contact_product": {
+      "forbidden": [
+        "termwise_contact_product"
+      ],
+      "missing": [
+        "all_ten_wedges"
+      ],
+      "rejected": true
+    },
+    "unproved_kak_gauge": {
+      "forbidden": [
+        "unproved_kak_gauge"
+      ],
+      "missing": [
+        "exact_full_matrix_reconstruction"
+      ],
+      "rejected": true
+    }
+  },
+  "positive_control": {
+    "accepted": true,
+    "forbidden": [],
+    "missing": []
+  },
+  "predicates": {
+    "P0_all_four_source_reduced_branches_locked": true,
+    "P10_r3_constructed_without_kak_gauge": true,
+    "P11_r4_external_jets_defined_by_same_exact_matrix_function": true,
+    "P12_r6_all_block_q_jets_defined_by_exact_source_q_composition": true,
+    "P1_full_matrix_reconstruction_identity_exact": true,
+    "P2_pole_removed_scalar_cubic_series_exact": true,
+    "P3_source_q_inverse_cubic_exact": true,
+    "P4_all_5_k4_blocks_have_complete_6_internal_4_external_inventory": true,
+    "P5_all_16_q_blocks_retained": true,
+    "P6_s5_transport_exact_on_block_incidence": true,
+    "P7_positive_complete_bridge_contract_accepted": true,
+    "P8_all_12_malformed_controls_rejected": true,
+    "P9_source_manifest_and_prereg_provenance_valid": true
+  },
+  "prereg_commit": "fd01325771e4161d332e09eb8456d679e6bf96e9",
+  "requirements": {
+    "R10_S5_TRANSPORT": "RETAINED_AUTHORITY",
+    "R1_K4_NORMAL_CHART": "RETAINED_AUTHORITY",
+    "R2_BCH_ORDER3": "RETAINED_AUTHORITY",
+    "R3_TOLLER_ORDER3": "CONSTRUCTED_EXACT_FULL_MATRIX_JET_OPERATOR",
+    "R4_EXTERNAL_TOLLER_JETS": "CONSTRUCTED_EXACT_SMOOTH_MATRIX_JET_OPERATOR",
+    "R5_HAAR_JACOBIAN_ORDER3": "RETAINED_AUTHORITY",
+    "R6_Q_DEFINING_FUNCTION_ORDER3": "CONSTRUCTED_EXACT_16_BLOCK_COMPOSITION_JET_OPERATOR",
+    "R7_FULL32_CONTRACTION_MAP": "RETAINED_AUTHORITY",
+    "R8_FRONT_PAIRING": "RETAINED_AUTHORITY",
+    "R9_BRANCH_NORMALIZATION": "RETAINED_AUTHORITY"
+  },
+  "scientific_ceiling": {
+    "k4_annihilator_computed": false,
+    "k4_polar_coefficient_evaluated": false,
+    "k4_zero_or_nonzero_classified": false,
+    "k5_order8_authorized": false,
+    "new_physics_found": false,
+    "physical_finite_part_selected": false,
+    "regulator_independence_claimed": false
+  },
+  "source_blob_manifest": {
+    "sources/ACTUAL_MULTIVARIATE_POLAR_K3_PARITY_DERIVATION.md": {
+      "actual_blob": "860d310add243fc30e49c11840e5d51f5a320f72",
+      "blob_ok": true,
+      "exists": true,
+      "expected_blob": "860d310add243fc30e49c11840e5d51f5a320f72"
+    },
+    "sources/ITER077I_SM_SOURCE_ORDERED_TOLLER_FUNCTION_K5_L1_DERIVATION.md": {
+      "actual_blob": "f4c536b3fc70b866edeb7a397b457c47fd07d60a",
+      "blob_ok": true,
+      "exists": true,
+      "expected_blob": "f4c536b3fc70b866edeb7a397b457c47fd07d60a"
+    },
+    "sources/ITER083F_PUBLIC_SOURCE_LOCK.md": {
+      "actual_blob": "e499e741c85502c1b2fe5abd6e83b1b532de0b3e",
+      "blob_ok": true,
+      "exists": true,
+      "expected_blob": "e499e741c85502c1b2fe5abd6e83b1b532de0b3e"
+    },
+    "sources/SOURCE_FAITHFUL_JOINT_K5_BRIDGE_DERIVATION.md": {
+      "actual_blob": "b8cb7dc72570132c0d4b1c7e10944681f02e7674",
+      "blob_ok": true,
+      "exists": true,
+      "expected_blob": "b8cb7dc72570132c0d4b1c7e10944681f02e7674"
+    },
+    "sources/SOURCE_FAITHFUL_JOINT_K5_BRIDGE_NESTED_JACOBIAN_REPAIR_DERIVATION.md": {
+      "actual_blob": "4db334fb3c12e4ce5caea3d000d01e6012ee2a1c",
+      "blob_ok": true,
+      "exists": true,
+      "expected_blob": "4db334fb3c12e4ce5caea3d000d01e6012ee2a1c"
+    },
+    "sources/TOLLER_MIXED_POLAR_KAK_JET_SUPPLEMENT.md": {
+      "actual_blob": "d64c07e720f1d174a29cc2002ebb0fc4ae77dc11",
+      "blob_ok": true,
+      "exists": true,
+      "expected_blob": "d64c07e720f1d174a29cc2002ebb0fc4ae77dc11"
+    }
+  },
+  "source_incompatibility": false,
+  "source_text_hits": {
+    "prereg/ITER082F_SM_K5_THREE_CHART_TUBULAR_ATLAS_COCYCLE.md": {
+      "X chart \u2014 rapidity coordinate `x`": true,
+      "exactly S5-covariant": true,
+      "identity derivative at the origin": true
+    },
+    "sources/ITER077I_SM_SOURCE_ORDERED_TOLLER_FUNCTION_K5_L1_DERIVATION.md": {
+      "2^5=32": true,
+      "C_n = - n . sigma": true,
+      "product of ten Toller matrices": true
+    },
+    "sources/ITER083F_PUBLIC_SOURCE_LOCK.md": {
+      "For `m=-1/2`": true,
+      "spectral variable `rho`, not in the group-normal rapidity `beta`": true,
+      "t^+(rho,beta) = - exp(+i rho beta)": true,
+      "t^-(rho,beta) = + exp(-i rho beta) [cosh(beta)+2 i rho sinh(beta)]": true
+    },
+    "sources/SOURCE_FAITHFUL_JOINT_K5_BRIDGE_DERIVATION.md": {
+      "complete 32-dimensional boundary intertwiner tensors": true,
+      "product_(B in D) q_B^(lambda_B/2)": true,
+      "q(h)=beta(h)^2": true,
+      "q_B(g_0,...,g_4) = (1/p) sum_{a<b in B} q(g_b^{-1} g_a)": true
+    },
+    "sources/SOURCE_FAITHFUL_JOINT_K5_BRIDGE_NESTED_JACOBIAN_REPAIR_DERIVATION.md": {
+      "L_C(lambda) = sum_(B subseteq C, |B|>=3) lambda_B": true,
+      "nested density powers = (5,8,11)": true,
+      "omega_K4=3": true
+    },
+    "sources/TOLLER_MIXED_POLAR_KAK_JET_SUPPLEMENT.md": {
+      "T(g(t)) = t^(-n) [ C + t T_1 + o(t) ]": true,
+      "T_1 = -i(alpha/2) J_y C + D - i(alpha/2) C J_y": true
+    },
+    "status/ACTUAL_K4_ORDER3_REACHABILITY_CRITIC_PROVENANCE_LEDGER.md": {
+      "K4_ORDER3_REACHABILITY_CRITIC_CONFIRMED_BLOCKED_OBJECT_DEFINITION_SCOPED": true,
+      "R3_TOLLER_ORDER3": true,
+      "R4_EXTERNAL_TOLLER_JETS": true,
+      "R6_Q_DEFINING_FUNCTION_ORDER3": true
+    }
+  },
+  "verdict": "PASS_EXACT_SCOPED"
+}
