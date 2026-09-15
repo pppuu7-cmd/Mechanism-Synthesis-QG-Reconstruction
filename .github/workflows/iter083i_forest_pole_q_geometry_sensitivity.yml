@@ -1,0 +1,62 @@
+name: Iter083I forest pole Q geometry sensitivity
+
+on:
+  push:
+    paths:
+      - 'prereg/ITER083I_SM_FOREST_POLE_Q_GEOMETRY_SENSITIVITY.md'
+      - 'scripts/iter083i_forest_pole_q_geometry_sensitivity.py'
+      - '.github/workflows/iter083i_forest_pole_q_geometry_sensitivity.yml'
+      - 'results/ITER082D_SM_NESTED_NORMAL_PROJECTOR_FOREST_EXTENSION_RESULT.md'
+      - 'results/ITER083G_SM_S5_REGULATOR_METRIC_NONUNIQUENESS_RESULT.md'
+      - 'results/ITER083H_SM_PRIMITIVE_SIMPLE_POLE_Q_INDEPENDENCE_RESULT.md'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Run exact Iter083I validation
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p results/raw
+          python3 scripts/iter083i_forest_pole_q_geometry_sensitivity.py \
+            --output results/raw/iter083i_sm_forest_pole_q_geometry_sensitivity.json \
+            | tee iter083i_stdout.json
+          python3 - <<'PY'
+          import json
+          p='results/raw/iter083i_sm_forest_pole_q_geometry_sensitivity.json'
+          d=json.load(open(p,encoding='utf-8'))
+          assert d['verdict']=='PASS_EXACT_SCOPED', d
+          assert all(d['predicates'].values()), d['predicates']
+          assert all(d['controls'].values()), d['controls']
+          assert d['block_counts']=={'K3':10,'K4':5,'K5':1,'total':16}
+          assert d['maximal_chain_count']==20
+          assert d['proper_stratum_witness_pairings']=={'K3_Q1':'0','K3_Q2':'-25/176','K4_Q1':'0','K4_Q2':'-15/88'}
+          assert d['canonical_chain_Q1_pairings']==['0','0','0']
+          assert d['canonical_chain_Q2_pairings']==['5/22','0','0']
+          assert d['det_G1']=='36'
+          assert d['det_G2']=='10125/484'
+          assert d['transported_chains_verified']==20
+          print('ITER083I_GATE=PASS_EXACT_SCOPED')
+          print('block counts=',d['block_counts'])
+          print('proper sensitivity=',d['proper_stratum_witness_pairings'])
+          print('chain Q1/Q2=',d['canonical_chain_Q1_pairings'],d['canonical_chain_Q2_pairings'])
+          print('all chains verified=',d['transported_chains_verified'])
+          PY
+          sha256sum results/raw/iter083i_sm_forest_pole_q_geometry_sensitivity.json | tee iter083i_sha256.txt
+      - name: Upload exact result artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: iter083i-forest-pole-q-geometry-sensitivity
+          path: |
+            results/raw/iter083i_sm_forest_pole_q_geometry_sensitivity.json
+            iter083i_stdout.json
+            iter083i_sha256.txt
+          if-no-files-found: error
+          retention-days: 90
