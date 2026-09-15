@@ -1,0 +1,76 @@
+name: Iter083Q source-faithful joint K5 bridge authority
+
+on:
+  push:
+    paths:
+      - 'prereg/SOURCE_FAITHFUL_JOINT_K5_BRIDGE_AUTHORITY_GATE.md'
+      - 'sources/ITER083Q_SM_SOURCE_FAITHFUL_JOINT_K5_BRIDGE_AUTHORITY_DERIVATION.md'
+      - 'scripts/iter083q_source_faithful_joint_k5_bridge_authority.py'
+      - '.github/workflows/iter083q_source_faithful_joint_k5_bridge_authority.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Verify prospective ancestry
+        shell: bash
+        run: |
+          set -euo pipefail
+          for c in \
+            f3e8d7134be751ce74557691b2aae34019b15cab \
+            4151c02452edd3e5e2c49952686e42e64c6dc180 \
+            b94aafa1b30e75d2bc93b2e7b0c349fd4a7f3648 \
+            019704d0566f0c055961c9a4ccd3b5097fe42b92; do
+            git cat-file -e ${c}^{commit}
+            git merge-base --is-ancestor ${c} HEAD
+          done
+          git rev-parse HEAD
+
+      - name: Run supersession-aware bridge authority audit
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p results/raw
+          python3 scripts/iter083q_source_faithful_joint_k5_bridge_authority.py \
+            --output results/raw/iter083q_source_faithful_joint_k5_bridge_authority.json \
+            | tee iter083q_stdout.json
+          python3 - <<'PY'
+          import json
+          p='results/raw/iter083q_source_faithful_joint_k5_bridge_authority.json'
+          d=json.load(open(p,encoding='utf-8'))
+          assert d['execution_valid'] is True, d
+          assert d['controls_ok'] is True, d
+          assert d['positive_fixture']['accepted'] is True, d['positive_fixture']
+          assert all(v['rejected'] for v in d['negative_controls'].values()), d['negative_controls']
+          assert d['new_authority_candidates_requiring_supersession_audit']==[], d['new_authority_candidates_requiring_supersession_audit']
+          assert d['predicates']['B3_full_32_boundary_contraction']=='SOURCE_INGREDIENT_PRESENT_BRIDGE_APPLICATION_UNDEFINED'
+          assert d['predicates']['B4_haar_measure_normalization_ordering']=='SOURCE_INGREDIENT_PRESENT_BRIDGE_APPLICATION_UNDEFINED'
+          assert d['verdict'] in {'BRIDGE_AUTHORITY_CONFIRMED_SCOPED','BLOCKED_OBJECT_DEFINITION','SCIENTIFIC_FAIL_SCOPED'}, d['verdict']
+          print('ITER083Q_EXECUTION_VALID=1')
+          print('ITER083Q_VERDICT=',d['verdict'])
+          print('ITER083Q_CLASSIFICATION=',d['classification'])
+          print('ITER083Q_ROBUST_MISSING=',d['robust_missing_predicates'])
+          PY
+          sha256sum results/raw/iter083q_source_faithful_joint_k5_bridge_authority.json | tee iter083q_sha256.txt
+          git rev-parse HEAD | tee iter083q_head.txt
+
+      - name: Upload Iter083Q audit artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: iter083q-source-faithful-joint-k5-bridge-authority
+          path: |
+            results/raw/iter083q_source_faithful_joint_k5_bridge_authority.json
+            iter083q_stdout.json
+            iter083q_sha256.txt
+            iter083q_head.txt
+          if-no-files-found: error
+          retention-days: 90
