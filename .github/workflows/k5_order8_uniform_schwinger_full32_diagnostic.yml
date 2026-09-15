@@ -1,0 +1,48 @@
+name: K5 order8 uniform Schwinger full32 diagnostic
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/k5_order8_uniform_schwinger_full32_diagnostic.py'
+      - '.github/workflows/k5_order8_uniform_schwinger_full32_diagnostic.yml'
+
+jobs:
+  diagnostic:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run exact full32 diagnostic
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p results/raw
+          python3 scripts/k5_order8_uniform_schwinger_full32_diagnostic.py \
+            --output results/raw/k5_order8_uniform_schwinger_full32_diagnostic.json \
+            | tee k5_order8_uniform_schwinger_full32_stdout.json
+          python3 - <<'PY'
+          import json
+          p='results/raw/k5_order8_uniform_schwinger_full32_diagnostic.json'
+          d=json.load(open(p, encoding='utf-8'))
+          assert d['status']=='DIAGNOSTIC_EXACT',d
+          assert all(d['checks'].values()),d['checks']
+          assert d['perfect_matchings_total']==945
+          assert d['perfect_matchings_surviving']==144
+          assert d['source_choice_terms_total']==100000
+          assert d['scientific_k5_zero_nonzero_verdict'] is None
+          print('NONZERO_FULL32=',d['boundary_components_nonzero_gaussian_N10_moment'])
+          print('ZERO_FULL32=',d['boundary_components_zero_gaussian_N10_moment'])
+          print('WICK_CACHE=',d['wick_cache_size'])
+          print('RADIAL_FACTOR=',d['radial_probe_factor_11_12_13_14_over_5pow4'])
+          PY
+          sha256sum results/raw/k5_order8_uniform_schwinger_full32_diagnostic.json | tee k5_order8_uniform_schwinger_full32_sha256.txt
+      - name: Upload diagnostic artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: k5-order8-uniform-schwinger-full32-diagnostic
+          path: |
+            results/raw/k5_order8_uniform_schwinger_full32_diagnostic.json
+            k5_order8_uniform_schwinger_full32_stdout.json
+            k5_order8_uniform_schwinger_full32_sha256.txt
+          if-no-files-found: error
+          retention-days: 90
