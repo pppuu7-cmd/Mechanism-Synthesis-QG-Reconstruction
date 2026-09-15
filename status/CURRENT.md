@@ -8,20 +8,19 @@
 - Predictive local K5 amplitude remains `BLOCKED_CURRENT_CANDIDATE_LOCAL_AMPLITUDE`.
 - Physical F9 remains `BLOCKED`.
 - G3, regulator removal/independence, RG/refinement, continuum, spin-2, GR, matter/QFT and normalized prediction remain downstream-locked.
-- Confirmed local authority extends through repaired Iter083M, Critic `CONFIRMED_SCOPED`.
-- A fresh provenance-correct Iter083N retry is now terminal Researcher `PASS_EXACT_SCOPED`, but **awaits independent Critic review before any downstream promotion**.
+- Confirmed local authority extends through repaired Iter083M and the provenance-correct Iter083N retry, both Critic `CONFIRMED_SCOPED`.
 - Historical original Iter083N remains permanently `INVALID_PROVENANCE`; first fresh retry run `34925091322` remains `INVALID_IMPLEMENTATION`.
-- Iter083O remains preparation-only / downstream-quarantined until the fresh Iter083N retry is independently reviewed and controlling authority changes.
+- Iter083O remains preparation-only / non-controlling. A source-native nonlinear radial candidate is not a physical selector unless source authority mandates its use for extension.
 
 **Controlling immediate gate:**
 
-`ITER083N_PROVENANCE_CORRECT_RETRY_INDEPENDENT_CRITIC_REVIEW`.
+`ACTUAL_SOURCE_ORDERED_RESIDUE_NORMAL_JET_ANNIHILATOR_GATE`.
 
 The broader physical blocker remains:
 
 `SOURCE_OR_MICROLOCAL_BRIDGE_TO_FOREST_LOCAL_EXTENSION_NATURALITY`.
 
-## Confirmed local chain through Iter083M
+## Confirmed local chain through Iter083N
 
 1. Iter083A — true 32-dimensional all-`j=1/2` boundary-fiber/S5 graded normal-symbol classification.
 2. Iter083B — exact intrinsic filtered supported ambiguity `F_8`, `dim_C F_8=377`, only in the frozen common-K5-collision, boundary-linear, compact-node-gauge/S5-covariant same-scaling-degree scope.
@@ -36,8 +35,9 @@ The broader physical blocker remains:
 11. Iter083K — forest-external decoupling also forces the Euclidean Q ray, conditionally.
 12. Iter083L — current audited causal/Toller source formulas do not authorize the extra multivariate regulator/Q/forest-locality structure needed to promote Iter083J/K to a physical selector; Critic `CONFIRMED_SCOPED`.
 13. Repaired Iter083M — source small-boost geometry plus authoritative barycentric projectors determines a unique invariant tangent/tubular radial quadratic basis on each K3/K4/K5 normal fiber; Critic `CONFIRMED_SCOPED`.
+14. Provenance-correct Iter083N retry — for the frozen local conformal simple-pole analytic family, finite-part change is `phi A_-1`; universal residue-space independence through order `omega` requires `phi in I_N^(omega+1)`. Tangent metric data supply only `phi|_N=0`, sufficient universally for K3 but not the full allowed K4/K5 residue classes. Critic `CONFIRMED_SCOPED`.
 
-## Repaired Iter083M — controlling parent authority
+## Repaired Iter083M — controlling radial parent authority
 
 Parent preregistration `c801299beb44816941fd441715e3eb03c73740c7`.
 
@@ -51,14 +51,8 @@ Repaired production:
 - artifact `10378026902`;
 - ZIP digest `sha256:06d6c560942a73bd78c31557f9fb3f4714a17b495857ed17071d271409700f11`;
 - production JSON SHA256 `6572765b7a760a7505d6dc1c23d9239d5ede80cd37e1174c171951635f26c3e2`;
-- repaired result `6f886ce799a17cde6ad35c7686f4ea96396acb7e`.
-
-Independent controlling Critic review:
-
-- `results/ITER083M_REPAIRED_ADVERSARIAL_REVIEW.md`;
-- commit `e7623cb5303ea49894e480e2fc4a884df44e7713`;
-- verdict `CONFIRMED_SCOPED`;
-- classification `ITER083M_REPAIRED_CRITIC_CONFIRMED_SCOPED`.
+- repaired result `6f886ce799a17cde6ad35c7686f4ea96396acb7e`;
+- controlling Critic review `e7623cb5303ea49894e480e2fc4a884df44e7713`, verdict `CONFIRMED_SCOPED`.
 
 Canonical tangent/tubular form only:
 
@@ -70,7 +64,7 @@ with source tangent normalization
 
 This is not an exact nonlinear global radius, finite-part selector, subtraction-scale selector, unique K5 extension, regulator theorem or global patching theorem.
 
-## Fresh Iter083N provenance-correct retry — Researcher terminal result
+## Iter083N provenance-correct retry — confirmed authority
 
 Parent scientific preregistration:
 
@@ -82,50 +76,36 @@ Actual source/theorem authority:
 - source lock `cf9d17cc8dae087f2c59ff0adb9f8aeff8ef7533`;
 - theorem derivation `70a756c9c7c66f822d0e5933e9522b2d359dafe8`.
 
-Fresh retry preregistration:
+Fresh retry / repair chronology:
 
-- `prereg/ITER083N_PROVENANCE_CORRECT_RETRY_1.md`;
-- commit `d9edb0fd2a5c522ddec021f2b4f8e1a964ee3d96`.
+- retry prereg `d9edb0fd2a5c522ddec021f2b4f8e1a964ee3d96`;
+- first fresh retry head `62407b98b51985d60ca1746af3aa2e9804ca314a`, run `34925091322`, job `104241339442`, `INVALID_IMPLEMENTATION`, no authoritative artifact;
+- control-only repair prereg `74ec4edd547d07503e70a0a972a500df70c7c60a`;
+- repaired validator / production head `15472a83a6fc5e73c10b050649578822b65558cf`;
+- repository comparison confirms repair prereg is the direct base of production head.
 
-First fresh retry:
+Authoritative Researcher production:
 
-- head `62407b98b51985d60ca1746af3aa2e9804ca314a`;
-- run `34925091322`, job `104241339442`;
-- `INVALID_IMPLEMENTATION` because one historical-review phrase lock was brittle;
-- no authoritative artifact and no scientific verdict promoted.
-
-Prospective control-only repair:
-
-- `prereg/ITER083N_PROVENANCE_CORRECT_RETRY_CONTROL_REPAIR_1.md`;
-- commit `74ec4edd547d07503e70a0a972a500df70c7c60a`.
-
-Authoritative Researcher retry production:
-
-- repaired validator / head `15472a83a6fc5e73c10b050649578822b65558cf`;
 - run `34925157771`, terminal success;
 - job `104241540969`, terminal success;
 - artifact `10379901560`, `iter083n-provenance-correct-retry-1`;
 - artifact ZIP digest `sha256:ac44a7a209847a097902904bb7114ffafa40edc8d40d8f15324b0c66204f0384`;
 - production JSON SHA256 `b5e1f14e728c1ee9342a5433084b6c1d122faad4af360ffbcd627f60a76cd9ec`;
-- durable raw copy commit `2fae0515891dfbe444672d1b05cd2fb23d3e6ac9`;
-- durable Researcher result commit `7e194bd7d6e074e03f4393a6357d06824aedc745`;
-- provenance ledger commit `7df258757d2e13940e3f85975d8be5d344df717b`.
+- durable raw `2fae0515891dfbe444672d1b05cd2fb23d3e6ac9`;
+- durable Researcher result `7e194bd7d6e074e03f4393a6357d06824aedc745`.
 
-Researcher classification:
+Independent Critic authority:
 
-`ITER083N_SM_RADIAL_FINITE_PART_CHANGE_IS_RESIDUE_TIMES_DEFINING_FUNCTION_JET_AND_TANGENT_METRIC_ALONE_IS_INSUFFICIENT_FOR_K4_K5_SCOPED`.
+- `results/ITER083N_PROVENANCE_CORRECT_RETRY_1_ADVERSARIAL_REVIEW.md`;
+- commit `9d706f024acc64429532731e63b5b22b6d8145a6`;
+- verdict `CONFIRMED_SCOPED`;
+- classification `ITER083N_PROVENANCE_CORRECT_RETRY_CRITIC_CONFIRMED_SCOPED`.
 
-Researcher verdict: **`PASS_EXACT_SCOPED`**, pending independent Critic review.
+### Exact confirmed scoped theorem
 
-### Exact scoped content
+For
 
-For the frozen simple-pole radial analytic family
-
-`U_rho(z)=rho^z u=A_-1/z+A_0+O(z)`
-
-and conformal defining-function change
-
-`rho'=exp(phi)rho`,
+`U_rho(z)=rho^z u=A_-1/z+A_0+O(z)`, `rho'=exp(phi)rho`,
 
 exact Laurent multiplication gives
 
@@ -133,41 +113,48 @@ exact Laurent multiplication gives
 
 `FP_rho' u-FP_rho u=phi A_-1`.
 
-For a supported distribution of normal order at most `omega`, universal annihilation requires
+For every supported residue of normal order `<=omega`, universal annihilation requires and sharply gives
 
-`phi in I_N^(omega+1)`.
+- K3 (`omega=0`): `phi in I_N^1`;
+- K4 (`omega=3`): `phi in I_N^4`;
+- K5 (`omega=8`): `phi in I_N^9`.
 
-Production executed 90 exact `n^q delta^(k)` checks through normal order 8 with zero failures and sharp witnesses for every permitted order. Hence the universal thresholds are
+The Researcher executable ran 90 exact one-normal-coordinate controls with zero failures. Independent Critic review checked the multidimensional statement via the normal-ideal multi-index argument.
 
-- K3 (`omega=0`): `I_N^1`;
-- K4 (`omega=3`): `I_N^4`;
-- K5 (`omega=8`): `I_N^9`.
+A direct counterexample to tangent-metric uniqueness in the universal positive-order class is
 
-Repaired Iter083M fixes only the normalized tangent quadratic Hessian. Within a conformal class that implies only
+`rho=|x|^2`, `rho'=exp(x_1)rho`, `A_-1=partial_(x_1)delta_N`,
 
-`phi|_N=0`, i.e. `phi in I_N`.
+for which the tangent Hessians agree while
 
-This is universally sufficient for K3 but not by itself for the full allowed K4/K5 supported-residue classes.
+`x_1 partial_(x_1)delta_N=-delta_N !=0`.
 
-Constant scaling obeys
+Thus repaired Iter083M tangent normalization universally closes K3 order zero but not the full allowed K4/K5 residue classes.
 
-`FP_(c rho)u-FP_rho u=(log c)A_-1`.
+### Scope ceiling
 
-### Physical firewall
+Iter083N is only:
 
-The retry does not prove that the actual full source-ordered Toller residue is nonzero, maximal-order, or sensitive to the unfixed higher defining-function jets. The physical residue may have lower order, lie in an annihilator subspace, vanish in relevant channels, or an exact nonlinear source radial function may fix the needed jets.
+- local to one collision stratum;
+- conformal regularizer changes `rho'=exp(phi)rho`;
+- simple Laurent pole;
+- universal over the allowed supported-residue class.
 
-Therefore there is still **no actual nonzero physical finite-part scheme-dependence theorem and no physical selector**.
+It does not prove the actual source-ordered Toller residue is nonzero, maximal-order or jet-sensitive. Two arbitrary same-Hessian Morse-Bott functions need not have a smooth conformal ratio. Higher-order poles require a new gate. No physical finite-part selector or actual physical scheme dependence follows.
 
 ## Historical Iter083N quarantine
 
-The old result `results/ITER083N_SM_RADIAL_FINITE_PART_JET_DEPENDENCE_RESULT.md`, commit `d90be70dce0c820ba0a574a7d82e46737187f541`, remains permanently `INVALID_PROVENANCE` under controlling review `fbff993fc920e707d0ff885b73549f3204d208c5`.
+The old result `results/ITER083N_SM_RADIAL_FINITE_PART_JET_DEPENDENCE_RESULT.md` remains permanently `INVALID_PROVENANCE` under controlling review `fbff993fc920e707d0ff885b73549f3204d208c5`.
 
-The fresh successful retry does not rehabilitate or overwrite that history.
+Fresh failed run `34925091322` remains permanently `INVALID_IMPLEMENTATION`.
+
+Neither is rehabilitated by the confirmed retry.
 
 ## Iter083O status
 
-Preregistration `2b0ef9969cc07f70a0d9d22819f17973e2ee67c6` remains preparation-only. Do not run or promote Iter083O substantively until the fresh Iter083N retry has an independent terminal Critic review and CURRENT is reconciled to that review.
+Preregistration `2b0ef9969cc07f70a0d9d22819f17973e2ee67c6` remains preparation-only / non-controlling. It proposes the exact sum-of-squared-Cartan-rapidities `mu_B` as a smooth source-native nonlinear Morse-Bott radius candidate, but its own P7 retains that the audited causal/Toller source does not mandate `mu_B` as the analytic-renormalization defining function.
+
+Therefore a PASS of Iter083O would establish at most existence of a source-native geometric candidate and would not solve the physical selector. It may be used as an orthogonal control, but it is not the controlling next gate.
 
 ## Source-order / source-object firewall
 
@@ -201,8 +188,8 @@ Historical Iter077Q infinite tangential physical application remains invalid und
 `-> auxiliary Q geometry conditionally constrained but not source-authorized`
 `-> Iter083L source-authority blocker CONFIRMED_SCOPED`
 `-> repaired Iter083M source-normal tangent radial basis CONFIRMED_SCOPED`
-`-> Iter083N provenance-correct retry Researcher PASS_EXACT_SCOPED ? CRITIC REVIEW PENDING`
-`-> exact nonlinear source radial jets or actual residue-annihilator theorem ?`
+`-> Iter083N local conformal simple-pole defining-function-jet theorem CONFIRMED_SCOPED`
+`-> actual source-ordered K3/K4/K5 residue normal-jet annihilator ?`
 `-> source/microlocal physical finite-part selector ?`
 `-> global multistratum distributional patching ?`
 `-> causal composition E3/E4/E6 ?`
@@ -221,8 +208,9 @@ No `NEW_PHYSICS_FOUND`; no complete-QG claim; no unique physical K5 extension; n
 
 ## Authorized next work
 
-1. Perform only an independent Critic review of fresh Iter083N retry authority before dependent production.
-2. Do not rehabilitate historical Iter083N or the failed fresh run.
-3. Do not run Iter083O substantively until Critic review is terminal and CURRENT is reconciled.
-4. If the retry is confirmed, highest-value next physical question is whether the exact nonlinear source geometry fixes the relevant higher normal jets, or whether the actual full boundary-contracted source residue annihilates the remaining jet freedom.
-5. Predictive local K5, E3/E4/E6, G3, regulator removal, RG, continuum, spin-2, GR, matter/QFT and normalized prediction remain closed.
+1. Prospectively define an `ACTUAL_SOURCE_ORDERED_RESIDUE_NORMAL_JET_ANNIHILATOR_GATE` (or equivalent source-faithful actual-residue gate).
+2. The object must be the actual fully boundary-contracted source-ordered K3/K4/K5 residue data in the frozen minimal sector, preserving all ten wedges, true K5 incidence/source map, full boundary contraction, actual measure, normalization, branch conventions and published spectral prescription.
+3. Test whether the actual residue vanishes, has lower normal order, or annihilates every defining-function jet left free by Iter083M/Iter083N.
+4. If the actual residue cannot be defined without exchanging source order, termwise multiplying distributions or substituting a scalar/Hodge/Q surrogate, classify `BLOCKED_OBJECT_DEFINITION`.
+5. Iter083O may remain an orthogonal preparation/control but must not displace the actual-residue front or be promoted as a selector merely because `mu_B` is a smooth source-native candidate.
+6. Predictive local K5, E3/E4/E6, G3, regulator removal, RG, continuum, spin-2, GR, matter/QFT and normalized prediction remain closed.
