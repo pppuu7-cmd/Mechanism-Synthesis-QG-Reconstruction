@@ -1,0 +1,67 @@
+name: Iter083F common spectral epsilon collision test
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'prereg/ITER083F_SM_COMMON_SPECTRAL_EPSILON_NOT_K5_COLLISION_REGULATOR.md'
+      - 'sources/ITER083F_PUBLIC_SOURCE_LOCK.md'
+      - 'sources/raw/iter083f_finite_epsilon_source_lock.json'
+      - 'sources/ITER083F_SM_COMMON_SPECTRAL_EPSILON_COLLISION_SCALING_DERIVATION.md'
+      - 'scripts/iter083f_common_spectral_epsilon_collision_test.py'
+      - 'sources/ITER077I_SM_SOURCE_ORDERED_TOLLER_FUNCTION_K5_L1_DERIVATION.md'
+      - 'results/ITER083B_SM_FILTERED_BOUNDARY_COVARIANT_SUPPORTED_AMBIGUITY_RESULT.md'
+      - '.github/workflows/iter083f_common_spectral_epsilon_collision_test.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run exact Iter083F validation
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p results/raw
+          python3 scripts/iter083f_common_spectral_epsilon_collision_test.py \
+            --output results/raw/iter083f_sm_common_spectral_epsilon_collision_test.json \
+            | tee iter083f_stdout.json
+          python3 - <<'PY'
+          import json
+          p='results/raw/iter083f_sm_common_spectral_epsilon_collision_test.json'
+          d=json.load(open(p, encoding='utf-8'))
+          assert d['verdict']=='PASS_EXACT_SCOPED', d
+          assert all(d['predicates'].values()), d['predicates']
+          assert all(d['controls'].values()), d['controls']
+          assert d['shifted_denominator_cancellation_exact'] is True
+          assert d['gamma_simple_leading_magnitude']=='2/(1+gamma^2)'
+          assert d['finite_epsilon_leading_coefficient_depends_on_epsilon'] is False
+          assert d['single_wedge_beta_order']==-2
+          assert d['number_of_k5_wedges']==10
+          assert d['ten_wedge_radial_order']==-20
+          assert d['normal_codimension']==12
+          assert d['radial_measure_times_integrand_power']==-9
+          assert d['locally_integrable_at_common_collision'] is False
+          print('ITER083F_GATE=PASS_EXACT_SCOPED')
+          print('leading signs=', d['leading_signs'])
+          print('gamma-simple leading magnitude=', d['gamma_simple_leading_magnitude'])
+          print('finite epsilon changes leading coefficient=', d['finite_epsilon_leading_coefficient_depends_on_epsilon'])
+          print('K5 order/codim/radial=', d['ten_wedge_radial_order'], d['normal_codimension'], d['radial_measure_times_integrand_power'])
+          PY
+          sha256sum results/raw/iter083f_sm_common_spectral_epsilon_collision_test.json | tee iter083f_sha256.txt
+
+      - name: Upload exact result artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: iter083f-common-spectral-epsilon-collision-test
+          path: |
+            results/raw/iter083f_sm_common_spectral_epsilon_collision_test.json
+            iter083f_stdout.json
+            iter083f_sha256.txt
+          if-no-files-found: error
+          retention-days: 90
