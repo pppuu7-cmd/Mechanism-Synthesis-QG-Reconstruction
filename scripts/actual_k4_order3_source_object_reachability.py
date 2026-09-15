@@ -20,6 +20,24 @@ def normalized_text(s):
     return " ".join(s.lower().split())
 
 
+def anchor_present(text, needle):
+    n = normalized_text(needle)
+    if n in text:
+        return True
+    if "=" not in n:
+        return False
+    lhs, rhs = [x.strip() for x in n.split("=", 1)]
+    if not lhs or not rhs:
+        return False
+    lhs_token = lhs + " ="
+    rhs_token = "= " + rhs
+    i = text.find(lhs_token)
+    if i < 0:
+        return False
+    j = text.find(rhs_token, i + len(lhs_token))
+    return j >= 0
+
+
 def verify_evidence(manifest):
     failures = []
     checked = 0
@@ -44,7 +62,7 @@ def verify_evidence(manifest):
                 continue
             text = normalized_text(p.read_text(encoding="utf-8"))
             for needle in ev.get("must_contain", []):
-                if normalized_text(needle) not in text:
+                if not anchor_present(text, needle):
                     failures.append(f"missing_anchor:{r}:{ev['path']}:{needle}")
             if len(ev.get("commit", "")) != 40:
                 failures.append(f"bad_commit_anchor:{r}:{ev.get('commit')}")
