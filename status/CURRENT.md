@@ -2,268 +2,157 @@
 
 **Date:** 2026-09-15
 
-## Authoritative front
+## Candidate / authoritative front
 
-Candidate carrier remains `CRQN v0.2`, `CARRIER_SELECTED` only for source-backed F1-F8 carrier/mechanism structure.
+- Candidate: `CRQN v0.2`, `CARRIER_SELECTED` only for the source-backed F1-F8 carrier/mechanism structure.
+- Predictive local K5 amplitude: `BLOCKED_CURRENT_CANDIDATE_LOCAL_AMPLITUDE`.
+- Physical F9: `BLOCKED`.
+- G3, regulator removal/independence, RG/refinement, continuum, spin-2, GR, matter/QFT and normalized prediction remain downstream-locked.
+- Latest **usable** scientific authority remains Iter083L plus the earlier confirmed Iter083A-K chain.
+- Latest Researcher result is Iter083M, but its current production is **`INVALID_IMPLEMENTATION`** by the controlling later Critic review because several frozen negative controls were not actually executed.
+- Iter083N has only preregistration/source/theorem preparation and explicitly consumes Iter083M in P0; it is **downstream-quarantined** until Iter083M is control-repaired and independently reviewed.
 
-Predictive local K5 amplitude remains `BLOCKED_CURRENT_CANDIDATE_LOCAL_AMPLITUDE`; physical F9, G3, regulator removal, RG and continuum claims remain downstream-blocked.
+**Controlling immediate blocker:**
 
-The frozen all-`j=1/2` common-K5-collision chain is now authoritative through **Iter083L**:
+`ITER083M_FROZEN_NEGATIVE_CONTROL_REPAIR`
 
-1. **Iter083A** — true 32-dimensional boundary-fiber/S5 graded normal-symbol classification.
-2. **Iter083B** — exact intrinsic filtered supported ambiguity `F_8`, `dim_C F_8=377`.
-3. **Iter083C** — all additive identities generated from `T+ + T-=D` retain a joint-K5 top-Boolean supported nullmode.
-4. **Iter083D** — source-defined causal orientation sums retain exact ambiguity dimension 377; the old Iter081I infinite-dimensional claim is superseded.
-5. **Iter083E** — Ruhl/Toller one-wedge analytic uniqueness and the published one-wedge Feynman `i epsilon` do not lift to a joint-K5 extension selector.
-6. **Iter083F** — even deliberately holding one common finite spectral epsilon across the ten factors leaves the K5 common collision at `r^-20` in codimension 12; it is not a collision regulator.
-7. **Iter083G** — S5 symmetry alone leaves a three-sector family of regulator-space quadratic forms `Q=aI+bA+cB`; inequivalent positive metrics exist.
-8. **Iter083H** — the isolated primitive deepest K5 **single simple pole** is nevertheless Q-independent: `L=sum_e x_e` spans the unique trivial regulator irrep, so every S5-invariant Q has the same one-pole polar complement.
-9. **Iter083I** — the authoritative proper/nested K3/K4/K5 forest pole complements are Q-sensitive. Exact Q1/Q2 witnesses occur on K3, K4 and all 20 maximal chains.
-10. **Iter083J** — in a universal tensor-product-factorizing Q-based projection family, all Q* off-diagonals are forbidden; K5 edge transitivity then forces the Euclidean metric ray `Q proportional I`.
-11. **Iter083K** — a weaker condition tied directly to the actual forest, `Q*(L_B,e_external)=0` for every proper K3/K4 block and external edge, also forces `Q proportional I`. Complete enumeration gives 90 conditions of three types and exact rank 2 in the two non-Euclidean S5 shape parameters.
-12. **Iter083L** — the currently audited causal/Toller primary source does **not** define the multivariate regulator variables, Q, `pi_Q`, forest-external decoupling, joint subtraction/finite part, or a K5 composition normalization. Promotion of J/K to a physical selector is therefore `BLOCKED_SOURCE_AUTHORITY_SCOPED`.
-
-The local problem has consequently moved past ambiguity counting and regulator-metric algebra. The controlling blocker is now
+The broader physical blocker remains
 
 `SOURCE_OR_MICROLOCAL_BRIDGE_TO_FOREST_LOCAL_EXTENSION_NATURALITY`.
 
-A source-faithful joint-K5 selector would require an independently justified locality/composition/RG principle or a direct multivariate boundary-value construction.
+## Authoritative local chain through Iter083L
 
----
+1. Iter083A — true 32-dimensional all-`j=1/2` boundary-fiber/S5 graded normal-symbol classification.
+2. Iter083B — exact intrinsic filtered supported ambiguity `F_8`, `dim_C F_8=377`, only in the frozen common-K5-collision, boundary-linear, compact-node-gauge/S5-covariant same-scaling-degree scope.
+3. Iter083C — additive identities generated from `T+ + T-=D` do not select the joint-K5 ambiguity.
+4. Iter083D — source-defined causal orientation sums retain the frozen 377-dimensional ambiguity; historical Iter081I infinite-dimensional causal-sum claim is superseded/invalid under corrected source symmetry.
+5. Iter083E — one-wedge Ruhl/Toller analytic uniqueness and published one-wedge Feynman `i epsilon` do not lift to a joint-K5 extension selector.
+6. Iter083F — a deliberately common finite spectral epsilon leaves the frozen common K5 collision non-L1 and is not a collision regulator.
+7. Iter083G — S5 symmetry alone leaves a multi-parameter auxiliary regulator-metric family Q.
+8. Iter083H — the isolated primitive single-simple-pole channel is Q-independent.
+9. Iter083I — proper/nested K3/K4/K5 forest pole complements are Q-sensitive in the broad auxiliary Q family.
+10. Iter083J — universal tensor-product factorization forces the Euclidean Q ray, conditionally.
+11. Iter083K — actual forest-external decoupling also forces the Euclidean Q ray, conditionally.
+12. Iter083L — current audited causal/Toller source formulas do not authorize the additional multivariate regulator/Q/forest-locality structure needed to promote Iter083J/K to a physical selector. Critic verdict `CONFIRMED_SCOPED`.
 
-## Latest authoritative result — Iter083L
+Iter083L durable authority:
 
-Result:
-
-`results/ITER083L_SM_K5_LOCALITY_SELECTOR_SOURCE_AUTHORITY_RESULT.md`
-
-commit `f264c5dacea7e83e4b2353431cfa04ad5e83e5b6`.
-
-Adversarial confirmation:
-
-`results/ITER083L_ADVERSARIAL_REVIEW.md`
-
-commit `70f97cc7a0e5be35adce59edeaf5c7e39719940b`, verdict `CONFIRMED_SCOPED`.
-
-Prospective preregistration:
-
-`094e18d70c9145c64c3dc211ed1c632e9aa55842`.
-
-Primary-source formula lock:
-
-`8e13dbe51f5359e966277db2004d237dcf774709`.
-
-Authoritative production:
-
-- path-only repair head `8c79ee28eee028b7f8315553757ecb9b289118eb`;
-- run `34916887933`, terminal success;
-- job `104216351779`, terminal success;
-- artifact `10376332968`;
+- Researcher result `results/ITER083L_SM_K5_LOCALITY_SELECTOR_SOURCE_AUTHORITY_RESULT.md`, commit `f264c5dacea7e83e4b2353431cfa04ad5e83e5b6`;
+- Critic review `results/ITER083L_ADVERSARIAL_REVIEW.md`, commit `70f97cc7a0e5be35adce59edeaf5c7e39719940b`;
+- provenance `status/ITER083L_PROVENANCE_LEDGER.md`, commit `bdb1b9ccd06198c4c7fd73407e586a5f7f5f8145`;
+- authoritative production head `8c79ee28eee028b7f8315553757ecb9b289118eb`;
+- run `34916887933`, job `104216351779`, artifact `10376332968`;
 - artifact ZIP digest `sha256:5c8aeb239c683c3e41dc9e9bfa5ffe753123303cfbd133747d1cc0b34351d857`;
 - production JSON SHA256 `c2c31f0e86766785392aec60c83b3018f8b106c834b65003a7ec8c2a070a5070`.
 
-The previous run `34916769899` failed before scientific predicates because of a wrong historical Iter083E filename; it has no scientific authority.
+## Iter083M — terminal Researcher PASS, controlling Critic invalidation
 
-Classification:
+Researcher result:
 
-`ITER083L_SM_CURRENT_CAUSAL_TOLLER_SOURCE_DOES_NOT_AUTHORIZE_Q_BASED_FOREST_LOCALITY_SELECTOR_SCOPED`.
+`results/ITER083M_SM_SOURCE_NORMAL_GEOMETRIC_RADIAL_BASIS_RESULT.md`, commit `40416f9011ddeafd6a7201d48b218b7eaf7b6ec1`.
 
-Verdict: **`BLOCKED_SOURCE_AUTHORITY_SCOPED`**.
+Frozen / production chain:
 
-### Direct source-object distinction
+- preregistration `c801299beb44816941fd441715e3eb03c73740c7`;
+- theorem derivation `f566a9aad2d7adfbee16557de9a7fb9f8bdfa777`;
+- initial validator `74db7bbf6c9b364e8e4e26a17d428260c3e671e9`;
+- pre-production source-lock alignment `3c681c85a52b0c1b7d32ec5b933f6cc7a56ad898`;
+- production workflow/head `6916f3fb2f89f7f009bf9d3354b9dfe8c001de74`;
+- run `34917280262`, job `104217547168`, terminal success;
+- artifact `10376298881`;
+- ZIP digest `sha256:7659e611caa70da2803583ad0ee0f4ee29e7a3a9924058ee180d4c9a7a21566e`;
+- production JSON SHA256 `5b11c3060b7809921d35323fec089f280c07614728e6282b7ea549301753b7a3`.
 
-Published source order remains
+Researcher classification:
 
-`one-wedge spectral/spinor construction -> Toller function -> ten-Toller K5 product -> full boundary contraction -> K5 group integration / extension`.
+`ITER083M_SM_SOURCE_BOOST_GEOMETRY_GIVES_UNIQUE_LOCAL_FOREST_RADIAL_QUADRATIC_BASIS_SCOPED`
 
-The source-defined `epsilon` is one-wedge spectral data. The published K5 definition does not include:
+Researcher verdict: `PASS_EXACT_SCOPED`.
 
-- edgewise analytic collision parameters `s_e=1+x_e`;
-- a ten-dimensional regulator metric Q;
-- a Q-dependent polar/holomorphic projection `pi_Q`;
-- forest pole covectors as physical normalization data;
-- `Q*(L_B,e_external)=0`;
-- a joint K3/K4/K5 finite-part/subtraction map;
-- a common K5 collision regulator;
-- a gluing/composition normalization selecting supported extension coefficients.
+An initial Critic review `results/ITER083M_ADVERSARIAL_REVIEW.md`, commit `eddf729b6a5563d9da5012655cba03e07228c8f7`, returned `CONFIRMED_SCOPED` but missed the frozen-control implementation defect.
 
-Therefore the implications proved in Iter083J/K are conditional mathematical theorems, not yet source-derived physical laws.
+The controlling later review is
 
----
+`results/ITER083M_ADVERSARIAL_IMPLEMENTATION_REVIEW.md`, commit `063087c5dfcf0cca9e2565cf75ef82c8ea640f6f`.
 
-## Iter083H — primitive single-pole Q independence
+Mandatory verdict: **`INVALID_IMPLEMENTATION`**.
 
-Result:
+Durable provenance:
 
-`results/ITER083H_SM_PRIMITIVE_SIMPLE_POLE_Q_INDEPENDENCE_RESULT.md`, commit `e9d366cf693099828405098ab00806739c0d899f`.
+`status/ITER083M_PROVENANCE_LEDGER.md`, commit `2dfd055b484aff2b4f9f164be1426962eb13b7d7`.
 
-Review:
+### Why Iter083M is implementation-invalid
 
-`results/ITER083H_ADVERSARIAL_REVIEW.md`, commit `6dd522afbaad2139ff464c62603f9eace3554aa7`.
+The preregistration freezes eight negative/control requirements and the production workflow requires all emitted controls to pass. Several are not actually exercised:
 
-Production run `34915559808`, job `104212300023`, artifact `10375774823`, JSON SHA256 `409b5ec3467b534eef0d1caeda7c49adfeb31913a4ad7f0dff61022b51dde483`.
+- `reject_rooted_metric = p6`, but p6 only tests covariance of the good barycentric projectors and receives no rooted metric;
+- `reject_nonorthogonal_increments = p5`, but p5 only verifies the good orthogonal increments and receives no malformed increment;
+- `reject_edge_regulator_q_identification = p7` and `reject_nonlinear_beta_overclaim = p7`, while p7 only checks for three disclaimer strings in the theorem note and receives neither an auxiliary ten-edge Q object nor a false exact-beta claim;
+- finite-part/global-patching retention controls are likewise collapsed to the same text-presence boolean.
 
-For regulators `s_e=1+x_e`, with `L=sum_e x_e`, the primitive radial Taylor term of order n is
+Therefore green CI does not certify the complete frozen negative-control contract.
 
-`I_n(x)=1/(n-8-2L)`.
+The underlying scoped linear algebra is **not scientifically refuted**. A control-only repair can recover authority if it preserves the scientific preregistration and actually injects/rejects the malformed objects.
 
-Only `n=8` has a physical-point pole, `I_8=-1/(2L)`.
+## Iter083N dependency quarantine
 
-Since the regulator representation is
+Preregistration `c29ba0ddbaa4d6e1581db558b792565a7916a0cd` freezes a radial finite-part / higher defining-function-jet gate and explicitly consumes Iter083M radial geometry in P0. Subsequent source/theorem preparation may remain as outcome-independent work, but no substantive Iter083N production/result may be treated as authoritative while Iter083M is implementation-invalid.
 
-`E=[5]+[4,1]+[3,2]`,
+Do not use Iter083M production values as a downstream frozen input before a repaired terminal run and independent review.
 
-L is the unique trivial line and every S5-invariant Q preserves
+## Source-order / source-object firewall
 
-`L^(perp,Q*)=[4,1]+[3,2]`.
+Authoritative source order remains:
 
-The theorem retains the true 32-dimensional boundary fiber and all five equivariant regulator-linear channels. The evaluated finite part of `h/L` is Q-independent.
+`one-wedge spectral/spinor integration -> Toller function -> product of ten Toller matrices -> full boundary contraction -> K5 group integration / distributional extension`.
 
-This theorem is strictly single-pole. It does not cover nested forest poles.
+This is not equivalent without a theorem to termwise `theta/delta/delta'` expansion, multiplication of ten distributions and pullback.
 
----
+- Failure of a termwise Hörmander product is not automatically failure of the source-ordered full Toller vertex.
+- Individual Toller functions do not prove the full K5 amplitude.
+- Published spectral `i epsilon` remains a one-wedge prescription.
+- Auxiliary ten-edge regulator Q is not the physical collision-normal metric and cannot be promoted by convenience.
+- Scalar K4/K5/Hodge controls remain surrogates unless a true-source bridge is derived.
 
-## Iter083I — forest pole geometry is Q-sensitive
+## Erratum / quarantine locks
 
-Result:
+`status/ITER077_CONTACT_FORMULA_ERRATUM.md`, blob `63356e5099929f2b21d9d7296ab97f15ff163dba`, remains controlling.
 
-`results/ITER083I_SM_FOREST_POLE_Q_GEOMETRY_SENSITIVITY_RESULT.md`, commit `7bcc1032cb14dde7190709bd2ef59550281adb0f`.
+Historical source-lock-invalid Iter077E/F contact-formula siblings remain quarantined.
 
-Review:
+Historical Iter077Q infinite tangential physical application remains invalid under the corrected exact compact node gauge symmetry.
 
-`results/ITER083I_ADVERSARIAL_REVIEW.md`, commit `f0e9809efa282c99a38426946ffdde18bf58e7e2`.
+## Current CRQN survival chain
 
-Production run `34915925995`, job `104213388315`, artifact `10376346398`, JSON SHA256 `3e432ba36d3bf6d04b2f6dd9894eb234ccd7fdae7842abf09d6c0534f722b733`.
-
-Authoritative forest: 10 K3, 5 K4, 1 K5, 20 maximal chains.
-
-With
-
-`Q1=I`, `Q2=I+(1/10)A_L(K5)`,
-
-canonical proper-stratum witnesses give
-
-- K3: `0 -> -25/176`;
-- K4: `0 -> -15/88`.
-
-For the canonical maximal chain and `z=-e_04+e_34`, pairings against `(L3,L4,L5)` are
-
-`Q1*: (0,0,0)`,
-
-`Q2*: (5/22,0,0)`.
-
-The same pattern is verified on all 20 chains by S5 transport. This is geometric projection-scheme sensitivity only; nonzero physical amplitude dependence still requires residue/numerator activation.
-
----
-
-## Iter083J — universal factorization forces Euclidean Q ray
-
-Result:
-
-`results/ITER083J_SM_PRODUCT_FACTORIZATION_METRIC_UNIQUENESS_RESULT.md`.
-
-Authoritative production run `34916275666`, job `104214473636`, artifact `10375888411`, JSON SHA256 `ab27cfbb7049ce155d2e84110377ec5bda293ef1f7ac538acabd43bbf88fed5b`.
-
-For distinct regulator coordinates,
-
-`pi_Q(x_j/x_i)=Q*_(ij)/Q*_(ii)`.
-
-Universal tensor-product factorization requires this to vanish for all `i!=j`, forcing all 45 independent Q* off-diagonal entries to zero. S5 edge transitivity then forces all diagonal entries equal:
-
-`Q*=cI`, `Q=c^-1I`.
-
-The positive S5-only witness Q2 fails this stronger condition with exact constants
-
-`-3/37` for adjacent edges and `1/37` for disjoint edges.
-
-The connected K5 source is not itself a tensor product of ten independent group-space distributions, so this theorem is conditional.
-
----
-
-## Iter083K — actual forest-external decoupling also forces Euclidean Q ray
-
-Result:
-
-`results/ITER083K_SM_FOREST_EXTERNAL_DECOUPLING_METRIC_UNIQUENESS_RESULT.md`, commit `6a0640e16a7d469b54c9caf148a382227305f97a`.
-
-Review:
-
-`results/ITER083K_ADVERSARIAL_REVIEW.md`, commit `3fe6ad7440d7cdbd6ee93ea6770b065d913452e8`.
-
-Production run `34916567578`, job `104215356766`, artifact `10376651844`, JSON SHA256 `3d2b42bf7530d5316ccee17cee1b980773d06e487041cd384590c1bfc13f9d27`.
-
-For
-
-`Q*=alpha I+beta A+gamma B`,
-
-complete proper-forest enumeration gives 90 conditions:
-
-- 60 K3 cross: `2 beta+gamma=0`;
-- 10 K3 complement: `3 gamma=0`;
-- 20 K4 external: `3 beta+3 gamma=0`.
-
-Exact rank is 2. Thus
-
-`beta=gamma=0`,
-
-so `Q*=alpha I` and Q lies on the Euclidean ray. Overall scale is projection-irrelevant.
-
-The remaining issue is source/microlocal justification of the forest-external decoupling condition itself.
-
----
-
-## Frozen local ambiguity authority
-
-Iter083A:
-
-`chi_boundary=(32,0,8,2,0,0,2)`.
-
-`m_0..m_8=(2,0,5,1,22,10,72,48,217)`.
-
-Iter083B:
-
-`dim_C F_8=377`
-
-for the frozen all-`j=1/2`, common-K5-collision, boundary-linear, compact-node-gauge/S5-covariant same-scaling-degree supported extension-difference space.
-
-This is not a generic-spin/all-strata counterterm count and does not select 377 physical coefficients.
-
----
-
-## Exact remaining local analytic blocker
-
-The metric-selection subproblem is conditionally solved:
-
-- S5 alone: insufficient;
-- primitive one-pole channel: Q-independent;
-- nested/proper poles: Q-sensitive in the broad S5-only class;
-- universal factorization or actual forest-external decoupling: Q forced to Euclidean ray.
-
-The unresolved implication is
-
-`physical/source or microlocal locality -> forest-external decoupling / canonical extension naturality`.
-
-Until that bridge is established, do **not** install `Q=I` as a physical finite-part prescription by convenience.
-
-High-value successor directions:
-
-1. microlocal/local-covariant extension maps compatible with restriction/factorization on collision strata;
-2. source-level causal multivertex gluing/composition capable of fixing supported coefficients;
-3. source-faithful resolved K3/K4 residue numerators, testing whether Q-sensitive channels are actually activated;
-4. geometric radial/normal analytic regularization using source Haar/tubular structure rather than artificial edge-regulator metric data;
-5. RG/refinement consistency as a normalization law.
-
----
-
-## Orthogonal blockers
-
-- `K5_ACTUAL_DISTRIBUTIONAL_PARTITION_OF_UNITY_PATCHING_AND_INTER_STRATUM_TRANSPORT`;
-- `CAUSAL_MULTIVERTEX_E3_E4_E6_COMPLETE_SOURCE_BRIDGE`;
-- `REPLACEMENT_FOR_FAILED_HAN_D2_BOUND_IN_CAUSAL_FACE_OBJECT`;
-- `E7_E8_DISTRIBUTIONAL_EXTENSION_TRANSPORT_OR_SELECTOR`;
-- `RG_REFINEMENT_E9_COARSE_FINE_BOUNDARY_MAP_AND_MATCHING_FUNCTIONAL`;
-- `REGULATOR_INDEPENDENCE_AFTER_GLOBAL_ANALYTIC_OBJECT_DEFINITION`.
+`F1-F8 carrier`
+`-> source-ordered K5 off-collision object`
+`-> frozen common non-L1 collision`
+`-> exact boundary-covariant supported ambiguity F_8 in the all-j=1/2 scope`
+`-> additive identities / causal sums / one-wedge analytic uniqueness do not select`
+`-> auxiliary Q geometry only conditionally unique under extra locality`
+`-> current source does not authorize that extra locality (Iter083L CONFIRMED_SCOPED)`
+`-> Iter083M proposed physical normal radial quadratic basis INVALID_IMPLEMENTATION; math not refuted`
+`-> valid control-repaired radial-basis authority ?`
+`-> radial meromorphic finite-part/residue dependence ?`
+`-> source/microlocal finite-part or composition selector ?`
+`-> global multistratum distributional patching ?`
+`-> causal composition E3/E4/E6 ?`
+`-> quantum dynamics G3 ?`
+`-> regulator removal / independence ?`
+`-> physical RG/refinement ?`
+`-> continuum 3+1 Lorentzian geometry ?`
+`-> massless spin-2 ?`
+`-> Einstein/GR ?`
+`-> matter/QFT IR ?`
+`-> normalized falsifiable prediction ?`.
 
 ## Claim locks
 
-No `NEW_PHYSICS_FOUND`; no complete-QG claim; no unique physical K5 extension; no source-authorized Q-based finite part; no actual nonzero Q-dependence theorem for the physical amplitude; no generic-spin complete extension dimension; no all-strata global renormalization theorem; no causal-vertex distributional nonexistence theorem; no regulator independence/dependence theorem; no G3/F9/G8/K5 promotion; no fitted subtraction constants/scales or preferred finite parts without independent authority.
+No `NEW_PHYSICS_FOUND`; no complete-QG claim; no unique physical K5 extension; no source-authorized finite-part selector; no generic finite-spin signed P3; no exact full-amplitude cancellation/non-cancellation theorem; no causal-vertex finiteness/divergence theorem without a full source-faithful test; no regulator-independence/dependence theorem for the physical amplitude; no physical source->K4 pushforward; no nominal epsilon^-1 coefficient; no G3 PASS without quantum-dynamics closure; no F9/G8/K5 promotion; no fitted subtraction constants/scales or preferred finite parts without independent authority.
+
+## Authorized next work
+
+1. **Only control-repair Iter083M** under the unchanged scientific preregistration may restore the blocked radial-basis authority. Actual malformed rooted metric, nonorthogonal increment, auxiliary-Q identification and overclaim objects must be fed through the relevant validators and rejected.
+2. Iter083N prereg/source/theorem work may be retained as outcome-independent preparation, but its implementation/production must not consume Iter083M as an authoritative PASS until repair.
+3. If Iter083M repair changes hypothesis, object, source authority, P0-P7, PASS/FAIL rules or interpretation ceiling, require a newly named prospectively preregistered gate.
+4. After a valid repair, the next high-value scientific question is radial meromorphic finite-part/residue dependence and/or the broader source/microlocal bridge to extension naturality; do not infer a selector from radial geometry alone.
