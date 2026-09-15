@@ -16,7 +16,7 @@ Relevant exact source facts from Sections 6.2–6.3:
 
 Therefore this framework provides a mathematically precise example in which a multivariable holomorphic-part projection uses a quadratic form on regulator-parameter space as part of the construction.
 
-It does NOT state that this Q is physically selected for the Lorentzian spinfoam K5 object.
+It does NOT state that this Q is physically selected for the Lorentzian spinfoam K5 object. For MSQGR this framework is not as physical source authority; it is tested only as a candidate mathematical repair class.
 
 ## Additional regularization-dependence source
 Giovanni Felder and David Kazhdan, “Regularization of divergent integrals”, Selecta Mathematica 24 (2018), 157–186, arXiv:1611.05057.
