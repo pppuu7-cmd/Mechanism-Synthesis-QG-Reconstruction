@@ -1,0 +1,89 @@
+name: Iter083N provenance-correct retry 1
+
+on:
+  push:
+    paths:
+      - 'prereg/ITER083N_PROVENANCE_CORRECT_RETRY_1.md'
+      - 'scripts/iter083n_provenance_correct_retry.py'
+      - '.github/workflows/iter083n_provenance_correct_retry.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout repository with provenance history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Verify frozen commit ancestry
+        shell: bash
+        run: |
+          set -euo pipefail
+          for sha in \
+            c29ba0ddbaa4d6e1581db558b792565a7916a0cd \
+            cf9d17cc8dae087f2c59ff0adb9f8aeff8ef7533 \
+            70a756c9c7c66f822d0e5933e9522b2d359dafe8 \
+            e7623cb5303ea49894e480e2fc4a884df44e7713 \
+            fbff993fc920e707d0ff885b73549f3204d208c5 \
+            d9edb0fd2a5c522ddec021f2b4f8e1a964ee3d96 \
+            397a5783e979121850ccb550f83df80237066fdb
+          do
+            git cat-file -e "$sha^{commit}"
+            git merge-base --is-ancestor "$sha" HEAD
+          done
+          echo "HEAD=$(git rev-parse HEAD)"
+
+      - name: Run provenance-correct exact Iter083N retry
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p results/raw
+          python3 scripts/iter083n_provenance_correct_retry.py \
+            --output results/raw/iter083n_provenance_correct_retry_1.json \
+            | tee iter083n_retry_stdout.json
+          python3 - <<'PY'
+          import json
+          p='results/raw/iter083n_provenance_correct_retry_1.json'
+          d=json.load(open(p,encoding='utf-8'))
+          assert d['execution_valid'] is True, d
+          assert d['verdict']=='PASS_EXACT_SCOPED', d
+          assert d['classification']=='ITER083N_SM_RADIAL_FINITE_PART_CHANGE_IS_RESIDUE_TIMES_DEFINING_FUNCTION_JET_AND_TANGENT_METRIC_ALONE_IS_INSUFFICIENT_FOR_K4_K5_SCOPED', d
+          assert all(d['predicates'].values()), d['predicates']
+          assert all(d['controls'].values()), d['controls']
+          assert d['provenance']['source_lock_commit']=='cf9d17cc8dae087f2c59ff0adb9f8aeff8ef7533'
+          assert d['provenance']['theorem_derivation_commit']=='70a756c9c7c66f822d0e5933e9522b2d359dafe8'
+          assert d['provenance']['iter083m_controlling_critic_commit']=='e7623cb5303ea49894e480e2fc4a884df44e7713'
+          assert d['provenance']['historical_iter083n_result_status']=='INVALID_PROVENANCE_DO_NOT_REHABILITATE'
+          assert d['delta_identity_checks']==90
+          assert d['delta_identity_failures']==0
+          assert d['annihilator_checks']=={'0':True,'3':True,'8':True}
+          assert d['sharp_witnesses']=={'0':True,'3':True,'8':True}
+          assert d['universal_independence_thresholds']=={
+              'K3':{'omega':0,'required_I_power':1},
+              'K4':{'omega':3,'required_I_power':4},
+              'K5':{'omega':8,'required_I_power':9},
+          }
+          assert d['same_tangent_metric_conformal_information']=='phi|_N=0 only'
+          print('ITER083N_RETRY_GATE=PASS_EXACT_SCOPED')
+          print('thresholds=',d['universal_independence_thresholds'])
+          print('finite-part shift=',d['laurent_finite_part_shift'])
+          PY
+          sha256sum results/raw/iter083n_provenance_correct_retry_1.json | tee iter083n_retry_sha256.txt
+          git rev-parse HEAD | tee iter083n_retry_head.txt
+
+      - name: Upload authoritative retry artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: iter083n-provenance-correct-retry-1
+          path: |
+            results/raw/iter083n_provenance_correct_retry_1.json
+            iter083n_retry_stdout.json
+            iter083n_retry_sha256.txt
+            iter083n_retry_head.txt
+          if-no-files-found: error
+          retention-days: 90
