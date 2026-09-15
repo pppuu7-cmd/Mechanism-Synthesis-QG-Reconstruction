@@ -1,0 +1,26 @@
+name: Critic actual multivariate K4 order3 parity
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/critic_actual_multivariate_k4_order3_parity.py'
+      - '.github/workflows/critic_actual_multivariate_k4_order3_parity.yml'
+permissions:
+  contents: read
+jobs:
+  critic:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Independent frozen Critic
+        run: python scripts/critic_actual_multivariate_k4_order3_parity.py
+      - name: Upload raw Critic result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: critic-actual-multivariate-k4-order3-parity
+          path: results/raw/critic_actual_multivariate_k4_order3_parity.json
+          if-no-files-found: error
