@@ -1,0 +1,66 @@
+name: Actual multivariate K3 polar parity gate
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'prereg/ACTUAL_SOURCE_ORDERED_MULTIVARIATE_POLAR_NORMAL_JET_ANNIHILATOR.md'
+      - 'sources/ACTUAL_MULTIVARIATE_POLAR_K3_PARITY_DERIVATION.md'
+      - 'scripts/actual_multivariate_polar_k3_parity_gate.py'
+      - '.github/workflows/actual_multivariate_polar_k3_parity_gate.yml'
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run exact K3 parity gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p results/raw
+          python3 scripts/actual_multivariate_polar_k3_parity_gate.py \
+            --output results/raw/actual_multivariate_polar_k3_parity_gate.json \
+            | tee actual_multivariate_polar_k3_parity_stdout.json
+          python3 - <<'PY'
+          import json
+          p='results/raw/actual_multivariate_polar_k3_parity_gate.json'
+          d=json.load(open(p, encoding='utf-8'))
+          assert d['verdict'] in {'PASS_EXACT_SCOPED','FAIL_EXACT_SCOPED'}, d
+          assert d['provenance_ok'] is True, d['provenance_missing']
+          assert all(d['controls'].values()), d['controls']
+          c=d['computed']
+          assert c['source_wedges']==10
+          assert c['k3_blocks']==10
+          assert len(c['representative_internal_edges'])==3
+          assert c['representative_external_edge_count']==7
+          assert c['internal_product_parity']==-1
+          assert all(c['leading_matrix_odd_checks'])
+          assert c['full32_components_executed']==32
+          assert c['k2_front_radial_exponent']==0
+          assert c['maximal_k3_k4_k5_chains']==20
+          assert c['candidate_k3_normal_order']==0
+          if d['verdict']=='PASS_EXACT_SCOPED':
+              s=d['scientific_conclusion']
+              assert s['k3_face_residue_at_physical_origin_zero'] is True
+              assert s['any_multiresidue_containing_k3_zero'] is True
+              assert s['k3_zero_scheme_invariant_under_holomorphic_defining_function_gauge'] is True
+              assert s['k3_zero_annihilator']=='ALL_TEST_FUNCTIONS'
+              assert s['k4_or_k5_conclusion'] is None
+          print('K3_GATE_VERDICT=',d['verdict'])
+          print('K3_GATE_CLASSIFICATION=',d['classification'])
+          print('K3_PREDICATES=',d['predicates'])
+          print('K3_FULL32_CHECKSUM=',c['full32_checksum'])
+          PY
+          sha256sum results/raw/actual_multivariate_polar_k3_parity_gate.json | tee actual_multivariate_polar_k3_parity_sha256.txt
+      - name: Upload K3 gate artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: actual-multivariate-polar-k3-parity-gate
+          path: |
+            results/raw/actual_multivariate_polar_k3_parity_gate.json
+            actual_multivariate_polar_k3_parity_stdout.json
+            actual_multivariate_polar_k3_parity_sha256.txt
+          if-no-files-found: error
+          retention-days: 90
