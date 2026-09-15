@@ -79,16 +79,12 @@ def main():
     ])
     p0_invalid, m0_invalid = require_text(iter083n_invalid_review, [
         'INVALID_PROVENANCE',
-        EXPECTED_HISTORICAL_INVALIDATION,
+        'old Researcher Iter083M result file',
+        'PASS_EXACT_SCOPED',
+        EXPECTED_SOURCE_LOCK_COMMIT,
+        EXPECTED_THEOREM_COMMIT,
+        'verify controlling repository authority',
     ])
-    # The review file normally cannot contain its own commit SHA; accept the immutable verdict/object markers as the executable historical lock.
-    if not p0_invalid:
-        p0_invalid, m0_invalid = require_text(iter083n_invalid_review, [
-            'INVALID_PROVENANCE',
-            'stale Iter083M Researcher result',
-            EXPECTED_SOURCE_LOCK_COMMIT,
-            EXPECTED_THEOREM_COMMIT,
-        ])
     p0_d, m0_d = require_text(iter082d, ['omega=(0,3,8)', 'omega_B'])
     p0_b, m0_b = require_text(iter083b, ['normal order at most', 'dim_C F_8 = 377'])
     p0_p, m0_p = require_text(prereg, ['LAURENT_TRANSFORMATION', 'SUPPORTED_JET_ANNIHILATOR', 'ACTUAL_RESIDUE_FIREWALL'])
@@ -102,7 +98,6 @@ def main():
     ])
     p0 = all([p0_current, p0_critic, p0_invalid, p0_d, p0_b, p0_p, p0_retry])
 
-    # P1: exact Laurent coefficient bookkeeping.
     residue_before = (1, 0, 0)
     finite_before = (0, 1, 0)
     residue_after = (1, 0, 0)
@@ -111,7 +106,6 @@ def main():
     finite_shift = tuple(finite_after[i] - finite_before[i] for i in range(3))
     p1 = residue_unchanged and finite_shift == (0, 0, 1)
 
-    # P2: exact supported-jet identities through the deepest frozen order.
     delta_checks = 0
     delta_failures = []
     for k in range(9):
@@ -154,10 +148,8 @@ def main():
     p7 = p7_s and p7_p
 
     predicates = {'P0': p0, 'P1': p1, 'P2': p2, 'P3': p3, 'P4': p4, 'P5': p5, 'P6': p6, 'P7': p7}
-
-    # Outcome-sensitive negative controls: each malformed claim is represented explicitly.
     controls = {
-        'reject_stale_researcher_pass_as_authority': p0_current and p0_critic,
+        'reject_stale_researcher_pass_as_authority': p0_current and p0_critic and p0_invalid,
         'reject_tangent_metric_as_full_finite_part_for_omega_positive': p4,
         'reject_all_residues_as_order_zero': thresholds['K5']['omega'] == 8 and thresholds['K4']['omega'] == 3,
         'reject_actual_k5_dependence_claim_without_residue': p6,
@@ -167,12 +159,7 @@ def main():
         'retain_global_forest_patching_blocker': 'retain global forest/patching blockers' in prereg,
     }
 
-    execution_valid = all([
-        p0,
-        delta_checks == 90,
-        not delta_failures,
-        all(controls.values()),
-    ])
+    execution_valid = all([p0, delta_checks == 90, not delta_failures, all(controls.values())])
     scientific_pass = all(predicates[f'P{i}'] for i in range(1, 8))
 
     if not execution_valid:
@@ -194,11 +181,14 @@ def main():
         'controls': controls,
         'provenance': {
             'parent_prereg_commit': EXPECTED_PARENT_PREREG,
+            'retry_prereg_commit': 'd9edb0fd2a5c522ddec021f2b4f8e1a964ee3d96',
+            'control_repair_prereg_commit': '74ec4edd547d07503e70a0a972a500df70c7c60a',
             'source_lock_commit': EXPECTED_SOURCE_LOCK_COMMIT,
             'theorem_derivation_commit': EXPECTED_THEOREM_COMMIT,
             'iter083m_controlling_critic_commit': EXPECTED_ITER083M_CRITIC_COMMIT,
             'historical_iter083n_invalidation_commit': EXPECTED_HISTORICAL_INVALIDATION,
             'historical_iter083n_result_status': 'INVALID_PROVENANCE_DO_NOT_REHABILITATE',
+            'historical_retry_run': '34925091322_INVALID_IMPLEMENTATION',
         },
         'laurent_residue_unchanged': residue_unchanged,
         'laurent_finite_part_shift': 'phi*A_-1',
