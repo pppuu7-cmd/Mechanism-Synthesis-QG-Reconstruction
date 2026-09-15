@@ -1,0 +1,110 @@
+{
+  "boost_symmetric_form_dimension": 1,
+  "canonical_local_radial_form": "R_B^2=sum_a |x_a-xbar_B|^2=(1/|B|) sum_(a<b)|x_a-x_b|^2",
+  "classification": "ITER083M_SM_SOURCE_BOOST_GEOMETRY_GIVES_UNIQUE_LOCAL_FOREST_RADIAL_QUADRATIC_BASIS_SCOPED",
+  "complete_graph_laplacian_identity": {
+    "3": true,
+    "4": true,
+    "5": true
+  },
+  "controls": {
+    "reject_J_as_distinct_on_std": true,
+    "reject_edge_regulator_q_identification": true,
+    "reject_nonlinear_beta_overclaim": true,
+    "reject_nonorthogonal_increments": true,
+    "reject_rooted_metric": true,
+    "reject_single_chain_only": true,
+    "repair_contract_lock": true,
+    "retain_finite_part_scale_freedom": true,
+    "retain_global_patching_blocker": true
+  },
+  "dependency_missing": {
+    "P0_iter077i": [],
+    "P0_iter082d": [],
+    "P0_iter083b": [],
+    "P0_prereg": [],
+    "P7_theorem": [],
+    "repair_prereg": []
+  },
+  "iteration": "Iter083M-SM-control-repair-1",
+  "label_metric_stats": {
+    "3": {
+      "full_invariant_dimension": 2,
+      "pair_orbit_sizes": [3, 3],
+      "std_restriction_dimension": 1
+    },
+    "4": {
+      "full_invariant_dimension": 2,
+      "pair_orbit_sizes": [4, 6],
+      "std_restriction_dimension": 1
+    },
+    "5": {
+      "full_invariant_dimension": 2,
+      "pair_orbit_sizes": [5, 10],
+      "std_restriction_dimension": 1
+    }
+  },
+  "maximal_chain_count": 20,
+  "negative_control_witnesses": {
+    "J_restricts_zero_on_std": {
+      "3": true,
+      "4": true,
+      "5": true
+    },
+    "bad_beta_claim": {
+      "exact_nonlinear": true,
+      "order": "exact_global",
+      "relation": "beta_ab"
+    },
+    "bad_beta_claim_authorized": false,
+    "bad_chain_valid": false,
+    "bad_increment_definition": "B_bad=B+A",
+    "beta_authority": {
+      "exact_nonlinear": false,
+      "order": "tangent_O_r2",
+      "relation": "beta_ab"
+    },
+    "edge_q_object": {
+      "dimension": 10,
+      "domain": "R10_edge_regulator_space",
+      "kind": "edge_regulator_metric"
+    },
+    "finite_part_promotion_allowed": false,
+    "global_promotion_allowed": false,
+    "good_chain_valid": true,
+    "physical_normal_object": {
+      "dimension": 12,
+      "domain": "R3_tensor_Std5",
+      "kind": "normal_fiber_metric"
+    },
+    "rooted_metric_diagonal": ["1", "2", "3", "4", "5"],
+    "rooted_metric_s5_invariant": false,
+    "truncated_chain_count": 1,
+    "truncated_chain_validator_passed": false
+  },
+  "nested_addition_checks": 25,
+  "nested_variance_coefficients": ["3/4", "4/5"],
+  "normal_invariant_metric_dimension": {
+    "K3": 1,
+    "K4": 1,
+    "K5": 1
+  },
+  "physical_chain_ranks": [6, 3, 3],
+  "physical_total_rank": 12,
+  "predicates": {
+    "P0": true,
+    "P1": true,
+    "P2": true,
+    "P3": true,
+    "P4": true,
+    "P5": true,
+    "P6": true,
+    "P7": true
+  },
+  "rotation_subgroup_checked": 24,
+  "s5_block_covariance_checks": 1920,
+  "s5_chain_increment_covariance_checks": 7200,
+  "scientific_statement": "The source small-boost geometry and authoritative barycentric forest projectors determine a unique invariant local/tubular radial quadratic basis on every K3/K4/K5 normal fiber, with exact orthogonal nested variance decomposition on all 20 maximal chains. This supplies radial geometry, not a finite-part selector.",
+  "source_tangent_relation": "sum beta_ab(r)^2 = |B| r^2 R_B^2 + O(r^3)",
+  "verdict": "PASS_EXACT_SCOPED"
+}
