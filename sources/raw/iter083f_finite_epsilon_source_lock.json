@@ -1,0 +1,77 @@
+{
+  "iteration": "Iter083F-SM",
+  "audit_date": "2026-09-15",
+  "toller_companion": {
+    "arxiv": "2604.24945",
+    "kernel_equation": 16,
+    "finite_epsilon_functional_equation": 17,
+    "feynman_limit_equation": 20,
+    "physical_j": "1/2",
+    "physical_l": "1/2",
+    "physical_k": "1/2",
+    "gamma_simple_rho": "gamma/2",
+    "kernel_j_half": "(rho_tilde^2+1/4)/(rho^2+1/4)",
+    "epsilon_shift_plus": "rho_tilde=rho+i*epsilon",
+    "epsilon_shift_minus": "rho_tilde=rho-i*epsilon",
+    "epsilon_variable_type": "spectral_rho_shift",
+    "beta_shifted_by_epsilon": false,
+    "finite_epsilon_damping_factor": "exp(-epsilon*beta)",
+    "finite_epsilon_damping_factor_is_exp_minus_epsilon_over_beta": false,
+    "branch_rows": [
+      {
+        "branch": "+",
+        "m": "+1/2",
+        "leading_sign": -1,
+        "finite_epsilon_numerator_type": "pure_exponential",
+        "leading_coefficient_epsilon_dependent": false
+      },
+      {
+        "branch": "+",
+        "m": "-1/2",
+        "leading_sign": 1,
+        "finite_epsilon_numerator_type": "cosh-2*i*rho*sinh+2*epsilon*sinh",
+        "leading_coefficient_epsilon_dependent": false
+      },
+      {
+        "branch": "-",
+        "m": "+1/2",
+        "leading_sign": 1,
+        "finite_epsilon_numerator_type": "cosh+2*i*rho*sinh+2*epsilon*sinh",
+        "leading_coefficient_epsilon_dependent": false
+      },
+      {
+        "branch": "-",
+        "m": "-1/2",
+        "leading_sign": -1,
+        "finite_epsilon_numerator_type": "pure_exponential",
+        "leading_coefficient_epsilon_dependent": false
+      }
+    ]
+  },
+  "causal_vertex": {
+    "arxiv": "2601.23162v1",
+    "published_order": [
+      "take_one_wedge_epsilon_limit",
+      "obtain_elementary_toller_matrix",
+      "form_ten_wedge_product",
+      "perform_k5_group_integrations"
+    ],
+    "common_finite_epsilon_ten_wedge_construction_is_published_source": false
+  },
+  "repository_geometry": {
+    "number_of_k5_wedges": 10,
+    "single_wedge_collision_order": 2,
+    "ten_wedge_collision_order": 20,
+    "normal_codimension": 12,
+    "normal_radial_measure_power": 11,
+    "normal_radial_integrand_power": -9,
+    "iter083b_ambiguity_dimension": 377
+  },
+  "claim_locks": [
+    "finite_spectral_epsilon_does_not_change_beta_minus_2_leading_order",
+    "ten_wedge_fixed_epsilon_product_retains_r_minus_20",
+    "finite_spectral_epsilon_is_not_group_normal_collision_regulator",
+    "common_finite_epsilon_construction_is_new_not_published_authority",
+    "failure_does_not_rule_out_genuinely_joint_regulators"
+  ]
+}
