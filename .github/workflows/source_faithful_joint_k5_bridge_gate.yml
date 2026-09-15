@@ -1,0 +1,54 @@
+name: Source-faithful joint K5 bridge authority gate
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'prereg/SOURCE_FAITHFUL_JOINT_K5_BRIDGE_AUTHORITY_GATE.md'
+      - 'sources/SOURCE_FAITHFUL_JOINT_K5_BRIDGE_DERIVATION.md'
+      - 'sources/raw/source_faithful_joint_k5_bridge_lock.json'
+      - 'scripts/source_faithful_joint_k5_bridge_gate.py'
+      - '.github/workflows/source_faithful_joint_k5_bridge_gate.yml'
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run bridge gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p results/raw
+          python3 scripts/source_faithful_joint_k5_bridge_gate.py \
+            --output results/raw/source_faithful_joint_k5_bridge_gate.json \
+            | tee source_faithful_joint_k5_bridge_stdout.json
+          python3 - <<'PY'
+          import json
+          p='results/raw/source_faithful_joint_k5_bridge_gate.json'
+          d=json.load(open(p, encoding='utf-8'))
+          allowed={'PASS_EXACT_SCOPED','BLOCKED_OBJECT_DEFINITION','SCIENTIFIC_FAIL_SCOPED'}
+          assert d['verdict'] in allowed, d
+          assert d['geometry_ok'] is True, d['computed']
+          assert not d['provenance_missing'], d['provenance_missing']
+          assert all(d['controls'].values()), d['controls']
+          print('BRIDGE_GATE_VERDICT=', d['verdict'])
+          print('BRIDGE_GATE_CLASSIFICATION=', d['classification'])
+          print('B1_B9=', d['predicates'])
+          print('BLOCK_COUNTS=', d['computed']['all_block_count'], d['computed']['divergent_block_count'])
+          print('CHAIN_RANKS=', d['computed']['chain_rank_values'])
+          print('CHAIN_DENSITY=', d['computed']['chain_density_power_values'])
+          print('Q_SERIES=', d['computed']['q_series_coefficients'])
+          PY
+          sha256sum results/raw/source_faithful_joint_k5_bridge_gate.json | tee source_faithful_joint_k5_bridge_sha256.txt
+      - name: Upload gate artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: source-faithful-joint-k5-bridge-gate
+          path: |
+            results/raw/source_faithful_joint_k5_bridge_gate.json
+            source_faithful_joint_k5_bridge_stdout.json
+            source_faithful_joint_k5_bridge_sha256.txt
+          if-no-files-found: error
+          retention-days: 90
