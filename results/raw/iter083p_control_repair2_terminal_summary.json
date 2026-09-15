@@ -1,0 +1,60 @@
+{
+  "iteration": "Iter083P-SM-control-repair-2",
+  "gate": "ACTUAL_SOURCE_ORDERED_RESIDUE_OBJECT_DEFINITION",
+  "scientific_contract": "unchanged from prereg/ITER083P_SM_ACTUAL_SOURCE_ORDERED_RESIDUE_OBJECT_DEFINITION.md",
+  "parent_prereg_commit": "ea29cd3e716d7b35457db493834347a0ca6176a6",
+  "repair1_prereg_commit": "0554c312d3254fc1a7a7cc47a39278cb102fff34",
+  "repair2_prereg_commit": "46bc10e4dba55f5fb2ae8051beb88941f6eb3060",
+  "production_head": "c7d16b77bac36273942d733be6360be2f681302a",
+  "run_id": 34933068763,
+  "job_id": 104265151196,
+  "run_conclusion": "success",
+  "artifact_id": 10382228012,
+  "artifact_name": "iter083p-actual-source-residue-object-definition-repair1",
+  "artifact_zip_sha256": "d56a961a5360ac8bf209a626316982a2d34318dfc85086797661e2f19d165208",
+  "production_json_sha256": "1a51f41cdd011ab1d4527e8af255819eb5a5461ac6453d02bea715c65896eb64",
+  "authority_manifest_count": 51,
+  "manifest_complete": true,
+  "execution_valid": true,
+  "positive_fixture_verdict": "PASS_OBJECT_DEFINED_SCOPED",
+  "positive_fixture_passed": true,
+  "negative_controls_ok": true,
+  "negative_controls": {
+    "representative_component_rejected": true,
+    "auxiliary_Q_hodge_scalar_surrogate_rejected": true,
+    "termwise_contact_product_rejected": true,
+    "posthoc_finite_part_regulator_rejected": true,
+    "generic_extension_theorem_rejected": true,
+    "one_wedge_spectral_epsilon_as_joint_parameter_rejected": true,
+    "iter083n_formal_rho_power_as_source_family_rejected": true
+  },
+  "available_inputs": {
+    "one_wedge_toller_source_formula": true,
+    "ten_factor_off_collision_k5_vertex_formula": true,
+    "four_gauge_fixed_group_integrations_present_in_repository_authority": true,
+    "formal_iter083n_laurent_control_only": true,
+    "conditional_iter083h_not_full_k5_theorem": true
+  },
+  "requirement_statuses": {
+    "R1_full_source_meromorphic_deformation_parameter_and_object": "ABSENT_OR_ONLY_CONDITIONAL",
+    "R2_exact_source_to_joint_deformation_map": "ABSENT_OR_ONLY_CONDITIONAL",
+    "R3_full_boundary_contracted_residue_map_all_32_or_exact_reduction": "ABSENT_OR_ONLY_CONDITIONAL",
+    "R4_deformed_full_object_measure_and_normalization": "ABSENT_OR_ONLY_CONDITIONAL",
+    "R5_joint_deformation_branch_and_published_spectral_compatibility_theorem": "ABSENT_OR_ONLY_CONDITIONAL",
+    "R6_full_k5_laurent_expansion_theorem_near_collision": "ABSENT_OR_ONLY_CONDITIONAL",
+    "R7_unique_source_identification_of_A_minus_1": "ABSENT_OR_ONLY_CONDITIONAL"
+  },
+  "missing_requirements": [
+    "R1_full_source_meromorphic_deformation_parameter_and_object",
+    "R2_exact_source_to_joint_deformation_map",
+    "R3_full_boundary_contracted_residue_map_all_32_or_exact_reduction",
+    "R4_deformed_full_object_measure_and_normalization",
+    "R5_joint_deformation_branch_and_published_spectral_compatibility_theorem",
+    "R6_full_k5_laurent_expansion_theorem_near_collision",
+    "R7_unique_source_identification_of_A_minus_1"
+  ],
+  "verdict": "BLOCKED_OBJECT_DEFINITION",
+  "classification": "ITER083P_SM_ACTUAL_SOURCE_ORDERED_MEROMORPHIC_RESIDUE_NOT_DEFINED_BY_CURRENT_REPOSITORY_AUTHORITY_SCOPED",
+  "interpretation_ceiling": "Object-definition audit only. No physical residue value/order/sign/cancellation, finite-part selector, regulator dependence/independence, unique K5 extension, F9/G3 promotion or downstream QG claim.",
+  "full_raw_authority": "GitHub Actions artifact 10382228012; exact production JSON SHA256 1a51f41cdd011ab1d4527e8af255819eb5a5461ac6453d02bea715c65896eb64"
+}
