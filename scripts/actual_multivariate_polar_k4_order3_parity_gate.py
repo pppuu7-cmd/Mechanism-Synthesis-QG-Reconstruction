@@ -74,12 +74,10 @@ def validate_candidate(o):
     return {'valid':not r,'reasons':r}
 
 def simple_zero_residue_scheme_check():
-    # H=h0+h1 L+..., U=R/L+A0+...; only h0*R contributes to L^-1. h0=1 for q'=exp(phi)q at lambda=0.
     hp=(0,1,2);up=(-1,0,1);pairs=[(h,u) for h in hp for u in up if h+u==-1]
     return pairs==[(0,-1)]
 
 def synthetic_odd_pairing_control():
-    # Exact algebraic antipodal test on representative homogeneous degree-9 monomials.
     exps=[(9,0,0,0,0,0,0,0,0),(1,1,1,1,1,1,1,1,1),(3,2,1,1,1,1,0,0,0)]
     return all(sum(e)==9 and (-1)**sum(e)==-1 for e in exps)
 
@@ -87,9 +85,9 @@ def main():
     ap=argparse.ArgumentParser();ap.add_argument('--output',default='results/raw/actual_multivariate_polar_k4_order3_parity_gate.json');args=ap.parse_args()
     mod=load_iter077i();geo=gram_geometry()
     bridge_ok,bridge_missing=require('sources/K4_ORDER3_SOURCE_FAITHFUL_CUBIC_REALIZATION_BRIDGE_DERIVATION.md',[
-        'all six internal relative elements','all four external relative elements','original Haar','published spectral i epsilon','all 32','same source chart'])
+        'six k4-internal edges','exactly four edges joining the outside vertex','original product haar measure','published spectral i epsilon','complete all-32 boundary contraction','same source chart'])
     critic_ok,critic_missing=require('results/K4_ORDER3_SOURCE_FAITHFUL_CUBIC_REALIZATION_BRIDGE_INDEPENDENT_CRITIC_RESULT.md',[
-        'K4_CUBIC_REALIZATION_BRIDGE_CRITIC_CONFIRMED_SCOPED','all C1-C10','all R1-R10','no K4 polar coefficient'])
+        'k4_cubic_realization_bridge_critic_confirmed_scoped','all c1-c10','all r1-r10','no k4 polar coefficient'])
     parts=list(weak_compositions(3,12));partitions_ok=len(parts)==364 and all(sum(p)==3 for p in parts);total_degrees={6+sum(p) for p in parts}
     certs=[];total_terms=term_bad=0
     for block in K4:
