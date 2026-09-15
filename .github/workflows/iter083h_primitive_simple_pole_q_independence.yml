@@ -1,0 +1,66 @@
+name: Iter083H primitive simple-pole Q independence
+
+on:
+  push:
+    paths:
+      - 'prereg/ITER083H_SM_PRIMITIVE_SIMPLE_K5_POLE_Q_INDEPENDENCE.md'
+      - 'sources/ITER083H_SM_PRIMITIVE_SIMPLE_K5_POLE_DERIVATION.md'
+      - 'scripts/iter083h_primitive_simple_pole_q_independence.py'
+      - '.github/workflows/iter083h_primitive_simple_pole_q_independence.yml'
+      - 'results/ITER083A_SM_BOUNDARY_COVARIANT_JET_CHARACTER_RESULT.md'
+      - 'results/ITER083G_SM_S5_REGULATOR_METRIC_NONUNIQUENESS_RESULT.md'
+      - 'results/ITER083F_SM_COMMON_SPECTRAL_EPSILON_COLLISION_RESULT.md'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Run exact Iter083H validation
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p results/raw
+          python3 scripts/iter083h_primitive_simple_pole_q_independence.py \
+            --output results/raw/iter083h_sm_primitive_simple_pole_q_independence.json \
+            | tee iter083h_stdout.json
+          python3 - <<'PY'
+          import json
+          p='results/raw/iter083h_sm_primitive_simple_pole_q_independence.json'
+          d=json.load(open(p,encoding='utf-8'))
+          assert d['verdict']=='PASS_EXACT_SCOPED', d
+          assert all(d['predicates'].values()), d['predicates']
+          assert all(d['controls'].values()), d['controls']
+          assert d['physical_point_pole_taylor_orders']==[8]
+          assert d['simple_pole_coefficient']=='-1/2'
+          assert d['pole_covector']=='L=sum_e x_e'
+          assert d['s5_permutations_checked']==120
+          assert d['Q_basis_u_eigenvalues']=={'I':1,'A':6,'B':3}
+          assert d['Q_independent_complement']=='[4,1] + [3,2]'
+          assert d['boundary_dimension']==32
+          assert d['equivariant_linear_channels_total']==5
+          assert d['equivariant_linear_channels_trivial_input']==2
+          assert d['equivariant_linear_channels_nontrivial_input']==3
+          assert d['nested_two_pole_witness']['independent'] is True
+          print('ITER083H_GATE=PASS_EXACT_SCOPED')
+          print('primitive physical pole orders=',d['physical_point_pole_taylor_orders'])
+          print('Q-independent complement=',d['Q_independent_complement'])
+          print('equivariant linear channels=',d['equivariant_linear_channels_total'])
+          print('nested pole firewall=',d['nested_two_pole_witness']['independent'])
+          PY
+          sha256sum results/raw/iter083h_sm_primitive_simple_pole_q_independence.json | tee iter083h_sha256.txt
+      - name: Upload exact result artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: iter083h-primitive-simple-pole-q-independence
+          path: |
+            results/raw/iter083h_sm_primitive_simple_pole_q_independence.json
+            iter083h_stdout.json
+            iter083h_sha256.txt
+          if-no-files-found: error
+          retention-days: 90
