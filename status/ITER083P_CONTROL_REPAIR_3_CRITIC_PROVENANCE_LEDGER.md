@@ -12,7 +12,7 @@
 - Artifact: `10384488417`, `iter083p-actual-source-residue-object-definition-repair3`.
 - Artifact ZIP digest: `sha256:c7819ac80d88c60c5eb26ee7b4f96cd7671030eb9e806857e1fdc28e6f5ba30e`.
 - Production JSON SHA256: `1ac4776a2b86ab3decc4347bed29a1c998ae72aefed415a0c1f94d689967fbae`.
-- Researcher result commit: `57c4cb34146d53e2445544ccc534e6902a74e` is **not** the reviewed commit; controlling reviewed result is `57c4cb34146d53e244efaba9a2271f30d962db94`.
+- Researcher result commit: `57c4cb34146d53e244efaba9a2271f30d962db94`.
 - Researcher status reconciliation before Critic review: `0b305616411e4d69e2b390c3fa4169d1094d2c52`.
 - Researcher handoff before Critic review: `888fae09b11977151ff48b53aeb2de619e05fd4f`.
 
