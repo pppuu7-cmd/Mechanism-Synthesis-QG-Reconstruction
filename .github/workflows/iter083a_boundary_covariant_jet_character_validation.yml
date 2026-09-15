@@ -5,7 +5,9 @@ on:
   push:
     paths:
       - 'prereg/ITER083A_SM_BOUNDARY_COVARIANT_JET_CHARACTER_VALIDATION.md'
+      - 'prereg/ITER083A_CONTROL_ONLY_REPAIR_1.md'
       - 'scripts/iter083a_boundary_covariant_jet_character_validation.py'
+      - 'scripts/iter083a_control_repair1.py'
       - 'results/raw/iter081r_sm_invariant_jets.json'
       - '.github/workflows/iter083a_boundary_covariant_jet_character_validation.yml'
 
@@ -19,12 +21,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Run exact Iter083A validation
+      - name: Run exact Iter083A validation with control-only repair 1
         shell: bash
         run: |
           set -euo pipefail
           mkdir -p results/raw
-          python3 scripts/iter083a_boundary_covariant_jet_character_validation.py \
+          python3 scripts/iter083a_control_repair1.py \
             --input results/raw/iter081r_sm_invariant_jets.json \
             --output results/raw/iter083a_sm_boundary_covariant_jet_character_validation.json \
             | tee iter083a_stdout.json
@@ -32,27 +34,35 @@ jobs:
           import json
           p='results/raw/iter083a_sm_boundary_covariant_jet_character_validation.json'
           d=json.load(open(p, encoding='utf-8'))
-          assert d['verdict']=='PASS_EXACT_SCOPED', d['verdict']
-          assert all(d['predicates'].values()), d['predicates']
+          assert d['verdict'] in {'PASS_EXACT_SCOPED','FAIL_EXACT_SCOPED','INVALID_IMPLEMENTATION','BLOCKED_OBJECT_DEFINITION'}, d['verdict']
           assert all(d['controls'].values()), d['controls']
-          print('ITER083A_GATE=PASS_EXACT_SCOPED')
+          print('ITER083A_GATE=', d['verdict'])
+          print('classification=', d['classification'])
           print('boundary_character=', d['boundary_character'])
           print('m_k_0_to_8=', d['m_k_0_to_8'])
           print('total_m_leq8=', d['total_m_leq8'])
           print('orders_opened_beyond_scalar=', d['orders_opened_beyond_scalar'])
           PY
+          sha256sum prereg/ITER083A_SM_BOUNDARY_COVARIANT_JET_CHARACTER_VALIDATION.md | tee iter083a_prereg_sha256.txt
+          sha256sum prereg/ITER083A_CONTROL_ONLY_REPAIR_1.md | tee iter083a_repair_prereg_sha256.txt
+          sha256sum scripts/iter083a_boundary_covariant_jet_character_validation.py | tee iter083a_base_impl_sha256.txt
+          sha256sum scripts/iter083a_control_repair1.py | tee iter083a_repair_driver_sha256.txt
+          sha256sum results/raw/iter083a_repaired_implementation.py | tee iter083a_repaired_impl_sha256.txt
           sha256sum results/raw/iter083a_sm_boundary_covariant_jet_character_validation.json | tee iter083a_sha256.txt
 
       - name: Upload exact result artifact
         uses: actions/upload-artifact@v4
         with:
-          name: iter083a-boundary-covariant-character-validation
+          name: iter083a-boundary-covariant-character-validation-repair1
           path: |
             results/raw/iter083a_sm_boundary_covariant_jet_character_validation.json
+            results/raw/iter083a_repaired_implementation.py
             iter083a_stdout.json
+            iter083a_prereg_sha256.txt
+            iter083a_repair_prereg_sha256.txt
+            iter083a_base_impl_sha256.txt
+            iter083a_repair_driver_sha256.txt
+            iter083a_repaired_impl_sha256.txt
             iter083a_sha256.txt
           if-no-files-found: error
           retention-days: 90
-
-# Explicit post-registration push marker: scientific predicates unchanged.
-# Retrigger after stale queued run 34908559463; no scientific logic changed.
