@@ -77,7 +77,7 @@ def main():
     p6t,m6t=require(args.theorem,['particular physical residue may have smaller order','No actual nonzero physical scheme dependence is proved'])
     p6=p6p and p6t
 
-    p7s,m7s=require(args.source_lock,['Felder and David Kazhdan','finite part changes by a local residue term','odd-codimension','not established'])
+    p7s,m7s=require(args.source_lock,['Felder and David Kazhdan','finite part changes by a local residue term','odd-codimension','has not been established'])
     p7p,m7p=require(args.prereg,['odd-codimension residue-vanishing','must NOT be promoted automatically'])
     p7=p7s and p7p
 
