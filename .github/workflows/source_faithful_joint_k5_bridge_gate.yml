@@ -5,7 +5,9 @@ on:
     branches: [main]
     paths:
       - 'prereg/SOURCE_FAITHFUL_JOINT_K5_BRIDGE_AUTHORITY_GATE.md'
+      - 'prereg/SOURCE_FAITHFUL_JOINT_K5_BRIDGE_CRITIC_REPAIR_1.md'
       - 'sources/SOURCE_FAITHFUL_JOINT_K5_BRIDGE_DERIVATION.md'
+      - 'sources/SOURCE_FAITHFUL_JOINT_K5_BRIDGE_NESTED_JACOBIAN_REPAIR_DERIVATION.md'
       - 'sources/raw/source_faithful_joint_k5_bridge_lock.json'
       - 'scripts/source_faithful_joint_k5_bridge_gate.py'
       - '.github/workflows/source_faithful_joint_k5_bridge_gate.yml'
@@ -16,7 +18,7 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
-      - name: Run bridge gate
+      - name: Run repaired bridge gate
         shell: bash
         run: |
           set -euo pipefail
@@ -30,16 +32,39 @@ jobs:
           d=json.load(open(p, encoding='utf-8'))
           allowed={'PASS_EXACT_SCOPED','BLOCKED_OBJECT_DEFINITION','SCIENTIFIC_FAIL_SCOPED'}
           assert d['verdict'] in allowed, d
+          assert d['repair']=='NESTED_BLOWUP_JACOBIAN_AND_MELLIN_REPAIR_1', d
           assert d['geometry_ok'] is True, d['computed']
           assert not d['provenance_missing'], d['provenance_missing']
           assert all(d['controls'].values()), d['controls']
+          c=d['computed']
+          assert c['all_block_count']==26
+          assert c['divergent_block_count']==16
+          assert c['maximal_divergent_chains']==20
+          assert c['chain_increment_normal_ranks']==[6,3,3]
+          assert c['chain_cumulative_normal_dimensions']==[6,9,12]
+          assert c['chain_density_powers']==[5,8,11]
+          assert c['cumulative_toller_radial_powers']==[-6,-12,-20]
+          assert c['haar_times_source_radial_powers']==[-1,-4,-9]
+          assert c['superficial_divergence_degrees']==[0,3,8]
+          assert c['incidence_matrix_size']==16
+          assert c['incidence_matrix_rank']==16
+          assert c['incidence_lower_triangular_unit_diagonal'] is True
+          assert c['incidence_determinant']==1
+          assert c['uniform_lambda_one_face_values_by_size']=={'3':[1],'4':[5],'5':[16]}
+          assert c['uniform_lambda_one_convergence_witness'] is True
+          assert c['pole_producing_taylor_orders']==[0,3,8]
+          assert c['q_series_coefficients']==['2','-1/3','4/45']
           print('BRIDGE_GATE_VERDICT=', d['verdict'])
           print('BRIDGE_GATE_CLASSIFICATION=', d['classification'])
           print('B1_B9=', d['predicates'])
-          print('BLOCK_COUNTS=', d['computed']['all_block_count'], d['computed']['divergent_block_count'])
-          print('CHAIN_RANKS=', d['computed']['chain_rank_values'])
-          print('CHAIN_DENSITY=', d['computed']['chain_density_power_values'])
-          print('Q_SERIES=', d['computed']['q_series_coefficients'])
+          print('BLOCK_COUNTS=', c['all_block_count'], c['divergent_block_count'])
+          print('INCREMENT/CUMULATIVE=', c['chain_increment_normal_ranks'], c['chain_cumulative_normal_dimensions'])
+          print('NESTED_DENSITY=', c['chain_density_powers'])
+          print('SOURCE/MASURE=', c['cumulative_toller_radial_powers'], c['haar_times_source_radial_powers'])
+          print('OMEGA=', c['superficial_divergence_degrees'])
+          print('INCIDENCE=', c['incidence_matrix_rank'], c['incidence_lower_triangular_unit_diagonal'], c['incidence_determinant'])
+          print('LAMBDA1=', c['uniform_lambda_one_face_values_by_size'])
+          print('Q_SERIES=', c['q_series_coefficients'])
           PY
           sha256sum results/raw/source_faithful_joint_k5_bridge_gate.json | tee source_faithful_joint_k5_bridge_sha256.txt
       - name: Upload gate artifact
