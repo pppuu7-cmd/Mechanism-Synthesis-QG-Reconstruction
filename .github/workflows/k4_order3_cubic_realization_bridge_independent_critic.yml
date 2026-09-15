@@ -1,0 +1,22 @@
+name: K4 order3 cubic realization bridge independent Critic
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/k4_order3_source_faithful_cubic_realization_bridge_independent_critic.py'
+      - '.github/workflows/k4_order3_cubic_realization_bridge_independent_critic.yml'
+jobs:
+  critic:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install sympy
+      - run: python scripts/k4_order3_source_faithful_cubic_realization_bridge_independent_critic.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: k4-order3-cubic-realization-bridge-independent-critic
+          path: k4_cubic_bridge_critic.json
