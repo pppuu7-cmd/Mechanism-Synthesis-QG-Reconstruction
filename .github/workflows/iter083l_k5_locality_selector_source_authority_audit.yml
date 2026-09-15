@@ -1,0 +1,59 @@
+name: Iter083L K5 locality selector source authority audit
+
+on:
+  push:
+    paths:
+      - 'prereg/ITER083L_SM_K5_LOCALITY_SELECTOR_SOURCE_AUTHORITY_AUDIT.md'
+      - 'sources/ITER083L_CAUSAL_TOLLER_SOURCE_AUTHORITY_LOCK.md'
+      - 'scripts/iter083l_k5_locality_selector_source_authority_audit.py'
+      - '.github/workflows/iter083l_k5_locality_selector_source_authority_audit.yml'
+      - 'results/ITER083E_SM_RUHL_TOLLER_ONE_WEDGE_NONIMPLICATION_RESULT.md'
+      - 'results/ITER083F_SM_COMMON_SPECTRAL_EPSILON_COLLISION_RESULT.md'
+      - 'results/ITER083J_SM_PRODUCT_FACTORIZATION_METRIC_UNIQUENESS_RESULT.md'
+      - 'results/ITER083K_SM_FOREST_EXTERNAL_DECOUPLING_METRIC_UNIQUENESS_RESULT.md'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Run Iter083L source-authority audit
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p results/raw
+          python3 scripts/iter083l_k5_locality_selector_source_authority_audit.py \
+            --output results/raw/iter083l_sm_k5_locality_selector_source_authority_audit.json \
+            | tee iter083l_stdout.json
+          python3 - <<'PY'
+          import json
+          p='results/raw/iter083l_sm_k5_locality_selector_source_authority_audit.json'
+          d=json.load(open(p,encoding='utf-8'))
+          assert d['verdict']=='BLOCKED_SOURCE_AUTHORITY_SCOPED', d
+          assert all(d['predicates'].values()), d['predicates']
+          assert all(d['controls'].values()), d['controls']
+          assert d['published_one_wedge_spectral_regulator'] is True
+          assert d['published_joint_k5_edge_analytic_regulators'] is False
+          assert d['published_joint_k5_regulator_metric_Q'] is False
+          assert d['published_joint_k5_projection_piQ'] is False
+          assert d['published_forest_external_decoupling_law'] is False
+          assert d['published_joint_k5_subtraction_or_finite_part'] is False
+          print('ITER083L_GATE=BLOCKED_SOURCE_AUTHORITY_SCOPED')
+          print('conditional selector theorems=',d['conditional_euclidean_ray_theorems_available'])
+          PY
+          sha256sum results/raw/iter083l_sm_k5_locality_selector_source_authority_audit.json | tee iter083l_sha256.txt
+      - name: Upload audit artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: iter083l-k5-locality-selector-source-authority-audit
+          path: |
+            results/raw/iter083l_sm_k5_locality_selector_source_authority_audit.json
+            iter083l_stdout.json
+            iter083l_sha256.txt
+          if-no-files-found: error
+          retention-days: 90
