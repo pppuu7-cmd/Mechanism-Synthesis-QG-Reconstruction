@@ -1,0 +1,30 @@
+name: Iter083N provenance-correct retry independent Critic
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/iter083n_provenance_correct_retry_critic.py'
+      - '.github/workflows/iter083n-provenance-correct-retry-critic.yml'
+jobs:
+  critic:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run independent Critic
+        run: |
+          mkdir -p results/raw
+          python scripts/iter083n_provenance_correct_retry_critic.py | tee results/raw/iter083n_provenance_correct_retry_critic.json
+          sha256sum results/raw/iter083n_provenance_correct_retry_critic.json > iter083n_critic_sha256.txt
+          git rev-parse HEAD > iter083n_critic_head.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iter083n-provenance-correct-retry-critic
+          path: |
+            results/raw/iter083n_provenance_correct_retry_critic.json
+            iter083n_critic_sha256.txt
+            iter083n_critic_head.txt
