@@ -1,0 +1,64 @@
+name: Iter083J product factorization forces Euclidean metric
+
+on:
+  push:
+    paths:
+      - 'prereg/ITER083J_SM_PRODUCT_FACTORIZATION_FORCES_EUCLIDEAN_REGULATOR_METRIC.md'
+      - 'sources/ITER083J_PRODUCT_FACTORIZATION_SOURCE_LOCK.md'
+      - 'scripts/iter083j_product_factorization_forces_euclidean_metric.py'
+      - '.github/workflows/iter083j_product_factorization_forces_euclidean_metric.yml'
+      - 'results/ITER083G_SM_S5_REGULATOR_METRIC_NONUNIQUENESS_RESULT.md'
+      - 'results/ITER083I_SM_FOREST_POLE_Q_GEOMETRY_SENSITIVITY_RESULT.md'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Run exact Iter083J validation
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p results/raw
+          python3 scripts/iter083j_product_factorization_forces_euclidean_metric.py \
+            --output results/raw/iter083j_sm_product_factorization_metric_uniqueness.json \
+            | tee iter083j_stdout.json
+          python3 - <<'PY'
+          import json
+          p='results/raw/iter083j_sm_product_factorization_metric_uniqueness.json'
+          d=json.load(open(p,encoding='utf-8'))
+          assert d['verdict']=='PASS_EXACT_SCOPED', d
+          assert all(d['predicates'].values()), d['predicates']
+          assert all(d['controls'].values()), d['controls']
+          assert d['ordered_distinct_coordinate_tests']==90
+          assert d['unique_offdiagonal_constraints']==45
+          assert d['s5_edge_orbit_size']==10
+          assert d['invariant_diagonal_sector_dimension']==1
+          assert d['metric_conclusion']=='Qstar=c I and Q=c^-1 I'
+          assert d['overall_scale_projection_relevant'] is False
+          assert d['Q2star_diagonal']=='185/176'
+          assert d['Q2star_adjacent']=='-15/176'
+          assert d['Q2star_disjoint']=='5/176'
+          assert d['Q2_factorization_constant_adjacent']=='-3/37'
+          assert d['Q2_factorization_constant_disjoint']=='1/37'
+          print('ITER083J_GATE=PASS_EXACT_SCOPED')
+          print('offdiagonal constraints=',d['unique_offdiagonal_constraints'])
+          print('metric conclusion=',d['metric_conclusion'])
+          print('Q2 factorization constants=',d['Q2_factorization_constant_adjacent'],d['Q2_factorization_constant_disjoint'])
+          PY
+          sha256sum results/raw/iter083j_sm_product_factorization_metric_uniqueness.json | tee iter083j_sha256.txt
+      - name: Upload exact result artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: iter083j-product-factorization-metric-uniqueness
+          path: |
+            results/raw/iter083j_sm_product_factorization_metric_uniqueness.json
+            iter083j_stdout.json
+            iter083j_sha256.txt
+          if-no-files-found: error
+          retention-days: 90
