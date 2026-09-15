@@ -1,0 +1,66 @@
+name: K4 order3 source-faithful cubic realization bridge
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'prereg/K4_ORDER3_SOURCE_FAITHFUL_CUBIC_REALIZATION_BRIDGE.md'
+      - 'sources/K4_ORDER3_SOURCE_FAITHFUL_CUBIC_REALIZATION_BRIDGE_DERIVATION.md'
+      - 'scripts/k4_order3_source_faithful_cubic_realization_bridge.py'
+      - '.github/workflows/k4-order3-source-faithful-cubic-realization-bridge.yml'
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Verify prospective ordering
+        shell: bash
+        run: |
+          set -euo pipefail
+          P=fd01325771e4161d332e09eb8456d679e6bf96e9
+          I=$(git log --format=%H -- scripts/k4_order3_source_faithful_cubic_realization_bridge.py | tail -1)
+          W=$(git log --format=%H -- .github/workflows/k4-order3-source-faithful-cubic-realization-bridge.yml | tail -1)
+          git merge-base --is-ancestor "$P" "$I"
+          test "$P" != "$I"
+          echo "prereg=$P implementation=$I workflow=$W"
+      - name: Run exact bridge validation
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p results/raw
+          python3 scripts/k4_order3_source_faithful_cubic_realization_bridge.py \
+            --output results/raw/k4_order3_source_faithful_cubic_realization_bridge.json \
+            | tee k4_cubic_bridge_stdout.json
+          python3 - <<'PY'
+          import json
+          p='results/raw/k4_order3_source_faithful_cubic_realization_bridge.json'
+          d=json.load(open(p,encoding='utf-8'))
+          assert d['verdict']=='PASS_EXACT_SCOPED', d
+          assert d['classification']=='K4_ORDER3_SOURCE_FAITHFUL_CUBIC_REALIZATION_BRIDGE_DEFINED_EXACT_SCOPED'
+          assert d['implementation_valid'] is True
+          assert d['bridge_defined'] is True
+          assert all(d['predicates'].values()), d['predicates']
+          assert all(v['rejected'] for v in d['negative_controls'].values())
+          assert len(d['negative_controls'])==12
+          assert d['requirements']['R3_TOLLER_ORDER3'].startswith('CONSTRUCTED_')
+          assert d['requirements']['R4_EXTERNAL_TOLLER_JETS'].startswith('CONSTRUCTED_')
+          assert d['requirements']['R6_Q_DEFINING_FUNCTION_ORDER3'].startswith('CONSTRUCTED_')
+          assert d['scientific_ceiling']['k4_polar_coefficient_evaluated'] is False
+          print('K4_CUBIC_BRIDGE=PASS_EXACT_SCOPED')
+          PY
+          sha256sum results/raw/k4_order3_source_faithful_cubic_realization_bridge.json | tee k4_cubic_bridge_sha256.txt
+      - name: Upload exact result artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: k4-order3-source-faithful-cubic-realization-bridge
+          path: |
+            results/raw/k4_order3_source_faithful_cubic_realization_bridge.json
+            k4_cubic_bridge_stdout.json
+            k4_cubic_bridge_sha256.txt
+          if-no-files-found: error
+          retention-days: 90
