@@ -5,6 +5,7 @@ on:
     paths:
       - 'scripts/critic_k4_order3_reachability.py'
       - '.github/workflows/critic-k4-order3-reachability.yml'
+      - 'results/raw/actual_k4_order3_source_object_reachability.json'
 permissions:
   contents: read
 jobs:
