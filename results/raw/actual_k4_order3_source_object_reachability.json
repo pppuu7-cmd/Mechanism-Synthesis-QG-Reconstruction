@@ -1,0 +1,101 @@
+{
+  "authority_cut": "a6983a4d7379bf73f48752a4de357450996d8572",
+  "classification": "ACTUAL_K4_ORDER3_SOURCE_COEFFICIENT_OBJECT_DEFINITION_BLOCKED_SCOPED",
+  "evidence_failures": [],
+  "evidence_records_checked": 19,
+  "execution_valid": true,
+  "gate": "ACTUAL_MULTIVARIATE_K4_ORDER3_OBJECT_DEFINITION_REACHABILITY",
+  "missing_requirements": [
+    "R1_K4_NORMAL_CHART",
+    "R2_BCH_ORDER3",
+    "R3_TOLLER_ORDER3",
+    "R4_EXTERNAL_TOLLER_JETS",
+    "R5_HAAR_JACOBIAN_ORDER3",
+    "R6_Q_DEFINING_FUNCTION_ORDER3",
+    "R8_FRONT_PAIRING"
+  ],
+  "negative_controls": {
+    "commuting_cubic_without_bch": {
+      "reasons": ["bch_omitted"],
+      "rejected": true
+    },
+    "frozen_angular_ray": {
+      "reasons": ["frozen_angular_ray"],
+      "rejected": true
+    },
+    "historical_density_5_2_2": {
+      "reasons": ["wrong_nested_density_powers"],
+      "rejected": true
+    },
+    "infer_k4_zero_from_k3": {
+      "reasons": ["k3_to_k4_zero_inference"],
+      "rejected": true
+    },
+    "leading_toller_only": {
+      "reasons": [],
+      "rejected": true
+    },
+    "omit_external_toller_jets": {
+      "reasons": ["external_toller_jets_omitted"],
+      "rejected": true
+    },
+    "omit_haar_jets": {
+      "reasons": ["haar_jets_omitted"],
+      "rejected": true
+    },
+    "one_parameter_rho_z_u": {
+      "reasons": ["one_parameter_specialization"],
+      "rejected": true
+    },
+    "posthoc_finite_part": {
+      "reasons": ["posthoc_finite_part"],
+      "rejected": true
+    },
+    "representative_boundary_component": {
+      "reasons": ["representative_boundary_only"],
+      "rejected": true
+    },
+    "scalar_k4_hodge_surrogate": {
+      "reasons": ["scalar_surrogate"],
+      "rejected": true
+    },
+    "termwise_contact_product": {
+      "reasons": ["termwise_contact_product"],
+      "rejected": true
+    }
+  },
+  "negative_controls_all_rejected": true,
+  "object_defined_for_k4_order3": false,
+  "partial_k4_coefficient_values_emitted": false,
+  "positive_control": {
+    "execution_valid": true,
+    "missing_requirements": [],
+    "object_defined": true,
+    "reasons": [],
+    "unresolved_requirements": []
+  },
+  "prereg_commit": "a6983a4d7379bf73f48752a4de357450996d8572",
+  "provenance_ok": true,
+  "requirement_status": {
+    "R10_S5_TRANSPORT": "SOURCE_DEFINED_SUFFICIENT",
+    "R1_K4_NORMAL_CHART": "ABSENT_OR_ONLY_CONDITIONAL",
+    "R2_BCH_ORDER3": "ABSENT_OR_ONLY_CONDITIONAL",
+    "R3_TOLLER_ORDER3": "ABSENT_OR_ONLY_CONDITIONAL",
+    "R4_EXTERNAL_TOLLER_JETS": "ABSENT_OR_ONLY_CONDITIONAL",
+    "R5_HAAR_JACOBIAN_ORDER3": "ABSENT_OR_ONLY_CONDITIONAL",
+    "R6_Q_DEFINING_FUNCTION_ORDER3": "ABSENT_OR_ONLY_CONDITIONAL",
+    "R7_FULL32_CONTRACTION_MAP": "SOURCE_DEFINED_SUFFICIENT",
+    "R8_FRONT_PAIRING": "ABSENT_OR_ONLY_CONDITIONAL",
+    "R9_BRANCH_NORMALIZATION": "SOURCE_DEFINED_SUFFICIENT"
+  },
+  "scientific_conclusion": {
+    "abstract_multivariate_germ_remains_authoritative": true,
+    "k3_zero_remains_authoritative": true,
+    "k4_order3_explicit_source_coefficient_reachable_now": false,
+    "k4_zero_or_nonzero_classification": null,
+    "k5_conclusion": null,
+    "physical_finite_part_conclusion": null
+  },
+  "unresolved_requirements": [],
+  "verdict": "BLOCKED_OBJECT_DEFINITION"
+}
