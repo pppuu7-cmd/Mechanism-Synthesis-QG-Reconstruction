@@ -8,7 +8,7 @@ def load_iter077i():
 def text(p):return (ROOT/p).read_text(encoding='utf-8')
 def norm(s):return re.sub(r'[`*_]+','',s).lower()
 def require(p,needles):
- s=norm(text(p));miss=[n.lower() for n in needles if n.lower() not in s];return not miss,miss
+ s=norm(text(p));miss=[norm(n) for n in needles if norm(n) not in s];return not miss,miss
 def det(a):
  a=[[Fraction(x) for x in r] for r in a];n=len(a);d=Fraction(1)
  for c in range(n):
