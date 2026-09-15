@@ -20,11 +20,8 @@ def edge_action(p):
 
 
 def eye(n): return [[1 if i==j else 0 for j in range(n)] for i in range(n)]
-
 def matvec(A,x): return [sum(A[i][j]*x[j] for j in range(len(x))) for i in range(len(A))]
-
 def dot(x,y): return sum(a*b for a,b in zip(x,y))
-
 def require(path, needles):
     t=open(path,encoding='utf-8').read()
     missing=[n for n in needles if n not in t]
@@ -43,7 +40,7 @@ def main():
 
     # P0 source-order/prospective theorem lock.
     p0a,m0a=require(args.prereg,['SOURCE_ORDER_FIREWALL','post-Toller ten-wedge','P7 NESTED_POLE_FIREWALL'])
-    p0b,m0b=require(args.theorem,['one-wedge source construction','ten-wedge','No full K5 meromorphic continuation theorem'])
+    p0b,m0b=require(args.theorem,['finite one-wedge spectral epsilon','ten-wedge','No full K5 meromorphic continuation theorem'])
     p0=p0a and p0b
 
     # P1 exact primitive radial pole table I_n=1/(n-8-2L).
@@ -54,7 +51,7 @@ def main():
         table[str(n)]={'intercept_at_x0':intercept,'pole_at_physical_point':intercept==0}
         if intercept==0: pole_orders.append(n)
     p1=(pole_orders==[8])
-    simple_pole_coefficient=Fraction(-1,2)  # I_8=-1/(2L)
+    simple_pole_coefficient=Fraction(-1,2)
 
     # Build exact S5 edge representation and invariant matrices I,A,B.
     actions=[edge_action(p) for p in PERMS]
@@ -67,21 +64,20 @@ def main():
             if len(set(e)&set(f))==1: A[i][j]=1
             else: B[i][j]=1
     u=[1]*10
-    # P2 L is unique trivial line: edge action transitive and fixes u.
+
+    # P2 L is the unique trivial line: the edge action is transitive and fixes u.
     fixed_u=all([u[a[i]] for i in range(10)]==u for a in actions)
     edge_orbit={a[0] for a in actions}
-    unique_trivial=(len(edge_orbit)==10)  # transitive permutation module => invariant vectors constants
+    unique_trivial=(len(edge_orbit)==10)
     p2=(len(actions)==120 and fixed_u and unique_trivial)
 
-    # P3: invariant Q=aI+bA+cB has u as eigenvector and preserves sum-zero subspace.
+    # P3 invariant Q=aI+bA+cB preserves the fixed trivial/sum-zero splitting.
     eig_u={'I':matvec(I,u)[0],'A':matvec(A,u)[0],'B':matvec(B,u)[0]}
     row_sums={'I':sorted(set(sum(r) for r in I)),'A':sorted(set(sum(r) for r in A)),'B':sorted(set(sum(r) for r in B))}
-    # exhaustive basis for sum-zero subspace: e_i-e_9; verify A,B map to sum zero.
     sz_basis=[]
     for i in range(9):
         x=[0]*10; x[i]=1; x[9]=-1; sz_basis.append(x)
     sumzero_preserved=all(sum(matvec(M,x))==0 for M in (I,A,B) for x in sz_basis)
-    # Q-orthogonality of u to any sum-zero x for all a,b,c follows if each M sends u to scalar u.
     sector_orthogonality=all(dot(matvec(M,u),x)==0 for M in (I,A,B) for x in sz_basis)
     p3=(eig_u=={'I':1,'A':6,'B':3} and row_sums=={'I':[1],'A':[6],'B':[3]} and sumzero_preserved and sector_orthogonality)
 
@@ -99,7 +95,7 @@ def main():
     hom_nontrivial_input=1+2
     p4=(p4a and p4g and hom_total==5 and hom_trivial_input==2 and hom_nontrivial_input==3)
 
-    # P5/P6 simple-pole projection by homogeneous degree.
+    # P5/P6 exact homogeneous-degree finite-part table for one simple denominator L.
     degree_outcomes={}
     for m in range(0,10):
         if m==0:
@@ -111,10 +107,9 @@ def main():
     p5=(degree_outcomes['0']['trivial_input_eval0']==0 and degree_outcomes['1']['trivial_input_eval0']==1 and all(degree_outcomes[str(m)]['trivial_input_eval0']==0 for m in range(2,10)))
     p6=(hom_nontrivial_input==3 and all(degree_outcomes[str(m)]['nontrivial_input_eval0']==0 for m in range(10)))
 
-    # P7 nested/multiple pole firewall and upstream epsilon no-go retained.
+    # P7 nested/multiple-pole firewall and upstream epsilon no-go retained.
     p7t,m7t=require(args.theorem,['nested K3/K4 subcollisions supply additional pole forms','explicitly excluded from the present primitive model'])
     p7f,m7f=require(args.iter083f,['finite spectral epsilon does not even regularize the K5 common collision','PASS_EXACT_SCOPED'])
-    # Exhibit two independent proper-subgraph regulator covectors: triangle 012 and triangle 013.
     def covector(edge_set): return [1 if e in edge_set else 0 for e in EDGES]
     tri012={(0,1),(0,2),(1,2)}
     tri013={(0,1),(0,3),(1,3)}
@@ -124,12 +119,10 @@ def main():
 
     predicates={'P0':p0,'P1':p1,'P2':p2,'P3':p3,'P4':p4,'P5':p5,'P6':p6,'P7':p7}
 
-    # Explicit corrupted Q: mixes trivial u with sum-zero v and is not S5 invariant.
+    # Corrupted non-S5 form explicitly mixes the trivial line with a sum-zero direction.
     v=sz_basis[0]
     Qbad=[[I[i][j]+Fraction(1,10)*(u[i]*v[j]+v[i]*u[j]) for j in range(10)] for i in range(10)]
     qbad_u=matvec(Qbad,u)
-    qbad_u_is_parallel=all(qbad_u[i]*qbad_u[0] == qbad_u[0]*qbad_u[i] for i in range(10))  # replaced below with exact ratios
-    # robust parallel test: all components equal because u components all 1.
     qbad_u_is_parallel=(len(set(qbad_u))==1)
 
     controls={
