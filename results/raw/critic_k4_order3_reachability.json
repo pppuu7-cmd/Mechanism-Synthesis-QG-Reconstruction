@@ -1,0 +1,165 @@
+{
+  "controls": {
+    "beta_plus_i_epsilon": {
+      "accepted": false,
+      "forbidden": [
+        "beta_plus_i_epsilon"
+      ],
+      "missing": [
+        "R9_BRANCH_NORMALIZATION"
+      ]
+    },
+    "commuting_bch": {
+      "accepted": false,
+      "forbidden": [
+        "commuting_bch"
+      ],
+      "missing": [
+        "R2_BCH_ORDER3"
+      ]
+    },
+    "flat_haar": {
+      "accepted": false,
+      "forbidden": [],
+      "missing": [
+        "R5_HAAR_JACOBIAN_ORDER3"
+      ]
+    },
+    "frozen_angular_ray": {
+      "accepted": false,
+      "forbidden": [
+        "frozen_angular_ray"
+      ],
+      "missing": [
+        "R8_FRONT_PAIRING"
+      ]
+    },
+    "illegal_termwise_contact": {
+      "accepted": false,
+      "forbidden": [
+        "termwise_contact"
+      ],
+      "missing": [
+        "R8_FRONT_PAIRING"
+      ]
+    },
+    "incompatible_q": {
+      "accepted": false,
+      "forbidden": [],
+      "missing": [
+        "R6_Q_DEFINING_FUNCTION_ORDER3"
+      ]
+    },
+    "missing_chart": {
+      "accepted": false,
+      "forbidden": [],
+      "missing": [
+        "R1_K4_NORMAL_CHART"
+      ]
+    },
+    "missing_external_toller": {
+      "accepted": false,
+      "forbidden": [],
+      "missing": [
+        "R4_EXTERNAL_TOLLER_JETS"
+      ]
+    },
+    "one_parameter_regulator": {
+      "accepted": false,
+      "forbidden": [
+        "one_parameter_regulator"
+      ],
+      "missing": [
+        "R6_Q_DEFINING_FUNCTION_ORDER3"
+      ]
+    },
+    "partial_as_complete": {
+      "accepted": false,
+      "forbidden": [
+        "partial_as_complete"
+      ],
+      "missing": [
+        "R7_FULL32_CONTRACTION_MAP"
+      ]
+    },
+    "posthoc_finite_part": {
+      "accepted": false,
+      "forbidden": [
+        "posthoc_finite_part"
+      ],
+      "missing": [
+        "R8_FRONT_PAIRING"
+      ]
+    },
+    "representative_boundary": {
+      "accepted": false,
+      "forbidden": [
+        "representative_boundary"
+      ],
+      "missing": [
+        "R7_FULL32_CONTRACTION_MAP"
+      ]
+    }
+  },
+  "controls_ok": true,
+  "independent_required_hits": {
+    "R1_K4_NORMAL_CHART": [
+      "prereg/ITER082F_SM_K5_THREE_CHART_TUBULAR_ATLAS_COCYCLE.md",
+      "scripts/iter082e_nonlinear_tubular_chart_overlap.py",
+      "scripts/iter082f_three_chart_tubular_atlas.py"
+    ],
+    "R2_BCH_ORDER3": [
+      "status/ITER077_PROVENANCE_LEDGER_V2.md"
+    ],
+    "R3_TOLLER_ORDER3": [],
+    "R4_EXTERNAL_TOLLER_JETS": [],
+    "R5_HAAR_JACOBIAN_ORDER3": [
+      "scripts/iter082e_nonlinear_tubular_chart_overlap.py"
+    ],
+    "R6_Q_DEFINING_FUNCTION_ORDER3": [],
+    "R8_FRONT_PAIRING": [
+      "status/ITERATION_028.md"
+    ]
+  },
+  "interpretation_ceiling": "reachability/object-definition only; no K4 zero/nonzero, finiteness/divergence, regulator, finite-part, or new-physics claim",
+  "positive_lanes": {
+    "R10_S5_TRANSPORT": true,
+    "R7_FULL32_CONTRACTION_MAP": true,
+    "R9_BRANCH_NORMALIZATION": true
+  },
+  "provenance": {
+    "artifact_digest_recorded": true,
+    "prereg_exists": true,
+    "provenance_exists": true,
+    "research_json_digest_ok": true,
+    "research_json_sha256": "60a4787f73d1b0908222ba85ae11eb3f55434465f1d1d5dcc386a090ec22957c",
+    "research_raw_exists": true,
+    "result_exists": true,
+    "run_recorded": true
+  },
+  "provenance_ok": true,
+  "real_validation": {
+    "accepted": false,
+    "forbidden": [],
+    "missing": [
+      "R3_TOLLER_ORDER3",
+      "R4_EXTERNAL_TOLLER_JETS",
+      "R6_Q_DEFINING_FUNCTION_ORDER3"
+    ]
+  },
+  "required_present": {
+    "R1_K4_NORMAL_CHART": true,
+    "R2_BCH_ORDER3": true,
+    "R3_TOLLER_ORDER3": false,
+    "R4_EXTERNAL_TOLLER_JETS": false,
+    "R5_HAAR_JACOBIAN_ORDER3": true,
+    "R6_Q_DEFINING_FUNCTION_ORDER3": false,
+    "R8_FRONT_PAIRING": true
+  },
+  "synthetic_positive": {
+    "accepted": true,
+    "forbidden": [],
+    "missing": []
+  },
+  "verdict": "K4_ORDER3_REACHABILITY_CRITIC_CONFIRMED_BLOCKED_OBJECT_DEFINITION_SCOPED"
+}
