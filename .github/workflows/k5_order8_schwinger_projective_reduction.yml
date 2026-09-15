@@ -1,0 +1,55 @@
+name: K5 order8 Schwinger projective reduction
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'sources/K5_ORDER8_SCHWINGER_PROJECTIVE_REDUCTION.md'
+      - 'scripts/k5_order8_schwinger_projective_reduction.py'
+      - '.github/workflows/k5_order8_schwinger_projective_reduction.yml'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run exact reduction validator
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p results/raw
+          python3 scripts/k5_order8_schwinger_projective_reduction.py \
+            --output results/raw/k5_order8_schwinger_projective_reduction.json \
+            | tee k5_order8_schwinger_projective_reduction_stdout.json
+          python3 - <<'PY'
+          import json
+          p='results/raw/k5_order8_schwinger_projective_reduction.json'
+          d=json.load(open(p, encoding='utf-8'))
+          assert d['status'] == 'REDUCTION_VALIDATED_EXACT', d
+          assert d['scientific_k5_zero_nonzero_verdict'] is None, d
+          assert all(d['checks'].values()), d['checks']
+          assert all(d['controls'].values()), d['controls']
+          e=d['exact']
+          assert e['edge_count'] == 10
+          assert e['spanning_tree_count'] == 125
+          assert e['determinant_monomial_count'] == 125
+          assert e['determinant_matches_spanning_tree_polynomial'] is True
+          assert e['s5_covariance_failures'] == 0
+          assert e['wick_order'] == 9
+          assert e['common_scale_exponent'] == '-1'
+          print('STATUS=', d['status'])
+          print('TREE_COUNT=', e['spanning_tree_count'])
+          print('WICK_ORDER=', e['wick_order'])
+          print('SCALE_EXPONENT=', e['common_scale_exponent'])
+          PY
+          sha256sum results/raw/k5_order8_schwinger_projective_reduction.json | tee k5_order8_schwinger_projective_reduction_sha256.txt
+      - name: Upload reduction artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: k5-order8-schwinger-projective-reduction
+          path: |
+            results/raw/k5_order8_schwinger_projective_reduction.json
+            k5_order8_schwinger_projective_reduction_stdout.json
+            k5_order8_schwinger_projective_reduction_sha256.txt
+          if-no-files-found: error
+          retention-days: 90
