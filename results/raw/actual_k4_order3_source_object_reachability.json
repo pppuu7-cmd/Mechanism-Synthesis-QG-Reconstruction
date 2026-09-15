@@ -16,19 +16,27 @@
   ],
   "negative_controls": {
     "commuting_cubic_without_bch": {
-      "reasons": ["bch_omitted"],
+      "reasons": [
+        "bch_omitted"
+      ],
       "rejected": true
     },
     "frozen_angular_ray": {
-      "reasons": ["frozen_angular_ray"],
+      "reasons": [
+        "frozen_angular_ray"
+      ],
       "rejected": true
     },
     "historical_density_5_2_2": {
-      "reasons": ["wrong_nested_density_powers"],
+      "reasons": [
+        "wrong_nested_density_powers"
+      ],
       "rejected": true
     },
     "infer_k4_zero_from_k3": {
-      "reasons": ["k3_to_k4_zero_inference"],
+      "reasons": [
+        "k3_to_k4_zero_inference"
+      ],
       "rejected": true
     },
     "leading_toller_only": {
@@ -36,31 +44,45 @@
       "rejected": true
     },
     "omit_external_toller_jets": {
-      "reasons": ["external_toller_jets_omitted"],
+      "reasons": [
+        "external_toller_jets_omitted"
+      ],
       "rejected": true
     },
     "omit_haar_jets": {
-      "reasons": ["haar_jets_omitted"],
+      "reasons": [
+        "haar_jets_omitted"
+      ],
       "rejected": true
     },
     "one_parameter_rho_z_u": {
-      "reasons": ["one_parameter_specialization"],
+      "reasons": [
+        "one_parameter_specialization"
+      ],
       "rejected": true
     },
     "posthoc_finite_part": {
-      "reasons": ["posthoc_finite_part"],
+      "reasons": [
+        "posthoc_finite_part"
+      ],
       "rejected": true
     },
     "representative_boundary_component": {
-      "reasons": ["representative_boundary_only"],
+      "reasons": [
+        "representative_boundary_only"
+      ],
       "rejected": true
     },
     "scalar_k4_hodge_surrogate": {
-      "reasons": ["scalar_surrogate"],
+      "reasons": [
+        "scalar_surrogate"
+      ],
       "rejected": true
     },
     "termwise_contact_product": {
-      "reasons": ["termwise_contact_product"],
+      "reasons": [
+        "termwise_contact_product"
+      ],
       "rejected": true
     }
   },
