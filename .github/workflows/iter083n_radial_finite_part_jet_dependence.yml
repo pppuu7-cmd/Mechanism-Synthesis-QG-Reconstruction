@@ -1,0 +1,64 @@
+name: Iter083N radial finite part defining-function jet dependence
+
+on:
+  push:
+    paths:
+      - 'prereg/ITER083N_SM_RADIAL_FINITE_PART_DEFINING_FUNCTION_JET_DEPENDENCE.md'
+      - 'sources/ITER083N_FINITE_PART_RESIDUE_DEPENDENCE_SOURCE_LOCK.md'
+      - 'sources/ITER083N_SM_RADIAL_FINITE_PART_JET_DEPENDENCE_DERIVATION.md'
+      - 'scripts/iter083n_radial_finite_part_jet_dependence.py'
+      - '.github/workflows/iter083n_radial_finite_part_jet_dependence.yml'
+      - 'results/ITER083M_SM_SOURCE_NORMAL_GEOMETRIC_RADIAL_BASIS_RESULT.md'
+      - 'results/ITER082D_SM_NESTED_NORMAL_PROJECTOR_FOREST_EXTENSION_RESULT.md'
+      - 'results/ITER083B_SM_FILTERED_BOUNDARY_COVARIANT_SUPPORTED_AMBIGUITY_RESULT.md'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Run exact Iter083N validation
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p results/raw
+          python3 scripts/iter083n_radial_finite_part_jet_dependence.py \
+            --output results/raw/iter083n_sm_radial_finite_part_jet_dependence.json \
+            | tee iter083n_stdout.json
+          python3 - <<'PY'
+          import json
+          p='results/raw/iter083n_sm_radial_finite_part_jet_dependence.json'
+          d=json.load(open(p,encoding='utf-8'))
+          assert d['verdict']=='PASS_EXACT_SCOPED', d
+          assert all(d['predicates'].values()), d['predicates']
+          assert all(d['controls'].values()), d['controls']
+          assert d['laurent_residue_unchanged'] is True
+          assert d['laurent_finite_part_shift']=='phi*A_-1'
+          assert d['delta_identity_checks']==90
+          assert d['delta_identity_failures']==0
+          assert d['annihilator_checks']=={'0':True,'3':True,'8':True}
+          assert d['sharp_witnesses']=={'0':True,'3':True,'8':True}
+          assert d['universal_independence_thresholds']['K3']=={'omega':0,'required_I_power':1}
+          assert d['universal_independence_thresholds']['K4']=={'omega':3,'required_I_power':4}
+          assert d['universal_independence_thresholds']['K5']=={'omega':8,'required_I_power':9}
+          assert d['same_tangent_metric_conformal_information']=='phi|_N=0 only'
+          print('ITER083N_GATE=PASS_EXACT_SCOPED')
+          print('thresholds=',d['universal_independence_thresholds'])
+          print('finite-part shift=',d['laurent_finite_part_shift'])
+          PY
+          sha256sum results/raw/iter083n_sm_radial_finite_part_jet_dependence.json | tee iter083n_sha256.txt
+      - name: Upload exact result artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: iter083n-radial-finite-part-jet-dependence
+          path: |
+            results/raw/iter083n_sm_radial_finite_part_jet_dependence.json
+            iter083n_stdout.json
+            iter083n_sha256.txt
+          if-no-files-found: error
+          retention-days: 90
