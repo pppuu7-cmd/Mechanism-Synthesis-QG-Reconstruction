@@ -1,0 +1,51 @@
+name: K5 order8 nonuniform Schwinger sign diagnostic
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'prereg/K5_ORDER8_NONUNIFORM_SCHWINGER_SIGN_DIAGNOSTIC.md'
+      - 'scripts/k5_order8_nonuniform_schwinger_sign_diagnostic.py'
+      - 'distributional/iter077i_sm_source_ordered_jhalf_k5_l1.py'
+      - '.github/workflows/k5_order8_nonuniform_schwinger_sign_diagnostic.yml'
+
+jobs:
+  diagnostic:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run exact nonuniform diagnostic
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p results/raw
+          python3 scripts/k5_order8_nonuniform_schwinger_sign_diagnostic.py \
+            --output results/raw/k5_order8_nonuniform_schwinger_sign_diagnostic.json \
+            | tee k5_order8_nonuniform_schwinger_sign_stdout.json
+          python3 - <<'PY'
+          import json
+          p='results/raw/k5_order8_nonuniform_schwinger_sign_diagnostic.json'
+          d=json.load(open(p,encoding='utf-8'))
+          assert d['status']=='DIAGNOSTIC_EXACT', d
+          assert d['classification']=='K5_00000_FROZEN_SIGN_DIAGNOSTIC_SURVIVES_SCOPED', d
+          assert all(d['checks'].values()), d['checks']
+          assert d['all_final_values_real'] is True
+          assert d['all_final_values_nonzero'] is True
+          assert d['real_signs_present']==[1]
+          assert d['opposite_real_signs_found'] is False
+          assert d['scientific_k5_zero_nonzero_verdict'] is None
+          print('CLASSIFICATION=',d['classification'])
+          for r in d['frozen_points']:
+              print(r['name'],r['radial_probe_fourth_derivative_zero_equivalent'])
+          PY
+          sha256sum results/raw/k5_order8_nonuniform_schwinger_sign_diagnostic.json | tee k5_order8_nonuniform_schwinger_sign_sha256.txt
+      - name: Upload diagnostic artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: k5-order8-nonuniform-schwinger-sign-diagnostic
+          path: |
+            results/raw/k5_order8_nonuniform_schwinger_sign_diagnostic.json
+            k5_order8_nonuniform_schwinger_sign_stdout.json
+            k5_order8_nonuniform_schwinger_sign_sha256.txt
+          retention-days: 90
