@@ -103,7 +103,6 @@ def main():
         S4=set(b4)
         for b3 in blocks[3]:
             if set(b3)<S4: chains.append((b3,b4,blocks[5][0]))
-    all_poles={p:[pole_vec(b) for b in blocks[p]] for p in (3,4,5)}
     actions=[edge_action(p) for p in PERMS]
     block_closure=True
     block_sets={p:{tuple(sorted(b)) for b in blocks[p]} for p in (3,4,5)}
@@ -126,7 +125,7 @@ def main():
     # P3 primitive K5 control.
     L5=pole_vec(VERTICES); q1L5=matvec(Q1s,L5); q2L5=matvec(Q2s,L5)
     q1_parallel=len(set(q1L5))==1; q2_parallel=len(set(q2L5))==1
-    pH,mH=require(args.iter083h,['evaluated finite part of this isolated single simple overall pole is exactly Q-independent','Q_independent'])
+    pH,mH=require(args.iter083h,['evaluated finite part of this isolated single simple overall pole is exactly Q-independent','PASS_EXACT_SCOPED'])
     p3=(q1_parallel and q2_parallel and q2L5[0]==Fraction(5,8) and pH)
 
     # P4 proper K4 and K3 exact witnesses.
@@ -156,7 +155,6 @@ def main():
     p6=(G1==G1e and G2==G2e and det(G1)==36 and det(G2)==Fraction(10125,484))
 
     # P7 all 20 chains in one S5 orbit and transported witness keeps exact sensitivity.
-    canon=(set(B3),set(B4),set(VERTICES))
     images={}
     all_transport_ok=True
     for p,act in zip(PERMS,actions):
