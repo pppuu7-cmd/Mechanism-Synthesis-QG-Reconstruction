@@ -1,0 +1,62 @@
+name: Iter083K forest external decoupling metric uniqueness
+
+on:
+  push:
+    paths:
+      - 'prereg/ITER083K_SM_FOREST_EXTERNAL_DECOUPLING_FORCES_EUCLIDEAN_METRIC.md'
+      - 'sources/ITER083K_FOREST_LOCALITY_SOURCE_LOCK.md'
+      - 'scripts/iter083k_forest_external_decoupling_metric_uniqueness.py'
+      - '.github/workflows/iter083k_forest_external_decoupling_metric_uniqueness.yml'
+      - 'results/ITER082D_SM_NESTED_NORMAL_PROJECTOR_FOREST_EXTENSION_RESULT.md'
+      - 'results/ITER083G_SM_S5_REGULATOR_METRIC_NONUNIQUENESS_RESULT.md'
+      - 'results/ITER083I_SM_FOREST_POLE_Q_GEOMETRY_SENSITIVITY_RESULT.md'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Run exact Iter083K validation
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p results/raw
+          python3 scripts/iter083k_forest_external_decoupling_metric_uniqueness.py \
+            --output results/raw/iter083k_sm_forest_external_decoupling_metric_uniqueness.json \
+            | tee iter083k_stdout.json
+          python3 - <<'PY'
+          import json
+          p='results/raw/iter083k_sm_forest_external_decoupling_metric_uniqueness.json'
+          d=json.load(open(p,encoding='utf-8'))
+          assert d['verdict']=='PASS_EXACT_SCOPED', d
+          assert all(d['predicates'].values()), d['predicates']
+          assert all(d['controls'].values()), d['controls']
+          assert d['proper_block_counts']=={'K3':10,'K4':5}
+          assert d['external_pair_total']==90
+          assert d['external_pair_type_counts']=={'K3_cross':60,'K3_complement':10,'K4_external':20}
+          assert d['constraint_rank_beta_gamma']==2
+          assert d['minimal_system_1']['det']=='6'
+          assert d['minimal_system_2']['det']=='3'
+          assert d['solution']=='beta=gamma=0; Qstar=alpha I; Q=alpha^-1 I'
+          assert d['overall_scale_projection_relevant'] is False
+          print('ITER083K_GATE=PASS_EXACT_SCOPED')
+          print('external pairs=',d['external_pair_total'],d['external_pair_type_counts'])
+          print('constraint rank=',d['constraint_rank_beta_gamma'])
+          print('solution=',d['solution'])
+          PY
+          sha256sum results/raw/iter083k_sm_forest_external_decoupling_metric_uniqueness.json | tee iter083k_sha256.txt
+      - name: Upload exact result artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: iter083k-forest-external-decoupling-metric-uniqueness
+          path: |
+            results/raw/iter083k_sm_forest_external_decoupling_metric_uniqueness.json
+            iter083k_stdout.json
+            iter083k_sha256.txt
+          if-no-files-found: error
+          retention-days: 90
