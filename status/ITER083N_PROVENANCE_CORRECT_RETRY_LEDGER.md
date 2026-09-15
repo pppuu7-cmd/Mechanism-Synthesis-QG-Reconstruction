@@ -12,10 +12,24 @@ Critic classification:
 
 `ITER083N_PROVENANCE_CORRECT_RETRY_CRITIC_CONFIRMED_SCOPED`.
 
-Controlling independent review:
+Controlling durable independent review:
 
 - `results/ITER083N_PROVENANCE_CORRECT_RETRY_1_ADVERSARIAL_REVIEW.md`;
 - commit `9d706f024acc64429532731e63b5b22b6d8145a6`.
+
+Independent Critic Actions cross-check also terminated successfully under its own prospective preregistration:
+
+- Critic prereg `2df22374c71e7f0918e1aea8e5b1017620ea3ef2`;
+- implementation `08ab666b4b8e4ad3b916dc1529ccdcef18e79c23`;
+- workflow head `a9887c58528b4451e77de2fca0d3fcb986c4eb53`;
+- run `34926988824`, job `104247016884`, terminal success;
+- artifact `10380004276`, `iter083n-provenance-correct-retry-critic`;
+- artifact ZIP digest `sha256:782168fe74300b734ce295b757837f865cbe96981e4f341e9ccb5dc5f2f35c7f`;
+- all independent checks C0-C8 true;
+- all six malformed controls rejected;
+- exact Critic output classification/verdict `ITER083N_PROVENANCE_CORRECT_RETRY_CRITIC_CONFIRMED_SCOPED / CONFIRMED_SCOPED`.
+
+This terminal Actions cross-check agrees with the durable adversarial review and is not a competing scientific verdict.
 
 Researcher classification retained:
 
@@ -37,14 +51,14 @@ Historical records remain quarantined and are not overwritten:
 7. Initial retry validator `397a5783e979121850ccb550f83df80237066fdb` and run `34925091322` failed implementation certification only.
 8. Control-only repair preregistration `74ec4edd547d07503e70a0a972a500df70c7c60a` prospectively froze the lexical authority-check repair.
 9. Repaired validator / authoritative production head `15472a83a6fc5e73c10b050649578822b65558cf`; repository ancestry confirms the control-repair prereg is its direct base.
-10. Authoritative run `34925157771` completed `success` with job `104241540969`.
+10. Authoritative Researcher run `34925157771` completed `success` with job `104241540969`.
 11. Durable raw copy commit `2fae0515891dfbe444672d1b05cd2fb23d3e6ac9`.
 12. Durable Researcher result commit `7e194bd7d6e074e03f4393a6357d06824aedc745`.
-13. Independent Critic review commit `9d706f024acc64429532731e63b5b22b6d8145a6`, verdict `CONFIRMED_SCOPED`.
+13. Independent Critic prereg `2df22374c71e7f0918e1aea8e5b1017620ea3ef2`, implementation `08ab666b4b8e4ad3b916dc1529ccdcef18e79c23`, workflow head `a9887c58528b4451e77de2fca0d3fcb986c4eb53`.
+14. Independent Critic run `34926988824`, job `104247016884`, terminal success, artifact `10380004276`, digest `sha256:782168fe74300b734ce295b757837f865cbe96981e4f341e9ccb5dc5f2f35c7f`, verdict `CONFIRMED_SCOPED`.
+15. Durable adversarial review commit `9d706f024acc64429532731e63b5b22b6d8145a6`, same verdict and classification.
 
-## Actions authority
-
-Authoritative run:
+## Researcher Actions authority
 
 - workflow: `Iter083N provenance-correct retry 1`;
 - run: `34925157771`;
@@ -55,7 +69,7 @@ Authoritative run:
 - artifact ZIP digest: `sha256:ac44a7a209847a097902904bb7114ffafa40edc8d40d8f15324b0c66204f0384`;
 - production JSON SHA256: `b5e1f14e728c1ee9342a5433084b6c1d122faad4af360ffbcd627f60a76cd9ec`.
 
-The workflow fetched full history and verified ancestry of the frozen scientific prereg/source/theorem/Critic/invalidation/retry commits before execution. The control-repair prereg was not explicitly enumerated in the workflow ancestry loop, but independent repository comparison shows `74ec4edd...` is the direct ancestor of production head `15472a83...`; this is not a provenance defect.
+The Researcher workflow fetched full history and verified ancestry of the frozen scientific prereg/source/theorem/Critic/invalidation/retry commits before execution. The control-repair prereg was not explicitly enumerated in the workflow ancestry loop, but independent repository comparison shows `74ec4edd...` is the direct ancestor of production head `15472a83...`; this is not a provenance defect.
 
 ## Scientific output confirmed
 
@@ -74,7 +88,7 @@ The universal ideal-annihilator theorem for supported residues of normal order `
 - K4: `phi in I_N^4`;
 - K5: `phi in I_N^9`.
 
-The executable ran 90 exact one-normal-coordinate identities with zero failures. The independent Critic review additionally checked the multivariable ideal-filtration statement: a nonzero normal Taylor coefficient of multi-degree `alpha`, `|alpha|<=omega`, is detected by a matching `partial^alpha delta_N` residue.
+The Researcher executable ran 90 exact one-normal-coordinate identities with zero failures. The prospectively frozen independent Critic Actions run reconstructed the same 90 identities, thresholds `(1,4,9)`, tangent-Hessian implication, constant-scale law and firewalls, with all C0-C8 true. The durable adversarial review additionally checked the multivariable ideal-filtration statement: a nonzero normal Taylor coefficient of multi-degree `alpha`, `|alpha|<=omega`, is detected by a matching `partial^alpha delta_N` residue.
 
 A direct counterexample to tangent-metric uniqueness was supplied: `rho=|x|^2`, `rho'=exp(x_1)rho` have the same tangent Hessian, while for `A_-1=partial_(x_1)delta_N`, `x_1 partial_(x_1)delta_N=-delta_N !=0`. Thus tangent normalization is universally sufficient for K3 order zero but not for the full allowed K4/K5 residue classes.
 
