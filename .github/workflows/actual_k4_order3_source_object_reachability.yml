@@ -1,0 +1,62 @@
+name: Actual K4 order3 source-object reachability
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'prereg/ACTUAL_MULTIVARIATE_K4_ORDER3_OBJECT_DEFINITION_REACHABILITY.md'
+      - 'sources/raw/k4_order3_source_object_authority_audit.json'
+      - 'scripts/actual_k4_order3_source_object_reachability.py'
+      - '.github/workflows/actual_k4_order3_source_object_reachability.yml'
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run K4 order3 source-object reachability audit
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p results/raw
+          python3 scripts/actual_k4_order3_source_object_reachability.py \
+            --output results/raw/actual_k4_order3_source_object_reachability.json \
+            | tee actual_k4_order3_source_object_reachability_stdout.json
+          python3 - <<'PY'
+          import json
+          p='results/raw/actual_k4_order3_source_object_reachability.json'
+          d=json.load(open(p, encoding='utf-8'))
+          assert d['verdict'] in {'PASS_EXACT_SCOPED','BLOCKED_OBJECT_DEFINITION'}, d
+          assert d['execution_valid'] is True, d
+          assert d['provenance_ok'] is True, d['evidence_failures']
+          assert d['evidence_records_checked'] >= 10
+          assert d['positive_control']['object_defined'] is True, d['positive_control']
+          assert len(d['negative_controls']) == 12
+          assert d['negative_controls_all_rejected'] is True, d['negative_controls']
+          assert d['partial_k4_coefficient_values_emitted'] is False
+          assert d['scientific_conclusion']['k4_zero_or_nonzero_classification'] is None
+          assert d['scientific_conclusion']['k5_conclusion'] is None
+          if d['verdict']=='PASS_EXACT_SCOPED':
+              assert d['object_defined_for_k4_order3'] is True
+              assert d['missing_requirements']==[]
+          else:
+              assert d['object_defined_for_k4_order3'] is False
+              assert len(d['missing_requirements']) >= 1
+              assert d['unresolved_requirements']==[]
+          print('K4_REACHABILITY_VERDICT=', d['verdict'])
+          print('K4_REACHABILITY_CLASSIFICATION=', d['classification'])
+          print('K4_REQUIREMENT_STATUS=', d['requirement_status'])
+          print('K4_MISSING=', d['missing_requirements'])
+          PY
+          sha256sum results/raw/actual_k4_order3_source_object_reachability.json | tee actual_k4_order3_source_object_reachability_sha256.txt
+      - name: Upload K4 reachability artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: actual-k4-order3-source-object-reachability
+          path: |
+            results/raw/actual_k4_order3_source_object_reachability.json
+            actual_k4_order3_source_object_reachability_stdout.json
+            actual_k4_order3_source_object_reachability_sha256.txt
+          if-no-files-found: error
+          retention-days: 90
