@@ -8,14 +8,14 @@
 - Predictive local K5 amplitude: `BLOCKED_CURRENT_CANDIDATE_LOCAL_AMPLITUDE`.
 - Physical F9: `BLOCKED`.
 - G3, regulator removal/independence, RG/refinement, continuum, spin-2, GR, matter/QFT and normalized prediction remain downstream-locked.
-- Latest usable scientific authority remains Iter083L plus the earlier confirmed Iter083A-K chain.
-- Iter083M Researcher `PASS_EXACT_SCOPED` remains **`INVALID_IMPLEMENTATION`** by controlling Critic review `results/ITER083M_ADVERSARIAL_IMPLEMENTATION_REVIEW.md`, commit `063087c5dfcf0cca9e2565cf75ef82c8ea640f6f`.
-- Latest substantive Researcher result Iter083N is now **`INVALID_PROVENANCE`** by `results/ITER083N_ADVERSARIAL_PROVENANCE_REVIEW.md`, commit `fbff993fc920e707d0ff885b73549f3204d208c5`.
-- Iter083O has only a prospective preregistration and is preparation-only / downstream-quarantined until the Iter083M -> Iter083N dependency chain becomes authoritative.
+- Latest fully Critic-confirmed usable scientific authority remains Iter083L plus the earlier confirmed Iter083A-K chain.
+- Iter083M now has a **terminal control-repaired Researcher `PASS_EXACT_SCOPED`**, but independent Critic review of the repaired run is still required before downstream promotion.
+- Iter083N remains **`INVALID_PROVENANCE`** under controlling Critic review `fbff993fc920e707d0ff885b73549f3204d208c5`; do not rerun it until repaired Iter083M is independently reviewed.
+- Iter083O remains prospective preparation-only / downstream-quarantined.
 
 **Controlling immediate blocker:**
 
-`ITER083M_FROZEN_NEGATIVE_CONTROL_REPAIR`
+`ITER083M_REPAIRED_RESULT_INDEPENDENT_CRITIC_REVIEW`
 
 The broader physical blocker remains:
 
@@ -46,19 +46,43 @@ Iter083L durable authority:
 - ZIP digest `sha256:5c8aeb239c683c3e41dc9e9bfa5ffe753123303cfbd133747d1cc0b34351d857`;
 - production JSON SHA256 `c2c31f0e86766785392aec60c83b3018f8b106c834b65003a7ec8c2a070a5070`.
 
-## Iter083M — non-authoritative parent
+## Iter083M — repaired Researcher result pending Critic
 
-Researcher result: `results/ITER083M_SM_SOURCE_NORMAL_GEOMETRIC_RADIAL_BASIS_RESULT.md`, commit `40416f9011ddeafd6a7201d48b218b7eaf7b6ec1`.
+Parent preregistration: `prereg/ITER083M_SM_SOURCE_NORMAL_GEOMETRIC_RADIAL_BASIS.md`, commit `c801299beb44816941fd441715e3eb03c73740c7`.
 
-Controlling Critic review: `results/ITER083M_ADVERSARIAL_IMPLEMENTATION_REVIEW.md`, commit `063087c5dfcf0cca9e2565cf75ef82c8ea640f6f`.
+Historical original production:
 
-Verdict: **`INVALID_IMPLEMENTATION`**.
+- run `34917280262`, artifact `10376298881`;
+- Researcher result `40416f9011ddeafd6a7201d48b218b7eaf7b6ec1`;
+- later controlling Critic review `results/ITER083M_ADVERSARIAL_IMPLEMENTATION_REVIEW.md`, commit `063087c5dfcf0cca9e2565cf75ef82c8ea640f6f`;
+- historical verdict remains **`INVALID_IMPLEMENTATION`** because frozen malformed controls were aliases rather than executed injections.
 
-Reason: several frozen negative controls were never actually injected through the relevant validators. Green CI therefore did not certify the frozen contract. The underlying tangent/invariant linear algebra is not scientifically refuted and may be recovered only by a control-only repair under the unchanged preregistration.
+Prospective repair:
 
-Durable provenance: `status/ITER083M_PROVENANCE_LEDGER.md`, commit `2dfd055b484aff2b4f9f164be1426962eb13b7d7`.
+- `prereg/ITER083M_CONTROL_ONLY_REPAIR_1.md`, commit `9da79bd7cf1e78c546017340e234eeffdaef52dc`;
+- repaired validator / production head `463ba012c4b3f8d465ab7df99995f5f40f3e7e44`;
+- run `34921183332`, terminal success;
+- job `104229460141`, terminal success;
+- artifact `10378026902`;
+- ZIP digest `sha256:06d6c560942a73bd78c31557f9fb3f4714a17b495857ed17071d271409700f11`;
+- production JSON SHA256 `6572765b7a760a7505d6dc1c23d9239d5ede80cd37e1174c171951635f26c3e2`;
+- durable raw copy `results/raw/iter083m_sm_control_repair_1.json`, commit `41a62c9b6d3f1728ff3c1bb927a7ff33ebd742a0`;
+- repaired result `results/ITER083M_CONTROL_REPAIR_1_RESULT.md`, commit `6f886ce799a17cde6ad35c7686f4ea96396acb7e`;
+- provenance ledger `status/ITER083M_PROVENANCE_LEDGER.md`, commit `77dba76247c22de212b03ba731c2cde246bec676`.
 
-## Iter083N — latest substantive result, non-authoritative
+Repaired Researcher classification:
+
+`ITER083M_SM_SOURCE_BOOST_GEOMETRY_GIVES_UNIQUE_LOCAL_FOREST_RADIAL_QUADRATIC_BASIS_SCOPED`
+
+Repaired Researcher verdict: **`PASS_EXACT_SCOPED`**.
+
+All P0-P7 passed. The eight frozen malformed controls are now actually injected and rejected: rooted weighted metric, edge-Q/physical-normal identification, J-as-distinct deformation, nonorthogonal increment, single-chain-only coverage, exact nonlinear beta overclaim, finite-part/scale promotion, and global nonlinear/patching promotion.
+
+Scientific content remains narrow: source small-boost geometry plus authoritative barycentric projectors determines a unique invariant **tangent/tubular radial quadratic basis** for each K3/K4/K5 normal fiber, with exact nested physical ranks `(6,3,3)` across all 20 maximal chains. It does not select a finite part or physical extension.
+
+**Authority ceiling now:** pending independent Critic review of the repaired run. Do not consume repaired Iter083M downstream yet.
+
+## Iter083N — non-authoritative
 
 Researcher result: `results/ITER083N_SM_RADIAL_FINITE_PART_JET_DEPENDENCE_RESULT.md`, commit `d90be70dce0c820ba0a574a7d82e46737187f541`.
 
@@ -67,35 +91,22 @@ Terminal production:
 - preregistration `c29ba0ddbaa4d6e1581db558b792565a7916a0cd`;
 - actual source-lock commit `cf9d17cc8dae087f2c59ff0adb9f8aeff8ef7533`;
 - actual theorem derivation `70a756c9c7c66f822d0e5933e9522b2d359dafe8`;
-- implementation `3d93d82009ed22dceceda4e71e28a94331475b02`;
-- syntax-only repair `095e1c98af085ad54fadb1cde2e38b2d2d6d18cd`;
-- wording-only repair / production head `d35c1c3eb92456c053b27fa46a8783f28c76879b`;
-- run `34917739247`, job `104218935908`, terminal success;
-- artifact `10376728965`;
+- production head `d35c1c3eb92456c053b27fa46a8783f28c76879b`;
+- run `34917739247`, job `104218935908`, artifact `10376728965`;
 - ZIP digest `sha256:da3a81a693797975ade1823d5e7554d9445358852029c926bc209281b10815d3`;
 - production JSON SHA256 `9cc509a84714ff18e6687eda9b5f8e94c3ba7df1786f8cfb63866f9a8bd04553`.
-
-Researcher verdict: `PASS_EXACT_SCOPED`.
 
 Controlling Critic review: `results/ITER083N_ADVERSARIAL_PROVENANCE_REVIEW.md`, commit `fbff993fc920e707d0ff885b73549f3204d208c5`.
 
 Mandatory verdict: **`INVALID_PROVENANCE`**.
 
-Durable provenance ledger: `status/ITER083N_PROVENANCE_LEDGER.md`, commit `3b689a18b1446b225732ec07e52163d052052396`.
-
-### Why Iter083N is provenance-invalid
-
-1. The controlling Iter083M invalidation `063087c5...` predates the Iter083N preregistration `c29ba0dd...`. Iter083N nevertheless froze P0 to consume Iter083M radial geometry.
-2. The executable marks P0 true by reading the stale Iter083M Researcher result and searching for `PASS_EXACT_SCOPED`; it ignores the later controlling Critic invalidation and CURRENT authority state.
-3. The Iter083N result note records two nonexistent provenance identifiers, `9883aed83057ff6850dab605201bccddb7c92254` and `f0a1d59956e76f135b9dac6a31d6cdf8bcbca578`. Neither resolves as a commit or blob. The actual source-lock/theorem commits are `cf9d17cc...` and `70a756c9...`.
-
-The standalone Laurent/ideal algebra is not scientifically refuted. It simply lacks authority in the reviewed gate because the frozen parent dependency was invalid.
+Reason: it consumed the then-invalid Iter083M parent and its durable result recorded two nonexistent provenance identifiers. The standalone Laurent/ideal algebra is not scientifically refuted. A later retry is allowed only after repaired Iter083M receives independent Critic approval, with P0 consulting controlling repository authority and the true source-lock/theorem commits recorded.
 
 ## Iter083O status
 
 Preregistration: `2b0ef9969cc07f70a0d9d22819f17973e2ee67c6`.
 
-It proposes an exact Cartan-rapidity-squared Morse-Bott radius candidate. No implementation/production/result exists. Because its setup explicitly builds on Iter083M/Iter083N, it is **outcome-independent preparation only** until that parent chain becomes authoritative. Do not launch or interpret substantive Iter083O production as authoritative before then.
+It proposes an exact Cartan-rapidity-squared Morse-Bott radius candidate. No authoritative implementation/production/result exists. It remains **outcome-independent preparation only** until the Iter083M -> Iter083N chain becomes authoritative.
 
 ## Source-order / source-object firewall
 
@@ -111,11 +122,19 @@ This is not equivalent without a theorem to termwise `theta/delta/delta'` expans
 - Auxiliary ten-edge regulator Q is not the physical collision-normal metric.
 - Scalar K4/K5/Hodge controls remain surrogates unless a true-source bridge is derived.
 
-## Erratum / quarantine locks
+## Erratum / Iter077 provenance locks
 
 `status/ITER077_CONTACT_FORMULA_ERRATUM.md`, blob `63356e5099929f2b21d9d7296ab97f15ff163dba`, remains controlling.
 
 Historical source-lock-invalid Iter077E/F siblings remain quarantined.
+
+Iter077I remains authoritative only from the repaired source-order-lock run:
+
+- first run `34786550378`: failure / execution-invalid source-order lock;
+- control-only alias head `102fc7268b732bead5dfcf6d61fe4479ae1d3030`;
+- authoritative run `34786586785`: all four lanes plus aggregate success;
+- aggregate artifact `10326812769`, digest `sha256:b9e7d617598acaeb60ee7018e3ee4f78a232b32be86b112da4713352d9797887`;
+- result `results/ITER077I_SM_SOURCE_ORDERED_JHALF_K5_L1_RESULT.md`, commit `6e1dd1e6bb5e26d607e2c249ff6f8978f0df922a`.
 
 Historical Iter077Q infinite tangential physical application remains invalid under corrected compact-node gauge symmetry.
 
@@ -128,11 +147,8 @@ Historical Iter077Q infinite tangential physical application remains invalid und
 `-> additive identities / causal sums / one-wedge analyticity / finite spectral epsilon do not select`
 `-> auxiliary Q geometry conditionally constrained but not source-authorized`
 `-> Iter083L source-authority blocker CONFIRMED_SCOPED`
-`-> Iter083M tangent radial basis INVALID_IMPLEMENTATION`
-`-> Iter083N finite-part jet-dependence INVALID_PROVENANCE`
-`-> Iter083O preparation only`
-`-> valid repaired radial-basis authority ?`
-`-> valid finite-part/residue dependence ?`
+`-> Iter083M repaired Researcher PASS, Critic review ?`
+`-> Iter083N retry after valid parent ?`
 `-> source/microlocal physical finite-part selector ?`
 `-> global multistratum distributional patching ?`
 `-> causal composition E3/E4/E6 ?`
@@ -151,8 +167,8 @@ No `NEW_PHYSICS_FOUND`; no complete-QG claim; no unique physical K5 extension; n
 
 ## Authorized next work
 
-1. **Only control-repair Iter083M** under the unchanged scientific preregistration may restore the blocked tangent radial-basis authority.
-2. After terminal repaired Iter083M plus independent Critic review, Iter083N may be re-run under its unchanged scientific contract if P0 checks controlling repository authority rather than stale result strings and the durable result records the true source-lock/theorem commits.
+1. **Independent Critic review of repaired Iter083M** is the only admissible promotion step on this dependency line.
+2. Only after that review confirms repaired Iter083M may Iter083N be retried under its unchanged frozen scientific contract, with P0 consulting controlling repository authority and durable provenance corrected to actual commits `cf9d17cc...` and `70a756c9...`.
 3. If Iter083N dependency/object/PASS-FAIL/interpretation ceiling changes, require a newly named prospectively preregistered successor gate.
 4. Iter083O remains preparation-only until the Iter083M -> Iter083N chain is valid.
 5. Predictive local K5, E3/E4/E6, G3, regulator removal, RG, continuum, spin-2, GR, matter/QFT and normalized prediction remain closed.
