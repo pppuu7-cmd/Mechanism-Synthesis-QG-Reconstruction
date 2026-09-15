@@ -1,0 +1,63 @@
+{
+  "iteration": "Iter083E-SM",
+  "audit_date": "2026-09-15",
+  "sources": {
+    "toller_companion": {
+      "arxiv": "2604.24945",
+      "one_wedge_uniqueness": true,
+      "uniqueness_variable": "rho",
+      "uniqueness_trial_functions": "u_+(rho,beta), u_-(rho,beta)",
+      "uniqueness_conditions": [
+        "upper_lower_rho_half_plane_asymptotic_decay",
+        "opposite_half_plane_matching_to_reduced_wigner_d",
+        "finite_simple_toller_poles_in_rho_plane",
+        "t_plus_plus_t_minus_equals_d"
+      ],
+      "feynman_projector_integration_variable": "tilde_rho",
+      "feynman_projector_number_of_spectral_integration_variables": 1,
+      "equation_refs": {
+        "asymptotic": [7, 8],
+        "matching": [9, 10],
+        "poles": 11,
+        "reduced_additivity": 12,
+        "full_toller_cartan": 13,
+        "non_representation": 14,
+        "full_additivity": 15,
+        "feynman_functional": 17,
+        "feynman_projector": 20
+      },
+      "toller_is_sl2c_representation": false,
+      "wigner_d_is_sl2c_representation": true,
+      "explicit_toller_nonrepresentation_equation": true,
+      "joint_k5_extension_uniqueness_theorem_in_audited_argument": false
+    },
+    "causal_vertex": {
+      "arxiv": "2601.23162v1",
+      "number_of_k5_wedge_toller_factors": 10,
+      "common_left_gauge_fixed": true,
+      "remaining_sl2c_group_integrations": 4,
+      "ordering": [
+        "define_elementary_toller_branch",
+        "form_ten_wedge_product",
+        "boundary_contract",
+        "integrate_gauge_fixed_k5_group_variables",
+        "distributional_extension_if_needed"
+      ],
+      "joint_multivariable_common_collision_regulator_found_in_audit": false,
+      "joint_common_collision_boundary_value_theorem_found_in_audit": false,
+      "joint_extension_selector_from_composition_found_in_audit": false
+    }
+  },
+  "falsifiers": [
+    "source_authorized_correlated_multivariable_k5_boundary_value",
+    "source_authorized_common_k5_regulator_with_unique_distributional_limit",
+    "source_authorized_ten_toller_multiplication_extension_theorem",
+    "source_authorized_composition_or_gluing_selector_on_supported_coefficients"
+  ],
+  "claim_locks": [
+    "one_wedge_uniqueness_is_not_by_itself_joint_product_extension_uniqueness",
+    "do_not_identify_rho_with_common_collision_normal_coordinate",
+    "do_not_import_wigner_representation_composition_to_toller_T",
+    "absence_in_current_audit_is_not_impossibility_of_future_joint_selector"
+  ]
+}
