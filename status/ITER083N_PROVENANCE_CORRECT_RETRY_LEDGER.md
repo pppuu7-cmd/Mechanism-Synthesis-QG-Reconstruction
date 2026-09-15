@@ -4,9 +4,20 @@ Date: 2026-09-15
 
 ## Authority state
 
-Fresh Iter083N retry Researcher status: **`PASS_EXACT_SCOPED`**, pending independent Critic review.
+Fresh Iter083N retry Researcher status: `PASS_EXACT_SCOPED`.
 
-Classification:
+Independent Critic status: **`CONFIRMED_SCOPED`**.
+
+Critic classification:
+
+`ITER083N_PROVENANCE_CORRECT_RETRY_CRITIC_CONFIRMED_SCOPED`.
+
+Controlling independent review:
+
+- `results/ITER083N_PROVENANCE_CORRECT_RETRY_1_ADVERSARIAL_REVIEW.md`;
+- commit `9d706f024acc64429532731e63b5b22b6d8145a6`.
+
+Researcher classification retained:
 
 `ITER083N_SM_RADIAL_FINITE_PART_CHANGE_IS_RESIDUE_TIMES_DEFINING_FUNCTION_JET_AND_TANGENT_METRIC_ALONE_IS_INSUFFICIENT_FOR_K4_K5_SCOPED`.
 
@@ -22,16 +33,14 @@ Historical records remain quarantined and are not overwritten:
 3. Actual theorem derivation commit `70a756c9c7c66f822d0e5933e9522b2d359dafe8`.
 4. Historical Iter083N result later invalidated for provenance at `fbff993fc920e707d0ff885b73549f3204d208c5`.
 5. Repaired Iter083M independently confirmed at `e7623cb5303ea49894e480e2fc4a884df44e7713`.
-6. CURRENT then authorized a fresh Iter083N retry under unchanged scientific contract.
-7. Fresh retry preregistration `d9edb0fd2a5c522ddec021f2b4f8e1a964ee3d96`.
-8. Initial retry validator `397a5783e979121850ccb550f83df80237066fdb`.
-9. Retry workflow trigger head `62407b98b51985d60ca1746af3aa2e9804ca314a`.
-10. Run `34925091322` failed implementation certification because of one brittle historical-review phrase check; all scientific P1-P7 values were not promoted.
-11. Control-only repair preregistration `74ec4edd547d07503e70a0a972a500df70c7c60a` prospectively froze the allowed lexical authority-check repair.
-12. Repaired validator / authoritative production head `15472a83a6fc5e73c10b050649578822b65558cf`.
-13. Authoritative run `34925157771` completed `success` with job `104241540969`.
-14. Durable raw copy commit `2fae0515891dfbe444672d1b05cd2fb23d3e6ac9`.
-15. Durable Researcher result commit `7e194bd7d6e074e03f4393a6357d06824aedc745`.
+6. Fresh retry preregistration `d9edb0fd2a5c522ddec021f2b4f8e1a964ee3d96`.
+7. Initial retry validator `397a5783e979121850ccb550f83df80237066fdb` and run `34925091322` failed implementation certification only.
+8. Control-only repair preregistration `74ec4edd547d07503e70a0a972a500df70c7c60a` prospectively froze the lexical authority-check repair.
+9. Repaired validator / authoritative production head `15472a83a6fc5e73c10b050649578822b65558cf`; repository ancestry confirms the control-repair prereg is its direct base.
+10. Authoritative run `34925157771` completed `success` with job `104241540969`.
+11. Durable raw copy commit `2fae0515891dfbe444672d1b05cd2fb23d3e6ac9`.
+12. Durable Researcher result commit `7e194bd7d6e074e03f4393a6357d06824aedc745`.
+13. Independent Critic review commit `9d706f024acc64429532731e63b5b22b6d8145a6`, verdict `CONFIRMED_SCOPED`.
 
 ## Actions authority
 
@@ -46,30 +55,44 @@ Authoritative run:
 - artifact ZIP digest: `sha256:ac44a7a209847a097902904bb7114ffafa40edc8d40d8f15324b0c66204f0384`;
 - production JSON SHA256: `b5e1f14e728c1ee9342a5433084b6c1d122faad4af360ffbcd627f60a76cd9ec`.
 
-The workflow fetched full history and verified ancestry of the frozen prereg/source/theorem/Critic/invalidation/retry commits before executing the gate.
+The workflow fetched full history and verified ancestry of the frozen scientific prereg/source/theorem/Critic/invalidation/retry commits before execution. The control-repair prereg was not explicitly enumerated in the workflow ancestry loop, but independent repository comparison shows `74ec4edd...` is the direct ancestor of production head `15472a83...`; this is not a provenance defect.
 
-## Scientific output
+## Scientific output confirmed
 
-All P0-P7 passed, all negative controls passed, and all dependency-missing lists were empty.
+For the frozen local conformal simple-pole family
 
-Exact outputs:
+`U_rho(z)=rho^z u=A_-1/z+A_0+O(z)`, `rho'=exp(phi)rho`,
 
-- residue invariant under `rho'=exp(phi)rho`;
-- finite-part shift `phi*A_-1`;
-- 90 exact `n^q delta^(k)` checks, zero failures;
-- universal annihilator thresholds:
-  - K3 `I_N^1`;
-  - K4 `I_N^4`;
-  - K5 `I_N^9`;
-- repaired Iter083M tangent metric supplies only `phi|_N=0` in the conformal class;
-- constant scaling gives `(log c)A_-1`.
+exact Laurent multiplication gives
 
-## Interpretation lock
+- `Res_rho'=A_-1`;
+- `FP_rho' u-FP_rho u=phi A_-1`.
 
-This is a universal supported-residue-class theorem under the frozen simple-pole radial analytic-regularization object. It is not evidence that the actual full source-ordered Toller residue is nonzero, maximal-order or scheme-dependent.
+The universal ideal-annihilator theorem for supported residues of normal order `<=omega` gives the sharp thresholds
+
+- K3: `phi in I_N^1`;
+- K4: `phi in I_N^4`;
+- K5: `phi in I_N^9`.
+
+The executable ran 90 exact one-normal-coordinate identities with zero failures. The independent Critic review additionally checked the multivariable ideal-filtration statement: a nonzero normal Taylor coefficient of multi-degree `alpha`, `|alpha|<=omega`, is detected by a matching `partial^alpha delta_N` residue.
+
+A direct counterexample to tangent-metric uniqueness was supplied: `rho=|x|^2`, `rho'=exp(x_1)rho` have the same tangent Hessian, while for `A_-1=partial_(x_1)delta_N`, `x_1 partial_(x_1)delta_N=-delta_N !=0`. Thus tangent normalization is universally sufficient for K3 order zero but not for the full allowed K4/K5 residue classes.
+
+## Scope / interpretation lock
+
+The confirmed result is only:
+
+- local to one collision stratum;
+- conformal regularizer changes only;
+- a simple Laurent pole only;
+- universal over the allowed supported-residue class, not a theorem about the actual physical source residue.
+
+Two arbitrary Morse-Bott functions with the same Hessian need not be smoothly conformally related across `N`; no arbitrary-same-Hessian theorem follows. Higher-order poles require a new gate. The physical Toller residue may vanish, have lower normal order, or annihilate the remaining jet freedom.
 
 No physical finite-part selector, physical regulator dependence/independence, unique K5 extension, global patching theorem, generic-spin theorem, causal E3/E4/E6 closure, G3/F9/G8/K5 promotion, `NEW_PHYSICS_FOUND` or complete-QG claim is authorized.
 
 ## Next authority action
 
-Independent Critic review of the fresh retry is mandatory before Iter083O or any other dependent scientific production can be promoted. Iter083O remains preparation-only until that review is terminal and controlling repository authority changes accordingly.
+Do not prioritize another generic radial candidate that merely proves existence of a smooth source-native geometry. The prepared Iter083O gate explicitly retains that the causal/Toller source does not mandate its proposed `mu_B` as the renormalization defining function, so it cannot by itself close the selector.
+
+Highest-value next gate: prospectively freeze an `ACTUAL_SOURCE_ORDERED_RESIDUE_NORMAL_JET_ANNIHILATOR_GATE` (or equivalent source-faithful residue gate) targeting the actual fully boundary-contracted source-ordered K3/K4/K5 residue data in the frozen minimal sector. Test whether the residue is zero, lower-order, or annihilates every higher defining-function jet left free by Iter083M. If the actual residue object cannot be defined without exchanging source ordering or substituting a surrogate, return `BLOCKED_OBJECT_DEFINITION`.
