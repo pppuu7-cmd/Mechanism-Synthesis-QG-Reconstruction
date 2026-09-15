@@ -53,9 +53,9 @@ Independent Critic review:
 
 `results/ITER083P_CONTROL_REPAIR_3_ADVERSARIAL_REVIEW.md`, commit `f3e8d7134be751ce74557691b2aae34019b15cab`.
 
-Critic provenance ledger:
+Latest Critic provenance ledger:
 
-`status/ITER083P_CONTROL_REPAIR_3_CRITIC_PROVENANCE_LEDGER.md`, commit `6f34aa64d99300fd1794d4034620c50f329fb776`.
+`status/ITER083P_CONTROL_REPAIR_3_CRITIC_PROVENANCE_LEDGER.md`, commit `bba50418f0bae965a7dfc9785040796be1680c83`.
 
 Mandatory Critic verdict: **`QUALIFIED`**.
 
@@ -79,6 +79,10 @@ Any one is sufficient for parent `BLOCKED_OBJECT_DEFINITION`. Therefore Iter083N
 Do **not** promote the Researcher phrase “all seven R1-R7 are independently absent/conditional”. Repaired Iter077I already supplies the exact `2^5=32` frozen boundary basis and source contraction structure; the missing object is a **meromorphic/residue bridge acting on that complete boundary structure**, not boundary completeness itself. The undeformed source Haar/group measure is also existing source data; what is missing is a source-authorized normalization/continuation law for a hypothetical joint deformation. Iter083N's forbidden-implication locks establish non-promotion of its formal theorem, not a standalone impossibility theorem for a unique physical `A_-1`.
 
 Repair3's validator is adequate for the current recovered corpus, but future reuse must be supersession-aware: positive bridge authority must not be ignored merely because it is recorded outside the five currently tagged physical-source paths, and older scoped absence records must not automatically force `CONTRADICTORY/FAIL` against newer valid authority.
+
+### Late non-prospective Critic preregistration
+
+Commit `6df512d2e85a83461754f76eeb4ab07e2d767e74` added `prereg/ITER083P_CONTROL_REPAIR_3_INDEPENDENT_CRITIC_REVIEW.md` with text claiming a prospective Critic contract. Git ancestry shows it is a descendant of and two commits **after** the already-completed substantive Critic review `f3e8d7134be751ce74557691b2aae34019b15cab`. It is therefore `NON_PROSPECTIVE_NON_CONTROLLING` for this review and must not retroactively rewrite its verdict. It is retained only as provenance history. Any future new Critic production under that contract would be a distinct successor review.
 
 ## Source-order firewall
 
@@ -109,7 +113,8 @@ Published spectral `i epsilon` remains one-wedge prescription data. Auxiliary te
 - original run `34928916039`: `INVALID_IMPLEMENTATION`;
 - repair-1 run `34932959109`: `INVALID_IMPLEMENTATION`;
 - repair-2 run `34933068763`: Researcher blocker but independent Critic `INVALID_IMPLEMENTATION`;
-- repair-3 is the only downstream-consumable Iter083P result, with the reduced `QUALIFIED` scope above.
+- repair-3 is the only downstream-consumable Iter083P result, with the reduced `QUALIFIED` scope above;
+- late Critic preregistration `6df512d...`: `NON_PROSPECTIVE_NON_CONTROLLING` for the completed repair3 Critic review.
 
 Historical invalid executions are not rehabilitated.
 
