@@ -1,0 +1,67 @@
+name: Iter083M source normal geometric radial basis
+
+on:
+  push:
+    paths:
+      - 'prereg/ITER083M_SM_SOURCE_NORMAL_GEOMETRIC_RADIAL_BASIS.md'
+      - 'sources/ITER083M_SM_SOURCE_NORMAL_RADIAL_GEOMETRY_DERIVATION.md'
+      - 'scripts/iter083m_source_normal_geometric_radial_basis.py'
+      - '.github/workflows/iter083m_source_normal_geometric_radial_basis.yml'
+      - 'sources/ITER077I_SM_SOURCE_ORDERED_TOLLER_FUNCTION_K5_L1_DERIVATION.md'
+      - 'results/ITER082D_SM_NESTED_NORMAL_PROJECTOR_FOREST_EXTENSION_RESULT.md'
+      - 'results/ITER083B_SM_FILTERED_BOUNDARY_COVARIANT_SUPPORTED_AMBIGUITY_RESULT.md'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Run exact Iter083M validation
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p results/raw
+          python3 scripts/iter083m_source_normal_geometric_radial_basis.py \
+            --output results/raw/iter083m_sm_source_normal_geometric_radial_basis.json \
+            | tee iter083m_stdout.json
+          python3 - <<'PY'
+          import json
+          p='results/raw/iter083m_sm_source_normal_geometric_radial_basis.json'
+          d=json.load(open(p,encoding='utf-8'))
+          assert d['verdict']=='PASS_EXACT_SCOPED', d
+          assert all(d['predicates'].values()), d['predicates']
+          assert all(d['controls'].values()), d['controls']
+          assert d['rotation_subgroup_checked']==24
+          assert d['boost_symmetric_form_dimension']==1
+          assert d['normal_invariant_metric_dimension']=={'K3':1,'K4':1,'K5':1}
+          assert d['nested_variance_coefficients']==['3/4','4/5']
+          assert d['maximal_chain_count']==20
+          assert d['physical_chain_ranks']==[6,3,3]
+          assert d['physical_total_rank']==12
+          assert d['s5_block_covariance_checks']==1920
+          assert d['s5_chain_increment_covariance_checks']==7200
+          for p in ('3','4','5'):
+              assert d['label_metric_stats'][p]['full_invariant_dimension']==2
+              assert d['label_metric_stats'][p]['std_restriction_dimension']==1
+              assert d['complete_graph_laplacian_identity'][p] is True
+          print('ITER083M_GATE=PASS_EXACT_SCOPED')
+          print('label metrics=',d['label_metric_stats'])
+          print('radial form=',d['canonical_local_radial_form'])
+          print('chain ranks=',d['physical_chain_ranks'])
+          PY
+          sha256sum results/raw/iter083m_sm_source_normal_geometric_radial_basis.json | tee iter083m_sha256.txt
+      - name: Upload exact result artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: iter083m-source-normal-geometric-radial-basis
+          path: |
+            results/raw/iter083m_sm_source_normal_geometric_radial_basis.json
+            iter083m_stdout.json
+            iter083m_sha256.txt
+          if-no-files-found: error
+          retention-days: 90
