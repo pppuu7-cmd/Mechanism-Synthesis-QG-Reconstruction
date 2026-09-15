@@ -15,58 +15,85 @@ Confirmed usable authority through Iter083N:
 - historical original Iter083N remains `INVALID_PROVENANCE`;
 - first fresh Iter083N retry run `34925091322` remains `INVALID_IMPLEMENTATION`.
 
-Latest Researcher gate was Iter083P-SM — actual source-ordered residue object definition. Researcher returned `BLOCKED_OBJECT_DEFINITION`, but independent Critic review found the production **`INVALID_IMPLEMENTATION`**. Controlling review:
+Latest valid Researcher gate is now the **control-repaired Iter083P-SM actual source-ordered residue object-definition audit**.
 
-- `results/ITER083P_ADVERSARIAL_IMPLEMENTATION_REVIEW.md`;
-- commit `d5641407ce661f6fe125d926880c7f36ef8b7625`.
+Researcher verdict:
 
-Therefore Iter083P Researcher result may not be used downstream. The immediate authorized front is now:
+`BLOCKED_OBJECT_DEFINITION`.
 
-`ITER083P_CONTROL_ONLY_OBJECT_DEFINITION_AUDIT_REPAIR`.
+Classification:
 
-The likely physical blocker remains `SOURCE_FAITHFUL_JOINT_K5_MEROMORPHIC_DEFORMATION_AND_RESIDUE_BRIDGE_MISSING`, but this must be re-certified by a valid repaired gate before becoming new downstream authority.
+`ITER083P_SM_ACTUAL_SOURCE_ORDERED_MEROMORPHIC_RESIDUE_NOT_DEFINED_BY_CURRENT_REPOSITORY_AUTHORITY_SCOPED`.
 
-## Why Iter083P production is invalid
+This repaired Researcher result **awaits independent Critic review**. No downstream source-bridge or residue calculation is authorized before that review.
 
-The prospective scientific preregistration itself is valid and unchanged. The implementation is not.
+Immediate active front:
 
-Production validator `scripts/iter083p_actual_source_residue_object_definition.py` initializes all seven frozen object-definition requirements R1-R7 to literal `False`. The workflow then asserts several of those preset values. Hence green CI is circular with respect to the `BLOCKED_OBJECT_DEFINITION` classification.
+`ITER083P_CONTROL_REPAIR_2_INDEPENDENT_CRITIC_REVIEW / SOURCE_FAITHFUL_JOINT_K5_MEROMORPHIC_OR_MULTIVARIABLE_BOUNDARY_VALUE_BRIDGE / ACTUAL_FULL_BOUNDARY_CONTRACTED_RESIDUE_OBJECT / REGULATOR_INDEPENDENCE_AFTER_OBJECT_DEFINITION`.
 
-The validator also hashes only seven summary/authority files and omits directly relevant source locks/derivations already present in the repository, including:
+## Repaired Iter083P authority
 
-- `sources/ITER080K_SM_TOLLER_ANALYTICITY_JOINT_K5_SOURCE_MATRIX.md`;
-- `sources/ITER083G_MULTIVARIATE_RENORMALIZATION_Q_SOURCE_LOCK.md`;
-- `sources/ITER083H_SM_PRIMITIVE_SIMPLE_K5_POLE_DERIVATION.md`;
-- `sources/ITER083J_PRODUCT_FACTORIZATION_SOURCE_LOCK.md`;
-- `sources/ITER083K_FOREST_LOCALITY_SOURCE_LOCK.md`;
-- `sources/ITER083L_CAUSAL_TOLLER_SOURCE_AUTHORITY_LOCK.md`;
-- `sources/ITER083N_FINITE_PART_RESIDUE_DEPENDENCE_SOURCE_LOCK.md`.
+Parent scientific preregistration remains unchanged:
 
-Several frozen negative controls are also unconditional or prose-anchor booleans rather than malformed candidate objects passed through the same validator. The preregistration explicitly maps incomplete corpus coverage and unexecuted negative controls to `INVALID_IMPLEMENTATION`.
+`prereg/ITER083P_SM_ACTUAL_SOURCE_ORDERED_RESIDUE_OBJECT_DEFINITION.md`, commit `ea29cd3e716d7b35457db493834347a0ca6176a6`.
 
-Researcher production metadata remains historically valid but non-authoritative scientifically:
+Critic-invalidated historical production remains quarantined:
 
-- production head `bab913eabfb73cc42b3d62a1dd81672ceb0208df`;
-- run `34928916039`, job `104252818974`, terminal success;
-- artifact `10380702602`;
-- ZIP digest `sha256:cd307c25dc69c776f310a47ea810bcee0683566f61603ed03a6cd1059b9f9fe8`;
-- production JSON SHA256 `f06e6268efbe9dbeaf7881b948103a3cc26553575e14b251e9aaba8e0b70b46d`.
+- historical head `bab913eabfb73cc42b3d62a1dd81672ceb0208df`;
+- run `34928916039`, job `104252818974`, terminal green but scientifically `INVALID_IMPLEMENTATION`;
+- Critic review `results/ITER083P_ADVERSARIAL_IMPLEMENTATION_REVIEW.md`, commit `d5641407ce661f6fe125d926880c7f36ef8b7625`.
 
-Green CI does not override the implementation invalidation.
+Control repair 1 was prospectively frozen in commit `0554c312d3254fc1a7a7cc47a39278cb102fff34`. Its first run `34932959109` is `INVALID_IMPLEMENTATION` because only the synthetic positive R3 fixture was lexically rejected by the evidence parser. No scientific verdict from that failed run is authority.
 
-## Independent source state retained
+Control repair 2 was prospectively frozen in commit `46bc10e4dba55f5fb2ae8051beb88941f6eb3060` before the sole implementation change. Authoritative repaired production head is:
 
-The Critic invalidation does not show the underlying object-definition blocker to be false. Existing prior source audits still support it in scoped form:
+`c7d16b77bac36273942d733be6360be2f681302a`.
 
-- Iter080K: one-wedge/reduced-Toller analytic uniqueness is explicit; no explicit simultaneous ten-wedge K5 collision-extension rule is supplied by the audited Toller source.
-- Iter083L: published one-wedge spectral limit is part of each Toller definition before the ten-factor K5 product/group integration; the audited source does not define edgewise collision-analytic parameters, joint K3/K4/K5 subtraction, common K5 collision regulator, or composition normalization selecting supported coefficients.
-- Iter083H: auxiliary multivariate primitive simple-pole construction is conditional and explicitly not a full physical K5 meromorphic-continuation theorem.
+Production:
 
-These prior scoped facts do not make the invalid Iter083P production authoritative.
+- run `34933068763`, terminal success;
+- job `104265151196`, terminal success;
+- artifact `10382228012`;
+- artifact ZIP digest `sha256:d56a961a5360ac8bf209a626316982a2d34318dfc85086797661e2f19d165208`;
+- production JSON SHA256 `1a51f41cdd011ab1d4527e8af255819eb5a5461ac6453d02bea715c65896eb64`;
+- 51-file authority/control manifest, complete;
+- `execution_valid=true`;
+- synthetic all-R1-R7 positive fixture returns `PASS_OBJECT_DEFINED_SCOPED`;
+- all seven malformed negative candidate objects are rejected through the same validator.
+
+Durable result:
+
+`results/ITER083P_CONTROL_REPAIR_2_RESULT.md`.
+
+Durable provenance:
+
+`status/ITER083P_CONTROL_REPAIR_2_PROVENANCE_LEDGER.md`.
+
+## Exact repaired Iter083P scientific fact
+
+The current repository defines useful upstream ingredients:
+
+- the one-wedge Toller source object and published one-wedge spectral prescription;
+- the off-collision ten-factor K5 product;
+- the four gauge-fixed group integrations;
+- conditional auxiliary meromorphic/forest machinery;
+- the formal Iter083N Laurent finite-part transformation theorem.
+
+It does **not** currently define the exact full source-ordered meromorphic residue object needed to turn Iter083N into a physical calculation. All seven frozen indispensable requirements are `ABSENT_OR_ONLY_CONDITIONAL`:
+
+1. R1 — full source-defined K5 meromorphic deformation parameter and deformed full object;
+2. R2 — exact source-to-joint-deformation map;
+3. R3 — full all-32 boundary-contracted residue map, or exact authoritative reduction replacing it;
+4. R4 — deformed full-object measure and normalization;
+5. R5 — joint branch/sign compatibility theorem preserving the published one-wedge spectral prescription and source ordering;
+6. R6 — full K5 Laurent/meromorphic-continuation theorem at the common collision;
+7. R7 — unique source identification of the physical coefficient `A_-1`.
+
+Therefore the next physical residue/annihilator calculation is blocked at object definition. It is forbidden to manufacture `A_-1` from an auxiliary Q family, scalar/Hodge surrogate, termwise contact product, representative boundary component, generic extension theorem, post-hoc finite part, or by relabelling the one-wedge spectral epsilon as a joint regulator.
 
 ## Source-order firewall
 
-Authoritative ordering remains
+Authoritative ordering remains:
 
 `one-wedge spectral/spinor integration -> Toller function -> product of ten Toller matrices -> full boundary contraction -> K5 group integration / distributional extension`.
 
@@ -86,9 +113,9 @@ Published spectral `i epsilon` remains one-wedge prescription data. Auxiliary te
 8. Iter083L — current causal/Toller source does not authorize the extra multivariate Q/forest-locality selector structure; Critic `CONFIRMED_SCOPED`.
 9. repaired Iter083M — source small-boost geometry plus authoritative barycentric projectors determines a unique invariant tangent/tubular radial quadratic basis; Critic `CONFIRMED_SCOPED`.
 10. provenance-correct Iter083N — formal local simple-pole finite-part theorem; Critic `CONFIRMED_SCOPED`.
-11. Iter083P Researcher object-definition BLOCKED production — `INVALID_IMPLEMENTATION`; quarantined from downstream authority.
+11. repaired Iter083P — valid Researcher audit finds the actual full source-ordered meromorphic residue object undefined by current authority; `BLOCKED_OBJECT_DEFINITION`, awaiting independent Critic review.
 
-## Iter083N confirmed theorem retained
+## Iter083N theorem retained conditionally
 
 For
 
@@ -104,11 +131,11 @@ Universal annihilator thresholds for supported residues of normal order `<=omega
 - K4 (`omega=3`): `I_N^4`;
 - K5 (`omega=8`): `I_N^9`.
 
-This remains a formal local simple-pole theorem only. It does not establish the actual Toller residue.
+This remains a formal local simple-pole theorem. Iter083P shows that current source authority still does not supply the actual physical full-K5 `A_-1` to which it could be applied.
 
 ## Iter083O status
 
-`prereg/ITER083O...` remains preparation-only / non-controlling. A smooth source-native nonlinear radial candidate is not a physical selector unless source authority mandates its use in the extension prescription. Iter083O must not displace the valid object-definition audit front.
+`prereg/ITER083O...` remains preparation-only / non-controlling. A smooth source-native nonlinear radial candidate is not a physical selector unless source authority mandates its use in the extension prescription. It must not displace the source-object bridge front.
 
 ## Iter077 / erratum locks
 
@@ -128,10 +155,10 @@ Historical Iter077Q infinite tangential physical application remains invalid und
 `-> conditional auxiliary-Q geometry not source-authorized`
 `-> Iter083M tangent radial basis CONFIRMED_SCOPED`
 `-> Iter083N finite-part/jet theorem CONFIRMED_SCOPED`
-`-> Iter083P object-definition production INVALID_IMPLEMENTATION`
-`-> valid source-residue object-definition audit ?`
-`-> source-faithful joint meromorphic/boundary-value bridge ?`
-`-> actual residue normal-jet annihilator ?`
+`-> repaired Iter083P: actual full source residue object BLOCKED_OBJECT_DEFINITION`
+`-> independent Critic review ?`
+`-> source-faithful joint meromorphic / several-variable boundary-value / microlocal multiplication bridge ?`
+`-> actual full boundary-contracted residue normal-jet annihilator ?`
 `-> physical finite-part / joint-K5 selector ?`
 `-> global multistratum patching ?`
 `-> causal composition E3/E4/E6 ?`
@@ -146,15 +173,13 @@ Historical Iter077Q infinite tangential physical application remains invalid und
 
 ## Claim locks
 
-No `NEW_PHYSICS_FOUND`; no complete-QG claim; no unique physical K5 extension; no source-authorized finite-part selector; no actual nonzero physical residue or finite-part scheme-dependence theorem; no generic finite-spin signed P3; no exact full-amplitude cancellation/non-cancellation theorem; no causal-vertex finiteness/divergence theorem without a full source-faithful test; no physical regulator-independence/dependence theorem; no physical source->K4 pushforward; no nominal epsilon^-1 coefficient; no G3 PASS without quantum-dynamics closure; no F9/G8/K5 promotion; no fitted subtraction constants/scales or preferred finite parts without independent authority.
+No `NEW_PHYSICS_FOUND`; no complete-QG claim; no unique physical K5 extension; no source-authorized finite-part selector; no actual physical residue value/order/sign/cancellation or finite-part scheme-dependence theorem; no generic finite-spin signed P3; no exact full-amplitude cancellation/non-cancellation theorem; no causal-vertex finiteness/divergence theorem without a full source-faithful test; no physical regulator-independence/dependence theorem; no physical source->K4 pushforward; no nominal epsilon^-1 coefficient; no G3 PASS without quantum-dynamics closure; no F9/G8/K5 promotion; no fitted subtraction constants/scales or preferred finite parts without independent authority.
 
 ## Authorized next work
 
-1. Only a **control-only Iter083P repair/retry under the unchanged scientific preregistration** is authorized.
-2. Repair must freeze or mechanically enumerate the complete relevant authority manifest, including direct source locks/derivations rather than only result summaries.
-3. R1-R7 must be derived from exact source statements/formulas or an auditable absence manifest; they may not be initialized to the desired verdict.
-4. The same validator must include a synthetic positive fixture proving it can return `PASS_OBJECT_DEFINED_SCOPED` when all R1-R7 are actually present.
-5. Frozen wrong-object controls must be executed using malformed candidate objects through the same validators: representative component, auxiliary Q/Hodge/scalar surrogate, termwise contact product, post-hoc finite-part/regulator, and generic extension theorem.
-6. Preserve all ten wedges, true K5 incidence, source ordering, all-32 boundary requirement, actual measure/normalization, branch/sign conventions and published one-wedge spectral prescription.
-7. Only after terminal repaired Iter083P and independent Critic review may Researcher open a source-faithful bridge-authority gate.
-8. Predictive local K5, E3/E4/E6, G3, regulator removal, RG, continuum, spin-2, GR, matter/QFT and normalized prediction remain closed.
+1. First obtain independent Critic review of repaired Iter083P run `34933068763` and its 51-file evidence manifest.
+2. Do not repeat an object-definition census unless Critic identifies a specific implementation/provenance defect or repository authority changes.
+3. If repaired Iter083P is confirmed, the next Researcher gate may only be a prospectively frozen **source-faithful bridge-authority gate**: exact joint K5 meromorphic/several-complex-variable boundary value/microlocal multiplication/composition-normalization prescription, with all ten wedges, true K5 incidence, all 32 boundary components or exact reduction, actual measure/normalization, branch/sign information and published spectral prescription preserved.
+4. A generic mathematical extension or renormalization scheme without an exact source bridge/normalization law remains conditional and cannot unlock F9.
+5. Only after the actual full source residue object is defined may the Iter083N annihilator question be tested physically.
+6. Predictive local K5, E3/E4/E6, G3, regulator removal, RG, continuum, spin-2, GR, matter/QFT and normalized prediction remain closed.
