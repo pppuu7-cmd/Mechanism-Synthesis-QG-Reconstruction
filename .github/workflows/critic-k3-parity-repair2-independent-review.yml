@@ -1,0 +1,70 @@
+name: Independent Critic K3 parity repair2 review
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+    paths:
+      - 'scripts/critic_k3_parity_repair2_independent_review.py'
+      - '.github/workflows/critic-k3-parity-repair2-independent-review.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  independent-critic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout full history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Run independent frozen Critic checks
+        run: |
+          set -euo pipefail
+          mkdir -p results/raw
+          python3 scripts/critic_k3_parity_repair2_independent_review.py \
+            --output results/raw/critic_k3_parity_repair2_independent_review.json \
+            | tee critic_k3_parity_repair2_stdout.json
+          python3 - <<'PY'
+          import json
+          p='results/raw/critic_k3_parity_repair2_independent_review.json'
+          d=json.load(open(p, encoding='utf-8'))
+          assert d['classification']=='K3_PARITY_REPAIR2_CRITIC_CONFIRMED_SCOPED', d
+          assert d['mandatory_verdict']=='CONFIRMED_SCOPED', d
+          assert all(d['checks'].values()), d['checks']
+          c=d['C2_C3_contraction']
+          assert c['k3_blocks']==10
+          assert c['boundary_components_per_block']==32
+          assert c['raw_terms_total']==1000000
+          assert c['all_blocks_full32_degree3_with_3_internal_7_external'] is True
+          assert c['external_factors_kept_as_arbitrary_degree0_symbols'] is True
+          g=d['C4_C5_geometry']
+          assert g['axis_gram']==[[2,1],[1,2]]
+          assert g['gram6_determinant']==27
+          assert g['inversion6_determinant']==1
+          assert g['q_equals_haar_quadratic_form'] is True
+          assert g['k2_front_radial_exponent']==0
+          s=d['C6_true_boundary_S5']
+          assert s['matrices_checked']==120
+          assert s['all_boundary_matrices_rank32'] is True
+          assert s['matches_independently_confirmed_iter083a_boundary_character'] is True
+          assert d['C9_controls']['frozen_ten_all_rejected'] is True
+          assert d['C9_controls']['extra_controls_all_rejected'] is True
+          print('CRITIC_CLASSIFICATION=', d['classification'])
+          print('CRITIC_VERDICT=', d['mandatory_verdict'])
+          print('CRITIC_CHECKS=', d['checks'])
+          PY
+          sha256sum results/raw/critic_k3_parity_repair2_independent_review.json | tee critic_k3_parity_repair2_sha256.txt
+      - name: Upload independent Critic artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: critic-k3-parity-repair2-independent-review
+          path: |
+            results/raw/critic_k3_parity_repair2_independent_review.json
+            critic_k3_parity_repair2_stdout.json
+            critic_k3_parity_repair2_sha256.txt
+          if-no-files-found: error
+          retention-days: 90
