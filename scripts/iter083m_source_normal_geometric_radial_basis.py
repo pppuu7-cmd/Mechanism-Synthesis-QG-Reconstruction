@@ -39,7 +39,6 @@ def perm_matrix(p):
     return U
 
 def restrict_form(M,basis):
-    # columns basis vectors
     B=[list(x) for x in zip(*basis)]
     return mm(mt(B),mm(M,B))
 def flat(M): return [x for r in M for x in r]
@@ -60,7 +59,6 @@ def signed_rotation_group():
     return mats
 
 def sym3_from_vars():
-    # variable order 00,11,22,01,02,12; return coefficient tensors per variable
     basis=[]
     positions=[(0,0),(1,1),(2,2),(0,1),(0,2),(1,2)]
     for a,b in positions:
@@ -88,16 +86,14 @@ def main():
     ap.add_argument('--theorem',default='sources/ITER083M_SM_SOURCE_NORMAL_RADIAL_GEOMETRY_DERIVATION.md')
     args=ap.parse_args()
 
-    p0i,m0i=require(args.iter077i,['beta_ab(r)=r |v_ab|+O(r^2)','three boost-vector components'])
+    p0i,m0i=require(args.iter077i,['beta_ab(r)=r |v_ab|+O(r^2)','d = 4*3 = 12'])
     p0d,m0d=require(args.iter082d,['P_B[i,j] = delta_ij - 1/|B|','6 + 3 + 3 = 12','all 20 maximal chains'])
     p0b,m0b=require(args.iter083b,['V = spin1_SO(3) tensor Std5_S5','source Haar/tubular density convention'])
     p0p,m0p=require(args.prereg,['UNIQUE_LABEL_METRIC','COMPLETE_GRAPH_IDENTITY','INTERPRETATION_FIREWALL'])
     p0=p0i and p0d and p0b and p0p
 
-    # P1 invariant symmetric label forms: two on R^p, one after restriction to Std_p.
     label_stats={}; p1=True
     for p in (3,4,5):
-        # Full invariant form basis is I and J-I by the two pair orbits.
         I=[[Fraction(int(i==j)) for j in range(p)] for i in range(p)]
         JmI=[[Fraction(int(i!=j)) for j in range(p)] for i in range(p)]
         std=[]
@@ -105,11 +101,8 @@ def main():
             x=[Fraction(0)]*p; x[i]=1; x[p-1]=-1; std.append(x)
         RI=restrict_form(I,std); RO=restrict_form(JmI,std)
         restriction_span_rank=rank_q([flat(RI),flat(RO)])
-        # exact orbit census of symmetric index pairs under S_p
         pairs=[(i,j) for i in range(p) for j in range(i,p)]
-        seen=[]; orbits=[]
-        perms=list(itertools.permutations(range(p)))
-        left=set(pairs)
+        orbits=[]; perms=list(itertools.permutations(range(p))); left=set(pairs)
         while left:
             q=next(iter(left)); orb=set()
             for perm in perms:
@@ -120,11 +113,9 @@ def main():
         label_stats[str(p)]={'full_invariant_dimension':len(orbits),'pair_orbit_sizes':sorted(len(o) for o in orbits),'std_restriction_dimension':restriction_span_rank}
         p1 &= (len(orbits)==2 and restriction_span_rank==1)
 
-    # P2 exact finite rotation subgroup already forces SO3 symmetric form to scalar I.
     rots=signed_rotation_group(); so3_test_dim=invariant_sym3_dimension(rots)
     p2=(len(rots)==24 and so3_test_dim==1 and all(label_stats[str(p)]['std_restriction_dimension']==1 for p in (3,4,5)))
 
-    # P3 complete graph Laplacian identity L_Kp = p P_p.
     laplace_ok={}; p3=True
     for p in (3,4,5):
         P=[[Fraction(int(i==j))-Fraction(1,p) for j in range(p)] for i in range(p)]
@@ -132,7 +123,6 @@ def main():
         ok=(L==[[Fraction(p)*x for x in r] for r in P])
         laplace_ok[str(p)]=ok; p3 &= ok
 
-    # P4 nested variance/projector increment for every p=3->4 and p=4->5 inclusion in five labels.
     nested_checks=[]; p4=True
     for p in (3,4):
         for B in itertools.combinations(V5,p):
@@ -142,7 +132,6 @@ def main():
                 Bp=tuple(sorted(SB|{v}))
                 P=projector(B); Pp=projector(Bp); D=sub(Pp,P)
                 idem=eq(mm(D,D),D); orth=zero(mm(P,D)) and zero(mm(D,P)); r=trace(D)
-                # expected rank-one contrast projector
                 w=[Fraction(0)]*5
                 for a in B:w[a]=Fraction(-1,p)
                 w[v]=1
@@ -154,7 +143,6 @@ def main():
                 nested_checks.append({'p':p,'block':list(B),'added':v,'rank':str(r),'variance_coefficient':str(coeff),'ok':ok})
                 p4 &= ok
 
-    # P5 all 20 maximal K3-K4-K5 chains: orthogonal ranks 2,1,1; physical 6,3,3.
     chains=[]; chain_ok=True
     K5=tuple(V5); P5=projector(K5)
     for B4 in itertools.combinations(V5,4):
@@ -168,7 +156,6 @@ def main():
             chains.append((tuple(B3),tuple(B4),K5)); chain_ok &= ok
     p5=(len(chains)==20 and chain_ok)
 
-    # P6 all S5 covariance: 16 block x120 and 20 chain x3 increments x120.
     blocks=[b for p in (3,4,5) for b in itertools.combinations(V5,p)]
     block_cov=0; chain_cov=0; p6=True
     for perm in PERMS5:
