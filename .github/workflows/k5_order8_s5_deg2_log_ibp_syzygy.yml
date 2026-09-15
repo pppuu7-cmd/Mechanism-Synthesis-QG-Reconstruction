@@ -1,0 +1,57 @@
+name: K5 S5 degree2 logarithmic IBP syzygy
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'prereg/K5_ORDER8_S5_DEG2_FACE_TANGENT_LOG_IBP_SYZYGY.md'
+      - 'scripts/k5_order8_s5_deg2_log_ibp_syzygy.py'
+      - '.github/workflows/k5_order8_s5_deg2_log_ibp_syzygy.yml'
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run exact logarithmic syzygy solver
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p results/raw
+          python3 scripts/k5_order8_s5_deg2_log_ibp_syzygy.py \
+            --output results/raw/k5_order8_s5_deg2_log_ibp_syzygy.json \
+            | tee k5_order8_s5_deg2_log_ibp_syzygy_stdout.json
+          python3 - <<'PY'
+          import json
+          p='results/raw/k5_order8_s5_deg2_log_ibp_syzygy.json'
+          d=json.load(open(p,encoding='utf-8'))
+          allowed={
+            'K5_S5_FACE_TANGENT_LOG_IBP_DEG2_NONRADIAL_EXISTS_EXACT_SCOPED',
+            'K5_S5_FACE_TANGENT_LOG_IBP_DEG2_RADIAL_ONLY_EXACT_SCOPED',
+          }
+          assert d['status']=='PASS_EXACT_SCOPED',d
+          assert d['classification'] in allowed,d
+          assert all(d['checks'].values()),d['checks']
+          assert all(d['controls'].values()),d['controls']
+          assert d['k5']['spanning_tree_count']==125
+          assert d['k5']['edge_stabilizer_orbit_sizes_same_adjacent_disjoint']==[1,6,3]
+          assert d['k5']['degree1_nullity']==1
+          assert d['synthetic_product_fixture']['nonradial_quotient_dimension']>=2
+          assert d['scientific_invariant_dual_period_verdict'] is None
+          print('CLASSIFICATION=',d['classification'])
+          print('DEG1_BASIS=',d['k5']['degree1_nullspace_basis'])
+          print('DEG2_BASIS=',d['k5']['degree2_nullspace_basis_a_b_c_k'])
+          print('NONRADIAL_QUOTIENT_DIM=',d['k5']['nonradial_degree2_quotient_dimension'])
+          print('SYNTHETIC_NONRADIAL_DIM=',d['synthetic_product_fixture']['nonradial_quotient_dimension'])
+          PY
+          sha256sum results/raw/k5_order8_s5_deg2_log_ibp_syzygy.json | tee k5_order8_s5_deg2_log_ibp_syzygy_sha256.txt
+      - name: Upload syzygy artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: k5-order8-s5-deg2-log-ibp-syzygy
+          path: |
+            results/raw/k5_order8_s5_deg2_log_ibp_syzygy.json
+            k5_order8_s5_deg2_log_ibp_syzygy_stdout.json
+            k5_order8_s5_deg2_log_ibp_syzygy_sha256.txt
+          retention-days: 90
