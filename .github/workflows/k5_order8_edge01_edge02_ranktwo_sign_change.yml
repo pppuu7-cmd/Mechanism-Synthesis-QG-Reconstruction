@@ -1,0 +1,58 @@
+name: K5 order8 edge01-edge02 rank-two sign change
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'prereg/K5_ORDER8_EDGE01_EDGE02_RANKTWO_POSITIVITY_LANE.md'
+      - 'sources/K5_ORDER8_EDGE01_EDGE02_RANKTWO_SIGN_CHANGE_DERIVATION.md'
+      - 'scripts/k5_order8_edge01_edge02_ranktwo_sign_change.py'
+      - 'scripts/k5_order8_nonuniform_schwinger_sign_diagnostic.py'
+      - 'scripts/k5_order8_edge01_rankone_positivity.py'
+      - 'distributional/iter077i_sm_source_ordered_jhalf_k5_l1.py'
+      - '.github/workflows/k5_order8_edge01_edge02_ranktwo_sign_change.yml'
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run exact rank-two sign-change validator
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p results/raw
+          python3 scripts/k5_order8_edge01_edge02_ranktwo_sign_change.py \
+            --output results/raw/k5_order8_edge01_edge02_ranktwo_sign_change.json \
+            | tee k5_order8_edge01_edge02_ranktwo_sign_change_stdout.json
+          python3 - <<'PY'
+          import json
+          p='results/raw/k5_order8_edge01_edge02_ranktwo_sign_change.json'
+          d=json.load(open(p,encoding='utf-8'))
+          assert d['status']=='PASS_EXACT_SCOPED',d
+          assert d['classification']=='K5_EDGE01_EDGE02_RANKTWO_SIGN_CHANGE_EXACT_SCOPED',d
+          assert all(d['checks'].values()),d['checks']
+          assert all(d['controls'].values()),d['controls']
+          assert d['source_choice_terms']==1024
+          assert d['det_L_bivariate_polynomial']['factorized']=='5*(3*t*u+7*t+7*u+8)'
+          assert d['positive_witness']['point']==['1','2']
+          assert d['positive_witness']['value']==['1254383808/9191328125',0]
+          assert d['negative_witness']['point']==['1','3']
+          assert d['negative_witness']['value']==['-14327118848/13839609375',0]
+          assert d['scientific_k5_zero_nonzero_verdict'] is None
+          print('CLASSIFICATION=',d['classification'])
+          print('POSITIVE_WITNESS=',d['positive_witness'])
+          print('NEGATIVE_WITNESS=',d['negative_witness'])
+          print('P02=',d['edge02_radial_primitive_coefficients_u0_up'])
+          PY
+          sha256sum results/raw/k5_order8_edge01_edge02_ranktwo_sign_change.json | tee k5_order8_edge01_edge02_ranktwo_sign_change_sha256.txt
+      - name: Upload theorem artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: k5-order8-edge01-edge02-ranktwo-sign-change
+          path: |
+            results/raw/k5_order8_edge01_edge02_ranktwo_sign_change.json
+            k5_order8_edge01_edge02_ranktwo_sign_change_stdout.json
+            k5_order8_edge01_edge02_ranktwo_sign_change_sha256.txt
+          retention-days: 90
