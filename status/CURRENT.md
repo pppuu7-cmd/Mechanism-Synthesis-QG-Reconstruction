@@ -146,6 +146,44 @@ All 1024 labeled edge subsets reduce to exactly 34 S5 orbit types. This controls
 
 The exact-zero K3/K4 collision residues are not automatically Schwinger-simplex boundary terms.
 
+Prospective 34-orbit physical numerator/action-flux audit is frozen at `prereg/K5_SCHWINGER_34ORBIT_PHYSICAL_NUMERATOR_ACTION_FLUX_VALUATION_AUDIT.md`, commit `b6580a731c88027dc568672840c4c77333ff7c16`. Automation B pre-implementation audit `status/K5_SCHWINGER_34ORBIT_PREIMPLEMENTATION_CRITIC_AUDIT.md`, commit `6a3535aae02faad0c7adcf9fba6e172af599a564`, required projective normal measure and flux powers to be derived rather than guessed.
+
+---
+
+## Projective blow-up normal-flux geometry — CONTROLLING CRITIC CORRECTION
+
+Researcher geometry sub-gate preregistration `prereg/K5_SCHWINGER_PROJECTIVE_BLOWUP_NORMAL_FLUX_SCALING.md`, commit `06fc09a0355e6cc15889ac9f244ab03d4cb86569`, was followed by derivation commit `d756f0507c8b7816344fd75b1f8882bca071ede5`, implementation `a0b2ba1da34a7488af21b647a3213a4f39841de3`, and terminal production head `b94733dda1083db76eb3a8abd64f6a43c60e788b`, run `35087556685`, job `104765865533`, artifact `10441874454`, ZIP digest `sha256:3b46f9647ba064b4951e830671123753a270fbdf522b77f8e1e4b910d6d6c59c`, JSON SHA256 `2e3e02377c1a5a5fd294ec9a8aff4a389f1df06688546b03167ba2b2802f84ca`.
+
+The scalar blow-up Jacobian is correct and independently retained:
+
+`Omega_9` scalar measure near a proper `|Z|=k` blow-up contributes `t^(k-1) dt` times a nonzero angular/tangential form.
+
+However the Researcher derivation then used raw ambient `v(t)` in the normal-flux formula. This is scientifically false for the projective form. For
+
+`Omega_9 = i_E(dalpha_1 wedge ... wedge dalpha_10)`, `E=sum_i alpha_i partial_i`,
+
+one has exactly
+
+`i_E Omega_9 = 0`,
+
+so contraction depends only on the projective vector-field class modulo radial Euler fields. On `s1=sum_i alpha_i=1`, the controlling tangent representative is
+
+`u_i = v_i - (S/s1) alpha_i`, `S=sum_i v_i`,
+
+and for `t=sum_(e in Z) alpha_e` the correct projective normal component is
+
+`u(t)=v(t)-t S/s1`.
+
+Exact counterexample inside the Researcher frozen class: choose polynomial `q_i=1`, so `v=E`. Then raw `v(t)=t !=0`, whereas the true projective contraction is identically `i_v Omega_9=0`. Therefore the claimed universal formula `pullback(i_v Omega_9)=+-t^(k-1)v(t)omega_Z` is false.
+
+Independent Critic prereg `2e788241b2e14dc5af9c95bc09d6c16125d9378f`; implementation `cec43e41df322f4e84c66a6e6e6acbf35105c6a0`; workflow/head `bdaea0b793fa3d61f2377243ef284bf10e168701`; run `35093003694`, terminal success; job `104783534228`; artifact `10444534918`; ZIP digest `sha256:0a62ac2faa9f6b484bf5b0fb57d4683fd8b8b9578ff61cb85be1cbe75fd4faa3`; Critic JSON SHA256 `ea52c3d76601b58752e605184ef5471db239bcf3d484bab0f0a5d58dd8fc7008`.
+
+Controlling review `results/K5_PROJECTIVE_BLOWUP_NORMAL_FLUX_SCALING_ADVERSARIAL_REVIEW.md`, commit `f687ab9e34e8b4cfc6f4a4cd003938b1ef434baa`; provenance ledger `status/K5_PROJECTIVE_BLOWUP_NORMAL_FLUX_SCALING_CRITIC_PROVENANCE_LEDGER.md`, commit `a3a6d5496487f0a472766b53040d4604fbbda806`.
+
+Mandatory verdict: **`SCIENTIFIC_FAIL_CONFIRMED`** for the Researcher raw-`v(t)` normal-flux identity. The scalar Jacobian exponent `k-1` remains valid.
+
+The 34-orbit physical action-flux audit is now blocked from substantive corner classification until a new prospectively preregistered corrected projective-tangent flux-scaling gate is terminal and independently reviewed. No physical corner verdict or integrated Stokes relation follows from the failed geometry sub-gate.
+
 ---
 
 ## Current survival chain
@@ -164,7 +202,11 @@ The exact-zero K3/K4 collision residues are not automatically Schwinger-simplex 
 `-> Researcher raw-uniform action normalization SCIENTIFIC_FAIL_CONFIRMED by analytic review + terminal repaired Critic machine cross-check`
 `-> corrected raw-uniform annihilator action NONZERO on both physical channels`
 `-> constant-2x2 action closure ?`
-`-> higher-codimension Schwinger boundary/Stokes authority ?`
+`-> scalar projective corner Jacobian exponent k-1 CONFIRMED`
+`-> Researcher raw-v projective normal-flux formula SCIENTIFIC_FAIL_CONFIRMED`
+`-> corrected projective-tangent flux scaling ?`
+`-> 34-orbit physical numerator/action-flux audit BLOCKED on corrected geometry`
+`-> global projective Stokes/IBP relation ?`
 `-> two invariant-dual K5 projective periods ?`
 `-> remaining S5 sectors / full order-eight tensor ?`
 `-> physical finite-part / joint-K5 selector ?`
@@ -183,10 +225,10 @@ The exact-zero K3/K4 collision residues are not automatically Schwinger-simplex 
 
 ## Highest-information next work
 
-1. Do not rewrite the failed Researcher uniform-action derivation. The **control-only normalization/performance repair/retry** of `K5_DEG4_ANNIHILATOR_ACTUAL_DUAL_NUMERATOR_POINTWISE_ACTION` is already prospectively frozen at commit `500fd80d900c99f71c66869dfe99fa4f35adc5f5`. It must explicitly distinguish raw homogeneous alpha coordinates from simplex `s1=1`, verify homogeneity of `N` and `B_v`, reproduce corrected raw-uniform `B=-1500N`, retain the exact original four frozen fit/validation points and full all-32/100000-term dual source object, and emit no partial authority if another performance failure occurs.
-2. The repaired action gate should target only the still-open exact constant-`2x2` closure classification at the original frozen fit/validation points; do not change points post hoc.
-3. Independently prospectively freeze a 34-orbit higher-codimension Schwinger-corner audit combining exact denominator valuation with exact physical numerator and action-flux valuations.
-4. Only after boundary/Stokes authority is terminal and independently reviewed may the projective total derivative be promoted to an integrated-period relation.
+1. Do not rewrite the failed Researcher uniform-action derivation. The **control-only normalization/performance repair/retry** of `K5_DEG4_ANNIHILATOR_ACTUAL_DUAL_NUMERATOR_POINTWISE_ACTION` remains prospectively frozen at commit `500fd80d900c99f71c66869dfe99fa4f35adc5f5`. It must explicitly distinguish raw homogeneous alpha coordinates from simplex `s1=1`, verify homogeneity of `N` and `B_v`, reproduce corrected raw-uniform `B=-1500N`, retain the exact original four frozen fit/validation points and full all-32/100000-term dual source object, and emit no partial authority if another performance failure occurs. It may proceed independently because it does not depend on Schwinger boundary-flux geometry.
+2. Do not rewrite the failed projective-flux gate. Prospectively freeze a successor `K5_SCHWINGER_PROJECTIVE_TANGENT_NORMAL_FLUX_SCALING`. It must derive the flux directly from `Omega_9=i_E Vol` and/or `u=v-(S/s1)E`, prove invariance under `v -> v+fE`, retain the confirmed scalar Jacobian `t^(k-1)`, include `v=E` as a mandatory zero-flux control, and prove chart-equivalent valuation.
+3. Until that corrected successor is terminal and independently reviewed, the already-frozen 34-orbit physical action-flux audit may perform only outcome-independent preparation; it must not assign `ALL_CORNERS_VANISH`, `NONVANISHING_CORNER_FOUND`, `NONINTEGRABLE_CORNER_FOUND`, or another substantive physical-corner classification using the failed raw-`v(t)` exponent.
+4. Only after corrected boundary geometry and the full 34-orbit numerator/action-flux audit are terminal and independently reviewed may a separately prospectively frozen gate promote the projective total derivative to a global integrated Stokes/IBP relation.
 5. If both invariant-dual periods eventually vanish, continue in remaining S5 sectors; invariant-sector vanishing alone does not prove the full 217-dimensional tensor zero.
 
 Any mandatory blocked arrow prevents full-QG completion.
