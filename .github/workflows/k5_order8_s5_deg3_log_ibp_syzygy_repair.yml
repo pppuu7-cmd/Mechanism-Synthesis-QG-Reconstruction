@@ -1,0 +1,54 @@
+name: K5 order8 S5 degree3 logarithmic IBP control repair
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'prereg/K5_ORDER8_S5_DEG3_CONTROL_ONLY_REPAIR.md'
+      - 'scripts/k5_order8_s5_deg3_log_ibp_syzygy_repair.py'
+      - '.github/workflows/k5_order8_s5_deg3_log_ibp_syzygy_repair.yml'
+jobs:
+  exact-repair-gate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install sympy
+      - name: Run prospectively frozen repaired exact gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts
+          python scripts/k5_order8_s5_deg3_log_ibp_syzygy_repair.py \
+            --output artifacts/k5_order8_s5_deg3_log_ibp_syzygy_repair.json \
+            | tee artifacts/stdout.json
+          python - <<'PY'
+          import json
+          p='artifacts/k5_order8_s5_deg3_log_ibp_syzygy_repair.json'
+          d=json.load(open(p,encoding='utf-8'))
+          allowed={
+            'K5_S5_FACE_TANGENT_LOG_IBP_DEG3_NONRADIAL_EXISTS_EXACT_SCOPED',
+            'K5_S5_FACE_TANGENT_LOG_IBP_DEG3_RADIAL_ONLY_EXACT_SCOPED',
+            'K5_S5_FACE_TANGENT_LOG_IBP_DEG3_INCONCLUSIVE_SCOPED',
+          }
+          assert d['status']=='PASS_EXACT_SCOPED',d
+          assert d['classification'] in allowed,d['classification']
+          assert all(d['checks'].values()),d['checks']
+          assert all(d['controls'].values()),d['controls']
+          assert d['orbit_data']['s5_invariant_quadratic_dimension']>0
+          assert d['synthetic_exact']['nonradial_quotient_dimension']>0
+          assert d['scientific_invariant_dual_period_verdict'] is None
+          print('CLASSIFICATION=',d['classification'])
+          print('K5=',d['k5_exact'])
+          print('SYNTHETIC=',d['synthetic_exact'])
+          PY
+          sha256sum artifacts/k5_order8_s5_deg3_log_ibp_syzygy_repair.json | tee artifacts/sha256.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: k5-order8-s5-deg3-log-ibp-control-repair
+          path: artifacts/
+          if-no-files-found: error
+          retention-days: 90
