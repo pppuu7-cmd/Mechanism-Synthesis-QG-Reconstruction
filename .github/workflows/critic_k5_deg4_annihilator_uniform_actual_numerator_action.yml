@@ -1,0 +1,44 @@
+name: Critic K5 degree4 uniform annihilator action
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'prereg/K5_DEG4_ANNIHILATOR_UNIFORM_ACTUAL_NUMERATOR_ACTION_INDEPENDENT_CRITIC.md'
+      - 'scripts/critic_k5_deg4_annihilator_uniform_actual_numerator_action.py'
+      - '.github/workflows/critic_k5_deg4_annihilator_uniform_actual_numerator_action.yml'
+  workflow_dispatch:
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run independent exact critic
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p results/raw
+          python scripts/critic_k5_deg4_annihilator_uniform_actual_numerator_action.py --output results/raw/critic_k5_deg4_annihilator_uniform_actual_numerator_action.json | tee critic_stdout.json
+          python - <<'PY'
+          import json
+          d=json.load(open('results/raw/critic_k5_deg4_annihilator_uniform_actual_numerator_action.json'))
+          assert d['verdict']=='CONFIRMED_SCOPED',d
+          assert all(d['checks'].values()),d['checks']
+          assert all(d['controls'].values()),d['controls']
+          assert d['partial_cancelled_action_run_values_used'] is False
+          assert d['constant_2x2_closure_verdict'] is None
+          assert d['integrated_period_verdict'] is None
+          print('CRITIC_VERDICT=CONFIRMED_SCOPED')
+          PY
+          sha256sum results/raw/critic_k5_deg4_annihilator_uniform_actual_numerator_action.json | tee critic_result_sha256.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: critic-k5-deg4-uniform-annihilator-action
+          path: |
+            results/raw/critic_k5_deg4_annihilator_uniform_actual_numerator_action.json
+            critic_stdout.json
+            critic_result_sha256.txt
+          if-no-files-found: error
+          retention-days: 90
