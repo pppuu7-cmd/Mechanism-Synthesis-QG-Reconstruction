@@ -47,7 +47,26 @@ Repaired workflow/head:
 
 `08ff6b73acb3c73f45d06e169b405315a981b77e`.
 
-Repaired run `35049858473` was queued/non-terminal at the durable review cut and is not required for or consumed by the controlling scientific verdict. If it later becomes terminal, it may be added as an independent machine cross-check without changing the frozen review logic.
+Repaired terminal production:
+
+- run `35049858473`, terminal `success`;
+- job `104647654666`, terminal `success`;
+- artifact `10429566785`, `critic-k5-deg4-uniform-annihilator-action`;
+- artifact ZIP digest `sha256:490f05d243fc16ead6ac2f1f0cd16e60d6a8adccf7cca25368ab3317e580c43a`;
+- production JSON SHA256 `5034ab5b0743742e09cc30c684f3da3100002ba9d4a47ac5c113f1866a173e11`;
+- all structural checks true;
+- all malformed controls true;
+- terminal verdict `SCIENTIFIC_FAIL_CONFIRMED`.
+
+Durable terminal machine cross-check:
+
+`results/K5_DEG4_ANNIHILATOR_UNIFORM_ACTUAL_NUMERATOR_ACTION_CRITIC_REPAIR1_RESULT.md`, commit `5d1171f33ae3dc7c9f90393b662806d23063b8ef`.
+
+Durable raw terminal summary:
+
+`results/raw/critic_k5_deg4_annihilator_uniform_actual_numerator_action_authoritative.json`, commit `d26d0dc4fe1ad8d2a4378c1b9683aea32156d427`.
+
+The repaired terminal production independently confirms the already-controlling adversarial verdict and does not alter its scope.
 
 ## Exact independent witness
 
