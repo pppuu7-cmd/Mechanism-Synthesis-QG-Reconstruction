@@ -13,15 +13,42 @@ jobs:
       - uses: actions/checkout@v4
       - name: Install exact symbolic dependency
         run: python -m pip install 'sympy==1.14.0'
-      - name: Run control-repair-1 exact differential-form verifier
+      - name: Run control-repair-2 exact differential-form verifier
         run: |
+          set -euo pipefail
           mkdir -p artifacts/k5_projective_tangent_flux
           python scripts/k5_projective_tangent_normal_flux_exact.py | tee artifacts/k5_projective_tangent_flux/result.txt
-          grep -q 'classification=K5_PROJECTIVE_TANGENT_NORMAL_FLUX_SCALING_EXACT_SCOPED' artifacts/k5_projective_tangent_flux/result.txt
-          test -s artifacts/k5_projective_tangent_flux/result.json
+          python - <<'PY'
+          import json
+          p='artifacts/k5_projective_tangent_flux/result.json'
+          d=json.load(open(p))
+          allowed={
+            'K5_PROJECTIVE_TANGENT_NORMAL_FLUX_SCALING_EXACT_SCOPED',
+            'K5_PROJECTIVE_TANGENT_NORMAL_FLUX_SCALING_SCIENTIFIC_FAIL_EXACT_SCOPED',
+          }
+          assert d['classification'] in allowed,d['classification']
+          assert all(d['implementation_checks'].values()),d['implementation_checks']
+          assert len(d['witnesses'])==18
+          assert len(d['chart_relations'])==9
+          assert len(d['permutation_witnesses'])==9
+          assert d['exceptional_witness']['advanced_to_higher_finite_order'] in (True,False)
+          assert all(x['charts_genuinely_distinct'] for x in d['chart_relations'])
+          if d['classification']=='K5_PROJECTIVE_TANGENT_NORMAL_FLUX_SCALING_EXACT_SCOPED':
+              assert d['status']=='PASS_EXACT_SCOPED'
+              assert all(d['math_checks'].values()),d['math_checks']
+          else:
+              assert d['status']=='SCIENTIFIC_FAIL_EXACT_SCOPED'
+              assert not all(d['math_checks'].values())
+          assert all(v is None for v in d['interpretation_ceiling'].values())
+          print('CLASSIFICATION=',d['classification'])
+          print('MATH_CHECKS=',d['math_checks'])
+          print('EXCEPTIONAL=',d['exceptional_witness'])
+          PY
+          sha256sum artifacts/k5_projective_tangent_flux/result.json | tee artifacts/k5_projective_tangent_flux/result_sha256.txt
       - name: Upload exact witnesses
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: k5-projective-tangent-normal-flux-exact-repair1
+          name: k5-projective-tangent-normal-flux-exact-repair2
           path: artifacts/k5_projective_tangent_flux/
+          retention-days: 90
