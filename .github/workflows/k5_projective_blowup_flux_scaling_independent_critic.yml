@@ -1,0 +1,39 @@
+name: K5 projective blowup flux scaling independent Critic
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'scripts/k5_projective_blowup_flux_scaling_independent_critic.py'
+      - '.github/workflows/k5_projective_blowup_flux_scaling_independent_critic.yml'
+  workflow_dispatch:
+
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run exact independent projective-form Critic
+        run: |
+          set -euo pipefail
+          mkdir -p results/raw
+          python scripts/k5_projective_blowup_flux_scaling_independent_critic.py --output results/raw/k5_projective_blowup_flux_scaling_independent_critic.json | tee results/raw/k5_projective_blowup_flux_scaling_independent_critic.stdout.json
+          python - <<'PY'
+          import json
+          p='results/raw/k5_projective_blowup_flux_scaling_independent_critic.json'
+          d=json.load(open(p,encoding='utf-8'))
+          assert d['verdict']=='SCIENTIFIC_FAIL_CONFIRMED', d
+          assert all(d['checks'].values()), d
+          assert d['scalar_jacobian_result_survives'] is True, d
+          assert d['physical_corner_verdict'] is None, d
+          assert d['integrated_stokes_verdict'] is None, d
+          PY
+          sha256sum results/raw/k5_projective_blowup_flux_scaling_independent_critic.json | tee results/raw/k5_projective_blowup_flux_scaling_independent_critic.sha256
+      - uses: actions/upload-artifact@v4
+        with:
+          name: k5-projective-blowup-flux-scaling-independent-critic
+          path: results/raw/k5_projective_blowup_flux_scaling_independent_critic*
+          if-no-files-found: error
+          retention-days: 90
