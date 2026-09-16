@@ -1,0 +1,43 @@
+name: K5 exact cancellation compressed source S5 diagnostic
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/k5_exact_cancellation_compressed_source_s5_diagnostic.py'
+      - '.github/workflows/k5_exact_cancellation_compressed_source_s5_diagnostic.yml'
+jobs:
+  diagnostic:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Verify prospective lineage
+        run: |
+          set -euo pipefail
+          git merge-base --is-ancestor 3e5303665ecd423b84745e9b74c7a5682116685e HEAD
+          git merge-base --is-ancestor d6b0e805101c8590eafac71398cc2b1466691752 HEAD
+      - name: Test exact compressed-source covariance
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts/compressed_source_s5
+          python scripts/k5_exact_cancellation_compressed_source_s5_diagnostic.py --output artifacts/compressed_source_s5/result.json
+          sha256sum artifacts/compressed_source_s5/result.json | tee artifacts/compressed_source_s5/result_sha256.txt
+      - name: Validate
+        run: |
+          python - <<'PY'
+          import json
+          d=json.load(open('artifacts/compressed_source_s5/result.json'))
+          assert d['physical_corner_coefficients_used'] is False
+          assert all(d['checks'].values())
+          assert d['classification'] in {'COMPRESSED_SOURCE_S5_COVARIANCE_EXACT','COMPRESSED_SOURCE_S5_COVARIANCE_FAIL_EXACT'}
+          print(d['classification'])
+          print('keys=',d['matching_keys'],'sign=',d['orientation_global_sign'])
+          print('mismatches=',len(d['mismatch_sample']))
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: k5-exact-cancellation-compressed-source-s5-diagnostic
+          path: artifacts/compressed_source_s5/
+          retention-days: 90
