@@ -69,7 +69,7 @@ def main():
             if base.get(k)!=fwd.get(k):
                 mism.append({'matching':str(k),'base':None if k not in base else [[str(x) for x in z] for z in base[k]],'transported':None if k not in fwd else [[str(x) for x in z] for z in fwd[k]]})
                 if len(mism)>=12: break
-    out={'gate':'K5_EXACT_CANCELLATION_COMPRESSED_SOURCE_S5_DIAGNOSTIC','prereg_commit':PREREG,'cycle':list(CYCLE),'inverse_cycle':list(invperm(CYCLE)),'matching_keys':len(base),'orientation_global_sign':global_sign,'inverse_orientation_global_sign':sgn2,'checks':checks,'keys_exact':keys_exact,'coefficients_exact':coeff_exact,'mismatch_sample':mism,'classification':cls,'physical_corner_coefficients_used':False,'scientific_verdict':None}
+    out={'gate':'K5_EXACT_CANCELLATION_COMPRESSED_SOURCE_S5_DIAGNOSTIC','prereg_commit':PREREG,'cycle':list(CYCLE),'inverse_cycle':list(invperm(CYCLE)),'matching_keys':len(base),'orientation_global_sign':sgn,'inverse_orientation_global_sign':sgn2,'checks':checks,'keys_exact':keys_exact,'coefficients_exact':coeff_exact,'mismatch_sample':mism,'classification':cls,'physical_corner_coefficients_used':False,'scientific_verdict':None}
     Path(args.output).parent.mkdir(parents=True,exist_ok=True); Path(args.output).write_text(json.dumps(out,indent=2,sort_keys=True)+'\n')
     print(json.dumps(out,indent=2,sort_keys=True))
     return 2 if cls=='INVALID_IMPLEMENTATION' else 0
