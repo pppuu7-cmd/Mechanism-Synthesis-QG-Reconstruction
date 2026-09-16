@@ -1,0 +1,37 @@
+{
+  "gate": "K5_DEG4_ANNIHILATOR_ACTUAL_DUAL_ACTION_REPAIR1_INDEPENDENT_CRITIC_REVIEW",
+  "critic_prereg_commit": "8dbccbe6d50631ba02ba44f0f8edcf6698ea16ca",
+  "critic_implementation_commit": "06514e58c5f57d391216babf5c45dbc958eafaf4",
+  "critic_workflow_head": "601b438f806950ce3ac5dde903ed55b76bf81159",
+  "run_id": 35131574930,
+  "job_id": 104913612191,
+  "artifact_id": 10460848396,
+  "artifact_zip_sha256": "f6b20aac04ac480deaa3e02df71b30fb1c7664c248fada502e6c3a348d0cb9d3",
+  "production_json_sha256": "a8ee6def9dd2690fc315df069784398fedd9bc09ed36b076fe7abb726af79d8c",
+  "verdict": "REQUIRES_NEW_PREREGISTERED_GATE",
+  "researcher_result_reviewed": "K5_DEG4_ANNIHILATOR_ACTION_NONZERO_CONSTANT2X2_CLOSURE_FALSIFIED_EXACT_SCOPED",
+  "researcher_run": 35130545821,
+  "researcher_artifact": 10461780450,
+  "researcher_object_facts": {
+    "deg_N": 27,
+    "deg_B": 31,
+    "uniform_N": ["-7038281250000000000", "-5474218750000000000"],
+    "uniform_B": ["10557421875000000000000", "8211328125000000000000"],
+    "uniform_relation": "B_v[N_c] = -1500 N_c"
+  },
+  "decisive_wrong_object_witness": {
+    "lambda": 2,
+    "B_lambda_alpha_by_homogeneity": ["22671890841600000000000000000000", "17633692876800000000000000000000"],
+    "constant_M_prediction_if_B_equals_MN_at_alpha": ["1416993177600000000000000000000", "1102105804800000000000000000000"],
+    "residual": ["21254897664000000000000000000000", "16531587072000000000000000000000"],
+    "reason": "A constant matrix cannot map a homogeneous degree-27 vector N to a nonzero homogeneous degree-31 vector B on the raw cone."
+  },
+  "surviving_scientific_fact": "The exact projective-gauge action is nonzero on both invariant-dual channels at the frozen uniform point.",
+  "not_authorized": [
+    "projective degree-27 constant-2x2 closure falsification",
+    "claim that a richer physical projective coefficient module/additional channels are required from this raw-B test alone",
+    "integrated Stokes/IBP relation",
+    "K5 projective period zero/nonzero theorem"
+  ],
+  "authorized_successor_object": "P_v[N] = B_v[N]/s1^4, equivalently simplex-normalized A_v/B_v on s1=1, with a prospectively frozen projective closure test"
+}
