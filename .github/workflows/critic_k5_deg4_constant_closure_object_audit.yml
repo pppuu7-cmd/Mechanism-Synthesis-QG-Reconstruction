@@ -1,0 +1,41 @@
+name: critic K5 degree4 constant-closure object audit
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'scripts/critic_k5_deg4_constant_closure_object_audit.py'
+      - '.github/workflows/critic_k5_deg4_constant_closure_object_audit.yml'
+      - 'prereg/K5_DEG4_ANNIHILATOR_ACTUAL_DUAL_ACTION_REPAIR1_INDEPENDENT_CRITIC_REVIEW.md'
+  workflow_dispatch:
+
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run independent object/grading audit
+        run: |
+          set -euo pipefail
+          python3 scripts/critic_k5_deg4_constant_closure_object_audit.py | tee critic_k5_deg4_constant_closure_stdout.json
+          sha256sum results/raw/critic_k5_deg4_constant_closure_object_audit.json | tee critic_k5_deg4_constant_closure_sha256.txt
+          python3 - <<'PY'
+          import json
+          p='results/raw/critic_k5_deg4_constant_closure_object_audit.json'
+          d=json.load(open(p,encoding='utf-8'))
+          assert d['verdict']=='REQUIRES_NEW_PREREGISTERED_GATE', d
+          assert all(d['checks'].values()), d['checks']
+          assert all(d['controls'].values()), d['controls']
+          assert d['scientific_scope']['nonzero_action_survives'] is True
+          assert d['scientific_scope']['projective_degree27_constant_M_closure_tested'] is False
+          print('CRITIC_VERDICT=REQUIRES_NEW_PREREGISTERED_GATE')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: critic-k5-deg4-constant-closure-object-audit
+          path: |
+            results/raw/critic_k5_deg4_constant_closure_object_audit.json
+            critic_k5_deg4_constant_closure_stdout.json
+            critic_k5_deg4_constant_closure_sha256.txt
+          if-no-files-found: error
+          retention-days: 90
