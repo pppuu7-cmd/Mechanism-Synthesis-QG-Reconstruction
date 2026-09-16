@@ -1,0 +1,52 @@
+name: K5 invariant-dual degree27 canonical DAG
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'prereg/K5_INVARIANT_DUAL_DEG27_CANONICAL_DAG_MATERIALIZATION.md'
+      - 'scripts/k5_invariant_dual_deg27_canonical_dag.py'
+      - '.github/workflows/k5_invariant_dual_deg27_canonical_dag.yml'
+jobs:
+  exact-materialization:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Materialize canonical numerator DAG and exact controls
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts
+          python scripts/k5_invariant_dual_deg27_canonical_dag.py \
+            --output artifacts/k5_invariant_dual_deg27_canonical_dag.json \
+            | tee artifacts/stdout.txt
+          python - <<'PY'
+          import json
+          p='artifacts/k5_invariant_dual_deg27_canonical_dag.json'
+          d=json.load(open(p,encoding='utf-8'))
+          assert d['status']=='PASS_EXACT_SCOPED',d
+          assert d['classification']=='K5_INVARIANT_DUAL_DEG27_CANONICAL_DAG_MATERIALIZED_EXACT_SCOPED',d
+          assert all(d['checks'].values()),d['checks']
+          assert all(d['controls'].values()),d['controls']
+          assert d['source_choice_terms']==100000
+          assert d['boundary_character']==[32,0,8,2,0,0,2]
+          assert d['reynolds_rank']==2
+          assert d['dual_pivots']==[1,4]
+          assert len(d['canonical_dag_sha256'])==64
+          assert d['scientific_invariant_dual_period_verdict'] is None
+          print('CLASSIFICATION=',d['classification'])
+          print('DAG_SHA256=',d['canonical_dag_sha256'])
+          print('UNIFORM=',d['validation_points']['uniform']['direct_coords'])
+          print('HOMOGENEITY=',d['checks']['numerator_degree27_scaling_exact'])
+          PY
+          sha256sum artifacts/k5_invariant_dual_deg27_canonical_dag.json | tee artifacts/sha256.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: k5-invariant-dual-deg27-canonical-dag
+          path: artifacts/
+          if-no-files-found: error
+          retention-days: 90
