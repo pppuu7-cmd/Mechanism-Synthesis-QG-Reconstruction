@@ -1,0 +1,39 @@
+{
+  "source": {
+    "run_id": 35044686796,
+    "job_id": 104631868911,
+    "head_sha": "d094ee6204845592ac395a67b94501461e98e4ff",
+    "artifact_id": 10426617568,
+    "artifact_zip_sha256": "6da2c3346b14aaa2d8d3dd342f6305dcf4896391a3f4ac9153ed86d1dc1b1b45",
+    "production_json_sha256": "47eaa12719abb2a0ce8a090374e759b62678041d468b11e77f242c64e869d331"
+  },
+  "status": "PASS_EXACT_SCOPED",
+  "classification": "K5_INVARIANT_DUAL_DEG27_CANONICAL_DAG_MATERIALIZED_EXACT_SCOPED",
+  "canonical_dag_sha256": "f8eaaa5c7923497a67f0354a2d59475f4b6d82022e032fc005c1d9d2add69992",
+  "source_choice_terms": 100000,
+  "boundary_character": [32,0,8,2,0,0,2],
+  "reynolds_rank": 2,
+  "dual_pivots": [1,4],
+  "validation_points": {
+    "uniform": {
+      "psi": 125,
+      "dual_coords": [["-9225216/9765625",0],["-7175168/9765625",0]],
+      "numerators": [[-7038281250000000000,0],[-5474218750000000000,0]]
+    },
+    "edge01_2": {
+      "psi": 175,
+      "dual_coords": [["-12714096288/32826171875",0],["-15155230784/32826171875",0]],
+      "numerators": [[-59622158569312500000,0],[-71069744360125000000,0]]
+    },
+    "mixed_small": {
+      "psi": 560,
+      "dual_coords": [["-87842784179193/4818903040000000",0],["-1087698552259293/9637806080000000",0]],
+      "numerators": [[-98730229673044210483200,0],[-611255260651417598361600,0]]
+    }
+  },
+  "legacy_00000_controls": {
+    "edge01_2": "70286827392/9191328125",
+    "mixed_small": "3287903397106539/7710244864000000"
+  },
+  "scientific_invariant_dual_period_verdict": null
+}
