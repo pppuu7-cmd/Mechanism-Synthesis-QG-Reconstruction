@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - 'scripts/k5_34_orbit_physical_numerator_action_flux_audit.py'
+      - 'scripts/k5_34_orbit_physical_numerator_action_flux_audit_repair2.py'
       - '.github/workflows/k5_34_orbit_physical_numerator_action_flux_audit.yml'
 jobs:
   exact-audit:
@@ -11,11 +12,11 @@ jobs:
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
-      - name: Run exact 34-orbit audit
+      - name: Run exact 34-orbit audit repair2
         run: |
           set -euo pipefail
           mkdir -p artifacts/k5_34_orbit_action_flux
-          python scripts/k5_34_orbit_physical_numerator_action_flux_audit.py \
+          python scripts/k5_34_orbit_physical_numerator_action_flux_audit_repair2.py \
             --output artifacts/k5_34_orbit_action_flux/result.json \
             | tee artifacts/k5_34_orbit_action_flux/stdout.txt
       - name: Validate outcome-neutral payload
@@ -32,12 +33,14 @@ jobs:
           assert len(d['orbit_rows'])==34
           assert sum(1 for r in d['orbit_rows'] if r['physical'])==32
           assert d['summary']['certified_channel_orbit_components']+d['summary']['blocked_channel_orbit_components']==64
+          assert all(d['repair2_checks'].values()),d['repair2_checks']
           assert d['global_stokes_ibp_verdict'] is None
           assert d['integrated_period_verdict'] is None
           assert d['finite_part_selector'] is None
           assert d['regulator_independence'] is None
           print('CLASSIFICATION=',d['classification'])
           print('SUMMARY=',d['summary'])
+          print('REPAIR2_CHECKS=',d['repair2_checks'])
           PY
           sha256sum artifacts/k5_34_orbit_action_flux/result.json | tee artifacts/k5_34_orbit_action_flux/result_sha256.txt
       - name: Upload exact audit
