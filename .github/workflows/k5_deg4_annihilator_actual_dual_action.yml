@@ -1,0 +1,61 @@
+name: K5 degree4 annihilator action on actual dual numerators
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'prereg/K5_DEG4_ANNIHILATOR_ACTUAL_DUAL_NUMERATOR_POINTWISE_ACTION.md'
+      - 'scripts/k5_deg4_annihilator_actual_dual_action.py'
+      - 'scripts/k5_deg4_annihilator_actual_dual_action_exec.py'
+      - 'results/raw/k5_order8_s5_deg4_kirchhoff_annihilator_production_summary.json'
+      - 'results/raw/k5_invariant_dual_deg27_canonical_dag_production_summary.json'
+      - '.github/workflows/k5_deg4_annihilator_actual_dual_action.yml'
+jobs:
+  exact-action:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run exact forward-mode action gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts
+          python scripts/k5_deg4_annihilator_actual_dual_action_exec.py \
+            --output artifacts/k5_deg4_annihilator_actual_dual_action.json \
+            | tee artifacts/stdout.txt
+          python - <<'PY'
+          import json
+          p='artifacts/k5_deg4_annihilator_actual_dual_action.json'
+          d=json.load(open(p,encoding='utf-8'))
+          allowed={
+            'K5_DEG4_ANNIHILATOR_ACTION_NONZERO_CONSTANT2X2_CLOSURE_FALSIFIED_EXACT_SCOPED',
+            'K5_DEG4_ANNIHILATOR_ACTION_NONZERO_CONSTANT2X2_CLOSURE_NOT_FALSIFIED_ON_FROZEN_POINTS_SCOPED',
+            'K5_DEG4_ANNIHILATOR_ACTION_ZERO_ON_FROZEN_POINTS_INCONCLUSIVE_SCOPED',
+            'K5_DEG4_ANNIHILATOR_ACTION_BLOCKED_FIT_DEGENERACY_SCOPED',
+          }
+          assert d['status']=='PASS_EXACT_SCOPED',d
+          assert d['classification'] in allowed,d['classification']
+          assert all(d['checks'].values()),d['checks']
+          assert all(d['controls'].values()),d['controls']
+          assert d['scientific_invariant_dual_period_verdict'] is None
+          assert d['checks']['annihilator_global_polynomial_zero'] is True
+          assert d['checks']['all32_source_terms'] is True
+          assert d['checks']['validation_U_euler_numerator_degree27'] is True
+          assert d['checks']['fit_A_euler_numerator_degree27'] is True
+          print('CLASSIFICATION=',d['classification'])
+          print('NONZERO_ACTION=',d['nonzero_action_witness_exists'])
+          print('CLOSURE_FALSIFIED=',d['constant_2x2_closure_falsified'])
+          print('FIT_M=',d['constant_2x2_fit_matrix'])
+          print('RESIDUALS=',d['validation_residuals'])
+          PY
+          sha256sum artifacts/k5_deg4_annihilator_actual_dual_action.json | tee artifacts/result_sha256.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: k5-deg4-annihilator-actual-dual-action
+          path: artifacts/
+          if-no-files-found: error
+          retention-days: 90
