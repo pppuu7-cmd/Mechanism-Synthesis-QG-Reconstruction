@@ -1,0 +1,48 @@
+name: Critic K5 S5 degree4 Kirchhoff annihilator
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'prereg/K5_ORDER8_S5_DEG4_KIRCHHOFF_ANNIHILATOR_INDEPENDENT_CRITIC.md'
+      - 'results/raw/k5_order8_s5_deg4_kirchhoff_annihilator_production_summary.json'
+      - 'scripts/critic_k5_order8_s5_deg4_kirchhoff_annihilator.py'
+      - '.github/workflows/critic_k5_order8_s5_deg4_kirchhoff_annihilator.yml'
+jobs:
+  independent-critic:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install sympy
+      - name: Independently reconstruct and attack degree-four theorem
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts
+          python scripts/critic_k5_order8_s5_deg4_kirchhoff_annihilator.py \
+            --output artifacts/critic_k5_order8_s5_deg4_kirchhoff_annihilator.json \
+            | tee artifacts/stdout.json
+          python - <<'PY'
+          import json
+          d=json.load(open('artifacts/critic_k5_order8_s5_deg4_kirchhoff_annihilator.json',encoding='utf-8'))
+          assert d['status']=='PASS_EXACT_SCOPED',d
+          assert d['verdict']=='CONFIRMED_SCOPED',d
+          assert all(d['checks'].values()),d['checks']
+          assert all(d['controls'].values()),d['controls']
+          assert d['independent_k5']['nonradial_quotient_dimension']==1
+          assert d['independent_k5']['annihilator_dimension']==1
+          assert d['scientific_invariant_dual_period_verdict'] is None
+          print('VERDICT=',d['verdict'])
+          print('INDEPENDENT_K5=',d['independent_k5'])
+          PY
+          sha256sum artifacts/critic_k5_order8_s5_deg4_kirchhoff_annihilator.json | tee artifacts/sha256.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: critic-k5-order8-s5-deg4-kirchhoff-annihilator
+          path: artifacts/
+          if-no-files-found: error
+          retention-days: 90
