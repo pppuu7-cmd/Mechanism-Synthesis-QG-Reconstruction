@@ -1,6 +1,6 @@
 # Current MSQGR research state
 
-**Date:** 2026-09-16
+**Date:** 2026-09-17
 
 ## Global scientific ceiling
 
@@ -82,6 +82,20 @@ The repaired Critic independently reconstructs exact ambient projective-form ide
 
 This confirmation establishes only corrected local projective tangent normal-flux/blow-up geometry. It does not classify physical 34-orbit numerator/action corners and does not authorize a global Stokes/IBP or integrated-period theorem by itself.
 
+## 34-orbit physical numerator/action-flux audit — terminal partial blocked
+
+The authorized 34-orbit physical audit has now terminalized, but it does **not** yet classify any physical corner as finite or divergent. Parent preregistration: `9c42a26350e547eb02649c6ee44f8dd2477100d0`. The historical first production `35150430183` was an implementation failure in compact leading-term determinant inversion. Repair 1 (`3143586174f977da12afc68218a2dd5064b2e2ab`) was frozen but not executed. Repair 2 (`f47ce5a88f98d20f330428480010c3068ebd2328`) isolated the determinant defect but its first production misread `PSI_POLY` monomial keys and was `INVALID_IMPLEMENTATION`. Repair 3 was prospectively frozen at `a4ee7d25be79079b042b6be9820a4fc264fefc1d`.
+
+Repair-3 implementation `ba3c6b62ea25244c04535e816e6dcc1665b1466c`; terminal workflow/head `9b12eee8d6a6998dcf10ccc53e221e32afc4fd8e`; production run `35151265283`; job `104979878770`; artifact `10469187008`; artifact ZIP digest `sha256:5330f15d854f7e52aa67d29c1f8bcd1a9443a8c8d8905d0b9258bf53968404a6`; production JSON SHA256 `432301902a1aaf4ea6d4d345adf6ab738baa606706711be35ab8faa0fe5c75bf`. Terminal classification:
+
+`K5_34_ORBIT_PHYSICAL_NUMERATOR_ACTION_FLUX_PARTIAL_BLOCKED_SCOPED`.
+
+The denominator/projective-geometry path is now mechanically valid across all 32 proper S5 corner orbits: direct authoritative 125-tree `Psi` order agrees with independent spanning-tree order on every proper orbit, and the full 34 orbit sizes cover all 1024 edge subsets. However, all `64=32x2` physical channel-orbit components remain `BLOCKED_CANCELLATION_RESOLUTION`: `0/64` numerator orders, `0/64` annihilator-action/projective orders, and `0/64` projective-normal orders satisfy the frozen independent cancellation/S5 covariance certificate. Consequently all authoritative final interior/flux/action exponents remain null. Raw one-leading-term guesses are not physical corner verdicts.
+
+Durable result: `results/K5_34_ORBIT_PHYSICAL_NUMERATOR_ACTION_FLUX_AUDIT_RESULT.md`, initial commit `2e83381a404a64f6aebb5084820039c8f362049c`. Provenance ledger: `status/K5_34_ORBIT_PHYSICAL_NUMERATOR_ACTION_FLUX_AUDIT_PROVENANCE_LEDGER.md`, initial commit `517c0aee5c4b725af01a39ae5357be0c790ece93`.
+
+Therefore global projective Stokes/IBP remains blocked. The next gate has been prospectively frozen at `d6b0e805101c8590eafac71398cc2b1466691752` as `K5_34_ORBIT_EXACT_LEADING_COEFFICIENT_CANCELLATION_RESOLUTION`: compute complete bounded exact `t`-coefficient support for the degree-27 physical numerators, degree-31 annihilator action, and projective-normal polynomial numerator, with coefficient-level S5 transport and independent reconstruction.
+
 ## Current survival chain
 
 `F1-F8 carrier`
@@ -99,7 +113,8 @@ This confirmation establishes only corrected local projective tangent normal-flu
 `-> minimal bounded polynomial/rational projective coefficient module ?`
 `-> obsolete raw-v projective flux SCIENTIFIC_FAIL_CONFIRMED`
 `-> corrected projective-tangent flux geometry CONFIRMED_SCOPED`
-`-> 34-orbit physical numerator/action-flux audit AUTHORIZED but unresolved`
+`-> 34-orbit physical numerator/action-flux audit PARTIAL_BLOCKED_CANCELLATION_RESOLUTION`
+`-> exact leading-coefficient cancellation/covariance resolution ?`
 `-> global projective Stokes/IBP relation ?`
 `-> invariant-dual K5 projective periods ?`
 `-> remaining S5/full order-eight tensor ?`
@@ -117,11 +132,11 @@ This confirmation establishes only corrected local projective tangent normal-flu
 
 ## Highest-information next work
 
-1. Prospectively freeze and execute `K5_34_ORBIT_PHYSICAL_NUMERATOR_ACTION_FLUX_AUDIT` using the actual invariant-dual degree-27 numerator/action object, confirmed corrected tangent-flux geometry, exact S5 orbit representatives, exact corner valuations and falsifiable counterexample controls.
-2. Keep geometric Jacobian order, physical numerator/action valuation, denominator/projective-measure contribution and final integrability/flux exponent explicitly separate. `Z=empty` and the full 10-edge scaling set remain controls, not physical corners.
-3. Require independent reconstruction of key corner valuations and full dual-channel covariance before any substantive corner classification. A representative component/state is not sufficient.
-4. Local corner data alone does not authorize a global Stokes/IBP theorem or integrated K5 period zero/nonzero statement. Any such transition requires a new prospective gate with explicit boundary-term authority.
-5. A parallel algebraic gate remains admissible only if prospectively bounded: `K5_DEG4_ANNIHILATOR_MINIMAL_PROJECTIVE_COEFFICIENT_MODULE`, with fixed polynomial degree and/or rational denominator family, retained channel content, fixed fit/holdout set and exact PASS/FAIL/BLOCKED criteria. Do not run an open-ended sequence of increasingly flexible fits.
+1. Execute the prospectively frozen `K5_34_ORBIT_EXACT_LEADING_COEFFICIENT_CANCELLATION_RESOLUTION` at preregistration commit `d6b0e805101c8590eafac71398cc2b1466691752`. Resolve exact higher-order cancellations in the actual degree-27 numerator, degree-31 annihilator action and projective-normal polynomial numerator over the same 32 proper orbit representatives and both invariant-dual channels.
+2. The replacement for the one-leading-term representation must be bounded by the pre-existing polynomial/rational degree structure and must evaluate the complete permitted `t`-coefficient support. Do not grow the coefficient representation after seeing cancellation depth.
+3. Require coefficient-level S5 covariance and independent reconstruction. Exact zero must be distinguished from a finite higher order; no local finite/divergent classification is allowed while any required order remains uncertified.
+4. Only after exact local cancellation resolution may the 34-orbit interior/flux/action classifier be re-consumed. Local corner data still does not authorize a global Stokes/IBP theorem or integrated K5 period statement.
+5. The bounded minimal polynomial/rational coefficient-module algebra remains an admissible parallel branch, but it must not replace the direct boundary blocker or be expanded open-endedly after holdout failure.
 6. If invariant-dual periods eventually vanish, continue remaining S5 sectors; invariant-sector vanishing alone does not prove the full 217-dimensional tensor zero.
 
 ## Claim locks
