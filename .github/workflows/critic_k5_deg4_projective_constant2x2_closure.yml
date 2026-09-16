@@ -1,0 +1,42 @@
+name: critic-k5-deg4-projective-constant2x2-closure
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'scripts/critic_k5_deg4_projective_constant2x2_closure.py'
+      - '.github/workflows/critic_k5_deg4_projective_constant2x2_closure.yml'
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run independent exact Critic review
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p results/raw
+          python3 scripts/critic_k5_deg4_projective_constant2x2_closure.py --output results/raw/critic_k5_deg4_projective_constant2x2_closure.json | tee critic_stdout.json
+          python3 - <<'PY'
+          import json
+          p='results/raw/critic_k5_deg4_projective_constant2x2_closure.json'
+          d=json.load(open(p,encoding='utf-8'))
+          assert d['verdict']=='CONFIRMED_SCOPED', d
+          assert all(d['checks'].values()), d['checks']
+          assert all(d['controls'].values()), d['controls']
+          assert d['scientific_scope']['constant_two_channel_projective_closure_falsified'] is True
+          assert d['scientific_scope']['integrated_period'] is None
+          print('CRITIC_K5_PROJECTIVE_CONSTANT2X2=CONFIRMED_SCOPED')
+          PY
+          sha256sum results/raw/critic_k5_deg4_projective_constant2x2_closure.json | tee critic_result_sha256.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: critic-k5-deg4-projective-constant2x2-closure
+          path: |
+            results/raw/critic_k5_deg4_projective_constant2x2_closure.json
+            critic_stdout.json
+            critic_result_sha256.txt
+          if-no-files-found: error
+          retention-days: 90
