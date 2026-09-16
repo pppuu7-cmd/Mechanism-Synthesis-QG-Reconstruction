@@ -54,53 +54,42 @@ The corrected degree-matched projective object is
 
 `P_v[N]=B_v[N]/s1^4`, `deg P=deg N=27`.
 
-Prospective Researcher prereg:
+Prospective Researcher prereg `4f1e49f9d850fa7834dd189228d0787f84406f84`.
 
-`prereg/K5_DEG4_ANNIHILATOR_PROJECTIVE_CONSTANT2X2_CLOSURE.md`, commit `4f1e49f9d850fa7834dd189228d0787f84406f84`.
+Researcher production: run `35140030858`, job `104941953222`, artifact `10464124390`, ZIP digest `sha256:cbe6f218de38f816b30637e48198edf6f4c72a8ffdc3b18931e0f0f733ccf92d`, JSON SHA256 `d9a86723b7baa5e947e0d21998d7468b61b5e26e90fce272bd8db07d677c05b4`, result commit `5fc64e1bf971923e7a85f42bc21e72a89af31512`, classification `K5_PROJECTIVE_CONSTANT2X2_CLOSURE_FALSIFIED_EXACT_SCOPED`.
 
-Researcher production:
+Independent Critic production: run `35143795639`, job `104954616238`, artifact `10465504381`, ZIP digest `sha256:43576ec5b973673a95d075bcd56f834ede057dce0edbb3d197769aeecf38f606`, Critic JSON SHA256 `45ea06a1025b76af2ae9c2767fa3a979f74efc0c7c53e752f1cdec043b04b9dc`, controlling review commit `b7f96d219a1cfa6029edbaf96a16045c1a4bfeef`, verdict **`CONFIRMED_SCOPED`**.
 
-- run `35140030858`, terminal success;
-- job `104941953222`, terminal success;
-- workflow/head `d508fd145973a2ad4a8772368e00c5e599c5f908`;
-- artifact `10464124390`;
-- ZIP digest `sha256:cbe6f218de38f816b30637e48198edf6f4c72a8ffdc3b18931e0f0f733ccf92d`;
-- production JSON SHA256 `d9a86723b7baa5e947e0d21998d7468b61b5e26e90fce272bd8db07d677c05b4`;
-- durable result commit `5fc64e1bf971923e7a85f42bc21e72a89af31512`;
-- Researcher classification `K5_PROJECTIVE_CONSTANT2X2_CLOSURE_FALSIFIED_EXACT_SCOPED`.
+The unique constant rational `2x2` matrix fitted at prospectively frozen fit_A/fit_B has four exact nonzero validation residual components at validation_U/validation_G. The failure survives homogeneous representative rescaling and a nontrivial constant invertible change of invariant-dual channel basis.
 
-Independent Critic prereg `be913c29d80a34753b028b516f3fa1d7db1dd764`; implementation `fbcadd6abf513b8157d8d246d99d933a7b0e5f58`; workflow/head `0acc35547f9c221604a4de47a330d0fbddc47bd6`.
+Therefore the two actual invariant-dual degree-27 projective channels do **not** close under this annihilator through one alpha-independent rational constant `2x2` matrix. This does not classify polynomial/rational alpha-dependent coefficient modules or larger channel modules and does not provide an integrated-period theorem.
 
-Critic production:
-
-- run `35143795639`, terminal success;
-- job `104954616238`, terminal success;
-- artifact `10465504381`;
-- ZIP digest `sha256:43576ec5b973673a95d075bcd56f834ede057dce0edbb3d197769aeecf38f606`;
-- Critic JSON SHA256 `45ea06a1025b76af2ae9c2767fa3a979f74efc0c7c53e752f1cdec043b04b9dc`;
-- verdict **`CONFIRMED_SCOPED`**.
-
-Controlling review: `results/K5_DEG4_ANNIHILATOR_PROJECTIVE_CONSTANT2X2_CLOSURE_ADVERSARIAL_REVIEW.md`, commit `b7f96d219a1cfa6029edbaf96a16045c1a4bfeef`. Provenance ledger: `status/K5_DEG4_PROJECTIVE_CONSTANT2X2_CLOSURE_CRITIC_PROVENANCE_LEDGER.md`, commit `467327c51871f38559eda08ca26951c26ef819e2`.
-
-The Critic independently downloaded parent action artifact `10461780450` and verified the four exact parent N/B point values against the terminal artifact. The fit determinant is exact nonzero. The unique constant rational `2x2` matrix fitted at prospectively frozen fit_A/fit_B has four exact nonzero validation residual components at validation_U/validation_G. The failure survives homogeneous representative rescaling and a nontrivial constant invertible change of invariant-dual channel basis.
-
-Therefore the two actual invariant-dual degree-27 projective channels do **not** close under this annihilator through one alpha-independent rational constant `2x2` matrix.
-
-This does not classify polynomial/rational alpha-dependent coefficient modules or larger channel modules and does not provide an integrated-period theorem.
-
-## Schwinger boundary/Stokes firewall
+## Corrected Schwinger projective tangent normal-flux geometry — repair2 terminal Researcher PASS, Critic pending
 
 The obsolete raw-ambient projective normal-flux formula is independently `SCIENTIFIC_FAIL_CONFIRMED`. For `Omega_9=i_E(dalpha_1 wedge ... wedge dalpha_10)` only the projective vector-field class modulo Euler-radial fields matters. On `s1=1`, the tangent representative is `u_i=v_i-(S/s1)alpha_i`.
 
-The scalar blow-up Jacobian exponent `t^(k-1)` is retained, but raw `v(t)` is not the projective normal flux.
+Historical corrected implementation/run `35104985610` remains independently `INVALID_IMPLEMENTATION` under Critic commit `3335307be94fada4366f88565496f96b657e2c70`.
 
-The first corrected tangent-flux Researcher implementation/run `35104985610` is independently `INVALID_IMPLEMENTATION`; it did not mechanically execute the frozen differential-form/blow-up obligations.
+Control repair 1 preregistration `68c14c6774d27388878c0f2fe6c3741eab828e87`; production run `35124809996`, job `104891115629`, head `4481ad4c33e6b82ca48dec4da93bda1e78b271f3` failed before scientific classification because the rational form equality comparator was not canonical. It has no substantive authority.
 
-A prospectively frozen control-only repair exists:
+Control repair 2 was prospectively frozen at commit `d482b58d8d2640752ea9840eecf05bf444ded4cc` before implementation. Repair-2 implementation commit `1b59d5426e9eeec4e99f01510da7fe220d1640f3`; workflow/head `90dc54e8568b77675cd6dfee4e9d8dbcec645fef`.
 
-`prereg/K5_SCHWINGER_PROJECTIVE_TANGENT_NORMAL_FLUX_SCALING_CONTROL_REPAIR_1.md`.
+Terminal Researcher production:
 
-It requires explicit `Vol`, `Omega_9`, contractions, genuine blow-up pullback, two genuinely distinct projective charts, radial/Euler invariance and exceptional leading-zero controls. Until terminal repaired production plus independent review, the 34-orbit physical numerator/action-flux audit remains blocked from substantive corner classification. No global Stokes/IBP or integrated K5 period theorem is authorized.
+- run `35146728850`, success;
+- job `104964596683`, success;
+- artifact `10466668706`, `k5-projective-tangent-normal-flux-exact-repair2`;
+- ZIP digest `sha256:3c6d2894b184bd8177a6d0c5eaced31c62c49b3b813710e9e9f118eeffd52b3e`;
+- production JSON SHA256 `017f25d431bbf137aefd9f375ddbefbff45d551bfda4fd46a0a55a825aa91fe3`;
+- durable result `results/K5_PROJECTIVE_TANGENT_NORMAL_FLUX_SCALING_REPAIR2_RESULT.md`, commit `aa8baf37f4beaadf341f2cc6cf3b31415282cc5d`;
+- provenance ledger `status/K5_PROJECTIVE_TANGENT_NORMAL_FLUX_SCALING_REPAIR2_PROVENANCE_LEDGER.md`, commit `1aa649bc709a3879f05c328646c173fddb7c530a`;
+- classification `K5_PROJECTIVE_TANGENT_NORMAL_FLUX_SCALING_EXACT_SCOPED`.
+
+Production reports `implementation_complete=true` and `mathematics_true=true`. It mechanically constructs `Vol`, `Omega_9`, `i_E Omega_9`, `i_v Omega_9`, `i_u Omega_9`; verifies exact projective tangency and radial invariance; executes 18 proper-face/chart witnesses for every `k=1,...,9`; compares the full pulled-back scalar and flux forms across 9 exact chart transitions; executes 9 separate K5/S5 permutation-related-subset controls; and includes a nontrivial exceptional nonradial field whose flux valuation advances from generic `1` to finite nonzero `2` after leading cancellation.
+
+The scalar blow-up valuation `k-1` emerges mechanically from the explicit pulled-back `Omega_9`; it is not hard-coded in the decision path.
+
+**Authority firewall:** a fresh independent Critic review of repair2 is still required. Until that review is terminally confirming, the 34-orbit physical numerator/action-flux audit remains blocked from substantive classification. No global Stokes/IBP or integrated K5 period theorem is authorized by Researcher repair2 alone.
 
 ## Current survival chain
 
@@ -117,10 +106,9 @@ It requires explicit `Vol`, `Omega_9`, contractions, genuine blow-up pullback, t
 `-> corrected annihilator action NONZERO`
 `-> projective degree-27 constant-2x2 closure FALSIFIED_EXACT CONFIRMED_SCOPED`
 `-> minimal bounded polynomial/rational projective coefficient module ?`
-`-> scalar corner Jacobian k-1 retained`
 `-> obsolete raw-v projective flux SCIENTIFIC_FAIL_CONFIRMED`
-`-> corrected projective-tangent flux first implementation INVALID_IMPLEMENTATION; control-only repair pending`
-`-> 34-orbit physical numerator/action-flux audit BLOCKED`
+`-> corrected projective-tangent flux repair2 Researcher PASS_EXACT; independent Critic review PENDING`
+`-> 34-orbit physical numerator/action-flux audit BLOCKED pending Critic`
 `-> global projective Stokes/IBP relation ?`
 `-> invariant-dual K5 projective periods ?`
 `-> remaining S5/full order-eight tensor ?`
@@ -138,9 +126,10 @@ It requires explicit `Vol`, `Omega_9`, contractions, genuine blow-up pullback, t
 
 ## Highest-information next work
 
-1. Primary downstream-unlock gate: execute the already-frozen **control-only repair of `K5_SCHWINGER_PROJECTIVE_TANGENT_NORMAL_FLUX_SCALING`** and require a fresh independent Critic review. Do not issue substantive 34-orbit corner classifications, global Stokes identities or integrated K5 period claims before that geometry is terminal and independently reviewed.
-2. A parallel algebraic gate is allowed only if prospectively bounded: `K5_DEG4_ANNIHILATOR_MINIMAL_PROJECTIVE_COEFFICIENT_MODULE`, with a specific polynomial degree bound and/or rational denominator family, retained two-channel/full-all-32 object, fixed fit/holdout set and exact PASS/FAIL/BLOCKED criteria. Do not run an open-ended sequence of increasingly flexible fits.
-3. If invariant-dual periods eventually vanish, continue remaining S5 sectors; invariant-sector vanishing alone does not prove the full 217-dimensional tensor zero.
+1. Obtain a fresh independent Critic review of terminal repair2 production run `35146728850`. Do not open substantive 34-orbit corner classification before a confirming Critic verdict.
+2. If repair2 is independently confirmed, prospectively freeze one bounded `K5_34_ORBIT_PHYSICAL_NUMERATOR_ACTION_FLUX_AUDIT` using the actual invariant-dual numerator/action object, the corrected tangent-flux geometry, explicit orbit representatives, exact corner valuations and falsifiable controls.
+3. A parallel algebraic gate remains admissible only if prospectively bounded: `K5_DEG4_ANNIHILATOR_MINIMAL_PROJECTIVE_COEFFICIENT_MODULE`, with a specific polynomial degree bound and/or rational denominator family, retained two-channel/full-all-32 object, fixed fit/holdout set and exact PASS/FAIL/BLOCKED criteria. Do not run an open-ended sequence of increasingly flexible fits.
+4. If invariant-dual periods eventually vanish, continue remaining S5 sectors; invariant-sector vanishing alone does not prove the full 217-dimensional tensor zero.
 
 ## Claim locks
 
