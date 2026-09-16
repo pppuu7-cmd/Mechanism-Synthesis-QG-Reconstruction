@@ -1,0 +1,95 @@
+name: K5 34-orbit exact leading coefficient cancellation resolution
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/k5_34_orbit_exact_leading_coefficient_cancellation_resolution.py'
+      - '.github/workflows/k5_34_orbit_exact_leading_coefficient_cancellation_resolution.yml'
+jobs:
+  solve-orbit:
+    strategy:
+      fail-fast: false
+      matrix:
+        orbit: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31]
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Verify frozen lineage
+        run: |
+          set -euo pipefail
+          git merge-base --is-ancestor d6b0e805101c8590eafac71398cc2b1466691752 HEAD
+          git merge-base --is-ancestor 808492fe93369f27e7fcaee6a0f7af64583a35ae HEAD
+          git merge-base --is-ancestor cf944a8c246a0c5b9819967549c155a6ca5d1aaa HEAD
+      - name: Resolve exact bounded coefficients
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts
+          python scripts/k5_34_orbit_exact_leading_coefficient_cancellation_resolution.py \
+            --orbit-index '${{ matrix.orbit }}' \
+            --output "artifacts/orbit_${{ matrix.orbit }}.json"
+          sha256sum "artifacts/orbit_${{ matrix.orbit }}.json"
+      - name: Upload orbit payload
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: k5-exact-cancel-orbit-${{ matrix.orbit }}
+          path: artifacts/orbit_${{ matrix.orbit }}.json
+          if-no-files-found: warn
+          retention-days: 90
+
+  aggregate:
+    needs: solve-orbit
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Verify frozen lineage
+        run: |
+          set -euo pipefail
+          git merge-base --is-ancestor d6b0e805101c8590eafac71398cc2b1466691752 HEAD
+          git merge-base --is-ancestor 808492fe93369f27e7fcaee6a0f7af64583a35ae HEAD
+          git merge-base --is-ancestor cf944a8c246a0c5b9819967549c155a6ca5d1aaa HEAD
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: k5-exact-cancel-orbit-*
+          path: artifacts/orbits
+          merge-multiple: true
+      - name: Aggregate outcome-neutrally
+        run: |
+          set -euo pipefail
+          python scripts/k5_34_orbit_exact_leading_coefficient_cancellation_resolution.py \
+            --aggregate-dir artifacts/orbits \
+            --output artifacts/result.json
+          python - <<'PY'
+          import json
+          d=json.load(open('artifacts/result.json'))
+          allowed={
+            'INVALID_IMPLEMENTATION',
+            'K5_34_ORBIT_EXACT_LEADING_COEFFICIENT_CANCELLATION_RESOLUTION_PARTIAL_BLOCKED_SCOPED',
+            'K5_34_ORBIT_EXACT_LEADING_COEFFICIENT_CANCELLATION_RESOLUTION_EXACT_SCOPED',
+          }
+          assert d['classification'] in allowed
+          assert d['summary']['proper_orbits']==32
+          assert d['summary']['channel_orbit_components']==64
+          assert d['summary']['certified_components']+d['summary']['blocked_components']==64
+          assert d['degree_ceilings']=={'N':27,'B':31,'U':5}
+          assert d['global_stokes_ibp_verdict'] is None
+          assert d['integrated_period_verdict'] is None
+          assert d['finite_part_selector'] is None
+          assert d['regulator_independence'] is None
+          print('CLASSIFICATION=',d['classification'])
+          print('SUMMARY=',d['summary'])
+          PY
+          sha256sum artifacts/result.json | tee artifacts/result_sha256.txt
+      - name: Upload terminal resolver payload
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: k5-34-orbit-exact-leading-coefficient-cancellation-resolution
+          path: artifacts/
+          retention-days: 90
