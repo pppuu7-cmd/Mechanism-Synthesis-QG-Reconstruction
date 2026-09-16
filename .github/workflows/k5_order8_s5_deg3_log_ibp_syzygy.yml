@@ -1,0 +1,27 @@
+name: K5 order8 S5 degree3 logarithmic IBP syzygy
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/k5_order8_s5_deg3_log_ibp_syzygy.py'
+      - '.github/workflows/k5_order8_s5_deg3_log_ibp_syzygy.yml'
+jobs:
+  exact-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install sympy
+      - name: Run frozen exact gate
+        run: |
+          mkdir -p artifacts
+          python scripts/k5_order8_s5_deg3_log_ibp_syzygy.py --output artifacts/k5_order8_s5_deg3_log_ibp_syzygy.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: k5-order8-s5-deg3-log-ibp-syzygy
+          path: artifacts/
+          if-no-files-found: warn
