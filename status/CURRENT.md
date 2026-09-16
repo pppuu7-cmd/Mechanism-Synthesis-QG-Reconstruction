@@ -8,7 +8,7 @@ Candidate remains `CRQN v0.2`, `CARRIER_SELECTED` only for established source-ba
 
 Predictive local K5 amplitude remains `BLOCKED_CURRENT_CANDIDATE_LOCAL_AMPLITUDE`; physical F9 and G3 remain downstream-blocked.
 
-The frozen all-`j=1/2` source-faithful local multivariate hierarchy now has:
+The frozen all-`j=1/2` source-faithful local multivariate hierarchy currently has:
 
 1. source-faithful 16-parameter K5 meromorphic germ — independently confirmed;
 2. actual simple K3 polar coefficient — exact zero, independently confirmed;
@@ -16,7 +16,7 @@ The frozen all-`j=1/2` source-faithful local multivariate hierarchy now has:
 4. actual simple K4 order-3 polar coefficient — exact zero, independently confirmed by repaired Critic;
 5. exact K5 order-8 Schwinger/projective reduction — validated;
 6. exact one-edge `00000` positivity theorem — positive for all `alpha_01=t>0` with all other Schwinger weights one;
-7. exact two-edge `00000` sign-change theorem — pointwise positivity fails already on the `alpha_01=t`, `alpha_02=u` positive family.
+7. the two-edge `00000` sign-change arithmetic exists as exact exploratory evidence, but the Researcher rank-two gate is **not terminal scientific authority** because independent Critic found a post-prereg representative-component object change and returned `REQUIRES_NEW_PREREGISTERED_GATE`.
 
 The parent unresolved scientific layer remains the **actual K5 order-8 principal-symbol projective/angular period and tensor/annihilator**. No K5 full zero/nonzero theorem has been assigned.
 
@@ -46,13 +46,7 @@ Researcher authoritative production:
 - production JSON SHA256 `dd93d6bfe0151a3f72b2dc3bcee3ac530108e5f7966f919021e165edd2981934`;
 - classification `K4_ACTUAL_ORDER3_POLAR_COEFFICIENT_ZERO_EXACT_BY_FULL_NORMAL_INVERSION_PARITY_SCOPED`.
 
-The first independent-Critic implementation/run (`3d637eb1...`, head `de3f0111...`, run `35004252640`) is permanently `INVALID_IMPLEMENTATION`: it self-populated multiple target facts as literals and therefore did not independently establish the frozen acceptance criteria. The old durable result commit `9b0b5629...` is superseded as Critic authority, although its scientific conclusion happened to agree with the repaired calculation.
-
-Prospectively frozen control-only repairs:
-
-- repair 1 prereg `f24290d18a246d8ba1c6938e04d66b8769a8bd8e`;
-- repair 2 prereg `3a3516f799dd70c6a41b6ec84790d27683d64c40`;
-- repair 3 prereg `a4c735f1c6d1f5323b9b88e2026aa779a57639f5`.
+The first independent-Critic implementation/run (`3d637eb1...`, head `de3f0111...`, run `35004252640`) is permanently `INVALID_IMPLEMENTATION`. The old durable result commit `9b0b5629...` is superseded as Critic authority.
 
 Authoritative repaired Critic production:
 
@@ -69,9 +63,9 @@ Durable repaired Critic result:
 
 `results/ACTUAL_MULTIVARIATE_K4_ORDER3_PARITY_INDEPENDENT_CRITIC_REPAIR3_RESULT.md`, commit `ce24b19f237bb3d2fc822da25030220e0e2fc564`.
 
-The repaired Critic independently recomputes exact K4 geometry, leading source parity/linearity, all five K4 blocks, all 32 boundary components, `500000` raw source-contraction terms with zero census errors, all 120 S5 transports, scaling degree 12, `omega_K4=3`, all 364 weak order-3 partitions and total degree nine. A regrouping control produces 3654 partitions but still total degree nine. All fourteen malformed controls are rejected by the same decision path.
-
 Therefore, in the frozen local all-`j=1/2` source-faithful sector, the simple K4 face residue is exact zero for every K4 block and frozen boundary component. This remains a scoped local residue theorem only.
+
+Historical Critic artifacts that were later superseded are not controlling authority.
 
 ---
 
@@ -104,9 +98,9 @@ The exact Schwinger/projective reduction was validated in production run `350165
 
 ---
 
-## K5 Schwinger noncancellation diagnostics — terminal authority
+## K5 Schwinger noncancellation diagnostics
 
-### Uniform full-32 diagnostic
+### Uniform full-32 diagnostic — retained
 
 Production run `35016971583`, artifact `10415972092`:
 
@@ -117,9 +111,9 @@ Production run `35016971583`, artifact `10415972092`:
 
 This excludes an identically-zero projective integrand but is not an integrated-period theorem.
 
-### Edge01 rank-one exact positivity
+### Edge01 rank-one `00000` positivity — retained scoped authority
 
-Prospective/post-prereg chain culminates in terminal result
+Terminal result:
 
 `results/K5_ORDER8_EDGE01_RANKONE_POSITIVITY_RESULT.md`, commit `87f82fff7d8af014e54345dfa133c219388244ca`.
 
@@ -131,41 +125,58 @@ Authoritative production:
 - ZIP digest `sha256:2454accda24a15d08823b934d83f7d4692f7f52ddbaa95e1f56643697e95ddd8`;
 - JSON SHA256 `2d52d706978f603564f13855b07785e65a88a18802ff47030b25294d07b3af7c`.
 
-For `alpha_01=t>0`, all other weights one, the `00000` order-eight radial moment is strictly positive for every `t>0`.
+For `alpha_01=t>0`, all other weights one, the prospectively scoped `00000` order-eight radial moment is strictly positive for every `t>0`.
 
-### Edge01/edge02 rank-two exact sign change
+### Edge01/edge02 rank-two Researcher result — Critic requires new preregistration
 
-Prospective gate:
+Researcher preregistration:
 
 `prereg/K5_ORDER8_EDGE01_EDGE02_RANKTWO_POSITIVITY_LANE.md`, commit `ef26d063354d0def5af3fdba4fe0d8b537a038d1`.
 
-Terminal result:
+Researcher durable result:
 
 `results/K5_ORDER8_EDGE01_EDGE02_RANKTWO_SIGN_CHANGE_RESULT.md`, commit `d01790ed11881c31ca5d7c6119fa40d90bff1368`.
 
-Authoritative production:
+Researcher production:
 
 - head `6fb57d915cbb20c80674ec2a97121b35ffedd396`;
 - run `35035152999`, success;
 - job `104602503455`, success;
 - artifact `10422859073`;
 - ZIP digest `sha256:b409c5dfb8c1182da8bcab903a800955c8a34462a179c841f08d511d55625867`;
-- production JSON SHA256 `c3abbcaf61bafc13eea2677ce71537d5899e375b3571e513abc1e94a0287a31f`;
-- classification `K5_EDGE01_EDGE02_RANKTWO_SIGN_CHANGE_EXACT_SCOPED`.
+- production JSON SHA256 `c3abbcaf61bafc13eea2677ce71537d5899e375b3571e513abc1e94a0287a31f`.
 
-Exact determinant:
+Independent Critic preregistration:
 
-`det L(t,u)=5*(3tu+7t+7u+8)>0` for `t,u>0`.
+`prereg/K5_ORDER8_EDGE01_EDGE02_RANKTWO_INDEPENDENT_CRITIC_REVIEW.md`, commit `40a3f78b2a85ef1750d8c6006438c0b1d2044398`.
 
-The full exact engine and the independently reconstructed source slice agree on
+Independent Critic durable review:
+
+`results/K5_ORDER8_EDGE01_EDGE02_RANKTWO_ADVERSARIAL_REVIEW.md`, commit `6d5da2372e62eed4327a2eb568e4ac974189c36c`.
+
+Critic provenance ledger:
+
+`status/K5_ORDER8_EDGE01_EDGE02_RANKTWO_CRITIC_PROVENANCE_LEDGER.md`, commit `e221326d2af6ed47b053b797d8ae8d473637d9f3`.
+
+Critic verdict:
+
+**`REQUIRES_NEW_PREREGISTERED_GATE`**.
+
+Reason: the Researcher preregistration froze construction from the `all-32/full-source K5 order-eight principal-symbol object`, but the executed engine selects only
+
+`itertools.product(mod.NODE_OPTIONS[0], repeat=5)`,
+
+which fixes the representative boundary component `k=(0,0,0,0,0)` and yields `4^5=1024` source choices. The post-prereg derivation explicitly introduces this `00000` component-level scope. No prospectively frozen covector/projection or theorem reduced the all-32 object to `00000`.
+
+The exact arithmetic
 
 `R(1,2)=1254383808/9191328125 > 0`,
 
-`R(1,3)=-14327118848/13839609375 < 0`.
+`R(1,3)=-14327118848/13839609375 < 0`
 
-All nine prospectively frozen cross-check points were evaluated exactly; all were positive-definite and all nine sample radial moments happened to be positive. The post-prereg counterexample `(1,3)` therefore demonstrates why a finite sample could not establish global positivity.
+may be retained as exploratory evidence for the `00000` component. It is not terminal authority under the existing all-32 scientific contract and must not be cited as if that object had been prospectively frozen.
 
-**Consequence:** the mechanical pointwise-sign strategy is dead. Edge01 rank-one positivity does not extend even to the two-edge positive cone. This does **not** imply that the 9D projective period vanishes or is nonzero.
+Do not rewrite the old result post hoc. A future component-specific gate would require a new preregistration.
 
 ---
 
@@ -178,7 +189,10 @@ All nine prospectively frozen cross-check points were evaluated exactly; all wer
 `-> actual K3 simple-face polar coefficient ZERO_EXACT CONFIRMED`
 `-> K4 source-faithful cubic realization bridge CONFIRMED`
 `-> actual K4 simple-face order-3 polar coefficient ZERO_EXACT CONFIRMED by repaired Critic`
-`-> K5 order-8 projective integrand NONTRIVIAL pointwise; one rank-one ray positive, rank-two sign change exact`
+`-> K5 order-8 projective reduction VALIDATED`
+`-> uniform full-32 projective integrand diagnostic NONTRIVIAL`
+`-> edge01 rank-one 00000 positivity SCOPED authority`
+`-> edge01/edge02 00000 sign-change arithmetic exploratory; Researcher gate REQUIRES_NEW_PREREGISTERED_GATE`
 `-> actual invariant-dual K5 projective periods ?`
 `-> actual K5 order-8 tensor/annihilator ?`
 `-> physical finite-part / joint-K5 selector ?`
@@ -193,27 +207,29 @@ All nine prospectively frozen cross-check points were evaluated exactly; all wer
 `-> matter/QFT IR ?`
 `-> normalized falsifiable prediction ?`.
 
-The exact zeros of K3/K4 residues and the K5 pointwise diagnostics do not remove the complete `dim_C F_8=377` extension-selection freedom or define a physical finite part.
+The exact zeros of K3/K4 residues and K5 pointwise diagnostics do not remove the complete `dim_C F_8=377` extension-selection freedom or define a physical finite part.
 
 ---
 
 ## Authorized next work
 
-Do **not** continue mechanical rank-three/rank-four positivity-family gates. Rank-two sign change has already falsified the global pointwise-positive route for the tested physical component.
+Do **not** continue mechanical rank-three/rank-four representative-component positivity-family gates as the main front.
 
-Highest-information next gate:
+Highest-information authorized gate:
 
 `K5_ORDER8_INVARIANT_DUAL_PROJECTIVE_PERIOD_IBP_NONCANCELLATION`.
 
-Priority strategy:
+It must be prospectively preregistered before new K5 Critic/production work and should:
 
-1. reconstruct the full 32D boundary S5 action from the exact stripped node tensors and use the **dual** Reynolds projector; independently recover rank 2 and the character `(32,0,8,2,0,0,2)`;
-2. form the two exact invariant-dual order-eight Schwinger/projective integrands from the full ten-wedge/all-32 source contraction, not from `00000` alone;
+1. reconstruct the full 32D boundary S5 action from the exact stripped node tensors and use the **dual** Reynolds projector; independently recover rank 2 and character `(32,0,8,2,0,0,2)`;
+2. form both exact invariant-dual order-eight Schwinger/projective integrands from the full ten-wedge/all-32 source contraction, not from `00000` alone;
 3. retain the exact K5 Kirchhoff polynomial / 125-tree denominator and all source powers;
-4. seek exact parameter-space projective IBP, symmetry, annihilator, hyperlogarithmic, or other rigorous period reduction sufficient to prove one invariant-dual period nonzero or exactly zero;
+4. seek exact projective IBP, symmetry, annihilator, hyperlogarithmic, or equivalent rigorous period reduction sufficient to prove one invariant-dual period nonzero or exactly zero;
 5. handle Schwinger-simplex boundary terms explicitly — do not identify them automatically with the already-zero K3/K4 collision residues;
-6. if either invariant-dual period is exact nonzero, the K5 order-eight principal symbol is nonzero; if both vanish, continue in the remaining S5 sectors because invariant-sector vanishing alone does not prove the full 217-dimensional tensor zero;
+6. if either invariant-dual period is exact nonzero, the K5 order-eight principal symbol is nonzero; if both vanish, continue in remaining S5 sectors because invariant-sector vanishing alone does not prove the full 217-dimensional tensor zero;
 7. keep the 16-parameter meromorphic-family provenance and do not reinterpret common Schwinger scale as a physical one-parameter regulator.
+
+A new `00000` rank-two component gate is permissible only if that narrow theorem is independently needed; it must explicitly freeze `k=(0,0,0,0,0)` and `1024` source terms prospectively. It is lower information gain than the invariant-dual period front.
 
 Any future K5 Critic must itself be prospectively preregistered before Critic implementation.
 
