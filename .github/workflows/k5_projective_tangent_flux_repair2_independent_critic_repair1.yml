@@ -1,0 +1,67 @@
+name: K5 tangent-flux repair2 independent Critic repair1
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'scripts/k5_projective_tangent_flux_repair2_independent_critic_repair1.py'
+      - '.github/workflows/k5_projective_tangent_flux_repair2_independent_critic_repair1.yml'
+  workflow_dispatch:
+
+jobs:
+  independent-critic-repair1:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install exact symbolic dependency
+        run: pip install sympy
+      - name: Download and verify authoritative parent artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p parent_artifact
+          gh api repos/${{ github.repository }}/actions/artifacts/10466668706/zip > parent.zip
+          echo '3c6d2894b184bd8177a6d0c5eaced31c62c49b3b813710e9e9f118eeffd52b3e  parent.zip' | sha256sum -c -
+          unzip -q parent.zip -d parent_artifact
+          test -f parent_artifact/result.json
+          echo '017f25d431bbf137aefd9f375ddbefbff45d551bfda4fd46a0a55a825aa91fe3  parent_artifact/result.json' | sha256sum -c -
+      - name: Run repaired independent exact Critic reconstruction
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p results/raw
+          python3 scripts/k5_projective_tangent_flux_repair2_independent_critic_repair1.py \
+            --parent-json parent_artifact/result.json \
+            --researcher-source scripts/k5_projective_tangent_normal_flux_exact.py \
+            --out results/raw/k5_projective_tangent_flux_repair2_independent_critic_repair1.json \
+            | tee critic_repair1_stdout.txt
+          sha256sum results/raw/k5_projective_tangent_flux_repair2_independent_critic_repair1.json | tee critic_repair1_json_sha256.txt
+      - name: Validate terminal Critic payload
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          p='results/raw/k5_projective_tangent_flux_repair2_independent_critic_repair1.json'
+          d=json.load(open(p,encoding='utf-8'))
+          assert d['verdict']=='CONFIRMED_SCOPED', d['verdict']
+          assert all(d['provenance_checks'].values())
+          assert all(d['coverage_checks'].values())
+          assert all(d['math_checks'].values())
+          assert d['math_checks']['9_full_symbolic_chart_relations'] is True
+          assert all(x['scalar_full_symbolic_difference']=='0' and x['flux_full_symbolic_difference']=='0' for x in d['full_symbolic_chart_relations'])
+          assert d['exceptional']['advanced_to_higher_finite_order'] is True
+          print('VALIDATED=CONFIRMED_SCOPED')
+          PY
+      - name: Upload repaired independent Critic witnesses
+        uses: actions/upload-artifact@v4
+        with:
+          name: k5-tangent-flux-repair2-independent-critic-repair1
+          path: |
+            results/raw/k5_projective_tangent_flux_repair2_independent_critic_repair1.json
+            critic_repair1_stdout.txt
+            critic_repair1_json_sha256.txt
+          if-no-files-found: error
+          retention-days: 90
