@@ -1,0 +1,28 @@
+name: K5 projective blowup flux scaling exact verify
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/k5_projective_blowup_flux_scaling_verify.py'
+      - '.github/workflows/k5_projective_blowup_flux_scaling_verify.yml'
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Exact verification
+        run: |
+          mkdir -p results/raw
+          python scripts/k5_projective_blowup_flux_scaling_verify.py --output results/raw/k5_projective_blowup_flux_scaling_verify.json
+      - name: Hash result
+        run: sha256sum results/raw/k5_projective_blowup_flux_scaling_verify.json | tee results/raw/k5_projective_blowup_flux_scaling_verify.sha256
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: k5-projective-blowup-flux-scaling-${{ github.run_id }}
+          path: results/raw/k5_projective_blowup_flux_scaling_verify*
+          if-no-files-found: error
