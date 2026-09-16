@@ -1,0 +1,41 @@
+{
+  "source": {
+    "run_id": 35043883583,
+    "job_id": 104629427085,
+    "head_sha": "53bdd4d6adb5e470192292d7ef2616a57e15fc6e",
+    "artifact_id": 10426228492,
+    "artifact_zip_sha256": "37f52650a70c11f7969302294b726e611ecc74a1adbf44889699daba788db5ca",
+    "production_json_sha256": "7fe9fb47da97a5c396c69d7153d8c25c4cef2f4b95c6f4cb1850cba889bffca4"
+  },
+  "status": "PASS_EXACT_SCOPED",
+  "classification": "K5_S5_DEG4_NONRADIAL_ANNIHILATOR_EXISTS_EXACT_SCOPED",
+  "k5_exact": {
+    "system_rows": 7180,
+    "system_cols": 40,
+    "rank": 32,
+    "nullity": 8,
+    "radial_dimension": 7,
+    "nonradial_quotient_dimension": 1,
+    "vector_only_rank": 32,
+    "annihilator_dimension": 1,
+    "annihilator_logarithmic_quotient_zero": true,
+    "annihilator_representative_coefficients": [0,0,0,0,3,3,0,0,0,0,0,3,0,3,-1,-1,0,-1,-3,-1,0,-3,0,5,-1,-1,0,-1,0,-1,0,0,0]
+  },
+  "orbit_data": {
+    "fixed_edge_cubic_orbit_count": 33,
+    "fixed_edge_cubic_orbit_sizes": [3,6,1,12,6,12,6,12,6,6,6,12,12,2,6,3,6,6,12,12,12,6,3,3,12,6,6,6,3,6,3,6,1],
+    "s5_invariant_cubic_dimension": 7,
+    "s5_cubic_orbit_sizes": [10,60,10,20,60,30,30]
+  },
+  "synthetic_exact": {
+    "system_rows": 220,
+    "system_cols": 40,
+    "rank": 7,
+    "nullity": 33,
+    "radial_dimension": 7,
+    "nonradial_quotient_dimension": 26,
+    "annihilator_dimension": 26,
+    "known_annihilator": "Q_e=9 alpha_e^3 - sum_(f != e) alpha_f^3"
+  },
+  "scientific_invariant_dual_period_verdict": null
+}
