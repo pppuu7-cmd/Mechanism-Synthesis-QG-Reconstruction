@@ -1,0 +1,23 @@
+name: K5 corrected projective tangent normal flux exact
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/k5_projective_tangent_normal_flux_exact.py'
+      - '.github/workflows/k5_projective_tangent_normal_flux_exact.yml'
+jobs:
+  exact-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run exact corrected projective tangent flux verifier
+        run: |
+          mkdir -p artifacts/k5_projective_tangent_flux
+          python scripts/k5_projective_tangent_normal_flux_exact.py | tee artifacts/k5_projective_tangent_flux/result.txt
+          grep -q 'classification=K5_PROJECTIVE_TANGENT_NORMAL_FLUX_SCALING_EXACT_SCOPED' artifacts/k5_projective_tangent_flux/result.txt
+      - name: Upload exact result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: k5-projective-tangent-normal-flux-exact
+          path: artifacts/k5_projective_tangent_flux/
