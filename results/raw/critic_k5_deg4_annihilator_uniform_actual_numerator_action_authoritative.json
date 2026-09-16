@@ -1,0 +1,34 @@
+{
+  "gate": "K5_DEG4_ANNIHILATOR_UNIFORM_ACTUAL_NUMERATOR_ACTION_INDEPENDENT_CRITIC",
+  "prereg_commit": "5f386aeda775e5513fc37ac5767248f0b561fb45",
+  "repair_commit": "1424f2cce9f4e5669988ef31af11586d101bf1e5",
+  "implementation_commit": "debd30a5373b7e469d269abcb21b099fbc1b39e2",
+  "workflow_head": "08ff6b73acb3c73f45d06e169b405315a981b77e",
+  "run": 35049858473,
+  "job": 104647654666,
+  "artifact": 10429566785,
+  "artifact_zip_sha256": "490f05d243fc16ead6ac2f1f0cd16e60d6a8adccf7cca25368ab3317e580c43a",
+  "production_json_sha256": "5034ab5b0743742e09cc30c684f3da3100002ba9d4a47ac5c113f1866a173e11",
+  "verdict": "SCIENTIFIC_FAIL_CONFIRMED",
+  "checks_all_true": true,
+  "controls_all_true": true,
+  "researcher_witness_agreement": false,
+  "uniform_div_v": "-150",
+  "uniform_numerators": [
+    "-7038281250000000000",
+    "-5474218750000000000"
+  ],
+  "researcher_uniform_action": [
+    "1055742187500000000000",
+    "821132812500000000000"
+  ],
+  "independent_uniform_action": [
+    "10557421875000000000000",
+    "8211328125000000000000"
+  ],
+  "exact_ratio_independent_over_researcher": ["10", "10"],
+  "partial_cancelled_action_run_values_used": false,
+  "weaker_nonzero_action_conclusion_survives": true,
+  "constant_2x2_closure_verdict": null,
+  "integrated_period_verdict": null
+}
