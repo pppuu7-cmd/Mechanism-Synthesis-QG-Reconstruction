@@ -1,0 +1,67 @@
+{
+  "gate": "K5_DEG4_ANNIHILATOR_ACTUAL_DUAL_NUMERATOR_POINTWISE_ACTION",
+  "parent_prereg_commit": "2111b42adc1ab79247c72d0043e5332b24eb7679",
+  "control_repair_commit": "500fd80d900c99f71c66869dfe99fa4f35adc5f5",
+  "implementation_head": "4e70e991ff0c5e312feac4556082e9be01afe598",
+  "run_id": 35130545821,
+  "job_id": 104910177408,
+  "artifact_id": 10461780450,
+  "artifact_zip_sha256": "d1b2bbd109aa0a3969e37e97aa3e572fc4cba368c42fdc145f94689afbc032dd",
+  "production_json_sha256": "909b2afc8474b317a424ba59f108756441bdd8cdf8888cb85763d6c368fe95b8",
+  "status": "PASS_EXACT_SCOPED",
+  "classification": "K5_DEG4_ANNIHILATOR_ACTION_NONZERO_CONSTANT2X2_CLOSURE_FALSIFIED_EXACT_SCOPED",
+  "nonzero_action_witness_exists": true,
+  "constant_2x2_closure_falsified": true,
+  "fit_degenerate": false,
+  "uniform_control": {
+    "s1": 10,
+    "numerators": [
+      "-7038281250000000000",
+      "-5474218750000000000"
+    ],
+    "actions": [
+      "10557421875000000000000",
+      "8211328125000000000000"
+    ],
+    "exact_relation": "B_v[N_c] = -1500 N_c"
+  },
+  "constant_2x2_fit_matrix": [
+    [
+      "52996754536587966864815403/23263643316361048527187",
+      "-82096196445516207703270596/23263643316361048527187"
+    ],
+    [
+      "233856340529682702107752864/23263643316361048527187",
+      "-210677210767944378471566873/23263643316361048527187"
+    ]
+  ],
+  "validation_residuals": {
+    "validation_U": [
+      "169197622720339027640973768714843750000000000/23263643316361048527187",
+      "683678968013701565533965184503906250000000000/23263643316361048527187"
+    ],
+    "validation_G": [
+      "1758340985925834438464127383675476283641890165211167510528/72698885363628276647459375",
+      "-2076835759846977760266215298077412693587348776136528126976/72698885363628276647459375"
+    ]
+  },
+  "checks": {
+    "all_frozen_checks_true": true,
+    "all_malformed_controls_rejected": true,
+    "all32_source_terms": 100000,
+    "annihilator_global_polynomial_zero": true,
+    "dual_projection_used": true,
+    "probe_order": 4,
+    "psi_power": 9,
+    "euler_degree_N": 27,
+    "action_homogeneous_degree": 31,
+    "direct_vs_dag_derivative_agreement_on_required_points": true,
+    "published_spectral_i_epsilon_unchanged": true,
+    "integrated_period_verdict": null
+  },
+  "historical_non_authoritative_run": {
+    "run_id": 35045552470,
+    "conclusion": "cancelled",
+    "partial_substantive_values_authoritative": false
+  }
+}
