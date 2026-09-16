@@ -1,0 +1,47 @@
+name: K5 exact cancellation S5 source transport diagnostic
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/k5_exact_cancellation_s5_source_transport_diagnostic.py'
+      - '.github/workflows/k5_exact_cancellation_s5_source_transport_diagnostic.yml'
+jobs:
+  diagnostic:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Verify prospective lineage
+        run: |
+          set -euo pipefail
+          git merge-base --is-ancestor 86438c789eac23eabcb68ff6984ccbcc6fc3853b HEAD
+          git merge-base --is-ancestor d6b0e805101c8590eafac71398cc2b1466691752 HEAD
+      - name: Derive exact source transport
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts/s5_source_transport
+          python scripts/k5_exact_cancellation_s5_source_transport_diagnostic.py --output artifacts/s5_source_transport/result.json
+          sha256sum artifacts/s5_source_transport/result.json | tee artifacts/s5_source_transport/result_sha256.txt
+      - name: Validate diagnostic payload
+        run: |
+          python - <<'PY'
+          import json
+          d=json.load(open('artifacts/s5_source_transport/result.json'))
+          assert d['physical_corner_coefficients_used_for_fit'] is False
+          assert d['rank']==2 and d['pivots']==[1,4]
+          assert all(d['checks'].values())
+          assert d['classification'] in {
+            'S5_SOURCE_TRANSPORT_IDENTITY_CONFIRMED',
+            'S5_SOURCE_TRANSPORT_NONTRIVIAL_2X2_EXACT',
+            'S5_SOURCE_TRANSPORT_CURRENT_LANE_INVALID',
+          }
+          print(d['classification'])
+          print(d['transports'])
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: k5-exact-cancellation-s5-source-transport-diagnostic
+          path: artifacts/s5_source_transport/
+          retention-days: 90
