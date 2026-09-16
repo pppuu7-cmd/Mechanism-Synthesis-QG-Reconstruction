@@ -4,6 +4,7 @@ on:
     branches: [ main ]
     paths:
       - 'prereg/K5_DEG4_ANNIHILATOR_UNIFORM_ACTUAL_NUMERATOR_ACTION_INDEPENDENT_CRITIC.md'
+      - 'prereg/K5_DEG4_ANNIHILATOR_UNIFORM_ACTUAL_NUMERATOR_ACTION_CRITIC_CONTROL_REPAIR_1.md'
       - 'scripts/critic_k5_deg4_annihilator_uniform_actual_numerator_action.py'
       - '.github/workflows/critic_k5_deg4_annihilator_uniform_actual_numerator_action.yml'
   workflow_dispatch:
@@ -24,13 +25,15 @@ jobs:
           python - <<'PY'
           import json
           d=json.load(open('results/raw/critic_k5_deg4_annihilator_uniform_actual_numerator_action.json'))
-          assert d['verdict']=='CONFIRMED_SCOPED',d
+          assert d['verdict'] in {'CONFIRMED_SCOPED','SCIENTIFIC_FAIL_CONFIRMED'},d
           assert all(d['checks'].values()),d['checks']
           assert all(d['controls'].values()),d['controls']
           assert d['partial_cancelled_action_run_values_used'] is False
           assert d['constant_2x2_closure_verdict'] is None
           assert d['integrated_period_verdict'] is None
-          print('CRITIC_VERDICT=CONFIRMED_SCOPED')
+          print('CRITIC_VERDICT=',d['verdict'])
+          print('INDEPENDENT_ACTION=',d['independent_uniform_action'])
+          print('RESEARCHER_ACTION=',d['researcher_uniform_action'])
           PY
           sha256sum results/raw/critic_k5_deg4_annihilator_uniform_actual_numerator_action.json | tee critic_result_sha256.txt
       - uses: actions/upload-artifact@v4
