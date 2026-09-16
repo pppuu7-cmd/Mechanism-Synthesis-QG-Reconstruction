@@ -1,0 +1,16 @@
+name: K5 exact cancellation static probe
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/k5_exact_cancellation_static_probe.py'
+      - '.github/workflows/k5_exact_cancellation_static_probe.yml'
+jobs:
+  static-probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Static compression probe
+        run: python scripts/k5_exact_cancellation_static_probe.py
