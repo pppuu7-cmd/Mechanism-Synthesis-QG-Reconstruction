@@ -114,21 +114,23 @@ Controlling adversarial review:
 
 Mandatory verdict: **`SCIENTIFIC_FAIL_CONFIRMED`** for the exact Researcher equality/witness normalization. The two quoted Researcher witness integers are non-authoritative. The weaker conclusion survives: the confirmed annihilator acts exact nonzero on both physical invariant-dual numerator channels at raw uniform.
 
-Critic provenance ledger:
+Critic provenance ledger is reconciled through terminal repaired machine verification at `status/K5_DEG4_ANNIHILATOR_UNIFORM_ACTUAL_NUMERATOR_ACTION_CRITIC_PROVENANCE_LEDGER.md`, commit `a572748185a8da8716981038ffc9cf72fc71fdf8`.
 
-`status/K5_DEG4_ANNIHILATOR_UNIFORM_ACTUAL_NUMERATOR_ACTION_CRITIC_PROVENANCE_LEDGER.md`, commit `a53e15cf1227abdf274fbc1192147eb32e0dea6a`.
+Prospective Critic prereg `5f386aeda775e5513fc37ac5767248f0b561fb45`; historical Critic run `35049778265` independently exposed the same factor-ten mismatch but had invalid decision-classification logic. Control-only Critic repair prereg `1424f2cce9f4e5669988ef31af11586d101bf1e5`; repaired implementation `debd30a5373b7e469d269abcb21b099fbc1b39e2`; repaired workflow/head `08ff6b73acb3c73f45d06e169b405315a981b77e`.
 
-Prospective Critic prereg `5f386aeda775e5513fc37ac5767248f0b561fb45`; historical Critic run `35049778265` independently exposed the same factor-ten mismatch but had invalid decision-classification logic. Control-only Critic repair prereg `1424f2cce9f4e5669988ef31af11586d101bf1e5`; repaired implementation `debd30a5373b7e469d269abcb21b099fbc1b39e2`; repaired workflow/head `08ff6b73acb3c73f45d06e169b405315a981b77e`. Repaired Critic run `35049858473` is queued/non-terminal and is not required for the controlling exact verdict above.
+Repaired Critic run `35049858473` is terminal `success`: job `104647654666`, artifact `10429566785`, ZIP digest `sha256:490f05d243fc16ead6ac2f1f0cd16e60d6a8adccf7cca25368ab3317e580c43a`, production JSON SHA256 `5034ab5b0743742e09cc30c684f3da3100002ba9d4a47ac5c113f1866a173e11`. All structural checks and controls passed and the terminal verdict is independently `SCIENTIFIC_FAIL_CONFIRMED`. Durable machine cross-check: `results/K5_DEG4_ANNIHILATOR_UNIFORM_ACTUAL_NUMERATOR_ACTION_CRITIC_REPAIR1_RESULT.md`, commit `5d1171f33ae3dc7c9f90393b662806d23063b8ef`.
 
 ### Broader action / constant-2x2 closure production
 
 Parent prospective gate remains `prereg/K5_DEG4_ANNIHILATOR_ACTUAL_DUAL_NUMERATOR_POINTWISE_ACTION.md`, commit `2111b42adc1ab79247c72d0043e5332b24eb7679`.
 
-Researcher implementation/head `c78c572669f7ccbabf880b953c631735f2d7c216`, run `35045552470`, job `104634474033` is now terminal **cancelled**. Artifact `10427599407`, digest `sha256:42f20555554466348342922c817fe291de7ad470fb41d756df6c0e5bd1e74a99` was uploaded under `always()`.
+Researcher implementation/head `c78c572669f7ccbabf880b953c631735f2d7c216`, run `35045552470`, job `104634474033` is terminal **cancelled**. Artifact `10427599407`, digest `sha256:42f20555554466348342922c817fe291de7ad470fb41d756df6c0e5bd1e74a99` was uploaded under `always()`.
 
 **No partial substantive value from run `35045552470` is authority.**
 
 Therefore the constant-`2x2` closure hypothesis remains `?`.
+
+Researcher control-only normalization/performance repair 1 is prospectively frozen at `prereg/K5_DEG4_ANNIHILATOR_ACTUAL_DUAL_NUMERATOR_POINTWISE_ACTION_CONTROL_REPAIR_1.md`, commit `500fd80d900c99f71c66869dfe99fa4f35adc5f5`. No repaired Researcher implementation or substantive output exists yet at this reconciliation cut.
 
 ---
 
@@ -159,7 +161,7 @@ The exact-zero K3/K4 collision residues are not automatically Schwinger-simplex 
 `-> S5 logarithmic degrees 1-3 RADIAL_ONLY`
 `-> unique degree-4 non-radial KIRCHHOFF ANNIHILATOR EXACT, CRITIC CONFIRMED`
 `-> exact reusable physical N_1,N_2 degree-27 DAG MATERIALIZED`
-`-> Researcher raw-uniform action normalization SCIENTIFIC_FAIL_CONFIRMED`
+`-> Researcher raw-uniform action normalization SCIENTIFIC_FAIL_CONFIRMED by analytic review + terminal repaired Critic machine cross-check`
 `-> corrected raw-uniform annihilator action NONZERO on both physical channels`
 `-> constant-2x2 action closure ?`
 `-> higher-codimension Schwinger boundary/Stokes authority ?`
@@ -181,8 +183,8 @@ The exact-zero K3/K4 collision residues are not automatically Schwinger-simplex 
 
 ## Highest-information next work
 
-1. Do not rewrite the failed Researcher uniform-action derivation. Prospectively freeze a **control-only normalization/performance repair/retry** of `K5_DEG4_ANNIHILATOR_ACTUAL_DUAL_NUMERATOR_POINTWISE_ACTION` under the unchanged parent scientific contract. The repair must explicitly distinguish raw homogeneous alpha coordinates from the simplex `s1=1` gauge, verify homogeneity of `N` and `B_v`, and reproduce the corrected raw-uniform control `B=-1500N`.
-2. The repaired action gate should target the still-open exact constant-`2x2` closure classification at the original frozen fit/validation points; do not change points post hoc. Optimize the exact evaluator so the prior cancellation/timeout is not repeated.
+1. Do not rewrite the failed Researcher uniform-action derivation. The **control-only normalization/performance repair/retry** of `K5_DEG4_ANNIHILATOR_ACTUAL_DUAL_NUMERATOR_POINTWISE_ACTION` is already prospectively frozen at commit `500fd80d900c99f71c66869dfe99fa4f35adc5f5`. It must explicitly distinguish raw homogeneous alpha coordinates from simplex `s1=1`, verify homogeneity of `N` and `B_v`, reproduce corrected raw-uniform `B=-1500N`, retain the exact original four frozen fit/validation points and full all-32/100000-term dual source object, and emit no partial authority if another performance failure occurs.
+2. The repaired action gate should target only the still-open exact constant-`2x2` closure classification at the original frozen fit/validation points; do not change points post hoc.
 3. Independently prospectively freeze a 34-orbit higher-codimension Schwinger-corner audit combining exact denominator valuation with exact physical numerator and action-flux valuations.
 4. Only after boundary/Stokes authority is terminal and independently reviewed may the projective total derivative be promoted to an integrated-period relation.
 5. If both invariant-dual periods eventually vanish, continue in remaining S5 sectors; invariant-sector vanishing alone does not prove the full 217-dimensional tensor zero.
