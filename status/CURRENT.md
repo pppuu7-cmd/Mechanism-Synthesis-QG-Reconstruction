@@ -12,7 +12,7 @@ The frozen all-`j=1/2` same-scaling-degree K5 supported-extension freedom remain
 
 `dim_C F_8 = 377`.
 
-No result below selects a physical finite part or reduces that 377-dimensional normalization freedom.
+No current result selects a physical finite part or reduces that 377-dimensional normalization freedom.
 
 Claim locks remain: no `NEW_PHYSICS_FOUND`; no complete-QG claim; no unique physical K5 extension; no physical finite-part selector; no regulator-independence theorem; no generic-spin completion; no global all-strata patching theorem; no G3/F9/G8 promotion. Retain the published one-wedge spectral `i epsilon`.
 
@@ -34,123 +34,47 @@ K3 simple residue is exact zero. K4 simple order-3 residue is exact zero and ind
 
 ## Full all-32 invariant-dual K5 projective object
 
-Result:
+Result `results/K5_ORDER8_INVARIANT_DUAL_PROJECTIVE_IBP_REACHABILITY_RESULT.md`, commit `e9ed372a91ac1bd219dc7671a916c70405e9cd43`.
 
-`results/K5_ORDER8_INVARIANT_DUAL_PROJECTIVE_IBP_REACHABILITY_RESULT.md`, commit `e9ed372a91ac1bd219dc7671a916c70405e9cd43`.
-
-Production:
-
-- run `35036111528`, job `104605480618`, success;
-- artifact `10423513476`;
-- ZIP digest `sha256:e8a42e1affe58cb84ead79a001ce72b7abecf487d5f903224041edb45cd3bd69`;
-- JSON SHA256 `9a1d21e1a33a6d03349f855f963b42a0a85126426ea7e01d5004653c960a21f1`;
-- classification `K5_INVARIANT_DUAL_PROJECTIVE_OBJECT_DEFINED_IBP_REDUCTION_INCOMPLETE_SCOPED`.
+Production run `35036111528`, job `104605480618`, artifact `10423513476`, ZIP digest `sha256:e8a42e1affe58cb84ead79a001ce72b7abecf487d5f903224041edb45cd3bd69`, classification `K5_INVARIANT_DUAL_PROJECTIVE_OBJECT_DEFINED_IBP_REDUCTION_INCOMPLETE_SCOPED`.
 
 Exact physical projective channels have form
 
 `Omega_9 * prod_e alpha_e^(1/2) * N_c(alpha) / Psi_K5(alpha)^(21/2)`
 
-with two invariant **dual/covector** channels, `deg N_c=27`, `Psi_K5=det L`, degree four, 125 coefficient-one spanning-tree monomials.
-
-Boundary character is `(32,0,8,2,0,0,2)`; invariant-dual rank is two; full contraction retains all 32 boundary components and `100000` source node-choice terms. Uniform RREF dual coordinates are exactly
-
-`(-9225216/9765625,-7175168/9765625)`.
+with two invariant **dual/covector** channels, `deg N_c=27`, `Psi_K5=det L`, degree four, 125 coefficient-one spanning-tree monomials. Boundary character is `(32,0,8,2,0,0,2)`; invariant-dual rank is two; full contraction retains all 32 boundary components and `100000` source node-choice terms.
 
 The two integrated 9D projective periods remain unknown.
 
----
-
-## Representative-component firewall
-
-The old edge01/edge02 `00000` sign-change arithmetic is exploratory only.
-
-Independent Critic result `results/K5_ORDER8_EDGE01_EDGE02_RANKTWO_ADVERSARIAL_REVIEW.md`, commit `6d5da2372e62eed4327a2eb568e4ac974189c36c`, returned `REQUIRES_NEW_PREREGISTERED_GATE` because the old all-32 preregistration was narrowed post hoc to `00000` / 1024 source terms.
-
-Do not cite that lane as terminal all-32 science.
+Representative-component firewall remains active: old `00000` rank-two sign-change arithmetic is exploratory only after Critic `REQUIRES_NEW_PREREGISTERED_GATE`, result commit `6d5da2372e62eed4327a2eb568e4ac974189c36c`.
 
 ---
 
 ## Low-degree S5 logarithmic module
 
-### Degree <=2
+Degrees 1-2: terminal `K5_S5_FACE_TANGENT_LOG_IBP_DEG2_RADIAL_ONLY_EXACT_SCOPED`.
 
-Terminal result commit `ee965976e0af8f3b569407e917b0046f02b79649`.
+Degree 3 repaired terminal authority: run `35043530093`, result commit `ed7a2aa05e0fa6bb75d63fa5328665059d0a012b`, classification `K5_S5_FACE_TANGENT_LOG_IBP_DEG3_RADIAL_ONLY_EXACT_SCOPED`; exact system `2565 x 14`, rank `11`, nullity `3`, radial dimension `3`, non-radial quotient `0`.
 
-Run `35038028770`, artifact `10424474143`, JSON SHA256 `83bbd3c399ce4d5df1f15d24d2afa3b7d65d6c9b8e9d49a969dfc1ceeeb17ed0`.
+Degree 4 is the first genuine non-radial class. Researcher production run `35043883583`, result commit `686268eddb3f0e2aece5857ef75cec52716eccc6`, classification `K5_S5_DEG4_NONRADIAL_ANNIHILATOR_EXISTS_EXACT_SCOPED`. Exact system `7180 x 40`, rank `32`, nullity `8`, radial dimension `7`, non-radial quotient dimension `1`, vector-only annihilator kernel dimension `1`.
 
-Classification `K5_S5_FACE_TANGENT_LOG_IBP_DEG2_RADIAL_ONLY_EXACT_SCOPED`; degree one is Euler and degree two is exactly `s1 E` modulo zero.
-
-### Degree 3
-
-First implementation is permanently `INVALID_IMPLEMENTATION` by outcome-independent audit commit `cf618ae9a3bbe8a4b97171dce973c2a4cb1b803f`.
-
-Prospectively frozen control-only repair commit `27ffc236cf2f7e3b555811f2a1b2aa1684a61ddf` produced:
-
-- run `35043530093`, artifact `10425543584`;
-- JSON SHA256 `b4c1ea8b4aefbef905b1354b70786b7c644181d261140830291d0ff8f0f3797e`;
-- result commit `ed7a2aa05e0fa6bb75d63fa5328665059d0a012b`;
-- classification `K5_S5_FACE_TANGENT_LOG_IBP_DEG3_RADIAL_ONLY_EXACT_SCOPED`.
-
-Exact system `2565 x 14`, rank `11`, nullity `3`, full radial dimension `3`, non-radial quotient `0`.
-
-### Degree 4 — first genuine non-radial class
-
-Researcher prereg commit `00b5ddf78474179281380606fbc3f62ca260e337`.
-
-Production:
-
-- head `53bdd4d6adb5e470192292d7ef2616a57e15fc6e`;
-- run `35043883583`, job `104629427085`, success;
-- artifact `10426228492`;
-- ZIP digest `sha256:37f52650a70c11f7969302294b726e611ecc74a1adbf44889699daba788db5ca`;
-- JSON SHA256 `7fe9fb47da97a5c396c69d7153d8c25c4cef2f4b95c6f4cb1850cba889bffca4`;
-- result commit `686268eddb3f0e2aece5857ef75cec52716eccc6`;
-- classification `K5_S5_DEG4_NONRADIAL_ANNIHILATOR_EXISTS_EXACT_SCOPED`.
-
-Exact complete degree-four system: 220 cubic monomials, 33 fixed-edge stabilizer orbits, 7 invariant cubic quotient types, matrix `7180 x 40`, rank `32`, nullity `8`, radial dimension `7`, non-radial quotient dimension `1`, vector-only annihilator kernel dimension `1`.
-
-The unique non-radial class has an exact representative
+Independent Critic run `35044426437`, artifact `10426875582`, Critic result commit `8668ca4df577c3f8d95cf4d4d7dcce72630916f5`, verdict `CONFIRMED_SCOPED`. The unique non-radial class has an exact face-tangent S5-equivariant representative satisfying
 
 `v(Psi_K5)=0`.
-
-Independent Critic was frozen before Researcher production became terminal and returned `CONFIRMED_SCOPED`:
-
-- run `35044426437`, artifact `10426875582`;
-- ZIP digest `sha256:b7f477067778424f6d37d749317096c47056e7f47af447f30816612e820ffb36`;
-- JSON SHA256 `48bfa209b9f01e8e6bca351bced9211134f76f73bd46692b8078a7e4083732db`;
-- Critic result commit `8668ca4df577c3f8d95cf4d4d7dcce72630916f5`.
-
-Critic independently reconstructed `det L`, the 125-tree polynomial, orbit census, `7180 x 40` matrix and vector-only kernel, then directly verified the Researcher-emitted 33-coefficient representative gives the zero polynomial, lies outside the Euler span, is face-tangent and is S5-equivariant under all 120 permutations.
 
 ---
 
 ## Actual invariant-dual degree-27 numerator DAG — TERMINAL
 
-The previous reusable-object bottleneck is closed.
-
 Prospective materialization prereg commit `faa436e10301ecb92f2e4558411f0d1af6f4594f`.
 
-Production:
+Production run `35044686796`, job `104631868911`, artifact `10426617568`, ZIP digest `sha256:6da2c3346b14aaa2d8d3dd342f6305dcf4896391a3f4ac9153ed86d1dc1b1b45`, canonical DAG SHA256 `f8eaaa5c7923497a67f0354a2d59475f4b6d82022e032fc005c1d9d2add69992`, result commit `666aa6e61f62bbfff456f6be7995ce3a65f2b633`, classification `K5_INVARIANT_DUAL_DEG27_CANONICAL_DAG_MATERIALIZED_EXACT_SCOPED`.
 
-- implementation commit `ce6aa550f706c1f1980787b9e6ab455e9749b5f6`;
-- workflow/head `d094ee6204845592ac395a67b94501461e98e4ff`;
-- run `35044686796`, job `104631868911`, success;
-- artifact `10426617568`;
-- ZIP digest `sha256:6da2c3346b14aaa2d8d3dd342f6305dcf4896391a3f4ac9153ed86d1dc1b1b45`;
-- production JSON SHA256 `47eaa12719abb2a0ce8a090374e759b62678041d468b11e77f242c64e869d331`;
-- canonical DAG SHA256 `f8eaaa5c7923497a67f0354a2d59475f4b6d82022e032fc005c1d9d2add69992`;
-- result `results/K5_INVARIANT_DUAL_DEG27_CANONICAL_DAG_RESULT.md`, commit `666aa6e61f62bbfff456f6be7995ce3a65f2b633`;
-- classification `K5_INVARIANT_DUAL_DEG27_CANONICAL_DAG_MATERIALIZED_EXACT_SCOPED`.
-
-The deterministic exact DAG contains `Psi`, polynomial `adj L`, all edge covariance numerators, source radius `Q=L_uniform/5`, authoritative source-entry coefficients, the full all-32/100000-term contraction, dual Reynolds data, inverse/determinant series and Wick recursion.
-
-Exact polynomial identity:
+The exact DAG contains `Psi`, polynomial `adj L`, edge covariance numerators, source radius `Q=L_uniform/5`, authoritative source-entry coefficients, the full all-32/100000-term contraction, dual Reynolds data, inverse/determinant series and Wick recursion. Exact polynomial identity:
 
 `N_c = 4! * sum_(j=0)^4 R_j S_(4-j)`, each summand degree 27.
 
-Direct rational and DAG evaluation paths agree exactly. The old all-32 uniform boundary vector is reproduced. Two independent nonuniform `00000` controls agree exactly with the legacy evaluator. Rescaling confirms exact degree 27.
-
-Terminal uniform numerator values:
+Terminal raw-uniform numerator values:
 
 `N_1(1,...,1)=-7038281250000000000`,
 
@@ -158,68 +82,67 @@ Terminal uniform numerator values:
 
 ---
 
-## Confirmed annihilator action on the physical numerators
+## K5 degree-four annihilator action — CONTROLLING CRITIC CORRECTION
 
-Exact projective-gauge derivation commit `97e71f0c20173b0c387461ff7f860baa12897fcd` gives, for `v_i=alpha_i q_i`, `S=sum_i v_i`, `s1=sum_i alpha_i`,
+Exact projective-gauge derivation commit `97e71f0c20173b0c387461ff7f860baa12897fcd` gives
 
-`B_v[N]=s1 v(N)+{s1[div v +(1/2)sum_i q_i]-3S}N`.
+`B_v[N]=s1 v(N)+{s1[div v +(1/2)sum_i q_i]-3S}N`,
 
-This is an algebraic numerator identity only; global Stokes still requires a higher-codimension Schwinger-corner audit.
+for `v_i=alpha_i q_i`, `S=sum_i v_i`, `s1=sum_i alpha_i`.
 
-Prospective physical action gate:
-
-`prereg/K5_DEG4_ANNIHILATOR_ACTUAL_DUAL_NUMERATOR_POINTWISE_ACTION.md`, commit `2111b42adc1ab79247c72d0043e5332b24eb7679`.
-
-Post-prereg exact analytic derivation:
-
-`sources/K5_DEG4_ANNIHILATOR_UNIFORM_ACTUAL_NUMERATOR_ACTION_DERIVATION.md`, commit `d867d215c0c1a9b1777add8eab56749145dbde1e`.
-
-At the uniform point the emitted annihilator has exactly
+Researcher post-prereg derivation `sources/K5_DEG4_ANNIHILATOR_UNIFORM_ACTUAL_NUMERATOR_ACTION_DERIVATION.md`, commit `d867d215c0c1a9b1777add8eab56749145dbde1e`, correctly reconstructed at raw uniform `alpha=(1,...,1)`:
 
 `q_i=0`, `partial_i q_i=-15`, `v_i=0`, `div v=-150`.
 
-Therefore
+But it then incorrectly used the simplex simplification `s1=1` while retaining raw-uniform numerator values, claiming
 
-`B_v[N_c](1,...,1)=-150 N_c(1,...,1)`
+`B_v[N_c]=-150N_c`.
 
-and both physical channels have exact nonzero action witnesses:
+Independent AUTOMATION B reconstruction gives `s1=10` at the stated raw point, so the exact identity is
 
-`B_v[N_1]=1055742187500000000000 !=0`,
+`B_v[N_c](1,...,1)=-1500N_c(1,...,1)`.
 
-`B_v[N_2]=821132812500000000000 !=0`.
+Correct raw-uniform actions are
 
-Thus the confirmed annihilator does **not** algebraically annihilate either physical numerator identically.
+`B_v[N_1]=10557421875000000000000 !=0`,
 
-### ACTIVE NON-TERMINAL closure/action production
+`B_v[N_2]=8211328125000000000000 !=0`.
 
-The same frozen gate also tests exact forward-mode differentiation and the cheapest constant-coefficient closure hypothesis `B=M N` over the two physical channels.
+Controlling adversarial review:
 
-Implementation development:
+`results/K5_DEG4_ANNIHILATOR_UNIFORM_ACTUAL_NUMERATOR_ACTION_ADVERSARIAL_REVIEW.md`, commit `42f769d6330faa52b606d3c64f08e113bc776da3`.
 
-- base action solver commit `66a45a7755ee1e5f370342cba2bb23851576d1f1`;
-- pre-production derivative/control repair wrapper commit `15f3ccee93193ad63b945a1c167f5b6f906802fe`;
-- workflow/head `c78c572669f7ccbabf880b953c631735f2d7c216`;
-- run `35045552470`, job `104634474033`, currently queued/non-terminal.
+Mandatory verdict: **`SCIENTIFIC_FAIL_CONFIRMED`** for the exact Researcher equality/witness normalization. The two quoted Researcher witness integers are non-authoritative. The weaker conclusion survives: the confirmed annihilator acts exact nonzero on both physical invariant-dual numerator channels at raw uniform.
 
-**Do not use partial values from run `35045552470`.**
+Critic provenance ledger:
 
-Frozen logic: two exact fit points determine the unique rational constant `2x2` matrix if possible; uniform plus a fourth frozen point test exact residuals. A nonzero residual is a rigorous counterexample to constant `2x2` closure. Finite agreement cannot prove global closure.
+`status/K5_DEG4_ANNIHILATOR_UNIFORM_ACTUAL_NUMERATOR_ACTION_CRITIC_PROVENANCE_LEDGER.md`, commit `a53e15cf1227abdf274fbc1192147eb32e0dea6a`.
+
+Prospective Critic prereg `5f386aeda775e5513fc37ac5767248f0b561fb45`; historical Critic run `35049778265` independently exposed the same factor-ten mismatch but had invalid decision-classification logic. Control-only Critic repair prereg `1424f2cce9f4e5669988ef31af11586d101bf1e5`; repaired implementation `debd30a5373b7e469d269abcb21b099fbc1b39e2`; repaired workflow/head `08ff6b73acb3c73f45d06e169b405315a981b77e`. Repaired Critic run `35049858473` is queued/non-terminal and is not required for the controlling exact verdict above.
+
+### Broader action / constant-2x2 closure production
+
+Parent prospective gate remains `prereg/K5_DEG4_ANNIHILATOR_ACTUAL_DUAL_NUMERATOR_POINTWISE_ACTION.md`, commit `2111b42adc1ab79247c72d0043e5332b24eb7679`.
+
+Researcher implementation/head `c78c572669f7ccbabf880b953c631735f2d7c216`, run `35045552470`, job `104634474033` is now terminal **cancelled**. Artifact `10427599407`, digest `sha256:42f20555554466348342922c817fe291de7ad470fb41d756df6c0e5bd1e74a99` was uploaded under `always()`.
+
+**No partial substantive value from run `35045552470` is authority.**
+
+Therefore the constant-`2x2` closure hypothesis remains `?`.
 
 ---
 
 ## Schwinger boundary/Stokes firewall
 
-Open single-edge face flux vanishes pointwise, but this is not yet a global Stokes theorem because `Psi_K5` can vanish at higher-codimension Schwinger corners.
+Open single-edge face flux vanishes pointwise, but this is not a global Stokes theorem because `Psi_K5` can vanish at higher-codimension Schwinger corners.
 
-Exact denominator valuation lemma:
-
-`sources/K5_SCHWINGER_CORNER_PSI_VALUATION_ORBIT_LEMMA.md`, commit `3804c932ae8767a6a686f089cff9f0ee51c41c45`.
-
-For any set `Z` of simultaneously scaled Schwinger edges,
+Exact denominator valuation lemma `sources/K5_SCHWINGER_CORNER_PSI_VALUATION_ORBIT_LEMMA.md`, commit `3804c932ae8767a6a686f089cff9f0ee51c41c45`:
 
 `ord_Z Psi_K5 = c(K5\Z)-1`.
 
-All 1024 labeled edge subsets reduce to exactly 34 S5 orbit types. This controls only the denominator; exact numerator/flux valuations are still required before dropping boundary terms.
+All 1024 labeled edge subsets reduce to exactly 34 S5 orbit types. This controls only the denominator; exact numerator/action-flux valuations remain mandatory before dropping boundary terms.
+
+The exact-zero K3/K4 collision residues are not automatically Schwinger-simplex boundary terms.
 
 ---
 
@@ -236,8 +159,9 @@ All 1024 labeled edge subsets reduce to exactly 34 S5 orbit types. This controls
 `-> S5 logarithmic degrees 1-3 RADIAL_ONLY`
 `-> unique degree-4 non-radial KIRCHHOFF ANNIHILATOR EXACT, CRITIC CONFIRMED`
 `-> exact reusable physical N_1,N_2 degree-27 DAG MATERIALIZED`
-`-> annihilator action on both N_1,N_2 EXACT NONZERO at uniform`
-`-> constant-2x2 action closure ACTIVE`
+`-> Researcher raw-uniform action normalization SCIENTIFIC_FAIL_CONFIRMED`
+`-> corrected raw-uniform annihilator action NONZERO on both physical channels`
+`-> constant-2x2 action closure ?`
 `-> higher-codimension Schwinger boundary/Stokes authority ?`
 `-> two invariant-dual K5 projective periods ?`
 `-> remaining S5 sectors / full order-eight tensor ?`
@@ -257,10 +181,10 @@ All 1024 labeled edge subsets reduce to exactly 34 S5 orbit types. This controls
 
 ## Highest-information next work
 
-1. Consume terminal status of already-frozen run `35045552470`; do not duplicate it and do not use partial values.
-2. If constant `2x2` closure is exactly falsified, do not force a two-channel IBP module. Freeze the smallest source-authorized enlarged numerator module generated by the exact annihilator action.
-3. Independently freeze a 34-orbit higher-codimension Schwinger corner audit combining the exact denominator valuation with exact physical numerator/action-flux valuations.
-4. Only after Stokes/boundary authority may the total-derivative relation be promoted to an integrated period relation.
+1. Do not rewrite the failed Researcher uniform-action derivation. Prospectively freeze a **control-only normalization/performance repair/retry** of `K5_DEG4_ANNIHILATOR_ACTUAL_DUAL_NUMERATOR_POINTWISE_ACTION` under the unchanged parent scientific contract. The repair must explicitly distinguish raw homogeneous alpha coordinates from the simplex `s1=1` gauge, verify homogeneity of `N` and `B_v`, and reproduce the corrected raw-uniform control `B=-1500N`.
+2. The repaired action gate should target the still-open exact constant-`2x2` closure classification at the original frozen fit/validation points; do not change points post hoc. Optimize the exact evaluator so the prior cancellation/timeout is not repeated.
+3. Independently prospectively freeze a 34-orbit higher-codimension Schwinger-corner audit combining exact denominator valuation with exact physical numerator and action-flux valuations.
+4. Only after boundary/Stokes authority is terminal and independently reviewed may the projective total derivative be promoted to an integrated-period relation.
 5. If both invariant-dual periods eventually vanish, continue in remaining S5 sectors; invariant-sector vanishing alone does not prove the full 217-dimensional tensor zero.
 
 Any mandatory blocked arrow prevents full-QG completion.
