@@ -1,67 +1,118 @@
-from fractions import Fraction
-from itertools import permutations
+import json
+import sympy as sp
+from itertools import combinations
 
-# Exact algebraic verifier for the preregistered corrected projective normal-flux gate.
-# Work on the simplex s1=1.  A logarithmic ambient field is v_i=a_i q_i;
-# its projective representative is u_i=v_i-S a_i, S=sum v_i.
+# Control repair 1 for the prospectively frozen projective-tangent flux gate.
+# Exact antisymmetric forms are dictionaries {ordered_index_tuple: coefficient}.
+n=10
+a=sp.symbols('a0:10')
+t=sp.symbols('t')
+s1=sum(a)
 
-def tangent(a,q):
-    v=[a[i]*q[i] for i in range(len(a))]
-    S=sum(v,Fraction(0))
-    u=[v[i]-S*a[i] for i in range(len(a))]
-    return v,u,S
 
-def check_sample(a,q,Z):
-    assert sum(a)==1
-    v,u,S=tangent(a,q)
-    assert sum(u,Fraction(0))==0
-    t=sum(a[i] for i in Z)
-    raw=sum(v[i] for i in Z)
-    normal=sum(u[i] for i in Z)
-    assert normal == raw-t*S
-    # arbitrary radial shift fE must leave u and its normal component unchanged
-    f=Fraction(7,5)
-    q2=[qi+f for qi in q]
-    _,u2,_=tangent(a,q2)
-    assert u2==u
-    assert sum(u2[i] for i in Z)==normal
-    return t,normal
+def omega9():
+    # i_E(da0^...^da9)
+    return {tuple(j for j in range(n) if j!=i): (-1)**i*a[i] for i in range(n)}
+
+
+def contract(form, vec):
+    out={}
+    for inds,c in form.items():
+        for p,i in enumerate(inds):
+            key=inds[:p]+inds[p+1:]
+            out[key]=sp.expand(out.get(key,0)+(-1)**p*vec[i]*c)
+    return {k:sp.expand(v) for k,v in out.items() if sp.expand(v)!=0}
+
+
+def form_equal(A,B):
+    keys=set(A)|set(B)
+    return all(sp.expand(A.get(k,0)-B.get(k,0))==0 for k in keys)
+
+
+def pullback_top_coeff(form, amap, coords):
+    # Pull an r-form back to r coordinates and return coefficient of dcoords[0]^... .
+    r=len(coords); total=0
+    for inds,c in form.items():
+        if len(inds)!=r: continue
+        J=sp.Matrix([[sp.diff(amap[i],x) for x in coords] for i in inds])
+        total += c.subs(amap)*J.det()
+    return sp.factor(total)
+
+
+def valuation(expr):
+    e=sp.cancel(expr)
+    num,den=sp.fraction(e)
+    P=sp.Poly(sp.expand(num),t)
+    if P.is_zero: return None,sp.Integer(0)
+    mind=min(m[0] for m,c in P.terms() if c!=0)
+    lead=sp.expand(P.coeff_monomial(t**mind)/den.subs(t,0)) if den.subs(t,0)!=0 else sp.limit(e/t**mind,t,0)
+    return int(mind),sp.factor(lead)
+
+
+def chart(k, variant):
+    Z=list(range(k)); O=list(range(k,n))
+    # beta simplex chart: for k>1 choose a dependent beta; variant changes it when possible.
+    bdep=Z[-1] if (variant==0 or k<3) else Z[-2]
+    bind=[i for i in Z if i!=bdep]
+    bs=sp.symbols('b0:'+str(len(bind)))
+    # outside simplex chart: choose eliminated outside coordinate; for k=9 only one exists.
+    if len(O)>1:
+        odep=O[-1] if variant==0 else O[-2]
+    else: odep=O[0]
+    oind=[i for i in O if i!=odep]
+    ys=sp.symbols('y0:'+str(len(oind)))
+    amap={}
+    for i,b in zip(bind,bs): amap[a[i]]=t*b
+    amap[a[bdep]]=t*(1-sum(bs))
+    for i,y in zip(oind,ys): amap[a[i]]=y
+    amap[a[odep]]=1-t-sum(ys)
+    return amap, list(bs)+list(ys), {'bdep':bdep,'odep':odep}
+
 
 def main():
-    # exact positive rational simplex point, generic non-radial q data
-    den=sum(range(1,11))
-    a=[Fraction(i,den) for i in range(1,11)]
-    q=[Fraction((i+2)*(i+3)-5,11) for i in range(10)]
-    tested=0
-    for k in range(1,10):
-        Z=set(range(k))
-        t,n=check_sample(a,q,Z)
-        assert t>0
-        # scalar blow-up Jacobian is the already-established t^(k-1) factor.
-        jac_exp=k-1
-        assert jac_exp==k-1
-        # permutation-related representative
-        p=list(reversed(range(10)))
-        ap=[a[p[i]] for i in range(10)]
-        qp=[q[p[i]] for i in range(10)]
-        Zp={p.index(i) for i in Z}
-        tp,np=check_sample(ap,qp,Zp)
-        assert tp==t and np==n
-        tested+=2
-    # Euler field q_i=1: v=E, projective representative and flux vanish exactly.
-    _,ue,_=tangent(a,[Fraction(1) for _ in a])
-    assert all(x==0 for x in ue)
-    for k in range(1,10):
-        assert sum(ue[:k],Fraction(0))==0
-    # empty/full are controls, not physical corners; full normal vanishes by tangency.
-    _,u,_=tangent(a,q)
-    assert sum(u,Fraction(0))==0
-    print('classification=K5_PROJECTIVE_TANGENT_NORMAL_FLUX_SCALING_EXACT_SCOPED')
-    print('exact_samples=',tested)
-    print('k_range=1..9')
-    print('euler_flux_zero=true')
-    print('radial_shift_invariant=true')
-    print('simplex_tangent=true')
+    Om=omega9(); E=list(a)
+    assert form_equal(contract(Om,E),{})
+    # Generic nonradial polynomial logarithmic field, exact integer coefficients.
+    q=[(i+2)+a[(i+1)%n]+(i%3+1)*a[(i+3)%n] for i in range(n)]
+    v=[sp.expand(a[i]*q[i]) for i in range(n)]
+    S=sp.expand(sum(v))
+    u=[sp.factor(v[i]-S*a[i]/s1) for i in range(n)]
+    assert sp.factor(sum(u))==0
+    iv=contract(Om,v); iu=contract(Om,u)
+    assert form_equal(iv,iu)
+    f=2+a[0]-3*a[4]
+    vshift=[sp.expand(v[i]+f*a[i]) for i in range(n)]
+    assert form_equal(iv,contract(Om,vshift))
 
-if __name__=='__main__':
-    main()
+    witnesses=[]
+    for k in range(1,10):
+        vals=[]
+        for variant in (0,1):
+            amap,facecoords,meta=chart(k,variant)
+            # scalar Omega pullback on full chart (t + 8 tangential coordinates)
+            scalar=pullback_top_coeff(Om,amap,[t]+facecoords)
+            sv,sl=valuation(scalar)
+            assert sv==k-1
+            # normal flux: pull i_u Omega to t=const face coordinates.
+            flux=pullback_top_coeff(iu,amap,facecoords)
+            fv,fl=valuation(flux)
+            vals.append(fv)
+            witnesses.append({'k':k,'chart':variant,'chart_meta':meta,
+                'scalar_valuation':sv,'scalar_lead':str(sl),
+                'flux_valuation':fv,'flux_lead':str(fl),
+                'omega_terms':len(Om),'contracted_terms':len(iu)})
+        assert vals[0]==vals[1]
+
+    # Exceptional exact cancellation control: Euler field has identically zero flux.
+    assert form_equal(contract(Om,E),{})
+    # Nontrivial radial shift remains exactly invisible at form level.
+    assert form_equal(contract(Om,[v[i]+f*a[i] for i in range(n)]),iu)
+    out={'classification':'K5_PROJECTIVE_TANGENT_NORMAL_FLUX_SCALING_EXACT_SCOPED',
+         'control_repair':1,'differential_form_exact':True,'radial_form_invariance':True,
+         'k_range':'1..9','charts_per_k':2,'witnesses':witnesses,
+         'firewall':{'empty':'control_only','full':'control_only'}}
+    with open('artifacts/k5_projective_tangent_flux/result.json','w') as fh: json.dump(out,fh,indent=2)
+    print('classification='+out['classification'])
+    print('exact_witnesses='+str(len(witnesses)))
+
+if __name__=='__main__': main()
