@@ -4,29 +4,81 @@ on:
   push:
     paths:
       - 'prereg/K5_MASK511_STRUCTURAL_DIVISIBILITY_LOWER_COEFFICIENTS.md'
+      - 'prereg/K5_MASK511_STRUCTURAL_DIVISIBILITY_CONTROL_REPAIR_1.md'
       - 'scripts/k5_mask511_structural_divisibility_lower_coefficients.py'
+      - 'scripts/k5_mask511_structural_divisibility_shard.py'
+      - 'scripts/k5_mask511_structural_divisibility_aggregate.py'
       - '.github/workflows/k5_mask511_structural_divisibility_lower_coefficients.yml'
       - 'scripts/k5_invariant_dual_deg27_canonical_dag.py'
       - 'scripts/k5_deg4_annihilator_actual_dual_action.py'
       - 'results/raw/k5_mask511_physical_numerator_action_exact_corner_witness_authoritative.json'
+
 jobs:
-  exact-symbolic:
+  shard:
     runs-on: ubuntu-24.04
     timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0,1,2,3,4,5,6,7]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Run exact symbolic structural-divisibility gate
+      - name: Run exact symbolic shard
         shell: bash
         run: |
           set -euo pipefail
           mkdir -p artifacts
-          python scripts/k5_mask511_structural_divisibility_lower_coefficients.py \
+          python scripts/k5_mask511_structural_divisibility_shard.py \
+            --shard '${{ matrix.shard }}' --nshards 8 \
+            --summary 'artifacts/shard_${{ matrix.shard }}_summary.json' \
+            --payload 'artifacts/shard_${{ matrix.shard }}_payload.json.gz' \
+            | tee 'artifacts/shard_${{ matrix.shard }}_stdout.txt'
+          python - <<'PY'
+          import json, os
+          sid=os.environ['SHARD_ID']
+          d=json.load(open(f'artifacts/shard_{sid}_summary.json',encoding='utf-8'))
+          assert d['status']=='SHARD_PASS_EXACT_CONTROL_ONLY',d
+          assert d['scientific_classification'] is None,d
+          assert all(d['checks'].values()),d['checks']
+          assert d['boundary_s5_transport_consumed'] is False
+          print('SHARD=',sid,'MATCHINGS=',d['matching_count'],'PAYLOAD_SHA256=',d['payload_sha256'])
+          PY
+        env:
+          SHARD_ID: '${{ matrix.shard }}'
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: k5-mask511-structural-shard-${{ matrix.shard }}
+          path: artifacts/
+          if-no-files-found: error
+          retention-days: 90
+
+  aggregate:
+    needs: shard
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: k5-mask511-structural-shard-*
+          path: artifacts/shards
+          merge-multiple: true
+      - name: Aggregate exact shards and classify frozen gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          python scripts/k5_mask511_structural_divisibility_aggregate.py \
+            --shard-dir artifacts/shards \
             --output artifacts/k5_mask511_structural_divisibility_lower_coefficients.json \
             --coefficients artifacts/k5_mask511_structural_divisibility_coefficients.json.gz \
-            | tee artifacts/stdout.txt
+            | tee artifacts/aggregate_stdout.txt
           python - <<'PY'
           import json
           p='artifacts/k5_mask511_structural_divisibility_lower_coefficients.json'
@@ -52,7 +104,12 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: k5-mask511-structural-divisibility
-          path: artifacts/
+          name: k5-mask511-structural-divisibility-repair1
+          path: |
+            artifacts/k5_mask511_structural_divisibility_lower_coefficients.json
+            artifacts/k5_mask511_structural_divisibility_coefficients.json.gz
+            artifacts/aggregate_stdout.txt
+            artifacts/result_sha256.txt
+            artifacts/coeff_gzip_sha256.txt
           if-no-files-found: error
           retention-days: 90
