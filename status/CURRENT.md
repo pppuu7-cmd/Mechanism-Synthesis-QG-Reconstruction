@@ -16,7 +16,7 @@ Source ordering remains
 
 `one-wedge spectral/spinor integration -> Toller function -> product of ten Toller matrices -> full boundary contraction -> K5 group/distributional object`.
 
-Historical source-lock-invalid Iter077E/F remain quarantined under `status/ITER077_CONTACT_FORMULA_ERRATUM.md`. Iter077I authoritative source-order lock remains corrected run `34786586785` from alias head `102fc7268b732bead5dfcf6d61fe4479ae1d3030`; failed historical run `34786550378` is not authority.
+Historical source-lock-invalid Iter077E/F remain quarantined. Iter077I authoritative source-order lock remains corrected run `34786586785` from alias head `102fc7268b732bead5dfcf6d61fe4479ae1d3030`; failed historical run `34786550378` is not authority.
 
 K3 simple residue is exact zero and independently confirmed. K4 simple order-3 residue is exact zero and independently confirmed.
 
@@ -38,63 +38,57 @@ Frozen resolver: `prereg/K5_34_ORBIT_EXACT_LEADING_COEFFICIENT_CANCELLATION_RESO
 
 Researcher symbolic all-alpha transport theorem: run `35200455308`, classification `K5_FULL_SOURCE_BOUNDARY_S5_SYMBOLIC_ALL_ALPHA_TRIVIAL_CHARACTER_EXACT_SCOPED`. Critic static audit run `35207545326` is preparatory only (`PASS_CODE_AUDIT_SCOPED`, `scientific_verdict=null`), so coefficient-level transport remains Researcher authority only.
 
-## Projective-normal authority
+## Projective-normal and mask-511 authority
 
-Corrected projective normal component:
-
-`u_Z=U_Z/s1`, `U_Z=s1 V_Z-S A_Z`.
+Corrected projective normal component is `u_Z=U_Z/s1`, `U_Z=s1 V_Z-S A_Z`.
 
 Degree/support theorem: run `35215941730`, classification `K5_PROJECTIVE_NORMAL_NUMERATOR_DEGREE5_COMPLETE_SUPPORT_EXACT_SCOPED`.
 
 Exact 32-orbit frozen-path orders: run `35221623366`, classification `K5_PROJECTIVE_NORMAL_32ORBIT_EXACT_CORNER_ORDERS_RESOLVED_SCOPED`; `r_U=1` on 28 proper orbit types, `r_U=2` on masks `127,255,495`, `r_U=3` on mask `511`.
 
-## Labeled mask-511 physical witness
+Labeled mask-511 physical ray witness run `35226938480` is terminal Researcher authority. On both W1/W2 and both physical channels: exact `r_N=19`, `r_B=21`, with `(I,F,A)=(0,3,2)`. This is not an angular-uniform theorem.
 
-Run `35226938480` is terminal Researcher authority, classification `K5_MASK511_NO_OBSTRUCTION_WITNESS_ON_FROZEN_RAYS_INCONCLUSIVE_SCOPED`.
+Mask-511 annihilator filtration theorem run `35250988892` is terminal `PASS_EXACT_SCOPED`, classification `K5_MASK511_ANNIHILATOR_RAISES_FILTRATION_BY2_EXACT_SCOPED`. Exact operator statement:
 
-For mask `511`, exact geometry gives `r_Psi=3`, scalar blow-up exponent `g=8`, denominator/half-density contribution `m=-27`, and `r_U=3`. On both frozen asymmetric rays W1/W2 and both physical channels the full all-32/100000-source-term object gives exact `r_N=19`, `r_B=21`; therefore radial exponents are `(I,F,A)=(0,3,2)`. No frozen-ray nonintegrability witness was found, but angular-uniform divisibility remains unproved.
+`B_v(F^r) subset F^(r+2)`.
 
-## Mask-511 structural divisibility — ACTIVE NONTERMINAL
+Thus `N_c in F^19` would imply `B_v[N_c] in F^21`, but physical membership `N_c in F^19` remains the structural question.
 
-Parent contract: `prereg/K5_MASK511_STRUCTURAL_DIVISIBILITY_LOWER_COEFFICIENTS.md`, commit `bb2fc2636de21d8eed06e3694a128be34e5fede1`.
+## Mask-511 structural divisibility — repair-1 terminal timeout
 
-Historical monolithic run `35234222876` is terminal `cancelled` by execution timeout with no scientific classification.
+Parent scientific contract: `prereg/K5_MASK511_STRUCTURAL_DIVISIBILITY_LOWER_COEFFICIENTS.md`, commit `bb2fc2636de21d8eed06e3694a128be34e5fede1`.
 
-Repair-1 is the sole current structural production: run `35246991631`, head `ef5f365798ab6aa2b9cb53d6b091868d910c9b71`. At the latest recovery all eight exact shard jobs remain `in_progress`; no partial coefficients, shard payloads or provisional verdicts are authority. Do not duplicate this production.
+Historical monolithic run `35234222876` is terminal cancelled without scientific classification.
 
-Dormant timeout-only repair2 is frozen at commit `a447bc0f8ce11f7d23169e49679125898ad71fce` and activates only under its explicit timeout conditions.
+Repair-1 run `35246991631`, head `ef5f365798ab6aa2b9cb53d6b091868d910c9b71`, is now terminal `completed/cancelled`: all eight exact shard jobs were cancelled in the symbolic step at the 60-minute execution budget and aggregate job `105310317955` was skipped. No valid complete aggregate exists. No shard coefficient, partial payload or provisional verdict is authority.
 
-Dormant q18-only reduction is frozen at commit `e9fcf2308cbc1ebd5b9acbaeca676f58f9ce62b9`; it remains unauthorized while repair-1 is non-terminal and must not compete with a valid repair-1 aggregate.
+Durable reconciliation: `status/K5_MASK511_STRUCTURAL_DIVISIBILITY_REPAIR1_TERMINAL_TIMEOUT.md`.
 
-## Mask-511 annihilator filtration theorem — TERMINAL
+Timeout-only repair-2 remains frozen at commit `a447bc0f8ce11f7d23169e49679125898ad71fce` but is not selected because the lower-cost q18 logical reduction was prospectively frozen before terminal outcome and now satisfies all activation conditions.
 
-Prospective contract: `prereg/K5_MASK511_ANNIHILATOR_FILTRATION_SHIFT.md`, commit `1377d3944765b4aedbc512264cf73b75c45b96ad`.
+## Mask-511 q18-only structural reduction — ACTIVE NONTERMINAL
 
-Implementation `1450820c5ac25510d2f34a090c9a1fc1774e58ff`; workflow/head `0f3fc3d5dcd1b4e9a15dadad5dfb421dd4daa14e`.
+Prospective conditional contract: `prereg/K5_MASK511_STRUCTURAL_DIVISIBILITY_Q18_REDUCTION_IF_NEEDED.md`, commit `e9fcf2308cbc1ebd5b9acbaeca676f58f9ce62b9`.
 
-Run `35250988892`, job `105302991242`, terminal `success`; artifact `10509478970`; ZIP digest `sha256:4c095f158c6659d434d75eeb8b284174296920a06a187ffbd6c6630cfd59ec66`; production JSON SHA256 `2145dbdff1d06a002aa6cc9801bbeb1ce79f32203b2ac38c8ea18c55aa2139e8`.
+All four activation conditions are satisfied:
 
-Classification:
+1. repair-1 terminated without valid aggregate;
+2. exact `+2` annihilator filtration theorem is terminal valid;
+3. parent run `35226938480` locks exact nonzero `N_q19` and `B_q21` ray coefficients for both channels on W1/W2;
+4. outcome-independent audit `status/K5_MASK511_STRUCTURAL_DIVISIBILITY_REPAIR1_PRETERMINAL_CODE_AUDIT.md`, commit `6d71e789f0feb8858f54f27fa2bdbd7ac587c479`, proves all numerator contributions have mask degree at least 18 before cancellation.
 
-`K5_MASK511_ANNIHILATOR_RAISES_FILTRATION_BY2_EXACT_SCOPED` (`PASS_EXACT_SCOPED`).
+Frozen reduction: only exact angular-polynomial slices `N_{1,18}` and `N_{2,18}` need to be tested. If both vanish identically, structural `q<18` impossibility plus locked nonzero q19 rays prove exact global mask-511 numerator order 19; the independent `+2` theorem plus locked nonzero B_q21 rays then prove exact global action order 21.
 
-For the labeled mask-511 filtration `F^r` by total degree in `alpha_0,...,alpha_8`, with `alpha_9` unscaled, every authoritative cubic `q_i` has minimum mask degree two. Exact termwise bounds give transport shift at least two, `div(v), sum q_i, S in F^2`, `s1 in F^0`, and `K=s1(div(v)+(1/2)sum q_i)-3S in F^2`. Hence
+Activated implementation:
 
-`B_v(F^r) subset F^(r+2)`
+- q18 initial-form shard script commit `bd9a0006d52e00e6dca7c27766aec94a05ee891d`;
+- q18 aggregate script commit `8e73f0a493a9184655440cdf7f3fc130d3bc4ead`;
+- workflow/head `8e9ddd1e074b1e83796a589524129d5addf72d7d`;
+- production run `35259123078`.
 
-for every polynomial `N` and every `r>=0`.
+At this reconciliation cut all eight q18 shard jobs are `in_progress`. No partial q18 polynomial, shard payload or provisional zero/nonzero statement has been consumed. Do not duplicate this run.
 
-Malformed control `q_9 += alpha_9^3` lowers the computed shift to zero and is rejected. The theorem consumes no physical numerator coefficient and no boundary-S5 transport.
-
-Interpretation ceiling: it does **not** prove `N_c in F^19`; it implies `B_v[N_c] in F^21` only conditional on separate physical numerator membership. No corner-integrability, Stokes/IBP or period verdict follows.
-
-Durable authority:
-
-- `results/raw/k5_mask511_annihilator_filtration_shift_authoritative.json`, commit `804348bc8e9c27aa7d0e079c5d44dcd22c5b397b`;
-- `results/K5_MASK511_ANNIHILATOR_FILTRATION_SHIFT_RESULT.md`, commit `6fcdc4d3804a455ec020ee2b126427f0dfc4a8e1`;
-- `status/K5_MASK511_ANNIHILATOR_FILTRATION_SHIFT_PROVENANCE_LEDGER.md`, commit `5ac63c916d5f8ecb01ae7231d68b7ba0ebd83b97`.
-
-The q18-only dormant reduction now has its `+2` operator-theorem prerequisite satisfied, but its other activation condition is not: repair-1 remains non-terminal.
+The q18 implementation computes only exact initial mask-filtration forms: determinant factor slice `F_j|_{2j}` and covariance/source-series initial forms whose total degree can contribute to q18. Deterministic matching partition remains `global_matching_index mod 8` over all 945 retained matchings; the aggregate requires complete exact coverage before classification. Boundary-S5 transport is not consumed.
 
 ## Current survival chain
 
@@ -112,9 +106,10 @@ The q18-only dormant reduction now has its `+2` operator-theorem prerequisite sa
 `-> 34-orbit physical audit PARTIAL_BLOCKED`
 `-> symbolic full-source S5 transport PASS Researcher / independent Critic reconstruction pending`
 `-> U_Z support/order authority RESOLVED`
-`-> labeled mask511 W1/W2: rN=19, rB=21, no obstruction witness; angular-uniform membership ?`
+`-> labeled mask511 W1/W2: rN=19, rB=21; angular-uniform membership ?`
 `-> annihilator operator filtration +2 EXACT`
-`-> mask511 structural N membership theorem ACTIVE NONTERMINAL`
+`-> full structural repair-1 TIMEOUT / no aggregate`
+`-> q18-only structural numerator identity gate ACTIVE NONTERMINAL`
 `-> 64-component physical N/B resolver BLOCKED pending transport Critic`
 `-> global Stokes/IBP ?`
 `-> invariant-dual K5 periods ?`
@@ -131,10 +126,11 @@ The q18-only dormant reduction now has its `+2` operator-theorem prerequisite sa
 
 ## Highest-information next work
 
-1. First inspect run `35246991631`. If still non-terminal, do not duplicate it and do not read partial shard values.
-2. If it reaches a valid complete aggregate, validate artifact/hashes and materialize the frozen structural classification; leave dormant fallbacks unused.
-3. If it terminates without a valid aggregate under the frozen fallback conditions, activate only the admissible pre-frozen fallback. The q18-only reduction is now eligible on its operator-theorem prerequisite but still requires repair-1 failure/no-valid-aggregate before activation.
-4. Independently, the major physical dependency remains terminal independent Critic scientific reconstruction of the symbolic full-source boundary S5 theorem. AUTOMATION A must not imitate Critic.
-5. Only after transport confirmation may the 64-component physical N/B resolver be executed unchanged. Global Stokes/IBP, K5 periods and every downstream QG arrow remain separate gates.
+1. First inspect q18 run `35259123078`. If still non-terminal, do not duplicate it and do not read partial shard values.
+2. If all eight shards and aggregate reach terminal valid authority, extract only the complete aggregate result/artifact/hashes and materialize the frozen q18 classification.
+3. If q18 PASSes, the labeled mask-511 structural orders are `r_N=19`, `r_B=21` exactly in the frozen scope; this still does not promote to another mask/orbit or a full corner-integrability theorem.
+4. If q18 FAILs, W1/W2 cancellation is not angular-uniform and the exact nonzero q18 angular polynomial is a scoped obstruction to the proposed structural divisibility theorem.
+5. Independently, the major physical dependency remains terminal independent Critic scientific reconstruction of the symbolic full-source boundary S5 theorem. AUTOMATION A must not imitate Critic.
+6. Only after transport confirmation may the 64-component physical N/B resolver be executed unchanged. Global Stokes/IBP, K5 periods and every downstream QG arrow remain separate gates.
 
 Any mandatory blocked arrow prevents a complete-QG claim.
