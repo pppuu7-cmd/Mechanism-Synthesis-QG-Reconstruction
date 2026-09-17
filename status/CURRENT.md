@@ -1,6 +1,6 @@
 # Current MSQGR research state
 
-**Date:** 2026-09-17
+**Date:** 2026-09-18
 
 ## Scientific ceiling and source locks
 
@@ -20,50 +20,81 @@ Unique degree-four non-radial S5-equivariant Kirchhoff annihilator with `v(Psi_K
 
 Projective-normal 32-orbit frozen-path orders are resolved: `r_U=1` on 28 proper orbit types, `r_U=2` on masks `127,255,495`, `r_U=3` on mask `511`.
 
-Labeled mask `511`: exact structural theorem gives `N_{1,18}=N_{2,18}=0`; with `q>=18`, exact nonzero q19 ray authority, `B_v(F^r) subset F^(r+2)` and exact nonzero q21 ray authority, frozen labeled-mask orders are `r_N=19`, `r_B=21`. This is not an all-orbit theorem. Historical direct q18 run `35259123078` is terminal cancelled with aggregate skipped and no scientific authority; partial shard values remain forbidden.
+Labeled mask `511`: exact structural theorem gives `N_{1,18}=N_{2,18}=0`; with `q>=18`, exact nonzero q19 ray authority, `B_v(F^r) subset F^(r+2)` and exact nonzero q21 ray authority, frozen labeled-mask orders are `r_N=19`, `r_B=21`. This is not an all-orbit theorem. Historical direct q18 run `35259123078` is terminal cancelled with aggregate skipped and no scientific authority; do not rerun it.
 
-## Boundary-S5 transport — independent Critic closure
+## Boundary-S5 transport — independently closed
 
-Independent Critic authority is now terminal and durable:
+Independent Critic authority is terminal:
 
 `results/raw/k5_full_source_boundary_s5_independent_critic_authoritative.json`
 
 classification `CONFIRMED_EXACT_SCOPED`, run `35267432939`, job `105357990301`, head `992a5889656b2cf5925caf1c770824ab557e5833`, artifact `10516529280`, ZIP SHA256 `087ee496daf8a9aafa255d908c062fb8bba2a5481addef10da6d7b4b170cc479`, repaired result SHA256 `b0a0b94e22d76600c27c148c0072741b5e04a8652939ed58a228b9fbebda70ee`, `q18_values_used=false`.
 
-It independently reconstructs all 32 boundary components, 100000 source terms, 945 matchings, all 120 S5 elements, exact source endpoint/orientation transport and boundary contragredient law. Coefficient-level Boundary-S5 transport is therefore independently confirmed and may now be consumed by the frozen resolver.
+It independently reconstructs all 32 boundary components, 100000 source terms, 945 matchings, all 120 S5 elements, exact source endpoint/orientation transport and boundary contragredient law. Boundary-S5 is no longer the current blocker.
 
-## Frozen 34-orbit resolver
+## Frozen 34-orbit resolver — repair-1 terminal INVALID_IMPLEMENTATION
 
 Parent scientific prereg remains immutable:
 
 `prereg/K5_34_ORBIT_EXACT_LEADING_COEFFICIENT_CANCELLATION_RESOLUTION.md`, commit `d6b0e805101c8590eafac71398cc2b1466691752`.
 
-Historical run `35268238924`, head `25f646baa8b427d7f52ec3d1a5fadc31cd80fca1`, completed eight shards and aggregate but the aggregate classifier returned `INVALID_IMPLEMENTATION`. Artifact `10517943520`, ZIP SHA256 `dbae89ae18674cfe8d518e507e330b6b92b25c22325fe3b8a077955a6856863e`. No historical N/B coefficient/order is authority.
+Historical run `35268238924` remains `INVALID_IMPLEMENTATION`; no historical N/B coefficient/order is authority.
 
-Durable invalid ledger: `status/K5_34_ORBIT_EXACT_LEADING_COEFFICIENT_RESOLVER_RUN1_INVALID.md`.
+Prospective control-only repair-1 was frozen at commit `2193692c90d8ee1fa097200dbbac6ab70fd3a159`. Repaired production run `35271187040`, attempt 1, head `42daba28fd0c2545be386f63e89f6bcafdbed9a3`, is terminal `completed/success` at the workflow level. All eight deterministic shard jobs and aggregate job `105376689955` completed successfully.
 
-Two exact implementation defects were isolated outcome-blind: `P` lacked structural equality while route controls used direct object equality; and S5 validation permuted mask/weights while leaving the source coefficient object source-fixed, instead of performing the independently confirmed simultaneous source endpoint/orientation plus boundary transport.
+Immutable aggregate artifact `10519073488`, ZIP SHA256 `6de47e29303091d4cabf48c59591d56634a5817be344e701b3dc435ddb1770db`. Raw `result.json` SHA256 `7c14d5746cf287d9d66872daec6334f2b8c7bb9c9f1430f6456ea3e1a3f1866e`; canonical decompressed coefficient payload SHA256 `1ebd19078b33cf6936d37d0223f2d58bbfe47d0c4866bdb6c2d7f33a06471c4d`.
 
-Prospective control-only repair 1 was frozen before code changes:
+The frozen aggregate classifier returns exactly:
 
-`prereg/K5_34_ORBIT_EXACT_LEADING_COEFFICIENT_CANCELLATION_RESOLUTION_CONTROL_REPAIR_1.md`, commit `2193692c90d8ee1fa097200dbbac6ab70fd3a159`.
+`INVALID_IMPLEMENTATION`.
 
-Repair implementation: wrapper `scripts/k5_34_orbit_exact_leading_coefficient_core_repair1.py`, commit `55e87d7ee3abef27f898e652db9125159ad22f6d`; repaired shard commit/head `42daba28fd0c2545be386f63e89f6bcafdbed9a3`.
+The mandatory failed control is:
 
-Authoritative repaired production is now run `35271187040`. At the latest recovery all eight deterministic shards are `in_progress` on the exact orbit-shard step. Aggregate has not started. Do not duplicate this run and do not read partial shard coefficient values.
+`S5_full_coefficient_covariance_all = false`.
 
-The repair changes only exact polynomial equality and simultaneous source/boundary S5 transport. Frozen 32 representatives, channels, W1/W2, matchings, DAG, degree ceilings, U authority, PASS/PARTIAL/INVALID meanings and interpretation ceiling are unchanged.
+Every other aggregate control passes, including exact 32-orbit coverage, complete `N[0..27]` / `B[0..31]` vectors for all 64 channel-orbit rows and both W1/W2, route-internal exact controls, second-path class coverage, W1/W2 state/order agreement, projective-normal authority, mask511 parent reproduction and independent Boundary-S5 Critic lock.
+
+The S5 failure is systematic: all 32 proper orbit rows fail all eight full-coefficient S5 comparison booleans (2 channels x W1/W2 x N/B). Because S5 covariance is mandatory under the frozen repair contract, no N/B coefficient/order/zero state from run `35271187040` is scientific authority despite its internal `certified_components=64` field.
+
+Durable authority:
+
+- `results/raw/k5_34_orbit_exact_leading_coefficient_resolution_repair1_invalid_authoritative.json`, commit `a987e7095fcb95830c917d4936cbac6d1c3bb7fc`;
+- `status/K5_34_ORBIT_EXACT_LEADING_COEFFICIENT_RESOLVER_REPAIR1_INVALID.md`, commit `42c9927fca50d6d93df6b6dc962ef83c55dba2d3`.
+
+Scientific resolver state after repair-1: `0/64` components authoritative, `64/64` unresolved.
+
+## Active implementation-only S5 label-frame diagnostic
+
+The common failure surface points to a possible label-frame mismatch rather than an orbit-specific arithmetic defect. This is a hypothesis only, not authority.
+
+Prospective diagnostic contract:
+
+`prereg/K5_34_ORBIT_RESOLVER_REPAIR1_S5_FRAME_DIAGNOSTIC.md`, commit `fb648ab3b5c5430840c8025ceb31500252c080cc`.
+
+Implementation:
+
+`scripts/k5_34_orbit_resolver_s5_frame_diagnostic.py`, commit `58c076610ffb8f6c495cc6de143d587324262367`.
+
+Workflow/head commit `180d7c9e0b7990d5e150d5b2e34378e8d728aa02`; run `35280836616` is currently queued at this recovery cut.
+
+The diagnostic records only exact equality booleans and hashes; it does not consume or emit scientific N/B orders. It tests whether repair-1 supplied a pullback-to-old-label source matching object to a route evaluated in the permuted target edge frame. No resolver repair-2 or rerun is authorized before this diagnostic is terminal.
+
+If the frozen frame-mismatch classification is confirmed, only an implementation-only prospective repair-2 may be frozen; all physics inputs, 32 representatives, two channels, W1/W2, 945 matchings, DAG, degree ceilings, U authority, exact arithmetic, classifier meanings and interpretation ceiling must remain unchanged.
 
 ## Orthogonal graph-filtration run
 
-Run `35268738542`, head `7ff709ee3360e5e8fa4213e293f7142e979b1c56`, failed before scientific computation with missing `EDGES` attribute. Classification: `INVALID_IMPLEMENTATION_OR_PROVENANCE_NO_SCIENTIFIC_VERDICT`. Durable quarantine: `status/K5_34_ORBIT_UNSCALED_GRAPH_FILTRATION_RUN1_INVALID.md`. Do not repair this lower-priority front while resolver repair 1 is active.
+Run `35268738542`, head `7ff709ee3360e5e8fa4213e293f7142e979b1c56`, failed before scientific computation with missing `EDGES` attribute. Classification: `INVALID_IMPLEMENTATION_OR_PROVENANCE_NO_SCIENTIFIC_VERDICT`. It remains quarantined and lower priority; do not repair it while the resolver S5 implementation chain is active.
 
 ## Survival chain
 
-`F1-F8 carrier -> source-ordered K5 object -> F_8 ambiguity dim=377 -> 16-param germ CONFIRMED -> K3 ZERO -> K4 ZERO -> K5 projective object DEFINED -> degree-4 annihilator CONFIRMED -> physical N1,N2 DAG MATERIALIZED -> tangent-flux geometry CONFIRMED -> Boundary-S5 coefficient transport CONFIRMED by independent Critic -> mask511 r_N=19,r_B=21 EXACT -> 34-orbit N/B resolver REPAIR1 ACTIVE -> 34-orbit physical N/action/flux audit ? -> global Stokes/IBP ? -> K5 periods ? -> physical finite-part/joint selector ? -> regulator independence ? -> composition/G3 ? -> RG ? -> continuum ? -> spin-2 ? -> Einstein/GR ? -> matter/QFT ? -> normalized prediction ?`.
+`F1-F8 carrier -> source-ordered K5 object -> F_8 ambiguity dim=377 -> K3 ZERO -> K4 ZERO -> K5 projective object DEFINED -> degree-4 annihilator CONFIRMED -> physical N1,N2 DAG MATERIALIZED -> tangent-flux geometry CONFIRMED -> Boundary-S5 coefficient transport INDEPENDENTLY CONFIRMED -> mask511 r_N=19,r_B=21 EXACT -> 34-orbit resolver run1 INVALID -> repair1 INVALID (systematic S5 coefficient covariance control) -> S5 label-frame diagnostic ACTIVE -> 64-component exact N/B authority ? -> local 34-orbit physical N/action/flux classification ? -> global Stokes/IBP ? -> K5 periods ? -> physical finite-part/joint selector ? -> regulator independence ? -> composition/G3 ? -> RG ? -> continuum ? -> spin-2 ? -> Einstein/GR ? -> matter/QFT ? -> normalized prediction ?`.
 
 ## Highest-information next work
 
-First inspect repaired run `35271187040`. If non-terminal, do not duplicate and do not read partial shard coefficient values. If terminal, consume only the complete aggregate after verifying all eight deterministic shards, exact 32-orbit coverage, all route/source/S5 controls, independent interpolation classes, projective-normal authority and mask511 reproduction. Only a valid aggregate may become N/B order authority and unlock the physical N/action/flux valuation audit.
+1. Inspect only terminal output of run `35280836616`; do not use partial diagnostic output.
+2. If exact label-frame mismatch is confirmed, freeze implementation-only repair-2 before code changes and rerun the unchanged parent resolver contract.
+3. If the frame hypothesis is not confirmed, do not rerun the heavy resolver; localize the smallest remaining S5 comparison defect with a new prospective diagnostic.
+4. Only a valid terminal resolver may create 64-component N/B order authority and unlock the local physical N/action/flux classifier.
+5. Only after valid local classification may global projective Stokes/IBP become admissible.
 
-Global Stokes/IBP, K5 periods, the physical finite-part/joint selector, the `377 -> ?` extension-selection problem and regulator independence remain separate downstream gates. Any mandatory blocked arrow prevents a complete-QG claim.
+Global Stokes/IBP, K5 periods, the physical finite-part/joint selector, the `377 -> ?` extension-selection problem and regulator independence remain separate downstream gates. Any mandatory blocked arrow prevents a predictive/complete-QG claim.
