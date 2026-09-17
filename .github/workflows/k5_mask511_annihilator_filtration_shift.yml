@@ -1,0 +1,57 @@
+name: K5 mask511 annihilator filtration shift
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'prereg/K5_MASK511_ANNIHILATOR_FILTRATION_SHIFT.md'
+      - 'scripts/k5_mask511_annihilator_filtration_shift.py'
+      - '.github/workflows/k5_mask511_annihilator_filtration_shift.yml'
+      - 'results/raw/k5_order8_s5_deg4_kirchhoff_annihilator_production_summary.json'
+      - 'scripts/k5_deg4_annihilator_actual_dual_action.py'
+      - 'distributional/iter077i_sm_source_ordered_jhalf_k5_l1.py'
+
+jobs:
+  exact-filtration:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run exact operator filtration theorem
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts
+          python scripts/k5_mask511_annihilator_filtration_shift.py \
+            --output artifacts/k5_mask511_annihilator_filtration_shift.json \
+            | tee artifacts/stdout.txt
+          python - <<'PY'
+          import json
+          p='artifacts/k5_mask511_annihilator_filtration_shift.json'
+          d=json.load(open(p,encoding='utf-8'))
+          assert d['classification'] in {
+            'K5_MASK511_ANNIHILATOR_RAISES_FILTRATION_BY2_EXACT_SCOPED',
+            'K5_MASK511_ANNIHILATOR_FILTRATION_SHIFT_LT2_EXACT_SCOPED',
+          },d['classification']
+          assert d['status']!='INVALID_IMPLEMENTATION',d
+          assert all(d['controls'].values()),d['controls']
+          assert d['scope']['mask']==511
+          assert d['scope']['boundary_s5_transport_consumed'] is False
+          assert d['physical_numerator_membership_verdict'] is None
+          assert d['global_stokes_ibp_verdict'] is None
+          print('CLASSIFICATION=',d['classification'])
+          print('OPERATOR_SHIFT_LOWER_BOUND=',d['filtration_bound']['operator_shift_lower_bound'])
+          PY
+          sha256sum artifacts/k5_mask511_annihilator_filtration_shift.json | tee artifacts/result_sha256.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: k5-mask511-annihilator-filtration-shift
+          path: artifacts/
+          if-no-files-found: error
+          retention-days: 90
