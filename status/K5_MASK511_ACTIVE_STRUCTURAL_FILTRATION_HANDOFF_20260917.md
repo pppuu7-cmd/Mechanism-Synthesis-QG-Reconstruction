@@ -30,6 +30,14 @@ The frozen theorem asks whether the authoritative degree-four annihilator obeys 
 
 An outcome-independent local algebraic cross-check performed before terminal workflow authority found the expected filtration pattern (`q_i` lower mask degree 2, operator lower shift 2, malformed control shift 0). Treat this only as a non-authoritative implementation cross-check until run `35250988892` is terminal and its artifact is validated.
 
+## Conditional q18-only structural reduction
+
+Prospective dormant gate: `prereg/K5_MASK511_STRUCTURAL_DIVISIBILITY_Q18_REDUCTION_IF_NEEDED.md`, commit `e9fcf2308cbc1ebd5b9acbaeca676f58f9ce62b9`.
+
+This reduction may be implemented only if the current full repair-1 production terminates without a valid aggregate and the independent `+2` annihilator-filtration theorem is terminal valid. It exploits only already-frozen authorities: structural degree bookkeeping excludes numerator filtration below 18; parent run `35226938480` gives exact nonzero order-19 numerator and order-21 action coefficients on W1/W2; the independent operator theorem would imply `N in F^19 => B_v[N] in F^21`.
+
+Under those activation conditions, the only new full angular-polynomial identity needed for the same mask-511 structural-order conclusion is exact `N_{c,18}=0` for both physical channels. Parent nonzero ray coefficients then certify that the order-19 and order-21 slices are not zero polynomials. This allows a substantially cheaper max-degree-18 exact fallback rather than rebuilding all q19-q21 angular dictionaries. It remains dormant while repair-1 is non-terminal and must not compete with a valid repair-1 aggregate.
+
 ## Claim ceiling
 
 No current work establishes angular-uniform mask-511 integrability yet, any other mask/orbit, global Stokes/IBP, a K5 period, unique finite-part selection, regulator independence, F9/G3/G8/K5 promotion, `NEW_PHYSICS_FOUND`, or complete quantum gravity. Existing `status/CURRENT.md` global locks remain in force.
@@ -37,6 +45,6 @@ No current work establishes angular-uniform mask-511 integrability yet, any othe
 ## Next recovery action
 
 1. Inspect terminal status of structural run `35246991631` first. If still non-terminal, do not duplicate it.
-2. If terminal with valid aggregate, validate complete artifact/hashes and materialize the frozen classification.
-3. If terminal by shard timeout with no valid aggregate, activate only the frozen timeout-only repair2.
+2. If terminal with valid aggregate, validate complete artifact/hashes and materialize the frozen classification; leave both fallbacks unused.
+3. If terminal by shard timeout with no valid aggregate, inspect terminal authority of run `35250988892`. If the `+2` filtration theorem is valid, prefer the frozen q18-only reduction for information/cost efficiency; otherwise use only an admissible execution-only repair such as the frozen timeout fallback.
 4. Independently inspect run `35250988892`; if terminal, validate its exact artifact and record only the scoped operator-filtration verdict.
