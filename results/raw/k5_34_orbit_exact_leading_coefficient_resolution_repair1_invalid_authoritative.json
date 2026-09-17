@@ -1,0 +1,78 @@
+{
+  "gate": "K5_34_ORBIT_EXACT_LEADING_COEFFICIENT_CANCELLATION_RESOLUTION",
+  "parent_prereg_commit": "d6b0e805101c8590eafac71398cc2b1466691752",
+  "repair1_prereg_commit": "2193692c90d8ee1fa097200dbbac6ab70fd3a159",
+  "classification": "INVALID_IMPLEMENTATION",
+  "status": "INVALID_IMPLEMENTATION",
+  "scientific_coefficient_verdict": null,
+  "production": {
+    "run_id": 35271187040,
+    "attempt": 1,
+    "head_sha": "42daba28fd0c2545be386f63e89f6bcafdbed9a3",
+    "aggregate_job_id": 105376689955,
+    "aggregate_artifact_id": 10519073488,
+    "aggregate_artifact_zip_sha256": "6de47e29303091d4cabf48c59591d56634a5817be344e701b3dc435ddb1770db",
+    "result_json_sha256": "7c14d5746cf287d9d66872daec6334f2b8c7bb9c9f1430f6456ea3e1a3f1866e",
+    "coefficient_payload_sha256": "1ebd19078b33cf6936d37d0223f2d58bbfe47d0c4866bdb6c2d7f33a06471c4d",
+    "coefficient_payload_gzip_sha256": "0d9cfab20ce5c718c51126b9db8e728d8af31f36f010a5a20b418e646a899fad",
+    "projective_normal_full_json_sha256": "80e614f10a8fcc0f1e96732ca5cd27feffb7b1683f1e26be3685417635ecaba8"
+  },
+  "shard_jobs": {
+    "0": 105370742026,
+    "1": 105370741505,
+    "2": 105370741845,
+    "3": 105370742035,
+    "4": 105370741952,
+    "5": 105370741956,
+    "6": 105370741881,
+    "7": 105370742121
+  },
+  "shard_artifacts": {
+    "0": {"artifact_id": 10518796573, "sha256": "0d2edc64f517396c677c6e33ce6f75911aab8de3e629d8b2e43a5a727f2f9a2e"},
+    "1": {"artifact_id": 10519538168, "sha256": "807495f2f7412e086a9dc92fde60207be98cbb8bc3c423c65780c290d37dab31"},
+    "2": {"artifact_id": 10519661636, "sha256": "87a6577511a819a222ed3c25dfcb7a07921f4ab8a34174383fc23af763751e6c"},
+    "3": {"artifact_id": 10518797684, "sha256": "2303bc451b99455577a7a090eb9a58f467cac50a5f01a2e95d16eea82ec5af89"},
+    "4": {"artifact_id": 10518492896, "sha256": "c0b243f72b1def787775a61ed1f092e185d357bbe3f23bd6db4de6241f836586"},
+    "5": {"artifact_id": 10518652614, "sha256": "6917d4a61ceded54a687d67344f452ddb5a8c03cf175ff1ed4177d8e0eeadf89"},
+    "6": {"artifact_id": 10519307200, "sha256": "82cc4ecbc6098d4a64184ee5552b910cda505c432379f3fe6fce9b4c611c2b6b"},
+    "7": {"artifact_id": 10518797492, "sha256": "2d2687c6296d11142a8b0f2a88b6f76effc187625eed2263a40acc468a2b623d"}
+  },
+  "aggregate_controls": {
+    "parent_prereg_locked": true,
+    "eight_shards_complete": true,
+    "shard_contract_exact": true,
+    "static_source_authority_all_shards": true,
+    "proper_orbit_coverage_exact_32": true,
+    "complete_N0_27_B0_31_vectors_all64_both_weights": true,
+    "route_internal_exact_controls_all": true,
+    "S5_full_coefficient_covariance_all": false,
+    "second_path_all_orbit_size_collision_size_classes": true,
+    "W1_W2_zero_state_and_first_order_agree_all64": true,
+    "projective_normal_full_degree5_authority_recomputed": true,
+    "mask511_parent_N19_B21_reproduced_exact": true,
+    "independent_boundary_s5_critic_authority_locked": true,
+    "no_global_stokes_or_period_claim": true,
+    "no_finite_part_or_regulator_claim": true
+  },
+  "s5_failure_surface": {
+    "failed_orbit_rows": 32,
+    "total_orbit_rows": 32,
+    "failed_full_coefficient_checks_per_orbit": 8,
+    "failed_check_family": "both channels x W1/W2 x N/B full coefficient covariance",
+    "note": "All eight S5 full-coefficient booleans are false on every proper orbit. No provisional N/B coefficient or order from this invalid run is scientific authority."
+  },
+  "certified_components_reported_by_invalid_implementation": 64,
+  "resolved_component_count_scientific_authority": 0,
+  "unresolved_component_count_scientific_authority": 64,
+  "reason": "mandatory frozen S5 full-coefficient covariance control failed; frozen taxonomy therefore requires INVALID_IMPLEMENTATION irrespective of other passing controls",
+  "claim_ceiling": {
+    "local_34_orbit_N_B_orders": null,
+    "local_physical_N_action_flux_classification": null,
+    "global_stokes_ibp": null,
+    "physical_finite_part_selector": null,
+    "regulator_independence": null,
+    "predictive_local_k5_amplitude": false,
+    "new_physics_found": false,
+    "complete_quantum_gravity": false
+  }
+}
