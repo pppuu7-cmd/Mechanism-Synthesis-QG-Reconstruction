@@ -58,7 +58,6 @@ def main():
     assert 0 <= args.shard < NSHARDS
 
     b = load_module(BASE_SOURCE, f'mask511_q18_base_{args.shard}')
-    # The q18 gate needs only the exact initial mask-filtration forms.
     b.MAX_T = Q18
 
     parent = json.loads(PARENT_RAW.read_text(encoding='utf-8'))
@@ -205,8 +204,8 @@ def main():
     }
     payload_path = Path(args.payload)
     payload_path.parent.mkdir(parents=True, exist_ok=True)
-    with gzip.open(payload_path, 'wt', encoding='utf-8', mtime=0) as f:
-        json.dump(payload, f, separators=(',',':'), sort_keys=True)
+    raw = json.dumps(payload, separators=(',',':'), sort_keys=True).encode('utf-8')
+    payload_path.write_bytes(gzip.compress(raw, compresslevel=6, mtime=0))
     payload_sha = sha256_file(payload_path)
 
     summary = {
