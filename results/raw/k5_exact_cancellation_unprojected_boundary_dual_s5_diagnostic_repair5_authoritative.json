@@ -1,0 +1,45 @@
+{
+  "gate": "K5_EXACT_CANCELLATION_UNPROJECTED_BOUNDARY_DUAL_S5_DIAGNOSTIC",
+  "parent_scientific_gate_prereg": "d6b0e805101c8590eafac71398cc2b1466691752",
+  "parent_diagnostic_prereg": "41f26f8e314f4ab1213fe6a681b69d2c87e00d68",
+  "repair5_prereg": "f472eb29ded6a04ab1ae8a5f367d378f64beee4f",
+  "workflow_head": "d4bbd8737a444f55b63794171c33e0857ad6f4ea",
+  "run_id": 35193589556,
+  "aggregate_job_id": 105111592277,
+  "aggregate_artifact_id": 10484549017,
+  "aggregate_artifact_zip_sha256": "fd9b015d8067aeecd710a4b16c66c8561dcedd7940e7c4edbc0beac34c47a252",
+  "aggregate_result_json_sha256": "197a7429acf497951de68a6192e2bca56f119085f5e8fe4dd29034e785392529",
+  "status": "PASS_EXACT_DIAGNOSTIC",
+  "classification": "BOUNDARY_S5_REPRESENTATION_UNRESOLVED_EXACT",
+  "scientific_verdict": null,
+  "physical_corner_coefficients_used": false,
+  "coordinate_extraction_exact_all": true,
+  "dual_coordinates_invariant_all": false,
+  "unique_consistent_law": null,
+  "candidate_laws": ["A", "A_inverse", "A_transpose", "A_inverse_transpose"],
+  "candidate_law_result": "none exact in all four frozen W1/W2 cycle/inverse lanes",
+  "checks_all_true": true,
+  "repair5_checks_all_true": true,
+  "source_terms_per_vector": 100000,
+  "boundary_components_per_vector": 32,
+  "source_blobs": {
+    "parent_diagnostic": "493cded56de272ecc1929bb6cf1324d9ea4800cd",
+    "action": "2ed1b6397236c3f64c22b2a827bf1f0f8b5e0484",
+    "resolver": "012b04669948962548064334bfbed47062e4acc0"
+  },
+  "shards": {
+    "W1_base": {"job_id": 105111494914, "artifact_id": 10485435008, "artifact_zip_sha256": "d22f08536449468483dfdb3c66c4edfc72ecbcf02cad67e8cdffd36fe7603d55", "payload_sha256": "b9dd18ed9cee2613c085583406993ffe9678aceed3509527e849121332031051"},
+    "W1_cycle": {"job_id": 105111495054, "artifact_id": 10485307017, "artifact_zip_sha256": "954feca8894f614537f39b94dcf8e1add3b813b575208678fe4fc92b008e5c42", "payload_sha256": "e4c6c2678adcbbd2deee8e35356f80712afd3de88b366ea5cfd59f3f04fa203a"},
+    "W1_inverse": {"job_id": 105111494921, "artifact_id": 10484409615, "artifact_zip_sha256": "1136192e040de832b39059c706e6b3cbe951e81acfcad8a4ec25c691eaa59df7", "payload_sha256": "c361dbedc6e9ab55b33095357fb24dd08dcfe7c906a81e5d0f8da12ca3dd8449"},
+    "W2_base": {"job_id": 105111495122, "artifact_id": 10484558814, "artifact_zip_sha256": "7d8b2bbf3f67bb2f071a51cf6d74ddffc5699c6674e5c8732851bec01560612a", "payload_sha256": "f2374917cb7441c9ea5c896c013e73c1ba967583dd634ea690bf7e95afafa717"},
+    "W2_cycle": {"job_id": 105111495087, "artifact_id": 10485116629, "artifact_zip_sha256": "5df34b1e868f2d7eb5da3d0ffa06c3845f305f63b8df9a28a59d7f2238d9187d", "payload_sha256": "f3478ae782c45184e53f80f4e2190d13bb04ac467113b3bbfb82375e7ee2af23"},
+    "W2_inverse": {"job_id": 105111495035, "artifact_id": 10484608806, "artifact_zip_sha256": "ff67a426ee3664f97c1130526cffe9c19b473648784b3b39d1db679640f4d6f3", "payload_sha256": "9020706e1d7958d0a242a3dd52842a15c37a68cd73da3574d7a045c9be34687c"}
+  },
+  "lane_summary": {
+    "W1_cycle": {"exact_laws": [], "dual_coordinates_invariant": false, "weighted_coordinates_equal_authoritative_base": true, "weighted_coordinates_equal_authoritative_target": true},
+    "W1_inverse": {"exact_laws": [], "dual_coordinates_invariant": false, "weighted_coordinates_equal_authoritative_base": true, "weighted_coordinates_equal_authoritative_target": true},
+    "W2_cycle": {"exact_laws": [], "dual_coordinates_invariant": false, "weighted_coordinates_equal_authoritative_base": true, "weighted_coordinates_equal_authoritative_target": true},
+    "W2_inverse": {"exact_laws": [], "dual_coordinates_invariant": false, "weighted_coordinates_equal_authoritative_base": true, "weighted_coordinates_equal_authoritative_target": true}
+  },
+  "interpretation_ceiling": "Exact execution/control result only. No physical corner coefficient, local integrability exponent, global Stokes/IBP, period, finite-part, regulator-independence, F9/G3/G8/K5 promotion, NEW_PHYSICS_FOUND or complete-QG claim follows."
+}
