@@ -1,0 +1,58 @@
+name: K5 mask511 structural divisibility lower coefficients
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'prereg/K5_MASK511_STRUCTURAL_DIVISIBILITY_LOWER_COEFFICIENTS.md'
+      - 'scripts/k5_mask511_structural_divisibility_lower_coefficients.py'
+      - '.github/workflows/k5_mask511_structural_divisibility_lower_coefficients.yml'
+      - 'scripts/k5_invariant_dual_deg27_canonical_dag.py'
+      - 'scripts/k5_deg4_annihilator_actual_dual_action.py'
+      - 'results/raw/k5_mask511_physical_numerator_action_exact_corner_witness_authoritative.json'
+jobs:
+  exact-symbolic:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run exact symbolic structural-divisibility gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts
+          python scripts/k5_mask511_structural_divisibility_lower_coefficients.py \
+            --output artifacts/k5_mask511_structural_divisibility_lower_coefficients.json \
+            --coefficients artifacts/k5_mask511_structural_divisibility_coefficients.json.gz \
+            | tee artifacts/stdout.txt
+          python - <<'PY'
+          import json
+          p='artifacts/k5_mask511_structural_divisibility_lower_coefficients.json'
+          d=json.load(open(p,encoding='utf-8'))
+          allowed={
+            'K5_MASK511_LOWER_COEFFICIENTS_STRUCTURAL_DIVISIBILITY_EXACT_SCOPED',
+            'K5_MASK511_RAY_CANCELLATION_NOT_ANGULAR_UNIFORM_EXACT_SCOPED',
+            'K5_MASK511_STRUCTURAL_DIVISIBILITY_BLOCKED_SCOPED',
+          }
+          assert d['classification'] in allowed,d['classification']
+          assert d['status']!='K5_MASK511_STRUCTURAL_DIVISIBILITY_INVALID',d
+          assert all(d['controls'].values()),d['controls']
+          assert d['scope']['mask']==511,d['scope']
+          assert d['scope']['boundary_s5_transport_consumed'] is False,d['scope']
+          assert d['scientific_corner_integrability_verdict'] is None
+          assert d['global_stokes_ibp_verdict'] is None
+          print('CLASSIFICATION=',d['classification'])
+          print('STATUS=',d['status'])
+          print('COEFF_SHA256=',d['coefficient_payload_sha256'])
+          PY
+          sha256sum artifacts/k5_mask511_structural_divisibility_lower_coefficients.json | tee artifacts/result_sha256.txt
+          sha256sum artifacts/k5_mask511_structural_divisibility_coefficients.json.gz | tee artifacts/coeff_gzip_sha256.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: k5-mask511-structural-divisibility
+          path: artifacts/
+          if-no-files-found: error
+          retention-days: 90
