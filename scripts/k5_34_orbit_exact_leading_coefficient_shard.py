@@ -7,8 +7,8 @@ import json
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
-CORE=ROOT/'scripts/k5_34_orbit_exact_leading_coefficient_core.py'
-spec=importlib.util.spec_from_file_location('k5_34_exact_core',CORE)
+CORE=ROOT/'scripts/k5_34_orbit_exact_leading_coefficient_core_repair1.py'
+spec=importlib.util.spec_from_file_location('k5_34_exact_core_repair1',CORE)
 c=importlib.util.module_from_spec(spec);assert spec.loader is not None;spec.loader.exec_module(c)
 
 
@@ -25,7 +25,12 @@ def main():
         print('ORBIT',idx,'mask',mask,'k',k,'routeA W1/W2',flush=True)
         a1=c.route_a(mask,c.W1);a2=c.route_a(mask,c.W2)
         mp=c.core.pmask(mask,c.CYCLE)
-        s1=c.route_a(mp,c.WP1);s2=c.route_a(mp,c.WP2)
+        # Physical S5 validation must simultaneously transport the source
+        # endpoint/orientation object. The permuted geometric route supplies the
+        # covariance orientation character; the repaired matching coefficients
+        # supply the independently confirmed source transport.
+        s1=c.route_a(mp,c.WP1,c.S5_MATCH_COEFF_CYCLE)
+        s2=c.route_a(mp,c.WP2,c.S5_MATCH_COEFF_CYCLE)
         route_checks={}
         for tag,a in (('W1',a1),('W2',a2),('S5_W1',s1),('S5_W2',s2)):
             for n,v in a['checks'].items():route_checks[f'{tag}_{n}']=bool(v)
@@ -58,6 +63,7 @@ def main():
             'class':[size,k],'class_validation_representative':is_class_rep,'channels':chrows,
             'route_checks':route_checks,'s5_full_coefficient_checks':s5,'second_path':second,
             's5_transformed_mask':mp,
+            's5_source_transport':'simultaneous_endpoint_orientation_plus_boundary_contragredient_repair1',
         })
         print('ORBIT',idx,'done',pos,'/',len(assigned),flush=True)
     out={
