@@ -4,7 +4,7 @@ This recovery note is controlling where it is newer than `status/CURRENT.md`. It
 
 ## Repository/source lock
 
-Recovered main before this note: `0aa879e4ccf4c8a707eb35e096a56b0280c3d343`.
+Recovered main before the repair-3 reconciliation: `ac232ad393b41c9f287680211233b925cc7ba861`.
 
 Source ordering remains
 
@@ -30,10 +30,14 @@ Prospective diagnostic preregistration `41f26f8e314f4ab1213fe6a681b69d2c87e00d68
 
 Historical original diagnostic run `35175131496`, job `105055061459`, was cancelled at the 20-minute budget before a classifier and has no substantive authority.
 
-Execution repair 1 prereg `fa0eb9027a7df8138a6cef734ef75fbf43200815` preserved the object and added exact-alpha memoization. Its production run `35177472120` was again terminal cancelled; no substantive output is authority.
+Execution repair 1 prereg `fa0eb9027a7df8138a6cef734ef75fbf43200815` preserved the object and added exact-alpha memoization. Its production run `35177472120` was terminal cancelled; no substantive output is authority.
 
 Execution repair 2 prereg `a7d0057bcbde959df84bd5da3fb96447ced01175` added exact within-boundary source-key aggregation plus alpha memoization. Implementation `a54130c5c8fc4d8797b8a9ba533e4898c60b499a`; workflow/head `0aa879e4ccf4c8a707eb35e096a56b0280c3d343`; run `35177549375`, job `105062470564`, terminal `cancelled` after 20 minutes. Lineage verification succeeded; the exact diagnostic step was cancelled and emitted no result artifact. No partial substantive value is authority.
 
+Execution repair 3 prereg `a03481f8020cd0eaf9426b9a569913a459f55b19` froze alpha-independent perfect-matching reassociation over the same parent object. Implementation `e9f1af328935ac9ebbf2531921f0c17a03919706`; workflow/head `ac232ad393b41c9f287680211233b925cc7ba861`; run `35185801499`, job `105087482094`, terminal `cancelled` after the 45-minute budget. Prospective-lineage verification succeeded. The exact diagnostic step was cancelled before producing `result.json`; validation was skipped and the `always()` artifact upload found no files. Therefore there is no repair-3 classifier, result hash, artifact ID, or substantive diagnostic value. No partial value is authority.
+
 ## Active blocker
 
-The parent exact-cancellation resolver cannot be scientifically classified until the source-derived dual/contragredient coordinate law is resolved. The highest-information admissible work is therefore an execution-only completion of the already-frozen unprojected boundary-dual diagnostic. Downstream physical corner classifications, global Stokes/IBP, invariant-dual periods, finite-part selection, regulator independence, G3/F9/G8/K5 promotion, `NEW_PHYSICS_FOUND`, and complete-QG claims remain blocked.
+The parent exact-cancellation resolver cannot be scientifically classified until the source-derived dual/contragredient coordinate law is resolved. The highest-information admissible work remains execution-only completion of the already-frozen unprojected boundary-dual diagnostic. A next repair may alter only exact execution organization/performance while retaining the parent object, six unique frozen alpha tuples, complete all-32/100000-term coverage, four frozen representation-law candidates, exact `P^T` coordinate extraction and all claim ceilings.
+
+Downstream physical corner classifications, global Stokes/IBP, invariant-dual periods, finite-part selection, regulator independence, G3/F9/G8/K5 promotion, `NEW_PHYSICS_FOUND`, and complete-QG claims remain blocked.
