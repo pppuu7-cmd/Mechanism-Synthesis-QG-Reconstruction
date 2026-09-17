@@ -1,0 +1,48 @@
+name: K5 exact cancellation geometric Wick S5 diagnostic
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/k5_exact_cancellation_geometric_wick_s5_diagnostic.py'
+      - '.github/workflows/k5_exact_cancellation_geometric_wick_s5_diagnostic.yml'
+jobs:
+  diagnostic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Verify prospective lineage
+        run: |
+          set -euo pipefail
+          git merge-base --is-ancestor 4262e9b55308ba9128eeca2cd195ae0672772bed HEAD
+          git merge-base --is-ancestor e9a0472da5e55216789f1d6c20118da9f9d59061 HEAD
+          git merge-base --is-ancestor d6b0e805101c8590eafac71398cc2b1466691752 HEAD
+      - name: Run exact geometric/Wick diagnostic
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts/geometric_wick_s5
+          python scripts/k5_exact_cancellation_geometric_wick_s5_diagnostic.py --output artifacts/geometric_wick_s5/result.json
+          sha256sum artifacts/geometric_wick_s5/result.json | tee artifacts/geometric_wick_s5/result_sha256.txt
+      - name: Validate outcome-neutral payload
+        run: |
+          python - <<'PY'
+          import json
+          d=json.load(open('artifacts/geometric_wick_s5/result.json'))
+          assert d['physical_corner_coefficients_used'] is False
+          assert all(d['checks'].values()),d['checks']
+          assert d['classification'] in {
+            'GEOMETRIC_WICK_S5_EXACT',
+            'REDUCED_LAPLACIAN_S5_COVARIANCE_FAIL_EXACT',
+            'PROJECTED_WICK_CHANNEL_S5_COVARIANCE_FAIL_EXACT',
+          },d['classification']
+          print('CLASSIFICATION=',d['classification'])
+          PY
+      - name: Upload diagnostic artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: k5-exact-cancellation-geometric-wick-s5-diagnostic
+          path: artifacts/geometric_wick_s5/
+          retention-days: 90
