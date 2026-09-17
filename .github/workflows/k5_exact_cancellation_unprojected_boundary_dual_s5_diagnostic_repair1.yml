@@ -1,0 +1,55 @@
+name: K5 exact cancellation unprojected boundary dual S5 diagnostic repair1
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/k5_exact_cancellation_unprojected_boundary_dual_s5_diagnostic_repair1.py'
+      - '.github/workflows/k5_exact_cancellation_unprojected_boundary_dual_s5_diagnostic_repair1.yml'
+jobs:
+  diagnostic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Verify prospective lineage
+        run: |
+          set -euo pipefail
+          git merge-base --is-ancestor fa0eb9027a7df8138a6cef734ef75fbf43200815 HEAD
+          git merge-base --is-ancestor 41f26f8e314f4ab1213fe6a681b69d2c87e00d68 HEAD
+          git merge-base --is-ancestor 6b545c6e3195fe32221370fa76791b89bf7a5ee8 HEAD
+          git merge-base --is-ancestor d6b0e805101c8590eafac71398cc2b1466691752 HEAD
+      - name: Run exact unprojected boundary dual diagnostic repair1
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts/unprojected_boundary_dual_s5_repair1
+          python scripts/k5_exact_cancellation_unprojected_boundary_dual_s5_diagnostic_repair1.py --output artifacts/unprojected_boundary_dual_s5_repair1/result.json
+          sha256sum artifacts/unprojected_boundary_dual_s5_repair1/result.json | tee artifacts/unprojected_boundary_dual_s5_repair1/result_sha256.txt
+      - name: Validate outcome-neutral payload
+        run: |
+          python - <<'PY'
+          import json
+          d=json.load(open('artifacts/unprojected_boundary_dual_s5_repair1/result.json'))
+          assert d['physical_corner_coefficients_used'] is False
+          assert all(d['checks'].values()),d['checks']
+          assert all(d['execution_repair1_checks'].values()),d['execution_repair1_checks']
+          assert d['execution_repair1_cache_stats']=={'calls':8,'hits':2,'misses':6,'unique_keys':6},d['execution_repair1_cache_stats']
+          assert d['classification'] in {
+            'BOUNDARY_DUAL_CONTRAGREDIENT_S5_EXACT',
+            'BOUNDARY_S5_OTHER_REPRESENTATION_EXACT',
+            'DUAL_COORDINATE_EXTRACTION_MISMATCH_EXACT',
+            'BOUNDARY_S5_REPRESENTATION_UNRESOLVED_EXACT',
+          },d['classification']
+          print('CLASSIFICATION=',d['classification'])
+          print('LAW=',d['unique_consistent_law'])
+          print('COORDINATES_INVARIANT=',d['dual_coordinates_invariant_all'])
+          print('COORDINATE_EXTRACTION_EXACT=',d['coordinate_extraction_exact_all'])
+          PY
+      - name: Upload diagnostic artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: k5-exact-cancellation-unprojected-boundary-dual-s5-diagnostic-repair1
+          path: artifacts/unprojected_boundary_dual_s5_repair1/
+          retention-days: 90
