@@ -1,5 +1,6 @@
 name: K5 34-orbit unscaled-graph Wick filtration theorem
 
+# Execution-only trigger after workflow became present on default branch.
 on:
   push:
     paths:
