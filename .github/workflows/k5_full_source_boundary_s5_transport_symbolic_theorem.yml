@@ -1,0 +1,57 @@
+name: K5 full-source boundary S5 symbolic transport theorem
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'prereg/K5_FULL_SOURCE_BOUNDARY_S5_TRANSPORT_SYMBOLIC_GENERATOR_THEOREM.md'
+      - 'scripts/k5_full_source_boundary_s5_transport_symbolic_theorem.py'
+      - '.github/workflows/k5_full_source_boundary_s5_transport_symbolic_theorem.yml'
+jobs:
+  symbolic-theorem:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run exact symbolic transport theorem gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts
+          python scripts/k5_full_source_boundary_s5_transport_symbolic_theorem.py \
+            --output artifacts/k5_full_source_boundary_s5_transport_symbolic_theorem.json \
+            | tee artifacts/stdout.txt
+          python - <<'PY'
+          import json
+          p='artifacts/k5_full_source_boundary_s5_transport_symbolic_theorem.json'
+          d=json.load(open(p,encoding='utf-8'))
+          allowed={
+            'K5_FULL_SOURCE_BOUNDARY_S5_SYMBOLIC_ALL_ALPHA_TRIVIAL_CHARACTER_EXACT_SCOPED',
+            'K5_FULL_SOURCE_BOUNDARY_S5_SYMBOLIC_TRANSPORT_OBSTRUCTION_EXACT_SCOPED',
+          }
+          assert d['status']=='PASS_EXACT_SCOPED',d
+          assert d['classification'] in allowed,d['classification']
+          assert all(d['controls'].values()),d['controls']
+          assert all(d['negative_controls'].values()),d['negative_controls']
+          assert d['generated_group_size']==120
+          assert d['source_terms']==100000 and d['boundary_components']==32
+          assert d['psi_monomials']==125
+          assert d['interpretation']['physical_corner_verdict'] is None
+          assert d['interpretation']['global_stokes_ibp_verdict'] is None
+          assert d['interpretation']['integrated_k5_period_verdict'] is None
+          print('CLASSIFICATION=',d['classification'])
+          print('THEOREM=',d['hypothesis_symbolic_all_alpha_contragredient_trivial_character'])
+          print('COVARIANCE=',{k:v['exact'] for k,v in d['covariance_results'].items()})
+          print('SOURCE_BOUNDARY=',{k:v['exact'] for k,v in d['formal_source_boundary_results'].items()})
+          PY
+          sha256sum artifacts/k5_full_source_boundary_s5_transport_symbolic_theorem.json | tee artifacts/result_sha256.txt
+          sha256sum scripts/k5_full_source_boundary_s5_transport_symbolic_theorem.py | tee artifacts/script_sha256.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: k5-full-source-boundary-s5-symbolic-transport-theorem
+          path: artifacts/
+          if-no-files-found: error
+          retention-days: 90
