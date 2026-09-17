@@ -52,7 +52,7 @@ Researcher classification `K5_FULL_SOURCE_BOUNDARY_S5_CONTRAGREDIENT_TRIVIAL_CHA
 
 This witness result remains Researcher authority; independent Critic review has not yet supplied confirmed coefficient-level transport authority.
 
-## Symbolic all-alpha full-source boundary S5 transport — Researcher terminal, Critic pending
+## Symbolic all-alpha full-source boundary S5 transport — Researcher terminal, Critic reconstruction pending
 
 To close the witness-to-coefficient-level gap without changing the parent cancellation resolver, a separate symbolic theorem gate was prospectively frozen before implementation:
 
@@ -89,7 +89,9 @@ for every `p in S5`, with trivial residual character.
 
 Durable machine aggregate `results/raw/k5_full_source_boundary_s5_transport_symbolic_theorem_authoritative.json`, commit `7875437c0e2cfdb018e1cefecc4e36af0a17d198`; scientific result `results/K5_FULL_SOURCE_BOUNDARY_S5_TRANSPORT_SYMBOLIC_GENERATOR_THEOREM_RESULT.md`, commit `4d8c4743a11b1c13fd7c3a81a68d9120a8a41fc4`; provenance `status/K5_FULL_SOURCE_BOUNDARY_S5_TRANSPORT_SYMBOLIC_THEOREM_PROVENANCE_LEDGER.md`, commit `7d8ceefd3d14a05d8a4e3d0232275af89b43fc26`.
 
-This theorem is **Researcher authority only** until independently adversarially reviewed. The parent exact cancellation resolver must not consume it as confirmed coefficient-level authority before that review.
+The independent Critic contract is prospectively frozen at `prereg/K5_FULL_SOURCE_BOUNDARY_S5_TRANSPORT_SYMBOLIC_GENERATOR_THEOREM_CRITIC.md`, commit `cf8576acb7237b751c26d5b5942aa60874bcd00e`. A completed static code-audit lane does **not** satisfy that scientific contract. Static implementation commit `2b1d15e3267a6dd1b1d1cdb433b47d25ad42e55d`, workflow/head `9b11c18ed87a640d4c4d852f76786ee3175a32b9`, run `35207545326`, job `105156901744`, artifact `10490505737`, ZIP digest `sha256:e768d3fceb7f2311be4618857fb69642623e60a43302c1fcabcf7581144ac643`, returned `PASS_CODE_AUDIT_SCOPED` with `scientific_verdict=null`. It found no forbidden floating/fit/random-witness patterns and verified exact-arithmetic/control hooks, but explicitly did not execute frozen independent reconstruction requirements 1-6. Durable chronology is recorded in `status/K5_FULL_SOURCE_BOUNDARY_S5_TRANSPORT_SYMBOLIC_CRITIC_PROVENANCE_LEDGER.md`, commit `1a054e9f9b7f0a5ba85a7ef720e532092b05c3de`.
+
+Therefore the symbolic theorem remains **Researcher authority only**. The parent exact cancellation resolver must not consume coefficient-level transport authority until a terminal independent Critic reconstruction returns a scientific verdict.
 
 ## Current survival chain
 
@@ -108,7 +110,7 @@ This theorem is **Researcher authority only** until independently adversarially 
 `-> 34-orbit physical numerator/action-flux audit PARTIAL_BLOCKED_CANCELLATION_RESOLUTION`
 `-> source-fixed boundary-dual S5 diagnostic retained as negative object-definition control`
 `-> witness full-source boundary S5 transport PASS_EXACT_SCOPED (Researcher)`
-`-> symbolic all-alpha full-source boundary S5 transport PASS_EXACT_SCOPED (Researcher; Critic pending)`
+`-> symbolic all-alpha full-source boundary S5 transport PASS_EXACT_SCOPED (Researcher; Critic scientific reconstruction pending)`
 `-> exact leading-coefficient cancellation/covariance resolver BLOCKED pending transport Critic`
 `-> global projective Stokes/IBP relation ?`
 `-> invariant-dual K5 projective periods ?`
@@ -127,10 +129,10 @@ This theorem is **Researcher authority only** until independently adversarially 
 
 ## Highest-information next work
 
-1. Independent adversarial Critic review of `results/K5_FULL_SOURCE_BOUNDARY_S5_TRANSPORT_SYMBOLIC_GENERATOR_THEOREM_RESULT.md` and run `35200455308` is now the immediate blocker.
-2. The Critic should independently reconstruct formal `Psi_K5`/covariance transport, complete all-32/100000-term source/boundary dictionary transport, C/T group generation and especially the repair-1 factorization `g_source*g_cov=(prod_e s_e)^2`, with separate odd-transposition malformed controls.
-3. The Critic must verify that no finite-witness interpolation or hidden fitted character enters the theorem and decide whether the all-alpha rational identity is genuinely implied on `Psi_K5 != 0`.
-4. Only if that theorem is independently confirmed at coefficient-level scope may the already-frozen resolver `d6b0e805101c8590eafac71398cc2b1466691752` resume repaired substantive execution. Do not broaden its bounded coefficient family post hoc.
+1. Complete the prospectively frozen independent adversarial Critic reconstruction of `results/K5_FULL_SOURCE_BOUNDARY_S5_TRANSPORT_SYMBOLIC_GENERATOR_THEOREM_RESULT.md` and run `35200455308`; static audit run `35207545326` is only a completed preparatory lane and carries no scientific verdict.
+2. The Critic must independently reconstruct formal `Psi_K5`/covariance transport, complete all-32/100000-term source/boundary dictionary transport, C/T group generation and especially the repair-1 factorization `g_source*g_cov=(prod_e s_e)^2`, with separate odd-transposition malformed controls.
+3. AUTOMATION A must not imitate that independent Critic. While the Critic verdict is pending, admissible Researcher work is limited to independent prerequisites that do not consume the unconfirmed transport theorem, such as outcome-independent exact bounded-support/object-definition work required by the already-frozen cancellation resolver.
+4. Only if the theorem is independently confirmed at coefficient-level scope may the already-frozen resolver `d6b0e805101c8590eafac71398cc2b1466691752` resume repaired substantive execution. Do not broaden its bounded coefficient family post hoc.
 5. Only after exact local cancellation resolution may the 34-orbit interior/flux/action classifier be re-consumed. Local corner data still does not authorize global Stokes/IBP or an integrated K5 period statement.
 
 Any mandatory blocked arrow prevents full-QG completion.
