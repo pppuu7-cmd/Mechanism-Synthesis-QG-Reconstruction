@@ -1,0 +1,93 @@
+{
+  "base_implementation_blob": "948f32653872e0920b4450d60d56d48a2a0cc24d",
+  "base_implementation_commit": "64a4f4935d0238d67e2d60e0b202f81f1195330a",
+  "base_returncode": 2,
+  "classification": "CONFIRMED_EXACT_SCOPED",
+  "counterexample": null,
+  "failed_substantive_conditions": [],
+  "gate": "FULL_SOURCE_BOUNDARY_S5_SYMBOLIC_TRANSPORT_INDEPENDENT_CRITIC",
+  "implementation_validity_A": {
+    "forbidden_methods_absent": true,
+    "mandatory_malformed_controls": true,
+    "q18_not_used": true,
+    "source_checks": true,
+    "static_boundary_source_coverage": true,
+    "static_group_reconstruction": true,
+    "static_kirchhoff_reconstruction": true,
+    "wrapper_prechecks": true
+  },
+  "independent_reconstruction": {
+    "base_dictionary_sha256": "f220a5023ec6fda4c8f2d82e5b1a6ec80cf657046eb6be22c5db7bafa0a27e2b",
+    "boundary_components": 32,
+    "canonical_edges": [[0,1],[0,2],[0,3],[0,4],[1,2],[1,3],[1,4],[2,3],[2,4],[3,4]],
+    "group_size": 120,
+    "perfect_matchings_checked": 945,
+    "psi_monomials": 125,
+    "psi_sha256": "9343cf446f95cb8fb95717849355b0afd9f97cd105053118e08b6e8519e1951f",
+    "reynolds_pivots": [1,4],
+    "reynolds_rank": 2,
+    "source_terms": 100000
+  },
+  "interpretation_ceiling": {
+    "F9_G3_G8_K5_promotion": null,
+    "K5_periods": null,
+    "all_orbit_cancellation": null,
+    "complete_quantum_gravity": false,
+    "full_K5_integrability": null,
+    "global_stokes_ibp": null,
+    "new_physics_found": false,
+    "physical_finite_part_selector": null,
+    "q18_result": null,
+    "regulator_independence": null
+  },
+  "negative_controls": {
+    "extra_permutation_sign_rejected": true,
+    "odd_T_orientation_character_minus1": true,
+    "omit_covariance_orientation_sign_rejected": true,
+    "omit_endpoint_transpose_rejected": true,
+    "omit_source_reversal_sign_rejected": true,
+    "source_fixed_object_rejected": true
+  },
+  "parent_critic_prereg_commit": "cf8576acb7237b751c26d5b5942aa60874bcd00e",
+  "prechecks": {
+    "base_blob_locked": true,
+    "base_implementation_commit_locked": true,
+    "parent_prereg_locked": true,
+    "repair1_prereg_locked": true,
+    "repair1_prereg_present": true,
+    "repair2_prereg_locked": true,
+    "repair2_prereg_present": true
+  },
+  "q18_values_used": false,
+  "raw_base_contract_classification": "INVALID_IMPLEMENTATION",
+  "raw_base_verdict": "INVALID_IMPLEMENTATION",
+  "raw_sha256": "d34ba7fa016e4ac0f9332e2bd41de624c86c92b625b36cb6a7a21065d6062d66",
+  "reason": "all frozen substantive theorem conditions B pass exactly",
+  "refutation_witness_sufficient": true,
+  "repair1_prereg_commit": "2d510ae4ef0dab2e15a763a520864869eff2d71b",
+  "repair_prereg_commit": "1440e07b8a3d6295020cba50d0ac73f44d4be641",
+  "repair_runner_blob": "a6922bc72459132ab92e559b6213d4c863e8266a",
+  "status": "PASS_EXACT_SCOPED",
+  "substantive_theorem_B": {
+    "C_boundary_inverse": true,
+    "C_matching_orientation_all945": true,
+    "C_psi_covariance_transport": true,
+    "C_source_boundary_contragredient": true,
+    "C_source_inverse_roundtrip": true,
+    "T_boundary_inverse": true,
+    "T_matching_orientation_all945": true,
+    "T_psi_covariance_transport": true,
+    "T_source_boundary_contragredient": true,
+    "T_source_inverse_roundtrip": true,
+    "boundary_representation_composes_all120": true,
+    "edge_orientation_maps_compose_all120": true
+  },
+  "production": {
+    "run_id": 35267432939,
+    "job_id": 105357990301,
+    "head_sha": "992a5889656b2cf5925caf1c770824ab557e5833",
+    "artifact_id": 10516529280,
+    "artifact_zip_sha256": "087ee496daf8a9aafa255d908c062fb8bba2a5481addef10da6d7b4b170cc479",
+    "repaired_result_sha256": "b0a0b94e22d76600c27c148c0072741b5e04a8652939ed58a228b9fbebda70ee"
+  }
+}
