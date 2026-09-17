@@ -38,7 +38,7 @@ Parent audit preregistration `9c42a26350e547eb02649c6ee44f8dd2477100d0`. Repair-
 
 The denominator/projective-geometry path is mechanically valid over all 32 proper S5 corner orbits, but all `64=32x2` physical channel-orbit components remain `BLOCKED_CANCELLATION_RESOLUTION`. No final physical interior/flux/action exponent is authoritative yet.
 
-The already-frozen exact cancellation resolver is `prereg/K5_34_ORBIT_EXACT_LEADING_COEFFICIENT_CANCELLATION_RESOLUTION.md`, commit `d6b0e805101c8590eafac71398cc2b1466691752`. Its scientific contract remains unchanged and it is not yet authorized for repaired substantive execution.
+The already-frozen exact cancellation resolver is `prereg/K5_34_ORBIT_EXACT_LEADING_COEFFICIENT_CANCELLATION_RESOLUTION.md`, commit `d6b0e805101c8590eafac71398cc2b1466691752`. Its scientific contract remains unchanged and it is not yet authorized for substantive execution that consumes coefficient-level S5 transport authority.
 
 ## Source/boundary transport authority
 
@@ -50,48 +50,76 @@ Prospective prereg `6ac6e7749783b78fb0966450a91d8042c1ad0ca4`; production run `3
 
 Researcher classification `K5_FULL_SOURCE_BOUNDARY_S5_CONTRAGREDIENT_TRIVIAL_CHARACTER_EXACT_SCOPED`: on prospectively frozen W1/W2 and generators C/Cinv/T, simultaneous Schwinger/source/boundary transport gives `a_p(p alpha)=A_p^(-T)a(alpha)` with no residual `sgn(p)` character. Result commit `5420b089c2e257b4e37de77edba3cab763321902`; provenance commit `5ed68442a1b8be9cfad967ff4c2aa61bce9c738c`.
 
-This witness result remains Researcher authority; independent Critic review has not yet supplied confirmed coefficient-level transport authority.
+### Symbolic all-alpha transport — Researcher terminal, Critic reconstruction pending
 
-## Symbolic all-alpha full-source boundary S5 transport — Researcher terminal, Critic reconstruction pending
+Symbolic theorem prereg `4f65cff503db976b6ff52b8519e5fdaa0bf4a4f8`; control repair prereg `73b8f65f05e3945e8c4d517e73b938cdd3299e39`.
 
-To close the witness-to-coefficient-level gap without changing the parent cancellation resolver, a separate symbolic theorem gate was prospectively frozen before implementation:
+Repaired implementation/head `bb0274946226538e9ef6682e11de5ee896df837e`; authoritative run `35200455308`, job `105133686282`, artifact `10487318071`, ZIP digest `sha256:054325eaf134bf8a8b0fe3a48d156cfb8c52df660d32f37168b40df1f6d23387`, result JSON SHA256 `c1c834a626bdb15c3564679396479d731eb87d52a3f01ed4c727c603f5208fbc`, executed script SHA256 `0cf7ef8344ec464bca8d2cb210c194cfe17b7fa7c015745267c44fa9de5300b2`.
 
-`prereg/K5_FULL_SOURCE_BOUNDARY_S5_TRANSPORT_SYMBOLIC_GENERATOR_THEOREM.md`, commit `4f65cff503db976b6ff52b8519e5fdaa0bf4a4f8`.
+Researcher classification:
 
-The frozen exact object is the complete unprojected 32-component order-zero source boundary Wick covector with exactly 100000 source node-choice terms. No numerical Schwinger witnesses, interpolation, fitted phase, fitted two-channel matrix or floating tolerance are permitted. The formal proof is separated into exact sparse-polynomial Schwinger/covariance transport and exact complete source/boundary coefficient-dictionary transport for generators `C=(1,2,3,4,0)` and `T=(1,0,2,3,4)`, with exact group composition to all 120 S5 elements.
+`K5_FULL_SOURCE_BOUNDARY_S5_SYMBOLIC_ALL_ALPHA_TRIVIAL_CHARACTER_EXACT_SCOPED`.
 
-Initial implementation commit `adf0182a6bc193efd906bd0c9ff9c398b2f544f7`, workflow/head `d802304d0c4d9ba61d5e06b72864325065de651a`, run `35200249024`, job `105133013586`, is terminal workflow failure and scientifically `INVALID_IMPLEMENTATION_NO_SCIENTIFIC_VERDICT`. Artifact `10488005998`, ZIP digest `sha256:4260cd4669fc0e5420a2cddaa1b36e03adfd3e8a60b0b27701d9cd86d0b359ec`. The attempt correctly verified group size 120, the 125-tree `Psi_K5` and exact C/T covariance transport, but its malformed sign-control placement was invalid and no scientific verdict was taken from partial output.
+The Researcher formal proof reconstructs exact `Psi_K5`/covariance transport and complete all-32/100000-term source/boundary dictionaries for generators C and T; C,T generate 120 S5 elements. The complete order-zero Wick orientation character factors as
 
-Before modifying implementation, control-only repair 1 was prospectively frozen in `prereg/K5_FULL_SOURCE_BOUNDARY_S5_TRANSPORT_SYMBOLIC_GENERATOR_THEOREM_CONTROL_REPAIR_1.md`, commit `73b8f65f05e3945e8c4d517e73b938cdd3299e39`.
+`g_source*g_cov=(prod_e s_e)^2=1`,
 
-The repaired formal bookkeeping uses the fact that each complete order-zero Wick monomial contains all ten K5 edges exactly once across its five covariance pairings. Under permutation `p`, source matrix reversal contributes `g_source=prod_e s_e` and covariance pullback contributes independently `g_cov=prod_e s_e`, so the complete source-faithful orientation character is `g_source*g_cov=(prod_e s_e)^2=1`. On odd `T`, omitting either factor separately is a mandatory rejected malformed control.
+and odd-T malformed controls reject missing endpoint transpose, missing source reversal sign, missing covariance orientation sign, the source-fixed object and an extra permutation-sign character. Thus the Researcher result proves `a_p(p alpha)=A_p^(-T)a(alpha)` on `Psi_K5 != 0` at its frozen scope.
 
-Repaired implementation/head `bb0274946226538e9ef6682e11de5ee896df837e`; authoritative run `35200455308` terminal `success`; job `105133686282` terminal `success`; artifact `10487318071`; ZIP digest `sha256:054325eaf134bf8a8b0fe3a48d156cfb8c52df660d32f37168b40df1f6d23387`; result JSON SHA256 `c1c834a626bdb15c3564679396479d731eb87d52a3f01ed4c727c603f5208fbc`; executed script SHA256 `0cf7ef8344ec464bca8d2cb210c194cfe17b7fa7c015745267c44fa9de5300b2`.
+The independent Critic contract was prospectively frozen at `prereg/K5_FULL_SOURCE_BOUNDARY_S5_TRANSPORT_SYMBOLIC_GENERATOR_THEOREM_CRITIC.md`, commit `cf8576acb7237b751c26d5b5942aa60874bcd00e`.
+
+A completed static code-audit lane is preparatory only: implementation `2b1d15e3267a6dd1b1d1cdb433b47d25ad42e55d`, workflow/head `9b11c18ed87a640d4c4d852f76786ee3175a32b9`, run `35207545326`, job `105156901744`, artifact `10490505737`, ZIP digest `sha256:e768d3fceb7f2311be4618857fb69642623e60a43302c1fcabcf7581144ac643`, status `PASS_CODE_AUDIT_SCOPED`, `scientific_verdict=null`. It explicitly does not satisfy frozen independent reconstruction requirements 1-6 and cannot confirm/refute the theorem. Durable chronology: `status/K5_FULL_SOURCE_BOUNDARY_S5_TRANSPORT_SYMBOLIC_CRITIC_PROVENANCE_LEDGER.md`, commit `1a054e9f9b7f0a5ba85a7ef720e532092b05c3de`.
+
+Therefore coefficient-level transport remains **Researcher authority only** and the exact cancellation resolver remains blocked pending a terminal independent Critic scientific reconstruction.
+
+## Projective-normal polynomial numerator degree/support — terminal Researcher authority
+
+While the transport Critic reconstruction remains pending, AUTOMATION A closed an independent bounded-support prerequisite explicitly required by the frozen exact cancellation resolver.
+
+Prospective preregistration:
+
+`prereg/K5_PROJECTIVE_NORMAL_POLYNOMIAL_NUMERATOR_DEGREE_CEILING.md`, commit `96d7f3acebf37809c15c1ae104d7a98efe462fdc`.
+
+For the independently confirmed logarithmic annihilator `v_i=alpha_i q_i` and corrected tangent representative `u=v-(S/s1)E`, define for every labeled edge subset Z
+
+`A_Z=sum_(e in Z) alpha_e`,
+
+`V_Z=sum_(e in Z) v_e`,
+
+`U_Z=s1 V_Z-S A_Z`,
+
+so exactly
+
+`u_Z=U_Z/s1`.
+
+Implementation `1586b293d819ff58cca917d6ee5190e2b7677dd7`; workflow/head `6217ec7b675a5f1a41fe4a400bd2e7b00481d81d`; production run `35215941730`, job `105184321294`, terminal success; artifact `10494771790`; ZIP digest `sha256:c13382c4c6cb32296e2c40517b94993bf89eb75cab54d3796911e60d2d245f33`; full production JSON SHA256 `661e3999a1e6b9c798cbc63fa5865df4b118b44fad634437f819beeae9536223`; executed script SHA256 `962f5482ae9be8f460fb821b34cff7a2f9fd134f478905ab0aaebb74627cde6d`.
 
 Terminal classification:
 
-`K5_FULL_SOURCE_BOUNDARY_S5_SYMBOLIC_ALL_ALPHA_TRIVIAL_CHARACTER_EXACT_SCOPED` — Researcher `PASS_EXACT_SCOPED`.
+`K5_PROJECTIVE_NORMAL_NUMERATOR_DEGREE5_COMPLETE_SUPPORT_EXACT_SCOPED`.
 
-Exact terminal controls establish:
+All frozen controls passed. Exact facts:
 
-- `C,T` generate exactly 120 permutations and the 32-dimensional boundary representation composes exactly over generated words;
-- the edge/orientation transport composes exactly;
-- `Psi_K5` has exactly 125 coefficient-one spanning-tree monomials and is invariant;
-- every formal covariance numerator transforms exactly under both generators;
-- complete all-32/100000-term formal source/boundary dictionaries transform exactly under both generators;
-- odd `T` rejects omitted endpoint transpose, omitted source reversal sign, omitted covariance orientation sign, the source-fixed diagnostic object and an extra permutation-sign character.
+- reconstructed all 10 K5 edges, 33 fixed-edge cubic orbits and 33 authoritative annihilator coefficients;
+- each `q_i` is nonzero homogeneous degree 3 and each `v_i` homogeneous degree 4;
+- exact 125-tree `Psi_K5` is reconstructed and `v(Psi_K5)=0`;
+- `S=sum_i v_i` is degree 4 and `s1` degree 1;
+- `U_empty=U_full=0` as controls;
+- every one of the `1022` proper labeled subsets has **nonzero** `U_Z`;
+- every nonzero proper `U_Z` is homogeneous degree 5;
+- all 1024 labeled subsets give exactly 34 S5 subset orbits, 32 proper;
+- `U_Z` is exactly invariant under the frozen radial-class shift `v_i -> v_i+f alpha_i` for all 1024 subsets, while raw `V_Z` and malformed `s1 V_Z-2S A_Z` fail that control;
+- changing one authoritative annihilator coefficient breaks exact `v(Psi_K5)=0`.
 
-Therefore, on the formal domain `Psi_K5 != 0`, this Researcher gate proves the scoped rational-function identity
+Therefore the complete a priori one-parameter coefficient support of the projective-normal polynomial numerator under any linear corner substitution is bounded by and exhausted within
 
-`a_p(p alpha)=A_p^(-T)a(alpha)`
+`t^0,t^1,t^2,t^3,t^4,t^5`.
 
-for every `p in S5`, with trivial residual character.
+No `t^n`, `n>5`, can occur. No proper face is identically killed by `U_Z`.
 
-Durable machine aggregate `results/raw/k5_full_source_boundary_s5_transport_symbolic_theorem_authoritative.json`, commit `7875437c0e2cfdb018e1cefecc4e36af0a17d198`; scientific result `results/K5_FULL_SOURCE_BOUNDARY_S5_TRANSPORT_SYMBOLIC_GENERATOR_THEOREM_RESULT.md`, commit `4d8c4743a11b1c13fd7c3a81a68d9120a8a41fc4`; provenance `status/K5_FULL_SOURCE_BOUNDARY_S5_TRANSPORT_SYMBOLIC_THEOREM_PROVENANCE_LEDGER.md`, commit `7d8ceefd3d14a05d8a4e3d0232275af89b43fc26`.
+Durable compact machine authority: `results/raw/k5_projective_normal_polynomial_numerator_degree_ceiling_authoritative.json`, commit `549308d3d8fc3bf60d314866e620242c17498808`. Scientific result: `results/K5_PROJECTIVE_NORMAL_POLYNOMIAL_NUMERATOR_DEGREE_CEILING_RESULT.md`, commit `f8480064e928c0641fd53f318a0f8f0b0c704a48`. Provenance: `status/K5_PROJECTIVE_NORMAL_POLYNOMIAL_NUMERATOR_DEGREE_CEILING_PROVENANCE_LEDGER.md`, commit `916bfe58b2f2123bb74af66080618fcb6ea5b5b1`.
 
-The independent Critic contract is prospectively frozen at `prereg/K5_FULL_SOURCE_BOUNDARY_S5_TRANSPORT_SYMBOLIC_GENERATOR_THEOREM_CRITIC.md`, commit `cf8576acb7237b751c26d5b5942aa60874bcd00e`. A completed static code-audit lane does **not** satisfy that scientific contract. Static implementation commit `2b1d15e3267a6dd1b1d1cdb433b47d25ad42e55d`, workflow/head `9b11c18ed87a640d4c4d852f76786ee3175a32b9`, run `35207545326`, job `105156901744`, artifact `10490505737`, ZIP digest `sha256:e768d3fceb7f2311be4618857fb69642623e60a43302c1fcabcf7581144ac643`, returned `PASS_CODE_AUDIT_SCOPED` with `scientific_verdict=null`. It found no forbidden floating/fit/random-witness patterns and verified exact-arithmetic/control hooks, but explicitly did not execute frozen independent reconstruction requirements 1-6. Durable chronology is recorded in `status/K5_FULL_SOURCE_BOUNDARY_S5_TRANSPORT_SYMBOLIC_CRITIC_PROVENANCE_LEDGER.md`, commit `1a054e9f9b7f0a5ba85a7ef720e532092b05c3de`.
-
-Therefore the symbolic theorem remains **Researcher authority only**. The parent exact cancellation resolver must not consume coefficient-level transport authority until a terminal independent Critic reconstruction returns a scientific verdict.
+This closes only the projective-normal **degree ceiling** prerequisite of the frozen cancellation resolver. It does not determine the first nonzero coefficient/order at any physical corner. The physical degree-27 numerator remains bounded through order 27 and the polynomial action numerator through order 31 under the already-frozen resolver contract.
 
 ## Current survival chain
 
@@ -111,7 +139,8 @@ Therefore the symbolic theorem remains **Researcher authority only**. The parent
 `-> source-fixed boundary-dual S5 diagnostic retained as negative object-definition control`
 `-> witness full-source boundary S5 transport PASS_EXACT_SCOPED (Researcher)`
 `-> symbolic all-alpha full-source boundary S5 transport PASS_EXACT_SCOPED (Researcher; Critic scientific reconstruction pending)`
-`-> exact leading-coefficient cancellation/covariance resolver BLOCKED pending transport Critic`
+`-> projective-normal numerator exact degree ceiling 5 / no proper identically-zero faces PASS_EXACT_SCOPED (Researcher)`
+`-> exact leading-coefficient cancellation resolver BLOCKED pending transport Critic`
 `-> global projective Stokes/IBP relation ?`
 `-> invariant-dual K5 projective periods ?`
 `-> remaining S5/full order-eight tensor ?`
@@ -129,10 +158,10 @@ Therefore the symbolic theorem remains **Researcher authority only**. The parent
 
 ## Highest-information next work
 
-1. Complete the prospectively frozen independent adversarial Critic reconstruction of `results/K5_FULL_SOURCE_BOUNDARY_S5_TRANSPORT_SYMBOLIC_GENERATOR_THEOREM_RESULT.md` and run `35200455308`; static audit run `35207545326` is only a completed preparatory lane and carries no scientific verdict.
-2. The Critic must independently reconstruct formal `Psi_K5`/covariance transport, complete all-32/100000-term source/boundary dictionary transport, C/T group generation and especially the repair-1 factorization `g_source*g_cov=(prod_e s_e)^2`, with separate odd-transposition malformed controls.
-3. AUTOMATION A must not imitate that independent Critic. While the Critic verdict is pending, admissible Researcher work is limited to independent prerequisites that do not consume the unconfirmed transport theorem, such as outcome-independent exact bounded-support/object-definition work required by the already-frozen cancellation resolver.
-4. Only if the theorem is independently confirmed at coefficient-level scope may the already-frozen resolver `d6b0e805101c8590eafac71398cc2b1466691752` resume repaired substantive execution. Do not broaden its bounded coefficient family post hoc.
+1. Complete the prospectively frozen independent adversarial Critic reconstruction of `results/K5_FULL_SOURCE_BOUNDARY_S5_TRANSPORT_SYMBOLIC_GENERATOR_THEOREM_RESULT.md` and run `35200455308`; static audit run `35207545326` remains only preparatory and carries no scientific verdict.
+2. The Critic must independently reconstruct formal `Psi_K5`/covariance transport, complete all-32/100000-term source/boundary dictionary transport, C/T group generation and the orientation factorization `g_source*g_cov=(prod_e s_e)^2`, with separate odd-transposition malformed controls.
+3. The bounded-support prerequisites of the already-frozen cancellation resolver are now explicit: `N_c` support through order 27, `B_v[N_c]` through order 31, and projective-normal polynomial numerator `U_Z` through order 5. The new gate proves the last bound exactly and rules out identically-zero proper `U_Z`.
+4. Only if the symbolic transport theorem is independently confirmed at coefficient-level scope may the already-frozen resolver `d6b0e805101c8590eafac71398cc2b1466691752` resume substantive execution. Do not broaden its coefficient family, weights, orbit representatives or normalization post hoc.
 5. Only after exact local cancellation resolution may the 34-orbit interior/flux/action classifier be re-consumed. Local corner data still does not authorize global Stokes/IBP or an integrated K5 period statement.
 
 Any mandatory blocked arrow prevents full-QG completion.
