@@ -1,0 +1,65 @@
+name: K5 exact cancellation unprojected boundary dual S5 diagnostic repair3
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/k5_exact_cancellation_unprojected_boundary_dual_s5_diagnostic_repair3.py'
+      - '.github/workflows/k5_exact_cancellation_unprojected_boundary_dual_s5_diagnostic_repair3.yml'
+jobs:
+  diagnostic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Verify prospective lineage
+        run: |
+          set -euo pipefail
+          git merge-base --is-ancestor a03481f8020cd0eaf9426b9a569913a459f55b19 HEAD
+          git merge-base --is-ancestor 0fa0ea3614849d60eb63a1c5b721d2352802811b HEAD
+          git merge-base --is-ancestor 41f26f8e314f4ab1213fe6a681b69d2c87e00d68 HEAD
+          git merge-base --is-ancestor e9a0472da5e55216789f1d6c20118da9f9d59061 HEAD
+          git merge-base --is-ancestor 6b545c6e3195fe32221370fa76791b89bf7a5ee8 HEAD
+          git merge-base --is-ancestor d6b0e805101c8590eafac71398cc2b1466691752 HEAD
+      - name: Run exact unprojected boundary dual diagnostic repair3
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts/unprojected_boundary_dual_s5_repair3
+          python scripts/k5_exact_cancellation_unprojected_boundary_dual_s5_diagnostic_repair3.py --output artifacts/unprojected_boundary_dual_s5_repair3/result.json
+          sha256sum artifacts/unprojected_boundary_dual_s5_repair3/result.json | tee artifacts/unprojected_boundary_dual_s5_repair3/result_sha256.txt
+      - name: Validate frozen payload
+        run: |
+          python - <<'PY'
+          import json
+          p='artifacts/unprojected_boundary_dual_s5_repair3/result.json'
+          d=json.load(open(p,encoding='utf-8'))
+          allowed={
+            'BOUNDARY_DUAL_CONTRAGREDIENT_S5_EXACT',
+            'BOUNDARY_S5_OTHER_REPRESENTATION_EXACT',
+            'DUAL_COORDINATE_EXTRACTION_MISMATCH_EXACT',
+            'BOUNDARY_S5_REPRESENTATION_UNRESOLVED_EXACT',
+          }
+          assert d['physical_corner_coefficients_used'] is False
+          assert all(d['checks'].values()),d['checks']
+          assert all(d['execution_repair3_static_checks'].values()),d['execution_repair3_static_checks']
+          assert all(d['execution_repair3_checks'].values()),d['execution_repair3_checks']
+          assert d['execution_repair3_source_stats']['original_terms']==100000
+          assert d['execution_repair3_source_stats']['boundary_states']==32
+          assert d['execution_repair3_source_stats']['perfect_matchings']==945
+          assert d['execution_repair3_cache_stats']=={'calls':8,'hits':2,'misses':6,'unique_keys':6},d['execution_repair3_cache_stats']
+          assert d['classification'] in allowed,d['classification']
+          print('CLASSIFICATION=',d['classification'])
+          print('LAW=',d['unique_consistent_law'])
+          print('COORDINATES_INVARIANT=',d['dual_coordinates_invariant_all'])
+          print('COORDINATE_EXTRACTION_EXACT=',d['coordinate_extraction_exact_all'])
+          print('SOURCE_STATS=',d['execution_repair3_source_stats'])
+          print('CACHE_STATS=',d['execution_repair3_cache_stats'])
+          PY
+      - name: Upload diagnostic artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: k5-exact-cancellation-unprojected-boundary-dual-s5-diagnostic-repair3
+          path: artifacts/unprojected_boundary_dual_s5_repair3/
+          retention-days: 90
