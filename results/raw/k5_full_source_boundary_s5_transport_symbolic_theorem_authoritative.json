@@ -1,0 +1,112 @@
+{
+  "boundary_components": 32,
+  "classification": "K5_FULL_SOURCE_BOUNDARY_S5_SYMBOLIC_ALL_ALPHA_TRIVIAL_CHARACTER_EXACT_SCOPED",
+  "control_repair_1_commit": "73b8f65f05e3945e8c4d517e73b938cdd3299e39",
+  "controls": {
+    "C5_identity": true,
+    "C_boundary_inverse_exact": true,
+    "C_edge_bijection_roundtrip": true,
+    "T2_identity": true,
+    "T_boundary_inverse_exact": true,
+    "T_edge_bijection_roundtrip": true,
+    "action_blob_locked": true,
+    "all32": true,
+    "boundary_representation_composes_all_generated_words": true,
+    "complete_wick_orientation_character_squares_to_one_C": true,
+    "complete_wick_orientation_character_squares_to_one_T": true,
+    "edge_orientation_transport_composes_all_generated_words": true,
+    "formal_covariance_C_exact": true,
+    "formal_covariance_T_exact": true,
+    "generated_group_size120": true,
+    "no_corner_coefficients_computed": true,
+    "no_fitted_two_channel_matrix_used": true,
+    "no_floating_arithmetic_used": true,
+    "no_numeric_alpha_witnesses_used": true,
+    "prereg_commit_locked": true,
+    "prereg_object_present": true,
+    "psi_125_coefficient_one_trees": true,
+    "reach_blob_locked": true,
+    "repair1_commit_locked": true,
+    "repair1_sign_diagnosis_present": true,
+    "repair5_negative_authority_present": true,
+    "reynolds_rank2_pivots14": true,
+    "shard_blob_locked": true,
+    "source_blob_locked": true,
+    "source_matrix_reversal_exact": true,
+    "source_terms_100000": true,
+    "ten_edges": true
+  },
+  "covariance_results": {
+    "C": {
+      "bad_pairs": [],
+      "exact": true,
+      "psi_exact": true
+    },
+    "T": {
+      "bad_pairs": [],
+      "exact": true,
+      "psi_exact": true
+    }
+  },
+  "domain": "formal Schwinger variables with Psi_K5 != 0",
+  "formal_source_boundary_results": {
+    "C": {
+      "boundary_inverse_exact": true,
+      "exact": true,
+      "extra_sign_rejected": true,
+      "first_mismatch": null,
+      "no_covariance_orientation_sign_rejected": false,
+      "no_source_sign_rejected": false,
+      "no_transpose_rejected": true,
+      "orientation_character": 1,
+      "predicted_hash": "489e72220baf1cab93bfea78051e8c46aabc44d5cf574c8e0c83fbe10e7c967b",
+      "source_fixed_rejected": true,
+      "transported_hash": "489e72220baf1cab93bfea78051e8c46aabc44d5cf574c8e0c83fbe10e7c967b",
+      "transported_nonzero": true
+    },
+    "T": {
+      "boundary_inverse_exact": true,
+      "exact": true,
+      "extra_sign_rejected": true,
+      "first_mismatch": null,
+      "no_covariance_orientation_sign_rejected": true,
+      "no_source_sign_rejected": true,
+      "no_transpose_rejected": true,
+      "orientation_character": -1,
+      "predicted_hash": "994832f0c65a21a8a0b20ea102c96ffda3b6090c6e7a9342e3a4fc8b5cb9ac65",
+      "source_fixed_rejected": true,
+      "transported_hash": "994832f0c65a21a8a0b20ea102c96ffda3b6090c6e7a9342e3a4fc8b5cb9ac65",
+      "transported_nonzero": true
+    }
+  },
+  "gate": "K5_FULL_SOURCE_BOUNDARY_S5_TRANSPORT_SYMBOLIC_GENERATOR_THEOREM",
+  "generated_group_size": 120,
+  "generators": {
+    "C": [1, 2, 3, 4, 0],
+    "T": [1, 0, 2, 3, 4]
+  },
+  "historical_attempt_35200249024": "INVALID_IMPLEMENTATION_NO_SCIENTIFIC_VERDICT",
+  "hypothesis_symbolic_all_alpha_contragredient_trivial_character": true,
+  "interpretation": {
+    "coefficient_level_transport_authority_if_independently_confirmed": true,
+    "complete_qg": false,
+    "finite_part_selector": null,
+    "global_stokes_ibp_verdict": null,
+    "integrated_k5_period_verdict": null,
+    "new_physics_found": false,
+    "physical_corner_verdict": null
+  },
+  "negative_controls": {
+    "T_extra_permutation_sign_rejected": true,
+    "T_omit_transpose_rejected": true,
+    "T_remove_covariance_orientation_sign_rejected": true,
+    "T_remove_source_reversal_sign_rejected": true,
+    "T_source_fixed_object_rejected": true,
+    "finite_witness_path_forbidden": true
+  },
+  "prereg_commit": "4f65cff503db976b6ff52b8519e5fdaa0bf4a4f8",
+  "psi_monomials": 125,
+  "psi_sha256": "9343cf446f95cb8fb95717849355b0afd9f97cd105053118e08b6e8519e1951f",
+  "source_terms": 100000,
+  "status": "PASS_EXACT_SCOPED"
+}
