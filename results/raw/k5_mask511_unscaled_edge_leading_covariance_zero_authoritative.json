@@ -1,0 +1,59 @@
+{
+  "gate": "K5_MASK511_UNSCALED_EDGE_LEADING_COVARIANCE_ZERO",
+  "prereg_commit": "e2a9fa293e9d442c3261a816aaef1b4a6b4d5aef",
+  "implementation_commit": "190e475905ed8252f7183b6856aa65c35fbe7a51",
+  "workflow_head": "043a47adb4ada8baa31813b47a67266dff72c3b4",
+  "source": {
+    "run_id": 35265139804,
+    "job_id": 105350321664,
+    "workflow_id": 360817292,
+    "artifact_id": 10515789933,
+    "artifact_zip_sha256": "2f04456141a58bcc5ca8e047a1f03ba225fca335b2e8b3b6a9c0f8acb2396f1a",
+    "result_json_sha256": "afd6d1f6c9bcd8a6fe2794fdfcad52e2cbc7b93123c934dc236f7e57ee77e23f"
+  },
+  "status": "PASS_EXACT_SCOPED",
+  "classification": "K5_MASK511_UNSCALED_EDGE_FORCES_Q18_ZERO_EXACT_SCOPED",
+  "scope": {
+    "mask": 511,
+    "scaled_edge_indices": [0,1,2,3,4,5,6,7,8],
+    "unscaled_edge_index": 9,
+    "unscaled_edge": [3,4],
+    "unscaled_incidence_row": [0,0,-1,1],
+    "physical_channels": [1,2],
+    "q18_partial_artifacts_consumed": false,
+    "boundary_s5_transport_consumed": false
+  },
+  "exact_facts": {
+    "psi_min_filtration_degree": 3,
+    "adjugate_min_filtration_degree": 2,
+    "degree0_laplacian_is_unique_unscaled_edge_rank1": true,
+    "leading_adjugate_annihilates_unscaled_incidence_left": true,
+    "leading_adjugate_annihilates_unscaled_incidence_right": true,
+    "minimum_covariances_incident_to_unscaled_edge_zero_for_source_orders_0_through_4": true,
+    "minimum_covariance_hierarchy_not_trivially_all_zero": true,
+    "perfect_matching_count": 945,
+    "every_perfect_matching_pairs_unscaled_slot_exactly_once": true,
+    "N_channel_1_q18_zero_exact": true,
+    "N_channel_2_q18_zero_exact": true
+  },
+  "controls": {
+    "malformed_rstar_direction_breaks_kernel": true,
+    "unique_unscaled_edge_row_nonzero": true,
+    "scaled_edge_row_not_all_in_same_kernel": true,
+    "no_q18_partial_scientific_value_consumed": true,
+    "no_boundary_s5_theorem_consumed": true,
+    "no_numerical_sampling_consumed": true
+  },
+  "interpretation_ceiling": {
+    "other_masks_or_orbits": null,
+    "boundary_s5_transport": null,
+    "full_k5_corner_integrability": null,
+    "global_stokes_ibp": null,
+    "invariant_dual_k5_period": null,
+    "physical_finite_part_selector": null,
+    "regulator_independence": null,
+    "predictive_local_k5_amplitude": null,
+    "new_physics_found": false,
+    "complete_quantum_gravity": false
+  }
+}
