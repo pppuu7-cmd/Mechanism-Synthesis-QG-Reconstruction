@@ -1,0 +1,80 @@
+{
+  "source": {
+    "run_id": 35226938480,
+    "job_id": 105220822338,
+    "head_sha": "0e3fcf8b1e25aee6d4031b927418120274b16e60",
+    "artifact_id": 10499776155,
+    "artifact_zip_sha256": "f9f7c841cc4856cc08fa7c516d7d5e2dc1e658191f8300455dab99b0f32e95db",
+    "full_json_sha256": "d1e8defab3896bb576b1c9cf9ff068f1b567b6f37ddc1673d9295afdcaa429d7",
+    "script_sha256": "890f679ea1ea6af0f64c4330cc386a8db105196acb609407f3b305b4afb5d91f"
+  },
+  "gate": "K5_MASK511_PHYSICAL_NUMERATOR_ACTION_EXACT_CORNER_WITNESS",
+  "prereg_commit": "4f8a783b9d1fd8f6e022ccdc9a888d71ecd591c7",
+  "status": "PASS_EXACT_INCONCLUSIVE_SCOPED",
+  "classification": "K5_MASK511_NO_OBSTRUCTION_WITNESS_ON_FROZEN_RAYS_INCONCLUSIVE_SCOPED",
+  "mask": 511,
+  "bits": [0,1,2,3,4,5,6,7,8],
+  "k": 9,
+  "rPsi": 3,
+  "rU": 3,
+  "all_controls_true": true,
+  "boundary_s5_transport_consumed": false,
+  "degree_ceiling_N": 27,
+  "degree_ceiling_B": 31,
+  "interpolation_schedule": {
+    "evaluation_t": [1,34],
+    "N_fit_t": [1,28],
+    "N_holdout_t": [29,34],
+    "B_fit_t": [1,32],
+    "B_holdout_t": [33,34]
+  },
+  "W1": {
+    "weights": [2,3,5,7,11,13,17,19,23,29],
+    "channel_1": {
+      "rN": 19,
+      "N_first_coefficient": "2592955185402665650850105309106393653153544388608/625",
+      "rB": 21,
+      "B_first_coefficient": "16572278927987961709876750710874781407694022211181039616/3125",
+      "interior_exponent": 0,
+      "flux_exponent": 3,
+      "action_exponent": 2
+    },
+    "channel_2": {
+      "rN": 19,
+      "N_first_coefficient": "11183195282231104858561333651791489169872252878592/625",
+      "rB": 21,
+      "B_first_coefficient": "98167950032785051604623054767633834971681363845580314368/3125",
+      "interior_exponent": 0,
+      "flux_exponent": 3,
+      "action_exponent": 2
+    }
+  },
+  "W2": {
+    "weights": [31,37,41,43,47,53,59,61,67,71],
+    "channel_1": {
+      "rN": 19,
+      "N_first_coefficient": "-25391535979978948547985339947831116263782364059720698652098484736/3125",
+      "rB": 21,
+      "B_first_coefficient": "-68378061989147418037159534615777788501131852834194623229056092915653323264/3125",
+      "interior_exponent": 0,
+      "flux_exponent": 3,
+      "action_exponent": 2
+    },
+    "channel_2": {
+      "rN": 19,
+      "N_first_coefficient": "-349047882589072995052179582663535004842802838784207895537435148288/3125",
+      "rB": 21,
+      "B_first_coefficient": "-282152362793035991455781653153840369665930246703723054660988092408902909952/3125",
+      "interior_exponent": 0,
+      "flux_exponent": 3,
+      "action_exponent": 2
+    }
+  },
+  "generic_interior_nonintegrability_witness_exists": false,
+  "action_or_flux_obstruction_witness_exists": false,
+  "physical_corner_finiteness_verdict": null,
+  "global_stokes_ibp_verdict": null,
+  "integrated_period_verdict": null,
+  "finite_part_selector": null,
+  "regulator_independence": null
+}
