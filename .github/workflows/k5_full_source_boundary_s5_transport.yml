@@ -1,0 +1,107 @@
+name: K5 full-source boundary S5 transport object definition
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'prereg/K5_FULL_SOURCE_BOUNDARY_S5_TRANSPORT_OBJECT_DEFINITION.md'
+      - 'scripts/k5_full_source_boundary_s5_transport_shard.py'
+      - 'scripts/k5_full_source_boundary_s5_transport_aggregate.py'
+      - '.github/workflows/k5_full_source_boundary_s5_transport.yml'
+
+jobs:
+  shard:
+    strategy:
+      fail-fast: false
+      matrix:
+        label: [W1_C, W1_Cinv, W1_T, W2_C, W2_Cinv, W2_T]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Verify prospective lineage
+        shell: bash
+        run: |
+          set -euo pipefail
+          git merge-base --is-ancestor 6ac6e7749783b78fb0966450a91d8042c1ad0ca4 HEAD
+          git merge-base --is-ancestor c0869be5c5de1c903a679a9d9df2287b36b6daa8 HEAD
+          git merge-base --is-ancestor 68621727648c59ac4ad4ed991fcfe2ec53895288 HEAD
+      - name: Run exact full-source transport shard
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts/full-source-s5-shards
+          python scripts/k5_full_source_boundary_s5_transport_shard.py \
+            --label '${{ matrix.label }}' \
+            --output 'artifacts/full-source-s5-shards/${{ matrix.label }}.json' \
+            | tee 'artifacts/full-source-s5-shards/${{ matrix.label }}.stdout.txt'
+          sha256sum 'artifacts/full-source-s5-shards/${{ matrix.label }}.json' \
+            | tee 'artifacts/full-source-s5-shards/${{ matrix.label }}.sha256'
+      - name: Upload shard artifact
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: full-source-s5-${{ matrix.label }}
+          path: artifacts/full-source-s5-shards/
+          if-no-files-found: error
+          retention-days: 90
+
+  aggregate:
+    needs: shard
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Verify prospective lineage
+        shell: bash
+        run: |
+          set -euo pipefail
+          git merge-base --is-ancestor 6ac6e7749783b78fb0966450a91d8042c1ad0ca4 HEAD
+          git merge-base --is-ancestor c0869be5c5de1c903a679a9d9df2287b36b6daa8 HEAD
+          git merge-base --is-ancestor 68621727648c59ac4ad4ed991fcfe2ec53895288 HEAD
+      - name: Download all shard artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: full-source-s5-*
+          path: artifacts/full-source-s5-input
+          merge-multiple: true
+      - name: Aggregate exact scientific gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts/full-source-s5-aggregate
+          python scripts/k5_full_source_boundary_s5_transport_aggregate.py \
+            --shards artifacts/full-source-s5-input \
+            --output artifacts/full-source-s5-aggregate/result.json \
+            | tee artifacts/full-source-s5-aggregate/stdout.txt
+          python - <<'PY'
+          import json
+          p='artifacts/full-source-s5-aggregate/result.json'
+          d=json.load(open(p,encoding='utf-8'))
+          allowed={
+            'K5_FULL_SOURCE_BOUNDARY_S5_CONTRAGREDIENT_TRIVIAL_CHARACTER_EXACT_SCOPED',
+            'K5_FULL_SOURCE_BOUNDARY_S5_CONTRAGREDIENT_ORIENTATION_CHARACTER_EXACT_SCOPED',
+            'K5_FULL_SOURCE_BOUNDARY_S5_TRANSPORT_OBSTRUCTION_EXACT_SCOPED',
+            'BLOCKED_OBJECT_DEFINITION',
+          }
+          assert d['classification'] in allowed,d['classification']
+          assert all(d['checks'].values()),d['checks']
+          assert d['physical_corner_coefficients_used'] is False
+          print('CLASSIFICATION=',d['classification'])
+          print('TRIVIAL_GLOBAL=',d['trivial_character_global_exact'])
+          print('ORIENTATION_GLOBAL=',d['orientation_character_global_exact'])
+          print('LANES=',{k:{'trivial':v['trivial_character_exact'],'orientation':v['orientation_character_exact']} for k,v in d['lane_summary'].items()})
+          PY
+          sha256sum artifacts/full-source-s5-aggregate/result.json \
+            | tee artifacts/full-source-s5-aggregate/result_sha256.txt
+      - name: Upload aggregate artifact
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: k5-full-source-boundary-s5-transport
+          path: artifacts/full-source-s5-aggregate/
+          if-no-files-found: error
+          retention-days: 90
