@@ -1,0 +1,95 @@
+name: K5 full-source Boundary-S5 independent Critic
+
+on:
+  push:
+    paths:
+      - 'prereg/K5_FULL_SOURCE_BOUNDARY_S5_TRANSPORT_SYMBOLIC_GENERATOR_THEOREM_CRITIC.md'
+      - 'prereg/K5_FULL_SOURCE_BOUNDARY_S5_CRITIC_CLASSIFIER_EXECUTION_REPAIR.md'
+      - 'scripts/critic_k5_full_source_boundary_s5_symbolic_independent_reconstruction.py'
+      - 'scripts/critic_k5_full_source_boundary_s5_classifier_repair.py'
+      - '.github/workflows/k5_full_source_boundary_s5_independent_critic.yml'
+  workflow_dispatch:
+
+jobs:
+  independent-exact-critic:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Run frozen independent exact reconstruction with classifier repair
+        shell: bash
+        run: |
+          set +e
+          python scripts/critic_k5_full_source_boundary_s5_classifier_repair.py \
+            --output critic_result.json \
+            --raw-output critic_raw_base_result.json \
+            > critic_stdout.txt 2>&1
+          rc=$?
+          echo "$rc" > critic_runner_exit_code.txt
+          cat critic_stdout.txt
+          exit 0
+
+      - name: Validate repaired frozen classification contract
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          p=Path('critic_result.json')
+          assert p.exists(), 'missing repaired critic result'
+          r=json.loads(p.read_text())
+          allowed={
+              'CONFIRMED_EXACT_SCOPED',
+              'REFUTED_EXACT_SCOPED',
+              'BLOCKED',
+              'INVALID_IMPLEMENTATION',
+          }
+          assert r['classification'] in allowed, r.get('classification')
+          assert r['parent_critic_prereg_commit']=='cf8576acb7237b751c26d5b5942aa60874bcd00e'
+          assert r['repair_prereg_commit']=='2d510ae4ef0dab2e15a763a520864869eff2d71b'
+          assert r['base_implementation_commit']=='64a4f4935d0238d67e2d60e0b202f81f1195330a'
+          assert r['base_implementation_blob']=='948f32653872e0920b4450d60d56d48a2a0cc24d'
+          assert r['q18_values_used'] is False
+
+          c=r['classification']
+          if c=='CONFIRMED_EXACT_SCOPED':
+              assert all(r['implementation_validity_A'].values())
+              assert all(r['substantive_theorem_B'].values())
+              assert not r['failed_substantive_conditions']
+          elif c=='REFUTED_EXACT_SCOPED':
+              assert all(r['implementation_validity_A'].values())
+              assert r['failed_substantive_conditions']
+              assert r['refutation_witness_sufficient'] is True
+              assert r['counterexample'] is not None
+          elif c=='BLOCKED':
+              assert r.get('missing')
+          elif c=='INVALID_IMPLEMENTATION':
+              # Invalid execution is a valid terminal classifier outcome, not scientific FAIL.
+              pass
+
+          raw=Path('critic_raw_base_result.json')
+          if c!='BLOCKED' or raw.exists():
+              assert raw.exists(), 'missing immutable raw base reconstruction payload'
+          print('FROZEN_CRITIC_CLASSIFICATION='+c)
+          PY
+
+      - name: Upload immutable Critic authority artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: k5-full-source-boundary-s5-independent-critic
+          path: |
+            critic_result.json
+            critic_raw_base_result.json
+            critic_stdout.txt
+            critic_runner_exit_code.txt
+          if-no-files-found: error
+          retention-days: 90
