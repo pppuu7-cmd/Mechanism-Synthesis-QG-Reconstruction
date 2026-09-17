@@ -1,0 +1,49 @@
+name: K5 34-orbit unscaled-graph Wick filtration theorem
+
+on:
+  push:
+    paths:
+      - 'prereg/K5_34ORBIT_UNSCALED_GRAPH_CLOSURE_WICK_FILTRATION_LOWER_BOUND.md'
+      - 'scripts/k5_34orbit_unscaled_graph_closure_wick_filtration_lower_bound.py'
+      - '.github/workflows/k5_34orbit_unscaled_graph_closure_wick_filtration.yml'
+  workflow_dispatch:
+
+jobs:
+  exact-theorem:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run exact graph-filtration theorem
+        run: |
+          python scripts/k5_34orbit_unscaled_graph_closure_wick_filtration_lower_bound.py \
+            --output result.json
+      - name: Validate frozen classification
+        run: |
+          python - <<'PY'
+          import json
+          r=json.load(open('result.json'))
+          allowed={
+            'K5_34ORBIT_UNSCALED_GRAPH_CLOSURE_WICK_FILTRATION_LOWER_BOUND_EXACT_SCOPED',
+            'K5_34ORBIT_UNSCALED_GRAPH_CLOSURE_BOUND_REFUTED_EXACT_SCOPED',
+            'BLOCKED_OBJECT_DEFINITION',
+            'INVALID_IMPLEMENTATION',
+          }
+          assert r['classification'] in allowed
+          assert r['prereg_commit']=='d4275813a910aab0c62d9c38bc01837cc4160015'
+          assert len(r['orbit_rows'])==32
+          assert r['mask511_LB']==19
+          print('FROZEN_CLASSIFICATION='+r['classification'])
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: k5-34orbit-unscaled-graph-wick-filtration
+          path: result.json
+          if-no-files-found: error
+          retention-days: 90
