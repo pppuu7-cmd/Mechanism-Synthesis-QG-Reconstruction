@@ -10,11 +10,13 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE = ROOT / 'scripts/critic_k5_full_source_boundary_s5_symbolic_independent_reconstruction.py'
-REPAIR_PREREG = ROOT / 'prereg/K5_FULL_SOURCE_BOUNDARY_S5_CRITIC_CLASSIFIER_EXECUTION_REPAIR.md'
+REPAIR1_PREREG = ROOT / 'prereg/K5_FULL_SOURCE_BOUNDARY_S5_CRITIC_CLASSIFIER_EXECUTION_REPAIR.md'
+REPAIR2_PREREG = ROOT / 'prereg/K5_FULL_SOURCE_BOUNDARY_S5_CRITIC_CLASSIFIER_REPAIR2_Q18_BOOLEAN.md'
 PARENT_PREREG = 'cf8576acb7237b751c26d5b5942aa60874bcd00e'
 BASE_IMPLEMENTATION_COMMIT = '64a4f4935d0238d67e2d60e0b202f81f1195330a'
 BASE_EXPECTED_BLOB = '948f32653872e0920b4450d60d56d48a2a0cc24d'
-REPAIR_PREREG_COMMIT = '2d510ae4ef0dab2e15a763a520864869eff2d71b'
+REPAIR1_PREREG_COMMIT = '2d510ae4ef0dab2e15a763a520864869eff2d71b'
+REPAIR2_PREREG_COMMIT = '1440e07b8a3d6295020cba50d0ac73f44d4be641'
 
 
 def git_blob_sha1(path: Path) -> str:
@@ -43,8 +45,10 @@ def main() -> int:
 
     prechecks = {
         'parent_prereg_locked': PARENT_PREREG == 'cf8576acb7237b751c26d5b5942aa60874bcd00e',
-        'repair_prereg_locked': REPAIR_PREREG_COMMIT == '2d510ae4ef0dab2e15a763a520864869eff2d71b',
-        'repair_prereg_present': REPAIR_PREREG.exists(),
+        'repair1_prereg_locked': REPAIR1_PREREG_COMMIT == '2d510ae4ef0dab2e15a763a520864869eff2d71b',
+        'repair2_prereg_locked': REPAIR2_PREREG_COMMIT == '1440e07b8a3d6295020cba50d0ac73f44d4be641',
+        'repair1_prereg_present': REPAIR1_PREREG.exists(),
+        'repair2_prereg_present': REPAIR2_PREREG.exists(),
         'base_implementation_commit_locked': BASE_IMPLEMENTATION_COMMIT == '64a4f4935d0238d67e2d60e0b202f81f1195330a',
         'base_blob_locked': BASE.exists() and git_blob_sha1(BASE) == BASE_EXPECTED_BLOB,
     }
@@ -54,13 +58,18 @@ def main() -> int:
         cwd=str(ROOT), text=True, capture_output=True, check=False,
     )
 
+    common_identity = {
+        'gate': 'FULL_SOURCE_BOUNDARY_S5_SYMBOLIC_TRANSPORT_INDEPENDENT_CRITIC',
+        'parent_critic_prereg_commit': PARENT_PREREG,
+        'repair1_prereg_commit': REPAIR1_PREREG_COMMIT,
+        'repair_prereg_commit': REPAIR2_PREREG_COMMIT,
+        'base_implementation_commit': BASE_IMPLEMENTATION_COMMIT,
+        'base_implementation_blob': None if not BASE.exists() else git_blob_sha1(BASE),
+    }
+
     if not raw_path.exists():
         result = {
-            'gate': 'FULL_SOURCE_BOUNDARY_S5_SYMBOLIC_TRANSPORT_INDEPENDENT_CRITIC',
-            'parent_critic_prereg_commit': PARENT_PREREG,
-            'repair_prereg_commit': REPAIR_PREREG_COMMIT,
-            'base_implementation_commit': BASE_IMPLEMENTATION_COMMIT,
-            'base_implementation_blob': None if not BASE.exists() else git_blob_sha1(BASE),
+            **common_identity,
             'prechecks': prechecks,
             'base_returncode': proc.returncode,
             'base_stdout': proc.stdout[-4000:],
@@ -79,7 +88,7 @@ def main() -> int:
         raw = json.loads(raw_bytes.decode())
     except Exception as exc:
         result = {
-            'gate': 'FULL_SOURCE_BOUNDARY_S5_SYMBOLIC_TRANSPORT_INDEPENDENT_CRITIC',
+            **common_identity,
             'prechecks': prechecks,
             'base_returncode': proc.returncode,
             'raw_sha256': raw_sha,
@@ -95,11 +104,7 @@ def main() -> int:
     missing = raw.get('missing')
     if missing:
         result = {
-            'gate': raw.get('gate'),
-            'parent_critic_prereg_commit': PARENT_PREREG,
-            'repair_prereg_commit': REPAIR_PREREG_COMMIT,
-            'base_implementation_commit': BASE_IMPLEMENTATION_COMMIT,
-            'base_implementation_blob': git_blob_sha1(BASE),
+            **common_identity,
             'raw_sha256': raw_sha,
             'base_returncode': proc.returncode,
             'prechecks': prechecks,
@@ -135,7 +140,16 @@ def main() -> int:
         'all_32_components', 'exactly_100000_original_source_terms',
         'source_module_expected_total', 'source_matrix_reversal_exact',
     )
+    positive_forbidden_names = (
+        'no_numerical_schwinger_witness', 'no_interpolation',
+        'no_floating_tolerance', 'no_fitted_phase_or_character',
+        'no_fitted_2x2_channel_matrix', 'no_researcher_result_import',
+        'no_researcher_symbolic_implementation_import',
+        'pre_invariant_dual_full32_object',
+    )
 
+    # Repair2 changes only this boolean aggregation: q18_values_used is intentionally
+    # false and is checked separately by q18_not_used below.
     A = {
         'wrapper_prechecks': all(prechecks.values()),
         'source_checks': bool(source) and all(bool(v) for v in source.values()),
@@ -143,10 +157,11 @@ def main() -> int:
         'static_kirchhoff_reconstruction': all_named(poly, static_poly_names),
         'static_boundary_source_coverage': all_named(boundary, static_boundary_names),
         'mandatory_malformed_controls': bool(neg) and all(bool(v) for v in neg.values()),
-        'forbidden_methods_absent': bool(forbidden) and all(bool(v) for v in forbidden.values()),
+        'forbidden_methods_absent': bool(forbidden) and all_named(forbidden, positive_forbidden_names),
         'q18_not_used': forbidden.get('q18_values_used') is False and raw.get('interpretation_ceiling', {}).get('q18_result') is None,
     }
 
+    # Frozen substantive theorem set B is unchanged from repair1.
     B = {
         'C_source_boundary_contragredient': bool(gen.get('C', {}).get('exact', False)),
         'T_source_boundary_contragredient': bool(gen.get('T', {}).get('exact', False)),
@@ -186,7 +201,6 @@ def main() -> int:
     if not B['T_matching_orientation_all945']:
         witness_sufficient &= bool(witness['T_matching_bad'])
 
-    # Current base payload does not emit matrix-level exact mismatch witnesses for these branches.
     no_payload_witness_branches = (
         'C_source_inverse_roundtrip', 'T_source_inverse_roundtrip',
         'C_boundary_inverse', 'T_boundary_inverse',
@@ -213,11 +227,7 @@ def main() -> int:
         reason = 'substantive condition failed but frozen exact refutation witness is not fully materialized'
 
     result = {
-        'gate': 'FULL_SOURCE_BOUNDARY_S5_SYMBOLIC_TRANSPORT_INDEPENDENT_CRITIC',
-        'parent_critic_prereg_commit': PARENT_PREREG,
-        'repair_prereg_commit': REPAIR_PREREG_COMMIT,
-        'base_implementation_commit': BASE_IMPLEMENTATION_COMMIT,
-        'base_implementation_blob': git_blob_sha1(BASE),
+        **common_identity,
         'repair_runner_blob': git_blob_sha1(Path(__file__)),
         'raw_sha256': raw_sha,
         'base_returncode': proc.returncode,
