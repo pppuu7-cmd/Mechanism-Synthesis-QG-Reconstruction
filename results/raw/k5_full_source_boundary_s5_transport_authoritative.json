@@ -1,0 +1,83 @@
+{
+  "checks": {
+    "action_blob_locked": true,
+    "all_route_A_B_exact": true,
+    "all_shards_full_32_100000": true,
+    "all_shards_pass": true,
+    "cycle_inverse_group_exact": true,
+    "cycle_reynolds_bilateral_invariance": true,
+    "exact_six_labels": true,
+    "no_physical_corner_coefficients": true,
+    "odd_transposition_negative_no_transpose_control": true,
+    "odd_transposition_square_exact": true,
+    "prereg_locked": true,
+    "repair5_coordinate_extraction_was_exact": true,
+    "repair5_source_fixed_classification_retained": true,
+    "reynolds_pivots_14": true
+  },
+  "classification": "K5_FULL_SOURCE_BOUNDARY_S5_CONTRAGREDIENT_TRIVIAL_CHARACTER_EXACT_SCOPED",
+  "gate": "K5_FULL_SOURCE_BOUNDARY_S5_TRANSPORT_OBJECT_DEFINITION",
+  "interpretation_ceiling": "Full-source order-zero S5 transport only; no corner exponent, Stokes/IBP, K5 period, finite part, regulator independence, downstream QG promotion or complete-QG claim.",
+  "lane_summary": {
+    "W1_C": {
+      "base_dual_coordinates": [["-7973666203975112256/64491594424887893345253125", "0"], ["6403368483349192053627136/73331005831546302670833554071875", "0"]],
+      "orientation_character_exact": true,
+      "orientation_reversals": 4,
+      "permutation_sign": 1,
+      "route_A_B_exact": true,
+      "target_dual_coordinates": [["-7973666203975112256/64491594424887893345253125", "0"], ["6403368483349192053627136/73331005831546302670833554071875", "0"]],
+      "trivial_character_exact": true
+    },
+    "W1_Cinv": {
+      "base_dual_coordinates": [["-7973666203975112256/64491594424887893345253125", "0"], ["6403368483349192053627136/73331005831546302670833554071875", "0"]],
+      "orientation_character_exact": true,
+      "orientation_reversals": 4,
+      "permutation_sign": 1,
+      "route_A_B_exact": true,
+      "target_dual_coordinates": [["-7973666203975112256/64491594424887893345253125", "0"], ["6403368483349192053627136/73331005831546302670833554071875", "0"]],
+      "trivial_character_exact": true
+    },
+    "W1_T": {
+      "base_dual_coordinates": [["-7973666203975112256/64491594424887893345253125", "0"], ["6403368483349192053627136/73331005831546302670833554071875", "0"]],
+      "orientation_character_exact": false,
+      "orientation_reversals": 1,
+      "permutation_sign": -1,
+      "route_A_B_exact": true,
+      "target_dual_coordinates": [["-7973666203975112256/64491594424887893345253125", "0"], ["6403368483349192053627136/73331005831546302670833554071875", "0"]],
+      "trivial_character_exact": true
+    },
+    "W2_C": {
+      "base_dual_coordinates": [["-22008552138803478542181248/280876914308382471860744760929665715", "0"], ["-1072775955071630801533159714688/17865671408670252317830566980107464964605", "0"]],
+      "orientation_character_exact": true,
+      "orientation_reversals": 4,
+      "permutation_sign": 1,
+      "route_A_B_exact": true,
+      "target_dual_coordinates": [["-22008552138803478542181248/280876914308382471860744760929665715", "0"], ["-1072775955071630801533159714688/17865671408670252317830566980107464964605", "0"]],
+      "trivial_character_exact": true
+    },
+    "W2_Cinv": {
+      "base_dual_coordinates": [["-22008552138803478542181248/280876914308382471860744760929665715", "0"], ["-1072775955071630801533159714688/17865671408670252317830566980107464964605", "0"]],
+      "orientation_character_exact": true,
+      "orientation_reversals": 4,
+      "permutation_sign": 1,
+      "route_A_B_exact": true,
+      "target_dual_coordinates": [["-22008552138803478542181248/280876914308382471860744760929665715", "0"], ["-1072775955071630801533159714688/17865671408670252317830566980107464964605", "0"]],
+      "trivial_character_exact": true
+    },
+    "W2_T": {
+      "base_dual_coordinates": [["-22008552138803478542181248/280876914308382471860744760929665715", "0"], ["-1072775955071630801533159714688/17865671408670252317830566980107464964605", "0"]],
+      "orientation_character_exact": false,
+      "orientation_reversals": 1,
+      "permutation_sign": -1,
+      "route_A_B_exact": true,
+      "target_dual_coordinates": [["-22008552138803478542181248/280876914308382471860744760929665715", "0"], ["-1072775955071630801533159714688/17865671408670252317830566980107464964605", "0"]],
+      "trivial_character_exact": true
+    }
+  },
+  "orientation_character_global_exact": false,
+  "physical_corner_coefficients_used": false,
+  "prereg_commit": "6ac6e7749783b78fb0966450a91d8042c1ad0ca4",
+  "scientific_verdict": "K5_FULL_SOURCE_BOUNDARY_S5_CONTRAGREDIENT_TRIVIAL_CHARACTER_EXACT_SCOPED",
+  "source_fixed_repair5_classification": "BOUNDARY_S5_REPRESENTATION_UNRESOLVED_EXACT",
+  "trivial_character_global_exact": true
+}
