@@ -1,0 +1,59 @@
+name: K5 mask511 physical numerator/action exact corner witness
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'prereg/K5_MASK511_PHYSICAL_NUMERATOR_ACTION_EXACT_CORNER_WITNESS.md'
+      - 'scripts/k5_mask511_physical_numerator_action_exact_corner_witness.py'
+      - '.github/workflows/k5_mask511_physical_numerator_action_exact_corner_witness.yml'
+jobs:
+  exact-mask511:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run exact mask511 physical corner witness gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts
+          python scripts/k5_mask511_physical_numerator_action_exact_corner_witness.py \
+            --output artifacts/k5_mask511_physical_numerator_action_exact_corner_witness.json \
+            | tee artifacts/stdout.txt
+          python - <<'PY'
+          import json
+          p='artifacts/k5_mask511_physical_numerator_action_exact_corner_witness.json'
+          d=json.load(open(p,encoding='utf-8'))
+          allowed={
+            'FAIL_ORDINARY_LOCAL_INTEGRABILITY_MASK511_PHYSICAL_CHANNEL_EXACT_SCOPED',
+            'K5_MASK511_ACTION_OR_FLUX_OBSTRUCTION_EXACT_SCOPED',
+            'K5_MASK511_NO_OBSTRUCTION_WITNESS_ON_FROZEN_RAYS_INCONCLUSIVE_SCOPED',
+          }
+          assert d['status']!='INVALID_IMPLEMENTATION',d
+          assert d['classification'] in allowed,d['classification']
+          assert all(d['checks'].values()),d['checks']
+          assert all(d['controls'].values()),d['controls']
+          assert d['boundary_s5_transport_consumed'] is False
+          assert d['global_stokes_ibp_verdict'] is None
+          assert d['integrated_period_verdict'] is None
+          assert d['finite_part_selector'] is None
+          assert d['regulator_independence'] is None
+          print('CLASSIFICATION=',d['classification'])
+          print('GENERIC_INTERIOR_NONINTEGRABILITY=',d['generic_interior_nonintegrability_witness_exists'])
+          for r in d['results']:
+              print(r['weight_name'],[(c['channel'],c['rN'],c['rB'],c['interior_exponent'],c['flux_exponent'],c['action_exponent']) for c in r['channels']])
+          PY
+          sha256sum artifacts/k5_mask511_physical_numerator_action_exact_corner_witness.json | tee artifacts/result_sha256.txt
+          sha256sum scripts/k5_mask511_physical_numerator_action_exact_corner_witness.py | tee artifacts/script_sha256.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: k5-mask511-physical-numerator-action-exact-corner-witness
+          path: artifacts/
+          if-no-files-found: error
+          retention-days: 90
