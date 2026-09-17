@@ -1,56 +1,71 @@
 ## STATE_READ
-Fresh recovery used GitHub repository/Actions authority only. Re-read current `main`, `status/CURRENT.md`, Iter077 source-order/contact errata authority, recent substantive commits, preregistrations, result/provenance notes, claim locks and Actions runs/jobs/artifacts/hashes. Iter077I remains locked to historical failure `34786550378` plus corrected authoritative source-order alias head `102fc7268b732bead5dfcf6d61fe4479ae1d3030` / run `34786586785`; Iter077E/F remain quarantined and published spectral `i epsilon` is retained. Symbolic full-source boundary S5 transport remains Researcher authority only because Critic run `35207545326` is preparatory `PASS_CODE_AUDIT_SCOPED` with `scientific_verdict=null`. Direct q18 production `35259123078` remains non-terminal with eight exact shards running; it was not duplicated and no partial shard value was consumed. During recovery a newer terminal repository state appeared: the prospectively frozen orthogonal `K5_MASK511_UNSCALED_EDGE_LEADING_COVARIANCE_ZERO` gate completed successfully and was reconciled into durable raw/result/provenance/CURRENT before this handoff.
+Fresh recovery used GitHub repository/Actions authority only. Iter077I remains locked to historical failure `34786550378` plus corrected source-order alias head `102fc7268b732bead5dfcf6d61fe4479ae1d3030` / run `34786586785`; Iter077E/F remain quarantined and published spectral `i epsilon` is retained. `status/CURRENT.md` was stale and was reconciled before repair work. Direct q18 run `35259123078` is terminal cancelled with all eight shards cancelled and aggregate skipped; no partial value is authority. Independent Boundary-S5 Critic authority is now terminal `CONFIRMED_EXACT_SCOPED`, run `35267432939`, so the previous coefficient-transport firewall is closed. Historical 34-orbit resolver run `35268238924` terminally classified itself `INVALID_IMPLEMENTATION`; no provisional N/B value from it is authority. Orthogonal graph-filtration run `35268738542` failed before science and is quarantined.
 
 ## CRQN_LAYER
-Candidate remains `CRQN v0.2`, `CARRIER_SELECTED` only for established source-backed F1-F8 structure. Active layer is the full source-faithful all-`j=1/2` K5 projective/order-eight boundary problem. Predictive local K5 amplitude remains `BLOCKED_CURRENT_CANDIDATE_LOCAL_AMPLITUDE`; supported-extension freedom remains `dim_C F_8=377`; no physical finite-part selector or downstream F9/G3 closure exists.
+`CRQN v0.2` remains `CARRIER_SELECTED` only for established source-backed F1-F8. Predictive local K5 amplitude remains blocked. `dim_C F_8=377`; no physical finite-part/joint selector exists.
 
-## ACTIVE_FRONT
-`K5_MASK511_STRUCTURAL_DIVISIBILITY_Q18_REDUCTION / FULL_SOURCE_BOUNDARY_S5_SYMBOLIC_TRANSPORT_INDEPENDENT_CRITIC / K5_34_ORBIT_EXACT_LEADING_COEFFICIENT_CANCELLATION_RESOLUTION / K5_34_ORBIT_PHYSICAL_NUMERATOR_ACTION_FLUX_VALUATION_AUDIT / GLOBAL_PROJECTIVE_STOKES_IBP_RELATION / INVARIANT_DUAL_K5_PERIODS / PHYSICAL_FINITE_PART_OR_JOINT_K5_SELECTOR / REGULATOR_INDEPENDENCE`.
+## LATEST_TERMINAL_SCIENCE
+Latest controlling local science before the active resolver is: independently confirmed coefficient-level full-source Boundary-S5 transport plus the exact labeled mask-511 structural result `r_N=19`, `r_B=21`. Independent Critic Boundary-S5 authority: run `35267432939`, job `105357990301`, artifact `10516529280`, ZIP SHA256 `087ee496daf8a9aafa255d908c062fb8bba2a5481addef10da6d7b4b170cc479`, repaired result SHA256 `b0a0b94e22d76600c27c148c0072741b5e04a8652939ed58a228b9fbebda70ee`, `q18_values_used=false`.
 
-## TARGET_GATE
-Executed exactly one main Researcher scientific gate: `K5_MASK511_UNSCALED_EDGE_LEADING_COVARIANCE_ZERO`. It was prospectively frozen as an outcome-blind analytic/structural companion while the direct q18 production was already non-terminal. The gate tests whether the unique unscaled edge in labeled mask `511` forces the complete physical numerator degree-18 slice to vanish structurally, without reading any q18 shard or aggregate value.
+## ACTIVE_RESEARCHER_GATE
+Already-frozen `K5_34_ORBIT_EXACT_LEADING_COEFFICIENT_CANCELLATION_RESOLUTION`, parent prereg commit `d6b0e805101c8590eafac71398cc2b1466691752`, is active under prospectively frozen control-only repair 1 commit `2193692c90d8ee1fa097200dbbac6ab70fd3a159`. Repaired production run is `35271187040`, head `42daba28fd0c2545be386f63e89f6bcafdbed9a3`; all eight deterministic shards are currently `in_progress`. No partial shard coefficient is consumed.
 
-## DEPENDENCY_TESTED
-Tests `canonical K5 reduced Laplacian/adjugate + corrected ten-edge ordering + source order-four covariance hierarchy + complete ten-slot Wick perfect-matching combinatorics -> exact mask511 degree-18 physical numerator slice`. It is independent of the pending Boundary-S5 transport theorem and independent of direct q18 production values. Combined only after terminality with already-authoritative `q>=18`, nonzero q19 ray coefficients, `B_v(F^r) subset F^(r+2)` and nonzero q21 ray coefficients, it closes the labeled mask511 structural orders.
+## ACTIVE_CRITIC_GATE
+No new Critic gate is required for Boundary-S5: independent reconstruction is terminally confirmed. AUTOMATION A does not imitate or re-run Critic work.
 
-## WHY_MAX_INFORMATION_GAIN
-The already-running q18 direct construction could not be duplicated or partially consumed. The unscaled-edge theorem was a cheap fatal structural test of the only remaining numerator layer: if the leading adjugate failed to annihilate the unique unscaled incidence direction, the proposed structural q18 cancellation mechanism would be refuted; if it passed, the entire degree-18 physical numerator layer would vanish independently of all retained source/matching coefficients. This maximized falsifiability and downstream unlocks without competing with the active production.
+## Q18_STATUS
+Direct q18 run `35259123078` is terminal cancelled; aggregate job was skipped. It has no scientific authority. The same logical mask-511 q18 question is already closed by the cheaper exact structural theorem `N_{1,18}=N_{2,18}=0`, yielding labeled mask-511 `r_N=19`, `r_B=21` together with existing lower/nonzero/filtration authorities.
 
-## SOURCE_AUTHORITY
-Canonical full all-32/100000-term physical numerator DAG: commit `666aa6e61f62bbfff456f6be7995ce3a65f2b633`, run `35044686796`, DAG SHA256 `f8eaaa5c7923497a67f0354a2d59475f4b6d82022e032fc005c1d9d2add69992`. Corrected canonical ten-edge source ordering from Iter077I. Parent mask511 structural source/code object from `scripts/k5_mask511_structural_divisibility_lower_coefficients.py`. Terminal annihilator filtration theorem run `35250988892` remains separately authoritative. No Boundary-S5 transport theorem and no q18 production value is consumed.
+## BOUNDARY_S5_CRITIC_STATUS
+`CONFIRMED_EXACT_SCOPED`. Durable authority: `results/raw/k5_full_source_boundary_s5_independent_critic_authoritative.json`. The old static audit with `scientific_verdict=null` is no longer the controlling dependency state.
 
-## PREREG
-Prospective scientific contract `prereg/K5_MASK511_UNSCALED_EDGE_LEADING_COVARIANCE_ZERO.md`, commit `e2a9fa293e9d442c3261a816aaef1b4a6b4d5aef`, was frozen before implementation/result. It fixed the hypothesis, exact object, dependencies, analytic mechanism, eight implementation checks, PASS/FAIL/INVALID taxonomy and interpretation ceiling. The contract explicitly prohibited reading q18 shard/aggregate values, Boundary-S5 transport, numerical sampling or interpolation.
-
-## FROZEN_INPUTS
-Labeled mask `511`; canonical edge slots `0,...,8` scaled and edge slot `9=(3,4)` unscaled; reduced incidence row of edge 9; exact reduced Laplacian `L`, Kirchhoff determinant `Psi_K5`, exact adjugate `adj L`, source matrix `Q`, source-series orders `n=0,...,4`, all ten source slots and the exhaustive 945 perfect matchings. Exact rational sparse-polynomial arithmetic only. Negative control: perturb the leading adjugate in the unscaled incidence direction and require the kernel condition to break. No q18 partial artifact, no Boundary-S5 theorem, no floating tolerance and no interpolation.
+## CURRENT_HIGHEST_DAG_BLOCKER
+The immediate DAG blocker is a valid complete 64-component N/B exact-order aggregate from the frozen 34-orbit resolver. Run 1 is invalid because route controls used object-identity polynomial equality and its S5 validation used a source-fixed coefficient object instead of simultaneous source endpoint/orientation plus boundary transport.
 
 ## WORK_PERFORMED
-Implementation commit `190e475905ed8252f7183b6856aa65c35fbe7a51` reconstructed the frozen canonical DAG prefix and verified source/code hashes. It extracted the filtration-degree-zero Laplacian and exact degree-two leading adjugate `A_2=in_2(adj L)`, checked left/right annihilation of the unscaled incidence row, recursively built the minimum covariance hierarchy through source order four, exhaustively checked every covariance incident to source slot 9, verified nontrivial covariances away from slot 9, enumerated all 945 perfect matchings and confirmed each pairs slot 9 exactly once. A malformed leading-adjugate perturbation broke the kernel as frozen. Production run `35265139804` completed terminal success; full artifact JSON was inspected only after terminality. Durable raw authority, result note, provenance ledger and CURRENT were then reconciled. The independent direct q18 run `35259123078` remains untouched and non-terminal.
+Reconciled current authority and quarantined invalid runs. Frozen repair 1 before code changes. Added repair core `scripts/k5_34_orbit_exact_leading_coefficient_core_repair1.py`, which patches only structural polynomial equality and constructs the source-transported invariant-dual perfect-matching coefficient object from the confirmed full-source transport. Updated shard code to compare physical coefficients after simultaneous source transport plus permuted covariance geometry. Frozen scientific representatives, W1/W2, channels, 945 matchings, DAG, degree ceilings, U authority, exact arithmetic and classifier meanings are unchanged. Launched exactly one repaired resolver production; no competing graph-filtration repair was opened.
 
 ## RESULT
-Workflow/head `043a47adb4ada8baa31813b47a67266dff72c3b4`; run `35265139804`; job `105350321664`; terminal `success`; artifact `10515789933`; artifact ZIP SHA256 `2f04456141a58bcc5ca8e047a1f03ba225fca335b2e8b3b6a9c0f8acb2396f1a`; production JSON SHA256 `afd6d1f6c9bcd8a6fe2794fdfcad52e2cbc7b93123c934dc236f7e57ee77e23f`. Exact facts: `Psi_K5` begins at mask filtration degree 3; `adj L` begins at degree 2; the degree-zero Laplacian is exactly `alpha_9 r_*^T r_*` with `r_*=(0,0,-1,1)`; `A_2 r_*^T=0` and `r_* A_2=0`; every minimum-filtration covariance incident to edge slot 9 vanishes for `n=0,...,4`; the hierarchy is nontrivial away from slot 9; all 945 perfect matchings pair slot 9 exactly once. Hence `N_{1,18}=N_{2,18}=0` as exact angular-polynomial identities in the frozen labeled mask511 scope.
+Active repaired run `35271187040` is non-terminal. At the latest check all eight shard jobs are `in_progress` on `Run exact orbit shard`; aggregate has not started. No substantive N/B order is reported.
 
 ## CLASSIFICATION
-`K5_MASK511_UNSCALED_EDGE_FORCES_Q18_ZERO_EXACT_SCOPED`, Researcher status **`PASS_EXACT_SCOPED`**.
+`NONTERMINAL_NO_SCIENTIFIC_VERDICT` for repair-1 production. Historical run `35268238924` remains `INVALID_IMPLEMENTATION` and has zero scientific coefficient authority.
 
-## NEW_SCIENTIFIC_FACT
-The mask511 degree-18 cancellation is structural rather than an accidental W1/W2 ray cancellation: the unique unscaled edge forces one exact zero minimum covariance factor in every five-pair Wick matching. Therefore both physical degree-18 angular-polynomial slices vanish identically before the retained source/matching coefficients are used. Together with the already-authoritative structural lower bound `q>=18`, nonzero q19 numerator ray coefficients, annihilator filtration shift `+2`, and nonzero q21 action ray coefficients, this gives exact labeled mask511 structural orders `r_N=19` and `r_B=21` in the frozen scope. The still-running q18 aggregate remains an independent direct construction check and is not pre-empted or partially consumed.
+## NEW_EXACT_FACT
+No new physical coefficient fact is claimed from the active run. New durable dependency fact: coefficient-level Boundary-S5 transport is independently confirmed, and the historical resolver failure is localized to two implementation/control defects rather than a physical covariance obstruction.
+
+## COUNTEREXAMPLE_STATUS
+No valid physical counterexample has emerged from the invalid historical resolver because its substantive values are quarantined. A genuine nonzero/divergent corner found by the repaired exact resolver remains an admissible successful obstruction outcome.
+
+## F8_DIMENSION_STATUS
+`dim_C F_8=377` unchanged. No admissible physical selector has reduced this freedom.
+
+## PREDICTIVE_LOCAL_K5_AMPLITUDE_STATUS
+`BLOCKED_CURRENT_CANDIDATE_LOCAL_AMPLITUDE`. Valid 64-component corner-order authority and subsequent physical N/action/flux audit are still required before global analytic questions.
+
+## PHYSICAL_SELECTOR_STATUS
+None. No convenience, norm-minimizing, aesthetic or fit-based selector is permitted. Any selector must be independently motivated, prospectively frozen and report admissible dimension before/after.
+
+## REGULATOR_INDEPENDENCE_STATUS
+Not established and not yet admissible as a final claim because no physical finite-part definition/selector exists.
+
+## SCIENTIFIC_FRONTIER_CHANGE
+The Boundary-S5 independent-Critic blocker is closed. The frontier moved to exact 64-component physical N/B leading-order resolution. Historical resolver run 1 did not answer it because implementation validity failed; repair 1 is now the sole authoritative Researcher execution.
 
 ## CLAIM_CEILING
-This result is only for labeled mask `511` in the frozen all-`j=1/2` construction. It does not establish another mask/orbit, independent coefficient-level Boundary-S5 transport, all-orbit cancellation, boundary-flux cancellation, full K5 corner integrability, causal-vertex finiteness/divergence, global Stokes/IBP, invariant-dual K5 periods, reduction of `dim_C F_8=377`, a physical finite-part selector, regulator independence, F9/G3/G8/K5 promotion, `NEW_PHYSICS_FOUND`, or complete quantum gravity. Published spectral `i epsilon` is retained.
-
-## ARTIFACTS
-Authoritative theorem production: run `35265139804`; job `105350321664`; artifact `10515789933`; ZIP SHA256 `2f04456141a58bcc5ca8e047a1f03ba225fca335b2e8b3b6a9c0f8acb2396f1a`; result JSON SHA256 `afd6d1f6c9bcd8a6fe2794fdfcad52e2cbc7b93123c934dc236f7e57ee77e23f`. Durable machine authority: `results/raw/k5_mask511_unscaled_edge_leading_covariance_zero_authoritative.json`. Scientific result: `results/K5_MASK511_UNSCALED_EDGE_LEADING_COVARIANCE_ZERO_RESULT.md`. Provenance: `status/K5_MASK511_UNSCALED_EDGE_LEADING_COVARIANCE_ZERO_PROVENANCE_LEDGER.md`. Terminal status note: `status/K5_MASK511_UNSCALED_EDGE_THEOREM_TERMINAL.md`. Direct q18 production `35259123078` is still non-terminal and has no aggregate authority at this cut.
+No full K5 cancellation/non-cancellation theorem, no causal-vertex finiteness/divergence theorem, no global Stokes/IBP, no invariant-dual K5 period, no physical finite-part selector, no reduction of `F_8=377`, no regulator independence, no F9/G3/G8/K5 promotion, no `NEW_PHYSICS_FOUND`, no complete-QG claim.
 
 ## COMMITS
-Scientific prereg `e2a9fa293e9d442c3261a816aaef1b4a6b4d5aef`; implementation `190e475905ed8252f7183b6856aa65c35fbe7a51`; workflow/head `043a47adb4ada8baa31813b47a67266dff72c3b4`; durable raw `2ec32d64b9dc2d428b6c2773bc9406ecf82d72e1`; result `0a5fdd2954be5dac2a79bd4fca4e653a95c507c8`; provenance ledger `4bd54af6f348bc07f61ae6388fdaf8d9a39bf6e9`; terminal status note `c468f8214cfb1fb6af17025cdefba346f8fbd340`; CURRENT reconciliation `440e192d41d142b73c897442f686fdb19ef638e3`.
+Boundary/current reconciliation `c74b06382ad26b706ec31f0babab40aba6dcc4a5`; invalid resolver ledger `d16b3012833c350bce0718e23262370cd8e548aa`; invalid graph-filtration ledger `598bb8e6b55b8919c543aa884358cb8cf14d7e00`; repair prereg `2193692c90d8ee1fa097200dbbac6ab70fd3a159`; repair core `55e87d7ee3abef27f898e652db9125159ad22f6d`; repaired shard/head `42daba28fd0c2545be386f63e89f6bcafdbed9a3`; active CURRENT reconciliation `12fc562bfd8ef91591388a1f9887b43b94c95cdd`.
 
-## CRQN_CHAIN_EFFECT
-`F1-F8 carrier -> source-ordered K5 object -> F_8 ambiguity dim=377 -> 16-parameter germ CONFIRMED -> K3 ZERO CONFIRMED -> K4 ZERO CONFIRMED -> K5 projective object DEFINED -> degree-4 annihilator CONFIRMED -> physical N_1,N_2 DAG MATERIALIZED -> constant-2x2 closure FALSIFIED CONFIRMED -> corrected tangent-flux geometry CONFIRMED -> 34-orbit physical audit PARTIAL_BLOCKED -> symbolic full-source S5 transport PASS Researcher / independent Critic reconstruction pending -> U_Z support/order authority RESOLVED -> labeled mask511 N18 ZERO EXACT -> labeled mask511 r_N=19,r_B=21 EXACT -> direct q18 construction ACTIVE NONTERMINAL independent check -> 64-component physical resolver BLOCKED pending transport Critic -> global Stokes/IBP ? -> K5 periods ? -> physical finite part ? -> composition/G3 ? -> regulator independence ? -> RG ? -> continuum ? -> spin-2 ? -> Einstein/GR ? -> matter/QFT ? -> prediction ?`.
+## ACTIONS_RUNS
+Boundary-S5 Critic terminal `35267432939`; direct q18 terminal cancelled `35259123078`; historical resolver invalid `35268238924`; graph-filtration invalid `35268738542`; active repaired resolver `35271187040`.
 
-## STILL_BLOCKED
-Terminal complete direct q18 aggregate as an independent check; terminal independent Critic scientific reconstruction of symbolic full-source Boundary-S5 transport; 64 physical N/B cancellation orders outside the labeled mask511 theorem; 34-orbit physical reclassification; global projective Stokes/IBP; invariant-dual K5 periods; remaining order-eight sectors; physical finite-part selector and all 377 extension degrees; global patching; E3/E4/E6; G3; regulator removal/independence; RG; continuum Lorentzian geometry; massless spin-2; GR; matter/QFT IR; normalized falsifiable prediction.
+## ARTIFACTS
+Boundary-S5 Critic artifact `10516529280`, ZIP SHA256 `087ee496daf8a9aafa255d908c062fb8bba2a5481addef10da6d7b4b170cc479`. Historical invalid resolver aggregate artifact `10517943520`, ZIP SHA256 `dbae89ae18674cfe8d518e507e330b6b92b25c22325fe3b8a077955a6856863e`, quarantined for substantive values. Repaired resolver has no terminal aggregate artifact yet.
 
-## NEXT_RECOMMENDED_GATE
-On next recovery inspect direct q18 run `35259123078` first. If still non-terminal, do not duplicate it and do not read partial shard values. If terminal valid, reconcile only its complete aggregate against the structural theorem. Independently inspect for durable terminal scientific Critic authority on the symbolic full-source Boundary-S5 theorem; Researcher must not imitate Critic. Only after coefficient-level transport is independently confirmed may the already-frozen 64-component resolver `d6b0e805101c8590eafac71398cc2b1466691752` execute unchanged. Global Stokes/IBP, K5 periods, finite-part selection and every downstream QG arrow remain separate gates.
+## NEXT_HIGHEST_INFORMATION_GATE
+First recover run `35271187040`. If still non-terminal, do not duplicate and do not read partial coefficient values. If terminal, verify all eight deterministic shards, exact 32-orbit coverage, route/source/S5 controls, independent interpolation classes, projective-normal authority and mask511 reproduction before consuming the aggregate. Only a valid 64-component aggregate may unlock `K5_34_ORBIT_PHYSICAL_NUMERATOR_ACTION_FLUX_VALUATION_AUDIT`. If the repaired aggregate is again invalid, seek an exact no-go/transport theorem before another patch rather than escalating brute force.
+
+## WHY_THIS_GATE_MAXIMIZES_INFORMATION_GAIN
+Boundary-S5 transport is now independently closed, so the frozen 64-component resolver is the nearest gate that can expose either exact physical corner cancellations or a concrete obstruction across every proper K5 orbit. It directly unlocks the physical N/action/flux audit and potentially global Stokes/period questions. Repairing its two isolated control/object-definition defects is cheaper and more falsifiable than opening another algebraic surrogate, increasing runtime, or jumping prematurely to Stokes, selector or regulator questions.
