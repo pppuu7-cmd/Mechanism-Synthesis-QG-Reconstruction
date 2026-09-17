@@ -1,0 +1,110 @@
+name: K5 exact cancellation unprojected boundary dual S5 diagnostic repair4
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'prereg/K5_EXACT_CANCELLATION_UNPROJECTED_BOUNDARY_DUAL_S5_DIAGNOSTIC_REPAIR4.md'
+      - 'scripts/k5_exact_cancellation_unprojected_boundary_dual_s5_shard_repair4.py'
+      - 'scripts/k5_exact_cancellation_unprojected_boundary_dual_s5_aggregate_repair4.py'
+      - '.github/workflows/k5_exact_cancellation_unprojected_boundary_dual_s5_diagnostic_repair4.yml'
+
+jobs:
+  shard:
+    strategy:
+      fail-fast: false
+      matrix:
+        label: [W1_base, W1_cycle, W1_inverse, W2_base, W2_cycle, W2_inverse]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Verify prospective lineage
+        shell: bash
+        run: |
+          set -euo pipefail
+          git merge-base --is-ancestor 06049f0a575a07d1e35afcea143fbb800101071e HEAD
+          git merge-base --is-ancestor 438a97c455b6b3fbfb5f70c9cbe370142c166e6d HEAD
+          git merge-base --is-ancestor 41f26f8e314f4ab1213fe6a681b69d2c87e00d68 HEAD
+          git merge-base --is-ancestor d6b0e805101c8590eafac71398cc2b1466691752 HEAD
+      - name: Run exact frozen alpha shard
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts/repair4-shards
+          python scripts/k5_exact_cancellation_unprojected_boundary_dual_s5_shard_repair4.py \
+            --label '${{ matrix.label }}' \
+            --output 'artifacts/repair4-shards/${{ matrix.label }}.json'
+          sha256sum 'artifacts/repair4-shards/${{ matrix.label }}.json' | tee 'artifacts/repair4-shards/${{ matrix.label }}.sha256'
+      - name: Upload shard artifact
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: boundary-dual-repair4-${{ matrix.label }}
+          path: artifacts/repair4-shards/
+          retention-days: 90
+          if-no-files-found: error
+
+  aggregate:
+    needs: shard
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Verify prospective lineage
+        shell: bash
+        run: |
+          set -euo pipefail
+          git merge-base --is-ancestor 06049f0a575a07d1e35afcea143fbb800101071e HEAD
+          git merge-base --is-ancestor 438a97c455b6b3fbfb5f70c9cbe370142c166e6d HEAD
+          git merge-base --is-ancestor 41f26f8e314f4ab1213fe6a681b69d2c87e00d68 HEAD
+          git merge-base --is-ancestor d6b0e805101c8590eafac71398cc2b1466691752 HEAD
+      - name: Download all complete shard artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: boundary-dual-repair4-*
+          path: artifacts/repair4-input
+          merge-multiple: true
+      - name: Aggregate exact parent diagnostic
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts/repair4-aggregate
+          python scripts/k5_exact_cancellation_unprojected_boundary_dual_s5_aggregate_repair4.py \
+            --shards artifacts/repair4-input \
+            --output artifacts/repair4-aggregate/result.json \
+            | tee artifacts/repair4-aggregate/stdout.txt
+          python - <<'PY'
+          import json
+          p='artifacts/repair4-aggregate/result.json'
+          d=json.load(open(p,encoding='utf-8'))
+          allowed={
+            'BOUNDARY_DUAL_CONTRAGREDIENT_S5_EXACT',
+            'BOUNDARY_S5_OTHER_REPRESENTATION_EXACT',
+            'DUAL_COORDINATE_EXTRACTION_MISMATCH_EXACT',
+            'BOUNDARY_S5_REPRESENTATION_UNRESOLVED_EXACT',
+          }
+          assert d['classification'] in allowed,d['classification']
+          assert all(d['checks'].values()),d['checks']
+          assert all(d['execution_repair4_checks'].values()),d['execution_repair4_checks']
+          assert d['physical_corner_coefficients_used'] is False
+          assert d['scientific_verdict'] is None
+          assert len(d['shard_manifest'])==6
+          print('CLASSIFICATION=',d['classification'])
+          print('LAW=',d['unique_consistent_law'])
+          print('DUAL_INVARIANT=',d['dual_coordinates_invariant_all'])
+          print('COORD_EXTRACTION=',d['coordinate_extraction_exact_all'])
+          PY
+          sha256sum artifacts/repair4-aggregate/result.json | tee artifacts/repair4-aggregate/result_sha256.txt
+      - name: Upload aggregate artifact
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: k5-exact-cancellation-unprojected-boundary-dual-s5-diagnostic-repair4
+          path: artifacts/repair4-aggregate/
+          retention-days: 90
+          if-no-files-found: error
