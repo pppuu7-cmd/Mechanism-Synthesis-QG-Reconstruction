@@ -1,0 +1,58 @@
+name: K5 projective-normal polynomial numerator degree ceiling
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'prereg/K5_PROJECTIVE_NORMAL_POLYNOMIAL_NUMERATOR_DEGREE_CEILING.md'
+      - 'scripts/k5_projective_normal_polynomial_numerator_degree_ceiling.py'
+      - 'results/raw/k5_order8_s5_deg4_kirchhoff_annihilator_production_summary.json'
+      - '.github/workflows/k5_projective_normal_polynomial_numerator_degree_ceiling.yml'
+jobs:
+  exact-support:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run exact projective-normal support gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts
+          python scripts/k5_projective_normal_polynomial_numerator_degree_ceiling.py \
+            --output artifacts/k5_projective_normal_polynomial_numerator_degree_ceiling.json \
+            | tee artifacts/stdout.txt
+          python - <<'PY'
+          import json
+          p='artifacts/k5_projective_normal_polynomial_numerator_degree_ceiling.json'
+          d=json.load(open(p,encoding='utf-8'))
+          allowed={
+            'K5_PROJECTIVE_NORMAL_NUMERATOR_DEGREE5_COMPLETE_SUPPORT_EXACT_SCOPED',
+            'K5_PROJECTIVE_NORMAL_NUMERATOR_DEGREE5_CEILING_WITH_IDENTICALLY_ZERO_PROPER_FACES_EXACT_SCOPED',
+          }
+          assert d['status']=='PASS_EXACT_SCOPED',d
+          assert d['classification'] in allowed,d['classification']
+          assert all(d['controls'].values()),d['controls']
+          assert d['proper_labeled_subset_count']==1022
+          assert d['subset_orbit_count']==34
+          assert d['proper_orbit_count']==32
+          assert d['formula']['U_degree_ceiling']==5
+          assert d['formula']['linear_corner_t_support']==[0,1,2,3,4,5]
+          assert d['scientific_corner_integrability_verdict'] is None
+          assert d['global_stokes_ibp_verdict'] is None
+          assert d['integrated_period_verdict'] is None
+          print('CLASSIFICATION=',d['classification'])
+          print('PROPER_ZERO_COUNT=',d['proper_identically_zero_count'])
+          PY
+          sha256sum artifacts/k5_projective_normal_polynomial_numerator_degree_ceiling.json | tee artifacts/result_sha256.txt
+          sha256sum scripts/k5_projective_normal_polynomial_numerator_degree_ceiling.py | tee artifacts/script_sha256.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: k5-projective-normal-polynomial-degree-ceiling
+          path: artifacts/
+          if-no-files-found: error
+          retention-days: 90
