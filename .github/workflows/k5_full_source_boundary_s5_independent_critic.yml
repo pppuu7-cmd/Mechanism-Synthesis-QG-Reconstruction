@@ -1,5 +1,6 @@
 name: K5 full-source Boundary-S5 independent Critic
 
+# Execution-only trigger after the workflow first became present on default branch.
 on:
   push:
     paths:
@@ -72,7 +73,6 @@ jobs:
           elif c=='BLOCKED':
               assert r.get('missing')
           elif c=='INVALID_IMPLEMENTATION':
-              # Invalid execution is a valid terminal classifier outcome, not scientific FAIL.
               pass
 
           raw=Path('critic_raw_base_result.json')
