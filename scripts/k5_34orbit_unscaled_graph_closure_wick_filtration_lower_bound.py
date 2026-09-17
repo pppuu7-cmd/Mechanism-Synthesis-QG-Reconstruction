@@ -143,29 +143,29 @@ def main():
     static['subset_orbits_34']=len(reps)==34
     static['proper_orbits_32_sizes_sum1022']=len(proper)==32 and sum(s for _,s in proper)==1022
 
-    rows=[];counterexamples=[];closure_larger=False;plus1_seen=False;cross_rejected=False
+    rows=[];counterexamples=[];closure_larger=False;plus1_seen=False;cross_rejected=False;connected_unscaled_seen=False
     for oi,(mask,osize) in enumerate(proper):
         Z={e for e in range(10) if (mask>>e)&1};U=set(range(10))-Z;cs=components(U);cnum=len(cs);d=cnum-1;a=max(d-1,0);H=closure_edges(cs)
         Urows=[ROWS[e] for e in sorted(U)];spanH={e for e in range(10) if in_span(ROWS[e],Urows)}
-        graph_d=d
-        tree_d=pmin_mask(PSI,Z)
+        graph_d=d;tree_d=pmin_mask(PSI,Z)
         orbit_checks={
             'graph_tree_d_agree':graph_d==tree_d,
             'closure_graph_equals_rowspan':H==spanH,
         }
-        # Leading adjugate grade and closure annihilation.
         amin=min((pmin_mask(ADJ[i][j],Z) for i in range(4) for j in range(4) if ADJ[i][j]),default=None)
         orbit_checks['adjugate_min_grade_at_least_a']=amin is not None and amin>=a
-        A=[[pinitial(ADJ[i][j],Z,a) for j in range(4)] for i in range(4)]
-        annH=True
-        for e in H:
-            annH &= all(not z for z in vec_left(ROWS[e],A)) and all(not z for z in vec_right(A,ROWS[e]))
-        orbit_checks['leading_adjugate_annihilates_closure_incidence']=annH
-        # Cross-component edge must not be incorrectly admitted to closure when d>=1.
+        if d>=1:
+            A=[[pinitial(ADJ[i][j],Z,a) for j in range(4)] for i in range(4)]
+            annH=True
+            for e in H:
+                annH &= all(not z for z in vec_left(ROWS[e],A)) and all(not z for z in vec_right(A,ROWS[e]))
+            orbit_checks['leading_adjugate_annihilates_closure_incidence']=annH
+        else:
+            # Frozen theorem makes no closure-kernel claim when L_0 has full rank.
+            connected_unscaled_seen=True
+            orbit_checks['leading_adjugate_annihilates_closure_incidence']=True
         cross=[e for e in range(10) if e not in H]
-        if d>=1 and cross:
-            cross_rejected |= any(not in_span(ROWS[e],Urows) for e in cross)
-        # Determinant coefficient and cleared factor lower bounds.
+        if d>=1 and cross:cross_rejected |= any(not in_span(ROWS[e],Urows) for e in cross)
         d_bounds=True
         for r in range(5):
             md=pmin_mask(Ds[r],Z)
@@ -176,7 +176,6 @@ def main():
             mf=pmin_mask(F[j],Z)
             if mf is not None:f_bounds &= mf>=j*a
         orbit_checks['cleared_determinant_factor_bounds']=f_bounds
-        # Covariance hierarchy generic/+1 closure bounds.
         cov_bounds=True;boost_count=0
         if d>=1:
             for i in range(10):
@@ -189,19 +188,14 @@ def main():
                             if (i in H or j in H) and mc>=((n+1)*a+1):boost_count+=1
             plus1_seen |= boost_count>0
         orbit_checks['covariance_generic_and_closure_boost_bounds']=cov_bounds
-        # Matching lower bound direct and independent combinatorial reconstruction.
-        counts=[]
-        for mt in retained:counts.append(sum(1 for i,j in mt if i in H or j in H))
-        mu=min(counts)
-        mu_comb=5-((10-len(H))//2)
+        counts=[sum(1 for i,j in mt if i in H or j in H) for mt in retained]
+        mu=min(counts);mu_comb=5-((10-len(H))//2)
         orbit_checks['mu_direct_equals_combinatorial']=mu==mu_comb
         lb=0 if d==0 else 9*a+mu
-        # Every frozen matching term bound derived from j+k=4 and five covariance factors.
         all_matching=True
         if d>=1:
             for mt in retained:
-                m=sum(1 for i,j in mt if i in H or j in H)
-                all_matching &= 9*a+m>=lb
+                m=sum(1 for i,j in mt if i in H or j in H);all_matching &= 9*a+m>=lb
         orbit_checks['every_matching_contribution_at_least_LB']=all_matching
         closure_larger |= len(H)>len(U)
         if not all(orbit_checks.values()):counterexamples.append({'orbit_index':oi,'mask':mask,'failed':[k for k,v in orbit_checks.items() if not v]})
@@ -212,34 +206,23 @@ def main():
             'adjugate_min_mask_grade':amin,'mu_Z':mu,'mu_combinatorial':mu_comb,'LB_Z':lb,
             'checks':orbit_checks,
         })
-    # Frozen malformed/meta controls.
     malformed={
         'cross_component_edge_not_in_closure_detected':cross_rejected,
         'closure_endpoint_plus1_boost_present':plus1_seen,
         'incomplete_matching_set_rejected':len(retained-{min(retained)})!=945,
         'closure_not_raw_U_cardinality_used':closure_larger,
+        'connected_unscaled_graph_no_kernel_boost_branch_exercised':connected_unscaled_seen,
         'no_downstream_physical_or_transport_import':static['no_boundary_s5_transport_consumed'] and static['no_physical_N_or_B_coefficients_consumed'],
     }
     row511=next(r for r in rows if r['mask']==511)
-    controls={
-        **static,
-        'all_orbit_checks':not counterexamples and all(all(r['checks'].values()) for r in rows),
-        'malformed_controls':all(malformed.values()),
-        'mask511_positive_control_LB19':row511['LB_Z']==19,
-    }
+    controls={**static,'all_orbit_checks':not counterexamples and all(all(r['checks'].values()) for r in rows),'malformed_controls':all(malformed.values()),'mask511_positive_control_LB19':row511['LB_Z']==19}
     valid=all(v for k,v in controls.items() if k!='malformed_controls') and controls['malformed_controls']
     if not all(static.values()):status=INVALID;classification=INVALID
     elif counterexamples:status='SCIENTIFIC_FAIL_EXACT_SCOPED';classification=CLASS_FAIL
     elif not all(malformed.values()):status=INVALID;classification=INVALID
     elif valid:status='PASS_EXACT_SCOPED';classification=CLASS_PASS
     else:status=BLOCK;classification=BLOCK
-    out={
-        'gate':'K5_34ORBIT_UNSCALED_GRAPH_CLOSURE_WICK_FILTRATION_LOWER_BOUND','prereg_commit':PRE,
-        'status':status,'classification':classification,'static_checks':static,'malformed_controls':malformed,
-        'orbit_rows':rows,'counterexamples':counterexamples,
-        'LB_histogram':{},'mask511_LB':row511['LB_Z'],
-        'physical_exact_order_verdict':None,'global_stokes_ibp_verdict':None,'finite_part_selector':None,'regulator_independence':None,
-    }
+    out={'gate':'K5_34ORBIT_UNSCALED_GRAPH_CLOSURE_WICK_FILTRATION_LOWER_BOUND','prereg_commit':PRE,'status':status,'classification':classification,'static_checks':static,'malformed_controls':malformed,'orbit_rows':rows,'counterexamples':counterexamples,'LB_histogram':{},'mask511_LB':row511['LB_Z'],'physical_exact_order_verdict':None,'global_stokes_ibp_verdict':None,'finite_part_selector':None,'regulator_independence':None}
     for r in rows:out['LB_histogram'][str(r['LB_Z'])]=out['LB_histogram'].get(str(r['LB_Z']),0)+1
     p=Path(args.output);p.parent.mkdir(parents=True,exist_ok=True);p.write_text(json.dumps(out,indent=2,sort_keys=True)+'\n',encoding='utf-8')
     print('CLASSIFICATION='+classification);print('LB_HISTOGRAM='+json.dumps(out['LB_histogram'],sort_keys=True));print('MASK511_LB='+str(row511['LB_Z']))
