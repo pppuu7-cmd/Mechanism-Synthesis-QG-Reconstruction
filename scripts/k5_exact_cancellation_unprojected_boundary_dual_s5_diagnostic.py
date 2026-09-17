@@ -106,14 +106,16 @@ def main():
     law=lawsets[0][0] if unique_consistent else None
     coordextract=all(x['weighted_coordinates_equal_authoritative_base'] and x['weighted_coordinates_equal_authoritative_target'] for x in allentries)
     coordinv=all(x['dual_coordinates_invariant'] for x in allentries)
-    if not valid: cls='INVALID_IMPLEMENTATION'
-    elif law=='A_inverse_transpose' and cooordinv if False else False: cls='INVALID_IMPLEMENTATION'
-    elif law=='A_inverse_transpose' and cooordinv if False else False: cls='INVALID_IMPLEMENTATION'
+    if not valid:
+        cls='INVALID_IMPLEMENTATION'
+    elif law=='A_inverse_transpose' and coordinv and coordextract:
+        cls='BOUNDARY_DUAL_CONTRAGREDIENT_S5_EXACT'
+    elif law=='A_inverse_transpose' and not coordextract:
+        cls='DUAL_COORDINATE_EXTRACTION_MISMATCH_EXACT'
+    elif unique_consistent:
+        cls='BOUNDARY_S5_OTHER_REPRESENTATION_EXACT'
     else:
-        if law=='A_inverse_transpose' and coordinv and coordextract: cls='BOUNDARY_DUAL_CONTRAGREDIENT_S5_EXACT'
-        elif law=='A_inverse_transpose' and not coordextract: cls='DUAL_COORDINATE_EXTRACTION_MISMATCH_EXACT'
-        elif unique_consistent: cls='BOUNDARY_S5_OTHER_REPRESENTATION_EXACT'
-        else: cls='BOUNDARY_S5_REPRESENTATION_UNRESOLVED_EXACT'
+        cls='BOUNDARY_S5_REPRESENTATION_UNRESOLVED_EXACT'
     out={'gate':'K5_EXACT_CANCELLATION_UNPROJECTED_BOUNDARY_DUAL_S5_DIAGNOSTIC','prereg_commit':PREREG,'cycle':list(CYCLE),'inverse_cycle':list(ip),
          'checks':checks,'lanes':lanes,'unique_consistent_law':law,'dual_coordinates_invariant_all':coordinv,'coordinate_extraction_exact_all':coordextract,
          'classification':cls,'physical_corner_coefficients_used':False,'scientific_verdict':None}
