@@ -1,3 +1,4 @@
+# Execution-only trigger after workflow creation; scientific contract remains prereg commit 61d8a72c775d14356695196c50aa2395f9b9afc5.
 name: K5 projective-normal 32-orbit exact corner order
 on:
   workflow_dispatch:
