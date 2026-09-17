@@ -1,0 +1,50 @@
+name: K5 exact cancellation orientation-transpose source S5 diagnostic
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/k5_exact_cancellation_orientation_transpose_source_s5_diagnostic.py'
+      - '.github/workflows/k5_exact_cancellation_orientation_transpose_source_s5_diagnostic.yml'
+jobs:
+  diagnostic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Verify prospective lineage
+        run: |
+          set -euo pipefail
+          git merge-base --is-ancestor 3090c19b968edc7a34e6b6e08c65e8a00465971e HEAD
+          git merge-base --is-ancestor d6b0e805101c8590eafac71398cc2b1466691752 HEAD
+      - name: Run exact orientation-transpose diagnostic
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts/orientation_transpose_s5
+          python scripts/k5_exact_cancellation_orientation_transpose_source_s5_diagnostic.py \
+            --output artifacts/orientation_transpose_s5/result.json
+          sha256sum artifacts/orientation_transpose_s5/result.json | tee artifacts/orientation_transpose_s5/result_sha256.txt
+      - name: Validate outcome-neutral payload
+        run: |
+          python - <<'PY'
+          import json
+          d=json.load(open('artifacts/orientation_transpose_s5/result.json'))
+          assert d['physical_corner_coefficients_used'] is False
+          assert all(d['checks'].values()),d['checks']
+          assert d['classification'] in {
+            'ORIENTATION_TRANSPOSE_SOURCE_S5_EXACT',
+            'SOURCE_TYPE_S5_COVARIANCE_FAIL_EXACT',
+            'ENTRY_COMPRESSION_S5_COVARIANCE_FAIL_EXACT',
+          },d['classification']
+          print('CLASSIFICATION=',d['classification'])
+          print('TCW_EXACT=',d['tcw_coefficients_exact'])
+          print('MATCH_EXACT=',d['recompressed_matching_coefficients_exact'])
+          PY
+      - name: Upload diagnostic artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: k5-exact-cancellation-orientation-transpose-source-s5-diagnostic
+          path: artifacts/orientation_transpose_s5/
+          retention-days: 90
