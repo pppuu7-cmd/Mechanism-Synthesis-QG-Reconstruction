@@ -1,0 +1,119 @@
+name: K5 mask511 q18-only structural reduction
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'prereg/K5_MASK511_STRUCTURAL_DIVISIBILITY_Q18_REDUCTION_IF_NEEDED.md'
+      - 'scripts/k5_mask511_structural_q18_shard.py'
+      - 'scripts/k5_mask511_structural_q18_aggregate.py'
+      - '.github/workflows/k5_mask511_structural_q18_reduction.yml'
+      - 'scripts/k5_mask511_structural_divisibility_lower_coefficients.py'
+      - 'scripts/k5_invariant_dual_deg27_canonical_dag.py'
+      - 'scripts/k5_deg4_annihilator_actual_dual_action.py'
+      - 'results/raw/k5_mask511_physical_numerator_action_exact_corner_witness_authoritative.json'
+      - 'results/raw/k5_mask511_annihilator_filtration_shift_authoritative.json'
+      - 'status/K5_MASK511_STRUCTURAL_DIVISIBILITY_REPAIR1_PRETERMINAL_CODE_AUDIT.md'
+      - 'status/K5_MASK511_STRUCTURAL_DIVISIBILITY_REPAIR1_TERMINAL_TIMEOUT.md'
+
+jobs:
+  shard:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0,1,2,3,4,5,6,7]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run exact q18 initial-form shard
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts
+          python scripts/k5_mask511_structural_q18_shard.py \
+            --shard '${{ matrix.shard }}' --nshards 8 \
+            --summary 'artifacts/shard_${{ matrix.shard }}_summary.json' \
+            --payload 'artifacts/shard_${{ matrix.shard }}_payload.json.gz' \
+            | tee 'artifacts/shard_${{ matrix.shard }}_stdout.txt'
+          python - <<'PY'
+          import json, os
+          sid=os.environ['SHARD_ID']
+          d=json.load(open(f'artifacts/shard_{sid}_summary.json',encoding='utf-8'))
+          assert d['status']=='SHARD_PASS_EXACT_CONTROL_ONLY',d
+          assert d['scientific_classification'] is None,d
+          assert all(d['checks'].values()),d['checks']
+          assert d['boundary_s5_transport_consumed'] is False
+          print('SHARD=',sid,'MATCHINGS=',d['matching_count'],'PAYLOAD_SHA256=',d['payload_sha256'])
+          PY
+        env:
+          SHARD_ID: '${{ matrix.shard }}'
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: k5-mask511-q18-shard-${{ matrix.shard }}
+          path: artifacts/
+          if-no-files-found: error
+          retention-days: 90
+
+  aggregate:
+    needs: shard
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: k5-mask511-q18-shard-*
+          path: artifacts/shards
+          merge-multiple: true
+      - name: Aggregate exact q18 shards and classify frozen reduction
+        shell: bash
+        run: |
+          set -euo pipefail
+          python scripts/k5_mask511_structural_q18_aggregate.py \
+            --shard-dir artifacts/shards \
+            --output artifacts/k5_mask511_structural_q18_reduction.json \
+            --coefficients artifacts/k5_mask511_structural_q18_coefficients.json.gz \
+            | tee artifacts/aggregate_stdout.txt
+          python - <<'PY'
+          import json
+          p='artifacts/k5_mask511_structural_q18_reduction.json'
+          d=json.load(open(p,encoding='utf-8'))
+          allowed={
+            'K5_MASK511_LOWER_COEFFICIENTS_STRUCTURAL_DIVISIBILITY_EXACT_SCOPED',
+            'K5_MASK511_RAY_CANCELLATION_NOT_ANGULAR_UNIFORM_EXACT_SCOPED',
+          }
+          assert d['classification'] in allowed,d['classification']
+          assert d['status'] in {'PASS_EXACT_SCOPED','FAIL_EXACT_SCOPED'},d['status']
+          assert all(d['controls'].values()),d['controls']
+          assert d['scope']['mask']==511,d['scope']
+          assert d['scope']['q18_only'] is True,d['scope']
+          assert d['scope']['boundary_s5_transport_consumed'] is False,d['scope']
+          assert d['scientific_corner_integrability_verdict'] is None
+          assert d['global_stokes_ibp_verdict'] is None
+          print('CLASSIFICATION=',d['classification'])
+          print('STATUS=',d['status'])
+          print('CH1_ZERO=',d['channel_results']['1']['q18_zero_exact'])
+          print('CH2_ZERO=',d['channel_results']['2']['q18_zero_exact'])
+          print('COEFF_SHA256=',d['coefficient_payload_sha256'])
+          PY
+          sha256sum artifacts/k5_mask511_structural_q18_reduction.json | tee artifacts/result_sha256.txt
+          sha256sum artifacts/k5_mask511_structural_q18_coefficients.json.gz | tee artifacts/coeff_gzip_sha256.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: k5-mask511-structural-q18-reduction
+          path: |
+            artifacts/k5_mask511_structural_q18_reduction.json
+            artifacts/k5_mask511_structural_q18_coefficients.json.gz
+            artifacts/aggregate_stdout.txt
+            artifacts/result_sha256.txt
+            artifacts/coeff_gzip_sha256.txt
+          if-no-files-found: error
+          retention-days: 90
