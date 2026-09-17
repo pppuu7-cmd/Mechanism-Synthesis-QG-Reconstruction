@@ -1,14 +1,13 @@
 name: K5 full-source Boundary-S5 independent Critic
 
-# Execution-only trigger after the workflow first became present on default branch.
 on:
   push:
     paths:
       - 'prereg/K5_FULL_SOURCE_BOUNDARY_S5_TRANSPORT_SYMBOLIC_GENERATOR_THEOREM_CRITIC.md'
       - 'prereg/K5_FULL_SOURCE_BOUNDARY_S5_CRITIC_CLASSIFIER_EXECUTION_REPAIR.md'
+      - 'prereg/K5_FULL_SOURCE_BOUNDARY_S5_CRITIC_CLASSIFIER_REPAIR2_Q18_BOOLEAN.md'
       - 'scripts/critic_k5_full_source_boundary_s5_symbolic_independent_reconstruction.py'
       - 'scripts/critic_k5_full_source_boundary_s5_classifier_repair.py'
-      - '.github/workflows/k5_full_source_boundary_s5_independent_critic.yml'
   workflow_dispatch:
 
 jobs:
@@ -24,7 +23,7 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Run frozen independent exact reconstruction with classifier repair
+      - name: Run frozen independent exact reconstruction with classifier repair2
         shell: bash
         run: |
           set +e
@@ -55,7 +54,8 @@ jobs:
           }
           assert r['classification'] in allowed, r.get('classification')
           assert r['parent_critic_prereg_commit']=='cf8576acb7237b751c26d5b5942aa60874bcd00e'
-          assert r['repair_prereg_commit']=='2d510ae4ef0dab2e15a763a520864869eff2d71b'
+          assert r['repair1_prereg_commit']=='2d510ae4ef0dab2e15a763a520864869eff2d71b'
+          assert r['repair_prereg_commit']=='1440e07b8a3d6295020cba50d0ac73f44d4be641'
           assert r['base_implementation_commit']=='64a4f4935d0238d67e2d60e0b202f81f1195330a'
           assert r['base_implementation_blob']=='948f32653872e0920b4450d60d56d48a2a0cc24d'
           assert r['q18_values_used'] is False
@@ -85,7 +85,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: k5-full-source-boundary-s5-independent-critic
+          name: k5-full-source-boundary-s5-independent-critic-repair2
           path: |
             critic_result.json
             critic_raw_base_result.json
