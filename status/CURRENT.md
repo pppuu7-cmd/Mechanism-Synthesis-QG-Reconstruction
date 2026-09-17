@@ -78,27 +78,41 @@ The denominator/projective-geometry path is mechanically valid across all 32 pro
 
 Durable result `results/K5_34_ORBIT_PHYSICAL_NUMERATOR_ACTION_FLUX_AUDIT_RESULT.md`, commit `2e83381a404a64f6aebb5084820039c8f362049c`; provenance ledger initial commit `517c0aee5c4b725af01a39ae5357be0c790ece93`.
 
-## Exact leading-coefficient cancellation resolver — current object-definition blocker
+## Exact leading-coefficient cancellation resolver — source-transport dependency advanced
 
 Parent scientific preregistration `d6b0e805101c8590eafac71398cc2b1466691752`, `K5_34_ORBIT_EXACT_LEADING_COEFFICIENT_CANCELLATION_RESOLUTION`, freezes complete bounded exact `t`-coefficient support for the physical degree-27 numerators, degree-31 annihilator action and projective-normal polynomial numerator over the same 32 proper orbit representatives and both invariant-dual channels.
 
 Source-control authority already establishes:
 
 - invariant-vector transport identity `A_cycle W = W I_2` for the two Reynolds columns, result commit `dbd03184774a027f6e735138742295dfa211214e`;
-- orientation-sensitive full source-entry transport, with `(row,col)->(col,row)` on canonically reversed edges before compression, classification `ORIENTATION_TRANSPOSE_SOURCE_S5_EXACT`, result commit `e9a0472da5e55216789f1d6c20118da9f9d59061`;
+- orientation-sensitive source-entry transport, with `(row,col)->(col,row)` on canonically reversed edges before compression, classification `ORIENTATION_TRANSPOSE_SOURCE_S5_EXACT`, result commit `e9a0472da5e55216789f1d6c20118da9f9d59061`;
 - naive post-compression matching transport is invalid and cannot be rescued by fitting a nontrivial constant two-channel matrix.
 
-The frozen unprojected boundary-dual diagnostic was then executed validly under import-safe repair 5. Repair-5 prereg `f472eb29ded6a04ab1ae8a5f367d378f64beee4f`; implementation `f6fb4e6d2c747d6b6a704982347d81ba324a50d7` and `5a7359d8b4124f24ed5f5e4b59f6990c7e9b598d`; workflow/head `d4bbd8737a444f55b63794171c33e0857ad6f4ea`; run `35193589556`, all six shard jobs plus aggregate terminal success; aggregate job `105111592277`; aggregate artifact `10484549017`; ZIP digest `sha256:fd9b015d8067aeecd710a4b16c66c8561dcedd7940e7c4edbc0beac34c47a252`; aggregate JSON SHA256 `197a7429acf497951de68a6192e2bca56f119085f5e8fe4dd29034e785392529`.
+The source-fixed boundary-dual diagnostic repair 5 is terminal valid but scoped to the alpha-permuted object with source-entry convention held fixed. Run `35193589556`, aggregate artifact `10484549017`, classification `BOUNDARY_S5_REPRESENTATION_UNRESOLVED_EXACT`. Its mismatch remains preserved as a negative object-definition control.
 
-Repair-5 terminal classification:
+### Full simultaneous source/boundary transport — Researcher terminal, Critic pending
 
-`BOUNDARY_S5_REPRESENTATION_UNRESOLVED_EXACT`.
+Prospective scientific prereg `6ac6e7749783b78fb0966450a91d8042c1ad0ca4` froze the simultaneous action on Schwinger edges, orientation-sensitive source entries and the complete 32-state boundary basis before output. Frozen witnesses were W1/W2; frozen permutations were even five-cycle C, inverse Cinv and odd transposition T; only trivial and permutation-sign one-dimensional characters were admissible.
 
-All implementation controls passed. Every one of the six vectors contains all 32 boundary components and all `100000` source terms. The compressed weighted two-channel coordinate extraction agrees exactly with authoritative pivot coordinates of `P^T a`, so coordinate extraction is not the defect. However none of the four frozen source-fixed comparison laws `A`, `A^-1`, `A^T`, `A^-T` is exact in any W1/W2 cycle/inverse lane, and the source-fixed dual coordinates are not invariant.
+Implementation commits: shard `c0869be5c5de1c903a679a9d9df2287b36b6daa8`, aggregate `68621727648c59ac4ad4ed991fcfe2ec53895288`, workflow/head `12e30757258ef95fca6e3e72838e231644e6a7d5`.
 
-Durable result `results/K5_EXACT_CANCELLATION_UNPROJECTED_BOUNDARY_DUAL_S5_DIAGNOSTIC_REPAIR5_RESULT.md`; durable raw machine summary `results/raw/k5_exact_cancellation_unprojected_boundary_dual_s5_diagnostic_repair5_authoritative.json`; provenance ledger `status/K5_EXACT_CANCELLATION_UNPROJECTED_BOUNDARY_DUAL_S5_DIAGNOSTIC_REPAIR5_PROVENANCE_LEDGER.md`.
+Production run `35194864447` is terminal success; all six shard jobs and aggregate job `105115788058` succeeded. Aggregate artifact `10485701611`, ZIP digest `sha256:b08b3b72ca257a35927ce727b3808d0d73db99eb2d8b96dd0f39592cbd3c320d`; aggregate JSON SHA256 `28cd3d43c7872a842f36d2cb4e6969923ed045c3d47e79d15d703424509dae6a`.
 
-This mismatch is authority only for the exact frozen diagnostic object, which permutes alpha while evaluating the source-entry object in its fixed convention. Independent prior authority requires orientation-sensitive source-entry transport under a vertex permutation. Therefore the parent exact-cancellation resolver remains blocked on the **simultaneous full-source S5 transport law**. No physical-corner exponent or global Stokes/IBP relation may be promoted until that source object is prospectively resolved.
+Researcher classification:
+
+`K5_FULL_SOURCE_BOUNDARY_S5_CONTRAGREDIENT_TRIVIAL_CHARACTER_EXACT_SCOPED`.
+
+Every frozen lane retained all 32 boundary components and exactly 100000 source node-choice terms. Two independently organized full-source target constructions agree exactly in all six lanes. The full transported target obeys
+
+`a_p(p alpha)=A_p^(-T) a(alpha)`
+
+on both W1/W2 for C, Cinv and T. C/Cinv are even and cannot distinguish the two prospectively allowed characters; the odd transposition is decisive: the trivial character is exact on W1_T and W2_T, while an additional `sgn(p)` factor is false on both. Thus explicit orientation-sensitive source transport already accounts for the reversal sign; no residual orientation character remains in the scoped boundary covector law.
+
+All positive/negative controls passed, including exact `M(-v)=-M(v)`, source-pattern round trip, route-A/route-B agreement, boundary group controls, exact coordinate extraction, preservation of the source-fixed repair-5 mismatch, and rejection of omitted row/column transpose on the odd-transposition control.
+
+Durable machine aggregate `results/raw/k5_full_source_boundary_s5_transport_authoritative.json`, commit `750332f2e0f41756ca869fe9b56de3c1bb237e72`. Scientific result `results/K5_FULL_SOURCE_BOUNDARY_S5_TRANSPORT_OBJECT_DEFINITION_RESULT.md`, commit `5420b089c2e257b4e37de77edba3cab763321902`. Provenance ledger `status/K5_FULL_SOURCE_BOUNDARY_S5_TRANSPORT_PROVENANCE_LEDGER.md`, commit `5ed68442a1b8be9cfad967ff4c2aa61bce9c738c`.
+
+This is **Researcher authority only** and is scoped to frozen exact witnesses/generators; it is not yet a symbolic all-alpha theorem. Independent adversarial Critic review is mandatory before the parent exact-cancellation resolver consumes it as confirmed source-transport authority.
 
 ## Current survival chain
 
@@ -119,8 +133,8 @@ This mismatch is authority only for the exact frozen diagnostic object, which pe
 `-> corrected projective-tangent flux geometry CONFIRMED_SCOPED`
 `-> 34-orbit physical numerator/action-flux audit PARTIAL_BLOCKED_CANCELLATION_RESOLUTION`
 `-> source-fixed boundary-dual S5 diagnostic UNRESOLVED_EXACT`
-`-> simultaneous full-source boundary S5 transport law ?`
-`-> exact leading-coefficient cancellation/covariance resolution ?`
+`-> full-source boundary S5 contragredient trivial-character law PASS_EXACT_SCOPED (Researcher; Critic pending)`
+`-> exact leading-coefficient cancellation/covariance resolution BLOCKED pending source-transport Critic`
 `-> global projective Stokes/IBP relation ?`
 `-> invariant-dual K5 projective periods ?`
 `-> remaining S5/full order-eight tensor ?`
@@ -138,12 +152,12 @@ This mismatch is authority only for the exact frozen diagnostic object, which pe
 
 ## Highest-information next work
 
-1. Prospectively freeze and execute a **full-source boundary S5 transport object-definition gate**. It must act simultaneously on Schwinger edge variables, source vertex/edge data including orientation-sensitive row/column transport, and the complete 32-state boundary basis; it must derive the boundary evaluation-vector law rather than fit one post hoc.
-2. Use exact generic witnesses fixed before output and at least an even 5-cycle plus an odd transposition so any orientation/sign character is determined rather than hidden by the four-reversal cycle. Require independent direct recomputation from permuted source geometry and algebraic transport reconstruction.
-3. Permit only prospectively frozen source-derived candidate characters/laws. No new fitted `2x2` channel matrix, boundary-state selection, phase repair, altered alpha witness, or adaptive convention is allowed after output.
-4. Only if this object-definition gate closes may the existing parent exact-cancellation resolver `d6b0e805101c8590eafac71398cc2b1466691752` resume. Its complete bounded `t`-coefficient support and coefficient-level S5 covariance must then be evaluated without enlarging the coefficient family after seeing cancellation depth.
+1. Independent adversarial Critic review of `results/K5_FULL_SOURCE_BOUNDARY_S5_TRANSPORT_OBJECT_DEFINITION_RESULT.md` and run `35194864447` before any parent-resolver consumption.
+2. The Critic must independently reconstruct the endpoint/orientation map and 32-dimensional boundary action, verify exact full-32/100000-term coverage, reproduce the odd-transposition discrimination of the residual character, and test that route A and route B are genuinely equivalent to the source-defined simultaneous permutation rather than two encodings of the same mistaken convention.
+3. The Critic must explicitly assess the interpretation ceiling: finite generic witness equality is not automatically a symbolic all-alpha theorem. It should either derive a structural/rational identity sufficient for coefficient-level S5 transport or confine confirmation to the exact frozen-witness scope.
+4. Only if the source-transport result is independently confirmed at the scope needed by coefficient transport may the existing parent exact-cancellation resolver `d6b0e805101c8590eafac71398cc2b1466691752` resume. The historical invalid resolver payload may not be promoted automatically; repaired execution must consume the full source-entry orientation transport before compression and retain the bounded coefficient family frozen by the parent preregistration.
 5. Only after exact local cancellation resolution may the 34-orbit interior/flux/action classifier be re-consumed. Local corner data still does not authorize global Stokes/IBP or an integrated K5 period statement.
-6. The bounded minimal polynomial/rational coefficient-module branch remains secondary and must not replace this fatal source-object blocker.
+6. The bounded minimal polynomial/rational coefficient-module branch remains secondary and must not replace this direct boundary blocker.
 
 ## Claim locks
 
