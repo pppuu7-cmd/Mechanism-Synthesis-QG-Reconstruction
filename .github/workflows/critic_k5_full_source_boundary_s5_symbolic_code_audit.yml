@@ -1,0 +1,35 @@
+name: Critic K5 full-source boundary S5 symbolic code audit
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/critic_k5_full_source_boundary_s5_symbolic_code_audit.py'
+      - '.github/workflows/critic_k5_full_source_boundary_s5_symbolic_code_audit.yml'
+  workflow_dispatch:
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run frozen-scope static audit
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts
+          python scripts/critic_k5_full_source_boundary_s5_symbolic_code_audit.py --output artifacts/critic_code_audit.json | tee artifacts/stdout.txt
+          sha256sum artifacts/critic_code_audit.json > artifacts/result_sha256.txt
+          python - <<'PY'
+          import json
+          d=json.load(open('artifacts/critic_code_audit.json'))
+          assert d['scientific_verdict'] is None
+          assert d['status']=='PASS_CODE_AUDIT_SCOPED', d
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: critic-k5-full-source-boundary-s5-symbolic-code-audit
+          path: artifacts/
+          if-no-files-found: error
+          retention-days: 90
