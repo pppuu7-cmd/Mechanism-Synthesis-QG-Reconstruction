@@ -1,0 +1,51 @@
+name: K5 mask511 unscaled-edge q18 zero theorem
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'prereg/K5_MASK511_UNSCALED_EDGE_LEADING_COVARIANCE_ZERO.md'
+      - 'scripts/k5_mask511_unscaled_edge_leading_covariance_zero.py'
+      - '.github/workflows/k5_mask511_unscaled_edge_leading_covariance_zero.yml'
+      - 'scripts/k5_mask511_structural_divisibility_lower_coefficients.py'
+      - 'scripts/k5_invariant_dual_deg27_canonical_dag.py'
+
+jobs:
+  exact-theorem:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Prove unscaled-edge leading-covariance zero theorem
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts
+          python scripts/k5_mask511_unscaled_edge_leading_covariance_zero.py \
+            --output artifacts/k5_mask511_unscaled_edge_leading_covariance_zero.json \
+            | tee artifacts/stdout.txt
+          python - <<'PY'
+          import json
+          p='artifacts/k5_mask511_unscaled_edge_leading_covariance_zero.json'
+          d=json.load(open(p,encoding='utf-8'))
+          assert d['status'] in {'PASS_EXACT_SCOPED','FAIL_EXACT_SCOPED'},d
+          assert d['classification'] in {
+            'K5_MASK511_UNSCALED_EDGE_FORCES_Q18_ZERO_EXACT_SCOPED',
+            'K5_MASK511_UNSCALED_EDGE_Q18_ZERO_THEOREM_REFUTED_EXACT_SCOPED',
+          },d['classification']
+          assert all(d['provenance'].values()),d['provenance']
+          assert all(d['controls'].values()),d['controls']
+          assert d['scope']['q18_partial_artifacts_consumed'] is False
+          assert d['scope']['boundary_s5_transport_consumed'] is False
+          print('CLASSIFICATION=',d['classification'])
+          PY
+          sha256sum artifacts/k5_mask511_unscaled_edge_leading_covariance_zero.json | tee artifacts/result_sha256.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: k5-mask511-unscaled-edge-q18-zero-theorem
+          path: artifacts/
+          if-no-files-found: error
+          retention-days: 90
