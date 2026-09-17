@@ -1,0 +1,56 @@
+name: K5 projective-normal 32-orbit exact corner order
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'prereg/K5_PROJECTIVE_NORMAL_32ORBIT_EXACT_CORNER_ORDER.md'
+      - 'scripts/k5_projective_normal_32orbit_exact_corner_order.py'
+      - 'scripts/k5_projective_normal_polynomial_numerator_degree_ceiling.py'
+      - 'results/raw/k5_order8_s5_deg4_kirchhoff_annihilator_production_summary.json'
+      - '.github/workflows/k5_projective_normal_32orbit_exact_corner_order.yml'
+jobs:
+  exact-corner-orders:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run exact 32-orbit projective-normal corner-order gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts
+          python scripts/k5_projective_normal_32orbit_exact_corner_order.py \
+            --output artifacts/k5_projective_normal_32orbit_exact_corner_order.json \
+            | tee artifacts/stdout.txt
+          python - <<'PY'
+          import json
+          p='artifacts/k5_projective_normal_32orbit_exact_corner_order.json'
+          d=json.load(open(p,encoding='utf-8'))
+          allowed={
+            'K5_PROJECTIVE_NORMAL_32ORBIT_EXACT_CORNER_ORDERS_RESOLVED_SCOPED',
+            'K5_PROJECTIVE_NORMAL_32ORBIT_FROZEN_PATH_ZERO_FOUND_EXACT_SCOPED',
+            'K5_PROJECTIVE_NORMAL_32ORBIT_WITNESS_ORDER_NONUNIFORM_EXACT_SCOPED',
+            'K5_PROJECTIVE_NORMAL_32ORBIT_S5_COEFFICIENT_COVARIANCE_FAIL_EXACT_SCOPED',
+          }
+          assert d['status']=='PASS_EXACT_SCOPED',d
+          assert d['classification'] in allowed,d['classification']
+          assert all(d['controls'].values()),d['controls']
+          assert len(d['orbit_rows'])==32
+          assert d['physical_corner_finiteness_verdict'] is None
+          assert d['global_stokes_ibp_verdict'] is None
+          assert d['integrated_period_verdict'] is None
+          print('CLASSIFICATION=',d['classification'])
+          print('SUMMARY=',d['summary'])
+          PY
+          sha256sum artifacts/k5_projective_normal_32orbit_exact_corner_order.json | tee artifacts/result_sha256.txt
+          sha256sum scripts/k5_projective_normal_32orbit_exact_corner_order.py | tee artifacts/script_sha256.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: k5-projective-normal-32orbit-exact-corner-order
+          path: artifacts/
+          if-no-files-found: error
+          retention-days: 90
