@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 import argparse, hashlib, importlib.util, json
+from collections import defaultdict
 from fractions import Fraction
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 CORE=ROOT/'scripts/k5_34_orbit_exact_leading_coefficient_core_repair1.py'
 PREPATH=ROOT/'prereg/K5_34_ORBIT_BOUNDARY_COMPONENT_CONTRAGREDIENT_COMPOSITION_DIAGNOSTIC.md'
-PRE='bc263cc34fe38a68ef817b49a41b5ee7da7b9999'
-FROZEN=((0,1),(2,4),(3,5),(6,8),(7,9))
+PRE='bc263cc34fe38a68ef817b49a41b5ee7da7b9999';FROZEN=((0,1),(2,4),(3,5),(6,8),(7,9))
 def load(p,n):
  s=importlib.util.spec_from_file_location(n,p);m=importlib.util.module_from_spec(s);assert s.loader;s.loader.exec_module(m);return m
 c=load(CORE,'bcdiag_core');s5=c.s5;P=s5.C
@@ -17,11 +17,7 @@ def cf(mc):return mc.get(FROZEN)
 def project(v):return c._project_pattern_dicts_to_match_coeff(v)
 def eqv(a,b):return len(a)==len(b) and all(x==y for x,y in zip(a,b))
 def main():
- ap=argparse.ArgumentParser();ap.add_argument('--output',required=True);a=ap.parse_args()
- base=c._BASE_PATTERNS;target=[]
- # Explicit target-label transport, independent of helper pullback convention.
- g=s5.orientation_character(P)
- from collections import defaultdict
+ ap=argparse.ArgumentParser();ap.add_argument('--output',required=True);a=ap.parse_args();base=c._BASE_PATTERNS;target=[];g=s5.orientation_character(P)
  for d in base:
   z=defaultdict(Fraction)
   for types,coef in d.items():
@@ -33,32 +29,19 @@ def main():
    z[tuple(out)]+=g*Fraction(coef)
   target.append({k:v for k,v in z.items() if v})
  tensors=s5.act.reach.local_tensor_vectors(s5.act.src);local=s5.act.reach.local_action_matrices(tensors)
- A=s5.boundary_matrix(P,local);Ai=s5.boundary_matrix(s5.invperm(P),local);ATi=s5.transpose(Ai)
- predicted=s5.transform_dictvec(ATi,base)
- # Stage 1: independent theorem-level component mixing before invariant-dual contraction.
- support_mix=eqv(target,predicted)
- # Deliberately wrong row/column convention: A^{-1}, not A^{-T}.
- wrong=s5.transform_dictvec(Ai,base);wrong_rejected=not eqv(target,wrong)
- index_ok=support_mix and wrong_rejected
- # Stage 2: compare invariant-dual projection component by component on frozen matching.
- tgt_parts=[cf(project(one(target,i))) for i in range(32)]
- pred_parts=[cf(project(one(predicted,i))) for i in range(32)]
- weight_ok=tgt_parts==pred_parts
- # Stage 3: source coefficient dictionaries themselves must agree under the established law.
- source_ok=eqv(target,predicted)
- per_component_ok=tgt_parts==pred_parts
+ A=s5.boundary_matrix(P,local);Ai=s5.boundary_matrix(s5.invperm(P),local);ATi=s5.transpose(Ai);predicted=s5.transform_dictvec(ATi,base)
+ support_mix=eqv(target,predicted);wrong=s5.transform_dictvec(Ai,base);wrong_rejected=not eqv(target,wrong);index_ok=support_mix and wrong_rejected
+ tgt_parts=[cf(project(one(target,i))) for i in range(32)];pred_parts=[cf(project(one(predicted,i))) for i in range(32)]
+ weight_ok=tgt_parts==pred_parts;source_ok=eqv(target,predicted);per_component_ok=tgt_parts==pred_parts
  full_t=project(target);full_p=project(predicted);final_ok=cf(full_t)==cf(full_p)
- preimages=sum(1 for mt in c.MATCH_COEFF if c.s5.ep(P,0)>=0 and __import__('builtins')) # overwritten below
- # Unique frozen matching preimage under edge permutation.
  def pm(mt):
   q=[]
   for i,j in mt:
    x,y=s5.ep(P,i),s5.ep(P,j);q.append((min(x,y),max(x,y)))
   return tuple(sorted(q))
  preimages=sum(1 for mt in c.MATCH_COEFF if pm(mt)==FROZEN)
- # Mandatory component-coefficient mutation.
  mutated=list(pred_parts)
- if mutated[0] is None: mutated[0]=((Fraction(1),Fraction(0)),(Fraction(0),Fraction(0)))
+ if mutated[0] is None:mutated[0]=((Fraction(1),Fraction(0)),(Fraction(0),Fraction(0)))
  else:
   q=[list(x) for x in mutated[0]];q[0][0]+=1;mutated[0]=(tuple(q[0]),tuple(q[1]))
  mutation_rejected=mutated!=tgt_parts
