@@ -1,0 +1,55 @@
+name: K5 repaired component1 independent Critic
+
+on:
+  push:
+    paths:
+      - '.github/workflows/k5_component1_repaired_independent_critic.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  independent-critic:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Run frozen independent reconstruction
+        run: |
+          python scripts/critic_k5_34_orbit_component1_repaired_diagnostic_independent.py \
+            --output critic_result.json
+
+      - name: Validate frozen taxonomy
+        run: |
+          python - <<'PY'
+          import json
+          r=json.load(open('critic_result.json',encoding='utf-8'))
+          allowed={
+            'CONFIRMED_SCOPED_COMPONENT1_SUPPORT_SET_MISMATCH',
+            'INVALID_IMPLEMENTATION_OR_PROVENANCE',
+            'BLOCKED_INSUFFICIENT_INDEPENDENT_RECONSTRUCTION',
+          }
+          assert r['classification'] in allowed
+          assert r['reviewed']['run_id']==35363610618
+          assert r['reviewed']['head_sha']=='a5a9ae44569532bab7e352b12675d8eb152026ea'
+          assert r['reviewed']['artifact_id']==10555382872
+          assert r['reviewed']['researcher_classification_consumed_as_premise'] is False
+          assert r['q18_values_used'] is False
+          assert r['global_stokes_authorized'] is False
+          print('FINAL_CRITIC_CLASSIFICATION='+r['classification'])
+          PY
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: k5-component1-repaired-independent-critic
+          path: critic_result.json
+          if-no-files-found: error
+          retention-days: 90
