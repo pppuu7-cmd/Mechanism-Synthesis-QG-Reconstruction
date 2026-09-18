@@ -98,3 +98,14 @@ Run `35268738542`, head `7ff709ee3360e5e8fa4213e293f7142e979b1c56`, failed befor
 5. Only after valid local classification may global projective Stokes/IBP become admissible.
 
 Global Stokes/IBP, K5 periods, the physical finite-part/joint selector, the `377 -> ?` extension-selection problem and regulator independence remain separate downstream gates. Any mandatory blocked arrow prevents a predictive/complete-QG claim.
+
+
+## Critic reconciliation — component-1 support-mixing diagnostic
+
+`K5_34_ORBIT_COMPONENT1_SUPPORT_MIXING_DEFECT_DIAGNOSTIC` run `35359497526` is terminal `completed/success` operationally, but independent Automation-B review classifies it **`INVALID_IMPLEMENTATION`**. Researcher classification `K5_S5_COMPONENT1_DEFECT_SUPPORT_INDEX_MISSING_OR_SPURIOUS` is non-authoritative.
+
+Decisive defect: the frozen second route requires direct endpoint/orientation transport of underlying source terms **followed by target component projection**, but the implementation sets `direct=transport_one(base[1])`. In contrast the comparator `predicted[1]` is built from `A^{-T}` acting on the full 32-component source vector. Therefore the gate compares a mixed target component with an unmixed transported source component and can create missing/spurious support by construction whenever boundary action mixes components.
+
+Terminal provenance: run `35359497526`, job `105646962045`, artifact `10553332576`, ZIP SHA256 `f2b9b3303ca53438479c3215ebb9918b6031027f81c4cb7cd42b883a7f764e80`, raw JSON SHA256 `42b3930e3fc9055e92d816e3e8278d2a1e8e03955978127e6ceb71db02d84884`. Critic review `65d8b04e874a29a8b6ce13d3d7d1a419e5e62801`; provenance `b51f2037b819112e0b5cf4f9636a65d7e2cc9545`; handoff `0185270ff963f1a68f04b34fffafb2b29dea284a`.
+
+Boundary-S5 independent theorem authority remains closed/confirmed and is not reopened. Heavy 34-orbit resolver remains `0/64` authoritative. No resolver repair-2 is authorized from this diagnostic. Next admissible work is only a prospectively frozen implementation-only repair of the component-1 diagnostic that independently constructs target component 1 from the full transported 32-component source vector and includes a multi-source mixing positive control plus dropped-contributor negative control. q18 partials remain forbidden and were not consumed.
