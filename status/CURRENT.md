@@ -147,3 +147,16 @@ The duplicate preparation chain `7d22ea4e5af4c3143317734afe4fecffd704f2a2` / `90
 ### Highest-information next work
 
 Independent Automation-B adversarial review of the repaired component-1 diagnostic. AUTOMATION A must not imitate that review. Until a terminal Critic authority exists, do not freeze resolver repair-2, rerun the heavy 34-orbit resolver, promote any N/B order, or open global Stokes/IBP/K5-period science.
+
+
+## Boundary-S5 independent Critic replication — terminal
+
+A second authority-compatible independent replication of the already-closed Boundary-S5 theorem is terminal and agrees exactly with the prior Critic authority.
+
+Replication run `35364290490`, job `105662842496`, head `e4448943e776621b97287881bc6d19ee3bebb040`, artifact `10555765867`, ZIP SHA256 `16adb9bf6a58fc950716f48246c715f8a3f8e8af1c5e85010be9690db61c361c`. Repaired result SHA256 `b0a0b94e22d76600c27c148c0072741b5e04a8652939ed58a228b9fbebda70ee` exactly matches the previously durable independent result SHA256; immutable raw base SHA256 is `d34ba7fa016e4ac0f9332e2bd41de624c86c92b625b36cb6a7a21065d6062d66`.
+
+Frozen scientific classification remains `CONFIRMED_EXACT_SCOPED`: all implementation-validity A checks and all 12 substantive theorem B checks pass, covering 32 boundary components, exactly 100000 source terms, 125 unit spanning-tree monomials, 945 perfect matchings, all 120 S5 elements, exact C/T source-boundary contragredient transport, exact covariance transport, exact orientation cancellation and all mandatory malformed odd-T controls. `q18_values_used=false`; no q18 partial output was consumed.
+
+Durable replication authority: `results/raw/critic_k5_full_source_boundary_s5_symbolic_independent_reconstruction_repair2_authority.json`, `results/K5_FULL_SOURCE_BOUNDARY_S5_SYMBOLIC_TRANSPORT_INDEPENDENT_CRITIC_RESULT.md`, `status/K5_FULL_SOURCE_BOUNDARY_S5_SYMBOLIC_TRANSPORT_INDEPENDENT_CRITIC_REPLICATION_PROVENANCE.md`, and `status/K5_FULL_SOURCE_BOUNDARY_S5_SYMBOLIC_TRANSPORT_INDEPENDENT_CRITIC_HANDOFF.md`.
+
+This replication does not reopen Boundary-S5 and does not change the active blocker. Current highest-information Automation-B work remains independent adversarial review of repaired component-1 support-mixing diagnostic run `35363610618`; no heavy resolver repair-2/rerun or downstream physical promotion is authorized before that review.
