@@ -22,3 +22,4 @@ jobs:
           name: k5-34-orbit-boundary-component-contragredient-composition-diagnostic
           path: results/raw/k5_34_orbit_boundary_component_contragredient_composition_diagnostic.json
           if-no-files-found: error
+# frozen production trigger
