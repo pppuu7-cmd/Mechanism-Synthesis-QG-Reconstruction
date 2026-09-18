@@ -1,0 +1,64 @@
+{
+  "cardinalities": {
+    "AinvT_target_support": 1536,
+    "canonical_component_support": 1536,
+    "direct_target_support": 1536
+  },
+  "classification": "K5_S5_COMPONENT1_DEFECT_SUPPORT_INDEX_MISSING_OR_SPURIOUS",
+  "control_component_wrong_transpose": 0,
+  "first_coefficient_mismatch": "((0, 0), (0, 1), (0, 0), (0, 1), (1, 1), (1, 0), (1, 1), (0, 0), (1, 1), (0, 1))",
+  "first_missing_support_index": "((0, 0), (0, 0), (0, 1), (0, 1), (0, 0), (0, 1), (1, 1), (1, 1), (0, 1), (1, 1))",
+  "first_spurious_support_index": "((0, 0), (0, 1), (0, 0), (0, 1), (1, 1), (1, 0), (0, 1), (0, 0), (1, 1), (1, 1))",
+  "frozen": {
+    "component": 1,
+    "cycle": [1, 2, 3, 4, 0],
+    "mask": 1,
+    "matching": [[0, 1], [2, 4], [3, 5], [6, 8], [7, 9]],
+    "ray": "W1"
+  },
+  "gate": "K5_34_ORBIT_COMPONENT1_SUPPORT_MIXING_DEFECT_DIAGNOSTIC_CONTROL_REPAIR_1",
+  "hashes": {
+    "AinvT_target": "6eca3bbe1e0abef16daa0c62bbf1f1bb1097d07783e5687e07f67ddbe7f713e1",
+    "direct_target": "76fba3334777ba180b8aea2da1a592463b1c62c389dcf70df448fb7aeec9dc85"
+  },
+  "interpretation_ceiling": "implementation diagnosis only; resolver authority remains 0/64 pending separate repair and validation",
+  "invalid_resolver_values_consumed": false,
+  "mixing_control": {
+    "contributor_coefficients": ["-3/16", "-1/16", "3/16", "1/16", "3/16", "1/16", "-3/16", "-1/16", "3/16", "1/16", "-3/16", "-1/16", "-3/16", "-1/16", "3/16", "1/16"],
+    "contributor_count": 16,
+    "contributor_indices": [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30],
+    "dropped_contributor_rejected": true,
+    "dropped_index": 0
+  },
+  "no_N_B_orders_or_coefficients_recorded": true,
+  "parent_prereg_commit": "ea49bb0cc67887659bb92c8a68b616f6b7e52513",
+  "q18_values_consumed": false,
+  "repair_prereg_commit": "aab70cd2ffbc9bf52fdd83f8caa78bc3d8b220ec",
+  "scientific_verdict": null,
+  "stage_equalities": {
+    "AinvT_target_component_support": true,
+    "canonical_nonzero_support": true,
+    "coefficient_equality": false,
+    "direct_projected_target_support": true,
+    "full_transported_32vector_nonzero_components": 32,
+    "support_index_equality": false
+  },
+  "validity": {
+    "coefficient_mutation_detected": true,
+    "component1_frozen": true,
+    "critic_invalid_authority_locked": true,
+    "dropped_contributor_rejected": true,
+    "endpoint_orientation_roundtrip": true,
+    "exact_fraction": true,
+    "full32": true,
+    "independent_global_A_equals_helper": true,
+    "independent_global_Ainv_equals_helper": true,
+    "independent_local_tensor_vectors_equal": true,
+    "parent_prereg_locked": true,
+    "repair_prereg_locked": true,
+    "source100000": true,
+    "support945": true,
+    "target_component_has_at_least_two_nonzero_source_contributors": true,
+    "wrong_transpose_distinguishable": true
+  }
+}
