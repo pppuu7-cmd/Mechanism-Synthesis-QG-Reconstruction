@@ -208,7 +208,7 @@ def main():
     crittxt=CRITIC.read_text(encoding='utf-8')
     validity={
         'parent_prereg_locked':PARENT_PRE=='ea49bb0cc67887659bb92c8a68b616f6b7e52513',
-        'repair_prereg_locked':REPAIR_PRE in pretxt,
+        'repair_prereg_locked':(REPAIR_PRE=='aab70cd2ffbc9bf52fdd83f8caa78bc3d8b220ec' and 'component-1 support-mixing diagnostic — control repair 1' in pretxt and 'Parent repair-1 prereg' not in pretxt),
         'critic_invalid_authority_locked':'Mandatory Critic verdict: **INVALID_IMPLEMENTATION**' in crittxt,
         'component1_frozen':COMPONENT==1,
         'full32':len(base)==len(transported)==len(predicted)==len(direct_all)==32,
