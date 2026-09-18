@@ -160,3 +160,63 @@ Frozen scientific classification remains `CONFIRMED_EXACT_SCOPED`: all implement
 Durable replication authority: `results/raw/critic_k5_full_source_boundary_s5_symbolic_independent_reconstruction_repair2_authority.json`, `results/K5_FULL_SOURCE_BOUNDARY_S5_SYMBOLIC_TRANSPORT_INDEPENDENT_CRITIC_RESULT.md`, `status/K5_FULL_SOURCE_BOUNDARY_S5_SYMBOLIC_TRANSPORT_INDEPENDENT_CRITIC_REPLICATION_PROVENANCE.md`, and `status/K5_FULL_SOURCE_BOUNDARY_S5_SYMBOLIC_TRANSPORT_INDEPENDENT_CRITIC_HANDOFF.md`.
 
 This replication does not reopen Boundary-S5 and does not change the active blocker. Current highest-information Automation-B work remains independent adversarial review of repaired component-1 support-mixing diagnostic run `35363610618`; no heavy resolver repair-2/rerun or downstream physical promotion is authorized before that review.
+
+
+## Repaired component-1 diagnostic — independent Critic terminal CONFIRMED
+
+This section supersedes the earlier “Critic pending” wording for repaired component-1 run `35363610618`.
+
+A separately preregistered independent adversarial Critic reconstructed the object directly from corrected Iter077I source tensors without importing the Researcher diagnostic implementation or result payload as a computational premise.
+
+Critic prereg: `bc7a63a50a2fff36f931e03b5f26d4563ca29607`.
+
+Critic implementation: `6b140a14bcd679ad5594f29b7d50e83d6b6d88e8`.
+
+Critic workflow/head: `0ebf4037e727a36e091e6153227269cc072015c3`.
+
+Terminal production:
+
+- run `35402998823`;
+- job `105786745616`;
+- artifact `10571337475`;
+- ZIP SHA256 `4d0cd5dd8c8ec42787d5bd6b22b006655ec237924d6241c96ecbabb10260e5b2`;
+- result JSON SHA256 `31a222b88fac3fa5a2daffdb8ae55096760d0a6f8da1a212419ecbc5408cb4db`.
+
+Frozen Critic classification:
+
+`CONFIRMED_SCOPED_COMPONENT1_SUPPORT_SET_MISMATCH`.
+
+All independent validity/provenance/mixing controls pass. The Critic independently reconstructs 32 source components, exactly 100000 source-choice terms, 945 perfect matchings, exact global cycle/inverse action, full endpoint/orientation transport and target component-1 projection.
+
+Target component 1 has exactly 16 nonzero contributors at indices
+`[0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,30]`.
+The dropped-contributor malformed control is rejected.
+
+Both exact target dictionaries have support cardinality 1536 but different support sets. Independent Critic dictionary hashes are:
+
+- route 1: `6eca3bbe1e0abef16daa0c62bbf1f1bb1097d07783e5687e07f67ddbe7f713e1`;
+- route 2: `76fba3334777ba180b8aea2da1a592463b1c62c389dcf70df448fb7aeec9dc85`.
+
+These match the terminal Researcher diagnostic only after the independent reconstruction had completed.
+
+Durable Critic authority:
+
+- `results/raw/k5_34_orbit_component1_repaired_diagnostic_independent_critic_authoritative.json`, commit `9f03c4ad58ec7d17188d690a0f0f95cba6ede52c`;
+- `results/K5_34_ORBIT_COMPONENT1_REPAIRED_DIAGNOSTIC_INDEPENDENT_CRITIC_RESULT.md`, commit `d9e97057ec517490fcf32dc60ce7f48ddfa3e281`;
+- `status/K5_34_ORBIT_COMPONENT1_REPAIRED_DIAGNOSTIC_INDEPENDENT_CRITIC_PROVENANCE.md`, commit `640dc11ce967d268e142232ddbed6719dfa4b86f`.
+
+No q18 partial values were consumed.
+
+### Authorization change
+
+The exact implementation defect is now independently confirmed in scoped component-1 support mapping. A prospective implementation-only heavy-resolver repair-2 is therefore authorized to be frozen.
+
+It is **not yet frozen, implemented, or run**. Heavy 34-orbit resolver authority remains `0/64`; no N/B order is promoted.
+
+Repair-2 must leave unchanged physical source, 32 representatives, W1/W2, both channels, 945 matchings, DAG, degree ceilings, projective-normal authority, exact arithmetic and parent scientific classifier. After prospective freeze and implementation, exactly one heavy resolver production is permitted.
+
+Global Stokes/IBP, K5 periods, finite-part/joint selector, regulator independence and G3/composition remain forbidden until a valid terminal 64-component resolver authority exists.
+
+### Highest-information next work
+
+Prospectively freeze the minimal heavy-resolver control repair-2 from the independently confirmed S5 frame/support mapping defect before any resolver code change. Then execute exactly one unchanged-contract heavy resolver production and classify its terminal aggregate.
