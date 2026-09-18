@@ -15,10 +15,8 @@ SOURCE = ROOT / 'distributional/iter077i_sm_source_ordered_jhalf_k5_l1.py'
 SOURCE_DERIVATION = ROOT / 'sources/ITER077I_SM_SOURCE_ORDERED_TOLLER_FUNCTION_K5_L1_DERIVATION.md'
 ERRATUM = ROOT / 'status/ITER077_CONTACT_FORMULA_ERRATUM.md'
 CRITIC_PREREG = ROOT / 'prereg/K5_FULL_SOURCE_BOUNDARY_S5_TRANSPORT_SYMBOLIC_GENERATOR_THEOREM_CRITIC.md'
-CLASSIFIER_REPAIR = ROOT / 'prereg/K5_FULL_SOURCE_BOUNDARY_S5_TRANSPORT_SYMBOLIC_GENERATOR_THEOREM_CRITIC_CLASSIFIER_REPAIR_1.md'
 
 CRITIC_PREREG_COMMIT = 'cf8576acb7237b751c26d5b5942aa60874bcd00e'
-CLASSIFIER_REPAIR_COMMIT = '5576f1d8453dfec541767697304978082e14b4d5'
 RESEARCHER_PREREG_COMMIT = '4f65cff503db976b6ff52b8519e5fdaa0bf4a4f8'
 RESEARCHER_REPAIR_COMMIT = '73b8f65f05e3945e8c4d517e73b938cdd3299e39'
 RESEARCHER_RESULT_COMMIT = '4d8c4743a11b1c13fd7c3a81a68d9120a8a41fc4'
@@ -141,15 +139,6 @@ def poly_hash(p):
     for m, c in sorted(p.items()):
         h.update((','.join(map(str, m)) + '=' + str(c) + '\n').encode())
     return h.hexdigest()
-
-
-def first_poly_mismatch(a, b):
-    for m in sorted(set(a) | set(b)):
-        av = a.get(m, 0)
-        bv = b.get(m, 0)
-        if av != bv:
-            return {'monomial': list(m), 'left': int(av), 'right': int(bv)}
-    return None
 
 
 def clean_dict(d):
@@ -419,19 +408,13 @@ def main():
     deriv_exists = SOURCE_DERIVATION.exists()
     erratum_exists = ERRATUM.exists()
     prereg_exists = CRITIC_PREREG.exists()
-    classifier_repair_exists = CLASSIFIER_REPAIR.exists()
-    if not (source_exists and deriv_exists and erratum_exists and prereg_exists and classifier_repair_exists):
+    if not (source_exists and deriv_exists and erratum_exists and prereg_exists):
         out = {
             'gate': 'FULL_SOURCE_BOUNDARY_S5_SYMBOLIC_TRANSPORT_INDEPENDENT_CRITIC',
             'verdict': 'BLOCKED_OBJECT_DEFINITION',
-            'critic_prereg_commit': CRITIC_PREREG_COMMIT,
-        'classifier_repair_commit': CLASSIFIER_REPAIR_COMMIT,
-            'classifier_repair_commit': CLASSIFIER_REPAIR_COMMIT,
-            'critic_contract_classification': 'BLOCKED',
-            'missing': [str(p.relative_to(ROOT)) for p in (SOURCE, SOURCE_DERIVATION, ERRATUM, CRITIC_PREREG, CLASSIFIER_REPAIR) if not p.exists()],
+            'missing': [str(p.relative_to(ROOT)) for p in (SOURCE, SOURCE_DERIVATION, ERRATUM, CRITIC_PREREG) if not p.exists()],
             'researcher_run': RESEARCHER_RUN,
-            'forbidden_checks': {'q18_values_used': False},
-            'interpretation_ceiling': {'q18_result': None},
+            'q18_values_used': False,
         }
         p = Path(args.output)
         p.parent.mkdir(parents=True, exist_ok=True)
@@ -443,13 +426,10 @@ def main():
     source_text = SOURCE_DERIVATION.read_text(encoding='utf-8')
     erratum_text = ERRATUM.read_text(encoding='utf-8')
     critic_prereg_text = CRITIC_PREREG.read_text(encoding='utf-8')
-    classifier_repair_text = CLASSIFIER_REPAIR.read_text(encoding='utf-8')
 
     source_checks = {
         'critic_contract_commit_locked': CRITIC_PREREG_COMMIT == 'cf8576acb7237b751c26d5b5942aa60874bcd00e',
         'critic_contract_present': 'independent Critic preregistration' in critic_prereg_text,
-        'classifier_repair_commit_locked': CLASSIFIER_REPAIR_COMMIT == '5576f1d8453dfec541767697304978082e14b4d5',
-        'classifier_repair_present': 'Implementation / provenance validity' in classifier_repair_text and 'Substantive frozen theorem conditions' in classifier_repair_text,
         'researcher_prereg_identity_locked': RESEARCHER_PREREG_COMMIT == '4f65cff503db976b6ff52b8519e5fdaa0bf4a4f8',
         'researcher_repair_identity_locked': RESEARCHER_REPAIR_COMMIT == '73b8f65f05e3945e8c4d517e73b938cdd3299e39',
         'researcher_result_identity_locked': RESEARCHER_RESULT_COMMIT == '4d8c4743a11b1c13fd7c3a81a68d9120a8a41fc4',
@@ -505,10 +485,7 @@ def main():
                 lhs = pullback_poly(nums[ti][tj], p0)
                 rhs = poly_scale(si * sj, nums[i][j])
                 if lhs != rhs and len(bad) < 8:
-                    bad.append({
-                        'i': i, 'j': j, 'ti': ti, 'tj': tj, 'sign': si * sj,
-                        'first_polynomial_mismatch': first_poly_mismatch(lhs, rhs),
-                    })
+                    bad.append({'i': i, 'j': j, 'ti': ti, 'tj': tj, 'sign': si * sj})
         cov_results[name] = {
             'psi_exact': pullback_poly(psi, p0) == psi,
             'all_covariance_numerators_exact': not bad,
@@ -528,8 +505,6 @@ def main():
     q = deque([ID])
     representation_ok = True
     edge_comp_ok = True
-    representation_mismatch = None
-    edge_comp_mismatch = None
     while q:
         p0 = q.popleft()
         Ap = group[p0]
@@ -537,34 +512,10 @@ def main():
             np = compose(g, p0)
             candidate = matmul(gen_mats[name], Ap)
             direct = boundary_matrix(np)
-            if candidate != direct:
-                representation_ok = False
-                if representation_mismatch is None:
-                    for ri in range(32):
-                        for cj in range(32):
-                            if candidate[ri][cj] != direct[ri][cj]:
-                                representation_mismatch = {
-                                    'permutation': list(p0), 'generator': name,
-                                    'result_permutation': list(np), 'row': ri, 'col': cj,
-                                    'composed': str(candidate[ri][cj]), 'direct': str(direct[ri][cj]),
-                                }
-                                break
-                        if representation_mismatch is not None:
-                            break
+            representation_ok &= candidate == direct
             for i in range(10):
-                lhs_edge = ep(np, i)
-                rhs_edge = ep(g, ep(p0, i))
-                lhs_sign = edge_sign(np, i)
-                rhs_sign = edge_sign(p0, i) * edge_sign(g, ep(p0, i))
-                if lhs_edge != rhs_edge or lhs_sign != rhs_sign:
-                    edge_comp_ok = False
-                    if edge_comp_mismatch is None:
-                        edge_comp_mismatch = {
-                            'permutation': list(p0), 'generator': name,
-                            'result_permutation': list(np), 'edge': i,
-                            'edge_left': lhs_edge, 'edge_right': rhs_edge,
-                            'sign_left': lhs_sign, 'sign_right': rhs_sign,
-                        }
+                edge_comp_ok &= ep(np, i) == ep(g, ep(p0, i))
+                edge_comp_ok &= edge_sign(np, i) == edge_sign(p0, i) * edge_sign(g, ep(p0, i))
             if np not in group:
                 group[np] = candidate
                 q.append(np)
@@ -719,68 +670,15 @@ def main():
         'pre_invariant_dual_full32_object': True,
     }
 
-    implementation_group_checks = {
-        'canonical_ten_edge_order_exact': group_checks['canonical_ten_edge_order_exact'],
-        'node_norms_4_12_cross0': group_checks['node_norms_4_12_cross0'],
-        'all_24_local_actions_exact': group_checks['all_24_local_actions_exact'],
-        'C5_identity': group_checks['C5_identity'],
-        'T2_identity': group_checks['T2_identity'],
-        'generated_group_120': group_checks['generated_group_120'],
-        'reynolds_rank2_pivots_1_4': group_checks['reynolds_rank2_pivots_1_4'],
-        'reynolds_idempotent': group_checks['reynolds_idempotent'],
-    }
-    implementation_polynomial_checks = {
-        'spanning_tree_count_125': polynomial_checks['spanning_tree_count_125'],
-        'tree_coefficients_all_one': polynomial_checks['tree_coefficients_all_one'],
-        'laplacian_determinant_equals_independent_tree_enumeration': polynomial_checks['laplacian_determinant_equals_independent_tree_enumeration'],
-        'psi_degree4': polynomial_checks['psi_degree4'],
-        'perfect_matching_count_945': len(matchings) == 945,
-        'every_matching_covers_all_ten_edges': all(sorted(i for pair in mt for i in pair) == list(range(10)) for mt in matchings),
-    }
-    implementation_boundary_checks = {
-        k: v for k, v in boundary_checks.items()
-        if k in {
-            'all_32_components',
-            'exactly_100000_original_source_terms',
-            'source_module_expected_total',
-            'source_matrix_reversal_exact',
-        }
-    }
     implementation_valid = (
         all(source_checks.values())
-        and all(implementation_group_checks.values())
-        and all(implementation_polynomial_checks.values())
-        and all(implementation_boundary_checks.values())
+        and all(group_checks.values())
+        and all(polynomial_checks.values())
+        and all(boundary_checks[k] for k in boundary_checks if not k.endswith('_dictionary_exact'))
         and all(negative_controls.values())
         and all(forbidden_checks.values())
     )
-
-    substantive_conditions = {
-        'C_source_boundary_contragredient_dictionary_identity': generator_results['C']['exact'],
-        'T_source_boundary_contragredient_dictionary_identity': generator_results['T']['exact'],
-        'C_psi_and_covariance_numerator_transport': polynomial_checks['C_psi_and_covariance_exact'],
-        'T_psi_and_covariance_numerator_transport': polynomial_checks['T_psi_and_covariance_exact'],
-        'C_complete_wick_orientation_factor_all945': polynomial_checks['C_matching_orientation_factor_all945'],
-        'T_complete_wick_orientation_factor_all945': polynomial_checks['T_matching_orientation_factor_all945'],
-        'C_inverse_roundtrip_exact': boundary_checks['C_inverse_roundtrip_exact'],
-        'T_inverse_roundtrip_exact': boundary_checks['T_inverse_roundtrip_exact'],
-        'C_boundary_inverse_exact': boundary_checks['C_boundary_inverse_exact'],
-        'T_boundary_inverse_exact': boundary_checks['T_boundary_inverse_exact'],
-        'boundary_representation_composes_all120': group_checks['boundary_representation_composes_all120'],
-        'edge_orientation_maps_compose_all120': group_checks['edge_orientation_maps_compose_all120'],
-    }
-    scientific_exact = all(substantive_conditions.values())
-
-    substantive_counterexamples = {
-        'C_source_boundary': generator_results['C']['first_mismatch'],
-        'T_source_boundary': generator_results['T']['first_mismatch'],
-        'C_covariance': cov_results['C']['bad_pairs'][0] if cov_results['C']['bad_pairs'] else None,
-        'T_covariance': cov_results['T']['bad_pairs'][0] if cov_results['T']['bad_pairs'] else None,
-        'C_matching_orientation': matching_sign_checks['C']['bad'][0] if matching_sign_checks['C']['bad'] else None,
-        'T_matching_orientation': matching_sign_checks['T']['bad'][0] if matching_sign_checks['T']['bad'] else None,
-        'boundary_representation_composition': representation_mismatch,
-        'edge_orientation_composition': edge_comp_mismatch,
-    }
+    scientific_exact = generator_results['C']['exact'] and generator_results['T']['exact']
 
     if not all(source_checks.values()):
         verdict = 'INVALID_SOURCE_LOCK'
@@ -811,14 +709,6 @@ def main():
         'group_checks': group_checks,
         'polynomial_checks': polynomial_checks,
         'boundary_checks': boundary_checks,
-        'implementation_validity': {
-            'valid': implementation_valid,
-            'group_checks': implementation_group_checks,
-            'polynomial_checks': implementation_polynomial_checks,
-            'boundary_checks': implementation_boundary_checks,
-        },
-        'substantive_theorem_conditions': substantive_conditions,
-        'substantive_counterexamples': substantive_counterexamples,
         'covariance_results': cov_results,
         'generator_results': generator_results,
         'negative_controls': negative_controls,
