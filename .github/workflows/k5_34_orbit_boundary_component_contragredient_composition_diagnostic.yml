@@ -1,0 +1,24 @@
+name: K5 34-orbit boundary-component contragredient composition diagnostic
+on:
+  push:
+    paths:
+      - '.github/workflows/k5_34_orbit_boundary_component_contragredient_composition_diagnostic.yml'
+  workflow_dispatch:
+jobs:
+  diagnostic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run frozen exact diagnostic
+        run: python scripts/k5_34_orbit_boundary_component_contragredient_composition_diagnostic.py --output results/raw/k5_34_orbit_boundary_component_contragredient_composition_diagnostic.json
+      - name: Upload terminal diagnostic artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: k5-34-orbit-boundary-component-contragredient-composition-diagnostic
+          path: results/raw/k5_34_orbit_boundary_component_contragredient_composition_diagnostic.json
+          if-no-files-found: error
