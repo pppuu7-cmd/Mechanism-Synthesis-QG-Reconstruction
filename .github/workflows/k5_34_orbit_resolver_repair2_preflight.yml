@@ -36,7 +36,8 @@ jobs:
           out={
             'gate':'K5_34_ORBIT_RESOLVER_REPAIR2_PREFLIGHT',
             'repair2_prereg_commit':'beadf232a89331f62a3e129e83e23576e2a33021',
-            'repair2_implementation_commit':'74139678dac94735c8b387578d11e96538f71134',
+            'repair2_correction1_prereg_commit':'aa5fd025c26489091db202ff7886130da65e4ef5',
+            'repair2_implementation_commit':'68470eff1b554d7513aee5454e145e9b7ce9d152',
             'classification':'PASS_REPAIR2_PREFLIGHT' if not bad else 'INVALID_IMPLEMENTATION',
             'checks':checks,
             'failed_checks':bad,
