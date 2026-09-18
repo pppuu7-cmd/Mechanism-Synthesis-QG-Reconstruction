@@ -1,0 +1,61 @@
+name: K5 post-collapse S5 geometry diagnostic
+
+on:
+  push:
+    paths:
+      - '.github/workflows/k5_34_orbit_postcollapse_geometry_covariance_diagnostic.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-diagnostic:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Run frozen exact post-collapse diagnostic
+        run: |
+          python scripts/k5_34_orbit_postcollapse_geometry_covariance_s5_transport_diagnostic.py \
+            --output postcollapse_diagnostic.json
+
+      - name: Validate frozen result surface
+        run: |
+          python - <<'PY'
+          import json
+          r=json.load(open('postcollapse_diagnostic.json',encoding='utf-8'))
+          allowed={
+            'K5_S5_POSTCOLLAPSE_DEFECT_RAY_PERMUTATION',
+            'K5_S5_POSTCOLLAPSE_DEFECT_INCIDENCE_BASIS_TRANSPORT',
+            'K5_S5_POSTCOLLAPSE_DEFECT_LAPLACIAN_CONGRUENCE',
+            'K5_S5_POSTCOLLAPSE_DEFECT_Q_INVARIANCE',
+            'K5_S5_POSTCOLLAPSE_DEFECT_ANNIHILATOR_TANGENT_TRANSPORT',
+            'K5_S5_POSTCOLLAPSE_DEFECT_COVARIANCE_SERIES_TRANSPORT',
+            'K5_S5_POSTCOLLAPSE_DEFECT_DETERMINANT_FACTOR_TRANSPORT',
+            'K5_S5_POSTCOLLAPSE_DEFECT_MATCHING_COVARIANCE_COMPOSITION',
+            'K5_S5_POSTCOLLAPSE_DEFECT_NUMERATOR_FLUX_ASSEMBLY',
+            'K5_S5_POSTCOLLAPSE_NO_DEFECT_ON_FROZEN_LANE',
+            'INVALID_IMPLEMENTATION_OR_PROVENANCE',
+          }
+          assert r['classification'] in allowed
+          assert r['prereg_commit']=='b7495db85844111b947bc902e5df2a496bf614ad'
+          assert r['q18_values_used'] is False
+          assert r['heavy_resolver_authorized'] is False
+          assert r['global_stokes_authorized'] is False
+          print('FINAL_CLASSIFICATION='+r['classification'])
+          PY
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: k5-postcollapse-s5-geometry-diagnostic
+          path: postcollapse_diagnostic.json
+          if-no-files-found: error
+          retention-days: 90
