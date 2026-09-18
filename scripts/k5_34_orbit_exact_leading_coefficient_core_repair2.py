@@ -10,13 +10,6 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE = ROOT / "scripts/k5_34_orbit_exact_leading_coefficient_core_repair1.py"
-REPAIR2_PREREG = ROOT / "prereg/K5_34_ORBIT_EXACT_LEADING_COEFFICIENT_CANCELLATION_RESOLUTION_CONTROL_REPAIR_2.md"
-CRITIC_AUTH = ROOT / "results/raw/k5_34_orbit_component1_repaired_diagnostic_independent_critic_authoritative.json"
-ITER077I_SOURCE = ROOT / "distributional/iter077i_sm_source_ordered_jhalf_k5_l1.py"
-
-REPAIR2_PRE = "beadf232a89331f62a3e129e83e23576e2a33021"
-CRITIC_CLASS = "CONFIRMED_SCOPED_COMPONENT1_SUPPORT_SET_MISMATCH"
-ITER077I_SOURCE_BLOB = "2a3e3390556b337eccb6b917979961981f913deb"
 
 
 def load(path: Path, name: str):
@@ -29,9 +22,21 @@ def load(path: Path, name: str):
 
 repair1 = load(BASE, "k5_34_exact_core_repair2_parent")
 
+# Re-export repair-1 scientific surface first. Repair-2-specific provenance names
+# are bound only after this loop so they cannot be overwritten by parent globals.
 for _name in dir(repair1):
     if not _name.startswith("__"):
         globals()[_name] = getattr(repair1, _name)
+
+REPAIR2_PREREG = ROOT / "prereg/K5_34_ORBIT_EXACT_LEADING_COEFFICIENT_CANCELLATION_RESOLUTION_CONTROL_REPAIR_2.md"
+REPAIR2_CORRECTION1_PREREG = ROOT / "prereg/K5_34_ORBIT_RESOLVER_REPAIR2_PREFLIGHT_EXECUTION_CORRECTION_1.md"
+COMPONENT1_CRITIC_AUTH = ROOT / "results/raw/k5_34_orbit_component1_repaired_diagnostic_independent_critic_authoritative.json"
+ITER077I_SOURCE = ROOT / "distributional/iter077i_sm_source_ordered_jhalf_k5_l1.py"
+
+REPAIR2_PRE = "beadf232a89331f62a3e129e83e23576e2a33021"
+REPAIR2_CORRECTION1_PRE = "aa5fd025c26489091db202ff7886130da65e4ef5"
+COMPONENT1_CRITIC_CLASS = "CONFIRMED_SCOPED_COMPONENT1_SUPPORT_SET_MISMATCH"
+ITER077I_SOURCE_BLOB = "2a3e3390556b337eccb6b917979961981f913deb"
 
 
 def git_blob_sha1(path: Path) -> str:
@@ -65,11 +70,11 @@ def transport_old_key_to_target(types, p, transpose_reversed=True):
 
 def forward_transported_pattern_dicts(base, p, *, source_reversal_sign=True):
     """
-    Resolver-target-frame source transport.
+    Exact endpoint/orientation transport of each component into target edge labels.
 
-    Only the source reversal character is included here. The covariance route
-    on the permuted geometry supplies the separately mandatory covariance
-    orientation transport.
+    The source reversal orientation character belongs here. The separately
+    mandatory covariance orientation transport is supplied by the permuted
+    covariance geometry in route_a and is not pre-multiplied here.
     """
     g_source = repair1.s5.orientation_character(p) if source_reversal_sign else 1
     out = []
@@ -81,9 +86,25 @@ def forward_transported_pattern_dicts(base, p, *, source_reversal_sign=True):
     return out
 
 
+def target_boundary_projected_vector(forward_vec, p):
+    """
+    Apply the exact target contragredient component mixing to the full 32-vector.
+
+    This is the operation independently reconstructed by the terminal component-1
+    Critic. No Researcher result payload is imported to construct the matrix.
+    """
+    ip = repair1.s5.invperm(p)
+    tensors = repair1.s5.act.reach.local_tensor_vectors(repair1.s5.act.src)
+    local = repair1.s5.act.reach.local_action_matrices(tensors)
+    Ai = repair1.s5.boundary_matrix(ip, local)
+    ATi = repair1.s5.transpose(Ai)
+    return repair1.s5.transform_dictvec(ATi, forward_vec)
+
+
 _BASE_PATTERNS = repair1._BASE_PATTERNS
 _SOURCE_TERM_COUNT = repair1._SOURCE_TERM_COUNT
-_SOURCE_CYCLE_TARGET = forward_transported_pattern_dicts(_BASE_PATTERNS, repair1.s5.C)
+_SOURCE_CYCLE_EDGE_TARGET = forward_transported_pattern_dicts(_BASE_PATTERNS, repair1.s5.C)
+_SOURCE_CYCLE_TARGET = target_boundary_projected_vector(_SOURCE_CYCLE_EDGE_TARGET, repair1.s5.C)
 S5_MATCH_COEFF_CYCLE = repair1._project_pattern_dicts_to_match_coeff(_SOURCE_CYCLE_TARGET)
 
 
@@ -92,15 +113,28 @@ def _perfect_matching_key(mt):
     return flat == list(range(10)) and all(len(pair) == 2 and pair[0] < pair[1] for pair in mt)
 
 
-def _inverse_roundtrip_all32():
+def _edge_transport_inverse_roundtrip_all32():
     ip = repair1.s5.invperm(repair1.s5.C)
-    back = forward_transported_pattern_dicts(_SOURCE_CYCLE_TARGET, ip)
+    back = forward_transported_pattern_dicts(_SOURCE_CYCLE_EDGE_TARGET, ip)
     return back == _BASE_PATTERNS
+
+
+def _boundary_projection_matrix_controls():
+    p = repair1.s5.C
+    ip = repair1.s5.invperm(p)
+    tensors = repair1.s5.act.reach.local_tensor_vectors(repair1.s5.act.src)
+    local = repair1.s5.act.reach.local_action_matrices(tensors)
+    A = repair1.s5.boundary_matrix(p, local)
+    Ai = repair1.s5.boundary_matrix(ip, local)
+    return (
+        repair1.s5.matmul(A, Ai) == repair1.s5.eye(32)
+        and repair1.s5.matmul(Ai, A) == repair1.s5.eye(32)
+    )
 
 
 def static_checks():
     out = dict(repair1.static_checks())
-    critic = json.loads(CRITIC_AUTH.read_text(encoding="utf-8"))
+    critic = json.loads(COMPONENT1_CRITIC_AUTH.read_text(encoding="utf-8"))
     rec = critic.get("reconstruction", {})
     controls = critic.get("controls", {})
 
@@ -112,8 +146,13 @@ def static_checks():
         "repair2_prereg_present":
             REPAIR2_PREREG.exists()
             and "Exact repair-2 diagnosis" in REPAIR2_PREREG.read_text(encoding="utf-8"),
+        "repair2_correction1_prereg_locked":
+            REPAIR2_CORRECTION1_PRE == "aa5fd025c26489091db202ff7886130da65e4ef5",
+        "repair2_correction1_prereg_present":
+            REPAIR2_CORRECTION1_PREREG.exists()
+            and "full forward endpoint/orientation transport followed by exact target boundary contragredient projection" in REPAIR2_CORRECTION1_PREREG.read_text(encoding="utf-8"),
         "component1_independent_critic_confirmed":
-            critic.get("classification") == CRITIC_CLASS,
+            critic.get("classification") == COMPONENT1_CRITIC_CLASS,
         "component1_critic_q18_unused":
             critic.get("q18_values_used") is False,
         "component1_critic_authorizes_repair2":
@@ -123,13 +162,15 @@ def static_checks():
         "iter077i_source_blob_locked":
             git_blob_sha1(ITER077I_SOURCE) == ITER077I_SOURCE_BLOB,
         "repair2_source_transport_32_components":
-            len(_SOURCE_CYCLE_TARGET) == 32,
+            len(_SOURCE_CYCLE_EDGE_TARGET) == len(_SOURCE_CYCLE_TARGET) == 32,
         "repair2_source_transport_100000_terms":
             _SOURCE_TERM_COUNT == 100000,
         "repair2_forward_edge_map_bijection":
             sorted(repair1.s5.ep(repair1.s5.C, i) for i in range(10)) == list(range(10)),
-        "repair2_forward_transport_inverse_roundtrip_all32":
-            _inverse_roundtrip_all32(),
+        "repair2_forward_edge_transport_inverse_roundtrip_all32":
+            _edge_transport_inverse_roundtrip_all32(),
+        "repair2_boundary_action_inverse_exact":
+            _boundary_projection_matrix_controls(),
         "repair2_component1_target_dict_hash_matches_independent_critic":
             _dict_hash(target_c1) == rec.get("route2_dict_sha256"),
         "repair2_component1_target_support_hash_matches_independent_critic":
