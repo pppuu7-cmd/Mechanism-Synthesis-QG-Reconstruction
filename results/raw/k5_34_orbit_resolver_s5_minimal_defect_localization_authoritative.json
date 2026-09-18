@@ -1,0 +1,17 @@
+{
+  "classification": "K5_34_ORBIT_S5_DEFECT_LOCALIZED_SOURCE_COEFFICIENT_TRANSPORT",
+  "run": 35293133302,
+  "artifact": 10526388389,
+  "artifact_digest": "sha256:1626252d82b12f7cd75156170928175ea4165e736afb228243b0c3993c0e4af8",
+  "head": "3471f053a8a8cac16c5b566d271d6237c6527f07",
+  "prereg_commit": "37aa29af296a09f05c1a1392d05225416b073106",
+  "frozen_lane": {"mask":1,"ray":"W1","cycle":[1,2,3,4,0]},
+  "counts": {"pushed_matchings":945,"target_matchings":945},
+  "stage_equalities": {"edge_roundtrip":true,"matching_support":true,"source_coefficients":false,"wick_contribution":null,"numerator":false,"annihilator_flux":false},
+  "first_mismatch": {"matching_support":null,"source_coefficient":"((0, 1), (2, 4), (3, 5), (6, 8), (7, 9))"},
+  "hashes": {"pushed_support":"0eb8ce665a35d6bed3c658fdf7dcbe1d00989e7c694d5142ef5181d6c23ac124","target_support":"0eb8ce665a35d6bed3c658fdf7dcbe1d00989e7c694d5142ef5181d6c23ac124","pushed_mc":"0fadf222c22368dfac0f0c1e2ea93774ad9c103ed1506685292152e49cbe182b","target_mc":"cee5a38677919965c66a785349286163b4ebd5dda8731bcdccdc71eec2543cbc"},
+  "validity": {"exact_rational":true,"full32":true,"source_terms_100000":true,"pushed_945":true,"target_945":true,"source_fixed_rejected":true,"altered_one_matching_rejected":true,"prereg_present":true,"prereg_commit_locked":true},
+  "scientific_coefficient_verdict": null,
+  "no_N_B_orders_or_coefficients_recorded": true,
+  "interpretation_ceiling": "implementation diagnosis only; no 64-component scientific authority"
+}
