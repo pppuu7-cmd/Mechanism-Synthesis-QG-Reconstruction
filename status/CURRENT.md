@@ -243,3 +243,26 @@ Execution correction was prospectively frozen at `aa5fd025c26489091db202ff788613
 Corrected preflight run `35404110282`, head `684dcb3a0250f995b487603daaeb8be04a35cbc1`, is active at this recovery cut.
 
 Heavy resolver repair-2 has **not** started. Resolver scientific authority remains `0/64`. A heavy run is authorized only if corrected preflight terminalizes `PASS_REPAIR2_PREFLIGHT` with every frozen control true. No partial preflight or shard output may be promoted.
+
+
+## Resolver repair-2 preflight — terminal source-collapse no-go
+
+This section supersedes the earlier “corrected preflight active” wording.
+
+Corrected preflight run `35404110282`, job `105790166840`, head `684dcb3a0250f995b487603daaeb8be04a35cbc1`, artifact `10571731222`, ZIP SHA256 `adc8c6781c551488d27471774c3833ba9ef4bfc068b7761b7685cb08c85c6b7e`, terminalized workflow failure with frozen classification `INVALID_IMPLEMENTATION`.
+
+Exactly one frozen check fails:
+
+`repair1_pullback_frame_object_rejected = false`.
+
+All corrected source/provenance/component-mixing/hash/cardinality controls pass, including independent Critic route-2 component-1 dictionary/support hashes, support cardinality 1536, 16 contributors, full32/100000, exact target boundary action/inverse, exact rationality and 945 perfect-matchings.
+
+The exact implication is implementation-diagnostic: the independently confirmed component-level support mismatch is erased by the physical invariant-dual/Wick collapse. After full endpoint/orientation transport plus exact target `A^{-T}` component mixing, the collapsed 945-matching coefficient object equals the repair-1 matching object. Therefore the proposed source-frame repair does not change the resolver's physical matching input and cannot explain the systematic `S5_full_coefficient_covariance_all=false` failure.
+
+Durable terminal note: `status/K5_34_ORBIT_RESOLVER_REPAIR2_PREFLIGHT_RUN2_SOURCE_COLLAPSE_NO_GO.md`, commit `2914f1ec8d742b66be0a29ec85091d5c097d71f8`.
+
+Heavy repair-2 production is **not authorized** from this hypothesis. No heavy shard was launched, no N/B value/order and no q18 partial was consumed.
+
+### Highest-information next work
+
+Freeze a single-lane exact post-collapse geometry/covariance transport diagnostic on mask=1, W1, CYCLE. Source matching coefficients are now locked equal across the relevant transport constructions; the next localization must occur downstream in the projective/covariance route before any new heavy resolver attempt.
