@@ -1,0 +1,46 @@
+name: K5 S5 matching label-frame commutation diagnostic
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/k5_34_orbit_s5_matching_label_frame_commutation.py"
+      - ".github/workflows/k5_34_orbit_s5_matching_label_frame_commutation.yml"
+      - "prereg/K5_34_ORBIT_S5_MATCHING_LABEL_FRAME_COMMUTATION_DIAGNOSTIC.md"
+
+jobs:
+  exact-diagnostic:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run exact matching-frame diagnostic
+        run: |
+          mkdir -p artifacts
+          python scripts/k5_34_orbit_s5_matching_label_frame_commutation.py \
+            --output artifacts/result.json | tee artifacts/stdout.txt
+      - name: Validate classifier surface
+        run: |
+          python - <<'PY'
+          import json
+          d=json.load(open('artifacts/result.json',encoding='utf-8'))
+          assert d['classification'] in {
+            'K5_34_ORBIT_S5_MATCHING_LABEL_FRAME_COMMUTATION_IDENTIFIED_EXACT_SCOPED',
+            'K5_34_ORBIT_S5_MATCHING_LABEL_FRAME_COMMUTATION_SIMPLE_FRAME_NO_GO_EXACT_SCOPED',
+            'BLOCKED_OBJECT_DEFINITION',
+            'INVALID_IMPLEMENTATION',
+          }
+          assert d['invalid_resolver_values_consumed'] is False
+          assert d['scientific_NB_coefficients_consumed'] is False
+          print(d['classification'])
+          PY
+          sha256sum artifacts/result.json > artifacts/result_sha256.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: k5-s5-matching-label-frame-commutation
+          path: artifacts/
+          if-no-files-found: error
