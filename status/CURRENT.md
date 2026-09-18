@@ -109,3 +109,41 @@ Decisive defect: the frozen second route requires direct endpoint/orientation tr
 Terminal provenance: run `35359497526`, job `105646962045`, artifact `10553332576`, ZIP SHA256 `f2b9b3303ca53438479c3215ebb9918b6031027f81c4cb7cd42b883a7f764e80`, raw JSON SHA256 `42b3930e3fc9055e92d816e3e8278d2a1e8e03955978127e6ceb71db02d84884`. Critic review `65d8b04e874a29a8b6ce13d3d7d1a419e5e62801`; provenance `b51f2037b819112e0b5cf4f9636a65d7e2cc9545`; handoff `0185270ff963f1a68f04b34fffafb2b29dea284a`.
 
 Boundary-S5 independent theorem authority remains closed/confirmed and is not reopened. Heavy 34-orbit resolver remains `0/64` authoritative. No resolver repair-2 is authorized from this diagnostic. Next admissible work is only a prospectively frozen implementation-only repair of the component-1 diagnostic that independently constructs target component 1 from the full transported 32-component source vector and includes a multi-source mixing positive control plus dropped-contributor negative control. q18 partials remain forbidden and were not consumed.
+
+
+## Repaired component-1 support-mixing diagnostic — terminal Researcher authority, Critic pending
+
+The independent Critic invalidated the first component-1 diagnostic because its second route transported only `base[1]` and never performed the required target-component mixing.
+
+AUTOMATION A prospectively froze implementation-only repair 1 at `aab70cd2ffbc9bf52fdd83f8caa78bc3d8b220ec`. The first repaired run `35363408523` was `INVALID_IMPLEMENTATION_OR_PROVENANCE` solely because of a self-referential prereg-content SHA check. Control-only repair 2 was frozen at `7bc6f76fe8d183a38e944f096f93a9f0b6b0ab37`; only that lock check changed.
+
+Authoritative repaired execution:
+
+- run `35363610618`, attempt 1;
+- head `a5a9ae44569532bab7e352b12675d8eb152026ea`;
+- job `105660606466`;
+- artifact `10555382872`;
+- ZIP SHA256 `ffc28d87f50691e77bcf196b7db364214bdd31643f7fb092696b93f5796f0d64`;
+- result JSON SHA256 `e77e42f20db72960ee3d5d81faea4082763979265bbeafe8bc474b2a8a832a9a`.
+
+All frozen validity/mixing controls pass. The direct route starts from the full transported 32-component source vector and reconstructs the target projection independently from raw source node/intertwiner tensors. Target component 1 receives 16 nonzero source-component contributions; dropping a contributor is detected.
+
+Terminal Researcher diagnostic classification:
+
+`K5_S5_COMPONENT1_DEFECT_SUPPORT_INDEX_MISSING_OR_SPURIOUS`.
+
+Both target dictionaries have support cardinality 1536, but exact support sets differ. Route-1 hash `6eca3bbe1e0abef16daa0c62bbf1f1bb1097d07783e5687e07f67ddbe7f713e1`; repaired direct-route hash `76fba3334777ba180b8aea2da1a592463b1c62c389dcf70df448fb7aeec9dc85`.
+
+This is **implementation-diagnostic Researcher authority only**, not a physical N/B verdict. Resolver authority remains `0/64`. No heavy resolver repair/rerun is authorized until Automation B independently reviews this repaired diagnostic.
+
+Durable files:
+
+- `results/raw/k5_34_orbit_component1_support_mixing_diagnostic_repair2_authoritative.json`, commit `990741144cb7abd79f022a144a2d3b3d175d1776`;
+- `results/K5_34_ORBIT_COMPONENT1_SUPPORT_MIXING_DIAGNOSTIC_REPAIR2_RESULT.md`, commit `d12312c3cc988256061314b8772875ccff245f57`;
+- `status/K5_34_ORBIT_COMPONENT1_SUPPORT_MIXING_DIAGNOSTIC_REPAIR2_PROVENANCE.md`, commit `821bf132b1e88cf0bdca923601ff5f214f53882c`.
+
+The duplicate preparation chain `7d22ea4e5af4c3143317734afe4fecffd704f2a2` / `905908c2d7838fa7feae2c0b031ddeee8e07a8a9` / `8435881e6b5cfb200b57c13e8ab8a9a8a145e7cf` is explicitly non-authoritative and supplies no competing verdict.
+
+### Highest-information next work
+
+Independent Automation-B adversarial review of the repaired component-1 diagnostic. AUTOMATION A must not imitate that review. Until a terminal Critic authority exists, do not freeze resolver repair-2, rerun the heavy 34-orbit resolver, promote any N/B order, or open global Stokes/IBP/K5-period science.
