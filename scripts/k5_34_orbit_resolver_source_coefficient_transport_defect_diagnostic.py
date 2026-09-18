@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# Frozen implementation trigger; scientific contract is prereg bf520ee5eb2a72d4aad867cb0b97f80299f2c301.
 from __future__ import annotations
 import argparse, hashlib, importlib.util, json
 from collections import defaultdict
@@ -28,17 +29,9 @@ def coeff(mc): return mc.get(FROZEN)
 def main():
  ap=argparse.ArgumentParser(); ap.add_argument('--output',required=True); a=ap.parse_args(); pre=PREREG.read_text(); base=c._BASE_PATTERNS
  no_transpose=transform(base,False,True); target=transform(base,True,True); no_source_sign=transform(base,True,False)
- mc_target=project(target); pushed=f.push_matching_coeff(c.MATCH_COEFF,P); mc_no_transpose=project(no_transpose); mc_no_source=project(no_source_sign)
- endpoint_ok=sorted(s5.ep(P,i) for i in range(10))==list(range(10))
- # component-key stage ignores coefficients and asks whether transported 10-factor keys agree.
- key_target=set().union(*(d.keys() for d in target)); key_pushed=set().union(*(d.keys() for d in transform(base,True,False)))
- orientation_ok=(key_target!=set().union(*(d.keys() for d in no_transpose))) or coeff(mc_no_transpose)!=coeff(mc_target)
- component_key_ok=(key_target==key_pushed)
- # Exact invariant-dual contraction is the boundary contragredient stage; it is internally deterministic.
- boundary_ok=(coeff(project(target))==coeff(mc_target))
- # Source spectral/component sign stage compares the source-sign-complete object with omission control.
- source_spectral_ok=(s5.orientation_character(P)==1 and target==no_source_sign) or (s5.orientation_character(P)!=1 and target!=no_source_sign)
- prewick_ok=(coeff(mc_target)==coeff(pushed))
+ mc_target=project(target); pushed=f.push_matching_coeff(c.MATCH_COEFF,P); mc_no_transpose=project(no_transpose)
+ endpoint_ok=sorted(s5.ep(P,i) for i in range(10))==list(range(10)); key_target=set().union(*(d.keys() for d in target)); key_pushed=set().union(*(d.keys() for d in no_source_sign))
+ orientation_ok=(key_target!=set().union(*(d.keys() for d in no_transpose))) or coeff(mc_no_transpose)!=coeff(mc_target); component_key_ok=(key_target==key_pushed); boundary_ok=(coeff(project(target))==coeff(mc_target)); source_spectral_ok=(s5.orientation_character(P)==1 and target==no_source_sign) or (s5.orientation_character(P)!=1 and target!=no_source_sign); prewick_ok=(coeff(mc_target)==coeff(pushed))
  stages={'endpoint_map':endpoint_ok,'orientation_reversal_control_discriminates':orientation_ok,'source_component_key':component_key_ok,'boundary_contragredient':boundary_ok,'source_spectral_component':source_spectral_ok,'prewick_product':prewick_ok}
  if not endpoint_ok: cls='K5_S5_SOURCE_COEFF_DEFECT_ENDPOINT_MAP'
  elif not orientation_ok: cls='K5_S5_SOURCE_COEFF_DEFECT_ORIENTATION_REVERSAL'
