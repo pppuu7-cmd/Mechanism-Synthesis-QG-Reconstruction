@@ -220,3 +220,26 @@ Global Stokes/IBP, K5 periods, finite-part/joint selector, regulator independenc
 ### Highest-information next work
 
 Prospectively freeze the minimal heavy-resolver control repair-2 from the independently confirmed S5 frame/support mapping defect before any resolver code change. Then execute exactly one unchanged-contract heavy resolver production and classify its terminal aggregate.
+
+
+## 34-orbit resolver repair-2 — prospectively frozen, preflight active
+
+Independent component-1 Critic confirmation authorized a minimal implementation-only resolver repair-2. The repair was prospectively frozen before code changes:
+
+- repair-2 prereg: `beadf232a89331f62a3e129e83e23576e2a33021`;
+- initial implementation: `74139678dac94735c8b387578d11e96538f71134`;
+- repair-2 shard implementation: `2a6c64fd139407d7d7e7dcf8a5efdf82ca98a048`.
+
+Repair-2 changes only the source-support transport consumed by the S5 covariance control; parent scientific source, 32 orbit representatives, W1/W2, both channels, 945 matchings, DAG, degree ceilings, projective-normal authority, exact arithmetic and terminal classifier remain frozen.
+
+Preflight run `35403849670`, head `56eb043f402475f93787726073496e977e248453`, terminalized `INVALID_IMPLEMENTATION` before any heavy science. Artifact `10572140519`, ZIP SHA256 `2f60c5619d50fa1f95da02447c346b3c32b4a0794804f43b98bf6136ac586fff`.
+
+The failed preflight exposed two implementation-only defects: a parent-global re-export overwrote the component-1 Critic authority path, and the first repair-2 implementation performed forward edge transport without the mandatory full 32-component target contragredient projection required by the already-frozen Critic hash control. No N/B result or q18 partial was consumed.
+
+Execution correction was prospectively frozen at `aa5fd025c26489091db202ff7886130da65e4ef5` before code repair. Corrected implementation `68470eff1b554d7513aee5454e145e9b7ce9d152` now performs:
+
+`full32 canonical source -> forward endpoint/orientation target-edge transport -> exact A^{-T} target component mixing -> invariant-dual / 945-matching collapse`.
+
+Corrected preflight run `35404110282`, head `684dcb3a0250f995b487603daaeb8be04a35cbc1`, is active at this recovery cut.
+
+Heavy resolver repair-2 has **not** started. Resolver scientific authority remains `0/64`. A heavy run is authorized only if corrected preflight terminalizes `PASS_REPAIR2_PREFLIGHT` with every frozen control true. No partial preflight or shard output may be promoted.
