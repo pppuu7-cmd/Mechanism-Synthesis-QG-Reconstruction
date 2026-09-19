@@ -12,11 +12,13 @@ ROOT = Path(__file__).resolve().parents[1]
 BASE = ROOT / 'scripts/k5_34_orbit_matching_key_frame_repair3_preflight.py'
 CORE = ROOT / 'scripts/k5_34_orbit_exact_leading_coefficient_core_repair3_matching_key_frame.py'
 CONTROL_PREREG = ROOT / 'prereg/K5_34_ORBIT_MATCHING_KEY_FRAME_REPAIR3_PREFLIGHT_CONTROL_REPAIR_1.md'
+CONTROL_REPAIR2_PREREG = ROOT / 'prereg/K5_34_ORBIT_MATCHING_KEY_FRAME_REPAIR3_PREFLIGHT_CONTROL_REPAIR_2_NAMESPACE.md'
 CRITIC_PROVENANCE = ROOT / 'status/K5_G8_MATCHING_COEFFICIENT_LABEL_FRAME_INDEPENDENT_CRITIC_PROVENANCE.md'
 
 PARENT_PREREG_COMMIT = '4ee6c6f3056c5934a5209a4f05616b73354b4e6e'
 CONTROL_REPAIR_PREREG_COMMIT = 'a05e1e29d2f39b678b2cf5f6b187cc165c787f9d'
-REPAIRED_CORE_COMMIT = 'ae1e2cf51d7da51ccbcbdbc289d0dc5326802a7c'
+CONTROL_REPAIR2_PREREG_COMMIT = 'e4ecce03cbe5df09afcb858480e582fa7b0c9b9e'
+REPAIRED_CORE_COMMIT = '6691528d556247f1e8f9cae41f5559993077e15e'
 CRITIC_PROVENANCE_COMMIT = '81b85171bb2432438b853bca37cca7bafa3c8d2e'
 CRITIC_RUN = 35412815680
 CRITIC_JOB = 105815631932
@@ -74,7 +76,7 @@ def main() -> int:
     provenance_text = CRITIC_PROVENANCE.read_text(encoding='utf-8')
 
     repaired_validity = dict(raw.get('validity', {}))
-    repaired_validity['core_commit_locked'] = REPAIRED_CORE_COMMIT == 'ae1e2cf51d7da51ccbcbdbc289d0dc5326802a7c'
+    repaired_validity['core_commit_locked'] = REPAIRED_CORE_COMMIT == '6691528d556247f1e8f9cae41f5559993077e15e'
     repaired_validity['critic_run_locked'] = (
         CRITIC_PROVENANCE_COMMIT == '81b85171bb2432438b853bca37cca7bafa3c8d2e'
         and f'run `{CRITIC_RUN}`' in provenance_text
@@ -89,6 +91,17 @@ def main() -> int:
         CONTROL_PREREG.exists()
         and 'control-only repair 1' in CONTROL_PREREG.read_text(encoding='utf-8')
     )
+    repaired_validity['control_repair2_prereg_locked'] = (
+        CONTROL_REPAIR2_PREREG_COMMIT == 'e4ecce03cbe5df09afcb858480e582fa7b0c9b9e'
+    )
+    repaired_validity['control_repair2_prereg_present'] = (
+        CONTROL_REPAIR2_PREREG.exists()
+        and 'authority namespace binding' in CONTROL_REPAIR2_PREREG.read_text(encoding='utf-8')
+    )
+    # The base preflight's static aggregate excludes the two intentionally false
+    # data/firewall fields. Under control repair2 it must now be true without any
+    # scientific or matching-table criterion change.
+    repaired_validity['static_repair3_controls'] = raw.get('validity', {}).get('static_repair3_controls') is True
 
     census = raw.get('census_and_relations', {})
     stages = raw.get('g8_stages', {})
@@ -118,6 +131,7 @@ def main() -> int:
         'scientific_verdict': None,
         'parent_prereg_commit': PARENT_PREREG_COMMIT,
         'control_repair1_prereg_commit': CONTROL_REPAIR_PREREG_COMMIT,
+        'control_repair2_prereg_commit': CONTROL_REPAIR2_PREREG_COMMIT,
         'repaired_core_commit': REPAIRED_CORE_COMMIT,
         'repaired_core_blob': git_blob_sha1(CORE),
         'critic_provenance_commit': CRITIC_PROVENANCE_COMMIT,
