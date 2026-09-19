@@ -1,12 +1,13 @@
 name: K5 34-orbit matching-key frame repair3 preflight
-# Frozen implementation already committed; this workflow-only touch triggers the preflight.
 
 on:
   push:
     paths:
       - 'prereg/K5_34_ORBIT_MATCHING_KEY_FRAME_CONTROL_REPAIR_3_PREFLIGHT.md'
+      - 'prereg/K5_34_ORBIT_MATCHING_KEY_FRAME_REPAIR3_PREFLIGHT_CONTROL_REPAIR_1.md'
       - 'scripts/k5_34_orbit_exact_leading_coefficient_core_repair3_matching_key_frame.py'
       - 'scripts/k5_34_orbit_matching_key_frame_repair3_preflight.py'
+      - 'scripts/k5_34_orbit_matching_key_frame_repair3_preflight_control_repair1.py'
       - '.github/workflows/k5_34_orbit_matching_key_frame_repair3_preflight.yml'
   workflow_dispatch:
 
@@ -23,19 +24,20 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Run frozen matching-key repair3 preflight
+      - name: Run frozen preflight with provenance control repair1
         shell: bash
         run: |
           set +e
-          python scripts/k5_34_orbit_matching_key_frame_repair3_preflight.py \
+          python scripts/k5_34_orbit_matching_key_frame_repair3_preflight_control_repair1.py \
             --output repair3_preflight.json \
+            --raw-output repair3_preflight_raw_base.json \
             > repair3_preflight_stdout.txt 2>&1
           rc=$?
           echo "$rc" > repair3_preflight_exit_code.txt
           cat repair3_preflight_stdout.txt
           exit 0
 
-      - name: Validate frozen preflight classification
+      - name: Validate repaired frozen preflight classification
         shell: bash
         run: |
           python - <<'PY'
@@ -48,11 +50,14 @@ jobs:
               'MATCHING_KEY_FRAME_REPAIR3_PREFLIGHT_SCIENTIFIC_MISMATCH',
           }
           assert r['classification'] in allowed, r.get('classification')
-          assert r['prereg_commit']=='4ee6c6f3056c5934a5209a4f05616b73354b4e6e'
-          assert r['core_commit']=='6d6dd17e579d7aeb2a793bfa1becbe611174f191'
+          assert r['parent_prereg_commit']=='4ee6c6f3056c5934a5209a4f05616b73354b4e6e'
+          assert r['control_repair1_prereg_commit']=='a05e1e29d2f39b678b2cf5f6b187cc165c787f9d'
+          assert r['repaired_core_commit']=='ae1e2cf51d7da51ccbcbdbc289d0dc5326802a7c'
+          assert r['critic_provenance_commit']=='81b85171bb2432438b853bca37cca7bafa3c8d2e'
           assert r['q18_values_used'] is False
           assert r['N_B_orders_or_coefficients_used'] is False
           assert r['heavy_resolver_launched'] is False
+          assert Path('repair3_preflight_raw_base.json').exists()
           if r['classification']=='PASS_MATCHING_KEY_FRAME_REPAIR3_PREFLIGHT':
               assert all(r['validity'].values())
               assert all(r['census_and_relations'].values())
@@ -63,13 +68,14 @@ jobs:
               raise SystemExit(2)
           PY
 
-      - name: Upload immutable preflight artifact
+      - name: Upload immutable repaired preflight artifact
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: k5-34-orbit-matching-key-frame-repair3-preflight
+          name: k5-34-orbit-matching-key-frame-repair3-preflight-control-repair1
           path: |
             repair3_preflight.json
+            repair3_preflight_raw_base.json
             repair3_preflight_stdout.txt
             repair3_preflight_exit_code.txt
           if-no-files-found: error
