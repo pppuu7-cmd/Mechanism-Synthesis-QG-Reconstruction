@@ -1,4 +1,5 @@
 name: K5 34-orbit matching-key frame repair3 preflight
+# Frozen implementation already committed; this workflow-only touch triggers the preflight.
 
 on:
   push:
