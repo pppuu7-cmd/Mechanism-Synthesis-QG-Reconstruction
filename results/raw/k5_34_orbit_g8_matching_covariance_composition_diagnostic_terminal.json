@@ -1,0 +1,72 @@
+{
+  "gate": "K5_34_ORBIT_G8_MATCHING_COVARIANCE_COMPOSITION_DIAGNOSTIC",
+  "classification": "K5_G8_DEFECT_FINAL_MATCHING_CONTRIBUTION",
+  "scientific_verdict": null,
+  "prereg_commit": "a9781b3c6b61ecaa1940ae796ae0a68b9b29c9b6",
+  "corrected_parent_authority_commit": "3ec5862258da84c25309c8ee091e6b752a246f66",
+  "production": {
+    "run_id": 35411497229,
+    "job_id": 105811869437,
+    "head_sha": "d87f8ed389f0cf418e1ec0abd49077604c73f853",
+    "artifact_id": 10573657808,
+    "artifact_name": "k5-g8-matching-covariance-diagnostic",
+    "artifact_zip_sha256": "168c0826839c7480dd6fb0df0e6bf7711361fdd7c46d9b75e396640f0075ae59",
+    "g8_diagnostic_json_sha256": "a706245b311c9e8d4b573747724fd75cd0ccb7efc5e09a63485addafe1a72361",
+    "workflow_conclusion": "success"
+  },
+  "frozen": {
+    "mask": 1,
+    "ray": "W1",
+    "cycle": [1, 2, 3, 4, 0],
+    "matching": "((0, 1), (2, 3), (4, 5), (6, 7), (8, 9))"
+  },
+  "validity": {
+    "g8_prereg_locked": true,
+    "g8_prereg_present": true,
+    "corrected_parent_authority_commit_locked": true,
+    "corrected_parent_classification": true,
+    "corrected_parent_run_locked": true,
+    "corrected_parent_G1_G7_pass": true,
+    "corrected_parent_first_matching_locked": true,
+    "parent_q18_unused": true,
+    "matching_census_945": true,
+    "source_terms_100000": true
+  },
+  "stages": {
+    "H1_edge_pair_permutation": true,
+    "H2_orientation_cocycle_sign": true,
+    "H3_covariance_index_convention": true,
+    "H4_per_pair_covariance_factor": true,
+    "H5_ordered_product_assembly": true,
+    "H6_factor_multiset_assembly": true,
+    "H7_final_matching_contribution": false
+  },
+  "subchecks": {
+    "pair_signs": [1, -1, 1, -1, 1],
+    "total_pair_sign": 1,
+    "per_pair_factor_equalities": [true, true, true, true, true],
+    "geometry_base_transport_exact": true,
+    "source_matching_coeff_direct_equal": false,
+    "source_matching_coeff_total_pair_sign_equal": false
+  },
+  "malformed_controls": {
+    "omitted_orientation_sign_rejected": true,
+    "covariance_inverse_pullback_mutation_rejected": true,
+    "swapped_edge_pair_rejected": true,
+    "canonicalize_pair_roundtrip_all5": true
+  },
+  "hashes_only": {
+    "old_coeff_sha256": "0de91a89752812014a5f222d0885dd5faadb6e70198966986f0b38c4b0875234",
+    "target_coeff_sha256": "d60b0a4b6f0fc54aaa8b7d12af54194b7922c6133ccb0a38c6e029f6efe9701a",
+    "predicted_factor_multiset_sha256": "6908a66af85df1c8acaa0cde4bf2f2974474badf1a16f23c2c878e356a93a86e",
+    "actual_factor_multiset_sha256": "6908a66af85df1c8acaa0cde4bf2f2974474badf1a16f23c2c878e356a93a86e",
+    "old_base_sha256": "caecba00c3bfc406c3acc5f648e6360a7c2f2bb943e47508ee4fbefce771222a",
+    "target_base_sha256": "caecba00c3bfc406c3acc5f648e6360a7c2f2bb943e47508ee4fbefce771222a"
+  },
+  "q18_values_used": false,
+  "N_B_orders_or_coefficients_used": false,
+  "heavy_resolver_authorized": false,
+  "global_stokes_authorized": false,
+  "interpretation_ceiling": "implementation diagnosis only; resolver authority remains 0/64",
+  "critic_persistence_note": "Exact mirror of terminal GitHub Actions artifact reviewed after completion; no criteria or values changed. This file is parent diagnostic provenance for the prospectively frozen independent label-frame follow-up, not a new physical verdict."
+}
