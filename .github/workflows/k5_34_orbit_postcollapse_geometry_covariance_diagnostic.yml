@@ -1,4 +1,5 @@
 name: K5 post-collapse S5 geometry diagnostic
+# implementation repair-1 trigger: cd4dcf9f3b88b142d5413da0c8d17b24acd40074
 
 on:
   push:
@@ -47,6 +48,8 @@ jobs:
           }
           assert r['classification'] in allowed
           assert r['prereg_commit']=='b7495db85844111b947bc902e5df2a496bf614ad'
+          assert r['validity']['implementation_repair1_locked'] is True
+          assert r['validity']['implementation_repair1_present'] is True
           assert r['q18_values_used'] is False
           assert r['heavy_resolver_authorized'] is False
           assert r['global_stokes_authorized'] is False
