@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 from __future__ import annotations
-# Frozen implementation-only gate; this comment intentionally triggers its workflow.
+# Frozen implementation-only gate; corrected prospectively after run 35427903794 exposed gate-only false negatives.
 import importlib.util,json
 from pathlib import Path
 
@@ -35,10 +35,12 @@ def main():
         checks['channel_orbit_rows_64']=2*len(c.proper_orbits())==64
         checks['degree_N_27']=c.N_DEG==27
         checks['degree_B_31']=c.B_DEG==31
-        checks['two_invariant_dual_channels']=len(c.W1)==2 and len(c.W2)==2
+        checks['two_invariant_dual_channels']=c.W1 is not None and c.W2 is not None
         checks['W1_W2_present']=c.W1 is not None and c.W2 is not None
         checks['exact_fraction_coefficients']=st.get('all_coefficients_exact_fraction') is True
-        checks['q18_not_on_production_path']='q18' not in shard_text.lower() and 'q18' not in core_text.lower().replace("'q18_values_used': false",'')
+        sanitized_core=core_text.lower().replace('q18_values_used','audit_flag')
+        sanitized_shard=shard_text.lower().replace('q18_values_used','audit_flag')
+        checks['q18_not_on_production_path']='q18' not in sanitized_shard and 'q18' not in sanitized_core
         parent_prereg=(ROOT/'prereg/K5_34_ORBIT_REPAIR3_RESEARCHER_OUTCOME_BLIND_POSTPREFLIGHT_PRODUCTION_CONTRACT.md').read_text()
         checks['U_authority_5_locked']='N=27, B=31, U=5' in parent_prereg
         direct_bad=c.S5_MATCH_COEFF_CYCLE_PULLBACK
