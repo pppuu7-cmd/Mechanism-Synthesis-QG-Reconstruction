@@ -16,6 +16,8 @@ PREREG=ROOT/'prereg/K5_34_ORBIT_POSTCOLLAPSE_GEOMETRY_COVARIANCE_S5_TRANSPORT_DI
 CRITIC=ROOT/'results/raw/k5_34_orbit_component1_repaired_diagnostic_independent_critic_authoritative.json'
 
 PREREG_COMMIT='b7495db85844111b947bc902e5df2a496bf614ad'
+REPAIR1_PREREG_COMMIT='cd4dcf9f3b88b142d5413da0c8d17b24acd40074'
+REPAIR1_PREREG=ROOT/'prereg/K5_34_ORBIT_POSTCOLLAPSE_GEOMETRY_COVARIANCE_DIAGNOSTIC_IMPLEMENTATION_REPAIR1.md'
 C1_CRITIC='CONFIRMED_SCOPED_COMPONENT1_SUPPORT_SET_MISMATCH'
 
 INVALID='INVALID_IMPLEMENTATION_OR_PROVENANCE'
@@ -138,6 +140,8 @@ def geometry(mask,weights):
     q,v,divv=b.core.ann_data(tuple(aval))
     s1=sum(aval,P());S=sum(v,P());sumq=sum(q,P())
     K=s1*(divv+Fraction(1,2)*sumq)-3*S
+    aa_value=[D(aval[i],P()) for i in range(10)]
+    L_value=b.build_l_d(aa_value)
     aa=[D(aval[i],v[i]) for i in range(10)]
     L=b.build_l_d(aa)
     psi=b.det_d(L)
@@ -153,7 +157,7 @@ def geometry(mask,weights):
         for j in range(i+1,10):
             for n in range(b.ORDER+1):
                 cov[(i,j,n)]=b.dot_d(ROWS[i],BN[n],ROWS[j])
-    return {'aval':aval,'q':q,'v':v,'divv':divv,'K':K,'aa':aa,'L':L,'psi':psi,'ADJ':ADJ,'Ds':Ds,'F':F,'BN':BN,'cov':cov}
+    return {'aval':aval,'q':q,'v':v,'divv':divv,'K':K,'aa_value':aa_value,'L_value':L_value,'aa':aa,'L':L,'psi':psi,'ADJ':ADJ,'Ds':Ds,'F':F,'BN':BN,'cov':cov}
 
 def permute_matching(mt):
     out=[]
@@ -191,11 +195,14 @@ def route_hashes(route):
 def main():
     ap=argparse.ArgumentParser();ap.add_argument('--output',required=True);args=ap.parse_args()
     pre=PREREG.read_text(encoding='utf-8')
+    repair1_pre=REPAIR1_PREREG.read_text(encoding='utf-8')
     critic=json.loads(CRITIC.read_text(encoding='utf-8'))
 
     validity={
       'prereg_locked':PREREG_COMMIT=='b7495db85844111b947bc902e5df2a496bf614ad',
       'prereg_present':'post-collapse geometry/covariance S5 transport' in pre,
+      'implementation_repair1_locked':REPAIR1_PREREG_COMMIT=='cd4dcf9f3b88b142d5413da0c8d17b24acd40074',
+      'implementation_repair1_present':'Implementation-only repair 1' in repair1_pre,
       'parent_scientific_prereg_locked':r1.PRE=='d6b0e805101c8590eafac71398cc2b1466691752',
       'component1_critic_confirmed':critic.get('classification')==C1_CRITIC,
       'q18_unused':critic.get('q18_values_used') is False,
@@ -223,19 +230,21 @@ def main():
         row_rel.append(lhs==rhs)
     g2=all(row_rel) and matmul(G,Ginv,lambda:Fraction(0))==[[Fraction(int(i==j)) for j in range(4)] for i in range(4)]
 
-    # G3
-    predicted_L=matmul(matmul(transpose(G),old['L'],lambda:D(0)),G,lambda:D(0))
-    g3=mat_eq(target['L'],predicted_L,deq)
+    # G3: frozen value-only Laplacian congruence.
+    predicted_L_value=matmul(matmul(transpose(G),old['L_value'],lambda:D(0)),G,lambda:D(0))
+    g3=mat_eq(target['L_value'],predicted_L_value,deq)
 
     # G4
     predicted_Q=matmul(matmul(transpose(G),Q,lambda:Fraction(0)),G,lambda:Fraction(0))
     g4=predicted_Q==Q
 
-    # G5: edge tangent components + full D-Laplacian relation.
+    # G5: edge tangent components + full dual-jet Laplacian relation.
     qeq=all(peq(target['q'][ep(i)],old['q'][i]) for i in range(10))
     veq=all(peq(target['v'][ep(i)],old['v'][i]) for i in range(10))
     diveq=peq(target['divv'],old['divv'])
-    g5=qeq and veq and diveq and g3
+    predicted_L_dual=matmul(matmul(transpose(G),old['L'],lambda:D(0)),G,lambda:D(0))
+    dual_laplacian_eq=mat_eq(target['L'],predicted_L_dual,deq)
+    g5=qeq and veq and diveq and dual_laplacian_eq
 
     # G6
     cov_checks={}
@@ -276,9 +285,10 @@ def main():
 
     # Malformed controls, all prospectively frozen.
     ident=[[Fraction(int(i==j)) for j in range(4)] for i in range(4)]
-    identity_nontrivial=(G!=ident) and any(row_rel[4:])
-    identity_L=matmul(matmul(transpose(ident),old['L'],lambda:D(0)),ident,lambda:D(0))
-    identity_G_rejected=not mat_eq(target['L'],identity_L,deq)
+    identity_nonroot_rejected=any(list(ROWS[ep(i)]) != [es(i)*x for x in ROWS[i]] for i in range(4,10))
+    identity_nontrivial=(G!=ident) and identity_nonroot_rejected
+    identity_L_value=matmul(matmul(transpose(ident),old['L_value'],lambda:D(0)),ident,lambda:D(0))
+    identity_G_rejected=not mat_eq(target['L_value'],identity_L_value,deq)
 
     omitted_sign_rejected=False
     for i in range(10):
@@ -342,6 +352,7 @@ def main():
         'G5_q_edge_transport':qeq,
         'G5_v_edge_transport':veq,
         'G5_divergence_invariant':diveq,
+        'G5_dual_jet_laplacian_congruence':dual_laplacian_eq,
         'G6_first_failed_edgepair_order':first_cov,
         'G8_first_failed_matching':first_match,
         'G8_matching_count_checked_before_first_failure':matching_checked,
@@ -350,8 +361,10 @@ def main():
       'malformed_controls':malformed,
       'hashes_only':{
         'G_matrix_sha256':seq_hash(G),
-        'old_L_sha256':seq_hash(old['L']),
-        'target_L_sha256':seq_hash(target['L']),
+        'old_L_value_sha256':seq_hash(old['L_value']),
+        'target_L_value_sha256':seq_hash(target['L_value']),
+        'old_L_dual_sha256':seq_hash(old['L']),
+        'target_L_dual_sha256':seq_hash(target['L']),
         'old_Q_sha256':seq_hash(Q),
         'target_Q_expected_sha256':seq_hash(predicted_Q),
         'old_covariance_sha256':seq_hash(old['cov']),
