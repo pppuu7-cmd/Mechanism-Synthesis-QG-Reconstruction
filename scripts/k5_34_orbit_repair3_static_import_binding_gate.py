@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 from __future__ import annotations
-# Frozen implementation-only gate; corrected prospectively after run 35427903794 exposed gate-only false negatives.
+# Frozen implementation-only gate; corrections are prospectively preregistered.
 import importlib.util,json
 from pathlib import Path
 
@@ -8,7 +8,7 @@ ROOT=Path(__file__).resolve().parents[1]
 SHARD=ROOT/'scripts/k5_34_orbit_exact_leading_coefficient_shard_repair3.py'
 CORE=ROOT/'scripts/k5_34_orbit_exact_leading_coefficient_core_repair3_matching_key_frame.py'
 PREREG=ROOT/'prereg/K5_34_ORBIT_REPAIR3_STATIC_IMPORT_BINDING_GATE.md'
-PREFLIGHT=ROOT/'results/raw/k5_34_orbit_matching_key_frame_repair3_preflight_control_repair1.json'
+Q18_CORRECTION=ROOT/'prereg/K5_34_ORBIT_REPAIR3_STATIC_BINDING_Q18_AUDIT_METADATA_CORRECTION.md'
 
 def load(path,name):
     spec=importlib.util.spec_from_file_location(name,path);m=importlib.util.module_from_spec(spec);assert spec.loader is not None;spec.loader.exec_module(m);return m
@@ -16,6 +16,7 @@ def load(path,name):
 def main():
     checks={}
     checks['prereg_present']=PREREG.exists() and 'PASS_REPAIR3_STATIC_IMPORT_BINDING' in PREREG.read_text()
+    checks['q18_correction_prereg_present']=Q18_CORRECTION.exists() and 'structural production-path audit' in Q18_CORRECTION.read_text()
     shard_text=SHARD.read_text();core_text=CORE.read_text()
     checks['production_shard_exists']=SHARD.exists()
     checks['production_imports_repair3_core']="k5_34_orbit_exact_leading_coefficient_core_repair3_matching_key_frame.py" in shard_text
@@ -38,9 +39,15 @@ def main():
         checks['two_invariant_dual_channels']=c.W1 is not None and c.W2 is not None
         checks['W1_W2_present']=c.W1 is not None and c.W2 is not None
         checks['exact_fraction_coefficients']=st.get('all_coefficients_exact_fraction') is True
-        sanitized_core=core_text.lower().replace('q18_values_used','audit_flag')
-        sanitized_shard=shard_text.lower().replace('q18_values_used','audit_flag')
-        checks['q18_not_on_production_path']='q18' not in sanitized_shard and 'q18' not in sanitized_core
+        # Prospectively corrected after run 35430614849: q18_values_used=False is
+        # audit metadata, not q18 scientific input. Production shard must have no
+        # q18 token; core occurrences are restricted to explicit non-use metadata.
+        q18_core_lines=[ln.strip() for ln in core_text.splitlines() if 'q18' in ln.lower()]
+        allowed_q18=lambda ln: ("auth.get('q18_values_used') is False" in ln or "'q18_values_used': False" in ln)
+        checks['q18_shard_has_no_reference']='q18' not in shard_text.lower()
+        checks['q18_core_only_explicit_nonuse_metadata']=bool(q18_core_lines) and all(allowed_q18(ln) for ln in q18_core_lines)
+        checks['q18_runtime_nonuse_attested']=st.get('q18_values_used') is False and st.get('label_frame_critic_q18_unused') is True
+        checks['q18_not_on_production_path']=checks['q18_shard_has_no_reference'] and checks['q18_core_only_explicit_nonuse_metadata'] and checks['q18_runtime_nonuse_attested']
         parent_prereg=(ROOT/'prereg/K5_34_ORBIT_REPAIR3_RESEARCHER_OUTCOME_BLIND_POSTPREFLIGHT_PRODUCTION_CONTRACT.md').read_text()
         checks['U_authority_5_locked']='N=27, B=31, U=5' in parent_prereg
         direct_bad=c.S5_MATCH_COEFF_CYCLE_PULLBACK
