@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 from __future__ import annotations
+# Frozen implementation-only gate; this comment intentionally triggers its workflow.
 import importlib.util,json
 from pathlib import Path
 
@@ -38,13 +39,10 @@ def main():
         checks['W1_W2_present']=c.W1 is not None and c.W2 is not None
         checks['exact_fraction_coefficients']=st.get('all_coefficients_exact_fraction') is True
         checks['q18_not_on_production_path']='q18' not in shard_text.lower() and 'q18' not in core_text.lower().replace("'q18_values_used': false",'')
-        # Frozen U=5 authority is a provenance constant, not evaluated here.
         parent_prereg=(ROOT/'prereg/K5_34_ORBIT_REPAIR3_RESEARCHER_OUTCOME_BLIND_POSTPREFLIGHT_PRODUCTION_CONTRACT.md').read_text()
         checks['U_authority_5_locked']='N=27, B=31, U=5' in parent_prereg
-        # Negative A: direct pullback lookup must disagree with repaired target lookup for >=1 target key.
         direct_bad=c.S5_MATCH_COEFF_CYCLE_PULLBACK
         checks['negative_direct_pullback_detected']=any(direct_bad.get(t)!=c.S5_MATCH_COEFF_CYCLE_TARGET.get(t) for t in c.S5_MATCH_COEFF_CYCLE_TARGET)
-        # Negative B: inverse convention used as forward must fail lookup relation for >=1 canonical matching.
         checks['negative_inverse_convention_detected']=any(c.S5_MATCH_COEFF_CYCLE_TARGET.get(c.inverse_matching(mt))!=c.S5_MATCH_COEFF_CYCLE_PULLBACK.get(mt) for mt in c.S5_MATCH_COEFF_CYCLE_PULLBACK)
     except Exception as e:
         checks['import_success']=False;checks['import_error']=repr(e)
