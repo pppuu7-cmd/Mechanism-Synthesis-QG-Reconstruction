@@ -1,0 +1,56 @@
+name: K5 G8 matching covariance composition diagnostic
+
+on:
+  push:
+    paths:
+      - '.github/workflows/k5_34_orbit_g8_matching_covariance_composition_diagnostic.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-g8-diagnostic:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run frozen exact G8 diagnostic
+        run: |
+          python scripts/k5_34_orbit_g8_matching_covariance_composition_diagnostic.py --output g8_diagnostic.json
+      - name: Validate frozen result surface
+        run: |
+          python - <<'PY'
+          import json
+          r=json.load(open('g8_diagnostic.json',encoding='utf-8'))
+          allowed={
+            'K5_G8_DEFECT_EDGE_PAIR_PERMUTATION',
+            'K5_G8_DEFECT_ORIENTATION_COCYCLE_SIGN',
+            'K5_G8_DEFECT_COVARIANCE_INDEX_CONVENTION',
+            'K5_G8_DEFECT_PER_PAIR_COVARIANCE_FACTOR',
+            'K5_G8_DEFECT_ORDERED_PRODUCT_ASSEMBLY',
+            'K5_G8_DEFECT_FACTOR_MULTISET_ASSEMBLY',
+            'K5_G8_DEFECT_FINAL_MATCHING_CONTRIBUTION',
+            'K5_G8_FROZEN_MATCHING_COMPOSITION_EXACT',
+            'INVALID_IMPLEMENTATION_OR_PROVENANCE',
+          }
+          assert r['classification'] in allowed
+          assert r['prereg_commit']=='a9781b3c6b61ecaa1940ae796ae0a68b9b29c9b6'
+          assert r['corrected_parent_authority_commit']=='3ec5862258da84c25309c8ee091e6b752a246f66'
+          assert r['q18_values_used'] is False
+          assert r['N_B_orders_or_coefficients_used'] is False
+          assert r['heavy_resolver_authorized'] is False
+          assert r['global_stokes_authorized'] is False
+          print('FINAL_CLASSIFICATION='+r['classification'])
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: k5-g8-matching-covariance-diagnostic
+          path: g8_diagnostic.json
+          if-no-files-found: error
+          retention-days: 90
