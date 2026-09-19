@@ -9,22 +9,6 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 PARENT = ROOT / 'scripts/k5_34_orbit_exact_leading_coefficient_core_repair1.py'
-PREREG = ROOT / 'prereg/K5_34_ORBIT_MATCHING_KEY_FRAME_CONTROL_REPAIR_3_PREFLIGHT.md'
-CONTROL_REPAIR_PREREG = ROOT / 'prereg/K5_34_ORBIT_MATCHING_KEY_FRAME_REPAIR3_PREFLIGHT_CONTROL_REPAIR_1.md'
-CRITIC_AUTH = ROOT / 'results/raw/k5_g8_matching_coefficient_label_frame_independent_critic_authoritative.json'
-CRITIC_PROVENANCE = ROOT / 'status/K5_G8_MATCHING_COEFFICIENT_LABEL_FRAME_INDEPENDENT_CRITIC_PROVENANCE.md'
-
-REPAIR3_PREREG_COMMIT = '4ee6c6f3056c5934a5209a4f05616b73354b4e6e'
-CONTROL_REPAIR_PREREG_COMMIT = 'a05e1e29d2f39b678b2cf5f6b187cc165c787f9d'
-CRITIC_CLASS = 'K5_G8_MATCHING_COEFF_LABEL_FRAME_DEFECT_CONFIRMED'
-CRITIC_RUN = 35412815680
-CRITIC_JOB = 105815631932
-CRITIC_PROVENANCE_COMMIT = '81b85171bb2432438b853bca37cca7bafa3c8d2e'
-CRITIC_RAW_AUTH_COMMIT = 'daa6cbdf2f5c9412624a93d7e19feaf7c07dd2c7'
-CRITIC_RAW_AUTH_BLOB = 'a738852e012f0d7e9b157ab9a1517df3696e6993'
-CRITIC_RESULT_SHA256 = '7b6579241714f37631f58a9bef7ec1c7e507ad204f946ae769d615286a1a9f13'
-EXPECTED_PULLBACK_HASH = 'cee5a38677919965c66a785349286163b4ebd5dda8731bcdccdc71eec2543cbc'
-EXPECTED_TARGET_HASH = '0fadf222c22368dfac0f0c1e2ea93774ad9c103ed1506685292152e49cbe182b'
 
 
 def load(path: Path, name: str):
@@ -35,11 +19,6 @@ def load(path: Path, name: str):
     return mod
 
 
-def git_blob_sha1(path: Path) -> str:
-    raw = path.read_bytes()
-    return hashlib.sha1(b'blob ' + str(len(raw)).encode() + b'\0' + raw).hexdigest()
-
-
 repair1 = load(PARENT, 'k5_34_exact_core_repair3_parent')
 
 # Re-export the unchanged repair-1 scientific surface. Repair-3 alters only the
@@ -47,6 +26,33 @@ repair1 = load(PARENT, 'k5_34_exact_core_repair3_parent')
 for _name in dir(repair1):
     if not _name.startswith('__'):
         globals()[_name] = getattr(repair1, _name)
+
+# Repair3-specific authority bindings are deliberately defined AFTER the broad
+# inherited re-export so they cannot be overwritten by repair1/Boundary-S5
+# globals. This is the prospectively frozen namespace-only control repair2.
+G8_REPAIR3_PREREG = ROOT / 'prereg/K5_34_ORBIT_MATCHING_KEY_FRAME_CONTROL_REPAIR_3_PREFLIGHT.md'
+G8_CONTROL_REPAIR1_PREREG = ROOT / 'prereg/K5_34_ORBIT_MATCHING_KEY_FRAME_REPAIR3_PREFLIGHT_CONTROL_REPAIR_1.md'
+G8_CONTROL_REPAIR2_PREREG = ROOT / 'prereg/K5_34_ORBIT_MATCHING_KEY_FRAME_REPAIR3_PREFLIGHT_CONTROL_REPAIR_2_NAMESPACE.md'
+G8_CRITIC_AUTH = ROOT / 'results/raw/k5_g8_matching_coefficient_label_frame_independent_critic_authoritative.json'
+G8_CRITIC_PROVENANCE = ROOT / 'status/K5_G8_MATCHING_COEFFICIENT_LABEL_FRAME_INDEPENDENT_CRITIC_PROVENANCE.md'
+
+G8_REPAIR3_PREREG_COMMIT = '4ee6c6f3056c5934a5209a4f05616b73354b4e6e'
+G8_CONTROL_REPAIR1_PREREG_COMMIT = 'a05e1e29d2f39b678b2cf5f6b187cc165c787f9d'
+G8_CONTROL_REPAIR2_PREREG_COMMIT = 'e4ecce03cbe5df09afcb858480e582fa7b0c9b9e'
+G8_CRITIC_CLASS = 'K5_G8_MATCHING_COEFF_LABEL_FRAME_DEFECT_CONFIRMED'
+G8_CRITIC_RUN = 35412815680
+G8_CRITIC_JOB = 105815631932
+G8_CRITIC_PROVENANCE_COMMIT = '81b85171bb2432438b853bca37cca7bafa3c8d2e'
+G8_CRITIC_RAW_AUTH_COMMIT = 'daa6cbdf2f5c9412624a93d7e19feaf7c07dd2c7'
+G8_CRITIC_RAW_AUTH_BLOB = 'a738852e012f0d7e9b157ab9a1517df3696e6993'
+G8_CRITIC_RESULT_SHA256 = '7b6579241714f37631f58a9bef7ec1c7e507ad204f946ae769d615286a1a9f13'
+G8_EXPECTED_PULLBACK_HASH = 'cee5a38677919965c66a785349286163b4ebd5dda8731bcdccdc71eec2543cbc'
+G8_EXPECTED_TARGET_HASH = '0fadf222c22368dfac0f0c1e2ea93774ad9c103ed1506685292152e49cbe182b'
+
+
+def _g8_git_blob_sha1(path: Path) -> str:
+    raw = path.read_bytes()
+    return hashlib.sha1(b'blob ' + str(len(raw)).encode() + b'\0' + raw).hexdigest()
 
 
 def _perfect_matching_key(mt):
@@ -99,26 +105,28 @@ def _value_multiset(table):
 
 def static_checks():
     out = dict(repair1.static_checks())
-    auth = json.loads(CRITIC_AUTH.read_text(encoding='utf-8'))
-    provenance_text = CRITIC_PROVENANCE.read_text(encoding='utf-8')
+    auth = json.loads(G8_CRITIC_AUTH.read_text(encoding='utf-8'))
+    provenance_text = G8_CRITIC_PROVENANCE.read_text(encoding='utf-8')
     canonical = repair1.MATCH_COEFF
     pullback = S5_MATCH_COEFF_CYCLE_PULLBACK
     target = S5_MATCH_COEFF_CYCLE_TARGET
     forward_keys = [forward_matching(mt) for mt in canonical]
 
     out.update({
-        'repair3_prereg_commit_locked': REPAIR3_PREREG_COMMIT == '4ee6c6f3056c5934a5209a4f05616b73354b4e6e',
-        'repair3_prereg_present': PREREG.exists() and 'minimal matching-key frame control repair 3 preflight' in PREREG.read_text(encoding='utf-8'),
-        'control_repair1_prereg_commit_locked': CONTROL_REPAIR_PREREG_COMMIT == 'a05e1e29d2f39b678b2cf5f6b187cc165c787f9d',
-        'control_repair1_prereg_present': CONTROL_REPAIR_PREREG.exists() and 'control-only repair 1' in CONTROL_REPAIR_PREREG.read_text(encoding='utf-8'),
-        'label_frame_critic_class_locked': auth.get('classification') == CRITIC_CLASS,
-        'label_frame_critic_raw_blob_locked': git_blob_sha1(CRITIC_AUTH) == CRITIC_RAW_AUTH_BLOB,
-        'label_frame_critic_provenance_commit_locked': CRITIC_PROVENANCE_COMMIT == '81b85171bb2432438b853bca37cca7bafa3c8d2e',
-        'label_frame_critic_provenance_present': CRITIC_PROVENANCE.exists(),
-        'label_frame_critic_run_locked': f'run `{CRITIC_RUN}`' in provenance_text,
-        'label_frame_critic_job_locked': f'job `{CRITIC_JOB}`' in provenance_text,
-        'label_frame_critic_result_hash_locked': CRITIC_RESULT_SHA256 in provenance_text,
-        'label_frame_critic_raw_commit_locked': CRITIC_RAW_AUTH_COMMIT in provenance_text,
+        'repair3_prereg_commit_locked': G8_REPAIR3_PREREG_COMMIT == '4ee6c6f3056c5934a5209a4f05616b73354b4e6e',
+        'repair3_prereg_present': G8_REPAIR3_PREREG.exists() and 'minimal matching-key frame control repair 3 preflight' in G8_REPAIR3_PREREG.read_text(encoding='utf-8'),
+        'control_repair1_prereg_commit_locked': G8_CONTROL_REPAIR1_PREREG_COMMIT == 'a05e1e29d2f39b678b2cf5f6b187cc165c787f9d',
+        'control_repair1_prereg_present': G8_CONTROL_REPAIR1_PREREG.exists() and 'control-only repair 1' in G8_CONTROL_REPAIR1_PREREG.read_text(encoding='utf-8'),
+        'control_repair2_prereg_commit_locked': G8_CONTROL_REPAIR2_PREREG_COMMIT == 'e4ecce03cbe5df09afcb858480e582fa7b0c9b9e',
+        'control_repair2_prereg_present': G8_CONTROL_REPAIR2_PREREG.exists() and 'authority namespace binding' in G8_CONTROL_REPAIR2_PREREG.read_text(encoding='utf-8'),
+        'label_frame_critic_class_locked': auth.get('classification') == G8_CRITIC_CLASS,
+        'label_frame_critic_raw_blob_locked': _g8_git_blob_sha1(G8_CRITIC_AUTH) == G8_CRITIC_RAW_AUTH_BLOB,
+        'label_frame_critic_provenance_commit_locked': G8_CRITIC_PROVENANCE_COMMIT == '81b85171bb2432438b853bca37cca7bafa3c8d2e',
+        'label_frame_critic_provenance_present': G8_CRITIC_PROVENANCE.exists(),
+        'label_frame_critic_run_locked': f'run `{G8_CRITIC_RUN}`' in provenance_text,
+        'label_frame_critic_job_locked': f'job `{G8_CRITIC_JOB}`' in provenance_text,
+        'label_frame_critic_result_hash_locked': G8_CRITIC_RESULT_SHA256 in provenance_text,
+        'label_frame_critic_raw_commit_locked': G8_CRITIC_RAW_AUTH_COMMIT in provenance_text,
         'label_frame_critic_q18_unused': auth.get('q18_values_used') is False,
         'label_frame_critic_N_B_unused': auth.get('N_B_orders_or_coefficients_used') is False,
         'canonical_matching_count_945': len(canonical) == 945,
@@ -133,8 +141,8 @@ def static_checks():
         'target_pushforward_relation_all945': all(target.get(forward_matching(mt)) == canonical.get(mt) for mt in canonical),
         'coefficient_multiset_preserved': _value_multiset(target) == _value_multiset(pullback),
         'all_coefficients_exact_fraction': all(isinstance(x, Fraction) for coeffs in target.values() for ch in coeffs for x in ch),
-        'pullback_hash_locked': repair1._match_coeff_hash(pullback) == EXPECTED_PULLBACK_HASH,
-        'target_hash_locked': repair1._match_coeff_hash(target) == EXPECTED_TARGET_HASH,
+        'pullback_hash_locked': repair1._match_coeff_hash(pullback) == G8_EXPECTED_PULLBACK_HASH,
+        'target_hash_locked': repair1._match_coeff_hash(target) == G8_EXPECTED_TARGET_HASH,
         'source_terms_100000': repair1._SOURCE_TERM_COUNT == 100000,
         'q18_values_used': False,
         'N_B_orders_or_coefficients_used': False,
