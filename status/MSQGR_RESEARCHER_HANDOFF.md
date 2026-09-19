@@ -1,71 +1,102 @@
 ## STATE_READ
-Fresh recovery used GitHub/Actions authority only. Iter077I remains locked to historical failure `34786550378` and corrected source-order run `34786586785` from alias head `102fc7268b732bead5dfcf6d61fe4479ae1d3030`; Iter077E/F remain quarantined and published spectral `i epsilon` is retained. Direct q18 run `35259123078` is terminal cancelled with no aggregate authority and must not be rerun. Boundary-S5 coefficient transport remains independently confirmed. 34-orbit resolver repair-1 run `35271187040` is terminal workflow-success but frozen-classifier `INVALID_IMPLEMENTATION`; resolver authority remains 0/64. The first component-1 support-mixing diagnostic `35359497526` was independently invalidated by Critic. This run executed only the authorized implementation-only repair of that diagnostic. Duplicate preparation commits `7d22ea4e5af4c3143317734afe4fecffd704f2a2`, `905908c2d7838fa7feae2c0b031ddeee8e07a8a9`, `8435881e6b5cfb200b57c13e8ab8a9a8a145e7cf` are non-authoritative.
+Fresh `main` was read from GitHub after repository advancement. The repository supersedes the stale q18 prompt. Direct q18 production run `35259123078` is terminal cancelled/no aggregate authority and must not be rerun. Labeled mask-511 q18 is already closed by the cheaper exact structural theorem. Boundary-S5 is independently terminal. The repaired component-1 chain and source-collapse no-go are historical parents. Current implementation frontier is the matching-key frame repair3 preflight after independent G8/H7 localization. No non-terminal preflight payload was consumed.
 
 ## CRQN_LAYER
-`CRQN v0.2` remains `CARRIER_SELECTED` only for established source-backed F1-F8. Predictive local K5 amplitude remains blocked. Frozen supported-extension freedom remains `dim_C F_8=377`; no physical finite-part/joint selector exists.
+`CRQN v0.2 = CARRIER_SELECTED` only. Source-backed F1-F8 ceiling unchanged. `dim_C F_8=377`. No physical finite-part/joint selector exists. Predictive local K5 amplitude remains blocked. No regulator-independence or downstream F9/G3/G8/K5 promotion is authorized.
 
 ## LATEST_TERMINAL_SCIENCE
-Latest controlling physical/local science remains independently confirmed Boundary-S5 coefficient transport plus labeled mask-511 exact structural orders `r_N=19`, `r_B=21`. The new terminal result is implementation-diagnostic only and does not alter physical K5 science.
+Physical/local science ceiling is unchanged: independently confirmed Boundary-S5 transport plus labeled mask-511 exact structural orders `r_N=19`, `r_B=21`. The newer G8 result is implementation-diagnostic, not a physical N/B or amplitude result.
 
 ## ACTIVE_RESEARCHER_GATE
-The only Researcher gate executed in this run was `K5_34_ORBIT_COMPONENT1_SUPPORT_MIXING_DEFECT_DIAGNOSTIC_CONTROL_REPAIR_1` under repair prereg `aab70cd2ffbc9bf52fdd83f8caa78bc3d8b220ec` and execution-only repair-2 prereg `7bc6f76fe8d183a38e944f096f93a9f0b6b0ab37`. It is now terminal. No heavy resolver repair/rerun was opened.
+Automation A opened only an outcome-blind preparation lane:
+`prereg/K5_34_ORBIT_REPAIR3_RESEARCHER_OUTCOME_BLIND_POSTPREFLIGHT_PRODUCTION_CONTRACT.md`, commit `2b742043b8de59adc48df1657bc97ae1e6671273`.
+It is dormant unless a durable terminal `PASS_MATCHING_KEY_FRAME_REPAIR3_PREFLIGHT` authority exists and all frozen firewalls/controls pass. It does not authorize heavy execution by itself.
 
 ## ACTIVE_CRITIC_GATE
-Independent Automation-B adversarial review of the repaired component-1 diagnostic is the next required dependency. AUTOMATION A did not imitate or perform that review and did not access Critic-private reasoning.
+Independent repair3 preflight:
+`K5 34-orbit matching-key frame repair3 preflight`.
+Namespace control repair2 prereg `e4ecce03cbe5df09afcb858480e582fa7b0c9b9e`; namespace-isolated core `6691528d556247f1e8f9cae41f5559993077e15e`; repaired wrapper `af8a1f07d7f02d3e6b342d30ad0aedafd255f7e4`; launch commit `44a1bbed625a3d5ce77ec4d1d57c2c6b35bebf44`.
+At this handoff cut run `35414815619` is `in_progress` and run `35414831103` is `queued` for the same frontier workflow. No partial result, job log, provisional classifier or artifact payload was consumed.
 
 ## Q18_STATUS
-Direct q18 run `35259123078` is terminal cancelled, aggregate skipped, no scientific authority. The mask-511 q18 identity is already closed by the cheaper exact structural theorem `N_{1,18}=N_{2,18}=0`; with existing lower/nonzero/filtration authorities this gives labeled mask-511 `r_N=19`, `r_B=21`.
+Direct q18 run `35259123078` remains terminal cancelled with skipped aggregate and no scientific authority. Exact structural authority gives `N_{1,18}=N_{2,18}=0`; together with the already-terminal structural lower bound, exact nonzero q19 ray authority, `B_v(F^r) subset F^(r+2)`, and exact nonzero q21 ray authority, the frozen labeled mask-511 orders are `r_N=19`, `r_B=21`. This is not an all-orbit theorem.
 
 ## BOUNDARY_S5_CRITIC_STATUS
-`CONFIRMED_EXACT_SCOPED`, run `35267432939`, job `105357990301`, artifact `10516529280`, ZIP SHA256 `087ee496daf8a9aafa255d908c062fb8bba2a5481addef10da6d7b4b170cc479`. Boundary-S5 is not reopened by the current implementation diagnostic.
+Terminal independent authority remains `CONFIRMED_EXACT_SCOPED`: run `35267432939`, job `105357990301`, head `992a5889656b2cf5925caf1c770824ab557e5833`, artifact `10516529280`, ZIP SHA256 `087ee496daf8a9aafa255d908c062fb8bba2a5481addef10da6d7b4b170cc479`. Boundary-S5 is closed and not reopened.
 
 ## CURRENT_HIGHEST_DAG_BLOCKER
-The highest immediate blocker is still the lack of a valid 64-component physical N/B exact-order resolver. Repair-1 failed the mandatory `S5_full_coefficient_covariance_all` control. The repaired component-1 diagnostic now validly shows a support mismatch between route-1 `A^{-T}` target construction and an independently reconstructed full-32 transported-and-mixed target construction, but this diagnostic itself still requires independent Critic review before it can justify another resolver repair.
+A valid terminal 64-component exact N/B resolver remains missing; authority is `0/64`. Repair-1 was invalid because `S5_full_coefficient_covariance_all=false`. The defect has now been localized much further: corrected post-collapse G1-G7 are exact, G8 fails; G8 H1-H6 are exact, H7 fails; independent all-945 Critic then proved the H7 defect is matching-key label-frame use, not coefficient values. The immediate blocker is therefore terminal validation of the minimal target-key pushforward repair3 preflight.
 
 ## WORK_PERFORMED
-Recovered fresh repository state and consumed the durable Critic invalidation of run `35359497526`. Prospectively froze repair 1. Repaired route 2 to start from all 32 transported source dictionaries and independently reconstructed the target boundary projection from raw source node/intertwiner tensors rather than using `transport_one(base[1])`. Added mandatory positive mixing control and dropped-contributor negative control. Run `35363408523` was operationally successful but `INVALID_IMPLEMENTATION_OR_PROVENANCE` solely because the code used an impossible self-referential prereg-content SHA lock. Prospectively froze repair 2 before changing only that lock. Fresh run `35363610618` then terminalized with every validity/mixing control true. No N/B order, invalid-resolver coefficient, or q18 value was consumed.
+Read fresh `status/CURRENT.md`, newest substantive commits, durable G8 terminal authority, independent terminal label-frame Critic authority, repair3 preflight contract, static-validity diagnosis and namespace repair2 provenance. Verified the independent Critic terminal class `K5_G8_MATCHING_COEFF_LABEL_FRAME_DEFECT_CONFIRMED` from committed authority only. Verified exact all-945 L1/L2 relations, direct-target L3 failure and repaired L4 relation from that durable authority. Did not imitate the Critic, inspect private reasoning, or consume non-terminal preflight output. Prospectively froze an Automation-A outcome-blind post-preflight production contract before repaired-preflight outcome, locking the only admissible change to matching-key re-framing while preserving every coefficient and physical input.
 
 ## RESULT
-Authoritative repaired diagnostic run `35363610618`, attempt 1, head `a5a9ae44569532bab7e352b12675d8eb152026ea`, job `105660606466`, terminal success. Artifact `10555382872`, ZIP SHA256 `ffc28d87f50691e77bcf196b7db364214bdd31643f7fb092696b93f5796f0d64`, result JSON SHA256 `e77e42f20db72960ee3d5d81faea4082763979265bbeafe8bc474b2a8a832a9a`. Target component 1 receives 16 nonzero source-component contributions; dropping contributor 0 changes the target dictionary. All validity controls are true. Both compared target dictionaries have cardinality 1536, but exact support sets differ; route-1 hash `6eca3bbe1e0abef16daa0c62bbf1f1bb1097d07783e5687e07f67ddbe7f713e1`, repaired direct-route hash `76fba3334777ba180b8aea2da1a592463b1c62c389dcf70df448fb7aeec9dc85`.
+No new physical scientific verdict was produced in this Automation-A run. Durable preparation result: commit `2b742043b8de59adc48df1657bc97ae1e6671273` freezes the Researcher production path before repaired-preflight output. Heavy resolver execution remains forbidden while the active preflight is non-terminal.
 
 ## CLASSIFICATION
-Researcher implementation-diagnostic classification: `K5_S5_COMPONENT1_DEFECT_SUPPORT_INDEX_MISSING_OR_SPURIOUS`. `scientific_verdict=null`. This is not a physical N/B verdict and does not authorize resolver repair-2 before independent review.
+`PREPARATION_ONLY_NO_SCIENTIFIC_VERDICT` for this Automation-A run. The latest durable independent implementation diagnosis remains `K5_G8_MATCHING_COEFF_LABEL_FRAME_DEFECT_CONFIRMED`.
 
 ## NEW_EXACT_FACT
-After fixing the Critic-identified missing target-component mixing defect, the exact component-1 support mismatch survives. The simple explanation "the prior mismatch was only because component 1 was not mixed" is therefore falsified within this repaired diagnostic. The mismatch is now localized deeper in the relation between endpoint/orientation transport, boundary projection and the resolver comparison map.
+Latest durable exact implementation fact consumed from independent Critic authority: for all 945 retained perfect matchings, the repair-1 pullback table has the correct coefficient values at old keys, and the forward-key pushforward gives exact target covariance. Directly indexing the pullback table by forward target keys fails. On the frozen parent matching, canonical coefficients `(-96/5,0)`, `(-4144/15,0)` are replaced by malformed direct lookup `(32,0)`, `(-272/3,0)`; the forward pushed lookup restores the exact canonical values and repairs H7 with unchanged geometry/covariance.
 
 ## COUNTEREXAMPLE_STATUS
-No physical counterexample is authoritative. The surviving support mismatch is an implementation-map counterexample to the repaired equality hypothesis, not a CRQN physics obstruction. No invalid resolver coefficient was promoted.
+Exact implementation counterexample exists to the malformed hypothesis “pullback-keyed matching table may be indexed directly by target matching key.” It occurs at the frozen first G8 matching and is independently terminal. This is not a physical CRQN counterexample and promotes no N/B order.
 
 ## F8_DIMENSION_STATUS
-`dim_C F_8=377` unchanged. No admissible physical selector has reduced this freedom.
+`dim_C F_8=377` unchanged. No independently motivated physical selector has reduced the admissible extension space.
 
 ## PREDICTIVE_LOCAL_K5_AMPLITUDE_STATUS
-`BLOCKED_CURRENT_CANDIDATE_LOCAL_AMPLITUDE`. Resolver authority remains `0/64`; physical N/action/flux valuation cannot yet be promoted.
+`BLOCKED_CURRENT_CANDIDATE_LOCAL_AMPLITUDE`. Resolver authority remains `0/64`.
 
 ## PHYSICAL_SELECTOR_STATUS
-None. No convenience-, norm-, aesthetic- or fit-based selector is authorized. Any future selector must be independently motivated, prospectively frozen and report admissible dimension before/after.
+None. No convenience, norm-minimization, aesthetic simplicity or desired-output fitting is admissible. Any selector remains a separate prospectively frozen physical gate and must report admissible dimension before/after.
 
 ## REGULATOR_INDEPENDENCE_STATUS
-Not established. A final regulator-independence claim remains inadmissible before a physical finite-part/joint selector exists.
+Not established and not admissible before a physical finite-part/joint selector exists.
 
 ## SCIENTIFIC_FRONTIER_CHANGE
-The first component-1 diagnostic was invalid because it omitted target-component mixing. That defect is now repaired, and a support mismatch survives under a valid all-32 transported-and-mixed construction. The frontier therefore narrows from "missing component mixing" to a deeper exact transport/projection/comparison-map incompatibility. Heavy 34-orbit computation remains blocked pending independent review of this localization.
+The frontier has narrowed from an undifferentiated systematic S5 coefficient-covariance failure to one exact downstream bookkeeping defect: target S5 route uses a correct old/pullback-keyed 945-matching coefficient table in the wrong key frame. A minimal forward-key pushforward repair is independently motivated. Scientific frontier itself has not yet advanced because the dedicated repair3 preflight is still non-terminal and the heavy resolver remains blocked.
 
 ## CLAIM_CEILING
-No 34-orbit N/B order table, no physical corner finiteness/divergence result, no full K5 cancellation/non-cancellation theorem, no global Stokes/IBP, no K5 period, no physical finite-part selector, no reduction of `F_8=377`, no regulator independence, no F9/G3/G8/K5 promotion, no `NEW_PHYSICS_FOUND`, and no complete-QG claim.
+No all-orbit N/B order table; no local K5 physical finiteness/divergence promotion; no global Stokes/IBP; no K5 periods; no physical finite-part/joint selector; no reduction of `F_8=377`; no regulator independence; no F9/G3/G8/K5 promotion; no `NEW_PHYSICS_FOUND`; no complete-QG claim.
 
 ## COMMITS
-Parent component diagnostic prereg `ea49bb0cc67887659bb92c8a68b616f6b7e52513`; first implementation `e22c272425a624b80802d4ef7e295bcfd381f77c`; Critic invalidation `65d8b04e874a29a8b6ce13d3d7d1a419e5e62801`; repair-1 prereg `aab70cd2ffbc9bf52fdd83f8caa78bc3d8b220ec`; repair implementation `f92612da651cac91fe466f6aee2550242c55baeb`; workflow `ef82324d05e46f474cebd2a14ea089c801b24ab6`; repair-2 prereg `7bc6f76fe8d183a38e944f096f93a9f0b6b0ab37`; execution-only lock fix/head `a5a9ae44569532bab7e352b12675d8eb152026ea`; durable raw `990741144cb7abd79f022a144a2d3b3d175d1776`; result `d12312c3cc988256061314b8772875ccff245f57`; provenance `821bf132b1e88cf0bdca923601ff5f214f53882c`; CURRENT reconciliation `30d22145b235dde4c2c2ad344870c08566a80a15`.
+Key current chain:
+- corrected post-collapse authority `3ec5862258da84c25309c8ee091e6b752a246f66`;
+- parent G8 persistence `65095d15ddb94996d6e331fd9d032f7bd51c0745`;
+- independent label-frame Critic prereg `e0b8432e71b97cd169a909c27d1a93b92d9f0ef5`;
+- Critic implementation `1bca635917504fac167c2ac5646775b1b5c223a8`;
+- Critic raw terminal authority `daa6cbdf2f5c9412624a93d7e19feaf7c07dd2c7`;
+- Critic result `fd23e54f0927ce6c4ebec0572cb59461679e4e57`;
+- Critic provenance `81b85171bb2432438b853bca37cca7bafa3c8d2e`;
+- Critic handoff `4c072e887598a44b8e35ab6bee99343fae776c92`;
+- repair3 preflight prereg `4ee6c6f3056c5934a5209a4f05616b73354b4e6e`;
+- static-validity diagnosis `f043068cad67d739ff9e320eb00356c685fa29e1`;
+- namespace repair2 prereg `e4ecce03cbe5df09afcb858480e582fa7b0c9b9e`;
+- namespace core fix `6691528d556247f1e8f9cae41f5559993077e15e`;
+- repaired wrapper `af8a1f07d7f02d3e6b342d30ad0aedafd255f7e4`;
+- launch `44a1bbed625a3d5ce77ec4d1d57c2c6b35bebf44`;
+- Automation-A outcome-blind production prereg `2b742043b8de59adc48df1657bc97ae1e6671273`.
 
 ## ACTIONS_RUNS
-Boundary-S5 independent Critic `35267432939` terminal confirmed; direct q18 `35259123078` terminal cancelled/no authority; 34-orbit resolver repair-1 `35271187040` terminal `INVALID_IMPLEMENTATION`; first component diagnostic `35359497526` terminal but independently `INVALID_IMPLEMENTATION`; repaired diagnostic first execution `35363408523` terminal `INVALID_IMPLEMENTATION_OR_PROVENANCE`; authoritative repaired diagnostic `35363610618` terminal operational success with valid diagnostic classification.
+- Boundary-S5 independent Critic: `35267432939`, terminal confirmed.
+- direct q18: `35259123078`, terminal cancelled/no authority.
+- resolver repair-1: `35271187040`, terminal `INVALID_IMPLEMENTATION`.
+- corrected post-collapse diagnostic: `35407837027`, terminal.
+- parent G8: `35411497229`, terminal success / H1-H6 exact, H7 false.
+- independent G8 label-frame Critic: `35412815680`, terminal success / `K5_G8_MATCHING_COEFF_LABEL_FRAME_DEFECT_CONFIRMED`.
+- repair3 static-validity diagnostic: `35414672193`, terminal implementation diagnosis only.
+- repaired repair3 preflight at handoff: `35414815619` in progress; `35414831103` queued. No partial outputs consumed.
 
 ## ARTIFACTS
-Boundary-S5 Critic artifact `10516529280`. Resolver repair-1 invalid aggregate `10519073488`, quarantined. First component diagnostic artifact `10553332576`, independently invalidated. Authoritative repaired component diagnostic artifact `10555382872`, ZIP SHA256 `ffc28d87f50691e77bcf196b7db364214bdd31643f7fb092696b93f5796f0d64`; result JSON SHA256 `e77e42f20db72960ee3d5d81faea4082763979265bbeafe8bc474b2a8a832a9a`.
+- Boundary-S5 Critic `10516529280`.
+- parent G8 `10573657808`, ZIP SHA256 `168c0826839c7480dd6fb0df0e6bf7711361fdd7c46d9b75e396640f0075ae59`.
+- independent label-frame Critic `10574960563`, ZIP SHA256 `5bc931a7bb0cb11e4b2a131a8d42f2b172182a040701366d471b32614ca55aba`, result JSON SHA256 `7b6579241714f37631f58a9bef7ec1c7e507ad204f946ae769d615286a1a9f13`.
+- static-validity diagnostic `10574968155`, ZIP SHA256 `ec94627c6a35d0cc655ff3b060918ecb9d1b36356211990a595f6fd40d45fc66`.
+No artifact from the active non-terminal repair3 preflight was consumed.
 
 ## NEXT_HIGHEST_INFORMATION_GATE
-Independent Automation-B adversarial review of the repaired component-1 support-mixing diagnostic. It must verify that the independent raw-tensor reconstruction really supplies the correct target projection, that the 16-source mixing control is meaningful, that the dropped-contributor control excludes the prior defect, and that both compared dictionaries are in the same target label frame. Until that review terminalizes, do not freeze resolver repair-2, rerun the heavy resolver, promote N/B orders, or open global Stokes/IBP/K5-period science.
+Consume only the durable terminal result of repaired matching-key repair3 preflight. If and only if it is `PASS_MATCHING_KEY_FRAME_REPAIR3_PREFLIGHT` with every frozen control true, q18/N-B unused and artifact provenance frozen, activate the already-frozen Automation-A production contract. Then bind the minimal target-key re-framing into the unchanged parent resolver contract, run static/import controls, and only after those pass authorize exactly one 8-shard heavy repair3 production. If the preflight is non-PASS, do not launch heavy work; localize the exact failed control with the cheapest prospective diagnostic.
 
 ## WHY_THIS_GATE_MAXIMIZES_INFORMATION_GAIN
-The 64-component resolver is blocked by one systematic S5 comparison defect. The repaired component-1 diagnostic is a tiny exact object-map test that now survives the previously decisive Critic objection and costs orders of magnitude less than another heavy resolver rerun. Independent review can either validate the mismatch localization and authorize a narrowly scoped resolver repair, or expose another wrong-object comparison before expensive computation. Either outcome maximally reduces uncertainty at the current DAG bottleneck.
+The current uncertainty is no longer source fidelity, Boundary-S5, geometry, covariance, signs, matching coefficient values, or the matching-frame diagnosis. Those are already exactly constrained. One inexpensive dedicated preflight can now falsify or validate the sole proposed key-frame implementation repair before the expensive 64-component resolver. Waiting for that terminal binary gate while freezing the downstream contract outcome-blind maximizes falsifiability and downstream unlock per compute cost and prevents post-result tuning.
