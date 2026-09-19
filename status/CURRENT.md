@@ -266,3 +266,30 @@ Heavy repair-2 production is **not authorized** from this hypothesis. No heavy s
 ### Highest-information next work
 
 Freeze a single-lane exact post-collapse geometry/covariance transport diagnostic on mask=1, W1, CYCLE. Source matching coefficients are now locked equal across the relevant transport constructions; the next localization must occur downstream in the projective/covariance route before any new heavy resolver attempt.
+
+
+## Post-collapse geometry/covariance diagnostic — implementation repair-1 active
+
+The source-frame/support repair-2 hypothesis remains a terminal preflight no-go: corrected preflight run `35404110282` showed that the independently confirmed pre-collapse component support mismatch is erased by the invariant-dual/Wick collapse and does not change the physical 945-matching object. Heavy resolver repair-2 remains unauthorized.
+
+A prospective single-lane post-collapse geometry/covariance localization was frozen at `b7495db85844111b947bc902e5df2a496bf614ad` for mask=1 / W1 / cycle C=(1,2,3,4,0), with G1..G9 earliest-failure classification and no N/B coefficient/order consumption.
+
+Outcome-blind static audit of initial implementation `b47198b9f4fa9d4b9726b2fd76971a76a29992c5` found classifier-scope leakage before consuming its workflow result: frozen G3 requires a value-only Laplacian, but the code used the dual-jet D(alpha,v) Laplacian, folding G5 tangent information into G3. The identity-G malformed control had the same scope leak, and the nontrivial-incidence malformed control was weaker than frozen.
+
+Implementation-only repair-1 was prospectively frozen at `cd4dcf9f3b88b142d5413da0c8d17b24acd40074`. Corrected implementation `a7322a972d20b6fe6ac04da84f792e9b2f773e57` now:
+- constructs value-only `L_value` for G3;
+- keeps full dual-jet `L` as an independent G5 congruence check;
+- applies the identity-G malformed control to value-only G3;
+- explicitly rejects identity transport on at least one non-root incidence row;
+- leaves the original frozen G1..G9 classification order and all scientific inputs unchanged.
+
+Corrected workflow/head `47d2aef09e7f42bc412f7304310a59c3bd60df6a` has been launched. Do not consume partial diagnostic output, do not run a competing diagnostic, and do not launch the heavy 34-orbit resolver until this corrected run is terminal and provenance/classifier validity is checked.
+
+Resolver scientific authority remains `0/64`. q18 partials remain forbidden. Global Stokes/IBP, K5 periods, finite-part/joint selector, regulator independence, F8 selector reduction and downstream composition remain locked.
+
+### Highest-information next work
+
+1. Inspect only the terminal result of the corrected workflow from head `47d2aef09e7f42bc412f7304310a59c3bd60df6a`.
+2. Verify the implementation-repair prereg lock, all validity controls, all malformed controls, and the earliest-failed-stage classifier.
+3. If one exact post-collapse stage is localized, prospectively freeze the minimal implementation-only repair for that stage before any code change.
+4. If no defect is found on the frozen lane, do not infer global S5 correctness; open one new prospectively frozen discriminating lane/diagnostic rather than a heavy resolver rerun.
