@@ -293,3 +293,38 @@ Resolver scientific authority remains `0/64`. q18 partials remain forbidden. Glo
 2. Verify the implementation-repair prereg lock, all validity controls, all malformed controls, and the earliest-failed-stage classifier.
 3. If one exact post-collapse stage is localized, prospectively freeze the minimal implementation-only repair for that stage before any code change.
 4. If no defect is found on the frozen lane, do not infer global S5 correctness; open one new prospectively frozen discriminating lane/diagnostic rather than a heavy resolver rerun.
+
+
+## Corrected post-collapse diagnostic terminal; G8-only localization active
+
+The implementation-repair-1 post-collapse diagnostic is terminal and supersedes the earlier uncorrected classifier execution for localization authority.
+
+Corrected terminal provenance:
+- run `35407837027`, attempt 1;
+- head `47d2aef09e7f42bc412f7304310a59c3bd60df6a`;
+- job `105801164758`;
+- artifact `10574116412`;
+- artifact ZIP SHA256 `26a0c67083346072a2f63e4fd22af934847f9be4f7556b31a20a7115e7c3d5b4`;
+- raw JSON SHA256 `ab2fcb05236337dfbd4fde346d2c0840ca8821e27c436290811be49cbdb53ed3`.
+
+Corrected classification remains exactly:
+
+`K5_S5_POSTCOLLAPSE_DEFECT_MATCHING_COVARIANCE_COMPOSITION`.
+
+All validity and malformed controls pass. G1-G7 pass, including separate value-only G3 and explicit dual-jet Laplacian G5. G8 fails first at frozen matching `((0,1),(2,3),(4,5),(6,7),(8,9))`; G9 is downstream-only failure. Durable corrected authority is `results/raw/k5_34_orbit_postcollapse_geometry_covariance_s5_transport_diagnostic_repair1_authoritative.json`, commit `3ec5862258da84c25309c8ee091e6b752a246f66`, with terminal note commit `428ec6ce4e5c50ff77e70b5988e76adf3fc2a342`.
+
+The previously prospectively frozen G8 prereg `a9781b3c6b61ecaa1940ae796ae0a68b9b29c9b6` is revalidated without changing its matching, H1-H7 stages, controls, classifier or claim ceiling because it predates the corrected output and the corrected run reproduced the same first G8 failure exactly.
+
+G8 implementation commit: `8c0b2d7d4efb266be7cac2a9cd07c6e55de36713`.
+G8 workflow/head: `d87f8ed389f0cf418e1ec0abd49077604c73f853`.
+
+The G8 gate decomposes the frozen first failing matching into H1 edge-pair permutation, H2 orientation cocycle/sign, H3 covariance index convention, H4 per-pair covariance transport, H5 ordered product, H6 factor multiset, and H7 final matching contribution. It records no N/B leading coefficient/order and consumes no q18 values.
+
+Do not run a competing G8 diagnostic or heavy resolver while the G8 workflow is non-terminal. Resolver authority remains `0/64`.
+
+### Highest-information next work
+
+1. Inspect terminal G8 workflow from head `d87f8ed389f0cf418e1ec0abd49077604c73f853`.
+2. Validate prereg/parent authority locks and all malformed controls before accepting H1-H7 localization.
+3. If H1-H6 pass and H7 fails, localize the remaining source-matching coefficient relation with a minimal prospective control repair/diagnostic rather than touching geometry.
+4. Any repair must be prospectively frozen before code change; heavy resolver remains forbidden until the exact G8 defect is repaired and a dedicated preflight passes.
