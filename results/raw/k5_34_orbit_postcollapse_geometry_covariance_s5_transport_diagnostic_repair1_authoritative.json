@@ -1,0 +1,67 @@
+{
+  "classification": "K5_S5_POSTCOLLAPSE_DEFECT_MATCHING_COVARIANCE_COMPOSITION",
+  "frozen": {"cycle": [1,2,3,4,0], "mask": 1, "ray": "W1"},
+  "gate": "K5_34_ORBIT_POSTCOLLAPSE_GEOMETRY_COVARIANCE_S5_TRANSPORT_DIAGNOSTIC",
+  "global_stokes_authorized": false,
+  "heavy_resolver_authorized": false,
+  "interpretation_ceiling": "implementation diagnosis only; resolver authority remains 0/64",
+  "malformed_controls": {
+    "altered_covariance_entry_rejected": true,
+    "identity_G_laplacian_rejected": true,
+    "nontrivial_incidence_transform": true,
+    "omitted_orientation_sign_rejected": true,
+    "original_route_internal_checks": true,
+    "target_route_internal_checks": true
+  },
+  "no_N_B_orders_or_coefficients_recorded": true,
+  "prereg_commit": "b7495db85844111b947bc902e5df2a496bf614ad",
+  "q18_values_used": false,
+  "scientific_verdict": null,
+  "stages": {
+    "G1_ray_permutation": true,
+    "G2_incidence_basis_transport": true,
+    "G3_laplacian_congruence": true,
+    "G4_Q_invariance": true,
+    "G5_annihilator_tangent_transport": true,
+    "G6_covariance_series_transport": true,
+    "G7_determinant_factor_transport": true,
+    "G8_matching_covariance_composition": false,
+    "G9_N_B_full_polynomial_equality": false
+  },
+  "subchecks": {
+    "G2_all10_row_relations": [true,true,true,true,true,true,true,true,true,true],
+    "G5_divergence_invariant": true,
+    "G5_dual_jet_laplacian_congruence": true,
+    "G5_q_edge_transport": true,
+    "G5_v_edge_transport": true,
+    "G6_first_failed_edgepair_order": null,
+    "G8_first_failed_matching": "((0, 1), (2, 3), (4, 5), (6, 7), (8, 9))",
+    "G8_matching_count_checked_before_first_failure": 1,
+    "G9_channel_object_equalities": {"ch1_B": false,"ch1_N": false,"ch2_B": false,"ch2_N": false}
+  },
+  "validity": {
+    "component1_critic_confirmed": true,
+    "implementation_repair1_locked": true,
+    "implementation_repair1_present": true,
+    "matching_exact_rational": true,
+    "parent_scientific_prereg_locked": true,
+    "postcollapse_matching_objects_equal": true,
+    "prereg_locked": true,
+    "prereg_present": true,
+    "q18_unused": true,
+    "repair1_matching_945": true,
+    "repair2_matching_945": true,
+    "source_terms_100000": true
+  },
+  "provenance": {
+    "run_id": 35407837027,
+    "run_attempt": 1,
+    "head_sha": "47d2aef09e7f42bc412f7304310a59c3bd60df6a",
+    "job_id": 105801164758,
+    "artifact_id": 10574116412,
+    "artifact_zip_sha256": "26a0c67083346072a2f63e4fd22af934847f9be4f7556b31a20a7115e7c3d5b4",
+    "raw_json_sha256": "ab2fcb05236337dfbd4fde346d2c0840ca8821e27c436290811be49cbdb53ed3",
+    "implementation_repair_prereg_commit": "cd4dcf9f3b88b142d5413da0c8d17b24acd40074",
+    "corrected_implementation_commit": "a7322a972d20b6fe6ac04da84f792e9b2f773e57"
+  }
+}
