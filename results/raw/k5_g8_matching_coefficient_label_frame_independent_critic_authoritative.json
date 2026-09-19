@@ -1,0 +1,299 @@
+{
+  "N_B_orders_or_coefficients_used": false,
+  "classification": "K5_G8_MATCHING_COEFF_LABEL_FRAME_DEFECT_CONFIRMED",
+  "first_mismatches": {
+    "L1": null,
+    "L2": null,
+    "L3": {
+      "left": [
+        [
+          "32",
+          "0"
+        ],
+        [
+          "-272/3",
+          "0"
+        ]
+      ],
+      "old_matching": [
+        [
+          0,
+          1
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          8,
+          9
+        ]
+      ],
+      "right": [
+        [
+          "-96/5",
+          "0"
+        ],
+        [
+          "-4144/15",
+          "0"
+        ]
+      ],
+      "target_matching": [
+        [
+          0,
+          6
+        ],
+        [
+          1,
+          9
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          7,
+          8
+        ]
+      ]
+    },
+    "wrong_inverse_control": {
+      "canonical": [
+        [
+          "8/5",
+          "0"
+        ],
+        [
+          "-1088/15",
+          "0"
+        ]
+      ],
+      "old_matching": [
+        [
+          0,
+          1
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          6,
+          8
+        ],
+        [
+          7,
+          9
+        ]
+      ],
+      "wrong_lookup": [
+        [
+          "-88/5",
+          "0"
+        ],
+        [
+          "-512/15",
+          "0"
+        ]
+      ],
+      "wrong_target_matching": [
+        [
+          0,
+          8
+        ],
+        [
+          1,
+          9
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          4,
+          7
+        ]
+      ]
+    }
+  },
+  "frozen": {
+    "cycle": [
+      1,
+      2,
+      3,
+      4,
+      0
+    ],
+    "old_matching": [
+      [
+        0,
+        1
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        6,
+        7
+      ],
+      [
+        8,
+        9
+      ]
+    ],
+    "target_matching": [
+      [
+        0,
+        6
+      ],
+      [
+        1,
+        9
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        7,
+        8
+      ]
+    ]
+  },
+  "frozen_coefficients": {
+    "canonical_old": [
+      [
+        "-96/5",
+        "0"
+      ],
+      [
+        "-4144/15",
+        "0"
+      ]
+    ],
+    "corrected_pushforward_at_target_key": [
+      [
+        "-96/5",
+        "0"
+      ],
+      [
+        "-4144/15",
+        "0"
+      ]
+    ],
+    "malformed_direct_pullback_at_target_key": [
+      [
+        "32",
+        "0"
+      ],
+      [
+        "-272/3",
+        "0"
+      ]
+    ],
+    "pullback_at_old_key": [
+      [
+        "-96/5",
+        "0"
+      ],
+      [
+        "-4144/15",
+        "0"
+      ]
+    ]
+  },
+  "gate": "K5_G8_MATCHING_COEFFICIENT_LABEL_FRAME_RELATION_INDEPENDENT_CRITIC_DIAGNOSTIC",
+  "global_stokes_authorized": false,
+  "hashes": {
+    "canonical_table_sha256": "cee5a38677919965c66a785349286163b4ebd5dda8731bcdccdc71eec2543cbc",
+    "old_base_sha256": "caecba00c3bfc406c3acc5f648e6360a7c2f2bb943e47508ee4fbefce771222a",
+    "pullback_table_sha256": "cee5a38677919965c66a785349286163b4ebd5dda8731bcdccdc71eec2543cbc",
+    "pushforward_table_sha256": "0fadf222c22368dfac0f0c1e2ea93774ad9c103ed1506685292152e49cbe182b",
+    "repair2_collapsed_table_sha256": "cee5a38677919965c66a785349286163b4ebd5dda8731bcdccdc71eec2543cbc",
+    "target_base_sha256": "caecba00c3bfc406c3acc5f648e6360a7c2f2bb943e47508ee4fbefce771222a"
+  },
+  "heavy_resolver_authorized": false,
+  "interpretation_ceiling": "implementation-only G8/H7 matching-label localization; resolver authority remains 0/64",
+  "malformed_controls": {
+    "direct_pullback_as_target_rejected": true,
+    "extra_global_minus_rejected": true,
+    "inverse_edge_permutation_rejected": true,
+    "swap_first_two_target_keys_rejected": true
+  },
+  "parent_run": 35411497229,
+  "parent_terminal_persistence_commit": "65095d15ddb94996d6e331fd9d032f7bd51c0745",
+  "prereg_commit": "e0b8432e71b97cd169a909c27d1a93b92d9f0ef5",
+  "q18_values_used": false,
+  "relations": {
+    "L1_pullback_table_equals_canonical_all945": true,
+    "L2_pushforward_target_covariance_all945": true,
+    "L3_direct_pullback_as_target_all945": false,
+    "L3_frozen_direct_equal": false,
+    "L3_frozen_pushforward_equal": true,
+    "L4_corrected_pushforward_contribution_equal": true,
+    "L4_geometry_base_exact": true,
+    "L4_parent_direct_contribution_equal": false,
+    "L4_repaired_exact": true,
+    "L5_repair2_collapsed_equals_repair1_pullback": true
+  },
+  "scientific_verdict": null,
+  "validity": {
+    "all_canonical_keys_perfect": true,
+    "all_coefficients_exact_fraction": true,
+    "all_pullback_keys_perfect": true,
+    "canonical_matching_count_945": true,
+    "canonical_ten_edges": true,
+    "edge_map_agrees_with_authoritative_s5": true,
+    "forward_inverse_roundtrip_all945": true,
+    "forward_map_bijection_all945": true,
+    "forward_map_hits_pullback_keyset": true,
+    "frozen_matching_present": true,
+    "parent_H1_H6_true": true,
+    "parent_H7_false": true,
+    "parent_N_B_unused": true,
+    "parent_artifact_locked": true,
+    "parent_classification_locked": true,
+    "parent_head_locked": true,
+    "parent_job_locked": true,
+    "parent_json_hash_locked": true,
+    "parent_persistence_commit_locked": true,
+    "parent_q18_unused": true,
+    "parent_run_locked": true,
+    "parent_zip_hash_locked": true,
+    "prereg_commit_locked": true,
+    "prereg_present": true,
+    "pullback_matching_count_945": true,
+    "repair2_matching_count_945": true,
+    "source_terms_exactly_100000": true
+  }
+}
