@@ -1,0 +1,90 @@
+{
+  "gate": "K5_34_ORBIT_MATCHING_KEY_FRAME_REPAIR3_PREFLIGHT",
+  "classification": "INVALID_IMPLEMENTATION_OR_PROVENANCE",
+  "scientific_verdict": null,
+  "run_id": 35414228669,
+  "job_id": 105819570539,
+  "head_sha": "4b4e9fe68e1c44217a57bbe14e2bbc67e75ad971",
+  "artifact_id": 10575960402,
+  "artifact_name": "k5-34-orbit-matching-key-frame-repair3-preflight",
+  "artifact_zip_sha256": "a3667d77cc92e9bd8049d0463b26bce2f6618e3e0fd694f2dddd8cff7a85dac1",
+  "result_json_sha256": "1d9f2ec87f6ea1b9936d964f5c32323cc111218df26cfb8eaebf1b13185e8e3a",
+  "stdout_sha256": "38790a33ba8827a7573f439c31e2000035ec2b0e19851915c5d4d1bd680cd887",
+  "exit_code_file_sha256": "53c234e5e8472b6ac51c1ae1cab3fe06fad053beb8ebfd8977b010655bfdd3c3",
+  "prereg_commit": "4ee6c6f3056c5934a5209a4f05616b73354b4e6e",
+  "core_commit": "6d6dd17e579d7aeb2a793bfa1becbe611174f191",
+  "validity": {
+    "N_B_not_used": true,
+    "core_commit_locked": true,
+    "critic_N_B_unused": true,
+    "critic_class_locked": true,
+    "critic_q18_unused": true,
+    "critic_run_locked": false,
+    "parent_scientific_prereg_locked": true,
+    "prereg_commit_locked": true,
+    "prereg_present": true,
+    "q18_not_used": true,
+    "static_repair3_controls": false
+  },
+  "census_and_relations": {
+    "all_target_coefficients_exact_fraction": true,
+    "canonical_count_945": true,
+    "coefficient_values_preserved": true,
+    "forward_bijection_all945": true,
+    "inverse_roundtrip_all945": true,
+    "pullback_count_945": true,
+    "pullback_relation_all945": true,
+    "target_count_945": true,
+    "target_relation_all945": true
+  },
+  "g8_stages": {
+    "H1_edge_pair_permutation": true,
+    "H2_orientation_cocycle_sign": true,
+    "H3_covariance_index_convention": true,
+    "H4_per_pair_covariance_factor": true,
+    "H5_ordered_product_assembly": true,
+    "H6_factor_multiset_assembly": true,
+    "H7_final_matching_contribution_repaired": true,
+    "geometry_base_transport_exact": true
+  },
+  "malformed_controls": {
+    "coefficient_value_mutation_rejected": true,
+    "direct_pullback_as_target_rejected": true,
+    "extra_global_minus_rejected": true,
+    "inverse_matching_map_rejected": true,
+    "swap_first_two_target_keys_rejected": true
+  },
+  "frozen_lane": {
+    "mask": 1,
+    "ray": "W1",
+    "cycle": [1,2,3,4,0],
+    "old_matching": [[0,1],[2,3],[4,5],[6,7],[8,9]],
+    "target_matching": [[0,6],[1,9],[2,3],[4,5],[7,8]],
+    "old_coeff": [["-96/5","0"],["-4144/15","0"]],
+    "repaired_target_coeff": [["-96/5","0"],["-4144/15","0"]],
+    "malformed_direct_coeff": [["32","0"],["-272/3","0"]],
+    "old_base_sha256": "caecba00c3bfc406c3acc5f648e6360a7c2f2bb943e47508ee4fbefce771222a",
+    "target_base_sha256": "caecba00c3bfc406c3acc5f648e6360a7c2f2bb943e47508ee4fbefce771222a"
+  },
+  "hashes": {
+    "canonical_table_sha256": "cee5a38677919965c66a785349286163b4ebd5dda8731bcdccdc71eec2543cbc",
+    "pullback_table_sha256": "cee5a38677919965c66a785349286163b4ebd5dda8731bcdccdc71eec2543cbc",
+    "target_table_sha256": "0fadf222c22368dfac0f0c1e2ea93774ad9c103ed1506685292152e49cbe182b"
+  },
+  "first_mismatches": {
+    "pullback_relation": null,
+    "target_relation": null,
+    "malformed_direct": {
+      "old_matching": [[0,1],[2,3],[4,5],[6,7],[8,9]],
+      "lookup_key": [[0,6],[1,9],[2,3],[4,5],[7,8]],
+      "left": [["32","0"],["-272/3","0"]],
+      "right": [["-96/5","0"],["-4144/15","0"]]
+    }
+  },
+  "q18_values_used": false,
+  "N_B_orders_or_coefficients_used": false,
+  "heavy_resolver_launched": false,
+  "heavy_resolver_authorized_by_this_result": false,
+  "resolver_scientific_authority_components": 0,
+  "interpretation_ceiling": "implementation-only matching-key frame preflight; no N/B scientific result"
+}
