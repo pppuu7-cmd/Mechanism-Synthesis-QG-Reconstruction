@@ -1,0 +1,83 @@
+name: K5 G8 matching coefficient label-frame Critic
+
+on:
+  push:
+    paths:
+      - 'prereg/K5_G8_MATCHING_COEFFICIENT_LABEL_FRAME_RELATION_INDEPENDENT_CRITIC_DIAGNOSTIC.md'
+      - 'scripts/critic_k5_g8_matching_coefficient_label_frame_relation.py'
+      - 'results/raw/k5_34_orbit_g8_matching_covariance_composition_diagnostic_terminal.json'
+      - '.github/workflows/k5_g8_matching_coefficient_label_frame_critic.yml'
+  workflow_dispatch:
+
+jobs:
+  exact-label-frame-critic:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Run frozen exact label-frame diagnostic
+        shell: bash
+        run: |
+          set +e
+          python scripts/critic_k5_g8_matching_coefficient_label_frame_relation.py \
+            --output critic_g8_label_frame.json \
+            > critic_g8_label_frame_stdout.txt 2>&1
+          rc=$?
+          echo "$rc" > critic_g8_label_frame_exit_code.txt
+          cat critic_g8_label_frame_stdout.txt
+          exit 0
+
+      - name: Validate frozen result surface
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          r=json.loads(Path('critic_g8_label_frame.json').read_text())
+          allowed={
+            'K5_G8_MATCHING_COEFF_LABEL_FRAME_DEFECT_CONFIRMED',
+            'K5_G8_MATCHING_COEFF_VALUE_RELATION_DEFECT',
+            'K5_G8_MATCHING_COEFF_DIRECT_TARGET_RELATION_EXACT',
+            'INVALID_IMPLEMENTATION_OR_PROVENANCE',
+          }
+          assert r['classification'] in allowed
+          assert r['prereg_commit']=='e0b8432e71b97cd169a909c27d1a93b92d9f0ef5'
+          assert r['parent_terminal_persistence_commit']=='65095d15ddb94996d6e331fd9d032f7bd51c0745'
+          assert r['parent_run']==35411497229
+          assert r['q18_values_used'] is False
+          assert r['N_B_orders_or_coefficients_used'] is False
+          assert r['heavy_resolver_authorized'] is False
+          assert r['global_stokes_authorized'] is False
+          if r['classification']!='INVALID_IMPLEMENTATION_OR_PROVENANCE':
+              assert all(r['validity'].values())
+              assert all(r['malformed_controls'].values())
+          if r['classification']=='K5_G8_MATCHING_COEFF_LABEL_FRAME_DEFECT_CONFIRMED':
+              x=r['relations']
+              assert x['L1_pullback_table_equals_canonical_all945'] is True
+              assert x['L2_pushforward_target_covariance_all945'] is True
+              assert x['L3_direct_pullback_as_target_all945'] is False
+              assert x['L3_frozen_direct_equal'] is False
+              assert x['L3_frozen_pushforward_equal'] is True
+              assert x['L4_repaired_exact'] is True
+          print('FROZEN_CLASSIFICATION='+r['classification'])
+          PY
+
+      - name: Upload immutable Critic artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: k5-g8-matching-coefficient-label-frame-critic
+          path: |
+            critic_g8_label_frame.json
+            critic_g8_label_frame_stdout.txt
+            critic_g8_label_frame_exit_code.txt
+          if-no-files-found: error
+          retention-days: 90
