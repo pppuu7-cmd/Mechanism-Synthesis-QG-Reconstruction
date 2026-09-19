@@ -1,3 +1,4 @@
+# Frozen execution trigger after workflow installation.
 name: K5 G8 matching coefficient label-frame Critic
 
 on:
